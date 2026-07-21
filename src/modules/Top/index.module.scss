@@ -1,0 +1,22 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($align-items: center);
+
+  padding: var(--gap-2) var(--gap-4);
+  gap: var(--gap-4);
+  background-color: var(--color-success);
+  border-radius: var(--border-radius-4);
+  width: fit-content;
+  color: var(--color-white);
+
+  &.lg {
+    padding-inline: var(--gap-8);
+    font-size: rem(14px);
+  }
+
+  &.sm {
+    padding-inline: var(--gap-4);
+    font-size: rem(12px);
+  }
+}

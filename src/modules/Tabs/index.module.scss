@@ -1,0 +1,71 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  border-bottom: rem(1px) solid var(--primary-disabled);
+}
+
+.list {
+  @include flex($align-items: center);
+  //@include scroll-x;
+
+  position: relative;
+  min-height: rem(44px);
+  mask-image: linear-gradient(90deg, var(--black) calc(100% - rem(44px)), transparent);
+  overflow-y: hidden;
+  font-size: rem(14px);
+  gap: var(--gap-default);
+}
+
+.option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-4);
+  min-width: max-content;
+  height: rem(28px);
+  padding: var(--gap-6) var(--gap-default);
+  border-radius: var(--border-radius-6);
+  background-color: transparent;
+  text-align: center;
+  color: var(--sub-text);
+
+  &::after,
+  &::before {
+    @include transition;
+
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  &::after {
+    @include size(0, rem(3px));
+
+    inset-inline: 0;
+    inset-block-end: rem(-8px);
+    z-index: $z-index-1;
+    border-radius: var(--border-radius-full);
+    background-color: var(--link);
+  }
+
+  @include hover {
+    &:hover {
+      background-color: var(--primary-hover);
+    }
+  }
+
+  &.active {
+    pointer-events: none;
+    color: var(--text-for-primary);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

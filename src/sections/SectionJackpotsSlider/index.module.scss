@@ -1,0 +1,76 @@
+@use '@/scss/config' as *;
+
+.block {
+  opacity: 0;
+  display: grid;
+  row-gap: var(--gap-default);
+
+  &:has(.prev:disabled) {
+    .slider {
+      &::before {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(.next:disabled) {
+    .slider {
+      &::after {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(:global(.swiper-initialized)) {
+    opacity: 1;
+  }
+}
+
+.slider {
+  display: grid;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset-block: 0;
+    background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+    width: rem(65px);
+    z-index: $z-index-2;
+    opacity: 1;
+    content: '';
+  }
+
+  &::before {
+    inset-inline-start: rem(-1px);
+    transform: scaleX(-1);
+  }
+
+  &::after {
+    inset-inline-end: rem(-1px);
+  }
+}
+
+.header {
+  @include flex(space-between, center);
+
+  gap: var(--gap-12);
+}
+
+.more,
+.navigation {
+  flex-shrink: 0;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--gap-4);
+}

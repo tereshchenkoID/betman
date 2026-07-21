@@ -1,0 +1,89 @@
+@use '@/scss/config' as *;
+
+.block {
+  --wheel-size: 634;
+
+  @include flex(center, center);
+
+  width: 100%;
+  max-width: calc(var(--wheel-size) * rem(1px));
+  aspect-ratio: 1 / 1;
+  position: relative;
+  container-type: inline-size;
+}
+
+.frame {
+  @include size(100%);
+  @include flex;
+
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.canvas {
+  @include size(100%);
+
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+}
+
+.indicator {
+  @include size(calc(100 / var(--wheel-size) * 100cqw), calc(125 / var(--wheel-size) * 100cqw));
+
+  position: absolute;
+  top: 0;
+  transform: translateY(-55%);
+  z-index: $z-index-1;
+  pointer-events: none;
+
+  //img {
+  //  height: 100%;
+  //}
+}
+
+.spin {
+  @include size(calc(152 / var(--wheel-size) * 100cqw));
+  @include flex(center, center);
+  @include transition;
+
+  position: absolute;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+
+  &::after,
+  &::before {
+    position: absolute;
+    border-radius: 50%;
+    content: '';
+  }
+
+  &::after {
+    inset: 8px;
+    background: radial-gradient(50% 50% at 50% 50%, #00313A 0%, #021417 42%, #040708 80%, #000000 100%);
+  }
+
+  &::before {
+    inset: 0;
+    background: radial-gradient(50% 50% at 50% 50%, #713900 0%, #A95B00 76%, #FFF08A 90%, #F0A40C 97%, #6F3500 100%);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.logo {
+  @include size(50%, auto);
+
+  margin: auto;
+  position: relative;
+  z-index: $z-index-1;
+}

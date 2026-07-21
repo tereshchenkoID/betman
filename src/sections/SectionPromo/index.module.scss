@@ -1,0 +1,72 @@
+@use '@/scss/config' as *;
+
+.header {
+  @include flex($align-items: center);
+
+  gap: var(--gap-16);
+  min-height: rem(48px);
+}
+
+.content {
+  padding: var(--gap-16);
+  background-color: var(--material);
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
+  margin-inline: auto;
+  max-width: rem(800px);
+
+  img {
+    margin-bottom: var(--gap-16);
+    border-radius: var(--gap-6);
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+  }
+
+  h1 {
+    margin-bottom: var(--gap-24);
+    font-style: italic;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: var(--gap-16);
+  }
+
+  ul,
+  ol {
+    margin-block: var(--gap-12);
+    padding-inline-start: var(--gap-32);
+    list-style: unset;
+    line-height: rem(24px);
+  }
+
+  li {
+    list-style: unset;
+  }
+
+  table {
+    margin-bottom: var(--gap-16);
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-size: rem(14px);
+  }
+
+  td {
+    padding: var(--gap-default) var(--gap-16);
+    border: rem(1px) solid var(--material-hover);
+  }
+
+  p {
+    margin-block: var(--gap-12);
+    line-height: rem(24px);
+  }
+
+  a {
+    display: inline;
+    color: var(--link);
+  }
+}

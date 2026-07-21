@@ -1,0 +1,12 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include size(rem(30px), auto);
+
+  display: block;
+  flex-shrink: 0;
+
+  @include desk-s {
+    width: rem(145px);
+  }
+}

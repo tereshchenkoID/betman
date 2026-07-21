@@ -1,0 +1,85 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include size(rem(304px), rem(110px));
+
+  display: grid;
+  grid-template-columns: 1fr rem(88px);
+  border-radius: var(--border-radius-10);
+  background-color: var(--material);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+
+  @include hover {
+    &:hover {
+      .hidden {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+.action {
+  @include absolute-filled;
+
+  z-index: $z-index-1;
+
+  @include desk-s {
+    display: none;
+  }
+}
+
+.info,
+.hidden {
+  position: relative;
+  padding: var(--gap-16);
+}
+
+.info {
+  position: relative;
+  overflow: hidden;
+}
+
+.hidden {
+  @include flex($justify-content: space-between, $direction: column);
+  @include transition;
+
+  position: absolute;
+  inset: 0;
+  background-color: var(--material);
+  transform: translateX(100%);
+}
+
+.title {
+  font-size: rem(12px);
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.winnings {
+  @include flex($align-items: baseline);
+
+  margin-bottom: var(--gap-default);
+  gap: var(--gap-4);
+}
+
+.currency {
+  font-size: rem(12px);
+  color: var(--sub-text);
+
+  strong {
+    color: var(--text-for-brand);
+  }
+}
+
+.player {
+  @include flex($align-items: center);
+
+  gap: var(--gap-6);
+  font-size: rem(12px);
+}

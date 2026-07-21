@@ -1,0 +1,29 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include size(rem(8px));
+
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: rem(1px) solid var(--material);
+
+  &-0,
+  &-2 {
+    background-color: var(--red);
+  }
+
+  &-1 {
+    background-color: var(--yellow);
+  }
+
+  &-3 {
+    background-color: var(--green);
+  }
+
+  &.md {
+    @include size(rem(10px));
+  }
+}

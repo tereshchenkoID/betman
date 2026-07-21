@@ -1,0 +1,127 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex(center, flex-end);
+
+  position: fixed;
+  inset: 0;
+  //inset: max(var(--tg-safe-top), env(safe-area-inset-top)) 0 max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  z-index: $z-index-9;
+
+  @include tab-s {
+    align-items: center;
+    padding: var(--gap-16);
+  }
+
+  &.sm {
+    .content {
+      @include tab-s {
+        max-width: rem(400px);
+      }
+    }
+  }
+
+  &.md {
+    .content {
+      @include tab-s {
+        max-width: rem(560px);
+      }
+    }
+  }
+
+  &.lg {
+    .content {
+      height: 100%;
+
+      @include tab-s {
+        max-width: rem(800px);
+      }
+    }
+  }
+
+  &.tiny {
+    .content {
+      @include tab-s {
+        min-width: auto;
+        width: fit-content;
+      }
+    }
+
+    .body {
+      padding: 0;
+
+      @include tab-s {
+        overflow-y: unset;
+      }
+    }
+
+    .wrapper {
+      grid-template-rows: auto;
+    }
+  }
+
+  &.lock {
+
+    .shadow {
+      pointer-events: none;
+    }
+  }
+}
+
+.header {
+  @include flex(center, flex-start);
+
+  position: relative;
+  padding: var(--gap-16) rem(50px);
+  flex-shrink: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  text-align: center;
+  font-style: italic;
+  color: var(--text-for-material);
+}
+
+.shadow {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.content {
+  @include flex;
+
+  background-color: var(--material);
+  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
+  overflow: hidden;
+  max-height: 100%;
+  min-width: rem(320px);
+  width: 100%;
+  z-index: $z-index-1;
+  color: var(--text-for-material);
+
+  @include tab-s {
+    border-radius: var(--border-radius-16);
+    min-width: rem(400px);
+    //width: fit-content;
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+}
+
+.close {
+  position: absolute;
+  inset-inline-end: var(--gap-12);
+}
+
+.body {
+  @include scroll-y;
+
+  padding: var(--gap-12) var(--gap-24) var(--gap-24);
+}

@@ -1,0 +1,80 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: sticky;
+  top: 0;
+  //margin-inline: rem(-16px);
+  z-index: $z-index-9;
+  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
+  height: var(--header-height);
+
+  @include desk-s {
+    padding-block: var(--gap-default);
+    background: none;
+    //margin-inline: 0;
+  }
+}
+
+.container {
+  @include flex(space-between, center);
+
+  position: relative;
+  padding-inline: var(--gap-2);
+  padding: var(--gap-2) var(--gap-16);
+  gap: var(--gap-24);
+  margin-inline: auto;
+  max-width: var(--max-width);
+  height: 100%;
+
+  @include desk-s {
+    padding-block: 0;
+    border: rem(1px) solid var(--tertiary-disabled);
+    border-radius: var(--border-radius-full);
+    backdrop-filter: blur(rem(36px));
+  }
+}
+
+.right {
+  @include flex($align-items: center);
+
+  position: relative;
+  gap: var(--gap-default);
+  padding-bottom: 0;
+}
+
+.balance {
+  @include flex($align-items: center);
+
+  gap: var(--gap-4);
+  overflow: hidden;
+  font-size: rem(14px);
+  line-height: 1;
+
+  strong {
+    @include ellipsis;
+  }
+
+  span {
+    font-size: rem(12px);
+  }
+}
+
+.avatar {
+  position: relative;
+}
+
+.account {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: var(--aside-height);
+  padding: var(--gap-12) var(--gap-16);
+  border-bottom: rem(1px) solid var(--tertiary-disabled);
+  background-color: var(--bg);
+
+  @include desk-s {
+    position: static;
+    padding: 0;
+    border-bottom: 0;
+    background-color: transparent;
+  }
+}

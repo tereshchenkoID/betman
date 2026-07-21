@@ -1,0 +1,1517 @@
+@use '@/scss/config' as *;
+
+$icon-sizes: (
+  xs: 0.75rem,  // 12px
+  sm: 1rem,     // 16px
+  md: 1.25rem,  // 20px
+  lg: 1.5rem,   // 24px
+  xl: 2rem      // 32px
+);
+
+.icon {
+  --icon-size: 0.625rem;
+
+  @include size(var(--icon-size));
+
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  font-size: var(--icon-size);
+
+  &::before {
+    font-family: var(--font-iconography) !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @each $name, $size in $icon-sizes {
+    &.#{$name} {
+      --icon-size: #{$size};
+    }
+  }
+
+  &-toggle-thumbs-neutral-filled:before {
+    content: "\f101";
+  }
+  &-toggle-thumbs-neutral:before {
+    content: "\f102";
+  }
+  &-action-scan-qr:before {
+    content: "\f103";
+  }
+  &-actions-attach:before {
+    content: "\f104";
+  }
+  &-actions-bookmark:before {
+    content: "\f105";
+  }
+  &-actions-copy:before {
+    content: "\f106";
+  }
+  &-actions-delete:before {
+    content: "\f107";
+  }
+  &-actions-download:before {
+    content: "\f108";
+  }
+  &-actions-drag-horizontal:before {
+    content: "\f109";
+  }
+  &-actions-drag-reorder:before {
+    content: "\f10a";
+  }
+  &-actions-drag:before {
+    content: "\f10b";
+  }
+  &-actions-edit-alt:before {
+    content: "\f10c";
+  }
+  &-actions-edit:before {
+    content: "\f10d";
+  }
+  &-actions-filter:before {
+    content: "\f10e";
+  }
+  &-actions-flag:before {
+    content: "\f10f";
+  }
+  &-actions-forward-filled:before {
+    content: "\f110";
+  }
+  &-actions-forward:before {
+    content: "\f111";
+  }
+  &-actions-link-alt:before {
+    content: "\f112";
+  }
+  &-actions-link:before {
+    content: "\f113";
+  }
+  &-actions-login:before {
+    content: "\f114";
+  }
+  &-actions-logout-alt:before {
+    content: "\f115";
+  }
+  &-actions-logout-auto:before {
+    content: "\f116";
+  }
+  &-actions-logout:before {
+    content: "\f117";
+  }
+  &-actions-pin-filled:before {
+    content: "\f118";
+  }
+  &-actions-pin:before {
+    content: "\f119";
+  }
+  &-actions-placeholder:before {
+    content: "\f11a";
+  }
+  &-actions-print:before {
+    content: "\f11b";
+  }
+  &-actions-reply:before {
+    content: "\f11c";
+  }
+  &-actions-scan-qr:before {
+    content: "\f11d";
+  }
+  &-actions-scan:before {
+    content: "\f11e";
+  }
+  &-actions-send-alt:before {
+    content: "\f11f";
+  }
+  &-actions-send-filled:before {
+    content: "\f120";
+  }
+  &-actions-send:before {
+    content: "\f121";
+  }
+  &-actions-share-android:before {
+    content: "\f122";
+  }
+  &-actions-share:before {
+    content: "\f123";
+  }
+  &-actions-shuffle:before {
+    content: "\f124";
+  }
+  &-actions-sort-alphabet:before {
+    content: "\f125";
+  }
+  &-actions-sort-ascending:before {
+    content: "\f126";
+  }
+  &-actions-sort-descending:before {
+    content: "\f127";
+  }
+  &-actions-test-icon:before {
+    content: "\f128";
+  }
+  &-actions-ticket-attach:before {
+    content: "\f129";
+  }
+  &-commerce-bank-card:before {
+    content: "\f12a";
+  }
+  &-commerce-bank-transfer:before {
+    content: "\f12b";
+  }
+  &-commerce-bonus:before {
+    content: "\f12c";
+  }
+  &-commerce-cash-alt:before {
+    content: "\f12d";
+  }
+  &-commerce-cash-bag:before {
+    content: "\f12e";
+  }
+  &-commerce-cash:before {
+    content: "\f12f";
+  }
+  &-commerce-coins:before {
+    content: "\f130";
+  }
+  &-commerce-coupon:before {
+    content: "\f131";
+  }
+  &-commerce-deposit-alt:before {
+    content: "\f132";
+  }
+  &-commerce-deposit-limit:before {
+    content: "\f133";
+  }
+  &-commerce-deposit:before {
+    content: "\f134";
+  }
+  &-commerce-gift-filled:before {
+    content: "\f135";
+  }
+  &-commerce-gift:before {
+    content: "\f136";
+  }
+  &-commerce-great-deal:before {
+    content: "\f137";
+  }
+  &-commerce-jackpot:before {
+    content: "\f138";
+  }
+  &-commerce-payment-summary:before {
+    content: "\f139";
+  }
+  &-commerce-paysafe:before {
+    content: "\f13a";
+  }
+  &-commerce-payspot:before {
+    content: "\f13b";
+  }
+  &-commerce-price-tag:before {
+    content: "\f13c";
+  }
+  &-commerce-promotions:before {
+    content: "\f13d";
+  }
+  &-commerce-shop:before {
+    content: "\f13e";
+  }
+  &-commerce-specials-filled:before {
+    content: "\f13f";
+  }
+  &-commerce-specials:before {
+    content: "\f140";
+  }
+  &-commerce-ticket-add:before {
+    content: "\f141";
+  }
+  &-commerce-ticket-filled:before {
+    content: "\f142";
+  }
+  &-commerce-ticket-number:before {
+    content: "\f143";
+  }
+  &-commerce-ticket:before {
+    content: "\f144";
+  }
+  &-commerce-toppay:before {
+    content: "\f145";
+  }
+  &-commerce-transactions-alt:before {
+    content: "\f146";
+  }
+  &-commerce-transactions:before {
+    content: "\f147";
+  }
+  &-commerce-wallet:before {
+    content: "\f148";
+  }
+  &-commerce-withdraw:before {
+    content: "\f149";
+  }
+  &-data-book:before {
+    content: "\f14a";
+  }
+  &-data-business:before {
+    content: "\f14b";
+  }
+  &-data-chart:before {
+    content: "\f14c";
+  }
+  &-data-cookie:before {
+    content: "\f14d";
+  }
+  &-data-file:before {
+    content: "\f14e";
+  }
+  &-data-folder:before {
+    content: "\f14f";
+  }
+  &-data-graph:before {
+    content: "\f150";
+  }
+  &-data-privacy-filled:before {
+    content: "\f151";
+  }
+  &-data-privacy:before {
+    content: "\f152";
+  }
+  &-data-protection-filled:before {
+    content: "\f153";
+  }
+  &-data-protection:before {
+    content: "\f154";
+  }
+  &-data-safety:before {
+    content: "\f155";
+  }
+  &-data-security:before {
+    content: "\f156";
+  }
+  &-data-sticky-note:before {
+    content: "\f157";
+  }
+  &-data-translation:before {
+    content: "\f158";
+  }
+  &-games-advent-calendar:before {
+    content: "\f159";
+  }
+  &-games-arrow-right-filled:before {
+    content: "\f15a";
+  }
+  &-games-aviator:before {
+    content: "\f15b";
+  }
+  &-games-balloon:before {
+    content: "\f15c";
+  }
+  &-games-bingo:before {
+    content: "\f15d";
+  }
+  &-games-blast-beachball:before {
+    content: "\f15e";
+  }
+  &-games-blast:before {
+    content: "\f15f";
+  }
+  &-games-bomb:before {
+    content: "\f160";
+  }
+  &-games-boom-city-alt-2:before {
+    content: "\f161";
+  }
+  &-games-boom-city-alt:before {
+    content: "\f162";
+  }
+  &-games-boom-city:before {
+    content: "\f163";
+  }
+  &-games-boom-or-bust:before {
+    content: "\f164";
+  }
+  &-games-bubble:before {
+    content: "\f165";
+  }
+  &-games-candy:before {
+    content: "\f166";
+  }
+  &-games-casino-coin:before {
+    content: "\f167";
+  }
+  &-games-celebration:before {
+    content: "\f168";
+  }
+  &-games-club-filled:before {
+    content: "\f169";
+  }
+  &-games-crown-alt-filled:before {
+    content: "\f16a";
+  }
+  &-games-crown-alt:before {
+    content: "\f16b";
+  }
+  &-games-crown:before {
+    content: "\f16c";
+  }
+  &-games-diamond-filled:before {
+    content: "\f16d";
+  }
+  &-games-dice-duel:before {
+    content: "\f16e";
+  }
+  &-games-duel:before {
+    content: "\f16f";
+  }
+  &-games-gambling:before {
+    content: "\f170";
+  }
+  &-games-games-raffle:before {
+    content: "\f171";
+  }
+  &-games-games:before {
+    content: "\f172";
+  }
+  &-games-halloween:before {
+    content: "\f173";
+  }
+  &-games-happy-hour:before {
+    content: "\f174";
+  }
+  &-games-heavy-weight:before {
+    content: "\f175";
+  }
+  &-games-horse:before {
+    content: "\f176";
+  }
+  &-games-jackpot-hub:before {
+    content: "\f177";
+  }
+  &-games-live-casino:before {
+    content: "\f178";
+  }
+  &-games-lotto:before {
+    content: "\f179";
+  }
+  &-games-lucky-drop:before {
+    content: "\f17a";
+  }
+  &-games-megaways:before {
+    content: "\f17b";
+  }
+  &-games-racing-flag:before {
+    content: "\f17c";
+  }
+  &-games-responsible-gambling:before {
+    content: "\f17d";
+  }
+  &-games-retry:before {
+    content: "\f17e";
+  }
+  &-games-roulette-fast:before {
+    content: "\f17f";
+  }
+  &-games-roulette:before {
+    content: "\f180";
+  }
+  &-games-slingo:before {
+    content: "\f181";
+  }
+  &-games-slot:before {
+    content: "\f182";
+  }
+  &-games-spade-filled:before {
+    content: "\f183";
+  }
+  &-games-spade:before {
+    content: "\f184";
+  }
+  &-games-sparks:before {
+    content: "\f185";
+  }
+  &-games-spinner:before {
+    content: "\f186";
+  }
+  &-games-summerbox:before {
+    content: "\f187";
+  }
+  &-games-super-heavy-weight:before {
+    content: "\f188";
+  }
+  &-games-super-six:before {
+    content: "\f189";
+  }
+  &-games-superbox:before {
+    content: "\f18a";
+  }
+  &-games-sweet-bonanza-candy-land-alt:before {
+    content: "\f18b";
+  }
+  &-games-sweet-bonanza-candy-land:before {
+    content: "\f18c";
+  }
+  &-games-sweet:before {
+    content: "\f18d";
+  }
+  &-games-trophy-mid:before {
+    content: "\f18e";
+  }
+  &-games-trophy-small:before {
+    content: "\f18f";
+  }
+  &-games-trophy:before {
+    content: "\f190";
+  }
+  &-games-virtuals-alt:before {
+    content: "\f191";
+  }
+  &-games-virtuals-golden:before {
+    content: "\f192";
+  }
+  &-games-virtuals:before {
+    content: "\f193";
+  }
+  &-human-accessibility:before {
+    content: "\f194";
+  }
+  &-human-age-limit-alt:before {
+    content: "\f195";
+  }
+  &-human-age-limit:before {
+    content: "\f196";
+  }
+  &-human-avatar:before {
+    content: "\f197";
+  }
+  &-human-communities:before {
+    content: "\f198";
+  }
+  &-human-education:before {
+    content: "\f199";
+  }
+  &-human-face-happy-filled:before {
+    content: "\f19a";
+  }
+  &-human-face-happy:before {
+    content: "\f19b";
+  }
+  &-human-face-id:before {
+    content: "\f19c";
+  }
+  &-human-face-neutral-filled:before {
+    content: "\f19d";
+  }
+  &-human-face-neutral:before {
+    content: "\f19e";
+  }
+  &-human-face-sad-filled:before {
+    content: "\f19f";
+  }
+  &-human-face-sad:before {
+    content: "\f1a0";
+  }
+  &-human-group:before {
+    content: "\f1a1";
+  }
+  &-human-hand-alt:before {
+    content: "\f1a2";
+  }
+  &-human-hand:before {
+    content: "\f1a3";
+  }
+  &-human-jersey:before {
+    content: "\f1a4";
+  }
+  &-human-seat:before {
+    content: "\f1a5";
+  }
+  &-human-touch-id:before {
+    content: "\f1a6";
+  }
+  &-human-user-add:before {
+    content: "\f1a7";
+  }
+  &-human-user-id:before {
+    content: "\f1a8";
+  }
+  &-human-user-number:before {
+    content: "\f1a9";
+  }
+  &-human-user-question:before {
+    content: "\f1aa";
+  }
+  &-human-user-remove:before {
+    content: "\f1ab";
+  }
+  &-human-user-search:before {
+    content: "\f1ac";
+  }
+  &-human-user:before {
+    content: "\f1ad";
+  }
+  &-match-events-ace:before {
+    content: "\f1ae";
+  }
+  &-match-events-ball-stolen:before {
+    content: "\f1af";
+  }
+  &-match-events-break-pause:before {
+    content: "\f1b0";
+  }
+  &-match-events-card-alt:before {
+    content: "\f1b1";
+  }
+  &-match-events-card-cancelled:before {
+    content: "\f1b2";
+  }
+  &-match-events-card:before {
+    content: "\f1b3";
+  }
+  &-match-events-clock-sync:before {
+    content: "\f1b4";
+  }
+  &-match-events-corner:before {
+    content: "\f1b5";
+  }
+  &-match-events-fault-double:before {
+    content: "\f1b6";
+  }
+  &-match-events-fault-foot:before {
+    content: "\f1b7";
+  }
+  &-match-events-fault:before {
+    content: "\f1b8";
+  }
+  &-match-events-free-throw-miss:before {
+    content: "\f1b9";
+  }
+  &-match-events-free-throw-score:before {
+    content: "\f1ba";
+  }
+  &-match-events-goal-cancelled:before {
+    content: "\f1bb";
+  }
+  &-match-events-goal:before {
+    content: "\f1bc";
+  }
+  &-match-events-goalkeeper-save:before {
+    content: "\f1bd";
+  }
+  &-match-events-half-time:before {
+    content: "\f1be";
+  }
+  &-match-events-offside:before {
+    content: "\f1bf";
+  }
+  &-match-events-penalty-missed:before {
+    content: "\f1c0";
+  }
+  &-match-events-penalty:before {
+    content: "\f1c1";
+  }
+  &-match-events-puck:before {
+    content: "\f1c2";
+  }
+  &-match-events-quarter:before {
+    content: "\f1c3";
+  }
+  &-match-events-rebound:before {
+    content: "\f1c4";
+  }
+  &-match-events-replay:before {
+    content: "\f1c5";
+  }
+  &-match-events-score-three-points:before {
+    content: "\f1c6";
+  }
+  &-match-events-score-two-points:before {
+    content: "\f1c7";
+  }
+  &-match-events-score:before {
+    content: "\f1c8";
+  }
+  &-match-events-set:before {
+    content: "\f1c9";
+  }
+  &-match-events-shot-blocked:before {
+    content: "\f1ca";
+  }
+  &-match-events-shot-off-target:before {
+    content: "\f1cb";
+  }
+  &-match-events-shot-on-target:before {
+    content: "\f1cc";
+  }
+  &-match-events-shot-penalty:before {
+    content: "\f1cd";
+  }
+  &-match-events-shot-stickman:before {
+    content: "\f1ce";
+  }
+  &-match-events-soccer-card-yellow-red:before {
+    content: "\f1cf";
+  }
+  &-match-events-substitution:before {
+    content: "\f1d0";
+  }
+  &-match-events-suspension-two-minutes:before {
+    content: "\f1d1";
+  }
+  &-match-events-tennis-court:before {
+    content: "\f1d2";
+  }
+  &-match-events-third:before {
+    content: "\f1d3";
+  }
+  &-match-events-throw-in:before {
+    content: "\f1d4";
+  }
+  &-match-events-tie-break:before {
+    content: "\f1d5";
+  }
+  &-match-events-var-check:before {
+    content: "\f1d6";
+  }
+  &-match-events-whistle:before {
+    content: "\f1d7";
+  }
+  &-media-chat-alt-2:before {
+    content: "\f1d8";
+  }
+  &-media-chat-alt:before {
+    content: "\f1d9";
+  }
+  &-media-chat-multiple-alt:before {
+    content: "\f1da";
+  }
+  &-media-chat-multiple:before {
+    content: "\f1db";
+  }
+  &-media-chat:before {
+    content: "\f1dc";
+  }
+  &-media-gif:before {
+    content: "\f1dd";
+  }
+  &-media-mentions:before {
+    content: "\f1de";
+  }
+  &-media-news:before {
+    content: "\f1df";
+  }
+  &-media-quote-filled:before {
+    content: "\f1e0";
+  }
+  &-misc-facebook:before {
+    content: "\f1e1";
+  }
+  &-misc-image-filled:before {
+    content: "\f1e2";
+  }
+  &-misc-image:before {
+    content: "\f1e3";
+  }
+  &-misc-instagram:before {
+    content: "\f1e4";
+  }
+  &-misc-layout:before {
+    content: "\f1e5";
+  }
+  &-misc-napoleon-logo-alt:before {
+    content: "\f1e6";
+  }
+  &-misc-napoleon-logo:before {
+    content: "\f1e7";
+  }
+  &-misc-superbet-logo:before {
+    content: "\f1e8";
+  }
+  &-misc-tab:before {
+    content: "\f1e9";
+  }
+  &-misc-tik-tok:before {
+    content: "\f1ea";
+  }
+  &-misc-viber:before {
+    content: "\f1eb";
+  }
+  &-misc-whatsapp:before {
+    content: "\f1ec";
+  }
+  &-misc-x:before {
+    content: "\f1ed";
+  }
+  &-misc-you-tube:before {
+    content: "\f1ee";
+  }
+  &-navigation-add-alt-filled:before {
+    content: "\f1ef";
+  }
+  &-navigation-add-alt:before {
+    content: "\f1f0";
+  }
+  &-navigation-add:before {
+    content: "\f1f1";
+  }
+  &-navigation-caret-down:before {
+    content: "\f1f2";
+  }
+  &-navigation-caret-up:before {
+    content: "\f1f3";
+  }
+  &-navigation-chevron-down-small:before {
+    content: "\f1f4";
+  }
+  &-navigation-chevron-down:before {
+    content: "\f1f5";
+  }
+  &-navigation-chevron-left-small:before {
+    content: "\f1f6";
+  }
+  &-navigation-chevron-left:before {
+    content: "\f1f7";
+  }
+  &-navigation-chevron-right-small:before {
+    content: "\f1f8";
+  }
+  &-navigation-chevron-right:before {
+    content: "\f1f9";
+  }
+  &-navigation-chevron-up-small:before {
+    content: "\f1fa";
+  }
+  &-navigation-chevron-up:before {
+    content: "\f1fb";
+  }
+  &-navigation-close-alt-filled:before {
+    content: "\f1fc";
+  }
+  &-navigation-close-alt:before {
+    content: "\f1fd";
+  }
+  &-navigation-close-small:before {
+    content: "\f1fe";
+  }
+  &-navigation-close:before {
+    content: "\f1ff";
+  }
+  &-navigation-dot:before {
+    content: "\f200";
+  }
+  &-navigation-dots-horizontal:before {
+    content: "\f201";
+  }
+  &-navigation-dots-vertical:before {
+    content: "\f202";
+  }
+  &-navigation-explore:before {
+    content: "\f203";
+  }
+  &-navigation-favorite-menu:before {
+    content: "\f204";
+  }
+  &-navigation-home:before {
+    content: "\f205";
+  }
+  &-navigation-menu:before {
+    content: "\f206";
+  }
+  &-navigation-search:before {
+    content: "\f207";
+  }
+  &-navigation-settings-alt:before {
+    content: "\f208";
+  }
+  &-navigation-settings:before {
+    content: "\f209";
+  }
+  &-navigation-subtract-alt-filled:before {
+    content: "\f20a";
+  }
+  &-navigation-subtract:before {
+    content: "\f20b";
+  }
+  &-sports-afl:before {
+    content: "\f20c";
+  }
+  &-sports-american-football:before {
+    content: "\f20d";
+  }
+  &-sports-aquatics:before {
+    content: "\f20e";
+  }
+  &-sports-archery:before {
+    content: "\f20f";
+  }
+  &-sports-arena-of-valor-2:before {
+    content: "\f210";
+  }
+  &-sports-assist-alt:before {
+    content: "\f211";
+  }
+  &-sports-assist:before {
+    content: "\f212";
+  }
+  &-sports-athletics:before {
+    content: "\f213";
+  }
+  &-sports-australian-open:before {
+    content: "\f214";
+  }
+  &-sports-badminton:before {
+    content: "\f215";
+  }
+  &-sports-bandy:before {
+    content: "\f216";
+  }
+  &-sports-baseball:before {
+    content: "\f217";
+  }
+  &-sports-basketball-3-v-3:before {
+    content: "\f218";
+  }
+  &-sports-basketball:before {
+    content: "\f219";
+  }
+  &-sports-beach-handball:before {
+    content: "\f21a";
+  }
+  &-sports-beach-soccer:before {
+    content: "\f21b";
+  }
+  &-sports-bench:before {
+    content: "\f21c";
+  }
+  &-sports-bocce:before {
+    content: "\f21d";
+  }
+  &-sports-boxing:before {
+    content: "\f21e";
+  }
+  &-sports-breakdance:before {
+    content: "\f21f";
+  }
+  &-sports-canoeing:before {
+    content: "\f220";
+  }
+  &-sports-chess:before {
+    content: "\f221";
+  }
+  &-sports-climbing:before {
+    content: "\f222";
+  }
+  &-sports-cod:before {
+    content: "\f223";
+  }
+  &-sports-copa-america-filled:before {
+    content: "\f224";
+  }
+  &-sports-copa-america:before {
+    content: "\f225";
+  }
+  &-sports-counter-strike:before {
+    content: "\f226";
+  }
+  &-sports-cricket:before {
+    content: "\f227";
+  }
+  &-sports-cup:before {
+    content: "\f228";
+  }
+  &-sports-curling:before {
+    content: "\f229";
+  }
+  &-sports-cycling:before {
+    content: "\f22a";
+  }
+  &-sports-darts:before {
+    content: "\f22b";
+  }
+  &-sports-dota:before {
+    content: "\f22c";
+  }
+  &-sports-entertainment:before {
+    content: "\f22d";
+  }
+  &-sports-esports-filled:before {
+    content: "\f22e";
+  }
+  &-sports-esports:before {
+    content: "\f22f";
+  }
+  &-sports-euro-2024-filled:before {
+    content: "\f230";
+  }
+  &-sports-euro-2024:before {
+    content: "\f231";
+  }
+  &-sports-fencing:before {
+    content: "\f232";
+  }
+  &-sports-field-hockey:before {
+    content: "\f233";
+  }
+  &-sports-fifa:before {
+    content: "\f234";
+  }
+  &-sports-floorball:before {
+    content: "\f235";
+  }
+  &-sports-formula-1:before {
+    content: "\f236";
+  }
+  &-sports-fortnite:before {
+    content: "\f237";
+  }
+  &-sports-futsal:before {
+    content: "\f238";
+  }
+  &-sports-gaelic-football:before {
+    content: "\f239";
+  }
+  &-sports-gaelic-hurling:before {
+    content: "\f23a";
+  }
+  &-sports-goalkeeper-stickman:before {
+    content: "\f23b";
+  }
+  &-sports-golf:before {
+    content: "\f23c";
+  }
+  &-sports-gymnastics:before {
+    content: "\f23d";
+  }
+  &-sports-handball:before {
+    content: "\f23e";
+  }
+  &-sports-hockey:before {
+    content: "\f23f";
+  }
+  &-sports-injury:before {
+    content: "\f240";
+  }
+  &-sports-judo:before {
+    content: "\f241";
+  }
+  &-sports-kings-league:before {
+    content: "\f242";
+  }
+  &-sports-kings-of-glory:before {
+    content: "\f243";
+  }
+  &-sports-lacrosse:before {
+    content: "\f244";
+  }
+  &-sports-league-of-legends:before {
+    content: "\f245";
+  }
+  &-sports-line-up-unknown:before {
+    content: "\f246";
+  }
+  &-sports-line-up:before {
+    content: "\f247";
+  }
+  &-sports-lineup-unknown:before {
+    content: "\f248";
+  }
+  &-sports-lineup:before {
+    content: "\f249";
+  }
+  &-sports-motorcycle-racing:before {
+    content: "\f24a";
+  }
+  &-sports-nba-2-k:before {
+    content: "\f24b";
+  }
+  &-sports-netball:before {
+    content: "\f24c";
+  }
+  &-sports-not-in-lineup:before {
+    content: "\f24d";
+  }
+  &-sports-olympics-alt:before {
+    content: "\f24e";
+  }
+  &-sports-olympics:before {
+    content: "\f24f";
+  }
+  &-sports-overwatch:before {
+    content: "\f250";
+  }
+  &-sports-pentathlon:before {
+    content: "\f251";
+  }
+  &-sports-pesepallo:before {
+    content: "\f252";
+  }
+  &-sports-politics:before {
+    content: "\f253";
+  }
+  &-sports-rainbow-six:before {
+    content: "\f254";
+  }
+  &-sports-rocket-league:before {
+    content: "\f255";
+  }
+  &-sports-rowing:before {
+    content: "\f256";
+  }
+  &-sports-rugby:before {
+    content: "\f257";
+  }
+  &-sports-sailing:before {
+    content: "\f258";
+  }
+  &-sports-shooting:before {
+    content: "\f259";
+  }
+  &-sports-skateboarding:before {
+    content: "\f25a";
+  }
+  &-sports-ski-jumping:before {
+    content: "\f25b";
+  }
+  &-sports-smite:before {
+    content: "\f25c";
+  }
+  &-sports-snooker:before {
+    content: "\f25d";
+  }
+  &-sports-soccer-stickman:before {
+    content: "\f25e";
+  }
+  &-sports-soccer:before {
+    content: "\f25f";
+  }
+  &-sports-speedway:before {
+    content: "\f260";
+  }
+  &-sports-sports-stickman:before {
+    content: "\f261";
+  }
+  &-sports-squash:before {
+    content: "\f262";
+  }
+  &-sports-stadium:before {
+    content: "\f263";
+  }
+  &-sports-starcraft-2:before {
+    content: "\f264";
+  }
+  &-sports-starcraft:before {
+    content: "\f265";
+  }
+  &-sports-surfing:before {
+    content: "\f266";
+  }
+  &-sports-swimming:before {
+    content: "\f267";
+  }
+  &-sports-table-tennis:before {
+    content: "\f268";
+  }
+  &-sports-taekwondo:before {
+    content: "\f269";
+  }
+  &-sports-tennis-crest:before {
+    content: "\f26a";
+  }
+  &-sports-tennis:before {
+    content: "\f26b";
+  }
+  &-sports-triathlon:before {
+    content: "\f26c";
+  }
+  &-sports-ufc:before {
+    content: "\f26d";
+  }
+  &-sports-valorant:before {
+    content: "\f26e";
+  }
+  &-sports-volleyball-beach:before {
+    content: "\f26f";
+  }
+  &-sports-volleyball:before {
+    content: "\f270";
+  }
+  &-sports-waterpolo:before {
+    content: "\f271";
+  }
+  &-sports-winter-sports:before {
+    content: "\f272";
+  }
+  &-sports-wrestling:before {
+    content: "\f273";
+  }
+  &-status-arrows-down:before {
+    content: "\f274";
+  }
+  &-status-arrows-up:before {
+    content: "\f275";
+  }
+  &-status-cash-out-filled:before {
+    content: "\f276";
+  }
+  &-status-checkmark-alt-filled:before {
+    content: "\f277";
+  }
+  &-status-checkmark-alt:before {
+    content: "\f278";
+  }
+  &-status-checkmark-empty:before {
+    content: "\f279";
+  }
+  &-status-checkmark-pending:before {
+    content: "\f27a";
+  }
+  &-status-checkmark-small:before {
+    content: "\f27b";
+  }
+  &-status-checkmark:before {
+    content: "\f27c";
+  }
+  &-status-danger-filled:before {
+    content: "\f27d";
+  }
+  &-status-danger-small:before {
+    content: "\f27e";
+  }
+  &-status-danger:before {
+    content: "\f27f";
+  }
+  &-status-disabled:before {
+    content: "\f280";
+  }
+  &-status-help-filled:before {
+    content: "\f281";
+  }
+  &-status-help-small-filled:before {
+    content: "\f282";
+  }
+  &-status-help-small:before {
+    content: "\f283";
+  }
+  &-status-help:before {
+    content: "\f284";
+  }
+  &-status-hot-filled:before {
+    content: "\f285";
+  }
+  &-status-hot:before {
+    content: "\f286";
+  }
+  &-status-info-filled:before {
+    content: "\f287";
+  }
+  &-status-info-small:before {
+    content: "\f288";
+  }
+  &-status-info:before {
+    content: "\f289";
+  }
+  &-status-pause:before {
+    content: "\f28a";
+  }
+  &-status-paused-alt:before {
+    content: "\f28b";
+  }
+  &-status-paused:before {
+    content: "\f28c";
+  }
+  &-status-play-alt:before {
+    content: "\f28d";
+  }
+  &-status-play:before {
+    content: "\f28e";
+  }
+  &-status-radio-filled:before {
+    content: "\f28f";
+  }
+  &-status-refund-filled:before {
+    content: "\f290";
+  }
+  &-status-search-history:before {
+    content: "\f291";
+  }
+  &-status-ticket-shared:before {
+    content: "\f292";
+  }
+  &-status-verified-filled:before {
+    content: "\f293";
+  }
+  &-status-verified:before {
+    content: "\f294";
+  }
+  &-status-warning-filled:before {
+    content: "\f295";
+  }
+  &-status-warning-small:before {
+    content: "\f296";
+  }
+  &-status-warning:before {
+    content: "\f297";
+  }
+  &-technology-ai-assistant:before {
+    content: "\f298";
+  }
+  &-technology-at:before {
+    content: "\f299";
+  }
+  &-technology-betting-terminal:before {
+    content: "\f29a";
+  }
+  &-technology-boombox:before {
+    content: "\f29b";
+  }
+  &-technology-camera:before {
+    content: "\f29c";
+  }
+  &-technology-cash-register:before {
+    content: "\f29d";
+  }
+  &-technology-cloud:before {
+    content: "\f29e";
+  }
+  &-technology-computer:before {
+    content: "\f29f";
+  }
+  &-technology-email:before {
+    content: "\f2a0";
+  }
+  &-technology-gallery:before {
+    content: "\f2a1";
+  }
+  &-technology-headphones:before {
+    content: "\f2a2";
+  }
+  &-technology-keyboard:before {
+    content: "\f2a3";
+  }
+  &-technology-layout:before {
+    content: "\f2a4";
+  }
+  &-technology-microphone:before {
+    content: "\f2a5";
+  }
+  &-technology-mobile-phone:before {
+    content: "\f2a6";
+  }
+  &-technology-password:before {
+    content: "\f2a7";
+  }
+  &-technology-phone-number-verfication:before {
+    content: "\f2a8";
+  }
+  &-technology-phone:before {
+    content: "\f2a9";
+  }
+  &-technology-recycle:before {
+    content: "\f2aa";
+  }
+  &-technology-tab:before {
+    content: "\f2ab";
+  }
+  &-technology-theme:before {
+    content: "\f2ac";
+  }
+  &-technology-tv:before {
+    content: "\f2ad";
+  }
+  &-time-arrow-clockwise-alt:before {
+    content: "\f2ae";
+  }
+  &-time-arrow-clockwise:before {
+    content: "\f2af";
+  }
+  &-time-arrow-counterclockwise-alt:before {
+    content: "\f2b0";
+  }
+  &-time-arrow-counterclockwise:before {
+    content: "\f2b1";
+  }
+  &-time-calendar:before {
+    content: "\f2b2";
+  }
+  &-time-history:before {
+    content: "\f2b3";
+  }
+  &-time-live-alt-filled:before {
+    content: "\f2b4";
+  }
+  &-time-live-alt:before {
+    content: "\f2b5";
+  }
+  &-time-live:before {
+    content: "\f2b6";
+  }
+  &-time-sand-clock:before {
+    content: "\f2b7";
+  }
+  &-time-stopwatch:before {
+    content: "\f2b8";
+  }
+  &-time-time:before {
+    content: "\f2b9";
+  }
+  &-time-timeout:before {
+    content: "\f2ba";
+  }
+  &-toggle-audio-filled:before {
+    content: "\f2bb";
+  }
+  &-toggle-audio-off:before {
+    content: "\f2bc";
+  }
+  &-toggle-audio:before {
+    content: "\f2bd";
+  }
+  &-toggle-checkbox-checked-filled:before {
+    content: "\f2be";
+  }
+  &-toggle-checkbox-checked:before {
+    content: "\f2bf";
+  }
+  &-toggle-checkbox-indeterminate-filled:before {
+    content: "\f2c0";
+  }
+  &-toggle-checkbox-indeterminate:before {
+    content: "\f2c1";
+  }
+  &-toggle-checkbox:before {
+    content: "\f2c2";
+  }
+  &-toggle-collapse:before {
+    content: "\f2c3";
+  }
+  &-toggle-expand:before {
+    content: "\f2c4";
+  }
+  &-toggle-favorite-filled:before {
+    content: "\f2c5";
+  }
+  &-toggle-favorite-half:before {
+    content: "\f2c6";
+  }
+  &-toggle-favorite:before {
+    content: "\f2c7";
+  }
+  &-toggle-flash-auto:before {
+    content: "\f2c8";
+  }
+  &-toggle-flash-filled:before {
+    content: "\f2c9";
+  }
+  &-toggle-flash-off:before {
+    content: "\f2ca";
+  }
+  &-toggle-flash:before {
+    content: "\f2cb";
+  }
+  &-toggle-heart-filled:before {
+    content: "\f2cc";
+  }
+  &-toggle-heart:before {
+    content: "\f2cd";
+  }
+  &-toggle-lock:before {
+    content: "\f2ce";
+  }
+  &-toggle-maximize-alt:before {
+    content: "\f2cf";
+  }
+  &-toggle-maximize:before {
+    content: "\f2d0";
+  }
+  &-toggle-minimize:before {
+    content: "\f2d1";
+  }
+  &-toggle-notification-filled:before {
+    content: "\f2d2";
+  }
+  &-toggle-notification-off:before {
+    content: "\f2d3";
+  }
+  &-toggle-notification:before {
+    content: "\f2d4";
+  }
+  &-toggle-redo:before {
+    content: "\f2d5";
+  }
+  &-toggle-soccer-field-filled:before {
+    content: "\f2d6";
+  }
+  &-toggle-soccer-field:before {
+    content: "\f2d7";
+  }
+  &-toggle-stats-filled:before {
+    content: "\f2d8";
+  }
+  &-toggle-stats:before {
+    content: "\f2d9";
+  }
+  &-toggle-theme-dark:before {
+    content: "\f2da";
+  }
+  &-toggle-theme-light:before {
+    content: "\f2db";
+  }
+  &-toggle-theme-system:before {
+    content: "\f2dc";
+  }
+  &-toggle-thumbs-down-filled:before {
+    content: "\f2dd";
+  }
+  &-toggle-thumbs-down:before {
+    content: "\f2de";
+  }
+  &-toggle-thumbs-up-filled:before {
+    content: "\f2df";
+  }
+  &-toggle-thumbs-up:before {
+    content: "\f2e0";
+  }
+  &-toggle-undo:before {
+    content: "\f2e1";
+  }
+  &-toggle-unlock:before {
+    content: "\f2e2";
+  }
+  &-toggle-video-filled:before {
+    content: "\f2e3";
+  }
+  &-toggle-video:before {
+    content: "\f2e4";
+  }
+  &-toggle-view-off:before {
+    content: "\f2e5";
+  }
+  &-toggle-view:before {
+    content: "\f2e6";
+  }
+  &-travel-compass:before {
+    content: "\f2e7";
+  }
+  &-travel-directions:before {
+    content: "\f2e8";
+  }
+  &-travel-location:before {
+    content: "\f2e9";
+  }
+  &-travel-plane:before {
+    content: "\f2ea";
+  }
+  &-travel-road:before {
+    content: "\f2eb";
+  }
+  &-travel-world-alt:before {
+    content: "\f2ec";
+  }
+  &-travel-world:before {
+    content: "\f2ed";
+  }
+}

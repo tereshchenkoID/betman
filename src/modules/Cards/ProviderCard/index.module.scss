@@ -1,0 +1,30 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex(center, center, column);
+
+  gap: var(--gap-default);
+  background-color: var(--material);
+  padding: var(--gap-default) var(--gap-16);
+  border-radius: var(--border-radius-10);
+  border: rem(1px) solid var(--primary-hover);
+  overflow: hidden;
+
+  &.active {
+    pointer-events: none;
+    background-color: var(--primary);
+  }
+
+  @include hover {
+    &:hover {
+      background-color: var(--material-hover);
+    }
+  }
+}
+
+.picture {
+  @include flex(center, center);
+  @include size(rem(70px), rem(40px));
+
+  flex-shrink: 0;
+}

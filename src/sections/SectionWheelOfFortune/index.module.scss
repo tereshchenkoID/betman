@@ -1,0 +1,23 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-16);
+}
+
+.content {
+  display: grid;
+  justify-items: center;
+  padding: rem(80px) var(--gap-32) rem(40px);
+  background-color: var(--material);
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
+  margin-inline: auto;
+  position: relative;
+  width: 100%;
+  min-height: rem(400px);
+}
+
+.decor {
+  object-fit: cover;
+}

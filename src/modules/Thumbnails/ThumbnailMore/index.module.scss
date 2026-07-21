@@ -1,0 +1,36 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex(center, center);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-10);
+  border: rem(1px) solid var(--primary);
+  background-color: var(--material);
+  background-size: 100%;
+  background-position: 50%;
+  aspect-ratio: 1 / 1.12;
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    background-color: var(--material);
+    opacity: 0.65;
+    content: '';
+  }
+
+  @include hover {
+    &:hover {
+      background-size: 105%;
+    }
+  }
+}
+
+.text {
+  position: relative;
+  z-index: $z-index-1;
+  text-transform: uppercase;
+  font-family: var(--font-family-alt);
+  font-size: rem(14px)
+}

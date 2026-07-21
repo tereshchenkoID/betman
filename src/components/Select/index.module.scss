@@ -1,0 +1,183 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: relative;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.chosen {
+    .label {
+      transform: translateY(rem(-22px));
+      font-size: rem(10px);
+      color: var(--text-for-material);
+    }
+  }
+
+  &.active {
+    .selected {
+      background-color: var(--primary);
+
+      i {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+
+  &.chosen,
+  &.active {
+    .selected {
+      background-color: var(--primary);
+      border-bottom-color: var(--link);
+    }
+  }
+
+  &.error {
+    .label {
+      color: var(--red);
+    }
+
+    .selected {
+      border-bottom-color: var(--red);
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover {
+        .selected {
+          border-bottom-color: var(--link);
+        }
+      }
+    }
+  }
+}
+
+.label {
+  @include transition;
+
+  position: absolute;
+  inset-block-start: rem(16px);
+  inset-inline-start: var(--gap-12);
+  pointer-events: none;
+  font-size: rem(14px);
+  color: var(--sub-text);
+
+  span {
+    margin-inline-start: var(--gap-4);
+    color: var(--red);
+  }
+}
+
+.selected {
+  @include size(100%, rem(48px));
+  @include flex(space-between, center);
+
+  padding-inline: var(--gap-12);
+  padding-top: var(--gap-2);
+  background-color: var(--primary-disabled);
+  border-radius: var(--border-radius-6);
+  border-bottom: rem(2px) solid var(--primary);
+
+  i {
+    @include transition;
+
+    color: var(--text-for-material);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--gap-default));
+  inset-inline: 0;
+  z-index: $z-index-1;
+  background-color: var(--material);
+  border-radius: var(--border-radius-10);
+  box-shadow: 0 0 rem(4px) 0 rgba(0, 0, 0, 0.32), 0 rem(6px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+}
+
+.list {
+  @include scroll-y;
+
+  padding-inline: var(--gap-default);
+  padding-block-end: var(--gap-default);
+  max-height: rem(200px);
+}
+
+.head {
+  padding: var(--gap-default);
+}
+
+.input {
+  @include transition(border-color);
+  @include size(100%, rem(34px));
+
+  padding-inline: var(--gap-default);
+  background-color: var(--primary);
+  border-radius: var(--border-radius-4);
+  border: rem(1px) solid var(--primary-hover);
+  overflow: hidden;
+  text-align: start;
+  color: var(--text-for-material);
+  font-size: rem(14px);
+
+  &:focus {
+    border-color: var(--link);
+
+    &::placeholder {
+      color: var(--text-for-material);
+    }
+  }
+
+  &::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
+  &:is(:-webkit-autofill, :autofill) {
+    -webkit-box-shadow: 0 0 0 30px var(--primary) inset !important;
+    -webkit-text-fill-color: var(--text-for-material);
+    -webkit-background-clip: text;
+  }
+
+  &::placeholder {
+    color: var(--text-for-material-disabled);
+  }
+}
+
+.option {
+  padding: var(--gap-default);
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: var(--border-radius-6);
+  background-color: transparent;
+
+  &:not(:last-child) {
+    margin-bottom: var(--gap-4);
+  }
+
+  &.active {
+    pointer-events: none;
+    background-color: var(--primary-disabled);
+  }
+
+  @include hover {
+    &:hover {
+      color: var(--text-for-primary);
+      background-color: var(--primary-hover);
+    }
+  }
+}
+
+.text {
+  text-align: center;
+  font-size: rem(12px);
+}
+
+.message {
+  margin-top: var(--gap-2);
+  text-align: left;
+  color: var(--red);
+  font-size: rem(12px);
+}

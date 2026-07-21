@@ -1,0 +1,85 @@
+import { useEffect, useRef } from 'react'
+
+import { consoleHelper } from 'helpers/console'
+
+export const useWebSocket = ({ url, onMessage, onOpen, onError, onClose, reconnectDelay = 3000 }) => {
+  const socketRef = useRef(null)
+  const reconnectTimeoutRef = useRef(null)
+  const pingIntervalRef = useRef(null)
+
+  const savedOnMessage = useRef(onMessage)
+  const savedOnOpen = useRef(onOpen)
+  const savedOnError = useRef(onError)
+  const savedOnClose = useRef(onClose)
+
+  useEffect(() => {
+    savedOnMessage.current = onMessage
+    savedOnOpen.current = onOpen
+    savedOnError.current = onError
+    savedOnClose.current = onClose
+  }, [onMessage, onOpen, onError, onClose])
+
+  useEffect(() => {
+    let isUnmounted = false
+
+    const connect = () => {
+      if (isUnmounted) return
+
+      const socket = new WebSocket(url)
+      socketRef.current = socket
+
+      socket.onopen = () => {
+        consoleHelper.success('CONNECTED')
+        savedOnOpen.current?.(socket)
+
+        pingIntervalRef.current = setInterval(() => {
+          socket.send(JSON.stringify({ cmd: 'ping' }))
+        }, 30000)
+      }
+
+      socket.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data)
+          savedOnMessage.current?.(message, socket)
+        } catch (e) {
+          consoleHelper.error(`FETCH ERROR ${e}`)
+        }
+      }
+
+      socket.onerror = (error) => {
+        consoleHelper.error(`ERROR ${error}`)
+        savedOnError.current?.(error)
+      }
+
+      socket.onclose = (event) => {
+        consoleHelper.warn(`RECONNECTING ${event.reason}`)
+        savedOnClose.current?.(event)
+
+        if (!isUnmounted) {
+          reconnectTimeoutRef.current = setTimeout(connect, reconnectDelay)
+        }
+      }
+    }
+
+    connect()
+
+    return () => {
+      isUnmounted = true
+      clearTimeout(reconnectTimeoutRef.current)
+      socketRef.current?.close()
+    }
+  }, [url, reconnectDelay])
+
+  const sendWhenReady = (data) => {
+    const socket = socketRef.current
+    if (!socket) return
+
+    if (socket.readyState === WebSocket.OPEN) {
+      socket.send(data)
+    } else {
+      socket.addEventListener("open", () => socket.send(data), { once: true })
+    }
+  }
+
+  return { socketRef, sendWhenReady }
+}

@@ -1,0 +1,83 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  position: relative;
+  z-index: -1;
+  background-color: var(--material-hover);
+  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
+  padding-bottom: var(--aside-height);
+  //margin-inline: rem(-16px);
+  font-size: rem(14px);
+  color: var(--text-for-material-disabled);
+
+  @include desk-s {
+    padding-bottom: 0;
+    //margin-inline: rem(-8px);
+    z-index: $z-index-8;
+  }
+}
+
+.container {
+  margin-inline: auto;
+  max-width: var(--max-width);
+  padding: var(--gap-24) var(--gap-16);
+  width: 100%;
+}
+
+.top {
+  display: grid;
+  gap: var(--gap-24);
+
+  @include tab-s {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.list {
+  display: grid;
+  align-content: flex-start;
+  gap: var(--gap-default);
+  margin-top: var(--gap-12);
+
+  @include mob-m {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.subtitle {
+  font-size: rem(14px);
+}
+
+.link {
+  padding-inline: 0;
+}
+
+.divider {
+  margin-block: var(--gap-24);
+}
+
+.bottom {
+  display: grid;
+  justify-items: flex-start;
+  gap: var(--gap-16);
+}
+
+.copyright {
+  font-size: rem(12px);
+}
+
+.socials {
+  @include flex(null, center);
+
+  gap: var(--gap-24);
+}
+
+.social {
+
+  @include hover {
+    &:hover {
+      color: var(--text-for-material);
+    }
+  }
+}

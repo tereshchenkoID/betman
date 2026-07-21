@@ -1,0 +1,27 @@
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <url>
+        <loc>http://localhost:3000/en</loc>
+        <lastmod>2025-12-13T10:34:42+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>http://localhost:3000/en/cars</loc>
+        <lastmod>2025-12-13T10:34:42+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://localhost:3000/en/reviews</loc>
+        <lastmod>2025-12-13T10:34:42+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://localhost:3000/en/advanced-search</loc>
+        <lastmod>2025-12-13T10:34:42+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>http://localhost:3000/en/sitemap</loc>
+        <lastmod>2025-12-13T10:34:42+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+</urlset>

@@ -1,0 +1,60 @@
+@import 'scss/config';
+
+.block {
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.error {
+    .label {
+      color: var(--red);
+    }
+
+    :global {
+      .react-tel-input {
+        --react-tel-border-color: var(--red);
+      }
+    }
+  }
+
+  &.focused {
+    :global {
+      .react-tel-input {
+        --react-tel-border-color: var(--link);
+        --react-tel-background-color: var(--primary);
+      }
+    }
+  }
+}
+
+.wrapper {
+  @include size(100%, rem(48px));
+
+  position: relative;
+}
+
+.label {
+  @include transition;
+
+  position: absolute;
+  inset-block-start: rem(-6px);
+  inset-inline-start: var(--gap-12);
+  pointer-events: none;
+  font-size: rem(10px);
+  color: var(--text-for-material);
+  z-index: $z-index-1;
+
+  span {
+    margin-inline-start: var(--gap-4);
+    color: var(--red);
+  }
+}
+
+.message {
+  margin-top: var(--gap-2);
+  text-align: left;
+  color: var(--red);
+  font-size: rem(12px);
+}

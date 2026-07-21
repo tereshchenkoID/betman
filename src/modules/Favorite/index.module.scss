@@ -1,0 +1,8 @@
+@use '@/scss/config' as *;
+
+.block {
+
+  &.active {
+    color: var(--amber);
+  }
+}

@@ -1,0 +1,55 @@
+@use 'rem-converter' as *;
+
+@mixin scroll-y {
+  background-clip: content-box;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+
+  &::-webkit-scrollbar {
+    width: rem(5px);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: var(--primary-hover);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: rem(1px) solid var(--primary-hover);
+    background-color: var(--primary-hover);
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track {
+    border: rem(1px) solid var(--material-hover);
+    background-color: var(--material-hover);
+  }
+}
+
+@mixin scroll-x {
+  background-clip: content-box;
+  padding-bottom: var(--gap-16);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    height: rem(4px);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--material-hover);
+    border-radius: var(--border-radius-4);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--material-hover);
+  }
+}

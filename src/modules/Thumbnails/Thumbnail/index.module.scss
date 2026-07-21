@@ -1,0 +1,114 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--border-radius-10);
+  border: rem(1px) solid var(--primary);
+  aspect-ratio: 1 / 1.12;
+
+  @include desk-s {
+    @include hover {
+      &:hover {
+        .details {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.empty {
+    .details {
+      display: none;
+    }
+
+    .action {
+      display: block;
+    }
+  }
+}
+
+.action {
+  @include absolute-filled;
+
+  z-index: $z-index-2;
+
+  @include desk-s {
+    display: none;
+  }
+}
+
+.image {
+  position: relative;
+  object-fit: cover;
+  height: 100%;
+  object-position: 50% 50%;
+}
+
+.details {
+  @include transition;
+
+  display: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: $z-index-1;
+  background-size: cover;
+  background-position: 50% 0;
+  padding: var(--gap-12);
+  backdrop-filter: blur(2px);
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.8) 70%, var(--bg));
+    content: '';
+  }
+
+  @include tab-s {
+    display: grid;
+  }
+}
+
+.header {
+  @include flex(space-between);
+
+  position: absolute;
+  top: var(--gap-default);
+  inset-inline: var(--gap-default);
+  z-index: $z-index-1;
+}
+
+.actions {
+  display: grid;
+  justify-items: center;
+  gap: var(--gap-6);
+  position: absolute;
+  top: 20%;
+  inset-inline: 0;
+}
+
+.content {
+  display: grid;
+  align-content: flex-end;
+  position: relative;
+  gap: var(--gap-default);
+  grid-area: 1 / 1 / 1 / -1;
+}
+
+.title {
+  @include line-clamp(1);
+
+  font-family: var(--font-family-alt);
+  font-size: rem(14px);
+  line-height: 1;
+}
+
+.tags {
+  @include flex($wrap: wrap);
+
+  gap: var(--gap-4);
+}

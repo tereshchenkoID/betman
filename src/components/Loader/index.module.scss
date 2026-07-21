@@ -1,0 +1,38 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex(center, center);
+
+  z-index: $z-index-9;
+
+  &.block {
+    @include size(100%);
+  }
+
+  &.fullscreen {
+    position: fixed;
+    inset: 0;
+  }
+}
+
+.spin {
+  --b: 8px;
+
+  padding: rem(1px);
+  width: rem(50px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(transparent 10%, var(--link, var(--color-black))) content-box;
+  -webkit-mask:
+    repeating-conic-gradient(transparent 0deg, var(--link) 1deg 20deg, transparent 21deg 36deg),
+    radial-gradient(farthest-side, transparent calc(100% - var(--b) - 1px), var(--color-black) calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation: spin 1s infinite steps(10);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn)
+  }
+}

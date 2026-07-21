@@ -1,0 +1,6 @@
+@use '@/scss/config' as *;
+
+.list {
+  display: grid;
+  gap: var(--gap-16);
+}

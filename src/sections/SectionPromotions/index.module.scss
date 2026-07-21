@@ -1,0 +1,17 @@
+@use '@/scss/config' as *;
+
+.list {
+  --promo-count: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--promo-count), 1fr);
+  gap: var(--gap-16);
+
+  @include tab-s {
+    --promo-count: 2;
+  }
+
+  @include desk-s {
+    --promo-count: 3;
+  }
+}

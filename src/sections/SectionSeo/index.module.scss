@@ -1,0 +1,25 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: relative;
+}
+
+.content {
+  margin-bottom: var(--gap-default);
+
+  &.collapsed {
+    position: relative;
+    max-height: rem(180px);
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      inset-block-end: 0;
+      inset-inline: 0;
+      height: rem(40px);
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+      content: '';
+    }
+  }
+}

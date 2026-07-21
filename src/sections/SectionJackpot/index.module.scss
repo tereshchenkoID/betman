@@ -1,0 +1,12 @@
+@use '@/scss/config' as *;
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-16);
+}
+
+.content {
+  padding-block: var(--gap-16);
+}

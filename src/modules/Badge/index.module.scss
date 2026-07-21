@@ -1,0 +1,38 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: var(--border-radius-full);
+  text-transform: uppercase;
+  text-align: center;
+
+  &.lg {
+    padding-inline: var(--gap-default);
+    height: rem(24px);
+    font-size: rem(14px);
+  }
+
+  &.md {
+    padding-inline: var(--gap-6);
+    height: rem(16px);
+    font-size: rem(10px);
+  }
+
+  &.sm {
+    padding-inline: var(--gap-4);
+    height: rem(12px);
+    font-size: rem(8px);
+  }
+
+  &.primary {
+    background-color: var(--brand);
+  }
+
+  &.secondary {
+    background-color: var(--primary-hover);
+  }
+}

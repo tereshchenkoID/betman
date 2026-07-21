@@ -1,0 +1,96 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  //inset-block-end: max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  background-color: var(--bg);
+  height: var(--aside-height);
+  z-index: $z-index-8;
+
+  @include desk-s {
+    position: static;
+    overflow: unset;
+    background-color: transparent;
+    height: auto;
+    z-index: auto;
+  }
+}
+
+.scroll {
+  @include scroll-x;
+}
+
+.menu {
+  @include flex;
+
+  height: var(--aside-height);
+
+  @include desk-s {
+    @include size(rem(240px), auto);
+
+    flex-direction: column;
+    gap: var(--gap-2);
+    position: fixed;
+    overflow-y: auto;
+    //max-height: calc(var(--tg-viewport-height, 100dvh) - var(--header-height) - var(--gap-12));
+    max-height: calc(100dvh - var(--header-height) - var(--gap-12));
+  }
+}
+
+.link {
+  @include flex(center, center, column);
+
+  flex: 1;
+  position: relative;
+  padding: var(--gap-default) var(--gap-12);
+  font-size: rem(12px);
+  color: var(--text-for-material-disabled);
+  white-space: nowrap;
+
+  &.active {
+    pointer-events: none;
+    color: var(--text-for-material);
+
+    @include desk-s {
+      background: linear-gradient(90deg, var(--brand-disabled) 56%, transparent 100%);
+      color: var(--link);
+    }
+  }
+
+  @include desk-s {
+    gap: var(--gap-default);
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: var(--border-radius-full);
+    font-size: rem(16px);
+    color: var(--text-for-material);
+  }
+
+  @include hover {
+    &:hover {
+      background: linear-gradient(90deg, var(--material) 56%, transparent 100%);
+    }
+  }
+}
+
+.badge {
+  @include size(rem(20px));
+  @include flex(center, center);
+
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  transform: translateX(rem(12px));
+  background-color: var(--link);
+  border-radius: 50%;
+  color: var(--text-for-material);
+  font-size: rem(12px);
+
+  @include desk-s {
+    position: static;
+    transform: translateX(0);
+    margin-inline-start: auto;
+  }
+}

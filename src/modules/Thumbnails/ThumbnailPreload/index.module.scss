@@ -1,0 +1,16 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include size(100%);
+
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  padding: var(--gap-16);
+  background-color: var(--material);
+}
+
+.image {
+  max-height: rem(40px);
+}

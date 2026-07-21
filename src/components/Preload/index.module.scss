@@ -1,0 +1,31 @@
+@use '@/scss/config' as *;
+
+.block {
+  gap: var(--gap-default);
+  overflow: hidden;
+  width: 100%;
+}
+
+.item {
+  display: inline-grid;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0,
+    var(--bg) 25%,
+    rgba(0, 0, 0, 0.2) 50%) 100% / 200% 100%;
+  background-color: var(--material);
+  animation: skeleton 2s linear infinite;
+  border-radius: var(--border-radius-6);
+  flex: 1 0 auto;
+}
+
+@keyframes skeleton {
+
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+}

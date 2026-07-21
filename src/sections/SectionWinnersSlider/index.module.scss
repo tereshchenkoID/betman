@@ -1,0 +1,25 @@
+@use '@/scss/config' as *;
+
+.block {
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: rem(-1px);
+    z-index: $z-index-1;
+    background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+    width: rem(64px);
+    content: '';
+  }
+
+  &:has(:global(.swiper-initialized)) {
+    opacity: 1;
+  }
+}
+
+.slider {
+  display: grid;
+}

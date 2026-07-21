@@ -1,0 +1,52 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  background-color: var(--material);
+  border-radius: var(--border-radius-default);
+  overflow: hidden;
+  height: 100%;
+}
+
+.picture {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 19 / 9;
+}
+
+.image {
+  position: relative;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  @include flex($justify-content: flex-end, $direction: column);
+
+  padding: var(--gap-12);
+  background-color: var(--material);
+}
+
+.badges {
+  @include flex($justify-content: flex-end, $wrap: wrap);
+
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  padding: var(--gap-default);
+  gap: var(--gap-4);
+}
+
+.link {
+  margin-top: auto;
+  margin-bottom: 0;
+  align-self: flex-end;
+}
+
+.text {
+  @include line-clamp(3);
+
+  font-size: rem(12px);
+}

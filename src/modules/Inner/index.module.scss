@@ -1,0 +1,50 @@
+@use '@/scss/config' as *;
+
+.block {
+  * {
+    color: var(--text-for-material);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: unset;
+    //font-size: inherit;
+  }
+
+  p,
+  blockquote {
+    color: var(--sub-text);
+  }
+
+  img {
+    margin-bottom: var(--gap-12);
+    width: revert-layer;
+    height: revert-layer;
+    max-width: 100%;
+  }
+
+  ul {
+    list-style-type: unset;
+    list-style-position: inside;
+  }
+
+  li {
+    position: relative;
+    list-style: unset;
+  }
+
+  a {
+    display: initial;
+    text-decoration: underline;
+
+    @include hover {
+      &:hover {
+        color: var(--link)!important;
+      }
+    }
+  }
+}

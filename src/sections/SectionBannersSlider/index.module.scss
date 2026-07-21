@@ -1,0 +1,103 @@
+@use '@/scss/config' as *;
+
+.block {
+  opacity: 0;
+
+  .prev {
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .slider {
+    &::before {
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  &:has(.prev:disabled) {
+    .prev {
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .slider {
+      &::before {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(.next:disabled) {
+    .next {
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .slider {
+      &::after {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(:global(.swiper-initialized)):not(:has(.prev:disabled)) {
+    .prev {
+      opacity: 1;
+      z-index: $z-index-1;
+    }
+
+    .slider {
+      &::before {
+        opacity: 1;
+        z-index: $z-index-2;
+      }
+    }
+  }
+
+  &:has(:global(.swiper-initialized)) {
+    opacity: 1;
+  }
+}
+
+.slider {
+  display: grid;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset-block: 0 rem(22px);
+    background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+    width: rem(65px);
+    opacity: 1;
+    z-index: $z-index-2;
+    content: '';
+  }
+
+  &::before {
+    inset-inline-start: rem(-1px);
+    transform: scaleX(-1);
+  }
+
+  &::after {
+    inset-inline-end: rem(-1px);
+  }
+}
+
+.navigation {
+  @include flex(space-between, center);
+
+  position: absolute;
+  inset: calc(50% - rem(11px)) 0 auto;
+  height: 0;
+  z-index: $z-index-3;
+}
+
+.prev,
+.next {
+  position: relative;
+}

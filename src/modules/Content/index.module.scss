@@ -1,0 +1,7 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  align-content: flex-start;
+  gap: var(--gap-16);
+}

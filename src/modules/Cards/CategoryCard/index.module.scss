@@ -1,0 +1,30 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($align-items: center);
+
+  padding: var(--gap-default) var(--gap-16);
+  background-color: var(--material);
+  border: rem(1px) solid var(--primary-hover);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  gap: var(--gap-6);
+  min-height: rem(48px);
+
+  &.active {
+    pointer-events: none;
+    background-color: var(--primary);
+  }
+
+  @include hover {
+    &:hover {
+      background-color: var(--material-hover);
+    }
+  }
+}
+
+.text {
+  text-align: center;
+  font-size: rem(14px);
+  line-height: 1;
+}

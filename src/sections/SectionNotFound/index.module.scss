@@ -1,0 +1,25 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($direction: column);
+
+  padding-block: var(--gap-default);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-16);
+}
+
+.content {
+  @include flex($align-items: flex-start, $direction: column);
+
+  gap: var(--gap-16);
+}
+
+.subtitle {
+  font-size: rem(76px);
+  color: var(--link);
+}

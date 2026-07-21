@@ -1,0 +1,83 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($align-items: flex-start);
+
+  position: relative;
+  cursor: pointer;
+  gap: var(--gap-default);
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.error {
+    .item {
+      border-color: var(--red);
+    }
+
+    .text {
+      color: var(--red);
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover {
+        .item {
+          border-color: var(--brand);
+        }
+      }
+    }
+  }
+}
+
+.text {
+  text-align: start;
+  font-size: rem(14px);
+  color: var(--text-for-material);
+  line-height: 1.1;
+}
+
+.input {
+  @include size(0);
+
+  position: absolute;
+  opacity: 0;
+
+  &:checked ~ {
+
+    .item {
+      border-color: var(--brand);
+      background-color: var(--brand);
+
+      i {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.item {
+  @include flex(center, center);
+  @include transition(all);
+  @include size(rem(20px));
+
+  flex-shrink: 0;
+  border: rem(1px) solid var(--tertiary);
+  border-radius: var(--border-radius-4);
+
+  i {
+    @include transition;
+
+    opacity: 0;
+  }
+}
+
+.message {
+  margin-top: var(--gap-2);
+  text-align: left;
+  color: var(--red);
+  font-size: rem(12px);
+}

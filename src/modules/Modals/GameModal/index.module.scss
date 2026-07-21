@@ -1,0 +1,83 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  position: relative;
+  padding: var(--gap-24);
+  aspect-ratio: 1 / 1.12;
+  background-size: cover;
+  background-position: 50% 0;
+  border: rem(1px) solid var(--primary-hover);
+  overflow: hidden;
+  max-height: 100%;
+  width: 100%;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background: var(--bg);
+    mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4) 30.44%, rgba(0, 0, 0, 0.8) 59.86%, var(--bg));
+    content: '';
+  }
+
+  @include tab-s {
+    @include size(100%, auto);
+
+    border-radius: var(--border-radius-16);
+    min-width: rem(320px);
+    height: auto;
+  }
+
+  @include desk-s {
+    padding: var(--gap-12);
+    width: rem(264px);
+    min-width: unset;
+  }
+}
+
+.header {
+  @include flex(space-between);
+
+  position: absolute;
+  inset-block-start: var(--gap-24);
+  inset-inline: var(--gap-24);
+  z-index: $z-index-1;
+
+  @include desk-s {
+    inset-block-start: var(--gap-12);
+    inset-inline: var(--gap-12);
+  }
+}
+
+.content {
+  display: grid;
+  align-content: flex-end;
+  position: relative;
+  gap: var(--gap-12);
+}
+
+.tags {
+  @include flex($wrap: wrap);
+
+  gap: var(--gap-default);
+}
+
+.actions {
+  @include flex;
+
+  gap: var(--gap-12);
+}
+
+.action {
+  flex: 1;
+}
+
+.options {
+  font-size: rem(12px);
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}

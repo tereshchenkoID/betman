@@ -1,0 +1,202 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-default);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.5;
+
+  &:disabled,
+  &.disabled,
+  &.loading,
+  &.active {
+    pointer-events: none;
+  }
+
+  &.lg {
+    padding-inline: var(--gap-24);
+    height: rem(44px);
+  }
+
+  &.md {
+    padding-inline: var(--gap-16);
+    height: rem(32px);
+    font-size: rem(14px);
+  }
+
+  &.sm {
+    padding-inline: var(--gap-12);
+    gap: var(--gap-4);
+    height: rem(24px);
+    font-size: rem(12px);
+  }
+
+  &.square {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius-4);
+  }
+
+  &.circle {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+  }
+
+  &.wide {
+    width: 100%;
+  }
+
+  &.primary {
+    background: var(--brand);
+    color: var(--text-for-brand);
+
+    &:disabled,
+    &.disabled {
+      color: var(--text-for-brand-disabled);
+      background: var(--brand-disabled);
+    }
+
+    &:active,
+    &.active {
+      background: var(--brand-hover);
+    }
+
+    @include hover {
+      &:hover {
+        background: var(--brand-hover);
+      }
+    }
+  }
+
+  &.secondary {
+    background-color: var(--primary);
+    color: var(--text-for-primary);
+
+    &:active,
+    &.active {
+      background-color: var(--primary-hover);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--primary-disabled);
+      color: var(--text-for-primary-disabled);
+    }
+
+    @include hover {
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+    }
+  }
+
+  &.tertiary {
+    border: rem(1px) solid var(--tertiary);
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--tertiary-disabled);
+    }
+
+    @include hover {
+      &:hover {
+        background-color: var(--tertiary-hover);
+      }
+    }
+  }
+
+  &.brand {
+    background-color: var(--link);
+    color: var(--text-for-brand);
+
+    &:active,
+    &.active {
+      background: var(--link-hover);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: var(--link-disabled);
+    }
+
+    @include hover {
+      &:hover {
+        background: var(--link-hover);
+      }
+    }
+  }
+
+  &.link {
+    border-radius: 0;
+    color: var(--tertiary);
+
+    &:disabled,
+    &.disabled {
+      color: var(--tertiary-disabled);
+    }
+
+    @include hover {
+      &:hover {
+        color: var(--tertiary-hover);
+      }
+    }
+  }
+
+  &.outline {
+    padding: 0;
+    border-radius: 0;
+    height: auto;
+    color: var(--link);
+
+    @include hover {
+      &:hover {
+        color: var(--link-hover);
+      }
+    }
+
+    .placeholder {
+      gap: 0;
+    }
+  }
+
+  &.loading {
+    .placeholder {
+      opacity: 0;
+    }
+  }
+}
+
+.placeholder {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-default);
+}
+
+.icon {
+  @include transition;
+}
+
+.spinner {
+  @include flex(center, center);
+
+  position: absolute;
+  inset: 0;
+
+  * {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

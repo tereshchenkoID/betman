@@ -1,0 +1,104 @@
+@use '@/scss/config' as *;
+
+.block {
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.focused {
+    .label {
+      transform: translateY(rem(-22px));
+      font-size: rem(10px);
+      color: var(--text-for-material);
+    }
+
+    .input {
+      border-color: var(--link);
+      background-color: var(--primary);
+    }
+  }
+
+  &.error {
+    .label {
+      color: var(--red);
+    }
+
+    .input {
+      border-color: var(--red);
+    }
+  }
+
+  &.password {
+    .input {
+      padding-inline-end: rem(68px);
+    }
+  }
+
+  &:not(.error, .disabled) {
+    @include hover {
+      &:hover {
+        .input {
+          border-bottom-color: var(--link);
+        }
+      }
+    }
+  }
+}
+
+.wrapper {
+  @include size(100%, rem(48px));
+
+  position: relative;
+}
+
+.label {
+  @include transition;
+
+  position: absolute;
+  inset-block-start: rem(14px);
+  inset-inline-start: var(--gap-12);
+  pointer-events: none;
+  font-size: rem(14px);
+  color: var(--sub-text);
+
+  span {
+    margin-inline-start: var(--gap-4);
+    color: var(--red);
+  }
+}
+
+.input {
+  @include transition(border-color);
+  @include size(100%);
+
+  padding-inline: var(--gap-12) rem(48px);
+  background-color: var(--primary-disabled);
+  border: 0;
+  border-radius: var(--border-radius-6);
+  border-bottom: rem(2px) solid var(--primary);
+  overflow: hidden;
+  text-align: left;
+}
+
+.message {
+  margin-top: var(--gap-2);
+  text-align: left;
+  color: var(--red);
+  font-size: rem(12px);
+}
+
+.options {
+  @include flex;
+
+  gap: var(--gap-4);
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: var(--gap-12);
+}
+
+.clear,
+.eye {
+  flex-shrink: 0;
+  width: rem(24px);
+}

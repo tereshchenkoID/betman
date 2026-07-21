@@ -1,0 +1,21 @@
+@use 'sass:math';
+@use 'sass:meta';
+
+$rem-baseline: 16px !default;
+
+@function rem($value) {
+  @if meta.type-of($value) == 'string' and str-index($value, 'var(') {
+    @return $value;
+  }
+
+  @if meta.type-of($value) != 'number' {
+    @warn "rem() ожидает число или var(), получено: #{$value}";
+    @return $value;
+  }
+
+  @if math.unit($value) == 'px' {
+    @return math.div($value, $rem-baseline) * 1rem;
+  }
+
+  @return $value;
+}

@@ -1,0 +1,45 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include size(rem(320px), rem(128px));
+
+  position: relative;
+  border-radius: var(--border-radius-default);
+  background-color: var(--material);
+  overflow: hidden;
+}
+
+.picture {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  @include flex($direction: column);
+  @include size(50%, 100%);
+
+  position: relative;
+  padding: var(--gap-12);
+  gap: var(--gap-2);
+}
+
+.button {
+  margin-top: auto;
+}
+
+.title {
+  font-weight: var(--typography-bold);
+  font-size: rem(12px);
+}
+
+.subtitle {
+  font-weight: var(--typography-bold);
+  font-size: rem(14px);
+  color: var(--yellow);
+}
+
+.description {
+  font-size: rem(11px);
+}

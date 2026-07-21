@@ -1,0 +1,22 @@
+@use '@/scss/config' as *;
+
+.block {
+  padding-block: var(--gap-32);
+  text-align: center;
+
+  .picture {
+    --icon-size: rem(100px);
+
+    font-size: rem(100px);
+    color: var(--primary-hover);
+  }
+}
+
+.title {
+  margin-block-end: var(--gap-default);
+}
+
+.subtitle {
+  color: var(--sub-text);
+  font-size: rem(14px);
+}

@@ -1,0 +1,12 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-default);
+  flex-shrink: 0;
+
+  & > :only-child {
+    grid-column: 1 / -1;
+  }
+}
