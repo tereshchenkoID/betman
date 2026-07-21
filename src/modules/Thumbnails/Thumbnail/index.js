@@ -70,6 +70,7 @@ const Thumbnail = ({
           height={280}
           priority={isPriority}
           fetchPriority={isPriority ? 'high': 'low'}
+          loading={isPriority ? 'eager': 'lazy'}
           sizes="125px"
         />
       }

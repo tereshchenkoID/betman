@@ -29,6 +29,7 @@ const SectionPromo = ({ data, meta }) => {
             height={380}
             priority
             decoding="async"
+            sizes="360"
           />
         }
         <h2>{data?.title}</h2>

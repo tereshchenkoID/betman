@@ -320,12 +320,14 @@ section {
 }
 
 .swiper-slide {
-  height: 100%;
-  width: fit-content;
+  @include size(fit-content, 100%);
+
+  contain: layout style;
 }
 
 .swiper-wrapper {
   height: fit-content;
+  will-change: transform;
 }
 
 .swiper-pagination {

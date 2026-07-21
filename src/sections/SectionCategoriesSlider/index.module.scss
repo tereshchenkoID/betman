@@ -3,6 +3,7 @@
 .block {
   opacity: 0;
   overflow: hidden;
+  contain: layout;
 
   &:has(:global(.swiper-initialized)) {
     opacity: 1;

@@ -39,6 +39,7 @@ const ChallengeCard = ({ data }) => {
           width={320}
           height={128}
           decoding="async"
+          loading="eager"
         />
       </div>
     </Link>

@@ -6,6 +6,12 @@ const withNextIntl = createNextIntlPlugin(
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+      ? { exclude: ['error', 'warn'] }
+      : false,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [320, 576, 768, 992, 1280],

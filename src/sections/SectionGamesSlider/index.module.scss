@@ -4,6 +4,7 @@
   opacity: 0;
   display: grid;
   row-gap: var(--gap-default);
+  contain: layout;
 
   &:has(.prev:disabled) {
     .slider {

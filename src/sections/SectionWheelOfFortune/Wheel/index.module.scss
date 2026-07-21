@@ -10,6 +10,7 @@
   aspect-ratio: 1 / 1;
   position: relative;
   container-type: inline-size;
+  contain: layout;
 }
 
 .frame {
@@ -28,6 +29,7 @@
   border-radius: 50%;
   object-fit: cover;
   position: relative;
+  will-change: transform;
 }
 
 .indicator {
@@ -38,10 +40,6 @@
   transform: translateY(-55%);
   z-index: $z-index-1;
   pointer-events: none;
-
-  //img {
-  //  height: 100%;
-  //}
 }
 
 .spin {

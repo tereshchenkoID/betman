@@ -12,6 +12,7 @@ const ThumbnailPreload = ({ settings }) => {
         width={187}
         height={40}
         decoding="async"
+        sizes="187px"
       />
     </div>
   )

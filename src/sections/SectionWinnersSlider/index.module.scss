@@ -4,6 +4,7 @@
   opacity: 0;
   position: relative;
   overflow: hidden;
+  contain: layout;
 
   &::after {
     position: absolute;

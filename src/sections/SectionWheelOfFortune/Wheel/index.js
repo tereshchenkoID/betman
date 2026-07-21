@@ -309,6 +309,7 @@ const Wheel = ({
           width={102}
           height={35}
           decoding="async"
+          sizes="102px"
         />
       </button>
     </div>

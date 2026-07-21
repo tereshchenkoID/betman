@@ -2,6 +2,7 @@
 
 .block {
   opacity: 0;
+  contain: layout;
 
   .prev {
     opacity: 0;

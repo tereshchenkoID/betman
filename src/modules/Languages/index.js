@@ -59,6 +59,7 @@ const Languages = ({ settings }) => {
           width={20}
           height={20}
           priority
+          sizes="20px"
         />
       </button>
 
@@ -81,6 +82,7 @@ const Languages = ({ settings }) => {
                       alt={el.text}
                       width={20}
                       height={20}
+                      sizes="20px"
                     />
                   </p>
                   {el.text}
