@@ -8,7 +8,7 @@ import NextTopLoader from 'nextjs-toploader'
 import classNames from 'classnames'
 
 import 'keen-slider/keen-slider.min.css'
-// import 'react-phone-input-2/lib/style.css'
+import 'react-phone-input-2/lib/style.css'
 
 import './layout.scss'
 import './icons.scss'

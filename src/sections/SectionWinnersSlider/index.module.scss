@@ -1,7 +1,7 @@
 @use '@/scss/config' as *;
 
 .block {
-  --slide-width: 304px;
+  --slide-width: 19rem; // 304px
   --slide-spacing: var(--gap-default);
 
   position: relative;

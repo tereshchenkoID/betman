@@ -1,4 +1,4 @@
-@import 'scss/config';
+@use '@/scss/config' as *;
 
 .block {
 
@@ -12,19 +12,15 @@
       color: var(--red);
     }
 
-    :global {
-      .react-tel-input {
-        --react-tel-border-color: var(--red);
-      }
+    .react-tel-input {
+      --react-tel-border-color: var(--red);
     }
   }
 
   &.focused {
-    :global {
-      .react-tel-input {
-        --react-tel-border-color: var(--link);
-        --react-tel-background-color: var(--primary);
-      }
+    .react-tel-input {
+      --react-tel-border-color: var(--link);
+      --react-tel-background-color: var(--primary);
     }
   }
 }

@@ -1,7 +1,7 @@
 @use '@/scss/config' as *;
 
 .block {
-  --slide-width: 200px;
+  --slide-width: 12.5rem; // 200px
   --slide-spacing: var(--gap-default);
 
   display: grid;

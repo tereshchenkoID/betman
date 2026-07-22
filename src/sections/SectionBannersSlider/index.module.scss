@@ -1,7 +1,7 @@
 @use '@/scss/config' as *;
 
 .block {
-  --slide-width: 320px;
+  --slide-width: 20rem; // 320px
   --slide-spacing: var(--gap-default);
 
   &:has(.prev:disabled) {

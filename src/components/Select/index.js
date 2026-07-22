@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 
-import { useOutsideClick } from 'hooks/useOutsideClick'
-import { runRules } from 'helpers/rules'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
+import { runRules } from '@/helpers/rules'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -22,7 +22,7 @@ const Select = ({
   isRequired = false,
   rules = [],
 }) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
   const blockRef = useRef(null)
   const [toggle, setToggle] = useState(false)
   const [search, setSearch] = useState('')
@@ -30,7 +30,7 @@ const Select = ({
   const [error, setError] = useState(null)
 
   const filters = data.filter(el =>
-    el.label.toLowerCase().includes(search.toLowerCase())
+    el?.label?.toLowerCase().includes(search.toLowerCase())
   )
 
   const validate = (val = value) => {

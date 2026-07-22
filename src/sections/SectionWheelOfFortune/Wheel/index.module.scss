@@ -60,7 +60,7 @@
   }
 
   &::after {
-    inset: 8px;
+    inset: var(--gap-default);
     background: radial-gradient(50% 50% at 50% 50%, #00313A 0%, #021417 42%, #040708 80%, #000000 100%);
   }
 

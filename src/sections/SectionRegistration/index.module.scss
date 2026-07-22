@@ -1,0 +1,93 @@
+@use '@/scss/config' as *;
+
+.form {
+  display: grid;
+  gap: var(--gap-24);
+  overflow: hidden;
+  padding: var(--gap-40) var(--gap-16);
+  margin-inline: auto;
+  background-color: var(--material);
+  border-radius: var(--border-radius-16);
+  width: 100%;
+  text-align: center;
+
+  @include tab-s {
+    max-width: rem(460px);
+  }
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(2, rem(24px));
+  justify-content: center;
+  gap: var(--gap-40);
+}
+
+.step {
+  @include flex(center, center);
+  @include size(rem(24px));
+
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--material-hover);
+  color: var(--text-for-material);
+  font-size: rem(14px);
+
+  &:not(:last-child) {
+
+    &::after {
+      @include size(rem(32px), rem(2px));
+
+      position: absolute;
+      top: 50%;
+      left: calc(100% + rem(4px));
+      transform: translateY(0);
+      border-radius: var(--border-radius-4);
+      background-color: var(--material-hover);
+      content: '';
+    }
+  }
+
+  &.active {
+    background-color: var(--brand);
+  }
+
+  &.completed {
+    background-color: transparent;
+    color: var(--green);
+  }
+}
+
+.container {
+  display: grid;
+  gap: var(--gap-12);
+}
+
+.link {
+  @include flex($justify-content: center, $wrap: wrap);
+
+  gap: var(--gap-4);
+  font-size: rem(14px);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: var(--gap-default);
+}
+
+.bonus {
+  display: grid;
+  grid-template-columns: auto rem(50px);
+  gap: var(--gap-default);
+  align-items: center;
+}
+
+.image {
+  @include size(100%, rem(50px));
+}
+
+.divider {
+  margin-block: var(--gap-default);
+}

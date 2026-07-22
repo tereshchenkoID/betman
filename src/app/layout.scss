@@ -87,10 +87,6 @@
   box-sizing: border-box;
 }
 
-//html,
-//body {
-//  height: 100%;
-//}
 
 html {
   background-color: var(--bg);
@@ -270,7 +266,6 @@ h6 {
   font-style: normal;
   font-weight: var(--typography-regular);
   filter: drop-shadow(rem(1px) rem(2px) 0px var(--material-hover));
-  padding-bottom: rem(1px);
 }
 
 h1 {
@@ -322,116 +317,114 @@ section {
   will-change: transform;
 }
 
-
-//::global {
-  .Toastify__toast-container--top-center,
-  .Toastify__toast-container--top-left,
-  .Toastify__toast-container--top-right {
-    top: max(var(--tg-safe-top), env(safe-area-inset-top));
-  }
-  //.react-tel-input {
-  //  --react-tel-border-color: var(--primary);
-  //  --react-tel-background-color: var(--primary-disabled);
-  //
-  //  @include flex($direction: row-reverse);
-  //  @include transition;
-  //
-  //  border-bottom: rem(2px) solid var(--react-tel-border-color);
-  //  border-radius: var(--border-radius-6);
-  //  background-color: var(--react-tel-background-color);
-  //
-  //  &:focus-within,
-  //  &.filled,
-  //  &:has(.form-control.open) {
-  //    --react-tel-border-color: var(--link);
-  //    --react-tel-background-color: var(--primary);
-  //  }
-  //
-  //  @include hover {
-  //    &:hover {
-  //      --react-tel-border-color: var(--link);
-  //    }
-  //  }
-  //
-  //  .form-control {
-  //    @include size(calc(100% - rem(12px)), rem(48px));
-  //
-  //    padding-inline: rem(12px);
-  //    background: transparent;
-  //    border: 0;
-  //    outline: 0;
-  //    overflow: hidden;
-  //    border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
-  //    font-size: rem(16px);
-  //
-  //    &:focus {
-  //      --react-tel-border-color: var(--link);
-  //      --react-tel-background-color: var(--primary);
-  //    }
-  //  }
-  //
-  //  .flag-dropdown {
-  //    position: static;
-  //    flex-shrink: 0;
-  //    border: 0;
-  //    border-radius: 0;
-  //    background: transparent!important;
-  //    width: rem(48px);
-  //
-  //    &.open {
-  //      z-index: unset;
-  //    }
-  //  }
-  //
-  //  .selected-flag {
-  //    @include flex(center, center);
-  //
-  //    padding-inline: 0;
-  //    background-color: transparent !important;
-  //    border-right: rem(1px) solid var(--primary);
-  //    overflow: hidden;
-  //    width: 100%;
-  //  }
-  //
-  //  .arrow {
-  //    display: none;
-  //  }
-  //
-  //  .country-list {
-  //    @include scroll-y;
-  //
-  //    top: calc(100% + var(--gap-default));
-  //    margin: 0;
-  //    background-color: var(--material);
-  //    border-radius: var(--border-radius-10);
-  //    box-shadow: 0 0 rem(4px) 0 rgba(0, 0, 0, 0.32), 0 rem(6px) rem(8px) 0 rgba(0, 0, 0, 0.2);
-  //    width: 100%;
-  //
-  //    .country {
-  //      @include flex($align-items: center);
-  //
-  //      height: rem(44px);
-  //
-  //      .dial-code {
-  //        color: var(--link);
-  //      }
-  //
-  //      &.highlight {
-  //        background-color: var(--primary-hover);
-  //      }
-  //
-  //      @include hover {
-  //        &:hover {
-  //          background-color: var(--primary);
-  //        }
-  //      }
-  //    }
-  //
-  //    .divider {
-  //      padding-bottom: 0;
-  //      margin-block: var(--gap-default);
-  //      border-bottom-color: var(--primary);
-  //    }
-  //  }
-  //}
+//.Toastify__toast-container--top-center,
+//.Toastify__toast-container--top-left,
+//.Toastify__toast-container--top-right {
+//  top: max(var(--tg-safe-top), env(safe-area-inset-top));
 //}
+
+.react-tel-input {
+  --react-tel-border-color: var(--primary);
+  --react-tel-background-color: var(--primary-disabled);
+
+  @include flex($direction: row-reverse);
+  @include transition;
+
+  border-bottom: rem(2px) solid var(--react-tel-border-color);
+  border-radius: var(--border-radius-6);
+  background-color: var(--react-tel-background-color);
+
+  &:focus-within,
+  &.filled,
+  &:has(.form-control.open) {
+    --react-tel-border-color: var(--link);
+    --react-tel-background-color: var(--primary);
+  }
+
+  @include hover {
+    &:hover {
+      --react-tel-border-color: var(--link);
+    }
+  }
+
+  .form-control {
+    @include size(calc(100% - rem(12px)), rem(48px));
+
+    padding-inline: rem(12px);
+    background: transparent;
+    border: 0;
+    outline: 0;
+    overflow: hidden;
+    border-radius: 0 var(--border-radius-6) var(--border-radius-6) 0;
+    font-size: rem(16px);
+
+    &:focus {
+      --react-tel-border-color: var(--link);
+      --react-tel-background-color: var(--primary);
+    }
+  }
+
+  .flag-dropdown {
+    position: static;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent!important;
+    width: rem(48px);
+
+    &.open {
+      z-index: unset;
+    }
+  }
+
+  .selected-flag {
+    @include flex(center, center);
+
+    padding-inline: 0;
+    background-color: transparent !important;
+    border-right: rem(1px) solid var(--primary);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .country-list {
+    @include scroll-y;
+
+    top: calc(100% + var(--gap-default));
+    margin: 0;
+    background-color: var(--material);
+    border-radius: var(--border-radius-10);
+    box-shadow: 0 0 rem(4px) 0 rgba(0, 0, 0, 0.32), 0 rem(6px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+
+    .country {
+      @include flex($align-items: center);
+
+      height: rem(44px);
+
+      .dial-code {
+        color: var(--link);
+      }
+
+      &.highlight {
+        background-color: var(--primary-hover);
+      }
+
+      @include hover {
+        &:hover {
+          background-color: var(--primary);
+        }
+      }
+    }
+
+    .divider {
+      padding-bottom: 0;
+      margin-block: var(--gap-default);
+      border-bottom-color: var(--primary);
+    }
+  }
+}
