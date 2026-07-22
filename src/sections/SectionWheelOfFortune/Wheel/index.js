@@ -90,8 +90,8 @@ const Wheel = ({
     // Pull theme CSS custom variables
     const rootStyles = getComputedStyle(document.documentElement)
     const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
-    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Inter', sans-serif"
-    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || "'Roboto Condensed', sans-serif"
+    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Roboto', sans-serif"
+    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || "'Oswald', sans-serif"
 
     // Absolute values calculated from base layout ratios
     const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
@@ -152,7 +152,7 @@ const Wheel = ({
 
         // Main Title
         ctx.fillStyle = colorWhite
-        ctx.font = `bold ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
+        ctx.font = `700 ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
 
         const mainTextY = -radius * WHEEL_CONFIG.ratios.textRadiusDistance
         ctx.fillText(titleText, 0, mainTextY)

@@ -20,7 +20,8 @@ const Thumbnail = ({
   data,
   user,
   isEmpty = false,
-  isPriority = false
+  isPriority = false,
+  isNumeric = false
 }) => {
   const t = useTranslations()
   const router = useRouter()
@@ -45,14 +46,13 @@ const Thumbnail = ({
     })
   }
 
-  // console.log(data)
-
   return (
     <div
       className={
         classNames(
           style.block,
-          isEmpty && style.empty
+          isEmpty && style.empty,
+          isNumeric && style.numeric
         )
       }
     >
@@ -97,18 +97,21 @@ const Thumbnail = ({
             }
           </div>
           <p className={style.title}>{data.title}</p>
-          <div className={style.tags}>
-            {
-              data?.groups?.map((el, idx) =>
-                <Badge
-                  key={idx}
-                  data={el.value}
-                  link={el.link}
-                  classes={['secondary', 'md']}
-                />
-              )
-            }
-          </div>
+          {
+            !isNumeric &&
+            <div className={style.tags}>
+              {
+                data?.groups?.map((el, idx) =>
+                  <Badge
+                    key={idx}
+                    data={el.value}
+                    link={el.link}
+                    classes={['secondary', 'md']}
+                  />
+                )
+              }
+            </div>
+          }
         </div>
       </div>
     </div>

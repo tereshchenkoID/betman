@@ -38,11 +38,11 @@ const Aside = ({
     },
     NAVIGATION.jackpots,
     // NAVIGATION.tournament,
-    settings.modules?.quest === '1' && {
-      ...NAVIGATION.quests,
-      badge: 3,
-      // badge: questsCounter || false
-    },
+    // settings.modules?.quest === '1' && {
+    //   ...NAVIGATION.quests,
+    //   badge: 3,
+    //   // badge: questsCounter || false
+    // },
     NAVIGATION.promotions
   ].filter(Boolean);
 

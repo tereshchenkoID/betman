@@ -2,7 +2,7 @@
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 // import { preload } from 'react-dom'
-import { Inter, Roboto_Condensed } from 'next/font/google'
+import { Oswald, Roboto } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 
 import classNames from 'classnames'
@@ -13,20 +13,20 @@ import 'keen-slider/keen-slider.min.css'
 import './layout.scss'
 import './icons.scss'
 
-const robotoCondensed = Roboto_Condensed({
-  weight: ['400', '700'],
-  style: ['normal'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-family-alt',
-})
-
-const inter = Inter({
+const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family',
+})
+
+const barlowCondensed = Oswald({
+  weight: ['400', '700'],
+  style: ['normal'],
+  subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
+  display: 'swap',
+  variable: '--font-family-alt',
 })
 
 const iconography = localFont({
@@ -67,8 +67,8 @@ export default function RootLayout({ children }) {
       className={
         classNames(
           iconography.variable,
-          inter.variable,
-          robotoCondensed.variable,
+          barlowCondensed.variable,
+          roboto.variable,
         )
       }
     >

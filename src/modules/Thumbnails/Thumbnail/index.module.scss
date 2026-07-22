@@ -28,6 +28,14 @@
       display: block;
     }
   }
+
+  &.numeric {
+    .title {
+      padding-inline: var(--gap-default);
+      text-align: center;
+      -webkit-line-clamp: 3;
+    }
+  }
 }
 
 .action {

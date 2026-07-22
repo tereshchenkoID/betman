@@ -3,13 +3,13 @@
 import { useTranslations } from 'next-intl'
 import { useState, useMemo } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
+import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Thumbnail from '@/modules/Thumbnails/Thumbnail'
-import ThumbnailEmpty from '@/modules/Thumbnails/ThumbnailEmpty'
 import ThumbnailMore from '@/modules/Thumbnails/ThumbnailMore'
 
 import style from './index.module.scss'
@@ -20,22 +20,26 @@ const SLIDE_TYPE = {
   PLACEHOLDER: 'placeholder',
 }
 
-const renderSlide = (slide, settings, user, moreUrl) => {
+const renderSlide = (slide, settings, user, moreUrl, idx) => {
   switch (slide.type) {
     case SLIDE_TYPE.MORE:
       return <ThumbnailMore url={moreUrl} settings={settings} />
 
-    case SLIDE_TYPE.PLACEHOLDER:
-      return <ThumbnailEmpty settings={settings} />
-
     case SLIDE_TYPE.GAME:
     default:
       return (
-        <Thumbnail
-          data={slide.data}
-          user={user}
-          isPriority={slide.isPriority}
-        />
+        <>
+          {
+            slide?.isNumeric &&
+            <h6 className={style.index}>{idx + 1}</h6>
+          }
+          <Thumbnail
+            data={slide.data}
+            user={user}
+            isPriority={slide.isPriority}
+            isNumeric={slide?.isNumeric}
+          />
+        </>
       )
   }
 }
@@ -65,12 +69,15 @@ const Section = ({
       type: SLIDE_TYPE.GAME,
       data: game,
       isPriority: idx < 8,
+      isNumeric: mock?.isNumeric === '1'
     }))
 
-    gameSlides.push({ type: SLIDE_TYPE.MORE })
+    if (mock?.isNumeric !== '1') {
+      gameSlides.push({ type: SLIDE_TYPE.MORE })
+    }
 
     return gameSlides
-  }, [data])
+  }, [data, mock?.isNumeric])
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
@@ -104,7 +111,14 @@ const Section = ({
   if (meta?.results === '0') return null
 
   return (
-    <div className={style.block}>
+    <div
+      className={
+        classNames(
+          style.block,
+          mock?.isNumeric === '1' && style.numeric
+        )
+      }
+    >
       <div className={style.header}>
         <h2 className={style.title}>{mock?.title}</h2>
         {
@@ -146,7 +160,7 @@ const Section = ({
               key={idx}
               className={style.slide}
             >
-              {renderSlide(el, settings, user, moreUrl)}
+              {renderSlide(el, settings, user, moreUrl, idx)}
             </div>
           )}
         </div>
