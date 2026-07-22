@@ -18,6 +18,22 @@ import { routing } from './i18n/routing';
 
 const handleI18nRouting = createMiddleware(routing);
 
+function getRequestLocale(request, pathname) {
+  const segments = pathname.split('/').filter(Boolean);
+  const firstSegment = segments[0];
+
+  if (firstSegment && routing.locales.includes(firstSegment)) {
+    return firstSegment;
+  }
+
+  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
+  if (cookieLocale && routing.locales.includes(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  return routing.defaultLocale;
+}
+
 export function proxy(request) {
   const { pathname, searchParams } = request.nextUrl;
 
@@ -25,38 +41,47 @@ export function proxy(request) {
     return handleI18nRouting(request);
   }
 
-  const isProfilePage = pathname === '/profile' ||
-    pathname.startsWith('/profile/') ||
-    /\/[a-z]{2}\/profile(\/|$)/.test(pathname);
+  const locale = getRequestLocale(request, pathname);
 
-  const hasToken = request.cookies.has('NEXT_SID');
+  // const isProfilePage = pathname === '/profile' ||
+  //   pathname.startsWith('/profile/') ||
+  //   /\/[a-z]{2}\/profile(\/|$)/.test(pathname);
+  //
+  // const hasToken = request.cookies.has('NEXT_SID');
 
-  if (searchParams.get('logout') === 'true') {
-    const segments = pathname.split('/').filter(Boolean);
-    const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
+  // if (searchParams.get('logout') === 'true') {
+  //   const segments = pathname.split('/').filter(Boolean);
+  //   const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
+  //
+  //   // const homepageUrl = new URL(`/${locale}`, request.url);
+  //   const logoutUrl = new URL(`/${locale}/logout`, request.url);
+  //   const response = NextResponse.redirect(logoutUrl);
+  //
+  //   response.cookies.delete('NEXT_SID');
+  //   response.cookies.delete('USER_INFO');
+  //   response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate');
+  //
+  //   return response;
+  // }
 
-    // const homepageUrl = new URL(`/${locale}`, request.url);
-    const logoutUrl = new URL(`/${locale}/logout`, request.url);
-    const response = NextResponse.redirect(logoutUrl);
+  // if (isProfilePage && !hasToken) {
+  //   const segments = pathname.split('/').filter(Boolean);
+  //   const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
+  //
+  //   const loginUrl = new URL(`/${locale}/login`, request.url);
+  //   return NextResponse.redirect(loginUrl);
+  // }
 
-    response.cookies.delete('NEXT_SID');
-    response.cookies.delete('USER_INFO');
-    response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate');
-
-    return response;
+  const response = handleI18nRouting(request)
+  if (response) {
+    response.headers.set('x-next-locale', locale);
   }
 
-  if (isProfilePage && !hasToken) {
-    const segments = pathname.split('/').filter(Boolean);
-    const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
+  return response;
 
-    const loginUrl = new URL(`/${locale}/login`, request.url);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  return handleI18nRouting(request);
+  // return handleI18nRouting(request);
 }
 
 export const config = {
-  matcher: ['/', '/(ru|en)/:path*', '/((?!_next|_vercel|.*\\..*).*)']
+  matcher: ['/', '/(en|uk)/:path*', '/((?!_next|_vercel|.*\\..*).*)']
 };

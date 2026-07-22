@@ -79,9 +79,9 @@
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { getLocale } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
 
 import {logoutAction} from "@/app/actions/auth";
-import {routing} from "@/i18n/routing";
 
 /**
  * Universal Server-Side API Request Wrapper.
@@ -93,7 +93,6 @@ import {routing} from "@/i18n/routing";
  * @param {Object} [config.params={}] - Payload data or query parameters (flat object).
  * @returns {Promise<Object|null>} Parsed JSON response, success object, or null on failure.
  */
-
 const PROTECTED = ['user/', 'profile/'];
 
 export const apiRequest = async (endpoint, {
@@ -102,10 +101,11 @@ export const apiRequest = async (endpoint, {
   cache = 'no-cache',
   next = {},
 } = {}) => {
-  const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`);
-  const cookieStore = await cookies();
-  const token = cookieStore.get('NEXT_SID')?.value;
-  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
+  const cookieStore = await cookies()
+  const token = cookieStore.get('NEXT_SID')?.value
+  const headersList = await headers()
+  let locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
 
   const options = {
     method,
