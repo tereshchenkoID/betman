@@ -1,7 +1,7 @@
 @use '@/scss/config' as *;
 
 .block {
-  @include flex(center, center, column);
+  @include flex(center, center);
 
   gap: var(--gap-default);
   background-color: var(--material);
@@ -9,6 +9,7 @@
   border-radius: var(--border-radius-10);
   border: rem(1px) solid var(--primary-hover);
   overflow: hidden;
+  font-size: rem(14px);
 
   &.active {
     pointer-events: none;
@@ -23,8 +24,19 @@
 }
 
 .picture {
-  @include flex(center, center);
-  @include size(rem(70px), rem(40px));
+  @include size(rem(60px), rem(30px));
 
+  position: relative;
   flex-shrink: 0;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--gap-default);
+  width: 100%;
+}
+
+.count {
+  color: var(--link);
 }

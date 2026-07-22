@@ -1,0 +1,20 @@
+@use '@/scss/config' as *;
+
+.block {
+  --slide-width: 200px;
+  --slide-spacing: var(--gap-default);
+
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
+  padding-inline-end: var(--slide-spacing);
+
+  &:last-child {
+    flex: 0 0 var(--slide-width);
+    padding-inline-end: 0;
+  }
+}

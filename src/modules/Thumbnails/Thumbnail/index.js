@@ -61,9 +61,9 @@ const Thumbnail = ({
         onClick={handleClick}
       />
       {
-        data?.image &&
+        data?.images?.length > 0 &&
         <Image
-          src={data?.image}
+          src={data?.images?.[0]}
           className={style.image}
           alt={data?.title}
           width={250}
@@ -87,7 +87,7 @@ const Thumbnail = ({
               <Icon name={'icon-status-play-alt'} />
             </Action>
             {
-              data.hasDemo === "1" &&
+              data?.hasDemo === "1" &&
               <Action
                 to={`${NAVIGATION.game.url}/${data.id}/1`}
                 onChange={closeModal}
@@ -99,7 +99,7 @@ const Thumbnail = ({
           <p className={style.title}>{data.title}</p>
           <div className={style.tags}>
             {
-              data.groups.map((el, idx) =>
+              data?.groups?.map((el, idx) =>
                 <Badge
                   key={idx}
                   data={el.value}

@@ -11,11 +11,13 @@ import SectionGamesSliderSkeleton from '../SectionGamesSlider/skeleton'
 import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
 import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
 import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
+import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
 
 import SectionCategories from '../SectionCategoriesSlider'
 import SectionBanners from '../SectionBannersSlider'
 import SectionJackpots from '../SectionJackpotsSlider'
 import SectionChallenge from '../SectionChallenge'
+import SectionBigLinks from '../SectionBigLinksSlider'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
@@ -44,6 +46,10 @@ const SECTIONS_CONFIG = {
   challenges: {
     Component: SectionChallenge,
     Fallback: SectionChallengeSkeleton,
+  },
+  'big-links': {
+    Component: SectionBigLinks,
+    Fallback: SectionBigLinksSkeleton,
   },
 }
 

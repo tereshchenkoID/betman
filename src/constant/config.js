@@ -6,7 +6,7 @@ export const NAVIGATION = {
   },
   games_hall: {
     text: 'navigation.games_hall',
-    url: '/games-category',
+    url: '/games',
   },
   bingo: {
     text: 'navigation.bingo',
@@ -47,6 +47,10 @@ export const NAVIGATION = {
     text: 'navigation.promo',
     icon: 'icon-commerce-gift',
     url: '/promotions',
+  },
+  providers: {
+    text: 'navigation.providers',
+    url: '/providers',
   },
   registration: {
     text: 'navigation.registration',

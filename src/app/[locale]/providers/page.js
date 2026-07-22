@@ -1,35 +1,25 @@
-import { LIST_COUNT, NAVIGATION } from '@/constant/config'
+import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/services/metadata'
-import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/auth'
+import { getProviders } from '@/app/actions/static'
 
+import SectionProviders from '@/sections/SectionProviders'
 import SeoSection from '@/sections/SectionSeo'
-import SectionGames from '@/sections/SectionGames'
-import SectionCategoriesSlider from '@/sections/SectionCategoriesSlider'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  return await getPageMetadata('games-category', locale)
+  return await getPageMetadata('providers', locale)
 }
 
-export default async function GameCategory({ params }) {
-  const { id, locale } = await params
+export default async function Providers({ params }) {
+  const { locale } = await params
 
   const [
     metaTags,
-    user,
     res,
   ] = await Promise.all([
-    getPageMetadata('games-category', locale),
-    getCachedUser(),
-    apiRequest(`games/${id}/`, {
-      method: 'POST',
-      params: {
-        page: 0,
-        count: LIST_COUNT,
-      }
-    }),
+    getPageMetadata('providers', locale),
+    getProviders()
   ])
 
   const jsonLd = {
@@ -55,17 +45,10 @@ export default async function GameCategory({ params }) {
 
   return (
     <>
-      <section>
-        <SectionCategoriesSlider />
-      </section>
-      <section>
-        <SectionGames
-          url={`games/${id}/`}
-          user={user}
-          data={res?.data}
-          meta={res?.meta}
-        />
-      </section>
+      <SectionProviders
+        data={res?.data}
+        meta={res?.meta}
+      />
       <SeoSection alias={'promotions'} />
       <script
         type="application/ld+json"

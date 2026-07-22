@@ -149,6 +149,8 @@ export const apiRequest = async (endpoint, {
     const res = await fetch(url.toString(), options);
     const json = await res.json();
 
+    console.log(`${process.env.API_BASE_URL}/${endpoint}`, json);
+
     if (json?.code === '2') {
       // const cookieStore = await cookies()
       // cookieStore.delete('NEXT_SID')

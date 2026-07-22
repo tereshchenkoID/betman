@@ -6,11 +6,9 @@ import Section from './section'
 const SectionCategoriesSlider = async () => {
   const [
     user,
-    providers,
     res,
   ] = await Promise.all([
     getCachedUser(),
-    getProviders(),
     getCategories()
   ])
 
@@ -18,7 +16,6 @@ const SectionCategoriesSlider = async () => {
     <Section
       data={res?.data}
       meta={res?.meta}
-      providers={providers?.data}
       user={user}
     />
   )

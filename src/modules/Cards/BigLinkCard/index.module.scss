@@ -1,0 +1,27 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-12);
+  padding: var(--gap-default) var(--gap-12);
+  background-color: var(--material);
+  border: rem(1px) solid var(--primary-hover);
+  border-radius: var(--border-radius-10);
+
+  @include hover {
+    &:hover {
+      background-color: var(--material-hover);
+
+      .image {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.image {
+  @include transition;
+  @include size(rem(56px));
+}

@@ -1,14 +1,14 @@
 'use client'
 
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useKeenSlider } from 'keen-slider/react'
 
-import { ROUTES_USER } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'
 import CategoryCard from '@/modules/Cards/CategoryCard'
-import ProvidersModal from '@/modules/Modals/ProvidersModal'
 import SearchModal from '@/modules/Modals/SearchModal'
 
 import style from './index.module.scss'
@@ -17,7 +17,6 @@ const SectionCategories = ({
   data,
   meta,
   user,
-  providers,
 }) => {
   const t = useTranslations()
   const { openModal } = useModal()
@@ -69,21 +68,15 @@ const SectionCategories = ({
           </div>
 
           <div className={style.slide}>
-            <button
+            <Link
+              href={NAVIGATION.providers.url}
               className={style.toggle}
               type="button"
               aria-label={t('all_providers')}
-              onClick={() =>
-                openModal({
-                  title: t('all_providers'),
-                  body: <ProvidersModal providers={providers} />,
-                  size: 'md',
-                })
-              }
             >
               <Icon name="icon-games-gambling" />
               {t('all_providers')}
-            </button>
+            </Link>
           </div>
 
           {
