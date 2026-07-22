@@ -1,4 +1,5 @@
 // import Script from 'next/script'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 // import { preload } from 'react-dom'
 import { Inter, Roboto_Condensed } from 'next/font/google'
@@ -82,6 +83,7 @@ export default function RootLayout({ children }) {
         zIndex={14}
       />
       {children}
+      <SpeedInsights />
       {/*<Script*/}
       {/*  src="https://telegram.org/js/telegram-web-app.js?v=2026_v2"*/}
       {/*  strategy="beforeInteractive"*/}
