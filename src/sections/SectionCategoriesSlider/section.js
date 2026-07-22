@@ -1,12 +1,9 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-
-import { FreeMode } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { useKeenSlider } from 'keen-slider/react'
 
 import { ROUTES_USER } from '@/constant/config'
-
 import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'
@@ -16,7 +13,7 @@ import SearchModal from '@/modules/Modals/SearchModal'
 
 import style from './index.module.scss'
 
-const Section = ({
+const SectionCategories = ({
   data,
   meta,
   user,
@@ -36,20 +33,27 @@ const Section = ({
     ...data || []
   ]
 
+  const [sliderRef] = useKeenSlider({
+    initial: 0,
+    loop: false,
+    mode: 'free',
+    selector: `.${style.slide}`,
+    slides: {
+      perView: 'auto',
+      origin: 'auto',
+    },
+  })
+
   if (meta?.results === '0') return null
 
   return (
     <div className={style.block}>
       <div className={style.slider}>
-        <Swiper
-          slidesPerView={'auto'}
-          spaceBetween={8}
-          modules={[FreeMode]}
-        >
-          <SwiperSlide>
+        <div ref={sliderRef} className="keen-slider">
+          <div className={style.slide}>
             <button
               className={style.toggle}
-              type={'button'}
+              type="button"
               aria-label={t('search')}
               onClick={() =>
                 openModal({
@@ -62,11 +66,12 @@ const Section = ({
               <Icon name="icon-navigation-search" />
               {t('search')}
             </button>
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+
+          <div className={style.slide}>
             <button
               className={style.toggle}
-              type={'button'}
+              type="button"
               aria-label={t('all_providers')}
               onClick={() =>
                 openModal({
@@ -79,18 +84,21 @@ const Section = ({
               <Icon name="icon-games-gambling" />
               {t('all_providers')}
             </button>
-          </SwiperSlide>
+          </div>
+
           {
             categories?.map((el, idx) =>
-              <SwiperSlide key={idx}>
-                <CategoryCard data={el} />
-              </SwiperSlide>
-            )
-          }
-        </Swiper>
+            <div
+              key={idx}
+              className={style.slide}
+            >
+              <CategoryCard data={el} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
 }
 
-export default Section
+export default SectionCategories

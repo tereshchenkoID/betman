@@ -3,15 +3,15 @@
 .block {
   position: sticky;
   top: 0;
-  //margin-inline: rem(-16px);
+  margin-inline: rem(-16px);
   z-index: $z-index-9;
   background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
   height: var(--header-height);
 
   @include desk-s {
+    margin-inline: 0;
     padding-block: var(--gap-default);
     background: none;
-    //margin-inline: 0;
   }
 }
 

@@ -14,10 +14,6 @@ import Footer from '@/modules/Footer'
 import Aside from '@/modules/Aside'
 import Content from '@/modules/Content'
 
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-
 export default async function LocaleLayout({ children, params }) {
   const { locale } = await params
 

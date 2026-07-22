@@ -1,7 +1,9 @@
 @use '@/scss/config' as *;
 
 .block {
-  opacity: 0;
+  --slide-width: 304px;
+  --slide-spacing: var(--gap-default);
+
   position: relative;
   overflow: hidden;
   contain: layout;
@@ -15,12 +17,13 @@
     width: rem(64px);
     content: '';
   }
-
-  &:has(:global(.swiper-initialized)) {
-    opacity: 1;
-  }
 }
 
 .slider {
   display: grid;
+}
+
+.slide {
+  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
+  padding-inline-end: var(--slide-spacing);
 }

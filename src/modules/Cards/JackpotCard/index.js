@@ -1,15 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
+import { useState } from 'react'
 import classNames from 'classnames'
-
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { useKeenSlider } from 'keen-slider/react'
 
 import { NAVIGATION } from '@/constant/config'
-
-// import { useWebSocketContext } from 'context/WebSocketProvider'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -18,48 +16,69 @@ import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 
 import style from './index.module.scss'
 
-const BREAKPOINTS = {
-  320: { slidesPerView: 2 },
-  360: { slidesPerView: 3 },
-  768: { slidesPerView: 4 },
-  992: { slidesPerView: 5 },
-  1024: { slidesPerView: 6 },
-}
-
 const JackpotCard = ({
   data,
   user,
   classes = []
 }) => {
   const t = useTranslations()
-  // const { lastMessage } = useWebSocketContext()
 
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true)
+  const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const isExtended = classes.includes('extended')
 
-  // useEffect(() => {
-  //   if (!lastMessage) return
-  //
-  //   const { cmd, data: payload, topic } = lastMessage
-  //
-  //   if (cmd === 'update' && topic === 'jackpots') {
-  //     setData(prev => {
-  //       if (Array.isArray(prev)) {
-  //         return prev.map(item => {
-  //           const updated = payload.find(u => u.id === item.id)
-  //           return updated ? { ...item, amount: updated.amount } : item
-  //         })
-  //       }
-  //
-  //       const found = payload.find(u => u.id === prev?.id)
-  //       return found ? { ...prev, amount: found.amount } : prev
-  //     })
-  //   }
-  // }, [lastMessage, setData])
+  const updateSliderState = (slider) => {
+    if (!slider.track?.details) return
+    const { rel, maxIdx } = slider.track.details
 
-  // TODO Add socket and update, refactoring styles of sections
+    setIsPrevDisabled(rel === 0)
+    setIsNextDisabled(rel >= maxIdx)
+  }
+
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    loop: false,
+    mode: 'free',
+    selector: `.${style.slide}`,
+    slides: {
+      perView: 'auto',
+      origin: 'auto',
+    },
+    detailsChanged(slider) {
+      updateSliderState(slider)
+    },
+    created(slider) {
+      updateSliderState(slider)
+    },
+    updated(slider) {
+      updateSliderState(slider)
+    },
+  })
+
+  const handleNext = () => {
+    const slider = instanceRef.current
+    if (!slider?.track?.details) return
+
+    const { rel, maxIdx } = slider.track.details
+    if (rel >= maxIdx) {
+      slider.moveToIdx(0)
+    } else {
+      slider.next()
+    }
+  }
+
+  const handlePrev = () => {
+    const slider = instanceRef.current
+    if (!slider?.track?.details) return
+
+    const { rel, maxIdx } = slider.track.details
+    if (rel === 0) {
+      slider.moveToIdx(maxIdx)
+    } else {
+      slider.prev()
+    }
+  }
 
   return (
     <div
@@ -120,39 +139,40 @@ const JackpotCard = ({
       </Link>
       <div className={style.slider}>
         <div className={style.navigation}>
-          <Action ref={prevRef} classes={['primary', isExtended ? 'md' : 'sm', 'square', style.prev]}>
+          <Action
+            onChange={handlePrev}
+            isDisabled={isPrevDisabled}
+            classes={['primary', isExtended ? 'md' : 'sm', 'square']}
+            aria-label="Previous"
+          >
             <Icon name="icon-navigation-chevron-left" />
           </Action>
-          <Action ref={nextRef} classes={['primary', isExtended ? 'md' : 'sm', 'square', style.next]}>
+
+          <Action
+            onChange={handleNext}
+            isDisabled={isNextDisabled}
+            classes={['primary', isExtended ? 'md' : 'sm', 'square']}
+            aria-label="Next"
+          >
             <Icon name="icon-navigation-chevron-right" />
           </Action>
         </div>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={8}
-          slidesPerView={isExtended ? 2 : 3}
-          {...(isExtended && {
-            breakpoints: BREAKPOINTS,
-            observer: true,
-            observeParents: true,
-            resizeObserver: true,
-          })}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current
-            swiper.params.navigation.nextEl = nextRef.current
-          }}
-        >
+
+        <div ref={sliderRef} className="keen-slider">
           {
-            data?.games?.map((game, idx) =>
-            <SwiperSlide key={game.id || idx}>
+            data?.games?.map((el, idx) =>
+            <div
+              key={idx}
+              className={style.slide}
+            >
               <Thumbnail
-                data={game}
+                data={el}
                 user={user}
                 isEmpty={!isExtended}
               />
-            </SwiperSlide>
+            </div>
           )}
-        </Swiper>
+        </div>
       </div>
     </div>
   )

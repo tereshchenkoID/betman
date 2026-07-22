@@ -7,13 +7,12 @@
   background-color: var(--material-hover);
   border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
   padding-bottom: var(--aside-height);
-  //margin-inline: rem(-16px);
+  margin-inline: rem(-16px);
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
   @include desk-s {
     padding-bottom: 0;
-    //margin-inline: rem(-8px);
     z-index: $z-index-8;
   }
 }

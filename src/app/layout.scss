@@ -112,15 +112,22 @@ body {
   text-size-adjust: 100%;
   min-width: var(--min-width);
   scroll-behavior: smooth;
-  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) var(--background-size));
-  background-repeat: repeat-x;
-  background-size: auto 8rem;
-  background-attachment: fixed;
   //max-height: var(--tg-viewport-height, 100dvh);
-  //overflow: hidden;
+  overflow-x: hidden;
+  padding-inline: var(--gap-16);
 
   @include desk-s {
     --background-size: 88%;
+  }
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background-attachment: fixed;
+    background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) var(--background-size));
+    background-repeat: repeat-x;
+    background-size: auto 8rem;
+    content: "";
   }
 }
 
@@ -306,62 +313,10 @@ main {
 
 section {
   position: relative;
-  padding-inline: var(--gap-16);
-
-  @include desk-s {
-    padding-inline: 0;
-  }
 }
 
-.swiper {
-  @include size(100%);
-
-  overflow: hidden;
-}
-
-.swiper-slide {
-  @include size(fit-content, 100%);
-
-  contain: layout style;
-}
-
-.swiper-wrapper {
-  height: fit-content;
+.keen-slider {
   will-change: transform;
-}
-
-.swiper-pagination {
-  @include flex(center, center);
-
-  position: static;
-  padding: var(--gap-default);
-  height: rem(22px);
-
-  &.swiper-pagination-lock {
-    display: none;
-  }
-}
-
-.swiper-pagination-bullet {
-  --swiper-pagination-bullet-width: 6px;
-  --swiper-pagination-bullet-height: 6px;
-  --swiper-pagination-bullet-inactive-color: var(--text-for-material-disabled);
-  --swiper-pagination-color: var(--text-for-material-disabled);
-  --swiper-pagination-bullet-horizontal-gap: 4px;
-
-  @include transition;
-}
-
-.swiper-pagination-bullet-active {
-  --swiper-pagination-bullet-width: 16px;
-  --swiper-pagination-bullet-border-radius: var(--border-radius-full);
-  --swiper-pagination-color: var(--brand);
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  display: none;
-  visibility: hidden;
 }
 
 

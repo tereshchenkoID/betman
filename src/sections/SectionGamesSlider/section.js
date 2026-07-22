@@ -1,12 +1,10 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useRef, useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
+import { useKeenSlider } from 'keen-slider/react'
 
 import { NAVIGATION } from '@/constant/config'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -15,14 +13,6 @@ import ThumbnailEmpty from '@/modules/Thumbnails/ThumbnailEmpty'
 import ThumbnailMore from '@/modules/Thumbnails/ThumbnailMore'
 
 import style from './index.module.scss'
-
-const BREAKPOINTS = {
-  320: { slidesPerView: 2 },
-  360: { slidesPerView: 3 },
-  768: { slidesPerView: 4 },
-  992: { slidesPerView: 5 },
-  1024: { slidesPerView: 6 },
-}
 
 const SLIDE_TYPE = {
   GAME: 'game',
@@ -58,10 +48,9 @@ const Section = ({
   user,
 }) => {
   const t = useTranslations()
-  const [slidesPerView, setSlidesPerView] = useState(7)
 
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true)
+  const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const pathString = mock?.hasMore?.join('/') || ''
 
@@ -80,16 +69,37 @@ const Section = ({
 
     gameSlides.push({ type: SLIDE_TYPE.MORE })
 
-    if (gameSlides.length < slidesPerView) {
-      const placeholdersCount = slidesPerView - gameSlides.length
-      const placeholders = Array.from({ length: placeholdersCount }, () => ({
-        type: SLIDE_TYPE.PLACEHOLDER,
-      }))
-      return [...gameSlides, ...placeholders]
-    }
-
     return gameSlides
-  }, [data, slidesPerView])
+  }, [data])
+
+  const updateSliderState = (slider) => {
+    if (!slider.track?.details) return
+
+    const { rel, maxIdx } = slider.track.details
+
+    setIsPrevDisabled(rel === 0)
+    setIsNextDisabled(rel >= maxIdx)
+  }
+
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    loop: false,
+    mode: 'free',
+    selector: `.${style.slide}`,
+    slides: {
+      perView: 'auto',
+      origin: 'auto',
+    },
+    detailsChanged(slider) {
+      updateSliderState(slider)
+    },
+    created(slider) {
+      updateSliderState(slider)
+    },
+    updated(slider) {
+      updateSliderState(slider)
+    },
+  })
 
   if (meta?.results === '0') return null
 
@@ -106,42 +116,40 @@ const Section = ({
           />
         }
         <div className={style.navigation}>
-          <Action ref={prevRef} classes={['primary', 'md', 'square', style.prev]}>
+          <Action
+            onChange={() => instanceRef.current?.prev()}
+            isDisabled={isPrevDisabled}
+            classes={['primary', 'md', 'square', style.prev]}
+            aria-label="Previous"
+          >
             <Icon name="icon-navigation-chevron-left" />
           </Action>
-          <Action ref={nextRef} classes={['primary', 'md', 'square', style.next]}>
+          <Action
+            onChange={() => instanceRef.current?.next()}
+            isDisabled={isNextDisabled}
+            classes={['primary', 'md', 'square', style.next]}
+            aria-label="Next"
+          >
             <Icon name="icon-navigation-chevron-right" />
           </Action>
         </div>
       </div>
+
       <div className={style.slider}>
-        <Swiper
-          modules={[Navigation]}
-          spaceBetween={8}
-          slidesPerView={2}
-          breakpoints={BREAKPOINTS}
-          navigation
-          observer
-          observeParents
-          resizeObserver
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current
-            swiper.params.navigation.nextEl = nextRef.current
-          }}
-          onInit={(swiper) => {
-            setSlidesPerView(swiper.params.slidesPerView)
-          }}
-          onBreakpoint={(swiper) => {
-            setSlidesPerView(swiper.params.slidesPerView)
-          }}
+        <div
+          ref={sliderRef}
+          className="keen-slider"
         >
           {
             slides.map((el, idx) =>
-            <SwiperSlide key={el.data?.id || idx}>
+            <div
+              key={idx}
+              className={style.slide}
+            >
               {renderSlide(el, settings, user, moreUrl)}
-            </SwiperSlide>
+            </div>
           )}
-        </Swiper>
+        </div>
       </div>
     </div>
   )

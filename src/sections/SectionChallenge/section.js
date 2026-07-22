@@ -6,7 +6,7 @@ const Section = ({ data, meta }) => {
   if (meta?.results === '0') return null
 
   return (
-    <section>
+    <>
       {
         data?.map((el, idx) =>
           <ChallengeCard
@@ -15,7 +15,7 @@ const Section = ({ data, meta }) => {
           />
         )
       }
-    </section>
+    </>
   )
 }
 

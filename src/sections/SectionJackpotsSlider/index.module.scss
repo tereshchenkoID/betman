@@ -1,7 +1,9 @@
 @use '@/scss/config' as *;
 
 .block {
-  opacity: 0;
+  --slide-width: 328px;
+  --slide-spacing: var(--gap-default);
+
   display: grid;
   row-gap: var(--gap-default);
   contain: layout;
@@ -22,10 +24,6 @@
         z-index: -1;
       }
     }
-  }
-
-  &:has(:global(.swiper-initialized)) {
-    opacity: 1;
   }
 }
 
@@ -52,6 +50,16 @@
 
   &::after {
     inset-inline-end: rem(-1px);
+  }
+}
+
+.slide {
+  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
+  padding-inline-end: var(--slide-spacing);
+
+  &:last-child {
+    flex: 0 0 var(--slide-width);
+    padding-inline-end: 0;
   }
 }
 

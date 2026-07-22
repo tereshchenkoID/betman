@@ -1,7 +1,10 @@
 @use '@/scss/config' as *;
 
 .block {
-  opacity: 0;
+  --slide-width: 100%;
+  --slide-spacing: var(--gap-default);
+  --slide-count: 3;
+
   display: grid;
   row-gap: var(--gap-default);
   contain: layout;
@@ -24,8 +27,24 @@
     }
   }
 
-  &:has(:global(.swiper-initialized)) {
-    opacity: 1;
+  @include mob-m {
+    --slide-count: 4;
+  }
+
+  @include tab-s {
+    --slide-count: 5;
+  }
+
+  @include tab-m {
+    --slide-count: 6;
+  }
+
+  @include tab-l {
+    --slide-count: 7;
+  }
+
+  @include desk-s {
+    --slide-count: 6;
   }
 }
 
@@ -74,5 +93,17 @@
 
   &::after {
     inset-inline-end: rem(-1px);
+  }
+}
+
+.slide {
+  padding-inline-end: var(--slide-spacing);
+  flex: 0 0 calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
+  max-width: calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
+
+  &:last-child {
+    padding-inline-end: 0;
+    flex: 0 0 calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
+    max-width: calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
   }
 }

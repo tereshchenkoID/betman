@@ -1,6 +1,10 @@
 @use '@/scss/config' as *;
 
 .block {
+  --slide-width: 100%;
+  --slide-spacing: var(--gap-default);
+  --slide-count: 3;
+
   @include flex(center, null, column);
 
   position: relative;
@@ -11,11 +15,22 @@
   background-size: rem(600px);
   background-position: 0 0, 100% 0;
   background-repeat: no-repeat;
-  max-width: rem(328px);
-  width: 100%;
+  width: rem(328px);
 
   &.extended {
-    max-width: 100%;
+    @include tab-s {
+      --slide-count: 4;
+    }
+
+    @include tab-m {
+      --slide-count: 5;
+    }
+
+    @include tab-l {
+      --slide-count: 6;
+    }
+
+    width: 100%;
 
     @include desk-s {
       display: grid;
@@ -50,7 +65,6 @@
       @include desk-s {
         grid-row: 4;
         grid-column: 1 / -1;
-        //height: rem(181px);
       }
     }
 
@@ -91,6 +105,18 @@
 
 .slider {
   display: grid;
+}
+
+.slide {
+  padding-inline-end: var(--slide-spacing);
+  flex: 0 0 calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
+  max-width: calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
+
+  &:last-child {
+    padding-inline-end: 0;
+    flex: 0 0 calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
+    max-width: calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
+  }
 }
 
 .navigation {

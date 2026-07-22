@@ -1,13 +1,11 @@
 @use '@/scss/config' as *;
 
 .block {
-  opacity: 0;
+  --slide-width: fit-content;
+  --slide-spacing: var(--gap-default);
+
   overflow: hidden;
   contain: layout;
-
-  &:has(:global(.swiper-initialized)) {
-    opacity: 1;
-  }
 }
 
 .slider {
@@ -15,8 +13,18 @@
   width: 100%;
 }
 
+.slide {
+  flex: 0 0 var(--slide-width);
+  padding-inline-end: var(--slide-spacing);
+
+  &:last-child {
+    flex: 0 0 var(--slide-width);
+    padding-inline-end: 0;
+  }
+}
+
 .providers {
-  @include flex($align-items: center);
+  @include flex(null, center);
   @include scroll-x;
 
   gap: var(--gap-default);
@@ -24,7 +32,7 @@
 }
 
 .toggle {
-  @include flex($align-items: center);
+  @include flex(null, center);
 
   padding: var(--gap-default) var(--gap-16);
   background-color: var(--material);

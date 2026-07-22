@@ -1,10 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRef } from 'react'
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, FreeMode, Autoplay } from 'swiper/modules'
+import { useKeenSlider } from 'keen-slider/react'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -21,8 +19,96 @@ const SectionJackpots = ({
   user
 }) => {
   const t = useTranslations()
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
+  const [isPrevDisabled, setIsPrevDisabled] = useState(true)
+  const [isNextDisabled, setIsNextDisabled] = useState(false)
+
+  const updateSliderState = (slider) => {
+    if (!slider.track?.details) return
+    const { rel, maxIdx } = slider.track.details
+
+    setIsPrevDisabled(rel === 0)
+    setIsNextDisabled(rel >= maxIdx)
+  }
+
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      initial: 0,
+      loop: false,
+      mode: 'free',
+      selector: `.${style.slide}`,
+      slides: {
+        perView: 'auto',
+        origin: 'auto',
+      },
+      detailsChanged(slider) {
+        updateSliderState(slider)
+      },
+      created(slider) {
+        updateSliderState(slider)
+      },
+      updated(slider) {
+        updateSliderState(slider)
+      },
+    },
+    [
+      (slider) => {
+        let timeout
+        let mouseOver = false
+
+        function clearNextTimeout() {
+          clearTimeout(timeout)
+        }
+
+        function nextTimeout() {
+          clearTimeout(timeout)
+          if (mouseOver) return
+
+          timeout = setTimeout(() => {
+            if (!slider.track?.details) return
+
+            const { rel, maxIdx } = slider.track.details
+
+            if (maxIdx === 0) return
+
+            if (rel >= maxIdx) {
+              slider.moveToIdx(0)
+            } else {
+              slider.next()
+            }
+          }, 2500)
+        }
+
+        slider.on('created', () => {
+          slider.container.addEventListener('mouseenter', () => {
+            mouseOver = true
+            clearNextTimeout()
+          })
+          slider.container.addEventListener('mouseleave', () => {
+            mouseOver = false
+            nextTimeout()
+          })
+          nextTimeout()
+        })
+        slider.on('dragStarted', clearNextTimeout)
+        slider.on('animationEnded', nextTimeout)
+        slider.on('updated', nextTimeout)
+      },
+    ]
+  )
+
+  const handleNext = () => {
+    const slider = instanceRef.current
+    if (slider && slider.track?.details && slider.track.details.maxIdx > 0) {
+      slider.next()
+    }
+  }
+
+  const handlePrev = () => {
+    const slider = instanceRef.current
+    if (slider && slider.track?.details) {
+      slider.prev()
+    }
+  }
 
   if (meta?.results === '0') return null
 
@@ -39,42 +125,38 @@ const SectionJackpots = ({
           />
         }
         <div className={style.navigation}>
-          <Action ref={prevRef} classes={['primary', 'md', 'square', style.prev]}>
+          <Action
+            onChange={handlePrev}
+            isDisabled={isPrevDisabled}
+            classes={['primary', 'md', 'square', style.prev]}
+            aria-label="Previous"
+          >
             <Icon name="icon-navigation-chevron-left" />
           </Action>
-
-          <Action ref={nextRef} classes={['primary', 'md', 'square', style.next]}>
+          <Action
+            onChange={handleNext}
+            isDisabled={isNextDisabled}
+            classes={['primary', 'md', 'square', style.next]}
+            aria-label="Next"
+          >
             <Icon name="icon-navigation-chevron-right" />
           </Action>
         </div>
       </div>
+
       <div className={style.slider}>
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={8}
-          freeMode
-          modules={[Navigation, FreeMode, Autoplay]}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current
-            swiper.params.navigation.nextEl = nextRef.current
-          }}
-        >
+        <div ref={sliderRef} className="keen-slider">
           {
             data?.map((el, idx) =>
-              <SwiperSlide key={idx}>
+              <div key={idx} className={style.slide}>
                 <JackpotCard
                   data={el}
                   classes={['default']}
                   user={user}
                 />
-              </SwiperSlide>
-            )}
-        </Swiper>
+              </div>
+          )}
+        </div>
       </div>
     </div>
   )

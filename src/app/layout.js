@@ -6,12 +6,9 @@ import NextTopLoader from 'nextjs-toploader'
 
 import classNames from 'classnames'
 
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/free-mode'
-// import 'react-toastify/dist/ReactToastify.min.css'
+import 'keen-slider/keen-slider.min.css'
 // import 'react-phone-input-2/lib/style.css'
+
 import './layout.scss'
 import './icons.scss'
 
