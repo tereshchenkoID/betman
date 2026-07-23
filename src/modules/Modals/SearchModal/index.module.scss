@@ -62,20 +62,16 @@
 }
 
 .grid {
-  --provider-count: 2;
+  --provider-count: 1;
 
   grid-template-columns: repeat(var(--provider-count), 1fr);
 
   @include mob-m {
-    --provider-count: 3;
+    --provider-count: 2;
   }
 
   @include tab-s {
-    --provider-count: 4;
-  }
-
-  @include tab-m {
-    --provider-count: 5;
+    --provider-count: 3;
   }
 }
 

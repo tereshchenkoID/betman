@@ -35,13 +35,13 @@ const Game = ({ data, user }) => {
     <div
       className={style.block}
       style={{
-        backgroundImage: `url(${data?.image})`,
+        backgroundImage: `url(${data?.images?.[0]})`,
       }}
     >
       <div className={style.header}>
         <Favourite data={data} />
         <Action
-          classes={['secondary', 'md', 'square', style.close]}
+          classes={['secondary', 'md', 'square']}
           onChange={closeModal}
         >
           <Icon name={'icon-navigation-close'} />
