@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { ModalProvider } from '@/context/ModalContext'
 
 import Toastify from '@/components/Toastify'
+import ScrollToTop from '@/modules/ScrollToTop'
 
 import 'keen-slider/keen-slider.min.css'
 import 'react-phone-input-2/lib/style.css'
@@ -28,7 +29,7 @@ const roboto = Roboto({
 const barlowCondensed = Oswald({
   weight: ['400', '700'],
   style: ['normal'],
-  subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
+  subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-alt',
 })
@@ -72,8 +73,12 @@ export default async function RootLayout({ children, params }) {
         )
       }
     >
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider
+      messages={messages}
+      locale={locale}
+    >
       <ModalProvider>
+        <ScrollToTop />
         <NextTopLoader
           color="#0490A8"
           crawlSpeed={400}
