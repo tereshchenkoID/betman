@@ -12,7 +12,7 @@ import { loginWithCredentialsAction } from '@/app/actions/auth'
 
 import Field from '@/components/Field'
 import Action from '@/components/Action'
-// import Providers from 'modules/Providers/Providers'
+import Providers from '@/modules/Providers'
 // import Recovery from 'modules/Modals/Recovery'
 
 import style from './index.module.scss'
@@ -28,7 +28,11 @@ const Login = () => {
   })
   const [errors, setErrors] = useState({})
 
-  const hasErrors = Object.values(errors).some(Boolean)
+  // const hasErrors = Object.values(errors).some(Boolean)
+
+  const isValidationErrors = Object.values(errors).some(Boolean)
+  const isFormIncomplete = !filter.username || !filter.password
+  const isDisabled = isValidationErrors || isFormIncomplete
 
   const setFieldError = (name, err) => {
     setErrors(prev => ({ ...prev, [name]: err }))
@@ -66,6 +70,7 @@ const Login = () => {
           rules={[
             VALIDATION_RULES.required(),
             VALIDATION_RULES.minLength(3),
+            VALIDATION_RULES.latinAlphaNumeric()
           ]}
           onValidate={err => setFieldError('username', err)}
           error={errors.username}
@@ -89,7 +94,7 @@ const Login = () => {
         type={'submit'}
         classes={['primary', 'lg']}
         placeholder={t('login')}
-        isDisabled={hasErrors}
+        isDisabled={isDisabled}
       />
       {/*<Action*/}
       {/*  classes={['md', 'outline']}*/}
@@ -110,8 +115,8 @@ const Login = () => {
           onChange={closeModal}
         />
       </p>
-      {/*<hr />*/}
-      {/*<Providers />*/}
+      <hr />
+      <Providers />
     </form>
   )
 }

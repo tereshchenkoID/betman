@@ -36,12 +36,25 @@ export async function getWheelsRound() {
     next: { tags: ['wheels-rounds'] },
   })
 
-  const rounds = res?.data || []
-
-  console.log(rounds)
+  const counter = (res?.data || []).length
 
   return {
     wheels: res,
-    wheelsCounter: rounds.length,
+    wheelsCounter: counter,
+  }
+}
+
+export async function getQuests() {
+  const res = await apiRequest('quests/', {
+    method: 'GET',
+    next: { tags: ['quests'] },
+  })
+
+  const quests = res?.data || []
+  const counter = quests.filter(q => q.status === "0").length
+
+  return {
+    quests: res,
+    questsCounter: counter,
   }
 }

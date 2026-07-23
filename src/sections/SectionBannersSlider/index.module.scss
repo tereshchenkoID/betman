@@ -97,6 +97,7 @@
   @include transition;
   @include size(rem(8px));
 
+  cursor: pointer;
   background-color: var(--primary-disabled);
   border-radius: 50%;
 

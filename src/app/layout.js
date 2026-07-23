@@ -1,4 +1,4 @@
-// import Script from 'next/script'
+import Script from 'next/script'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 // import { preload } from 'react-dom'
@@ -88,10 +88,10 @@ export default function RootLayout({ children }) {
       {/*  src="https://telegram.org/js/telegram-web-app.js?v=2026_v2"*/}
       {/*  strategy="beforeInteractive"*/}
       {/*/>*/}
-      {/*<Script*/}
-      {/*  src="https://accounts.google.com/gsi/client"*/}
-      {/*  strategy="lazyOnload"*/}
-      {/*/>*/}
+      <Script
+        src="https://accounts.google.com/gsi/client"
+        strategy="lazyOnload"
+      />
     </body>
     </html>
   )

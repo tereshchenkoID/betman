@@ -1,0 +1,26 @@
+@use '@/scss/config' as *;
+
+.list {
+  --count: 2;
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(var(--count), 1fr);
+  gap: var(--gap-default);
+
+  @include mob-m {
+    --count: 3;
+  }
+
+  @include tab-s {
+    --count: 4;
+  }
+
+  @include tab-l {
+    --count: 5;
+  }
+
+  @include desk-s {
+    --count: 6;
+  }
+}

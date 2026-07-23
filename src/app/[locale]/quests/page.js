@@ -1,35 +1,33 @@
-import { getPageMetadata } from '@/services/metadata'
-import { apiRequest } from '@/app/actions/api'
-
 import { NAVIGATION } from '@/constant/config'
 
-import SectionHome from '@/sections/SectionHome'
+import { getPageMetadata } from '@/services/metadata'
+import { getQuests } from '@/app/actions/static'
+
 import SeoSection from '@/sections/SectionSeo'
+import SectionQuests from "@/sections/SectionQuests";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  return await getPageMetadata('home', locale)
+  return await getPageMetadata('quests', locale)
 }
 
-export default async function Home({ params }) {
+export default async function Quests({ params }) {
   const { locale } = await params
 
   const [
     metaTags,
-    skeleton
+    res,
   ] = await Promise.all([
-    getPageMetadata('home', locale),
-    apiRequest('casino/', {
-      method: 'GET',
-    })
+    getPageMetadata('quests', locale),
+    getQuests(),
   ])
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": metaTags.title,
+    "name": metaTags?.title,
     "url": process.env.BASE_URL,
-    "description": metaTags.description,
+    "description": metaTags?.description,
     "publisher": {
       "@type": "Organization",
       "name": process.env.ORGANIZATION_NAME,
@@ -47,11 +45,11 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <SectionHome
-        skeleton={skeleton?.data}
-        locale={locale}
+      <SectionQuests
+        data={res?.quests?.data}
+        meta={res?.quests?.meta}
       />
-      <SeoSection alias={'home'} />
+      <SeoSection alias={'quests'} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

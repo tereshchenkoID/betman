@@ -1,0 +1,41 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: relative;
+  border-radius: var(--border-radius-default);
+  background-color: var(--material);
+  overflow: hidden;
+  height: rem(240px);
+
+  &.disable {
+    .picture {
+      opacity: 0.4;
+    }
+  }
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-default);
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: var(--gap-12);
+}
+
+.info {
+  position: absolute;
+  inset-block-start: var(--gap-default);
+  inset-inline: var(--gap-default);
+}
+
+.picture {
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: var(--typography-bold);
+  font-size: rem(14px);
+  line-height: 1;
+}

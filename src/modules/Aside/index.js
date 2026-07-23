@@ -1,13 +1,11 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import { usePathname } from '@/i18n/routing'
 import Link from 'next/link'
 import classNames from 'classnames'
-import { usePathname } from '@/i18n/routing'
 
 import { NAVIGATION } from '@/constant/config'
-
-// import { useQuestsStore } from 'stores/questsStore'
 
 import Icon from '@/components/Icon'
 
@@ -22,13 +20,13 @@ const isActive = (current, link) => {
 
 const Aside = ({
   settings,
-  wheelsRound
+  wheels,
+  quests
 }) => {
   const t = useTranslations()
   const pathname = usePathname()
-  const { wheelsCounter } = wheelsRound
-
-  // const { questsCounter } = useQuestsStore()
+  const { wheelsCounter } = wheels
+  const { questsCounter } = quests
 
   const DATA = [
     NAVIGATION.home,
@@ -37,12 +35,11 @@ const Aside = ({
       badge: wheelsCounter || false
     },
     NAVIGATION.jackpots,
-    // NAVIGATION.tournament,
-    // settings.modules?.quest === '1' && {
-    //   ...NAVIGATION.quests,
-    //   badge: 3,
-    //   // badge: questsCounter || false
-    // },
+    NAVIGATION.tournament,
+    settings.modules?.quest === '1' && {
+      ...NAVIGATION.quests,
+      badge: questsCounter || false
+    },
     NAVIGATION.promotions
   ].filter(Boolean);
 

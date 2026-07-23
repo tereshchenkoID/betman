@@ -49,7 +49,7 @@ export default async function Providers({ params }) {
         data={res?.data}
         meta={res?.meta}
       />
-      <SeoSection alias={'promotions'} />
+      <SeoSection alias={'providers'} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

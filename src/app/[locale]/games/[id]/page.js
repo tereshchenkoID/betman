@@ -66,7 +66,7 @@ export default async function Games({ params }) {
           meta={res?.meta}
         />
       </section>
-      <SeoSection alias={'promotions'} />
+      <SeoSection alias={'games'} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

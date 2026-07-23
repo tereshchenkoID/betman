@@ -7,7 +7,7 @@ import SeoSection from '@/sections/SectionSeo'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
-  return await getPageMetadata('home', locale)
+  return await getPageMetadata('tournaments', locale)
 }
 
 export default async function Tournaments({ params }) {

@@ -15,6 +15,14 @@
     padding-bottom: 0;
     z-index: $z-index-8;
   }
+
+  &.auth {
+    padding-bottom: calc(var(--aside-height) + rem(57px));
+
+    @include desk-s {
+      padding-bottom: 0;
+    }
+  }
 }
 
 .container {

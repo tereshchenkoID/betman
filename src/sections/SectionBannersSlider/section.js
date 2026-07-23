@@ -91,21 +91,20 @@ const SectionBanners = ({ data, meta }) => {
           )}
         </div>
       </div>
-        <div
-          className={
-            classNames(
-              style.dots,
-              {
-                [style.hidden]: dotsCount <= 1
-              }
-            )
-          }
-        >
-          {
-            dotsCount > 1 && [...Array(dotsCount).keys()].map((idx) =>
-            <button
+      <div
+        className={
+          classNames(
+            style.dots,
+            {
+              [style.hidden]: dotsCount <= 1
+            }
+          )
+        }
+      >
+        {
+          dotsCount > 1 && [...Array(dotsCount).keys()].map((idx) =>
+            <span
               key={idx}
-              type="button"
               onClick={handleDotClick(idx)}
               className={
                 classNames(
@@ -113,10 +112,9 @@ const SectionBanners = ({ data, meta }) => {
                   currentSlide === idx ? style.active : ''
                 )
               }
-              aria-label={`Go to slide ${idx + 1}`}
             />
           )}
-        </div>
+      </div>
     </div>
   )
 }

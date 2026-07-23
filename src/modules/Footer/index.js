@@ -1,6 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
+import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -11,6 +12,7 @@ import Logo from '@/modules/Logo'
 import style from './index.module.scss'
 
 const Footer = ({
+  user,
   settings,
   categories,
   providers,
@@ -19,7 +21,14 @@ const Footer = ({
   const t = useTranslations()
 
   return (
-    <footer className={style.block}>
+    <footer
+      className={
+        classNames(
+          style.block,
+          !user?.id && style.auth
+        )
+      }
+    >
       <div className={style.container}>
         <div className={style.top}>
           <div>

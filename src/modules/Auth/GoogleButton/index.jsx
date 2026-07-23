@@ -6,7 +6,8 @@ import { useRouter } from '@/i18n/routing'
 import { useModal } from '@/context/ModalContext'
 import { loginWithGoogleAction } from '@/app/actions/auth'
 
-import Button from '@/components/Button'
+import Button from '@/components/Action'
+import Action from "@/components/Action";
 
 export default function GoogleButton() {
   const router = useRouter()
@@ -79,13 +80,12 @@ export default function GoogleButton() {
   }
 
   return (
-    <Button
-      type="button"
-      classes={['alt', 'md', 'wide']}
+    <Action
+      classes={['primary', 'lg']}
       icon={'google'}
       placeholder="Google"
       disabled={!isSdkLoaded}
-      onChange={handleGoogleLogin} // Твой законный onChange
+      onChange={handleGoogleLogin}
     />
   )
 }

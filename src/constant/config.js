@@ -119,3 +119,10 @@ export const ROUTES_USER = {
 }
 
 export const LIST_COUNT = 16
+
+export const TASK_STATUS = {
+  0: 'new',
+  1: 'done',
+  2: 'pending',
+  3: 'expired',
+}

@@ -317,12 +317,6 @@ section {
   will-change: transform;
 }
 
-//.Toastify__toast-container--top-center,
-//.Toastify__toast-container--top-left,
-//.Toastify__toast-container--top-right {
-//  top: max(var(--tg-safe-top), env(safe-area-inset-top));
-//}
-
 .react-tel-input {
   --react-tel-border-color: var(--primary);
   --react-tel-background-color: var(--primary-disabled);
@@ -428,3 +422,9 @@ section {
     }
   }
 }
+
+//.Toastify__toast-container--top-center,
+//.Toastify__toast-container--top-left,
+//.Toastify__toast-container--top-right {
+//  top: max(var(--tg-safe-top), env(safe-area-inset-top));
+//}

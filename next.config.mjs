@@ -19,7 +19,7 @@ const nextConfig = {
       },
     ]
   },
-  productionBrowserSourceMaps: true,
+  // productionBrowserSourceMaps: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
       ? { exclude: ['error', 'warn'] }

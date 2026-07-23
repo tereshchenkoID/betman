@@ -2,11 +2,16 @@ import { getMessages } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 
 import { getCachedUser } from '@/app/actions/auth'
-import { getSettings, getCategories, getProviders, getPages, getWheelsRound } from '@/app/actions/static'
-// import { getFavoritesAction } from '@/app/actions/favorites'
+import {
+  getSettings,
+  getCategories,
+  getProviders,
+  getPages,
+  getWheelsRound,
+  getQuests
+} from '@/app/actions/static'
 
 import { ModalProvider } from '@/context/ModalContext'
-import { FavoritesProvider } from '@/context/FavoritesContext'
 
 import Toastify from '@/components/Toastify'
 import Header from '@/modules/Header'
@@ -24,9 +29,8 @@ export default async function LocaleLayout({ children, params }) {
     categories,
     providers,
     pages,
-    wheelsRound,
-
-    // favorites
+    wheels,
+    quests,
   ] = await Promise.all([
     getMessages({ locale }),
     getCachedUser(),
@@ -34,35 +38,34 @@ export default async function LocaleLayout({ children, params }) {
     getCategories(),
     getProviders(),
     getPages(),
-    getWheelsRound()
-
-    // getFavoritesAction()
+    getWheelsRound(),
+    getQuests()
   ])
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      {/*<FavoritesProvider initialFavorites={favorites}>*/}
-        <ModalProvider>
-          <Header
-            user={user}
+      <ModalProvider>
+        <Header
+          user={user}
+          settings={settings}
+        />
+        <main>
+          <Aside
             settings={settings}
+            wheels={wheels}
+            quests={quests}
           />
-          <main>
-            <Aside
-              settings={settings}
-              wheelsRound={wheelsRound}
-            />
-            <Content>{children}</Content>
-          </main>
-          <Footer
-            settings={settings}
-            categories={categories}
-            providers={providers}
-            pages={pages}
-          />
-          <Toastify />
-        </ModalProvider>
-      {/*</FavoritesProvider>*/}
+          <Content>{children}</Content>
+        </main>
+        <Footer
+          user={user}
+          settings={settings}
+          categories={categories}
+          providers={providers}
+          pages={pages}
+        />
+        <Toastify />
+      </ModalProvider>
     </NextIntlClientProvider>
   )
 }

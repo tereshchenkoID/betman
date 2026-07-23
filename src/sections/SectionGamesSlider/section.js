@@ -31,7 +31,7 @@ const renderSlide = (slide, settings, user, moreUrl, idx) => {
         <>
           {
             slide?.isNumeric &&
-            <h6 className={style.index}>{idx + 1}</h6>
+            <h2 className={style.index}>{idx + 1}</h2>
           }
           <Thumbnail
             data={slide.data}
