@@ -86,7 +86,7 @@ const Phone = ({
     loadConfig()
   }, [langCode])
 
-  if (loading) return <Preload counts={1} columns={1} styles={{ height: 48 }} />
+  if (loading) return <Preload count={1} className={style.skeleton} />
 
   const isFilled = data && data.length > 3
   const isLabelActive = focused || isFilled

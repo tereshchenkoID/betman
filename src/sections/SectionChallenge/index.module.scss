@@ -1,1 +1,11 @@
 @use '@/scss/config' as *;
+
+.skeleton {
+  --skeleton-rows: 1;
+  --skeleton-cols: 1;
+  --skeleton-height: 21.875rem; // 350px
+
+  @include tab-s {
+    --skeleton-height: 13.75rem; // 220px
+  }
+}

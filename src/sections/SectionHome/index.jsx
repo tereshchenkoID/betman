@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import style from './index.module.scss'
 
-import BannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
+import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
 import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
 import SectionGamesSliderSkeleton from '../SectionGamesSlider/skeleton'
 import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
@@ -29,7 +29,7 @@ const SECTIONS_CONFIG = {
   },
   banners: {
     Component: SectionBanners,
-    Fallback: BannersSkeleton,
+    Fallback: SectionBannersSkeleton,
   },
   games: {
     Component: SectionGamesSlider,

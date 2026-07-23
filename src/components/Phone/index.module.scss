@@ -54,3 +54,9 @@
   color: var(--red);
   font-size: rem(12px);
 }
+
+.skeleton {
+  --skeleton-rows: 1;
+  --skeleton-cols: 1;
+  --skeleton-height: 3rem; // 48px
+}

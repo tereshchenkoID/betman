@@ -27,3 +27,21 @@
   flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
   padding-inline-end: var(--slide-spacing);
 }
+
+.skeleton {
+  --skeleton-rows: 1;
+  --skeleton-cols: 1;
+  --skeleton-height: 6.875rem; // 110px
+
+  @include mob-m {
+    --skeleton-cols: 2;
+  }
+
+  @include tab-s {
+    --skeleton-cols: 3;
+  }
+
+  @include desk-s {
+    --skeleton-cols: 4;
+  }
+}

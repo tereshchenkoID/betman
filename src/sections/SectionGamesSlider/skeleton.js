@@ -1,20 +1,31 @@
+import classNames from 'classnames'
+
 import Preload from '@/components/Preload'
+
+import style from './index.module.scss'
 
 const Skeleton = () => {
   return (
-    <>
+    <div>
       <Preload
-        counts={1}
-        columns={1}
-        styles={{ height: 32, marginBottom: 'var(--gap-default)' }}
+        count={1}
+        className={
+          classNames(
+            style.skeleton,
+            style.top
+          )
+        }
       />
       <Preload
-        counts={6}
-        columns={6}
-        rows={1}
-        styles={{ height: 211 }}
+        count={7}
+        className={
+          classNames(
+            style.skeleton,
+            style.bottom
+          )
+        }
       />
-    </>
+    </div>
   )
 }
 

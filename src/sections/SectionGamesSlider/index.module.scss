@@ -155,3 +155,39 @@
   pointer-events: none;
   letter-spacing: rem(-12px);
 }
+
+.skeleton {
+  --skeleton-rows: 1;
+
+  &.top {
+    --skeleton-cols: 1;
+    --skeleton-height: 2rem; // 32px
+
+    margin-bottom: var(--gap-default);
+  }
+
+  &.bottom {
+    --skeleton-cols: 3;
+    --skeleton-height: 10rem; // 160px
+
+    @include mob-m {
+      --skeleton-cols: 4;
+    }
+
+    @include tab-s {
+      --skeleton-cols: 5;
+    }
+
+    @include tab-m {
+      --skeleton-cols: 6;
+    }
+
+    @include tab-l {
+      --skeleton-cols: 7;
+    }
+
+    @include desk-s {
+      --skeleton-cols: 6;
+    }
+  }
+}

@@ -117,3 +117,21 @@
     padding-inline-end: 0;
   }
 }
+
+.skeleton {
+  --skeleton-cols: 1;
+  --skeleton-rows: 1;
+  --skeleton-height: 8rem; // 128px
+
+  @include mob-m {
+    --skeleton-cols: 2;
+  }
+
+  @include tab-m {
+    --skeleton-cols: 3;
+  }
+
+  @include desk-s {
+    --skeleton-cols: 4;
+  }
+}

@@ -51,3 +51,21 @@
     }
   }
 }
+
+.skeleton {
+  --skeleton-cols: 3;
+  --skeleton-rows: 1;
+  --skeleton-height: 3rem; // 48px
+
+  @include mob-m {
+    --skeleton-cols: 4;
+  }
+
+  @include tab-m {
+    --skeleton-cols: 5;
+  }
+
+  @include desk-s {
+    --skeleton-cols: 6;
+  }
+}

@@ -1,12 +1,12 @@
 import Preload from '@/components/Preload'
 
+import style from './index.module.scss'
+
 const Skeleton = () => {
   return (
     <Preload
-      counts={6}
-      columns={6}
-      rows={1}
-      styles={{ height: 48 }}
+      count={6}
+      className={style.skeleton}
     />
   )
 }

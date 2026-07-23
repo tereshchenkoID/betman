@@ -1,26 +1,27 @@
 @use '@/scss/config' as *;
 
 .block {
-  gap: var(--gap-default);
+  @include size(100%, calc(var(--skeleton-height) * var(--skeleton--rows) + var(--skeleton-gap, var(--gap-default)) * (var(--skeleton-rows) - 1)));
+
+  display: grid;
+  grid-template-columns: repeat(var(--skeleton-cols, 1), 1fr);
+  grid-template-rows: repeat(var(--skeleton-rows, 1), var(--skeleton-height));
+  grid-auto-rows: 0;
+  gap: var(--skeleton-gap, var(--gap-default));
   overflow: hidden;
-  width: 100%;
 }
 
 .item {
-  display: inline-grid;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.1) 0,
-    var(--bg) 25%,
-    rgba(0, 0, 0, 0.2) 50%) 100% / 200% 100%;
+  @include size(100%);
+
+  min-height: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0, var(--bg) 25%, rgba(0, 0, 0, 0.2) 50%) 100% / 200% 100%;
   background-color: var(--material);
-  animation: skeleton 2s linear infinite;
   border-radius: var(--border-radius-6);
-  flex: 1 0 auto;
+  animation: skeleton 2s linear infinite;
 }
 
 @keyframes skeleton {
-
   0% {
     background-position: 100%;
   }

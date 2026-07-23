@@ -1,29 +1,27 @@
+import classNames from 'classnames'
+
 import style from './index.module.scss'
 
 const Preload = ({
-  styles,
-  counts,
-  rows = 1,
-  columns = 1
+  count = 8,
+  className,
 }) => {
   return (
     <div
-      className={style.block}
-      style={{
-        display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
-      }}
+      className={
+        classNames(
+          style.block,
+          className
+        )
+      }
     >
       {
-        Array.from({ length: counts }).map((_, idx) => (
+        Array.from({ length: count }).map((_, idx) =>
           <div
             key={idx}
-            style={styles}
             className={style.item}
           />
-        ))
-      }
+      )}
     </div>
   )
 }

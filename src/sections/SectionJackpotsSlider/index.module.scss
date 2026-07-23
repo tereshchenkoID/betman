@@ -83,3 +83,31 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: var(--gap-4);
 }
+
+.skeleton {
+  --skeleton-rows: 1;
+
+  &.top {
+    --skeleton-cols: 1;
+    --skeleton-height: 2rem; // 32px
+
+    margin-bottom: var(--gap-default);
+  }
+
+  &.bottom {
+    --skeleton-cols: 1;
+    --skeleton-height: 28.125rem; // 450px
+
+    @include mob-m {
+      --skeleton-cols: 2;
+    }
+
+    @include tab-s {
+      --skeleton-cols: 3;
+    }
+
+    @include desk-s {
+      --skeleton-cols: 4;
+    }
+  }
+}
