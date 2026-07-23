@@ -1,0 +1,18 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-24);
+  text-align: center;
+}
+
+.picture {
+  @include size(100%, rem(120px));
+
+  position: relative;
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
+}

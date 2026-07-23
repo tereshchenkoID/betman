@@ -6,6 +6,7 @@ import { getSettings } from '@/app/actions/static'
 import { getCachedUser } from '@/app/actions/auth'
 
 import SectionGame from '@/sections/SectionGame'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }) {
   const { locale, id } = await params
@@ -31,6 +32,11 @@ export default async function Game({ params }) {
       isRedirect: false
     }),
   ])
+
+  // TODO Remove after fix content side
+  if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
+    notFound()
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",

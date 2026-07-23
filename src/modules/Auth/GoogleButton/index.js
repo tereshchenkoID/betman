@@ -6,8 +6,7 @@ import { useRouter } from '@/i18n/routing'
 import { useModal } from '@/context/ModalContext'
 import { loginWithGoogleAction } from '@/app/actions/auth'
 
-import Button from '@/components/Action'
-import Action from "@/components/Action";
+import Action from '@/components/Action'
 
 export default function GoogleButton() {
   const router = useRouter()

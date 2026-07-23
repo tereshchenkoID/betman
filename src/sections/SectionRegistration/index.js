@@ -19,7 +19,6 @@ import Checkbox from '@/components/Checkbox'
 import Select from '@/components/Select'
 import Phone from '@/components/Phone'
 import LoginModal from '@/modules/Modals/LoginModal'
-// import Providers from 'modules/Providers/Providers'
 
 import style from './index.module.scss'
 
@@ -38,6 +37,7 @@ const SectionRegistration = ({
   const router = useRouter()
   const searchParams = useSearchParams()
   const invite = searchParams.get('invite')
+  const promocode = searchParams.get('promocode')
 
   const VALIDATION_RULES = useValidations()
 
@@ -47,7 +47,7 @@ const SectionRegistration = ({
   const { filter, handlePropsChange } = useFilterState({
     name: '',
     surname: '',
-    promocode: '',
+    promocode: promocode || '',
     birthday: '',
     email: '',
     username: '',
@@ -391,8 +391,6 @@ const SectionRegistration = ({
             }
           />
         </p>
-        {/*<hr />*/}
-        {/*<Providers />*/}
       </form>
     </section>
   )

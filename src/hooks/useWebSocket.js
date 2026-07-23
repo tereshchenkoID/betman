@@ -1,8 +1,15 @@
 import { useEffect, useRef } from 'react'
 
-import { consoleHelper } from 'helpers/console'
+import { consoleHelper } from '@/helpers/console'
 
-export const useWebSocket = ({ url, onMessage, onOpen, onError, onClose, reconnectDelay = 3000 }) => {
+export const useWebSocket = ({
+  url,
+  onMessage,
+  onOpen,
+  onError,
+  onClose,
+  reconnectDelay = 3000
+}) => {
   const socketRef = useRef(null)
   const reconnectTimeoutRef = useRef(null)
   const pingIntervalRef = useRef(null)
@@ -65,8 +72,11 @@ export const useWebSocket = ({ url, onMessage, onOpen, onError, onClose, reconne
 
     return () => {
       isUnmounted = true
+      clearInterval(pingIntervalRef.current)
       clearTimeout(reconnectTimeoutRef.current)
-      socketRef.current?.close()
+      if (socketRef.current) {
+        socketRef.current.close()
+      }
     }
   }, [url, reconnectDelay])
 

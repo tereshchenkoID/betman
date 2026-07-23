@@ -22,7 +22,6 @@ const JackpotCard = ({
   classes = []
 }) => {
   const t = useTranslations()
-
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
 

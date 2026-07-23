@@ -72,6 +72,7 @@
       padding-inline: var(--slide-spacing) 0;
       flex: 0 0 calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
       max-width: calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
+      container-type: inline-size;
     }
   }
 }
@@ -145,7 +146,7 @@
   inset-block-end: rem(-1px);
   width: var(--slide-spacing);
   transform: translateX(30%);
-  font-size: 10cqh;
+  font-size: 50cqw;
   z-index: $z-index-2;
   line-height: 1;
   font-weight: var(--typography-bold);

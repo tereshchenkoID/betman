@@ -8,9 +8,13 @@ import NextTopLoader from 'nextjs-toploader'
 import classNames from 'classnames'
 
 import { ModalProvider } from '@/context/ModalContext'
+import { WebSocketProvider } from '@/context/WebSocketContext'
+
+import { getCachedUser } from '@/app/actions/auth'
 
 import Toastify from '@/components/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
+import WSUpdater from '@/modules/WSUpdater'
 
 import 'keen-slider/keen-slider.min.css'
 import 'react-phone-input-2/lib/style.css'
@@ -60,7 +64,15 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params
-  const messages = await getMessages({ locale })
+  const [
+    messages,
+    user
+  ] = await Promise.all([
+    getMessages({ locale }),
+    getCachedUser()
+  ])
+
+  // const messages = await getMessages({ locale })
 
   return (
     <html lang={locale}>
@@ -89,7 +101,10 @@ export default async function RootLayout({ children, params }) {
           shadow="none"
           zIndex={14}
         />
-        {children}
+        <WebSocketProvider user={user}>
+          {children}
+          <WSUpdater />
+        </WebSocketProvider>
         <Toastify />
         <SpeedInsights />
         <Script
