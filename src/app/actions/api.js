@@ -1,84 +1,7 @@
-// 'use server';
-//
-// import { cookies } from 'next/headers'
-// /**
-//  * Universal Server-Side API Request Wrapper.
-//  * Automatically handles query parameters for GET requests and converts objects
-//  * into FormData for POST/PUT/PATCH requests as expected by the backend API.
-//  * * @param {string} endpoint - The target API endpoint (e.g., 'cars/list/').
-//  * @param {Object} [config] - Request configuration options.
-//  * @param {string} [config.method='GET'] - HTTP method (GET, POST, PUT, PATCH, DELETE).
-//  * @param {Object} [config.params={}] - Payload data or query parameters.
-//  * @returns {Promise<Object|null>} Parsed JSON response, success object, or null on failure.
-//  */
-//
-// export const apiRequest = async (endpoint, {
-//   method = 'GET',
-//   params = {}
-// } = {}) => {
-//   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`);
-//   const cookieStore = await cookies();
-//   const token = cookieStore.get('NEXT_SID')?.value;
-//
-//   const options = {
-//     method,
-//     cache: 'no-cache',
-//     headers: {}
-//   };
-//
-//   if (token) {
-//     options.headers['Authorization'] = `Bearer ${token}`;
-//   }
-//
-//   if (method === 'GET' && Object.keys(params).length > 0) {
-//     Object.entries(params).forEach(([key, value]) => {
-//       if (value !== undefined && value !== null) {
-//         url.searchParams.append(key, value);
-//       }
-//     });
-//   }
-//
-//   if (['POST', 'PUT', 'PATCH'].includes(method) && Object.keys(params).length > 0) {
-//     const formData = new FormData();
-//
-//     Object.entries(params)
-//
-//     Object.entries(params).forEach(([key, value]) => {
-//       if (value !== undefined && value !== null) {
-//         formData.append(key, value);
-//       }
-//     });
-//
-//     options.body = formData;
-//   }
-//
-//   try {
-//     const res = await fetch(url.toString(), options);
-//
-//     if (res.status === 204) return { success: true };
-//
-//     const json = await res.json();
-//
-//     console.log(json)
-//
-//     if (!res.ok) {
-//       console.error(`❌ ${method} ${url.pathname} failed: ${res.status}`, json);
-//       return null;
-//     }
-//
-//     return json;
-//   } catch (error) {
-//     console.error(`💥 API Error [${method}] ${endpoint}:`, error);
-//     return null;
-//   }
-// };
-
-
-'use server';
+'use server'
 
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { getLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 
 import {logoutAction} from "@/app/actions/auth";
@@ -100,6 +23,7 @@ export const apiRequest = async (endpoint, {
   params = {},
   cache = 'no-cache',
   next = {},
+  isRedirect = true,
 } = {}) => {
   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
   const cookieStore = await cookies()
@@ -109,7 +33,7 @@ export const apiRequest = async (endpoint, {
 
   const options = {
     method,
-    cache: 'no-cache',
+    cache,
     headers: {
       'Accept-Language': locale,
     }
@@ -154,7 +78,9 @@ export const apiRequest = async (endpoint, {
       // cookieStore.delete('NEXT_SID')
       // cookieStore.delete('USER_INFO')
 
-      redirect('/?logout=true');
+      if (isRedirect) {
+        redirect('/?logout=true');
+      }
     }
 
     if (!res.ok) {

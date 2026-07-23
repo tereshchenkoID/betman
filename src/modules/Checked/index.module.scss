@@ -1,0 +1,59 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($align-items: center);
+
+  position: relative;
+  cursor: pointer;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.active {
+    .left {
+      background-color: transparent;
+    }
+
+    .right {
+      background-color: var(--primary-hover);
+    }
+  }
+}
+
+.input {
+  @include size(0);
+
+  position: absolute;
+  opacity: 0;
+}
+
+.item {
+  @include size(auto, rem(32px));
+  @include transition(background-color);
+
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: var(--gap-2);
+  border-radius: rem(50px);
+  background-color: var(--primary);
+  position: relative;
+  cursor: pointer;
+
+  .left,
+  .right{
+    @include transition;
+    @include flex(center, center);
+
+    position: relative;
+    padding-inline: var(--gap-default);
+    border-radius: rem(50px);
+    overflow: hidden;
+    font-size: rem(12px);
+  }
+
+  .left {
+    background-color: var(--primary-hover);
+  }
+}

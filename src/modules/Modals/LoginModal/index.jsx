@@ -17,7 +17,7 @@ import Providers from '@/modules/Providers'
 
 import style from './index.module.scss'
 
-const Login = () => {
+const Login = ({ isRedirect = true }) => {
   const t = useTranslations()
   const VALIDATION_RULES = useValidations()
   const router = useRouter()
@@ -27,9 +27,6 @@ const Login = () => {
     password: ''
   })
   const [errors, setErrors] = useState({})
-
-  // const hasErrors = Object.values(errors).some(Boolean)
-
   const isValidationErrors = Object.values(errors).some(Boolean)
   const isFormIncomplete = !filter.username || !filter.password
   const isDisabled = isValidationErrors || isFormIncomplete
@@ -47,8 +44,11 @@ const Login = () => {
       if (result.success) {
         sessionStorage.setItem('age', '0')
         closeModal()
-        router.refresh();
-        router.push(NAVIGATION.home.url);
+        router.refresh()
+
+        if (isRedirect) {
+          router.push(NAVIGATION.home.url);
+        }
       }
       else {
         toast.error(t('notification.wrong_auth'));

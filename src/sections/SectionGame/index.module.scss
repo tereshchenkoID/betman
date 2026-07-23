@@ -1,0 +1,105 @@
+@use '@/scss/config' as *;
+
+.block {
+  --header-height: 3rem;
+  --aside-height: 0;
+
+  @include flex($direction: column);
+
+  position: fixed;
+  inset: 0;
+  //inset: max(var(--tg-safe-top), env(safe-area-inset-top)) 0 max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  background-color: var(--bg);
+}
+
+.header {
+  position: relative;
+  flex-shrink: 0;
+  background-color: var(--material);
+  z-index: $z-index-2;
+  height: var(--header-height);
+}
+
+.overlay {
+  position: absolute;
+  inset: var(--header-height) 0 0;
+  z-index: $z-index-2;
+}
+
+.menu {
+  position: relative;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding-inline: var(--gap-default);
+  margin-inline: auto;
+  height: 100%;
+  gap: var(--gap-16);
+
+  @include tab-s {
+    padding-inline: var(--gap-16);
+  }
+}
+
+.options {
+  @include flex(null, center);
+
+  gap: var(--gap-default);
+
+  @include tab-s {
+    gap: var(--gap-16);
+  }
+
+  &:last-child {
+    @include scroll-x;
+
+    padding-bottom: 0;
+  }
+
+  * {
+    flex-shrink: 0;
+  }
+}
+
+.wrapper {
+  @include flex(center, center);
+
+  flex: 1;
+  overflow: hidden;
+}
+
+.error {
+  @include flex(center, center);
+
+  height: 100%;
+  font-size: rem(32px);
+}
+
+.game {
+  @include size(100%);
+}
+
+.iframe {
+  @include size(100%, 100%);
+
+  display: block;
+}
+
+.login {
+  width: 100%;
+  flex-shrink: 0;
+  padding: var(--gap-24);
+  border-radius: var(--border-radius-16);
+  //min-width: rem(400px);
+  max-width: rem(560px);
+  background-color: var(--material);
+}
+
+.subtitle {
+  margin-bottom: var(--gap-16);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-for-material);
+}
