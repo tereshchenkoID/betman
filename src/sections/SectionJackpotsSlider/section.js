@@ -1,12 +1,10 @@
 'use client'
 
-import {startTransition, useEffect, useState} from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useKeenSlider } from 'keen-slider/react'
 
 import { NAVIGATION } from '@/constant/config'
-
-import { useWebSocketContext } from '@/context/WebSocketContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -21,39 +19,8 @@ const SectionJackpots = ({
   user
 }) => {
   const t = useTranslations()
-  const { lastMessage } = useWebSocketContext()
-  const [jackpots, setJackpots] = useState(data)
-
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
-
-  useEffect(() => {
-    startTransition(() => {
-      setJackpots(data)
-    })
-  }, [data])
-
-  useEffect(() => {
-    if (!lastMessage) return
-    const { cmd, data: payload, topic } = lastMessage
-
-    if (cmd === 'update' && topic === 'jackpots') {
-      const updatesMap = new Map(payload.map((item) => [String(item.id), item.amount]))
-
-      startTransition(() => {
-        setJackpots((prev) =>
-          prev.map((jackpot) => {
-            const amount = updatesMap.get(String(jackpot.id))
-            if (amount !== jackpot.amount) {
-              return {...jackpot, amount: amount}
-            }
-
-            return jackpot
-          })
-        )
-      })
-    }
-  }, [lastMessage])
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
@@ -180,7 +147,7 @@ const SectionJackpots = ({
       <div className={style.slider}>
         <div ref={sliderRef} className="keen-slider">
           {
-            jackpots?.map((el, idx) =>
+            data?.map((el, idx) =>
               <div
                 key={idx}
                 className={style.slide}

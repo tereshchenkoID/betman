@@ -21,9 +21,9 @@ export default function WSUpdater({ user }) {
 
     const { cmd, data, topic } = lastMessage
 
-    if (cmd === 'update' && (topic === 'credits' || topic === 'tasks')) {
-      router.refresh()
-    }
+    // if (cmd === 'update' && (topic === 'credits' || topic === 'tasks')) {
+    //   router.refresh()
+    // }
 
     if (cmd === 'update' && topic === 'message') {
       openModal({

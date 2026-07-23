@@ -3,11 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { startTransition, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { useKeenSlider } from 'keen-slider/react'
 
 import { NAVIGATION } from '@/constant/config'
+
+import { useWebSocketContext } from '@/context/WebSocketContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -22,10 +24,41 @@ const JackpotCard = ({
   classes = []
 }) => {
   const t = useTranslations()
+  const { lastMessage } = useWebSocketContext()
+  const [jackpot, setJackpot] = useState(data)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const isExtended = classes.includes('extended')
+
+  useEffect(() => {
+    startTransition(() => {
+      setJackpot(data)
+    })
+  }, [data])
+
+  useEffect(() => {
+    if (!lastMessage) return
+    const { cmd, data: payload, topic } = lastMessage
+
+    if (cmd === 'update' && topic === 'jackpots') {
+      const currentUpdate = payload.find((item) => String(item.id) === String(jackpot?.id))
+
+      if (currentUpdate) {
+        startTransition(() => {
+          setJackpot((prev) => {
+            if (prev?.amount !== currentUpdate.amount) {
+              return {
+                ...prev,
+                amount: currentUpdate.amount,
+              }
+            }
+            return prev
+          })
+        })
+      }
+    }
+  }, [lastMessage, jackpot?.id])
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
@@ -90,16 +123,16 @@ const JackpotCard = ({
       style={{ backgroundImage: 'url(/images/coins.webp)' }}
     >
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
         className={style.logo}
-        aria-label={data?.title}
+        aria-label={jackpot?.title}
       >
         {
-          data?.image &&
+          jackpot?.image &&
           <Image
-            src={data?.image}
+            src={jackpot?.image}
             className={style.image}
-            alt={data?.title || 'Jackpot image'}
+            alt={jackpot?.title || 'Jackpot image'}
             fill
             sizes="164px"
             decoding="async"
@@ -107,30 +140,30 @@ const JackpotCard = ({
         }
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
         className={style.info}
-        aria-label={data?.title}
+        aria-label={jackpot?.title}
       >
-        {data?.title}
+        {jackpot?.title}
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
         className={style.total}
         aria-label={t('jackpot_total')}
       >
         <p className={style.label}>{t('jackpot_total')}</p>
         <div className={style.amount}>
-          <h3 className={style.number}>{data?.amount}</h3>
-          <h4 className={style.currency}>{data?.currency}</h4>
+          <h3 className={style.number}>{jackpot?.amount}</h3>
+          <h4 className={style.currency}>{jackpot?.currency}</h4>
         </div>
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/games`}
+        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/games`}
         className={style.eligible}
         aria-label={t('all_games')}
       >
         <Badge
-          data={data?.counter}
+          data={jackpot?.counter}
           classes={['secondary', 'md', style.badge]}
         />
         <p>{t('all_games')}</p>
@@ -159,7 +192,7 @@ const JackpotCard = ({
 
         <div ref={sliderRef} className="keen-slider">
           {
-            data?.games?.map((el, idx) =>
+            jackpot?.games?.map((el, idx) =>
             <div
               key={idx}
               className={style.slide}

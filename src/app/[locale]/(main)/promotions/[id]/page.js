@@ -4,6 +4,7 @@ import { getPageMetadata } from '@/services/metadata'
 import { apiRequest } from '@/app/actions/api'
 
 import SectionPromo from '@/sections/SectionPromo'
+import {notFound} from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params
@@ -22,6 +23,10 @@ export default async function Promo({ params }) {
       method: 'GET',
     }),
   ])
+
+  if (!res?.data?.id) {
+    notFound()
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",

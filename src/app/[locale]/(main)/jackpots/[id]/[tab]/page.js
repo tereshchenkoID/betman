@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { NAVIGATION, LIST_COUNT } from '@/constant/config'
 
 import { getPageMetadata } from '@/services/metadata'
@@ -18,20 +20,24 @@ export default async function Jackpot({ params }) {
   const [
     user,
     res,
-    games
   ] = await Promise.all([
     getCachedUser(),
     apiRequest(`jackpot/${id}/general`, {
       method: 'GET'
     }),
-    apiRequest(`jackpot/${id}/games`, {
-      method: 'POST',
-      params: {
-        page: 0,
-        count: LIST_COUNT
-      },
-    })
   ])
+
+  if (!res?.data?.id) {
+    notFound()
+  }
+
+  const games = await apiRequest(`jackpot/${id}/games`, {
+    method: 'POST',
+    params: {
+      page: 0,
+      count: LIST_COUNT
+    },
+  })
 
   const jsonLd = {
     '@context': 'https://schema.org',

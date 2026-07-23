@@ -44,13 +44,13 @@ export const WebSocketProvider = ({ children, user }) => {
       socket.send(JSON.stringify({ cmd: 'pong' }))
     }
 
-    if (cmd === 'logout') {
-      handleLogout()
-    }
-
-    if (cmd === 'autologin') {
-      handleAutoLogin(data.login, data.password)
-    }
+    // if (cmd === 'logout') {
+    //   handleLogout()
+    // }
+    //
+    // if (cmd === 'autologin') {
+    //   handleAutoLogin(data.login, data.password)
+    // }
   }, [])
 
   const { socketRef, sendWhenReady } = useWebSocket({
