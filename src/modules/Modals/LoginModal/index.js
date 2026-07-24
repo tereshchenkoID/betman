@@ -12,7 +12,7 @@ import { loginWithCredentialsAction } from '@/app/actions/auth'
 
 import Field from '@/components/Field'
 import Action from '@/components/Action'
-import Providers from '@/modules/Providers'
+// import Providers from '@/modules/Providers'
 
 import style from './index.module.scss'
 
@@ -104,8 +104,8 @@ const Login = ({ isRedirect = true }) => {
           onChange={closeModal}
         />
       </p>
-      <hr />
-      <Providers />
+      {/*<hr />*/}
+      {/*<Providers />*/}
     </form>
   )
 }
