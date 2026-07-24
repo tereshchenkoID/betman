@@ -4,18 +4,6 @@ import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 
-import {logoutAction} from "@/app/actions/auth";
-
-/**
- * Universal Server-Side API Request Wrapper.
- * Automatically fetches the 'NEXT_SID' cookie, builds FormData for POST/PUT/PATCH,
- * and handles session expiration based on the backend idle timeout.
- * @param {string} endpoint - The target API endpoint (e.g., 'user/favorites/').
- * @param {Object} [config] - Request configuration options.
- * @param {string} [config.method='GET'] - HTTP method (GET, POST, PUT, PATCH, DELETE).
- * @param {Object} [config.params={}] - Payload data or query parameters (flat object).
- * @returns {Promise<Object|null>} Parsed JSON response, success object, or null on failure.
- */
 const PROTECTED = ['user/', 'profile/'];
 
 export const apiRequest = async (endpoint, {
@@ -23,7 +11,7 @@ export const apiRequest = async (endpoint, {
   params = {},
   cache = 'no-cache',
   next = {},
-  isRedirect = true,
+  isRedirect = false,
 } = {}) => {
   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
   const cookieStore = await cookies()
@@ -36,7 +24,8 @@ export const apiRequest = async (endpoint, {
     cache,
     headers: {
       'Accept-Language': locale,
-    }
+    },
+    next
   };
 
   const isProtected = PROTECTED.some(prefix => endpoint.startsWith(prefix))
@@ -74,27 +63,13 @@ export const apiRequest = async (endpoint, {
     const json = await res.json();
 
     if (json?.code === '2') {
-      // const cookieStore = await cookies()
-      // cookieStore.delete('NEXT_SID')
-      // cookieStore.delete('USER_INFO')
-
       if (isRedirect) {
         redirect('/?logout=true');
       }
     }
 
-    if (!res.ok) {
-      console.error(`❌ ${method} ${url.pathname} failed: ${res.status}`, json);
-      return null;
-    }
-
     return json;
   } catch (error) {
-    if (error.message === 'NEXT_REDIRECT' || error.digest?.startsWith('NEXT_REDIRECT')) {
-      throw error;
-    }
-
-    console.error(`API Error [${method}] ${endpoint}:`, error);
-    return null;
+    return { code: '3', error_message: 'Internal server error'};
   }
 };

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import { useRouter } from '@/i18n/routing'
+import { toast } from '@/utils/toast'
 import { useModal } from '@/context/ModalContext'
 import { loginWithGoogleAction } from '@/app/actions/auth'
 
@@ -32,22 +33,21 @@ export default function GoogleButton() {
                 const userData = await res.json()
 
                 if (userData?.email) {
-                  const result = await loginWithGoogleAction({
+                  const res = await loginWithGoogleAction({
                     email: userData.email,
                     name: userData.name || 'Google User',
                     picture: userData.picture || ''
                   })
 
-                  if (result.success) {
+                  if (res?.code === '0') {
                     closeModal()
-                    router.push('/')
                     router.refresh()
                   } else {
-                    alert(result.error)
+                    toast.error(res?.error_message)
                   }
                 }
               } catch (error) {
-                console.error('Ошибка получения данных профиля:', error)
+                toast.error(error)
               }
             }
           },

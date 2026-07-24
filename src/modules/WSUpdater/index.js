@@ -56,7 +56,7 @@ export default function WSUpdater({ user }) {
         body: <AgeModal />
       })
     }
-  }, [user, t, openModal])
+  }, [t, user, openModal])
 
   return null
 }

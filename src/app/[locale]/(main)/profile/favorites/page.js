@@ -1,4 +1,4 @@
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params

@@ -1,10 +1,11 @@
+import {notFound} from 'next/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
 
 import SectionPromo from '@/sections/SectionPromo'
-import {notFound} from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params

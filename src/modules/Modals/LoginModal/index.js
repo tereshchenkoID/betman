@@ -1,6 +1,6 @@
 import { startTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { toast } from 'react-toastify'
+import { toast } from '@/utils/toast'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -13,7 +13,6 @@ import { loginWithCredentialsAction } from '@/app/actions/auth'
 import Field from '@/components/Field'
 import Action from '@/components/Action'
 import Providers from '@/modules/Providers'
-// import Recovery from 'modules/Modals/Recovery'
 
 import style from './index.module.scss'
 
@@ -39,9 +38,9 @@ const Login = ({ isRedirect = true }) => {
     e.preventDefault()
 
     startTransition(async () => {
-      const result = await loginWithCredentialsAction(filter.username, filter.password);
+      const res = await loginWithCredentialsAction(filter.username, filter.password)
 
-      if (result.success) {
+      if (res?.code === '0') {
         sessionStorage.setItem('age', '0')
         closeModal()
         router.refresh()
@@ -51,7 +50,7 @@ const Login = ({ isRedirect = true }) => {
         }
       }
       else {
-        toast.error(t('notification.wrong_auth'));
+        toast.error(res?.error_message);
       }
     });
   }
@@ -96,16 +95,6 @@ const Login = ({ isRedirect = true }) => {
         placeholder={t('login')}
         isDisabled={isDisabled}
       />
-      {/*<Action*/}
-      {/*  classes={['md', 'outline']}*/}
-      {/*  placeholder={t('forgot_password')}*/}
-      {/*  onChange={() =>*/}
-      {/*    openModal({*/}
-      {/*      title: t('forgot_password'),*/}
-      {/*      body: <Recovery />*/}
-      {/*    })*/}
-      {/*  }*/}
-      {/*/>*/}
       <p className={style.link}>
         {t('dont_have_account')}
         <Action

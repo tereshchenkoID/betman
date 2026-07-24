@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { NAVIGATION, LIST_COUNT } from '@/constant/config'
 
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/auth'
 import { apiRequest } from '@/app/actions/api'
 

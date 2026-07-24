@@ -1,6 +1,6 @@
 import { NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { getQuests } from '@/app/actions/static'
 
 import SeoSection from '@/sections/SectionSeo'

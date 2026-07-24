@@ -1,6 +1,6 @@
 import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser } from '@/app/actions/auth'
 
@@ -28,7 +28,7 @@ export default async function Games({ params }) {
       params: {
         page: 0,
         count: LIST_COUNT,
-      }
+      },
     }),
   ])
 

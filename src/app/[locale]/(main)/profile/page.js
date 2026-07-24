@@ -1,4 +1,4 @@
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 
 import { NAVIGATION } from '@/constant/config'
 

@@ -96,7 +96,7 @@ const SectionRegistration = ({
       }
     })
 
-    if (res && res?.code === '0') {
+    if (res?.code === '0') {
       router.refresh()
       router.push('/')
     }

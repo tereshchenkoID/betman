@@ -1,11 +1,10 @@
+import { useTranslations } from 'next-intl'
 import { useState, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
 
-import { useToastifyStore } from 'stores/toastifyStore'
+import { toast } from '@/utils/toast'
 
 export const useCopy = () => {
-  const { t } = useTranslation()
-  const { setToastify } = useToastifyStore()
+  const t = useTranslations()
   const [copied, setCopied] = useState(false)
 
   const copy = useCallback(async (text) => {
@@ -37,21 +36,15 @@ export const useCopy = () => {
 
     if (success) {
       setCopied(true)
-      setToastify({
-        type: 'success',
-        text: t('notification.copy_success'),
-      })
+      toast.success(t('notification.copy_success'));
 
       setTimeout(() => setCopied(false), 1200)
     } else {
-      setToastify({
-        type: 'error',
-        text: t('notification.copy_error'),
-      })
+      toast.error(t('notification.copy_error'));
     }
 
     return success
-  }, [t, setToastify])
+  }, [t])
 
   return { copy, copied }
 }

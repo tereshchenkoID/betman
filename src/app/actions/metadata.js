@@ -1,3 +1,5 @@
+import { apiRequest } from '@/app/actions/api'
+
 function metaData(data) {
   if (!data) return {};
 
@@ -38,17 +40,16 @@ function metaData(data) {
 
 export async function getPageMetadata(page) {
   try {
-    const res = await fetch(`${process.env.API_BASE_URL}/metatags/${page}`, {
-      next: { revalidate: 3600 }
+    const data = await apiRequest(`metatags/${page}`, {
+      cache: 'force-cache',
+      next: { revalidate: 3600 },
     });
 
-    if (!res.ok) return null
-
-    const data = await res.json()
+    if (!data) return null;
 
     return metaData(data);
   } catch (error) {
-    console.error(`Error: ${page}:`, error);
+    console.error(`Error metadata: ${page}:`, error);
     return null;
   }
 }

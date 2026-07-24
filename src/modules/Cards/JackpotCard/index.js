@@ -42,7 +42,7 @@ const JackpotCard = ({
     const { cmd, data: payload, topic } = lastMessage
 
     if (cmd === 'update' && topic === 'jackpots') {
-      const currentUpdate = payload.find((item) => String(item.id) === String(jackpot?.id))
+      const currentUpdate = payload.find((item) => item.id === jackpot?.id)
 
       if (currentUpdate) {
         startTransition(() => {

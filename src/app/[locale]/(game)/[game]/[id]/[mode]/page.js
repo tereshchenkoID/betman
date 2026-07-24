@@ -1,12 +1,13 @@
+import { notFound } from 'next/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/services/metadata'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
 import { getSettings } from '@/app/actions/static'
 import { getCachedUser } from '@/app/actions/auth'
 
 import SectionGame from '@/sections/SectionGame'
-import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }) {
   const { locale, id } = await params
@@ -29,7 +30,6 @@ export default async function Game({ params }) {
     apiRequest(`game/${id}/`),
     apiRequest(`v1/?gameId=${id}&demo=${mode}/`, {
       method: 'POST',
-      isRedirect: false
     }),
   ])
 

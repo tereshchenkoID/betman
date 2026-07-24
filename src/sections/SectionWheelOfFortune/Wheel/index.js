@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { toast } from 'react-toastify'
+import { toast } from '@/utils/toast'
 
 import { spinWheelAction } from '@/app/actions/wheels'
 
@@ -268,7 +268,6 @@ const Wheel = ({
     timerRef.current = requestAnimationFrame(step)
   }
 
-  // Clean up animation animation frames on unmount
   useEffect(() => {
     return () => {
       if (timerRef.current) cancelAnimationFrame(timerRef.current)
