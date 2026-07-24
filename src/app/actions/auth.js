@@ -1,35 +1,24 @@
 'use server'
 
+import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
-async function saveSession(token, userData) {
+const saveSession = async (token) => {
+  if (!token) return
+
   const cookieStore = await cookies()
-  const maxAge = 60 * 60 * 24 * 30 // 30 дней
-  const isProd = process.env.NODE_ENV === 'production'
-
-  if (token) {
-    cookieStore.set('NEXT_SID', token, {
-      httpOnly: true,
-      path: '/',
-      sameSite: 'lax',
-      secure: isProd,
-      maxAge
-    })
-  }
-
-  if (userData) {
-    cookieStore.set('USER_INFO', JSON.stringify(userData), {
-      path: '/',
-      sameSite: 'lax',
-      secure: isProd,
-      maxAge
-    })
-  }
+  cookieStore.set('NEXT_SID', token, {
+    httpOnly: true,
+    path: '/',
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 60 * 60 * 24 * 30 // 30 дней
+  })
 }
 
-export async function loginWithCredentialsAction(username, password) {
+export const loginWithCredentialsAction = async (username, password) => {
   const data = await apiRequest('login/', {
     method: 'POST',
     params: { username, password },
@@ -37,13 +26,14 @@ export async function loginWithCredentialsAction(username, password) {
   })
 
   if (data?.token) {
+    await saveSession(data.token)
     revalidatePath('/', 'layout')
   }
 
   return data
 }
 
-export async function loginWithGoogleAction({ email, name, picture }) {
+export const loginWithGoogleAction = async ({ email, name, picture }) => {
   const data = await apiRequest('login/', {
     method: 'POST',
     params: {
@@ -57,40 +47,29 @@ export async function loginWithGoogleAction({ email, name, picture }) {
   })
 
   if (data?.token) {
+    await saveSession(data.token)
     revalidatePath('/', 'layout')
   }
 
   return data
 }
 
-export async function logoutAction() {
-  const cookieStore = await cookies()
-  cookieStore.delete('NEXT_SID')
-  cookieStore.delete('USER_INFO')
-  revalidatePath('/', 'layout')
-  return { success: true }
+export const logoutAction = async () => {
+  const res = await apiRequest('logout/', {
+    method: 'GET',
+  })
+
+  if (res?.code === '0' && !res?.id) {
+    const cookieStore = await cookies()
+    cookieStore.delete('NEXT_SID')
+    revalidatePath('/', 'layout')
+    return { success: true }
+  }
 }
 
-export async function getCachedUser() {
-  const cookieStore = await cookies()
-  const session = await apiRequest('authSession/', {
+export const getCachedUser = cache(async () => {
+  return await apiRequest('authSession/', {
     method: 'GET',
     cache: 'no-cache'
   })
-
-  if (session) {
-    return session
-  }
-
-  const cached = cookieStore.get('USER_INFO')?.value
-
-  if (cached) {
-    try {
-      return JSON.parse(cached)
-    } catch {
-      return null
-    }
-  }
-
-  return null
-}
+})

@@ -42,8 +42,6 @@ const SectionJackpot = ({
     router.push(`${NAVIGATION.jackpots.url}/${id}/${tab.key}`)
   }
 
-  // TODO refactoring pages, meta, and data
-
   return (
     <section>
       <div className={style.header}>

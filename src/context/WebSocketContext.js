@@ -48,8 +48,9 @@ export const WebSocketProvider = ({ children, user }) => {
     //   handleLogout()
     // }
     //
-    // if (cmd === 'autologin') {
-    //   handleAutoLogin(data.login, data.password)
+
+    // if (cmd === 'set-credits' && topic === 'account') {
+    //   setAuth({ ...auth, credits: data })
     // }
   }, [])
 

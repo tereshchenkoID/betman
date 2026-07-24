@@ -8,6 +8,7 @@ import { useModal } from '@/context/ModalContext'
 import { loginWithGoogleAction } from '@/app/actions/auth'
 
 import Action from '@/components/Action'
+import Image from "next/image";
 
 export default function GoogleButton() {
   const router = useRouter()
@@ -68,7 +69,7 @@ export default function GoogleButton() {
       }, 100)
       return () => clearInterval(interval)
     }
-  }, [router])
+  }, [closeModal, router])
 
   const handleGoogleLogin = () => {
     if (window._googleTokenClient) {
@@ -81,10 +82,15 @@ export default function GoogleButton() {
   return (
     <Action
       classes={['primary', 'lg']}
-      icon={'google'}
-      placeholder="Google"
       disabled={!isSdkLoaded}
       onChange={handleGoogleLogin}
-    />
+    >
+      <Image
+        src={'/images/providers/google.webp'}
+        alt={'Google'}
+        width={34}
+        height={34}
+      />
+    </Action>
   )
 }

@@ -2,18 +2,20 @@
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import { ROUTES_USER } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
 import { fixed } from '@/helpers/fixed'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Logo from '@/modules/Logo'
 import Languages from '@/modules/Languages'
 import Account from '@/modules/Account'
+import AccountMenu from '@/modules/AccountMenu'
 import Status from '@/modules/Status'
 import SearchModal from '@/modules/Modals/SearchModal'
 
@@ -23,6 +25,15 @@ const Header = ({ user, settings }) => {
   const t = useTranslations()
   const blockRef = useRef(null)
   const { openModal } = useModal()
+  const [toggle, setToggle] = useState(false)
+
+  useOutsideClick(
+    blockRef,
+    () => {
+      setToggle(!toggle)
+    },
+    toggle
+  )
 
   return (
     <header className={style.block}>
@@ -75,10 +86,13 @@ const Header = ({ user, settings }) => {
                   <Account />
                 </div>
           }
-          {/*{*/}
-          {/*  toggle &&*/}
-          {/*  <AccountMenu setToggle={setToggle} />*/}
-          {/*}*/}
+          {
+            toggle &&
+            <AccountMenu
+              user={user}
+              setToggle={setToggle}
+            />
+          }
         </div>
       </div>
     </header>

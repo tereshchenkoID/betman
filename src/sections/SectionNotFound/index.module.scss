@@ -1,16 +1,11 @@
 @use '@/scss/config' as *;
 
-.block {
-  @include flex($direction: column);
-
-  padding-block: var(--gap-default);
-}
-
 .header {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: var(--gap-16);
+  margin-bottom: var(--gap-default);
 }
 
 .content {
@@ -22,4 +17,5 @@
 .subtitle {
   font-size: rem(76px);
   color: var(--link);
+  line-height: 1;
 }

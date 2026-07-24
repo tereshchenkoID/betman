@@ -13,13 +13,13 @@ const SectionNotFound = () => {
   const t = useTranslations()
 
   return (
-    <section className={style.block}>
+    <section>
       <div className={style.header}>
-        <Back />
-        <h3 className={style.title}>{t('notification.404_link')}</h3>
+        <Back url={NAVIGATION.home.url} />
+        <h1>{t('notification.404_link')}</h1>
       </div>
       <div className={style.content}>
-        <h1 className={style.subtitle}>404</h1>
+        <h2 className={style.subtitle}>404</h2>
         <h2>{t('notification.404_title')}</h2>
         <p>{t('notification.404_text')}</p>
         <Action

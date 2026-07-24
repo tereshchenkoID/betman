@@ -1,0 +1,33 @@
+@use '@/scss/config' as *;
+
+.block {
+  padding: var(--gap-4) var(--gap-default);
+  position: relative;
+  border-radius: var(--border-radius-default);
+  border: rem(1px) solid currentColor;
+  font-size: rem(12px);
+
+  &::before {
+    @include absolute-filled;
+
+    background-color: currentColor;
+    opacity: 0.1;
+    content: ''
+  }
+
+  &.error {
+    color: var(--red);
+  }
+
+  &.info {
+    color: var(--blue);
+  }
+
+  &.warning {
+    color: var(--amber);
+  }
+
+  &.success {
+    color: var(--green);
+  }
+}

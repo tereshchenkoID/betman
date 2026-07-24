@@ -14,7 +14,7 @@ import Favourite from '@/modules/Favorite'
 import LoginModal from '@/modules/Modals/LoginModal'
 import Checked from '@/modules/Checked'
 import Back from '@/modules/Back'
-// import AccountMenu from '@/modules/AccountMenu'
+import AccountMenu from '@/modules/AccountMenu'
 
 import style from './index.module.scss'
 
@@ -86,7 +86,10 @@ const SectionGame = ({
             className={style.menu}
             onClick={(e) => e.stopPropagation()}
           >
-            {/*<AccountMenu setToggle={setToggle} />*/}
+            <AccountMenu
+              user={user}
+              setToggle={setToggle}
+            />
           </div>
         </div>
       }

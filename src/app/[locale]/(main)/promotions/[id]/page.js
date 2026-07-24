@@ -25,7 +25,7 @@ export default async function Promo({ params }) {
     }),
   ])
 
-  if (!res?.data?.id) {
+  if (res?.meta?.results === '0') {
     notFound()
   }
 

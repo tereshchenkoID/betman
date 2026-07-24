@@ -37,22 +37,22 @@ const Login = ({ isRedirect = true }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    startTransition(async () => {
-      const res = await loginWithCredentialsAction(filter.username, filter.password)
-
+    loginWithCredentialsAction(filter.username, filter.password).then((res) => {
       if (res?.code === '0') {
         sessionStorage.setItem('age', '0')
         closeModal()
-        router.refresh()
 
         if (isRedirect) {
-          router.push(NAVIGATION.home.url);
+          router.push(NAVIGATION.home.url)
+        } else {
+          startTransition(() => {
+            router.refresh()
+          })
         }
+      } else {
+        toast.error(res?.error_message)
       }
-      else {
-        toast.error(res?.error_message);
-      }
-    });
+    })
   }
 
   return (

@@ -63,6 +63,8 @@ export const apiRequest = async (endpoint, {
     const json = await res.json();
 
     if (json?.code === '2') {
+      cookieStore.delete('NEXT_SID')
+
       if (isRedirect) {
         redirect('/?logout=true');
       }

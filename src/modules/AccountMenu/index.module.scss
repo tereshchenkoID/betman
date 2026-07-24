@@ -1,0 +1,134 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex($direction: column);
+  @include scroll-y;
+
+  position: fixed;
+  inset-block: var(--header-height) var(--aside-height);
+
+  //inset: calc(max(var(--tg-safe-top), env(safe-area-inset-top)) + var(--header-height)) 0 calc(max(var(--tg-safe-bottom), env(safe-area-inset-bottom)) + var(--aside-height)) 0;
+  //inset-block: calc(max(var(--tg-safe-top), env(safe-area-inset-top)) + var(--header-height)) 0 calc(max(var(--tg-safe-bottom), env(safe-area-inset-bottom)) + var(--aside-height)) 0;
+  inset-inline: auto 0;
+  background-color: var(--material);
+  width: 100%;
+  max-height: calc(100% - var(--header-height));
+
+  @include tab-s {
+    inset-inline-start: auto;
+    width: rem(320px);
+    border-radius: var(--border-radius-16);
+    border: rem(1px) solid var(--tertiary-disabled);
+    max-height: unset;
+  }
+
+  @include desk-s {
+    position: absolute;
+    inset-block: calc(100% + var(--gap-default)) auto;
+  }
+}
+
+.top,
+.center,
+.bottom {
+  padding: var(--gap-12);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-12);
+  border-bottom: rem(1px) solid var(--tertiary-disabled);
+}
+
+.bottom {
+  margin-top: auto;
+  border-top: rem(1px) solid var(--tertiary-disabled);
+}
+
+.center {
+  display: grid;
+  gap: var(--gap-16)
+}
+
+.avatar {
+  @include size(rem(40px));
+
+  position: relative;
+
+  img {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+.nickname {
+  font-size: rem(12px);
+}
+
+.container {
+  background-color: var(--material-hover);
+  border-radius: var(--border-radius-default);
+  font-size: rem(13px);
+}
+
+.info,
+.link {
+  padding: var(--gap-default);
+  gap: var(--gap-default);
+
+  &:not(:last-child) {
+    border-bottom: rem(1px) solid var(--tertiary-disabled);
+  }
+
+  @include hover {
+    &:hover {
+      color: var(--link);
+    }
+  }
+}
+
+.info,
+.amount {
+  @include flex(space-between, center);
+
+  width: 100%;
+}
+
+.info {
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+.link {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-default);
+  padding: var(--gap-default);
+}
+
+.count {
+  @include flex($align-items: baseline);
+
+  gap: var(--gap-4);
+}
+
+.text {
+  @include flex(null, center);
+
+  position: relative;
+  gap: var(--gap-4);
+
+  * {
+    position: static;
+  }
+}

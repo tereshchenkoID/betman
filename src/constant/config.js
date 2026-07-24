@@ -69,11 +69,6 @@ export const NAVIGATION = {
     icon: 'icon-navigation-home',
     url: '/info',
   },
-  invite_friends: {
-    text: 'navigation.invite_friends',
-    icon: 'icon-human-user-add',
-    url: '/invite-friends',
-  },
   not_found: {
     text: 'navigation.not_found',
     url: '/not-found',
@@ -116,6 +111,11 @@ export const ROUTES_USER = {
     icon: 'icon-actions-scan',
     url: '/account/promocode',
   },
+  invite_friends: {
+    text: 'navigation.invite_friends',
+    icon: 'icon-human-user-add',
+    url: '/account/invite-friends',
+  },
 }
 
 export const LIST_COUNT = 16
@@ -125,4 +125,11 @@ export const TASK_STATUS = {
   1: 'done',
   2: 'pending',
   3: 'expired',
+}
+
+export const USER_VERIFY = {
+  0: 'not',
+  1: 'verification',
+  2: 'rejected',
+  3: 'verified',
 }
