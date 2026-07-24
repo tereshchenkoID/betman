@@ -1,27 +1,27 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useFavorites } from '@/context/FavoritesContext'
 
-import QuestCard from '@/modules/Cards/QuestCard'
 import Empty from '@/modules/Empty'
+import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 
 import style from './index.module.scss'
 
-const SectionQuests = ({ data, meta }) => {
-  const t = useTranslations()
+const SectionAccountFavorites = ({ user  }) => {
+  const { favorites, meta } = useFavorites()
 
   return (
     <section>
-      <h1>{t('section.quests')}</h1>
       {
         meta?.results !== "0"
           ?
             <div className={style.list}>
               {
-                data?.map((el, idx) =>
-                  <QuestCard
+                favorites?.map((el, idx) =>
+                  <Thumbnail
                     key={idx}
                     data={el}
+                    user={user}
                   />
                 )
               }
@@ -33,4 +33,4 @@ const SectionQuests = ({ data, meta }) => {
   )
 }
 
-export default SectionQuests
+export default SectionAccountFavorites

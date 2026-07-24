@@ -1,0 +1,25 @@
+@use '@/scss/config' as *;
+
+.list {
+  --game-count: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--game-count), 1fr);
+  gap: var(--gap-default);
+
+  @include mob-s {
+    --game-count: 3;
+  }
+
+  @include tab-s {
+    --game-count: 4;
+  }
+
+  @include tab-m {
+    --game-count: 5;
+  }
+
+  @include tab-l {
+    --game-count: 6;
+  }
+}

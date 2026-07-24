@@ -13,7 +13,7 @@ import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
-const Game = ({ data, user }) => {
+const GameModal = ({ data, user }) => {
   const t = useTranslations()
   const router = useRouter()
   const { openModal, closeModal, closeAllModals } = useModal()
@@ -39,7 +39,10 @@ const Game = ({ data, user }) => {
       }}
     >
       <div className={style.header}>
-        <Favourite data={data} />
+        <Favourite
+          data={data}
+          user={user}
+        />
         <Action
           classes={['secondary', 'md', 'square']}
           onChange={closeModal}
@@ -97,4 +100,4 @@ const Game = ({ data, user }) => {
   )
 }
 
-export default Game
+export default GameModal

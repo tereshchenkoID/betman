@@ -32,7 +32,6 @@ export async function getPages() {
 
 export async function getWheelsRound() {
   const res = await apiRequest('wheel/rounds/', {
-    method: 'GET',
     next: { tags: ['wheels-rounds'] },
   })
 
@@ -46,7 +45,6 @@ export async function getWheelsRound() {
 
 export async function getQuests() {
   const res = await apiRequest('quests/', {
-    method: 'GET',
     next: { tags: ['quests'] },
   })
 
@@ -57,4 +55,10 @@ export async function getQuests() {
     quests: res,
     questsCounter: counter,
   }
+}
+
+export async function getFavorites() {
+  return apiRequest('favorites/', {
+    next: { tags: ['favorites'] },
+  });
 }

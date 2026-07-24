@@ -72,7 +72,7 @@ const SectionGames = ({
               {
                 games.map((el, idx) =>
                 <Thumbnail
-                  key={el?.id || idx}
+                  key={idx}
                   data={el}
                   user={user}
                 />

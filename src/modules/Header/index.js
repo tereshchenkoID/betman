@@ -61,7 +61,7 @@ const Header = ({ user, settings }) => {
             onChange={() => openModal({
               title: t('search'),
               size: 'lg',
-              body: <SearchModal />
+              body: <SearchModal user={user} />
             })}
           >
             <Icon name={'icon-navigation-search'} />

@@ -32,6 +32,8 @@ const AccountMenu = ({ user, setToggle }) => {
   const t = useTranslations()
 
   const handleLogout = async () => {
+    setToggle(false)
+
     try {
       await logoutAction()
     } catch (e) {

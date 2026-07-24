@@ -1,0 +1,160 @@
+@use '@/scss/config' as *;
+
+.top {
+  display: grid;
+  align-items: center;
+  gap: var(--gap-24);
+  margin-bottom: rem(40px);
+  max-width: rem(1000px);
+
+  @include tab-l {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.bottom {
+  max-width: rem(600px);
+  width: 100%;
+  margin-inline: auto;
+}
+
+.left {
+  display: grid;
+  gap: var(--gap-24);
+}
+
+.info {
+  text-align: center;
+
+  @include tab-l {
+    text-align: start;
+  }
+}
+
+.links,
+.form,
+.divider {
+  display: grid;
+  gap: var(--gap-default);
+  align-items: center;
+}
+
+.links {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form {
+  grid-template-columns: 1fr auto;
+}
+
+.subtitle {
+  color: var(--link);
+}
+
+.divider {
+  grid-template-columns: 1fr auto 1fr;
+
+  &::before,
+  &::after {
+    background-color: var(--primary-hover);
+    height: rem(1px);
+    content: '';
+  }
+}
+
+.description {
+  text-align: center;
+  margin-bottom: var(--gap-12);
+}
+
+.steps {
+  position: relative;
+
+  &::before {
+    display: none;
+    position: absolute;
+    left: 50%;
+    inset-block: 0;
+    transform: translateX(-50%);
+    background-color: var(--primary-hover);
+    width: rem(1px);
+    content: '';
+
+    @include tab-l {
+      display: block;
+    }
+  }
+}
+
+.step {
+  position: relative;
+  padding: var(--gap-12);
+  border-radius: var(--border-radius-default);
+  background: linear-gradient(0deg, transparent 0%, var(--material) 100%);
+  border: rem(1px) solid var(--material-disabled);
+
+  @include tab-l {
+    width: calc(50% - var(--gap-16));
+  }
+
+  &::after,
+  &::before {
+    display: none;
+    position: absolute;
+    top: 50%;
+    background-color: var(--link);
+    content: '';
+
+    @include tab-l {
+      display: block;
+    }
+  }
+
+  &::after {
+    @include size(rem(14px));
+
+    border-radius: 50%;
+  }
+
+  &::before {
+    @include size(rem(16px), rem(1px));
+  }
+
+  &:nth-child(odd) {
+    &::after {
+      right: 0;
+      transform: translate(rem(24px), -50%);
+    }
+
+    &::before {
+      right: 0;
+      transform: translate(rem(16px), -50%);
+    }
+  }
+
+  &:nth-child(even) {
+    margin-inline-start: auto;
+
+    &::after {
+      left: 0;
+      transform: translate(rem(-24px), -50%);
+    }
+
+    &::before {
+      left: 0;
+      transform: translate(rem(-16px), -50%);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--gap-default);
+  }
+}
+
+.image {
+  max-height: rem(300px);
+
+  @include tab-l {
+    max-height: rem(500px);
+  }
+}

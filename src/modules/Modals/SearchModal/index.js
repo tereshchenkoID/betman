@@ -27,7 +27,7 @@ const SECTIONS = {
   1: 'providers',
 }
 
-const Search = () => {
+const SearchModal = ({ user }) => {
   const t = useTranslations()
   const [isPending, startTransition] = useTransition()
   const [data, setData] = useState(null)
@@ -139,17 +139,18 @@ const Search = () => {
                 {
                   isGamesSection
                     ?
-                      activeList.map((el) =>
+                      activeList.map((el, idx) =>
                         <Thumbnail
-                          key={el?.id || el?.slug}
+                          key={idx}
                           data={el}
+                          user={user}
                           isEmpty={true}
                         />
                       )
                     :
-                      activeList.map((el) =>
+                      activeList.map((el, idx) =>
                         <ProviderCard
-                          key={el?.id || el?.slug}
+                          key={idx}
                           data={el}
                         />
                       )
@@ -174,4 +175,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchModal

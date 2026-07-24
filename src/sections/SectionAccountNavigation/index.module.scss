@@ -1,0 +1,14 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex;
+  @include scroll-x;
+
+  overflow-y: hidden;
+  gap: var(--gap-default);
+}
+
+.link {
+  gap: var(--gap-default);
+  flex-shrink: 0;
+}

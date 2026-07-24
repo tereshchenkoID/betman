@@ -58,7 +58,7 @@ const SectionCategories = ({
                 openModal({
                   title: t('search'),
                   size: 'lg',
-                  body: <SearchModal />
+                  body: <SearchModal user={user} />
                 })
               }
             >

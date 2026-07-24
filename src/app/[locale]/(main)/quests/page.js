@@ -4,7 +4,7 @@ import { getPageMetadata } from '@/app/actions/metadata'
 import { getQuests } from '@/app/actions/static'
 
 import SeoSection from '@/sections/SectionSeo'
-import SectionQuests from "@/sections/SectionQuests";
+import SectionQuests from '@/sections/SectionQuests'
 
 export async function generateMetadata({ params }) {
   const { locale } = await params

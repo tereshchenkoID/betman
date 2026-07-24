@@ -9,8 +9,10 @@ import classNames from 'classnames'
 
 import { ModalProvider } from '@/context/ModalContext'
 import { WebSocketProvider } from '@/context/WebSocketContext'
+import { FavoritesProvider } from '@/context/FavoritesContext'
 
 import { getCachedUser } from '@/app/actions/auth'
+import { getFavorites } from '@/app/actions/static'
 
 import Toastify from '@/components/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
@@ -66,13 +68,13 @@ export default async function RootLayout({ children, params }) {
   const { locale } = await params
   const [
     messages,
-    user
+    user,
+    favorites,
   ] = await Promise.all([
     getMessages({ locale }),
-    getCachedUser()
+    getCachedUser(),
+    getFavorites()
   ])
-
-  // const messages = await getMessages({ locale })
 
   return (
     <html lang={locale}>
@@ -89,7 +91,7 @@ export default async function RootLayout({ children, params }) {
       messages={messages}
       locale={locale}
     >
-      <ModalProvider>
+      <FavoritesProvider user={user} data={favorites?.data} meta={favorites?.meta}>
         <ScrollToTop />
         <NextTopLoader
           color="#0490A8"
@@ -101,17 +103,19 @@ export default async function RootLayout({ children, params }) {
           shadow="none"
           zIndex={14}
         />
-        <WebSocketProvider user={user}>
-          {children}
-          <WSUpdater />
-        </WebSocketProvider>
+        <ModalProvider>
+          <WebSocketProvider user={user}>
+            {children}
+            <WSUpdater />
+          </WebSocketProvider>
+        </ModalProvider>
         <Toastify />
         <SpeedInsights />
         <Script
           src="https://accounts.google.com/gsi/client"
           strategy="lazyOnload"
         />
-      </ModalProvider>
+      </FavoritesProvider>
     </NextIntlClientProvider>
     </body>
     </html>

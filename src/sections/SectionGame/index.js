@@ -60,7 +60,10 @@ const SectionGame = ({
             />
             {
               game &&
-              <Favourite data={game} />
+              <Favourite
+                data={game}
+                user={user}
+              />
             }
             <FullScreen />
             {

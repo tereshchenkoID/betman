@@ -76,7 +76,10 @@ const Thumbnail = ({
       }
       <div className={style.details}>
         <div className={style.header}>
-          <Favourite data={data} />
+          <Favourite
+            data={data}
+            user={user}
+          />
         </div>
         <div className={style.content}>
           <div className={style.actions}>
