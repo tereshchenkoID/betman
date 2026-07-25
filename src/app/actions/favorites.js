@@ -7,7 +7,7 @@ export async function addFavoritesAction(id, isFavourite) {
   const res = await apiRequest(`game/${id}/`, {
     method: 'POST',
     params: {
-      cmd: isFavourite ? 'remove_from_favorites' : 'add_to_favorites',
+      cmd: isFavourite ? 'remove' : 'add',
     },
   })
 

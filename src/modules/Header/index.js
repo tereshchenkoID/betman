@@ -38,7 +38,7 @@ const Header = ({ user, settings }) => {
   return (
     <header className={style.block}>
       <div className={style.container}>
-        <Logo settings={settings} />
+        <Logo />
         <div
           ref={blockRef}
           className={style.right}

@@ -50,7 +50,7 @@ const SectionGame = ({
         <div className={style.container}>
           <div className={style.options}>
             <Back url={NAVIGATION.home.url} />
-            <Logo settings={settings} />
+            <Logo />
           </div>
           <div className={style.options}>
             <Checked

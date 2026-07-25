@@ -86,7 +86,7 @@ const Footer = ({
         </div>
         <hr className={style.divider} />
         <div className={style.bottom}>
-          <Logo settings={settings} />
+          <Logo />
           <div className={style.socials}>
             {
               settings.social.map((el, idx) =>

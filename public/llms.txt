@@ -1,0 +1,14 @@
+# Gaming & Casino Platform
+
+> Online gaming platform offering online slots, live dealer games, tournaments, jackpots, promotions, and interactive quests.
+
+## Main Pages
+
+- [Home Page](https://localhost:3000/en): Main catalog, top games, featured promotions, and platform overview.
+- [Games Catalog](/games): Browse and search the full collection of online games and slots.
+- [Jackpots](/jackpots): Current progressive jackpot pools, history, and active prizes.
+- [Promotions & Bonuses](/promotions): Active bonuses, special offers, and promotional deals.
+- [Game Providers](/providers): List of supported game software developers and studios.
+- [Tournaments](/tournaments): Active and upcoming competitive gaming events, leaderboards, and rules.
+- [Quests](/quests): Daily tasks, challenges, and user achievement rewards.
+- [Wheel of Fortune](/wheel-of-fortune): Interactive spin feature for daily rewards and bonuses.

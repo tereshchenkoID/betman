@@ -4,6 +4,7 @@ import { getMessages } from 'next-intl/server'
 import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { preload } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import classNames from 'classnames'
 
@@ -65,6 +66,9 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children, params }) {
+  preload('/images/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
+  preload('/images/logo-mobile.svg', { as: 'image', type: 'image/svg+xml' })
+
   const { locale } = await params
   const [
     messages,
@@ -91,7 +95,11 @@ export default async function RootLayout({ children, params }) {
       messages={messages}
       locale={locale}
     >
-      <FavoritesProvider user={user} data={favorites?.data} meta={favorites?.meta}>
+      <FavoritesProvider
+        user={user}
+        data={favorites?.data}
+        meta={favorites?.meta}
+      >
         <ScrollToTop />
         <NextTopLoader
           color="#0490A8"

@@ -4,7 +4,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import style from './index.module.scss'
 
-const Logo = ({ settings }) => {
+const Logo = () => {
   return (
     <Link
       href={NAVIGATION.home.url}
@@ -13,9 +13,9 @@ const Logo = ({ settings }) => {
       aria-label="Logo"
     >
       <picture>
-        <source media="(max-width: 1279px)" srcSet={settings.assets.logo_mobile} />
+        <source media="(max-width: 1279px)" srcSet={'/images/logo-mobile.svg'} />
         <img
-          srcSet={settings.assets.logo_desktop}
+          srcSet={'/images/logo-desktop.svg'}
           width={30}
           height={30}
           alt={'Logo'}

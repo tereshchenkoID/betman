@@ -8,12 +8,14 @@ import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 import style from './index.module.scss'
 
 const SectionAccountFavorites = ({ user  }) => {
-  const { favorites, meta } = useFavorites()
+  const { favorites } = useFavorites()
+
+  console.log(favorites)
 
   return (
     <section>
       {
-        meta?.results !== "0"
+        favorites?.length > 0
           ?
             <div className={style.list}>
               {
