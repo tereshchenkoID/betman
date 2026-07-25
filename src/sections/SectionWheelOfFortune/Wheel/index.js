@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { toast } from '@/utils/toast'
 
-import { spinWheelAction } from '@/app/actions/wheels'
+import { spinWheelAction } from './action'
 
 import style from './index.module.scss'
 

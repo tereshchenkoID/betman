@@ -15,7 +15,7 @@ export default async function sitemap() {
 
   const staticPages = [
     '',
-    '/games',
+    '/casino',
     '/info',
     '/jackpots',
     '/promotions',
@@ -40,7 +40,7 @@ export default async function sitemap() {
   })
 
   try {
-    const response = await apiRequest('games/list/', { method: 'GET' })
+    const response = await apiRequest('casino/list/', { method: 'GET' })
     const games = response?.data || []
 
     locales.forEach((locale) => {

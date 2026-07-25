@@ -1,0 +1,8 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include flex(center, center);
+
+  padding-top: var(--gap-24);
+  gap: var(--gap-24);
+}

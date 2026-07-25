@@ -1,20 +1,7 @@
-// import createMiddleware from 'next-intl/middleware';
-// import { routing } from './i18n/routing';
-//
-// const handleI18nRouting = createMiddleware(routing);
-//
-// export function proxy(request) {
-//   return handleI18nRouting(request);
-// }
-//
-// export const config = {
-//   matcher: ['/', '/(ru|en)/:path*', '/((?!_next|_vercel|.*\\..*).*)']
-// };
+import { NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 
-
-import { NextResponse } from 'next/server';
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import { routing } from '@/i18n/routing'
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -35,51 +22,30 @@ function getRequestLocale(request, pathname) {
 }
 
 export function proxy(request) {
-  const { pathname, searchParams } = request.nextUrl;
+  const { pathname } = request.nextUrl;
 
   if (pathname.includes('.') || pathname.startsWith('/_next')) {
-    return handleI18nRouting(request);
+    return NextResponse.next();
   }
 
   const locale = getRequestLocale(request, pathname);
 
-  // const isProfilePage = pathname === '/profile' ||
-  //   pathname.startsWith('/profile/') ||
-  //   /\/[a-z]{2}\/profile(\/|$)/.test(pathname);
-  //
-  // const hasToken = request.cookies.has('NEXT_SID');
+  const pathnameWithoutLocale = pathname.replace(new RegExp(`^/(${routing.locales.join('|')})`), '');
+  const isAccountPage = pathnameWithoutLocale === '/account' || pathnameWithoutLocale.startsWith('/account/');
 
-  // if (searchParams.get('logout') === 'true') {
-  //   const segments = pathname.split('/').filter(Boolean);
-  //   const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
-  //
-  //   // const homepageUrl = new URL(`/${locale}`, request.url);
-  //   const logoutUrl = new URL(`/${locale}/logout`, request.url);
-  //   const response = NextResponse.redirect(logoutUrl);
-  //
-  //   response.cookies.delete('NEXT_SID');
-  //   response.cookies.delete('USER_INFO');
-  //   response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate');
-  //
-  //   return response;
-  // }
+  const hasToken = request.cookies.has('NEXT_SID');
 
-  // if (isProfilePage && !hasToken) {
-  //   const segments = pathname.split('/').filter(Boolean);
-  //   const locale = (segments[0] && segments[0].length === 2) ? segments[0] : 'en';
-  //
-  //   const loginUrl = new URL(`/${locale}/login`, request.url);
-  //   return NextResponse.redirect(loginUrl);
-  // }
+  if (isAccountPage && !hasToken) {
+    const notFoundUrl = new URL(`/${locale}/404`, request.url);
+    return NextResponse.redirect(notFoundUrl);
+  }
 
-  const response = handleI18nRouting(request)
+  const response = handleI18nRouting(request);
   if (response) {
     response.headers.set('x-next-locale', locale);
   }
 
   return response;
-
-  // return handleI18nRouting(request);
 }
 
 export const config = {

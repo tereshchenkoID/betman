@@ -133,3 +133,15 @@ export const USER_VERIFY = {
   2: 'rejected',
   3: 'verified',
 }
+
+export const VOUCHER_STATUS = {
+  0: 'new',
+  1: 'paid',
+  2: 'expired',
+  3: 'cancelled'
+}
+
+export const PAYMENT_TYPE = {
+  0: 'deposit',
+  1: 'withdrawal'
+}

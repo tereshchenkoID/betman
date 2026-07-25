@@ -1,0 +1,21 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-default);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: var(--gap-default);
+}
+
+.cell {
+
+  &:nth-child(1) {
+    color: var(--text-for-primary-disabled);
+    font-size: rem(14px);
+  }
+}

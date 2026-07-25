@@ -12,11 +12,11 @@ import style from './index.module.scss'
 
 const DATA = [
   ROUTES_USER.account,
-  ROUTES_USER.profile,
+  // ROUTES_USER.profile,
   ROUTES_USER.history,
-  ROUTES_USER.wallet,
-  ROUTES_USER.bonuses,
-  ROUTES_USER.promocode,
+  // ROUTES_USER.wallet,
+  // ROUTES_USER.bonuses,
+  // ROUTES_USER.promocode,
   ROUTES_USER.invite_friends,
   ROUTES_USER.favourites
 ]
@@ -36,7 +36,7 @@ const SectionAccountNavigation = () => {
   }
 
   return (
-    <div className={style.block}>
+    <section className={style.block}>
       {
         DATA.map((el, idx) =>
           <Action
@@ -49,7 +49,7 @@ const SectionAccountNavigation = () => {
           </Action>
         )
       }
-    </div>
+    </section>
   )
 }
 

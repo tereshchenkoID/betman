@@ -50,10 +50,10 @@ const AccountMenu = ({ user, setToggle }) => {
           <Image
             src={user?.profile?.photo || '/images/no_avatar.webp'}
             alt={user?.username}
-            loading="lazy"
-            fetchPriority="low"
+            priority
             width="40"
             height="40"
+            decoding="async"
           />
           <Status
             data={user?.profile?.isVerify}

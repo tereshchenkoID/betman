@@ -1,0 +1,86 @@
+@use '@/scss/config' as *;
+
+.body {
+  overflow: hidden;
+}
+
+.table {
+  @include scroll-x;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, rem(100px)) 1fr rem(120px) repeat(2, 1fr) rem(100px) 1fr;
+  gap: var(--gap-2);
+  min-width: rem(1060px);
+  font-size: rem(14px);
+
+  &.first {
+
+    .cell {
+      background-color: var(--primary-hover);
+
+      &:first-child {
+        border-radius: rem(8px) 0 0 0;
+      }
+
+      &:last-child {
+        border-radius:  0 rem(8px) 0 0;
+      }
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--gap-2);
+  }
+
+  &:not(.first) {
+
+    &:last-child {
+
+      .cell {
+
+        &:first-child {
+          border-radius: 0 0 0 rem(8px);
+        }
+
+        &:last-child {
+          border-radius:  0 0 rem(8px) 0;
+        }
+      }
+    }
+  }
+
+  &.expired {
+    .cell {
+      opacity: 0.5;
+    }
+  }
+
+  &.new {
+    .cell {
+      font-weight: var(--typography-bold);
+      opacity: 1;
+    }
+  }
+}
+
+.cell {
+  @include flex($align-items: center, $wrap: wrap);
+
+  background-color: var(--primary);
+  padding: var(--gap-default);
+  gap: var(--gap-default);
+  opacity: 0.8;
+}
+
+.link {
+  color: var(--tertiary);
+  font-size: rem(12px);
+
+  @include hover {
+    &:hover {
+      color: var(--link);
+    }
+  }
+}
