@@ -1,6 +1,12 @@
 'use client'
 
-import { createContext, useState, useContext, useCallback, useEffect } from 'react'
+import {
+  createContext,
+  useState,
+  useContext,
+  useCallback,
+  useEffect
+} from 'react'
 
 import Modal from '@/components/Modal'
 
@@ -72,7 +78,7 @@ export function ModalProvider({ children }) {
     <ModalContext.Provider value={{ openModal, closeModal, closeAllModals }}>
       {children}
       {
-        modals.map((modal) =>
+        modals?.map((modal) =>
         <Modal
           key={modal.id}
           zIndex={modal.zIndex}

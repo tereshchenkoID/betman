@@ -5,11 +5,14 @@ import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { useModal } from '@/context/ModalContext'
+
 import style from './index.module.scss'
 
 const ProviderCard = ({ data }) => {
   const pathname = usePathname()
   const isActive = Boolean(data?.slug && pathname.includes(data.slug))
+  const { closeAllModals } = useModal()
 
   return (
     <Link
@@ -20,6 +23,7 @@ const ProviderCard = ({ data }) => {
           isActive && style.active
         )
       }
+      onClick={closeAllModals}
       aria-label={data.name}
     >
       {
