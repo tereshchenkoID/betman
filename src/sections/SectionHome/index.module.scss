@@ -1,1 +1,9 @@
 @use '@/scss/config' as *;
+
+.block {
+  &.favorites {
+    &:empty {
+      display: none;
+    }
+  }
+}

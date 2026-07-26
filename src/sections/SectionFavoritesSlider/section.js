@@ -64,10 +64,12 @@ const Section = ({
       isPriority: idx < 8,
     }))
 
-    gameSlides.push({ type: SLIDE_TYPE.MORE })
+    if (meta?.results > 8) {
+      gameSlides.push({ type: SLIDE_TYPE.MORE })
+    }
 
     return gameSlides
-  }, [favorites])
+  }, [favorites, meta?.results])
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
