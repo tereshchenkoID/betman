@@ -18,9 +18,8 @@ const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
 
   const handleChange = (value) => {
-    const enable = value ? '1' : '0'
     startTransition(async () => {
-      const res = await action(data?.id, enable)
+      const res = await action(data?.id, value)
 
       if (res?.code === '0') {
         toast.success(res.message)
