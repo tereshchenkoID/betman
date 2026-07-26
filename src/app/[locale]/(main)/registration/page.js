@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
@@ -26,6 +27,10 @@ export default async function Promotions({ params }) {
       method: 'GET',
     }),
   ])
+
+  if (user?.id) {
+    redirect(`/${locale}`)
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
