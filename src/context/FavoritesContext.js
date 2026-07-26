@@ -1,9 +1,16 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-import { createContext, useContext, useState, useMemo, useCallback } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useCallback
+} from 'react'
+
 import { toast } from '@/utils/toast'
 import { consoleHelper } from '@/helpers/console'
+
 import { addFavoritesAction } from '@/app/actions/favorites'
 
 const FavoritesContext = createContext(null)
@@ -14,43 +21,42 @@ export const FavoritesProvider = ({
   data = [],
   meta,
 }) => {
-  const t = useTranslations()
   const [favorites, setFavorites] = useState(data)
-
   const list = useMemo(() => {
     return new Set(favorites.map((item) => String(item.id)))
   }, [favorites])
 
   const toggleFavorite = useCallback(
     async (game) => {
-      if (!user?.id) return
+      if (!user?.id || !game?.id) return
 
-      const isFavorite = list.has(game?.id)
+      const gameIdStr = String(game.id)
+      const currentlyFavorite = list.has(gameIdStr)
 
       setFavorites((prev) => {
-        if (isFavorite) {
-          return prev.filter((item) => String(item.id) !== game?.id)
+        if (currentlyFavorite) {
+          return prev.filter((item) => String(item.id) !== gameIdStr)
         } else {
           return [...prev, game]
         }
       })
 
-      const res = await addFavoritesAction(game?.id, isFavorite)
+      const res = await addFavoritesAction(game.id, currentlyFavorite)
 
       if (res?.code === '0') {
+        toast.success(res.message)
+      } else {
         setFavorites((prev) => {
-          if (isFavorite) {
+          if (currentlyFavorite) {
             return [...prev, game]
           } else {
-            return prev.filter((item) => String(item.id) !== game?.id)
+            return prev.filter((item) => String(item.id) !== gameIdStr)
           }
         })
-        toast.success(res.message)
+        toast.error(res?.error_message || 'Error')
       }
-      else {
-        toast.error(res.error_message)
-      }
-    },[user?.id, list]
+    },
+    [user?.id, list]
   )
 
   const isFavorite = useCallback(
@@ -63,7 +69,7 @@ export const FavoritesProvider = ({
       favorites,
       meta,
       toggleFavorite,
-      isFavorite
+      isFavorite,
     }),
     [favorites, meta, toggleFavorite, isFavorite]
   )

@@ -7,10 +7,8 @@ import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 
 import style from './index.module.scss'
 
-const SectionAccountFavorites = ({ user  }) => {
+const SectionAccountFavorites = ({ user }) => {
   const { favorites } = useFavorites()
-
-  console.log(favorites)
 
   return (
     <section>

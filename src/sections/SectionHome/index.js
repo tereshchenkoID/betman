@@ -12,12 +12,14 @@ import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skelet
 import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
 import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
 import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
+import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
 
-import SectionCategories from '../SectionCategoriesSlider'
-import SectionBanners from '../SectionBannersSlider'
-import SectionJackpots from '../SectionJackpotsSlider'
-import SectionChallenge from '../SectionChallenge'
-import SectionBigLinks from '../SectionBigLinksSlider'
+import SectionCategories from '@/sections/SectionCategoriesSlider'
+import SectionBanners from '@/sections/SectionBannersSlider'
+import SectionJackpots from '@/sections/SectionJackpotsSlider'
+import SectionChallenge from '@/sections/SectionChallenge'
+import SectionBigLinks from '@/sections/SectionBigLinksSlider'
+import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
@@ -34,6 +36,10 @@ const SECTIONS_CONFIG = {
   games: {
     Component: SectionGamesSlider,
     Fallback: SectionGamesSliderSkeleton,
+  },
+  favorites: {
+    Component: SectionFavoritesSlider,
+    Fallback: SectionFavoritesSkeleton,
   },
   winners: {
     Component: SectionWinners,
