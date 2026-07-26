@@ -1,0 +1,22 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-32);
+  align-items: flex-start;
+
+  @include desk-s {
+    grid-template-columns: rem(460px) 1fr;
+  }
+}
+
+.column {
+  display: grid;
+  gap: var(--gap-12);
+}
+
+.actions {
+  @include flex(flex-end);
+
+  gap: var(--gap-12);
+}

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { toast } from '@/utils/toast'
 
-import { spinWheelAction } from './action'
+import { action} from './action'
 
 import style from './index.module.scss'
 
@@ -220,11 +220,14 @@ const Wheel = ({
 
     if (!currentHash) return
 
-    const res = await spinWheelAction(currentHash)
+    const res = await action(currentHash)
 
     if (res.code === '0') {
       animateWheel(res?.data)
       // router.refresh()
+    }
+    else {
+      toast.error(res?.error_message)
     }
 
     // console.log(res)

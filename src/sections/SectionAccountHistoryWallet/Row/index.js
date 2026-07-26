@@ -7,8 +7,7 @@ import { toast } from '@/utils/toast'
 import { useModal } from '@/context/ModalContext'
 
 import { date } from '@/helpers/date'
-
-import { cancelTransactionAction } from './action'
+import { action } from './action'
 
 import Action from '@/components/Action'
 import PaymentDetailsModal from '@/modules/Modals/PaymentDetailsModal'
@@ -21,10 +20,13 @@ const Row = ({ data }) => {
 
   const handleCancel = () => {
     startTransition(async () => {
-      const res = await cancelTransactionAction(data.id)
+      const res = await action(data.id)
 
-      if (res.code !== '0') {
-        toast.error(res.error_message)
+      if (res.code === '0') {
+        toast.success(res.message)
+      }
+      else {
+        toast.error(res.message)
       }
     })
   }

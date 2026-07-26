@@ -3,7 +3,7 @@
 import { revalidateTag } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
-export async function spinWheelAction(roundId) {
+export async function action(roundId) {
   const res = await apiRequest('wheel/spin/', {
     method: 'POST',
     params: {

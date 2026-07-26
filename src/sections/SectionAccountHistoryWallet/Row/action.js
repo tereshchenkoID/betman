@@ -1,20 +1,16 @@
 'use server'
 
-import { apiRequest } from '@/app/actions/api'
 import { revalidatePath } from 'next/cache'
+import { apiRequest } from '@/app/actions/api'
 
-export async function cancelTransactionAction(id) {
-  const formData = new FormData()
-  formData.append('id', id)
-
+export async function action(id) {
   const res = await apiRequest('wallet-history/cancel/', {
     method: 'POST',
-    body: formData,
+    params: { id },
   })
 
   if (res?.code === '0') {
     revalidatePath('/account/history/wallet', 'layout')
-    // revalidatePath('/account/history/wallet')
   }
 
   return res
