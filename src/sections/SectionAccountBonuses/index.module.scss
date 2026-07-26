@@ -1,0 +1,23 @@
+@use '@/scss/config' as *;
+
+.block {
+  @include scroll-x;
+
+  display: grid;
+  gap: var(--gap-24);
+}
+
+.list {
+  display: grid;
+  gap: var(--gap-24);
+
+  @include tab-s {
+    grid-template-columns: repeat(2, 1fr);
+    overflow: unset;
+  }
+
+  @include desk-s {
+    grid-template-columns: repeat(3, 1fr);
+    overflow: unset;
+  }
+}

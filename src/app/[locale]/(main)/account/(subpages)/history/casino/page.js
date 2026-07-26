@@ -9,8 +9,8 @@ export async function generateMetadata({ params }) {
   return await getPageMetadata('profile', locale)
 }
 
-export default async function Casino({ params }) {
-  const { page } = await params
+export default async function Casino({ searchParams }) {
+  const { page } = await searchParams
   const currentPage = Number(page) || 1
 
   const [

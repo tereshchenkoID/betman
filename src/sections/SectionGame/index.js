@@ -49,7 +49,7 @@ const SectionGame = ({
       >
         <div className={style.container}>
           <div className={style.options}>
-            <Back url={NAVIGATION.home.url} />
+            <Back />
             <Logo />
           </div>
           <div className={style.options}>

@@ -1,0 +1,45 @@
+@use '@/scss/config' as *;
+
+.block {
+  position: relative;
+  border-radius: var(--border-radius-default);
+  background-color: var(--material);
+  overflow: hidden;
+  padding: var(--gap-12);
+  font-size: rem(14px);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-bottom: var(--gap-default);
+}
+
+.picture {
+  @include flex(center, center);
+
+  padding: var(--gap-default);
+  background-color: var(--primary-disabled);
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: var(--border-radius-default);
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-16);
+  margin-bottom: var(--gap-default);
+
+  @include tab-s {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+.title {
+  font-weight: var(--typography-bold);
+  font-size: rem(12px);
+}
+
+.scale {
+  margin-block: var(--gap-default);
+}

@@ -8,12 +8,16 @@ const Toggle = ({
   onChange,
   classes = [],
   isRequired = false,
+  isDisabled = false,
 }) => {
   return (
     <label
       className={
         classNames(
           style.block,
+          {
+            [style.disabled]: isDisabled,
+          },
           classes && classes.map(el => style[el] || el),
         )
       }

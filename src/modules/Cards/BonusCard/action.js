@@ -3,16 +3,17 @@
 import { revalidateTag } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
-export async function action(id) {
-  const res = await apiRequest('wheel/spin/', {
+export async function action(id, enable) {
+  const res = await apiRequest('bonuses/', {
     method: 'POST',
     params: {
-      round_id: id,
+      id,
+      enable
     },
   })
 
   if (res?.code === '0') {
-    revalidateTag('wheels-rounds')
+    revalidateTag('bonuses')
   }
 
   return res
