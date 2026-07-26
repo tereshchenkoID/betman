@@ -16,7 +16,6 @@ import style from './index.module.scss'
 
 const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
-  const isEnabled = data?.enable === '1'
 
   const handleChange = (value) => {
     const enable = value ? '1' : '0'
@@ -24,7 +23,7 @@ const BonusCard = ({ settings, data }) => {
       const res = await action(data?.id, enable)
 
       if (res?.code === '0') {
-        toast.success(res.method)
+        toast.success(res.message)
       }
       else {
         toast.error(res.error_message)
@@ -51,7 +50,7 @@ const BonusCard = ({ settings, data }) => {
           <div className={style.row}>
             <h3>{data.name}</h3>
             <Toggle
-              data={isEnabled}
+              data={data?.enable}
               onChange={(e) => handleChange(e)}
             />
           </div>

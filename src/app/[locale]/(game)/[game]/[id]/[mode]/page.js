@@ -33,7 +33,6 @@ export default async function Game({ params }) {
     }),
   ])
 
-  // TODO Remove after fix content side
   if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
     notFound()
   }
