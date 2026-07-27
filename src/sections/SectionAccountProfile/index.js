@@ -1,20 +1,22 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { startTransition, useEffect, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { USER_VERIFY } from '@/constant/config'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { toast } from '@/utils/toast'
+
+import { action } from './action'
 
 import Tabs from '@/modules/Tabs'
 import Notification from '@/modules/Notification'
-// import SectionTooltip from '@/sections/SectionTooltip'
 import General from './General'
 import Address from './Address'
-// import Security from './Security'
-// import Verification from './Verification'
+import Verification from './Verification'
+import Security from './Security'
 
 import style from './index.module.scss'
 
@@ -40,16 +42,23 @@ const DATA = [
 const SectionAccountProfile = ({
   user,
   countries,
-  data
+  data,
+  settings,
+  children
 }) => {
   const t = useTranslations()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
   const [uploadedPhotos, setUploadedPhotos] = useState([])
 
   const { filter, setFilter, handlePropsChange } = useFilterState(data)
+
+  useEffect(() => {
+    if (data) {
+      setFilter(data)
+    }
+  }, [data, setFilter])
 
   const current = searchParams.get('tab') || DATA[0]?.key
   const active = useMemo(() => {
@@ -67,24 +76,31 @@ const SectionAccountProfile = ({
   }
 
   const handleSubmit = async (e) => {
-    // e && e.preventDefault()
-    //
-    // const formData = new FormData()
-    // formData.append('data', JSON.stringify(filter))
-    //
-    // if (uploadedPhotos.length > 0) {
-    //   uploadedPhotos.forEach((item, index) => {
-    //     formData.append(`file-${index + 1}`, item.file)
-    //     formData.append(`type-${index + 1}`, item.type.value || '')
-    //   })
-    // }
-    //
-    // const { error} = await request('POST', 'profile/', formData)
-    //
-    // if (!error) {
-    //   setInitial(filter)
-    //   setUploadedPhotos([])
-    // }
+    e && e.preventDefault()
+
+    const params = {
+      data: filter,
+    }
+
+    if (uploadedPhotos.length > 0) {
+      uploadedPhotos.forEach((item, index) => {
+        if (item.file) {
+          params[`file-${index + 1}`] = item.file
+          params[`type-${index + 1}`] = item.type?.value || ''
+        }
+      })
+    }
+
+    startTransition(async () => {
+      const res = await action(params)
+
+      if (res?.code === '0') {
+        toast.success(res?.message || t('success'))
+        setUploadedPhotos([])
+      } else {
+        toast.error(res?.error_message || t('error'))
+      }
+    })
   }
 
   const handleReset = () => {
@@ -128,44 +144,39 @@ const SectionAccountProfile = ({
         }
         {
           active.value === 2 &&
-          'Verification'
-          // <Verification
-          //   initial={initial}
-          //   filter={filter}
-          //   handlePropsChange={handlePropsChange}
-          //   handleSubmit={handleSubmit}
-          //   handleReset={handleReset}
-          //   handlePhotoUpload={handlePhotoUpload}
-          //   uploadedPhotos={uploadedPhotos}
-          // />
+          <Verification
+            initial={data}
+            filter={filter}
+            settings={settings}
+            handlePropsChange={handlePropsChange}
+            handleSubmit={handleSubmit}
+            handleReset={handleReset}
+            handlePhotoUpload={handlePhotoUpload}
+            uploadedPhotos={uploadedPhotos}
+          />
         }
         {
           active.value === 3 &&
-          'Security'
-          // <Security
-          //   initial={initial}
-          //   filter={filter}
-          //   handlePropsChange={handlePropsChange}
-          //   handleSubmit={handleSubmit}
-          //   handleReset={handleReset}
-          // />
+          <Security
+            initial={data}
+            filter={filter}
+            handlePropsChange={handlePropsChange}
+            handleSubmit={handleSubmit}
+            handleReset={handleReset}
+          />
         }
         <div>
           {
-            active?.key === 'verification'
-              ?
-                <>
-                  <Notification
-                    text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
-                    type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
-                  />
-                  <br/>
-                  {/*<SectionTooltip alias={`${active?.key}/${USER_VERIFY[filter?.profile?.isVerify]}`} />*/}
-                </>
-              :
-                <>Tooltip</>
-                // <SectionTooltip alias={active?.key} />
+            active?.key === 'verification' &&
+            <>
+              <Notification
+                text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
+                type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
+              />
+              <br/>
+            </>
           }
+          {children}
         </div>
       </div>
     </div>

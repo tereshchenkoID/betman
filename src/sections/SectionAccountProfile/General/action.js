@@ -3,10 +3,10 @@
 import { revalidateTag } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
-export async function verificationAction({ params }) {
+export async function action(params) {
   const res = await apiRequest('profile/verification/', {
     method: 'POST',
-    params,
+    params
   })
 
   if (res?.code === '0') {

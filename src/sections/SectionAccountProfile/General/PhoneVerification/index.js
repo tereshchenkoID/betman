@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 
 import { toast } from '@/utils/toast'
-import { verificationAction } from '@/app/actions/verification.js'
+import { action } from '../action.js'
 
 import Field from '@/components/Field'
 import Action from '@/components/Action'
@@ -30,12 +30,12 @@ const PhoneVerification = ({
       value: 'phone',
     }
 
-    if (filter.profile.isVerifyPhone !== "0" && !repeat) (
+    if (filter.profile.isVerifyPhone !== "0" && !repeat) {
       params.code = code
-    )
+    }
 
     startTransition(async () => {
-      const res = await verificationAction(params)
+      const res = await action(params)
 
       if (res?.code === '0') {
         setCode('')

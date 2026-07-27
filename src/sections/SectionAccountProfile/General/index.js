@@ -7,7 +7,7 @@ import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Phone from '@/components/Phone'
 import EmailVerification from './EmailVerification'
-import PhoneVerification from './PhoneVerification'
+// import PhoneVerification from './PhoneVerification'
 
 import style from '../index.module.scss'
 
@@ -48,10 +48,7 @@ const General = ({
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={style.form}
-    >
+    <form onSubmit={handleSubmit}>
       <div className={style.grid}>
         <Field
           placeholder={t('username')}
@@ -115,17 +112,17 @@ const General = ({
           onValidate={err => setFieldError('phone', err)}
           error={errors.phone}
         />
-        <PhoneVerification
-          user={user}
-          filter={filter}
-          handlePropsChange={handlePropsChange}
-          error={errors.phone}
-          setFieldError={setFieldError}
-          rules={[
-            VALIDATION_RULES.required(),
-            VALIDATION_RULES.phone(),
-          ]}
-        />
+        {/*<PhoneVerification*/}
+        {/*  user={user}*/}
+        {/*  filter={filter}*/}
+        {/*  handlePropsChange={handlePropsChange}*/}
+        {/*  error={errors.phone}*/}
+        {/*  setFieldError={setFieldError}*/}
+        {/*  rules={[*/}
+        {/*    VALIDATION_RULES.required(),*/}
+        {/*    VALIDATION_RULES.phone(),*/}
+        {/*  ]}*/}
+        {/*/>*/}
         <EmailVerification
           filter={filter}
           handlePropsChange={handlePropsChange}

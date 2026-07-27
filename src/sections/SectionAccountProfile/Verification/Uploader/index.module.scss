@@ -1,0 +1,83 @@
+@use '@/scss/config' as *;
+
+.block {
+  width: 100%;
+
+  &.active {
+
+    .label {
+      border-bottom-color: var(--link);
+    }
+  }
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.label {
+  @include flex(center, center);
+  @include transition;
+
+  position: relative;
+  padding-inline: var(--gap-24);
+  border-radius: var(--border-radius-6);
+  overflow: hidden;
+  gap: var(--gap-default);
+  background-color: var(--primary);
+  border-bottom: rem(2px) solid var(--primary);
+  min-width: rem(100px);
+  height: rem(48px);
+  text-align: center;
+  cursor: pointer;
+
+  @include hover {
+    &:hover {
+      border-bottom-color: var(--link);
+    }
+  }
+}
+
+.previews {
+  @include flex($direction: column);
+
+  gap: var(--gap-default);
+  margin-top: var(--gap-12);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-12);
+  width: 100%;
+}
+
+.preview {
+  position: relative;
+  flex-shrink: 0;
+  width: fit-content;
+}
+
+.media {
+  @include size(rem(80px));
+
+  position: relative;
+  border: rem(1px) solid var(--link);
+  border-radius: var(--border-radius-6);
+  background-color: var(--primary);
+  overflow: hidden;
+}
+
+.img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.close {
+  position: absolute;
+  top: rem(-4px);
+  right: rem(-4px);
+}
