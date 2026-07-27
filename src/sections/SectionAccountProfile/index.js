@@ -7,6 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { USER_VERIFY } from '@/constant/config'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { compress } from '@/helpers/compress'
 import { toast } from '@/utils/toast'
 
 import { action } from './action'
@@ -51,6 +52,7 @@ const SectionAccountProfile = ({
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [uploadedPhotos, setUploadedPhotos] = useState([])
+  const [isCompressing, setIsCompressing] = useState(false)
 
   const { filter, setFilter, handlePropsChange } = useFilterState(data)
 
@@ -83,12 +85,30 @@ const SectionAccountProfile = ({
     }
 
     if (uploadedPhotos.length > 0) {
-      uploadedPhotos.forEach((item, index) => {
-        if (item.file) {
-          params[`file-${index + 1}`] = item.file
-          params[`type-${index + 1}`] = item.type?.value || ''
-        }
-      })
+      setIsCompressing(true)
+
+      try {
+        const compressedPhotos = await Promise.all(
+          uploadedPhotos.map(async (item) => {
+            if (!item.file) return item
+            const compressedFile = await compress(item.file)
+            return { ...item, file: compressedFile }
+          })
+        )
+
+        compressedPhotos.forEach((item, index) => {
+          if (item.file) {
+            params[`file-${index + 1}`] = item.file
+            params[`type-${index + 1}`] = item.type?.value || ''
+          }
+        })
+      } catch (err) {
+        toast.error('Error processing images')
+        setIsCompressing(false)
+        return
+      } finally {
+        setIsCompressing(false)
+      }
     }
 
     startTransition(async () => {
