@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
 import style from './index.module.scss'
@@ -9,6 +9,7 @@ const BigLinkCard = ({ data }) => {
       href={`/${data?.hasMore?.join('/')}`}
       className={style.block}
       aria-label={data?.title}
+      prefetch={false}
     >
       {
         data?.image &&

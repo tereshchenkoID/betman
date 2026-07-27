@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
@@ -25,6 +25,7 @@ const ProviderCard = ({ data }) => {
       }
       onClick={closeAllModals}
       aria-label={data.name}
+      prefetch={false}
     >
       {
         data.image &&

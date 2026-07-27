@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 
 import style from './index.module.scss'
@@ -14,6 +14,7 @@ const ThumbnailMore = ({ url }) => {
         backgroundImage: 'url(/images/thumbnail_more_games_2x3.webp)',
       }}
       aria-label={t('more_games')}
+      prefetch={false}
     >
       <p className={style.text}>{t('more_games')}</p>
     </Link>

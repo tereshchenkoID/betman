@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
 
@@ -22,6 +22,7 @@ const CategoryCard = ({ data }) => {
         )
       }
       aria-label={data.title}
+      prefetch={false}
     >
       {
         data?.icon &&

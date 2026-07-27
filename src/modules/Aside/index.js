@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { usePathname } from '@/i18n/routing'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'

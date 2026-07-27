@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
 import { NAVIGATION } from '@/constant/config'
@@ -16,6 +16,7 @@ const ChallengeCard = ({ data }) => {
       className={style.block}
       target={button?.newtab === '1' ? '_blank' : undefined}
       rel={button?.newtab === '1' ? 'noopener noreferrer' : undefined}
+      prefetch={false}
     >
       <div className={style.wrapper}>
         <div className={style.content}>

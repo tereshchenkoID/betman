@@ -19,6 +19,12 @@ const nextConfig = {
       },
     ]
   },
+  trailingSlash: false,
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
   // productionBrowserSourceMaps: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
