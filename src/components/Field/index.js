@@ -23,7 +23,7 @@ const Field = ({
 }) => {
   const inputRef = useRef(null)
   const [focused, setFocused] = useState(false)
-  const [touched, setTouched] = useState(false) // Локальный тач для фронтенд-валидации
+  const [touched, setTouched] = useState(false)
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Field = ({
           ref={inputRef}
           className={style.input}
           type={inputType}
-          value={data}
+          value={data || ''}
           onChange={e => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={handleBlur}

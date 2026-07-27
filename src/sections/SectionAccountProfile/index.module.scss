@@ -1,0 +1,69 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-24);
+  position: relative;
+}
+
+.verify,
+.button,
+.action {
+  flex-shrink: 0;
+}
+
+.verify,
+.wrapper {
+  @include flex($align-items: center);
+
+  gap: var(--gap-default);
+}
+
+.container {
+  display: grid;
+  gap: var(--gap-32);
+  align-items: flex-start;
+
+  @include desk-s {
+    grid-template-columns: rem(460px) 1fr;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap-12);
+}
+
+.row {
+  display: grid;
+  gap: var(--gap-default);
+
+  &.count-0,
+  &.count-2 {
+    grid-template-columns: 1fr auto;
+  }
+
+  &.count-1 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.verify {
+  font-size: rem(13px);
+  color: var(--green);
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-4);
+}
+
+.label {
+  font-size: rem(12px);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-12);
+}
