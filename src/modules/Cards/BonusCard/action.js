@@ -13,7 +13,7 @@ export async function action(id, enable) {
   })
 
   if (res?.code === '0') {
-    revalidateTag('bonuses')
+    revalidateTag('bonuses', 'max')
   }
 
   return res

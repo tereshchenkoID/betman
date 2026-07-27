@@ -12,7 +12,7 @@ export async function action(id) {
   })
 
   if (res?.code === '0') {
-    revalidateTag('wheels-rounds')
+    revalidateTag('wheels-rounds', 'max')
   }
 
   return res

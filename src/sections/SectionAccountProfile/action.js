@@ -10,7 +10,7 @@ export async function action(params) {
   })
 
   if (res?.code === '0') {
-    revalidateTag('profile')
+    revalidateTag('profile', 'max')
   }
 
   return res

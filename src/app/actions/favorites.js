@@ -11,7 +11,7 @@ export async function addFavoritesAction(id, isFavourite) {
     },
   })
 
-  revalidateTag('favorites')
+  revalidateTag('favorites', 'max')
 
   return res
 }
