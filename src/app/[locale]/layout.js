@@ -114,7 +114,7 @@ export default async function RootLayout({ children, params }) {
         <ModalProvider>
           <WebSocketProvider user={user}>
             {children}
-            <WSUpdater />
+            <WSUpdater user={user} />
           </WebSocketProvider>
         </ModalProvider>
         <Toastify />

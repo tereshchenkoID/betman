@@ -19,6 +19,7 @@ import style from './index.module.scss'
 const Login = ({ isRedirect = true }) => {
   const t = useTranslations()
   const VALIDATION_RULES = useValidations()
+
   const router = useRouter()
   const { closeModal } = useModal()
   const { filter, handlePropsChange } = useFilterState({
@@ -37,7 +38,9 @@ const Login = ({ isRedirect = true }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    loginWithCredentialsAction(filter.username, filter.password).then((res) => {
+    startTransition(async () => {
+      const res = await loginWithCredentialsAction(filter.username, filter.password)
+
       if (res?.code === '0') {
         sessionStorage.setItem('age', '0')
         closeModal()
@@ -45,9 +48,7 @@ const Login = ({ isRedirect = true }) => {
         if (isRedirect) {
           router.push(NAVIGATION.home.url)
         } else {
-          startTransition(() => {
-            router.refresh()
-          })
+          router.refresh()
         }
       } else {
         toast.error(res?.error_message)
