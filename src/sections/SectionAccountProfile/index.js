@@ -1,6 +1,6 @@
 'use client'
 
-import { startTransition, useEffect, useMemo, useState } from 'react'
+import { startTransition, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
@@ -55,12 +55,6 @@ const SectionAccountProfile = ({
   const [isCompressing, setIsCompressing] = useState(false)
 
   const { filter, setFilter, handlePropsChange } = useFilterState(data)
-
-  useEffect(() => {
-    if (data) {
-      setFilter(data)
-    }
-  }, [data, setFilter])
 
   const current = searchParams.get('tab') || DATA[0]?.key
   const active = useMemo(() => {

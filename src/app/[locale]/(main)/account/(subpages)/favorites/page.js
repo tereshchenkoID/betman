@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   return await getPageMetadata('profile', locale)
 }
 
-export default async function InviteFriends() {
+export default async function Favorites() {
   const user = await getCachedUser()
 
   return (

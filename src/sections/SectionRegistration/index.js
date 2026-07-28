@@ -2,11 +2,13 @@
 
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { startTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 
 import { apiRequest } from '@/app/actions/api'
+import { registerWithCredentialsAction } from '@/app/actions/auth'
+import { toast } from '@/utils/toast'
 
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
@@ -60,7 +62,7 @@ const SectionRegistration = ({
     city: '',
     address: '',
     terms: '0',
-    bonus: '0',
+    bonus: '1',
     invite: invite || null,
   })
 
@@ -89,16 +91,20 @@ const SectionRegistration = ({
 
     if (isDisabled) return null
 
-    const res = await apiRequest('registration/', {
-      method: 'POST',
-      params: {
-        data: JSON.stringify(filter)
-      }
-    })
+    const res = await registerWithCredentialsAction(filter)
 
     if (res?.code === '0') {
-      router.refresh()
-      router.push('/')
+      toast.success(res.message)
+
+      setTimeout(() => {
+        startTransition(() => {
+          router.refresh()
+          router.push('/')
+        })
+      }, 1000)
+    }
+    else {
+      toast.error(res.error_message)
     }
   }
 
@@ -133,11 +139,6 @@ const SectionRegistration = ({
       }
 
       else if (step === 1) {
-        if (filter.bonus !== '1') {
-          setFieldError('bonus', 'Field is required')
-          return
-        }
-
         const res = await apiRequest('registration/check/', {
           method: 'POST',
           params: {

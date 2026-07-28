@@ -34,10 +34,10 @@ const EmailVerification = ({
 
     startTransition(async () => {
       const res = await action(params)
-      console.log(params, res)
 
       if (res?.code === '0') {
         setCode('')
+        handlePropsChange('profile.isVerifyEmail', res.isVerifyEmail)
         toast.success(res?.message)
       }
       else {

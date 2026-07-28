@@ -2,7 +2,6 @@
 
 import { cache } from 'react'
 import { cookies } from 'next/headers'
-import { revalidatePath } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
 const saveSession = async (token) => {
@@ -18,6 +17,22 @@ const saveSession = async (token) => {
   })
 }
 
+export const registerWithCredentialsAction = async (filterData) => {
+  const data = await apiRequest('registration/', {
+    method: 'POST',
+    params: {
+      data: JSON.stringify(filterData)
+    },
+    isRedirect: false
+  })
+
+  if (data?.token) {
+    await saveSession(data.token)
+  }
+
+  return data
+}
+
 export const loginWithCredentialsAction = async (username, password) => {
   const data = await apiRequest('login/', {
     method: 'POST',
@@ -27,7 +42,6 @@ export const loginWithCredentialsAction = async (username, password) => {
 
   if (data?.token) {
     await saveSession(data.token)
-    revalidatePath('/', 'layout')
   }
 
   return data
@@ -48,7 +62,6 @@ export const loginWithGoogleAction = async ({ email, name, picture }) => {
 
   if (data?.token) {
     await saveSession(data.token)
-    revalidatePath('/', 'layout')
   }
 
   return data
@@ -62,7 +75,6 @@ export const logoutAction = async () => {
   if (res?.code === '0' && !res?.id) {
     const cookieStore = await cookies()
     cookieStore.delete('NEXT_SID')
-    revalidatePath('/', 'layout')
     return { success: true }
   }
 }

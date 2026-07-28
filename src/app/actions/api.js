@@ -2,6 +2,7 @@
 
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 import { routing } from '@/i18n/routing'
 
 const PROTECTED = ['user/', 'profile/'];
@@ -70,6 +71,7 @@ export const apiRequest = async (endpoint, {
 
     if (json?.code === '2') {
       cookieStore.delete('NEXT_SID')
+      revalidatePath('/', 'layout')
 
       if (isRedirect) {
         redirect('/?logout=true');

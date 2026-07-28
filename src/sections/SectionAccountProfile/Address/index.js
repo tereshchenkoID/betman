@@ -23,7 +23,7 @@ const Address = ({
   const [errors, setErrors] = useState({})
 
   const hasErrors = Object.values(errors).some(Boolean)
-  const isChanged = initial && JSON.stringify(filter.address) !== JSON.stringify(initial.address)
+  const isChanged = JSON.stringify(filter.address) !== JSON.stringify(initial.address)
   const isSave = !isChanged || hasErrors
   const isReset = !isChanged
 
@@ -38,7 +38,7 @@ const Address = ({
           placeholder={t('country')}
           data={countries?.map(el => ({ value: el.alpha_2, label: el.label }))}
           value={filter.address.country}
-          onChange={v => handlePropsChange('address.country', v)}
+          onChange={value => handlePropsChange('address.country', value)}
           isRequired={true}
           rules={[
             VALIDATION_RULES.required()

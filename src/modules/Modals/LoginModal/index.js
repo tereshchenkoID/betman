@@ -45,11 +45,14 @@ const Login = ({ isRedirect = true }) => {
         sessionStorage.setItem('age', '0')
         closeModal()
 
-        if (isRedirect) {
-          router.push(NAVIGATION.home.url)
-        } else {
-          router.refresh()
-        }
+        startTransition(() => {
+          if (isRedirect) {
+            router.refresh()
+            router.push(NAVIGATION.home.url)
+          } else {
+            router.refresh()
+          }
+        })
       } else {
         toast.error(res?.error_message)
       }

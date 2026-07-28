@@ -52,7 +52,7 @@ const Select = ({
   )
 
   useEffect(() => {
-    const err = runRules(data, rules)
+    const err = runRules(value, rules)
     onValidate?.(err)
   }, [])
 

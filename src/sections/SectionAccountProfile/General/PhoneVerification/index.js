@@ -39,6 +39,7 @@ const PhoneVerification = ({
 
       if (res?.code === '0') {
         setCode('')
+        handlePropsChange('profile.isVerifyPhone', res.isVerifyPhone)
         toast.success(res?.message)
       }
       else {

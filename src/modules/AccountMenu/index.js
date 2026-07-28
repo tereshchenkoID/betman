@@ -1,14 +1,15 @@
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/routing'
+import { startTransition } from 'react'
+import { Link, useRouter } from '@/i18n/routing'
 import Image from 'next/image'
 import classNames from 'classnames'
 
 import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
+import { toast } from '@/utils/toast'
 import { logoutAction } from '@/app/actions/auth'
 
 import { fixed } from '@/helpers/fixed'
-import { consoleHelper } from '@/helpers/console'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -30,16 +31,21 @@ const DATA = [
 
 const AccountMenu = ({ user, setToggle }) => {
   const t = useTranslations()
+  const router = useRouter()
 
   const handleLogout = async () => {
     setToggle(false)
 
-    try {
-      await logoutAction()
-    } catch (e) {
-      consoleHelper.error(e)
-    } finally {
-      window.location.href = '/'
+    const res = await logoutAction()
+
+    if (res?.success) {
+      startTransition(() => {
+        router.refresh()
+        router.push('/')
+      })
+    }
+    else {
+      toast.error(res.error_message)
     }
   }
 
