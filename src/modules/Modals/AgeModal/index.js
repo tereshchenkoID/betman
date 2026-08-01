@@ -12,7 +12,7 @@ const AgeModal = () => {
 
   const handleSubmit = async (e) => {
     e && e.preventDefault()
-    sessionStorage.setItem('age', '1')
+    localStorage.setItem('age', '1')
     closeModal()
   }
 

@@ -1,18 +1,12 @@
 'use client'
 
-import { useLocale } from 'next-intl'
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  useTransition
-} from 'react'
+import {useLocale} from 'next-intl'
+import {useEffect, useMemo, useRef, useState, useTransition} from 'react'
 import classNames from 'classnames'
 import PhoneInput from 'react-phone-input-2'
 
-import { runRules } from '@/helpers/rules'
-import { action } from './action'
+import {runRules} from '@/helpers/rules'
+import {action} from './action'
 
 import Preload from '@/components/Preload'
 
@@ -26,6 +20,7 @@ const Phone = ({
   onChange,
   placeholder,
   onValidate,
+  onBlur: externalOnBlur,
   isDisabled = false,
   isRequired = false,
   rules = [],
@@ -44,6 +39,18 @@ const Phone = ({
     const err = runRules(data, rules)
     onValidate?.(err)
   }, [data])
+
+  const handleBlur = (e) => {
+    setFocused(false)
+    setTouched(true)
+
+    const err = runRules(data, rules)
+    onValidate?.(err)
+
+    if (!err && data) {
+      externalOnBlur?.(e)
+    }
+  }
 
   useEffect(() => {
     if (countriesCache[locale]) {
@@ -74,18 +81,11 @@ const Phone = ({
       }, {})
     }
 
-    return Object.fromEntries(
-      Object.entries(countries?.data).map(([k, v]) => [k.toLowerCase(), v])
-    )
+    return countries?.data.reduce((acc, item) => {
+      acc[item.alpha_2.toLowerCase()] = item.label
+      return acc
+    }, {})
   }, [countries])
-
-  const handleBlur = () => {
-    setFocused(false)
-    setTouched(true)
-
-    const err = runRules(data, rules)
-    onValidate?.(err)
-  }
 
   if (isPending) {
     return <Preload count={1} className={style.skeleton} />

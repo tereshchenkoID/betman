@@ -14,9 +14,14 @@ const Modal = ({
   zIndex = 10
 }) => {
   const isTiny = !title
+  const titleId = 'modal-title'
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={!isTiny ? titleId : undefined}
+      aria-label={'Dialog'}
       className={
         classNames(
           style.block,
@@ -36,7 +41,7 @@ const Modal = ({
           {
             !isTiny && (
               <div className={style.header}>
-                <h3 className={style.title}>{title}</h3>
+                <h3 id={titleId} className={style.title}>{title}</h3>
                 {
                   !isPointer &&
                   <Action

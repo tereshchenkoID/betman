@@ -5,7 +5,7 @@ import {
   useContext,
   useState,
   useMemo,
-  useCallback
+  useCallback,
 } from 'react'
 
 import { toast } from '@/utils/toast'

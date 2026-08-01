@@ -20,7 +20,7 @@ const SectionPromo = ({ data, meta }) => {
         data?.map((el, idx) =>
           <Fragment key={idx}>
             <div className={style.header}>
-              <Back url={NAVIGATION.promotions.url} />
+              <Back />
               <h1>{el?.title}</h1>
             </div>
             <div className={style.content}>

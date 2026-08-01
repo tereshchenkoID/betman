@@ -13,7 +13,7 @@ const saveSession = async (token) => {
     path: '/',
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
-    maxAge: 60 * 60 * 24 * 30 // 30 дней
+    maxAge: 60 * 60 * 24 * 30 // 30 days
   })
 }
 
@@ -23,7 +23,6 @@ export const registerWithCredentialsAction = async (filterData) => {
     params: {
       data: JSON.stringify(filterData)
     },
-    isRedirect: false
   })
 
   if (data?.token) {
@@ -37,7 +36,6 @@ export const loginWithCredentialsAction = async (username, password) => {
   const data = await apiRequest('login/', {
     method: 'POST',
     params: { username, password },
-    isRedirect: false
   })
 
   if (data?.token) {
@@ -57,7 +55,6 @@ export const loginWithGoogleAction = async ({ email, name, picture }) => {
       provider: 'google',
       type: '1'
     },
-    isRedirect: false
   })
 
   if (data?.token) {
@@ -68,20 +65,17 @@ export const loginWithGoogleAction = async ({ email, name, picture }) => {
 }
 
 export const logoutAction = async () => {
-  const res = await apiRequest('logout/', {
-    method: 'GET',
-  })
+  await apiRequest('logout/', { method: 'GET' }).catch(() => {})
 
-  if (res?.code === '0' && !res?.id) {
-    const cookieStore = await cookies()
-    cookieStore.delete('NEXT_SID')
-    return { success: true }
-  }
+  const cookieStore = await cookies()
+  cookieStore.delete('NEXT_SID')
+  return { success: true }
 }
 
 export const getCachedUser = cache(async () => {
   return await apiRequest('authSession/', {
     method: 'GET',
-    cache: 'no-cache'
+    cache: 'no-cache',
+    next: { tags: ['user'] }
   })
 })

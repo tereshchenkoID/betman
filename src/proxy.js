@@ -21,7 +21,7 @@ function getRequestLocale(request, pathname) {
   return routing.defaultLocale;
 }
 
-export function proxy(request) {
+export async function proxy(request) {
   const { pathname } = request.nextUrl;
 
   if (pathname.includes('.') || pathname.startsWith('/_next')) {
@@ -32,7 +32,6 @@ export function proxy(request) {
 
   const pathnameWithoutLocale = pathname.replace(new RegExp(`^/(${routing.locales.join('|')})`), '');
   const isAccountPage = pathnameWithoutLocale === '/account' || pathnameWithoutLocale.startsWith('/account/');
-
   const hasToken = request.cookies.has('NEXT_SID');
 
   if (isAccountPage && !hasToken) {

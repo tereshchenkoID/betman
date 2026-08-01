@@ -7,6 +7,16 @@
   overflow: hidden;
   height: rem(240px);
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
+    z-index: $z-index-1;
+  }
+
   &.disable {
     .picture {
       opacity: 0.4;
@@ -21,6 +31,7 @@
   inset-inline: 0;
   inset-block-end: 0;
   padding: var(--gap-12);
+  z-index: $z-index-1;
 }
 
 .info {

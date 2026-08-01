@@ -72,7 +72,12 @@ export const NAVIGATION = {
   not_found: {
     text: 'navigation.not_found',
     url: '/not-found',
-  }
+  },
+  invite_friends: {
+    text: 'navigation.invite_friends',
+    icon: 'icon-human-user-add',
+    url: '/invite-friends',
+  },
 }
 
 export const ROUTES_USER = {
@@ -110,11 +115,6 @@ export const ROUTES_USER = {
     text: 'navigation.promocode',
     icon: 'icon-actions-scan',
     url: '/account/promocode',
-  },
-  invite_friends: {
-    text: 'navigation.invite_friends',
-    icon: 'icon-human-user-add',
-    url: '/account/invite-friends',
   },
 }
 

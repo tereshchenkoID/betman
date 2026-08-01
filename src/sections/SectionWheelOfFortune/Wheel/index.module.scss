@@ -1,7 +1,7 @@
 @use '@/scss/config' as *;
 
 .block {
-  --wheel-size: 634;
+  --wheel-size: 500;
 
   @include flex(center, center);
 
@@ -33,17 +33,22 @@
 }
 
 .indicator {
-  @include size(calc(100 / var(--wheel-size) * 100cqw), calc(125 / var(--wheel-size) * 100cqw));
+  @include size(calc(80 / var(--wheel-size) * 100cqw), calc(105 / var(--wheel-size) * 100cqw));
 
   position: absolute;
   top: 0;
   transform: translateY(-55%);
   z-index: $z-index-1;
   pointer-events: none;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+  }
 }
 
 .spin {
-  @include size(calc(152 / var(--wheel-size) * 100cqw));
+  @include size(calc(132 / var(--wheel-size) * 100cqw));
   @include flex(center, center);
   @include transition;
 

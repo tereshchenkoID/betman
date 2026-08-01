@@ -2,7 +2,6 @@
 
 import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { revalidatePath } from 'next/cache'
 import { routing } from '@/i18n/routing'
 
 const PROTECTED = ['user/', 'profile/'];
@@ -12,7 +11,6 @@ export const apiRequest = async (endpoint, {
   params = {},
   cache = 'no-cache',
   next = {},
-  isRedirect = false,
 } = {}) => {
   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
   const cookieStore = await cookies()
@@ -66,20 +64,19 @@ export const apiRequest = async (endpoint, {
   }
 
   try {
-    const res = await fetch(url.toString(), options);
-    const json = await res.json();
+    const res = await fetch(url.toString(), options)
+    const json = await res.json()
 
-    if (json?.code === '2') {
-      cookieStore.delete('NEXT_SID')
-      revalidatePath('/', 'layout')
-
-      if (isRedirect) {
-        redirect('/?logout=true');
-      }
+    if (json?.code === '2' || json?.code === '4') {
+      redirect(`/${locale}?expired=1`)
     }
 
-    return json;
+    return json
   } catch (error) {
+    if (error?.message === 'NEXT_REDIRECT' || error?.digest?.startsWith('NEXT_REDIRECT')) {
+      throw error
+    }
+
     return { code: '3', error_message: 'Internal server error'};
   }
 };

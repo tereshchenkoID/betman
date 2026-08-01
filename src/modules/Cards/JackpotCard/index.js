@@ -4,8 +4,8 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { startTransition, useEffect, useState } from 'react'
-import classNames from 'classnames'
 import { useKeenSlider } from 'keen-slider/react'
+import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -25,40 +25,30 @@ const JackpotCard = ({
 }) => {
   const t = useTranslations()
   const { lastMessage } = useWebSocketContext()
-  const [jackpot, setJackpot] = useState(data)
+  const [amount, setAmount] = useState(data?.amount)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const isExtended = classes.includes('extended')
 
   useEffect(() => {
-    startTransition(() => {
-      setJackpot(data)
-    })
-  }, [data])
+    setAmount(data?.amount)
+  }, [data?.amount])
 
   useEffect(() => {
     if (!lastMessage) return
     const { cmd, data: payload, topic } = lastMessage
 
     if (cmd === 'update' && topic === 'jackpots') {
-      const currentUpdate = payload.find((item) => item.id === jackpot?.id)
+      const currentUpdate = payload.find((item) => item.id === data?.id)
 
       if (currentUpdate) {
         startTransition(() => {
-          setJackpot((prev) => {
-            if (prev?.amount !== currentUpdate.amount) {
-              return {
-                ...prev,
-                amount: currentUpdate.amount,
-              }
-            }
-            return prev
-          })
+          setAmount(prev => (prev === currentUpdate.amount ? prev : currentUpdate.amount))
         })
       }
     }
-  }, [lastMessage, jackpot?.id])
+  }, [data?.id, lastMessage])
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
@@ -123,16 +113,16 @@ const JackpotCard = ({
       style={{ backgroundImage: 'url(/images/coins.webp)' }}
     >
       <Link
-        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
         className={style.logo}
-        aria-label={jackpot?.title}
+        aria-label={data?.title}
       >
         {
-          jackpot?.image &&
+          data?.image &&
           <Image
-            src={jackpot?.image}
+            src={data?.image}
             className={style.image}
-            alt={jackpot?.title || 'Jackpot image'}
+            alt={data?.title || 'Jackpot image'}
             fill
             sizes="164px"
             decoding="async"
@@ -140,30 +130,30 @@ const JackpotCard = ({
         }
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
         className={style.info}
-        aria-label={jackpot?.title}
+        aria-label={data?.title}
       >
-        {jackpot?.title}
+        {data?.title}
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
         className={style.total}
         aria-label={t('jackpot_total')}
       >
         <p className={style.label}>{t('jackpot_total')}</p>
         <div className={style.amount}>
-          <h3 className={style.number}>{jackpot?.amount}</h3>
-          <h4 className={style.currency}>{jackpot?.currency}</h4>
+          <h3 className={style.number}>{amount}</h3>
+          <h4 className={style.currency}>{data?.currency}</h4>
         </div>
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${jackpot?.id}/games`}
+        href={`${NAVIGATION.jackpots.url}/${data?.id}/games`}
         className={style.eligible}
         aria-label={t('all_games')}
       >
         <Badge
-          data={jackpot?.counter}
+          data={data?.counter}
           classes={['secondary', 'md', style.badge]}
         />
         <p>{t('all_games')}</p>
@@ -192,7 +182,7 @@ const JackpotCard = ({
 
         <div ref={sliderRef} className="keen-slider">
           {
-            jackpot?.games?.map((el, idx) =>
+            data?.games?.map((el, idx) =>
             <div
               key={idx}
               className={style.slide}

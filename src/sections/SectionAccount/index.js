@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import classNames from 'classnames'
 
-import { ROUTES_USER } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { fixed } from '@/helpers/fixed'
 
@@ -19,7 +19,7 @@ const MENU = [
   ROUTES_USER.wallet,
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
-  ROUTES_USER.invite_friends,
+  NAVIGATION.invite_friends,
   ROUTES_USER.favourites
 ]
 

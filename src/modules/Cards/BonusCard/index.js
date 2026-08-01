@@ -37,7 +37,7 @@ const BonusCard = ({ settings, data }) => {
           <div className={style.picture}>
             <Image
               className={style.image}
-              src={settings.assets.logo_desktop}
+              src={'/images/logo-desktop.svg'}
               alt={settings.name}
               width={158}
               height={28}
@@ -63,11 +63,24 @@ const BonusCard = ({ settings, data }) => {
           </div>
         </div>
       </div>
-      <Action
-        to={NAVIGATION.home.url}
-        placeholder={t('play')}
-        classes={['primary', 'md', 'wide']}
-      />
+      <div className={style.info}>
+        {
+          data?.button?.link &&
+          <Action
+            to={data?.button?.link}
+            placeholder={data?.button?.text}
+            classes={['primary', 'md', 'wide']}
+          />
+        }
+        {
+          data?.info &&
+          <Action
+            to={data?.info}
+            placeholder={t('details')}
+            classes={['outline', 'md', 'wide']}
+          />
+        }
+      </div>
       <div className={style.scale}>
         <Scale
           amount={data.total_bets}

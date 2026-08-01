@@ -4,7 +4,11 @@ import { Link, useRouter } from '@/i18n/routing'
 import Image from 'next/image'
 import classNames from 'classnames'
 
-import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
+import {
+  NAVIGATION,
+  ROUTES_USER,
+  USER_VERIFY
+} from '@/constant/config'
 
 import { toast } from '@/utils/toast'
 import { logoutAction } from '@/app/actions/auth'
@@ -24,7 +28,7 @@ const DATA = [
   ROUTES_USER.wallet,
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
-  ROUTES_USER.invite_friends,
+  NAVIGATION.invite_friends,
   ROUTES_USER.history,
   ROUTES_USER.favourites
 ]

@@ -18,6 +18,7 @@ import { getFavorites } from '@/app/actions/static'
 import Toastify from '@/components/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
 import WSUpdater from '@/modules/WSUpdater'
+import SessionHandler from '@/modules/SessionHandler'
 
 import 'keen-slider/keen-slider.min.css'
 import 'react-phone-input-2/lib/style.css'
@@ -95,6 +96,7 @@ export default async function RootLayout({ children, params }) {
       messages={messages}
       locale={locale}
     >
+      <SessionHandler />
       <FavoritesProvider
         user={user}
         data={favorites?.data}
@@ -119,10 +121,10 @@ export default async function RootLayout({ children, params }) {
         </ModalProvider>
         <Toastify />
         <SpeedInsights />
-        <Script
-          src="https://accounts.google.com/gsi/client"
-          strategy="lazyOnload"
-        />
+        {/*<Script*/}
+        {/*  src="https://accounts.google.com/gsi/client"*/}
+        {/*  strategy="lazyOnload"*/}
+        {/*/>*/}
       </FavoritesProvider>
     </NextIntlClientProvider>
     </body>

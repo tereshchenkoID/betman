@@ -52,23 +52,23 @@
   }
 
   &.primary {
-    background: var(--brand);
+    background: var(--link);
     color: var(--text-for-brand);
 
     &:disabled,
     &.disabled {
       color: var(--text-for-brand-disabled);
-      background: var(--brand-disabled);
+      background: var(--link-disabled);
     }
 
     &:active,
     &.active {
-      background: var(--brand-hover);
+      background: var(--link-hover);
     }
 
     @include hover {
       &:hover {
-        background: var(--brand-hover);
+        background: var(--link-hover);
       }
     }
   }

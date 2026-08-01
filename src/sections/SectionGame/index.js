@@ -103,7 +103,7 @@ const SectionGame = ({
             ?
               <div className={style.login}>
                 <h2 className={style.subtitle}>{t('sign_up')}</h2>
-                <LoginModal isRedirect={false} />
+                <LoginModal />
               </div>
             :
               !iframe?.iframe

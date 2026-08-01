@@ -10,7 +10,7 @@ import { useModal } from '@/context/ModalContext'
 import NotificationModal from '@/modules/Modals/NotificationModal'
 import AgeModal from '@/modules/Modals/AgeModal'
 
-export default function WSUpdater({ user }) {
+const WSUpdater = ({ user }) => {
   const t = useTranslations()
   const router = useRouter()
   const { lastMessage } = useWebSocketContext()
@@ -21,9 +21,13 @@ export default function WSUpdater({ user }) {
 
     const { cmd, data, topic } = lastMessage
 
-    // if (cmd === 'update' && (topic === 'credits' || topic === 'tasks')) {
-    //   router.refresh()
-    // }
+    if (cmd === 'update' && topic === 'credits') {
+      // TODO revalidateTag('user')
+    }
+
+    if (cmd === 'update' && topic === 'tasks') {
+      // TODO revalidateTag('quests')
+    }
 
     if (cmd === 'update' && topic === 'message') {
       openModal({
@@ -35,7 +39,7 @@ export default function WSUpdater({ user }) {
 
   useEffect(() => {
     const hasBirthday = user?.profile?.birthday
-    const hasAgeSession = typeof window !== 'undefined' && sessionStorage.getItem('age') === '1'
+    const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
 
     let shouldShowModal = false
 
@@ -60,3 +64,5 @@ export default function WSUpdater({ user }) {
 
   return null
 }
+
+export default WSUpdater

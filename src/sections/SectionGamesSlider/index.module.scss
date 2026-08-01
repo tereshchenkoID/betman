@@ -169,7 +169,7 @@
 
   &.bottom {
     --skeleton-cols: 3;
-    --skeleton-height: 10rem; // 160px
+    --skeleton-height: 8.75rem; // 140px
 
     @include mob-m {
       --skeleton-cols: 4;
@@ -177,18 +177,22 @@
 
     @include tab-s {
       --skeleton-cols: 5;
+      --skeleton-height: 9.68rem; // 155px
     }
 
     @include tab-m {
       --skeleton-cols: 6;
+      --skeleton-height: 10.625rem; // 170px
     }
 
     @include tab-l {
       --skeleton-cols: 7;
+      --skeleton-height: 8.75rem; // 140px
     }
 
     @include desk-s {
       --skeleton-cols: 6;
+      --skeleton-height: 10.93rem; // 175px
     }
   }
 }

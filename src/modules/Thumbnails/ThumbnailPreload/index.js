@@ -6,7 +6,7 @@ const ThumbnailPreload = ({ settings }) => {
   return (
     <div className={style.block}>
       <Image
-        src={settings.assets.logo_desktop}
+        src={'/images/logo-desktop.svg'}
         className={style.image}
         alt={settings.name}
         width={187}

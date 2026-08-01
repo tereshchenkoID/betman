@@ -16,7 +16,7 @@ import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const Login = ({ isRedirect = true }) => {
+const Login = () => {
   const t = useTranslations()
   const VALIDATION_RULES = useValidations()
 
@@ -42,16 +42,12 @@ const Login = ({ isRedirect = true }) => {
       const res = await loginWithCredentialsAction(filter.username, filter.password)
 
       if (res?.code === '0') {
-        sessionStorage.setItem('age', '0')
+        localStorage.setItem('age', '0')
         closeModal()
 
         startTransition(() => {
-          if (isRedirect) {
-            router.refresh()
-            router.push(NAVIGATION.home.url)
-          } else {
-            router.refresh()
-          }
+          router.refresh()
+          router.push(NAVIGATION.home.url)
         })
       } else {
         toast.error(res?.error_message)

@@ -1,16 +1,20 @@
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { toast } from '@/utils/toast'
 
+import { useModal } from '@/context/ModalContext'
+
 import { action} from './action'
+
+import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
 // ==========================================
 // WHEEL VISUAL CONFIGURATION
 // ==========================================
-const baseLayoutWidth = 634; // Theoretical layout size used for proportions
+const baseLayoutWidth = 500;
 
 const WHEEL_CONFIG = {
   colors: ['#141517', '#004654', '#01B0CF'],
@@ -27,10 +31,10 @@ const WHEEL_CONFIG = {
 
   // Typography adjustments
   text: {
-    titleSize: '40px',
-    valueSize: '34px',
+    titleSize: '50px',
+    valueSize: '38px',
     valueAlpha: 'rgba(255, 255, 255, 0.8)',
-    lineHeightGap: 46, // Vertical distance between title and value strings
+    lineHeightGap: 50,
   },
 
   // Shadows config
@@ -58,10 +62,13 @@ const WHEEL_CONFIG = {
 const Wheel = ({
   mock,
   settings,
+  user,
   wheelsRound
 }) => {
   // const router = useRouter()
+  const t = useTranslations()
   const { wheels, wheelsCounter } = wheelsRound
+  const { openModal } = useModal()
 
   const canvasRef = useRef(null)
   const timerRef = useRef(null)
@@ -83,134 +90,143 @@ const Wheel = ({
     const canvas = canvasRef.current
     if (!canvas || count === 0) return
 
-    const ctx = canvas.getContext('2d')
-    const size = canvas.width // 1200
-    const center = size / 2
+    document.fonts.ready.then(() => {
+      const ctx = canvas.getContext('2d')
+      const size = canvas.width // 1200
+      const center = size / 2
 
-    // Pull theme CSS custom variables
-    const rootStyles = getComputedStyle(document.documentElement)
-    const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
-    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Roboto', sans-serif"
-    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || "'Oswald', sans-serif"
+      // Pull theme CSS custom variables
+      const rootStyles = getComputedStyle(document.documentElement)
+      const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
+      const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Roboto', sans-serif"
+      const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || "'Oswald', sans-serif"
 
-    // Absolute values calculated from base layout ratios
-    const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
-    const radius = center - outerBorderWidth
+      // Absolute values calculated from base layout ratios
+      const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
+      const radius = center - outerBorderWidth
 
-    ctx.clearRect(0, 0, size, size)
+      ctx.clearRect(0, 0, size, size)
 
-    // Helper: Creates generic gold gradient wrapper
-    const createGoldGradient = () => {
-      const grad = ctx.createRadialGradient(center, center, radius * 0.5, center, center, center)
-      WHEEL_CONFIG.goldGradientStops.forEach(stop => grad.addColorStop(stop.offset, stop.color))
-      return grad
-    }
+      // Helper: Creates generic gold gradient wrapper
+      const createGoldGradient = () => {
+        const grad = ctx.createRadialGradient(center, center, radius * 0.5, center, center, center)
+        WHEEL_CONFIG.goldGradientStops.forEach(stop => grad.addColorStop(stop.offset, stop.color))
+        return grad
+      }
 
-    // Helper utility to calculate custom shades for the gradient depth
-    const darkenColor = (hex, percent) => {
-      let num = parseInt(hex.replace("#", ""), 16),
-        amt = Math.round(2.55 * percent),
-        R = (num >> 16) - amt,
-        G = (num >> 8 & 0x00FF) - amt,
-        B = (num & 0x0000FF) - amt;
-      return "#" + (0x1000000 + (R < 0 ? 0 : R > 255 ? 255 : R) * 0x1000 + (G < 0 ? 0 : G > 255 ? 255 : G) * 0x10 + (B < 0 ? 0 : B > 255 ? 255 : B)).toString(16).slice(1);
-    }
+      // Helper utility to calculate custom shades for the gradient depth
+      const darkenColor = (hex, percent) => {
+        let num = parseInt(hex.replace("#", ""), 16),
+          amt = Math.round(2.55 * percent),
+          R = (num >> 16) - amt,
+          G = (num >> 8 & 0x00FF) - amt,
+          B = (num & 0x0000FF) - amt;
+        return "#" + (0x1000000 + (R < 0 ? 0 : R > 255 ? 255 : R) * 0x1000 + (G < 0 ? 0 : G > 255 ? 255 : G) * 0x10 + (B < 0 ? 0 : B > 255 ? 255 : B)).toString(16).slice(1);
+      }
 
-    // Draw operations split into clean standalone functions
-    const drawSectorsAndText = () => {
-      mock.forEach((sector, i) => {
-        const startAngle = ((i * angleStep + rotation) - 90) * Math.PI / 180
-        const endAngle = (((i + 1) * angleStep + rotation) - 90) * Math.PI / 180
-        const middleAngle = startAngle + (endAngle - startAngle) / 2
+      // Draw operations split into clean standalone functions
+      const drawSectorsAndText = () => {
+        mock.forEach((sector, i) => {
+          const startAngle = ((i * angleStep + rotation) - 90) * Math.PI / 180
+          const endAngle = (((i + 1) * angleStep + rotation) - 90) * Math.PI / 180
+          const middleAngle = startAngle + (endAngle - startAngle) / 2
 
-        // --- Sector Background Gradient ---
+          // --- Sector Background Gradient ---
+          ctx.save()
+          ctx.beginPath()
+          ctx.moveTo(center, center)
+          ctx.arc(center, center, radius, startAngle, endAngle)
+          ctx.closePath()
+
+          const baseColor = WHEEL_CONFIG.colors[i % WHEEL_CONFIG.colors.length]
+          const grad = ctx.createRadialGradient(center, center, radius * 0.25, center, center, radius)
+          grad.addColorStop(0, baseColor)
+          grad.addColorStop(1, darkenColor(baseColor, 40))
+
+          ctx.fillStyle = grad
+          ctx.fill()
+          ctx.restore()
+
+          // --- Text Render Plane ---
+          ctx.save()
+          ctx.translate(center, center)
+          ctx.rotate(middleAngle + Math.PI / 2)
+
+          ctx.textAlign = 'center'
+          ctx.textBaseline = 'middle'
+
+          const titleText = sector.title.toUpperCase()
+          const valueText = sector.value ? sector.value.toUpperCase() : ''
+
+          // Main Title
+          ctx.fillStyle = colorWhite
+          ctx.font = `700 ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
+
+          const mainTextY = -radius * WHEEL_CONFIG.ratios.textRadiusDistance
+          ctx.fillText(titleText, 0, mainTextY)
+
+          // Subtitle / Value Info
+          if (valueText) {
+            ctx.fillStyle = WHEEL_CONFIG.text.valueAlpha
+            ctx.font = `600 ${WHEEL_CONFIG.text.valueSize} ${fontFamily}`
+            ctx.fillText(valueText, 0, mainTextY + WHEEL_CONFIG.text.lineHeightGap)
+          }
+
+          ctx.restore()
+        })
+      }
+
+      const drawSeparatorLines = () => {
+        mock.forEach((_, i) => {
+          const lineAngle = ((i * angleStep + rotation) - 90) * Math.PI / 180
+
+          ctx.save()
+          ctx.beginPath()
+
+          ctx.strokeStyle = WHEEL_CONFIG.ratios.separatorLineColor
+          ctx.lineWidth = size * WHEEL_CONFIG.ratios.separatorLineWidth
+
+          ctx.moveTo(center, center)
+          ctx.lineTo(
+            center + radius * Math.cos(lineAngle),
+            center + radius * Math.sin(lineAngle)
+          )
+
+          ctx.stroke()
+          ctx.restore()
+        })
+      }
+
+      const drawOuterGoldFrame = (goldGrad) => {
         ctx.save()
         ctx.beginPath()
-        ctx.moveTo(center, center)
-        ctx.arc(center, center, radius, startAngle, endAngle)
-        ctx.closePath()
-
-        const baseColor = WHEEL_CONFIG.colors[i % WHEEL_CONFIG.colors.length]
-        const grad = ctx.createRadialGradient(center, center, radius * 0.25, center, center, radius)
-        grad.addColorStop(0, baseColor)
-        grad.addColorStop(1, darkenColor(baseColor, 40))
-
-        ctx.fillStyle = grad
-        ctx.fill()
-        ctx.restore()
-
-        // --- Text Render Plane ---
-        ctx.save()
-        ctx.translate(center, center)
-        ctx.rotate(middleAngle + Math.PI / 2)
-
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'middle'
-
-        const titleText = sector.title.toUpperCase()
-        const valueText = sector.value ? sector.value.toUpperCase() : ''
-
-        // Main Title
-        ctx.fillStyle = colorWhite
-        ctx.font = `700 ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
-
-        const mainTextY = -radius * WHEEL_CONFIG.ratios.textRadiusDistance
-        ctx.fillText(titleText, 0, mainTextY)
-
-        // Subtitle / Value Info
-        if (valueText) {
-          ctx.fillStyle = WHEEL_CONFIG.text.valueAlpha
-          ctx.font = `600 ${WHEEL_CONFIG.text.valueSize} ${fontFamily}`
-          ctx.fillText(valueText, 0, mainTextY + WHEEL_CONFIG.text.lineHeightGap)
-        }
-
-        ctx.restore()
-      })
-    }
-
-    const drawSeparatorLines = () => {
-      mock.forEach((_, i) => {
-        const lineAngle = ((i * angleStep + rotation) - 90) * Math.PI / 180
-
-        ctx.save()
-        ctx.beginPath()
-
-        ctx.strokeStyle = WHEEL_CONFIG.ratios.separatorLineColor
-        ctx.lineWidth = size * WHEEL_CONFIG.ratios.separatorLineWidth
-
-        ctx.moveTo(center, center)
-        ctx.lineTo(
-          center + radius * Math.cos(lineAngle),
-          center + radius * Math.sin(lineAngle)
-        )
-
+        ctx.arc(center, center, center - outerBorderWidth / 2, 0, Math.PI * 2)
+        ctx.lineWidth = outerBorderWidth
+        ctx.strokeStyle = goldGrad
+        ctx.shadowBlur = WHEEL_CONFIG.shadows.outerBlur
+        ctx.shadowColor = WHEEL_CONFIG.shadows.outerColor
         ctx.stroke()
         ctx.restore()
-      })
-    }
+      }
 
-    const drawOuterGoldFrame = (goldGrad) => {
-      ctx.save()
-      ctx.beginPath()
-      ctx.arc(center, center, center - outerBorderWidth / 2, 0, Math.PI * 2)
-      ctx.lineWidth = outerBorderWidth
-      ctx.strokeStyle = goldGrad
-      ctx.shadowBlur = WHEEL_CONFIG.shadows.outerBlur
-      ctx.shadowColor = WHEEL_CONFIG.shadows.outerColor
-      ctx.stroke()
-      ctx.restore()
-    }
-
-    // Execution sequence
-    const goldGrad = createGoldGradient()
-    drawSectorsAndText()
-    drawSeparatorLines()
-    drawOuterGoldFrame(goldGrad)
+      // Execution sequence
+      const goldGrad = createGoldGradient()
+      drawSectorsAndText()
+      drawSeparatorLines()
+      drawOuterGoldFrame(goldGrad)
+    })
 
   }, [mock, rotation, count, angleStep])
 
   // Handle spin initialization and lock states
   const handleButtonClick = async () => {
+    if (!user?.id) {
+      openModal({
+        title: t('sign_up'),
+        body: <LoginModal />
+      })
+    }
+
     if (!OPTIONS.canSpin) return
     setSpinning(true)
 
@@ -280,13 +296,9 @@ const Wheel = ({
   return (
     <div className={style.block}>
       <div className={style.indicator}>
-        <Image
-          className={style.logo}
-          src={'/images/wheels/indicator.svg'}
-          alt={'Indicator'}
-          fill
-          decoding="async"
-          sizes="100px"
+        <img
+          src="/images/wheels/indicator.svg"
+          alt="Indicator"
         />
       </div>
 
@@ -302,16 +314,14 @@ const Wheel = ({
         type="button"
         className={style.spin}
         onClick={handleButtonClick}
-        disabled={!OPTIONS.canSpin}
+        disabled={user?.id && !OPTIONS.canSpin}
       >
-        <Image
+        <img
           className={style.logo}
-          src={settings.assets.logo_mobile}
-          alt={settings.name}
+          src="/images/logo-mobile.svg"
           width={102}
           height={35}
-          decoding="async"
-          sizes="102px"
+          alt="Logo"
         />
       </button>
     </div>

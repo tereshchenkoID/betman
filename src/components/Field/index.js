@@ -13,6 +13,7 @@ const Field = ({
   placeholder,
   onChange,
   onValidate,
+  onBlur: externalOnBlur,
   classes = null,
   isDisabled = false,
   isRequired = false,
@@ -20,6 +21,7 @@ const Field = ({
   min = null,
   max = null,
   error = null,
+  success = null,
 }) => {
   const inputRef = useRef(null)
   const [focused, setFocused] = useState(false)
@@ -31,16 +33,21 @@ const Field = ({
     onValidate?.(err)
   }, [data])
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     setFocused(false)
     setTouched(true)
 
     const err = runRules(data, rules)
     onValidate?.(err)
+
+    if (!err && data) {
+      externalOnBlur?.(e)
+    }
   }
 
   const isFilled = !!data
   const showError = error && (touched || (isFilled && error !== runRules('', rules)));
+  const showSuccess = !showError && success && isFilled
 
   const isLabelActive = focused || isFilled || type === 'date'
 
@@ -112,7 +119,29 @@ const Field = ({
       </div>
       {
         showError &&
-        <p className={style.message}>{error}</p>
+        <p
+          className={
+            classNames(
+              style.message,
+              style.error
+            )
+          }
+        >
+          {error}
+        </p>
+      }
+      {
+        showSuccess &&
+        <p
+          className={
+            classNames(
+              style.message,
+              style.success
+            )
+          }
+        >
+          {success}
+        </p>
       }
     </div>
   )

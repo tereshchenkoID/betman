@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { startTransition, useState } from 'react'
+import {startTransition, useCallback, useEffect, useState} from 'react'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 
@@ -25,7 +25,7 @@ import LoginModal from '@/modules/Modals/LoginModal'
 import style from './index.module.scss'
 
 const STEP_FIELDS = {
-  0: ['username', 'email', 'password'],
+  0: ['username', 'email', 'password', 'promocode'],
   1: ['name', 'surname', 'birthday', 'phone', 'terms'],
 }
 
@@ -35,16 +35,17 @@ const SectionRegistration = ({
 }) => {
   const t = useTranslations()
 
+  const VALIDATION_RULES = useValidations()
+
   const { openModal } = useModal()
   const router = useRouter()
   const searchParams = useSearchParams()
   const invite = searchParams.get('invite')
   const promocode = searchParams.get('promocode')
 
-  const VALIDATION_RULES = useValidations()
-
   const [step, setStep] = useState(0)
   const [errors, setErrors] = useState({})
+  const [successes, setSuccesses] = useState({})
 
   const { filter, handlePropsChange } = useFilterState({
     name: '',
@@ -74,17 +75,17 @@ const SectionRegistration = ({
   })
   const isDisabled = isValidationErrors || isFormIncomplete
 
-  const setFieldError = (name, err) => {
-    setErrors(prev => ({ ...prev, [name]: err }))
-  }
+  const setFieldError = useCallback((name, err) => {
+    setErrors(prev => (prev[name] === err ? prev : { ...prev, [name]: err }))
+  }, [])
 
-  const nextStep = () => {
-    if (!isDisabled) setStep(prev => prev + 1)
-  }
+  const setFieldSuccess = useCallback((name, msg) => {
+    setSuccesses(prev => (prev[name] === msg ? prev : { ...prev, [name]: msg }))
+  }, [])
 
-  const prevStep = () => {
-    setStep(prev => prev - 1)
-  }
+  const nextStep = useCallback(() => setStep(prev => prev + 1), [])
+
+  const prevStep = useCallback(() => setStep(prev => prev - 1), [])
 
   const handleSubmit = async (e) => {
     e && e.preventDefault()
@@ -108,56 +109,45 @@ const SectionRegistration = ({
     }
   }
 
+  const checkFieldOnBlur = async (key) => {
+    const value = filter[key]
+    if (!value) return
+
+    try {
+      const res = await apiRequest('registration/check/', {
+        method: 'POST',
+        params: { key, value }
+      })
+
+      if (res?.code === '0') {
+        setFieldError(key, null)
+        setFieldSuccess(key, res?.message)
+      } else {
+        setFieldError(key, res?.error_message)
+        setFieldSuccess(key, null)
+      }
+    } catch (e) {
+      toast.error(`Check field: ${key}:`)
+    }
+  }
+
   const handleCheck = async (e) => {
     e && e.preventDefault()
     if (isDisabled) return
 
-    try {
-      if (step === 0) {
-        const checks = [
-          { key: 'username', value: filter.username },
-          { key: 'email', value: filter.email },
-          { key: 'promocode', value: filter.promocode }
-        ]
-
-        const [username, email, promocode] = await Promise.all(
-          checks.map(({ key, value }) => {
-            return apiRequest('registration/check/', {
-              method: 'POST',
-              params: { key, value }
-            })
-          })
-        )
-
-        if (username?.code !== '0') setFieldError('username', t('errors.username_exist'))
-        if (email?.code !== '0') setFieldError('email', t('errors.email_exist'))
-        if (promocode?.code !== '0') setFieldError('promocode', t('errors.promocode_exist'))
-
-        if (username?.code === '0' && email?.code === '0') {
-          nextStep()
-        }
-      }
-
-      else if (step === 1) {
-        const res = await apiRequest('registration/check/', {
-          method: 'POST',
-          params: {
-            key: 'phone',
-            value: filter.phone
-          }
-        })
-
-        if (res && res?.code !== '0') {
-          setFieldError('phone', t('errors.phone_exist'))
-          return
-        }
-
-        await handleSubmit()
-      }
-    } catch (e) {
-      console.error('Submission error:', e)
+    if (step === 0) {
+      nextStep()
+      return
     }
+
+    handleSubmit().catch(console.error)
   }
+
+  useEffect(() => {
+    if (promocode) {
+      checkFieldOnBlur('promocode').catch(console.error)
+    }
+  }, [])
 
   return (
     <section>
@@ -206,6 +196,7 @@ const SectionRegistration = ({
                 isRequired={true}
                 onValidate={err => setFieldError('username', err)}
                 error={errors.username}
+                onBlur={() => checkFieldOnBlur('username')}
               />
               <Field
                 data={filter.email}
@@ -219,6 +210,7 @@ const SectionRegistration = ({
                 isRequired={true}
                 onValidate={err => setFieldError('email', err)}
                 error={errors.email}
+                onBlur={() => checkFieldOnBlur('email')}
               />
               <Field
                 type={'password'}
@@ -237,10 +229,15 @@ const SectionRegistration = ({
               <Field
                 data={filter.promocode}
                 placeholder={t('promocode')}
-                onChange={e => handlePropsChange('promocode', e)}
+                onChange={e => {
+                  handlePropsChange('promocode', e)
+                  setFieldSuccess('promocode', null)
+                }}
                 rules={[]}
                 onValidate={err => setFieldError('promocode', err)}
                 error={errors.promocode}
+                success={successes.promocode}
+                onBlur={() => checkFieldOnBlur('promocode')}
               />
             </div>
             <div className={style.actions}>
@@ -309,6 +306,7 @@ const SectionRegistration = ({
                 ]}
                 onValidate={err => setFieldError('phone', err)}
                 error={errors.phone}
+                onBlur={() => checkFieldOnBlur('phone')}
               />
               <Select
                 placeholder={t('country')}

@@ -84,8 +84,15 @@
 .message {
   margin-top: var(--gap-2);
   text-align: left;
-  color: var(--red);
   font-size: rem(12px);
+
+  &.error {
+    color: var(--red);
+  }
+
+  &.success {
+    color: var(--green);
+  }
 }
 
 .options {

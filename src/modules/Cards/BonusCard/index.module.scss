@@ -43,3 +43,9 @@
 .scale {
   margin-block: var(--gap-default);
 }
+
+.info {
+  @include flex($direction: column);
+
+  gap: var(--gap-default);
+}

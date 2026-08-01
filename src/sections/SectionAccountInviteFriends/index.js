@@ -36,19 +36,19 @@ const SectionAccountInviteFriends = ({ user, data }) => {
           <div className={style.links}>
             <Action
               target={'_blank'}
-              to={`viber://forward?text=${user?.invite?.text} ${data}`}
+              to={`viber://forward?text=${user?.invite?.text}${data}`}
               placeholder={'Viber'}
               classes={['tertiary', 'md']}
             />
             <Action
               target={'_blank'}
-              to={`https://t.me/share/url?url=${user?.invite?.text} ${data}`}
+              to={`https://t.me/share/url?url=${user?.invite?.text}${data}`}
               placeholder={'Telegram'}
               classes={['tertiary', 'md']}
             />
             <Action
               target={'_blank'}
-              to={`https://wa.me/?text=${user?.invite?.text} ${data}`}
+              to={`https://wa.me/?text=${user?.invite?.text}${data}`}
               placeholder={'Whatsapp'}
               classes={['tertiary', 'md']}
             />

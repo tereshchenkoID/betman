@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { usePathname } from '@/i18n/routing'
 
-import { ROUTES_USER } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -12,12 +12,12 @@ import style from './index.module.scss'
 
 const DATA = [
   ROUTES_USER.account,
-  // ROUTES_USER.profile,
+  ROUTES_USER.profile,
   ROUTES_USER.history,
   // ROUTES_USER.wallet,
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
-  ROUTES_USER.invite_friends,
+  NAVIGATION.invite_friends,
   ROUTES_USER.favourites
 ]
 

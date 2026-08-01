@@ -45,7 +45,7 @@ const SectionJackpot = ({
   return (
     <section>
       <div className={style.header}>
-        <Back url={NAVIGATION.jackpots.url} />
+        <Back />
         <h1>{data?.title}</h1>
       </div>
       <Tabs

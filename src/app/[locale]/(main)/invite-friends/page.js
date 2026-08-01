@@ -1,6 +1,7 @@
 import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
+import { getSettings } from '@/app/actions/static'
 import { getCachedUser } from '@/app/actions/auth'
 
 import SectionAccountInviteFriends from '@/sections/SectionAccountInviteFriends'
@@ -12,12 +13,18 @@ export async function generateMetadata({ params }) {
 
 export default async function InviteFriends({ params }) {
   const { locale } = await params
-  const user = await getCachedUser()
+  const [
+    user,
+    settings
+  ] =  await Promise.all([
+    getCachedUser(),
+    getSettings()
+  ])
 
   return (
     <SectionAccountInviteFriends
       user={user}
-      data={`${process.env.BASE_URL}/${locale}${NAVIGATION.registration.url}?invite=${user?.invite?.code}`}
+      data={`${settings?.invite_url}/${locale}${NAVIGATION.registration.url}${user?.id ? `?invite=${user?.invite?.code}` : ''}`}
     />
   )
 }

@@ -12,22 +12,27 @@ import Modal from '@/components/Modal'
 
 const ModalContext = createContext()
 
-let modalId = 0
-
 export function ModalProvider({ children }) {
   const [modals, setModals] = useState([])
 
   const openModal = useCallback((content) => {
-    const id = ++modalId
+    const id = window.crypto?.randomUUID
+      ? window.crypto.randomUUID()
+      : `${Date.now()}-${Math.random()}`
 
-    setModals((prev) => [
-      ...prev,
-      {
-        id,
-        ...content,
-        zIndex: 9 + prev.length + 1,
-      },
-    ])
+    setModals((prev) => {
+      const isOpened = prev.some((m) => m.title === content.title && content.title !== '')
+      if (isOpened) return prev
+
+      return [
+        ...prev,
+        {
+          id,
+          ...content,
+          zIndex: 10 + prev.length,
+        },
+      ]
+    })
 
     return id
   }, [])
