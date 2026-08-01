@@ -49,26 +49,30 @@ const Aside = ({
         <menu className={style.menu}>
           {
             DATA.map((el, idx) =>
-              <Link
+              <li
                 key={idx}
-                href={el.url}
-                aria-label={t(el.text)}
-                className={
-                  classNames(
-                    style.link,
-                    {
-                      [style.active]: isActive(pathname, el.url)
-                    }
-                  )
-                }
+                className={style.item}
               >
-                <Icon name={el.icon} />
-                {t(el.text)}
-                {
-                  el.badge &&
-                  <span className={style.badge}>{el.badge}</span>
-                }
-              </Link>
+                <Link
+                  href={el.url}
+                  aria-label={t(el.text)}
+                  className={
+                    classNames(
+                      style.link,
+                      {
+                        [style.active]: isActive(pathname, el.url)
+                      }
+                    )
+                  }
+                >
+                  <Icon name={el.icon} />
+                  {t(el.text)}
+                  {
+                    el.badge &&
+                    <span className={style.badge}>{el.badge}</span>
+                  }
+                </Link>
+              </li>
             )
           }
         </menu>

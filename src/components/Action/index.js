@@ -45,6 +45,21 @@ const Action = forwardRef(({
     props.href = to
   }
 
+  if (Boolean(to)) {
+    props.href = to
+    if (isDisabled) {
+      props['aria-disabled'] = true
+      props.tabIndex = -1
+    }
+  } else if(Tag === 'button') {
+    props.type = type
+    props.disabled = isDisabled
+  } else {
+    if (isDisabled) {
+      props['aria-disabled'] = true
+    }
+  }
+
   return (
     <Tag {...props}>
       <span className={style.placeholder}>

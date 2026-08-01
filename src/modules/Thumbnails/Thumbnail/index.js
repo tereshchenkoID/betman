@@ -47,7 +47,7 @@ const Thumbnail = ({
   }
 
   return (
-    <div
+    <article
       className={
         classNames(
           style.block,
@@ -55,10 +55,13 @@ const Thumbnail = ({
           isNumeric && style.numeric
         )
       }
+      aria-label={data?.title}
     >
-      <div
+      <button
+        type="button"
         className={style.action}
         onClick={handleClick}
+        aria-label={`${t('details')} ${data?.title}`}
       />
       {
         data?.images?.length > 0 &&
@@ -72,6 +75,12 @@ const Thumbnail = ({
           fetchPriority={isPriority ? 'high': 'low'}
           loading={isPriority ? 'eager': 'lazy'}
           sizes="125px"
+          onError={(e) => {
+            const img = e.currentTarget
+            img.style.display = 'none'
+            img.srcset = ''
+            img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+          }}
         />
       }
       <div className={style.details}>
@@ -86,6 +95,7 @@ const Thumbnail = ({
             <Action
               classes={['primary', 'lg', 'square', style.play]}
               onChange={handlePlay}
+              aria-label={`${t('play')} ${data?.title}`}
             >
               <Icon name={'icon-status-play-alt'} />
             </Action>
@@ -96,6 +106,7 @@ const Thumbnail = ({
                 onChange={closeModal}
                 classes={['link', 'sm', style.demo]}
                 placeholder={t('demo')}
+                aria-label={`${t('demo')} ${data?.title}`}
               />
             }
           </div>
@@ -117,7 +128,7 @@ const Thumbnail = ({
           }
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 

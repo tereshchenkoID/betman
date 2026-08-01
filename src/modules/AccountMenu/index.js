@@ -10,7 +10,6 @@ import {
   USER_VERIFY
 } from '@/constant/config'
 
-import { toast } from '@/utils/toast'
 import { logoutAction } from '@/app/actions/auth'
 
 import { fixed } from '@/helpers/fixed'
@@ -40,17 +39,12 @@ const AccountMenu = ({ user, setToggle }) => {
   const handleLogout = async () => {
     setToggle(false)
 
-    const res = await logoutAction()
-
-    if (res?.success) {
+    await logoutAction().then(() => {
       startTransition(() => {
         router.refresh()
-        router.push('/')
+        router.push(NAVIGATION.home.url)
       })
-    }
-    else {
-      toast.error(res.error_message)
-    }
+    })
   }
 
   return (

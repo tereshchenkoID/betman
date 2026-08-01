@@ -33,6 +33,7 @@ const Favorite = ({ data, user }) => {
     <Action
       classes={['secondary', 'md', 'square', style.block, isFavorite(data) ? style.active : style.default]}
       onChange={handleToggle}
+      aria-label={`${t('notification.add_favorite')} ${data?.title}`}
     >
       <Icon name={ROUTES_USER.favourites.icon} />
     </Action>

@@ -8,6 +8,10 @@
   border-radius: var(--border-radius-10);
   border: rem(1px) solid var(--primary);
   aspect-ratio: 1 / 1.12;
+  background-image: url('/images/logo-desktop.svg');
+  background-size: 80%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 
   @include desk-s {
     @include hover {

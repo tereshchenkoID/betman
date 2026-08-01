@@ -16,6 +16,9 @@ const Icon = ({
           classes && classes.map(el => el),
         )
       }
+      aria-hidden="true"
+      role="img"
+      aria-label={name}
       {...rest}
     />
   )

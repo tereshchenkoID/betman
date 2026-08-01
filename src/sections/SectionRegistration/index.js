@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import {startTransition, useCallback, useEffect, useState} from 'react'
+import { startTransition, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
+
+import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { registerWithCredentialsAction } from '@/app/actions/auth'
@@ -100,7 +102,7 @@ const SectionRegistration = ({
       setTimeout(() => {
         startTransition(() => {
           router.refresh()
-          router.push('/')
+          router.push(NAVIGATION.home.url)
         })
       }, 1000)
     }
