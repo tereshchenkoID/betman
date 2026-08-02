@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { NAVIGATION } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
+import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -75,12 +76,7 @@ const Thumbnail = ({
           fetchPriority={isPriority ? 'high': 'low'}
           loading={isPriority ? 'eager': 'lazy'}
           sizes="125px"
-          onError={(e) => {
-            const img = e.currentTarget
-            img.style.display = 'none'
-            img.srcset = ''
-            img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-          }}
+          onError={imageError}
         />
       }
       <div className={style.details}>

@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 
+import { imageError } from '@/helpers/image'
+
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Badge from '@/modules/Badge'
@@ -24,6 +26,7 @@ const PromoCard = ({ data }) => {
             height={159}
             priority
             decoding="async"
+            onError={imageError}
           />
         }
         <div className={style.badges}>

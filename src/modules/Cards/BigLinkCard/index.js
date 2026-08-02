@@ -1,6 +1,8 @@
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
+import { imageError } from '@/helpers/image'
+
 import style from './index.module.scss'
 
 const BigLinkCard = ({ data }) => {
@@ -8,7 +10,6 @@ const BigLinkCard = ({ data }) => {
     <Link
       href={`/${data?.hasMore?.join('/')}`}
       className={style.block}
-      aria-label={data?.title}
       prefetch={false}
     >
       {
@@ -20,9 +21,10 @@ const BigLinkCard = ({ data }) => {
           width={77}
           height={52}
           decoding="async"
+          onError={(e) => imageError(e, false)}
         />
       }
-      <p className={style.title}>{data?.title}</p>
+      <p>{data?.title}</p>
     </Link>
   )
 }

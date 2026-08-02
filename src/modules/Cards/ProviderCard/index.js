@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { NAVIGATION } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
+import { imageError } from '@/helpers/image'
 
 import style from './index.module.scss'
 
@@ -32,16 +33,16 @@ const ProviderCard = ({ data }) => {
         <div className={style.picture}>
           <Image
             src={data?.image}
-            className={style.image}
             alt={data?.name || 'Provider image'}
             fill
             decoding="async"
             sizes="70px"
+            onError={(e) => imageError(e, false)}
           />
         </div>
       }
       <div className={style.content}>
-        <p className={style.title}>{data?.title}</p>
+        <p>{data?.title}</p>
         <strong className={style.count}>{data?.results}</strong>
       </div>
     </Link>

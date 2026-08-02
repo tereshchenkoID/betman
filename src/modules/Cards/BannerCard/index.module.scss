@@ -9,6 +9,12 @@
   overflow: hidden;
 }
 
+.link {
+  @include size(100%);
+
+  display: block;
+}
+
 .picture {
   position: absolute;
   inset: 0;

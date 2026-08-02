@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { TASK_STATUS } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
+import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
 import QuestModal from '@/modules/Modals/QuestModal'
@@ -17,7 +18,7 @@ const QuestCard = ({ data }) => {
   const { openModal } = useModal()
 
   return (
-    <div
+    <article
       className={
         classNames(
           style.block,
@@ -34,6 +35,7 @@ const QuestCard = ({ data }) => {
           width={170}
           height={160}
           decoding="async"
+          onError={(e) => imageError(e, false)}
         />
       }
       <Action
@@ -74,7 +76,7 @@ const QuestCard = ({ data }) => {
           </>
         }
       </div>
-    </div>
+    </article>
   )
 }
 

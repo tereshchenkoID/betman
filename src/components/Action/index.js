@@ -38,13 +38,6 @@ const Action = forwardRef(({
     ...rest,
   }
 
-  if (!to) {
-    props.type = type
-    props.disabled = isDisabled
-  } else {
-    props.href = to
-  }
-
   if (Boolean(to)) {
     props.href = to
     if (isDisabled) {

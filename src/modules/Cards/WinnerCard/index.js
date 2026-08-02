@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { NAVIGATION } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
+import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -38,14 +39,14 @@ const WinnerCard = ({ user, data }) => {
   }
 
   return (
-    <div className={style.block}>
+    <article className={style.block}>
       <div
         className={style.action}
         onClick={handleClick}
       />
       <div className={style.info}>
         <div className={style.winnings}>
-          <h2 className={style.amount}>{data.winnings}</h2>
+          <h2>{data.winnings}</h2>
           <p className={style.currency}>{user?.currency.text}</p>
         </div>
 
@@ -80,9 +81,10 @@ const WinnerCard = ({ user, data }) => {
           width={88}
           height={110}
           sizes="88px"
+          onError={(e) => imageError(e, false)}
         />
       }
-    </div>
+    </article>
   )
 }
 

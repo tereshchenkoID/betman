@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { NAVIGATION } from '@/constant/config'
 
 import { useWebSocketContext } from '@/context/WebSocketContext'
+import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -103,7 +104,7 @@ const JackpotCard = ({
   }
 
   return (
-    <div
+    <article
       className={
         classNames(
           style.block,
@@ -121,11 +122,11 @@ const JackpotCard = ({
           data?.image &&
           <Image
             src={data?.image}
-            className={style.image}
             alt={data?.title || 'Jackpot image'}
             fill
             sizes="164px"
             decoding="async"
+            onError={imageError}
           />
         }
       </Link>
@@ -196,7 +197,7 @@ const JackpotCard = ({
           )}
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 
