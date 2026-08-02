@@ -20,14 +20,14 @@ const SectionJackpots = ({
 }) => {
   const t = useTranslations()
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
-  const [isNextDisabled, setIsNextDisabled] = useState(false)
+  const [isNextDisabled, setIsNextDisabled] = useState(true)
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
     const { rel, maxIdx } = slider.track.details
 
     setIsPrevDisabled(rel === 0)
-    setIsNextDisabled(rel >= maxIdx)
+    setIsNextDisabled(maxIdx === 0 || rel >= maxIdx)
   }
 
   const [sliderRef, instanceRef] = useKeenSlider(

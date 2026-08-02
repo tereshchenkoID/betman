@@ -14,7 +14,7 @@ const SectionBanners = ({ data, meta }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [dotsCount, setDotsCount] = useState(0)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
-  const [isNextDisabled, setIsNextDisabled] = useState(false)
+  const [isNextDisabled, setIsNextDisabled] = useState(true)
 
   const updateSliderState = (slider) => {
     if (!slider.track?.details) return
