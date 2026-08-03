@@ -8,30 +8,15 @@ export const NAVIGATION = {
     text: 'navigation.games_hall',
     url: '/games',
   },
-  bingo: {
-    text: 'navigation.bingo',
-    icon: 'icon-games-bingo',
-    url: '/bingo',
-  },
   tournament: {
     text: 'navigation.tournaments',
     icon: 'icon-games-trophy',
     url: '/tournaments',
   },
-  virtual: {
-    text: 'navigation.virtual',
-    icon: 'icon-games-virtuals',
-    url: '/virtual',
-  },
   quests: {
     text: 'navigation.quests',
     icon: 'icon-commerce-payment-summary',
     url: '/quests',
-  },
-  vip: {
-    text: 'navigation.vip',
-    icon: 'icon-games-crown',
-    url: '/vip',
   },
   jackpots: {
     text: 'navigation.jackpots',

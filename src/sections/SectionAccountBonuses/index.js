@@ -7,7 +7,7 @@ import style from './index.module.scss'
 
 const SectionAccountBonuses = ({ settings, data, meta }) => {
   return (
-    <div className={style.block}>
+    <section className={style.block}>
       {
         meta?.results !== "0"
           ?
@@ -25,7 +25,7 @@ const SectionAccountBonuses = ({ settings, data, meta }) => {
           :
             <Empty />
       }
-    </div>
+    </section>
   )
 }
 

@@ -1,12 +1,19 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  startTransition
+} from 'react'
 import { useRouter } from '@/i18n/routing'
 
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { consoleHelper } from '@/helpers/console'
 
 import { loginWithCredentialsAction, logoutAction } from '@/app/actions/auth'
+import { revalidateAction } from '@/app/actions/revalidate'
 
 const WebSocketContext = createContext(null)
 
@@ -25,10 +32,12 @@ export const WebSocketProvider = ({ children, user }) => {
     }
   }
 
-  const handleLogout = async () => {
-    await logoutAction()
-    router.refresh()
-  }
+  const handleLogout = useCallback(() => {
+    startTransition(async () => {
+      await logoutAction()
+      router.refresh()
+    })
+  }, [router])
 
   const onOpen = useCallback((socket) => {
     if (user?.token) {
@@ -44,14 +53,22 @@ export const WebSocketProvider = ({ children, user }) => {
       socket.send(JSON.stringify({ cmd: 'pong' }))
     }
 
-    // if (cmd === 'logout') {
-    //   handleLogout()
-    // }
-    //
+    if (cmd === 'logout') {
+      handleLogout()
+    }
 
-    // if (cmd === 'set-credits' && topic === 'account') {
-    //   setAuth({ ...auth, credits: data })
-    // }
+    if (cmd === 'set-credits' && topic === 'account') {
+      startTransition(async () => {
+        await revalidateAction('user')
+        router.refresh()
+      })
+    }
+
+    if (cmd === 'autologin') {
+      startTransition(async () => {
+        await handleAutoLogin(data.login, data.password)
+      })
+    }
   }, [])
 
   const { socketRef, sendWhenReady } = useWebSocket({

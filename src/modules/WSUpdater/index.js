@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, startTransition } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/routing'
 
 import { useWebSocketContext } from '@/context/WebSocketContext'
 import { useModal } from '@/context/ModalContext'
+import { revalidateAction } from '@/app/actions/revalidate'
 
 import NotificationModal from '@/modules/Modals/NotificationModal'
 import AgeModal from '@/modules/Modals/AgeModal'
@@ -22,11 +23,17 @@ const WSUpdater = ({ user }) => {
     const { cmd, data, topic } = lastMessage
 
     if (cmd === 'update' && topic === 'credits') {
-      // TODO revalidateTag('user')
+      startTransition(async () => {
+        await revalidateAction('user')
+        router.refresh()
+      })
     }
 
     if (cmd === 'update' && topic === 'tasks') {
-      // TODO revalidateTag('quests')
+      startTransition(async () => {
+        await revalidateAction('quests')
+        router.refresh()
+      })
     }
 
     if (cmd === 'update' && topic === 'message') {

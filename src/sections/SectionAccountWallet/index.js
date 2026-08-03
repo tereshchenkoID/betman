@@ -40,7 +40,7 @@ const SectionAccountWallet = ({ user, children }) => {
   }
 
   return (
-    <div className={style.block}>
+    <section className={style.block}>
       <div className={style.list}>
         {
           user?.payements.map((el, idx) =>
@@ -69,7 +69,7 @@ const SectionAccountWallet = ({ user, children }) => {
           {children}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
