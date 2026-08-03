@@ -85,7 +85,8 @@
 .shadow {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--material-disabled);
+  //background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
 }
 

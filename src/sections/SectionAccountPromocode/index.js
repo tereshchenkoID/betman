@@ -60,9 +60,7 @@ const SectionAccountPromocode = ({ children }) => {
             isDisabled={filter?.code.length < 6}
           />
         </div>
-        <div>
-          {children}
-        </div>
+        {children}
       </form>
     </section>
   )

@@ -56,9 +56,8 @@
 .cell {
   @include flex($align-items: center);
 
-  background-color: var(--primary);
+  background-color: var(--primary-disabled);
   padding: var(--gap-default);
-  opacity: 0.8;
 
   &.red {
     color: var(--red);

@@ -1,0 +1,18 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-12);
+}
+
+.actions {
+  @include flex(flex-end);
+
+  gap: var(--gap-12);
+}
+
+.row {
+  @include flex(flex-end, center);
+
+  gap: var(--gap-default);
+}

@@ -1,13 +1,7 @@
-import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser } from '@/app/actions/auth'
 
 import SectionAccountHistoryCasino from '@/sections/SectionAccountHistoryCasino'
-
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('profile', locale)
-}
 
 export default async function Casino({ searchParams }) {
   const { page } = await searchParams

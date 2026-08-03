@@ -1,0 +1,54 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-24);
+  position: relative;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-default);
+
+  @include tab-l {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-24);
+  align-content: flex-start;
+  position: relative;
+  min-height: rem(150px);
+}
+
+.container {
+  display: grid;
+  gap: var(--gap-32);
+  align-items: flex-start;
+
+  @include desk-s {
+    grid-template-columns: rem(460px) 1fr;
+  }
+}
+
+.link {
+  @include flex($align-items: center, $direction: column);
+
+  gap: var(--gap-default);
+  position: relative;
+  padding: var(--gap-default);
+  background-color: var(--material-hover);
+  border-radius: var(--border-radius-6);
+  font-size: rem(14px);
+  color: var(--text-for-material-disabled);
+
+  &.active {
+    background-color: var(--brand);
+    color: var(--text-for-brand);
+    pointer-events: none;
+  }
+}
+

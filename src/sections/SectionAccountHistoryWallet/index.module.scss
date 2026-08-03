@@ -68,10 +68,9 @@
 .cell {
   @include flex($align-items: center, $wrap: wrap);
 
-  background-color: var(--primary);
+  background-color: var(--primary-disabled);
   padding: var(--gap-default);
   gap: var(--gap-default);
-  opacity: 0.8;
 }
 
 .link {

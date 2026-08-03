@@ -14,7 +14,7 @@ const DATA = [
   ROUTES_USER.account,
   ROUTES_USER.profile,
   ROUTES_USER.history,
-  // ROUTES_USER.wallet,
+  ROUTES_USER.wallet,
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
   NAVIGATION.invite_friends,

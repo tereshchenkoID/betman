@@ -59,10 +59,10 @@ const Phone = ({
     }
 
     startTransition(async () => {
-      const result = await action()
-      if (result) {
-        countriesCache[locale] = result
-        setCountries(result)
+      const res = await action()
+      if (res) {
+        countriesCache[locale] = res
+        setCountries(res)
       }
     })
   }, [locale])

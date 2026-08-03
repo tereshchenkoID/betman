@@ -15,7 +15,7 @@ const SectionNotFound = () => {
   return (
     <section>
       <div className={style.header}>
-        <Back url={NAVIGATION.home.url} />
+        <Back />
         <h1>{t('notification.404_link')}</h1>
       </div>
       <div className={style.content}>

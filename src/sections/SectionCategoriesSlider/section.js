@@ -71,7 +71,6 @@ const SectionCategories = ({
             <Link
               href={NAVIGATION.providers.url}
               className={style.toggle}
-              type="button"
               aria-label={t('all_providers')}
             >
               <Icon name="icon-games-gambling" />

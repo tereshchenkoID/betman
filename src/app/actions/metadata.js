@@ -10,8 +10,8 @@ function metaData(data) {
 
     ...(data.openGraph && {
       openGraph: {
-        title: data.openGraph.title,
-        description: data.openGraph.description,
+        title: data.openGraph.title || data.title,
+        description: data.openGraph.description || data.description,
         type: data.openGraph.type || 'website',
         url: data.openGraph.url,
         images: data.openGraph.image ? [

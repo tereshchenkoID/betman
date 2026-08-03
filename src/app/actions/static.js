@@ -1,11 +1,12 @@
 'use server'
 
+import { cache } from 'react'
 import { apiRequest } from '@/app/actions/api'
 
 export async function getSettings() {
   return apiRequest('settings/', {
     cache: 'force-cache',
-    next: { tags: ['settings'] }, // next: { revalidate: 3600 }
+    next: { tags: ['settings'] },
   });
 }
 
@@ -30,7 +31,7 @@ export async function getPages() {
   });
 }
 
-export async function getWheelsRound() {
+export const getWheelsRound = cache(async () => {
   const res = await apiRequest('wheel/rounds/', {
     next: { tags: ['wheels-rounds'] },
   })
@@ -41,9 +42,9 @@ export async function getWheelsRound() {
     wheels: res,
     wheelsCounter: counter,
   }
-}
+})
 
-export async function getQuests() {
+export const getQuests = cache(async () => {
   const res = await apiRequest('quests/', {
     next: { tags: ['quests'] },
   })
@@ -55,10 +56,11 @@ export async function getQuests() {
     quests: res,
     questsCounter: counter,
   }
-}
+})
 
-export async function getFavorites() {
-  return apiRequest('favorites/', {
+export const getFavorites = cache(async () => {
+  return await apiRequest('favorites/', {
+    cache: 'no-cache',
     next: { tags: ['favorites'] },
-  });
-}
+  })
+})

@@ -1,4 +1,3 @@
-import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
 import { getSettings } from '@/app/actions/static'
 import { getCachedUser } from '@/app/actions/auth'
@@ -7,11 +6,6 @@ import { USER_VERIFY } from '@/constant/config'
 
 import SectionAccountProfile from '@/sections/SectionAccountProfile'
 import SectionTooltip from '@/sections/SectionTooltip'
-
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('profile', locale)
-}
 
 export default async function Profile({ searchParams }) {
   const { tab } = await searchParams

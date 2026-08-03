@@ -1,12 +1,12 @@
-import { getPageMetadata } from '@/app/actions/metadata'
+import { redirect } from 'next/navigation'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('profile', locale)
-}
+import { ROUTES_USER } from '@/constant/config'
+
+import { getCachedUser } from '@/app/actions/auth'
 
 export default async function Wallet() {
-  return (
-    <div>Wallet</div>
-  )
+  const user = await getCachedUser()
+  const defaultMethod = user?.payements?.[0]?.alias || 'voucher'
+
+  redirect(`${ROUTES_USER.wallet.url}/${defaultMethod}?tab=deposit`)
 }
