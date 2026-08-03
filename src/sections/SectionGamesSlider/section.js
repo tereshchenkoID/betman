@@ -17,7 +17,6 @@ import style from './index.module.scss'
 const SLIDE_TYPE = {
   GAME: 'game',
   MORE: 'more',
-  PLACEHOLDER: 'placeholder',
 }
 
 const renderSlide = (slide, settings, user, moreUrl, idx) => {

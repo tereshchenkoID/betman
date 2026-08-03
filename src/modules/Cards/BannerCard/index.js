@@ -2,6 +2,7 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 
 import { NAVIGATION } from '@/constant/config'
+
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

@@ -12,7 +12,7 @@ import { useRouter } from '@/i18n/routing'
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { consoleHelper } from '@/helpers/console'
 
-import { loginWithCredentialsAction, logoutAction } from '@/app/actions/auth'
+import { logoutAction } from '@/app/actions/auth'
 import { revalidateAction } from '@/app/actions/revalidate'
 
 const WebSocketContext = createContext(null)
@@ -20,17 +20,6 @@ const WebSocketContext = createContext(null)
 export const WebSocketProvider = ({ children, user }) => {
   const router = useRouter()
   const [lastMessage, setLastMessage] = useState(null)
-
-  const handleAutoLogin = async (username, password) => {
-    try {
-      const res = await loginWithCredentialsAction(username, password)
-      if (res?.success) {
-        router.refresh()
-      }
-    } catch (e) {
-      consoleHelper.error('AutoLogin Failed')
-    }
-  }
 
   const handleLogout = useCallback(() => {
     startTransition(async () => {
@@ -47,7 +36,7 @@ export const WebSocketProvider = ({ children, user }) => {
 
   const onMessage = useCallback((message, socket) => {
     setLastMessage(message)
-    const { cmd, data, topic } = message
+    const { cmd, topic } = message
 
     if (cmd === 'ping') {
       socket.send(JSON.stringify({ cmd: 'pong' }))
@@ -61,12 +50,6 @@ export const WebSocketProvider = ({ children, user }) => {
       startTransition(async () => {
         await revalidateAction('user')
         router.refresh()
-      })
-    }
-
-    if (cmd === 'autologin') {
-      startTransition(async () => {
-        await handleAutoLogin(data.login, data.password)
       })
     }
   }, [])

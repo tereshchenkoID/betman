@@ -12,7 +12,7 @@
   h5,
   h6 {
     text-transform: unset;
-    //font-size: inherit;
+    margin-bottom: var(--gap-4);
   }
 
   p,
@@ -34,7 +34,18 @@
 
   li {
     position: relative;
-    list-style: unset;
+    padding-inline-start: var(--gap-12);
+
+    &::before {
+      @include size(rem(4px));
+
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: rem(9px);
+      border-radius: 50%;
+      background-color: var(--link);
+      content: '';
+    }
   }
 
   a {
