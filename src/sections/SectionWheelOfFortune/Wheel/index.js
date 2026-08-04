@@ -7,8 +7,6 @@ import { useModal } from '@/context/ModalContext'
 
 import { action} from './action'
 
-import LoginModal from '@/modules/Modals/LoginModal'
-
 import style from './index.module.scss'
 
 // ==========================================
@@ -221,10 +219,7 @@ const Wheel = ({
   // Handle spin initialization and lock states
   const handleButtonClick = async () => {
     if (!user?.id) {
-      openModal({
-        title: t('sign_up'),
-        body: <LoginModal />
-      })
+      openModal('login', {}, { title: t('sign_up') })
     }
 
     if (!OPTIONS.canSpin) return

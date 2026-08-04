@@ -1,4 +1,4 @@
-import Script from 'next/script'
+// import Script from 'next/script'
 import localFont from 'next/font/local'
 import { getMessages } from 'next-intl/server'
 import { Oswald, Roboto } from 'next/font/google'

@@ -9,7 +9,6 @@ import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'
 import CategoryCard from '@/modules/Cards/CategoryCard'
-import SearchModal from '@/modules/Modals/SearchModal'
 
 import style from './index.module.scss'
 
@@ -55,11 +54,7 @@ const SectionCategories = ({
               type="button"
               aria-label={t('search')}
               onClick={() =>
-                openModal({
-                  title: t('search'),
-                  size: 'lg',
-                  body: <SearchModal user={user} />
-                })
+                openModal('search', { user }, { title: t('search'), size: 'lg'})
               }
             >
               <Icon name="icon-navigation-search" />

@@ -20,7 +20,6 @@ import style from './index.module.scss'
 
 const SectionGame = ({
   user,
-  settings,
   game,
   iframe,
   id,

@@ -4,8 +4,6 @@ import Image from 'next/image'
 
 import { Fragment } from 'react'
 
-import { NAVIGATION } from '@/constant/config'
-
 import Back from '@/modules/Back'
 import Inner from '@/modules/Inner'
 

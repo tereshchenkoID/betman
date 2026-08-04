@@ -22,7 +22,6 @@ import Icon from '@/components/Icon'
 import Checkbox from '@/components/Checkbox'
 import Select from '@/components/Select'
 import Phone from '@/components/Phone'
-import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
@@ -385,10 +384,7 @@ const SectionRegistration = ({
             classes={['md', 'outline']}
             placeholder={t('login')}
             onChange={() =>
-              openModal({
-                title: t('sign_up'),
-                body: <LoginModal />
-              })
+              openModal('login', {}, { title: t('sign_up') })
             }
           />
         </p>

@@ -4,7 +4,6 @@ import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
-import { getSettings } from '@/app/actions/static'
 import { getCachedUser } from '@/app/actions/auth'
 
 import SectionGame from '@/sections/SectionGame'
@@ -20,13 +19,11 @@ export default async function Game({ params }) {
   const [
     metaTags,
     user,
-    settings,
     res,
     link
   ] = await Promise.all([
     getPageMetadata(`game/${id}/`, locale),
     getCachedUser(),
-    getSettings(),
     apiRequest(`game/${id}/`),
     apiRequest(`v1/?gameId=${id}&demo=${mode}/`, {
       method: 'POST',
@@ -62,7 +59,6 @@ export default async function Game({ params }) {
     <>
       <SectionGame
         user={user}
-        settings={settings}
         game={res}
         iframe={link}
         id={id}

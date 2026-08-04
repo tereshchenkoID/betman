@@ -9,7 +9,6 @@ import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Favourite from '@/modules/Favorite'
 import Badge from '@/modules/Badge'
-import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
@@ -24,10 +23,7 @@ const GameModal = ({ data, user }) => {
       router.push(`${NAVIGATION.game.url}/${data.id}/0`)
     }
     else {
-      openModal({
-        title: t('sign_up'),
-        body: <LoginModal />
-      })
+      openModal('login', {}, { title: t('sign_up') })
     }
   }
 

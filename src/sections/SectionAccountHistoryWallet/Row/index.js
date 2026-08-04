@@ -10,7 +10,6 @@ import { date } from '@/helpers/date'
 import { action } from './action'
 
 import Action from '@/components/Action'
-import PaymentDetailsModal from '@/modules/Modals/PaymentDetailsModal'
 
 import style from '../index.module.scss'
 
@@ -88,10 +87,7 @@ const Row = ({ data }) => {
           classes={['primary', 'sm']}
           placeholder={t('show')}
           onChange={() => {
-            openModal({
-              title: `${t('details')}: ${data.id}`,
-              body: <PaymentDetailsModal data={data} />
-            })
+            openModal('paymentDetails', { data }, { title: `${t('details')}: ${data.id}` })
           }}
         />
       </div>

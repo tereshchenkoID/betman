@@ -2,8 +2,6 @@ import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { date } from '@/helpers/date'
 import { toast } from '@/utils/toast'
 import { action } from './action'

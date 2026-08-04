@@ -8,9 +8,6 @@ import { useWebSocketContext } from '@/context/WebSocketContext'
 import { useModal } from '@/context/ModalContext'
 import { revalidateAction } from '@/app/actions/revalidate'
 
-import NotificationModal from '@/modules/Modals/NotificationModal'
-import AgeModal from '@/modules/Modals/AgeModal'
-
 const WSUpdater = ({ user }) => {
   const t = useTranslations()
   const router = useRouter()
@@ -37,10 +34,7 @@ const WSUpdater = ({ user }) => {
     }
 
     if (cmd === 'update' && topic === 'message') {
-      openModal({
-        title: data?.title || '',
-        body: <NotificationModal data={data} />
-      })
+      openModal('notification', { data }, { title: data?.title || '' })
     }
   }, [lastMessage, router, openModal])
 
@@ -61,11 +55,7 @@ const WSUpdater = ({ user }) => {
     }
 
     if (shouldShowModal) {
-      openModal({
-        isPointer: true,
-        title: t('age.title'),
-        body: <AgeModal />
-      })
+      openModal('age', { }, { title: t('age.title'), isPointer: true })
     }
   }, [t, user, openModal])
 

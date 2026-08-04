@@ -17,7 +17,6 @@ import Languages from '@/modules/Languages'
 import Account from '@/modules/Account'
 import AccountMenu from '@/modules/AccountMenu'
 import Status from '@/modules/Status'
-import SearchModal from '@/modules/Modals/SearchModal'
 
 import style from './index.module.scss'
 
@@ -58,11 +57,9 @@ const Header = ({ user, settings }) => {
           <Languages settings={settings} />
           <Action
             classes={['secondary', 'md', 'circle']}
-            onChange={() => openModal({
-              title: t('search'),
-              size: 'lg',
-              body: <SearchModal user={user} />
-            })}
+            onChange={() =>
+              openModal('search', { user }, { title: t('search'), size: 'lg' })
+            }
           >
             <Icon name={'icon-navigation-search'} />
           </Action>

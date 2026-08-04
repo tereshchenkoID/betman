@@ -8,7 +8,6 @@ import { useModal } from '@/context/ModalContext'
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
-import QuestModal from '@/modules/Modals/QuestModal'
 
 import style from './index.module.scss'
 
@@ -43,10 +42,7 @@ const QuestCard = ({ data }) => {
         placeholder={'i'}
         alt={'i'}
         onChange={() => {
-          openModal({
-            title: bonus?.title,
-            body: <QuestModal data={bonus} />
-          })
+          openModal('quest', { data: bonus }, { title: bonus?.title })
         }}
       />
       <div className={style.content}>

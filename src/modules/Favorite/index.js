@@ -7,7 +7,6 @@ import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'
 import Action from '@/components/Action'
-import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
@@ -19,10 +18,7 @@ const Favorite = ({ data, user }) => {
   const handleToggle = () => {
     if (!user?.id) {
       closeAllModals()
-      openModal({
-        title: t('sign_up'),
-        body: <LoginModal />,
-      })
+      openModal('login', {}, { title: t('sign_up') })
     }
     else {
       toggleFavorite(data)

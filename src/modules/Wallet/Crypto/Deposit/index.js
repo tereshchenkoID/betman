@@ -11,7 +11,6 @@ import { action } from './action'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
-import CryptoDepositModal from '@/modules/Modals/CryptoDepositModal'
 
 import style from './index.module.scss'
 
@@ -31,11 +30,7 @@ const Deposit = ({ user }) => {
       const res = await action(filter.amount, user.currency)
 
       if (res?.code === '0') {
-        openModal({
-          title: t('deposit'),
-          size: 'lg',
-          body: <CryptoDepositModal data={res.link}/>
-        })
+        openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg'})
         setFilter(INITIAL_FILTER)
       }
       else {

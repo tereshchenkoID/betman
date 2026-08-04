@@ -5,7 +5,6 @@ import { NAVIGATION } from '@/constant/config'
 import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'
-import LoginModal from '@/modules/Modals/LoginModal'
 
 import style from './index.module.scss'
 
@@ -19,10 +18,7 @@ const Account = ({ settings }) => {
         classes={['primary', 'md']}
         placeholder={t(NAVIGATION.login.text)}
         onChange={() =>
-          openModal({
-            title: t('sign_up'),
-            body: <LoginModal />
-          })
+          openModal('login', {}, { title: t('sign_up') })
         }
       />
       {
