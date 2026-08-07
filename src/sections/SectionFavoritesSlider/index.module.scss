@@ -5,28 +5,6 @@
   --slide-spacing: var(--gap-default);
   --slide-count: 3;
 
-  display: grid;
-  row-gap: var(--gap-default);
-  contain: layout;
-
-  &:has(.prev:disabled) {
-    .slider {
-      &::before {
-        opacity: 0;
-        z-index: -1;
-      }
-    }
-  }
-
-  &:has(.next:disabled) {
-    .slider {
-      &::after {
-        opacity: 0;
-        z-index: -1;
-      }
-    }
-  }
-
   @include mob-m {
     --slide-count: 4;
   }
@@ -46,83 +24,6 @@
   @include desk-s {
     --slide-count: 6;
   }
-
-  &.numeric {
-    --slide-width: 100%;
-    --slide-spacing: 40px;
-    --slide-count: 2;
-
-    @include mob-m {
-      --slide-count: 3;
-    }
-
-    @include tab-s {
-      --slide-count: 4;
-    }
-
-    @include tab-m {
-      --slide-count: 5;
-    }
-
-    @include desk-m {
-      --slide-count: 6;
-    }
-
-    .slide {
-      padding-inline: var(--slide-spacing) 0;
-      flex: 0 0 calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
-      max-width: calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
-      container-type: inline-size;
-    }
-  }
-}
-
-.header {
-  @include flex(space-between, center);
-
-  gap: var(--gap-12);
-  min-height: rem(32px);
-}
-
-.more,
-.navigation {
-  flex-shrink: 0;
-}
-
-.title {
-  margin-right: auto;
-}
-
-.navigation {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: var(--gap-4);
-}
-
-.slider {
-  display: grid;
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    position: absolute;
-    inset-block: 0;
-    background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
-    width: rem(65px);
-    z-index: $z-index-2;
-    opacity: 1;
-    content: '';
-  }
-
-  &::before {
-    inset-inline-start: rem(-1px);
-    transform: scaleX(-1);
-  }
-
-  &::after {
-    inset-inline-end: rem(-1px);
-  }
 }
 
 .slide {
@@ -136,25 +37,6 @@
     flex: 0 0 calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
     max-width: calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
   }
-}
-
-.index {
-  @include flex(center);
-
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-end: rem(-1px);
-  width: var(--slide-spacing);
-  transform: translateX(30%);
-  font-size: 50cqw;
-  z-index: $z-index-2;
-  line-height: 1;
-  font-weight: var(--typography-bold);
-  text-align: center;
-  color: var(--link);
-  user-select: none;
-  pointer-events: none;
-  letter-spacing: rem(-12px);
 }
 
 .skeleton {

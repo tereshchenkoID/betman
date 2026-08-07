@@ -35,36 +35,29 @@ const Row = ({ data }) => {
 
     if (action.link) {
       return (
-        <a
-          key={idx}
-          className={style.link}
-          href={action.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {label}
-        </a>
-      )
-    }
-
-    if (action.text === 'cancel') {
-      return (
         <Action
           key={idx}
-          onChange={handleCancel}
+          onChange={() => {
+            openModal('cryptoDeposit', { data: action.link }, { title: t('deposit'), size: 'lg'})
+          }}
           classes={['primary', 'sm']}
           placeholder={label}
         />
       )
     }
 
-    return (
-      <Action
-        key={idx}
-        classes={['primary', 'sm']}
-        placeholder={label}
-      />
-    )
+    else if (action.text === 'cancel') {
+      return (
+        <Action
+          key={idx}
+          onChange={handleCancel}
+          classes={['secondary', 'sm']}
+          placeholder={label}
+        />
+      )
+    }
+
+    return ''
   }
 
   return (

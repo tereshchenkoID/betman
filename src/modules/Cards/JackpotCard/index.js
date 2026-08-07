@@ -4,7 +4,6 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { startTransition, useEffect, useState } from 'react'
-import { useKeenSlider } from 'keen-slider/react'
 import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
@@ -12,10 +11,10 @@ import { NAVIGATION } from '@/constant/config'
 import { useWebSocketContext } from '@/context/WebSocketContext'
 import { imageError } from '@/helpers/image'
 
-import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Badge from '@/modules/Badge'
 import Thumbnail from '@/modules/Thumbnails/Thumbnail'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
@@ -26,9 +25,8 @@ const JackpotCard = ({
 }) => {
   const t = useTranslations()
   const { lastMessage } = useWebSocketContext()
+  const [games] = useState(() => data?.games || [])
   const [amount, setAmount] = useState(data?.amount)
-  const [isPrevDisabled, setIsPrevDisabled] = useState(true)
-  const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const isExtended = classes.includes('extended')
 
@@ -50,58 +48,6 @@ const JackpotCard = ({
       }
     }
   }, [data?.id, lastMessage])
-
-  const updateSliderState = (slider) => {
-    if (!slider.track?.details) return
-    const { rel, maxIdx } = slider.track.details
-
-    setIsPrevDisabled(rel === 0)
-    setIsNextDisabled(rel >= maxIdx)
-  }
-
-  const [sliderRef, instanceRef] = useKeenSlider({
-    initial: 0,
-    loop: false,
-    mode: 'free',
-    selector: `.${style.slide}`,
-    slides: {
-      perView: 'auto',
-      origin: 'auto',
-    },
-    detailsChanged(slider) {
-      updateSliderState(slider)
-    },
-    created(slider) {
-      updateSliderState(slider)
-    },
-    updated(slider) {
-      updateSliderState(slider)
-    },
-  })
-
-  const handleNext = () => {
-    const slider = instanceRef.current
-    if (!slider?.track?.details) return
-
-    const { rel, maxIdx } = slider.track.details
-    if (rel >= maxIdx) {
-      slider.moveToIdx(0)
-    } else {
-      slider.next()
-    }
-  }
-
-  const handlePrev = () => {
-    const slider = instanceRef.current
-    if (!slider?.track?.details) return
-
-    const { rel, maxIdx } = slider.track.details
-    if (rel === 0) {
-      slider.moveToIdx(maxIdx)
-    } else {
-      slider.prev()
-    }
-  }
 
   return (
     <article
@@ -160,43 +106,27 @@ const JackpotCard = ({
         <p>{t('all_games')}</p>
         <Icon name="icon-navigation-chevron-right-small" />
       </Link>
-      <div className={style.slider}>
-        <div className={style.navigation}>
-          <Action
-            onChange={handlePrev}
-            isDisabled={isPrevDisabled}
-            classes={['primary', isExtended ? 'md' : 'sm', 'square']}
-            aria-label="Previous"
-          >
-            <Icon name="icon-navigation-chevron-left" />
-          </Action>
 
-          <Action
-            onChange={handleNext}
-            isDisabled={isNextDisabled}
-            classes={['primary', isExtended ? 'md' : 'sm', 'square']}
-            aria-label="Next"
-          >
-            <Icon name="icon-navigation-chevron-right" />
-          </Action>
-        </div>
-
-        <div ref={sliderRef} className="keen-slider">
-          {
-            data?.games?.map((el, idx) =>
-            <div
+      <Slider
+        className={style.slider}
+        slideClassName={style.slide}
+        navigation={{
+          isVisible: true,
+          position: 'top',
+          size: isExtended ? 'md' : 'sm',
+        }}
+      >
+        {
+          games?.map((el, idx) =>
+            <Thumbnail
               key={idx}
-              className={style.slide}
-            >
-              <Thumbnail
-                data={el}
-                user={user}
-                isEmpty={!isExtended}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+              data={el}
+              user={user}
+              isEmpty={!isExtended}
+            />
+          )
+        }
+      </Slider>
     </article>
   )
 }

@@ -1,0 +1,172 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  overflow: hidden;
+  contain: layout;
+
+  &:has(.prev:disabled) {
+    .slider {
+      &::before {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(.next:disabled) {
+    .slider {
+      &::after {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+
+  &:has(.navigation) {
+    .slider {
+      &::before,
+      &::after {
+        @include transition;
+
+        position: absolute;
+        inset-block: 0;
+        background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+        width: rem(65px);
+        opacity: 1;
+        z-index: $z-index-2;
+        content: '';
+      }
+
+      &::before {
+        inset-inline-start: rem(-1px);
+        transform: scaleX(-1);
+      }
+
+      &::after {
+        inset-inline-end: rem(-1px);
+      }
+    }
+  }
+
+  &.sm {
+    .slider {
+      &::after,
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.slider {
+  display: grid;
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  @include flex(flex-end, center);
+
+  gap: var(--gap-12);
+
+  &:has(.top) {
+    margin-bottom: var(--gap-default);
+  }
+}
+
+.title {
+  margin-right: auto;
+}
+
+.more,
+.navigation {
+  flex-shrink: 0;
+}
+
+.navigation {
+  @include flex(null, center);
+
+  gap: var(--gap-4);
+
+  &.top {
+    position: relative;
+  }
+
+  &.center {
+    justify-content: space-between;
+    position: absolute;
+    inset: 50% 0 auto;
+    height: 0;
+    z-index: $z-index-3;
+
+    .prev,
+    .next {
+      &:disabled {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    &:has(.prev:disabled) {
+      .prev {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+
+    &:has(.next:disabled) {
+      .next {
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+.prev,
+.next {
+  position: relative;
+}
+
+.dots {
+  @include flex(center, center);
+
+  gap: var(--gap-8);
+  padding-inline: var(--gap-default);
+  height: rem(22px);
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.dot {
+  @include transition;
+  @include size(rem(8px));
+
+  cursor: pointer;
+  background-color: var(--primary-disabled);
+  border-radius: 50%;
+
+  &.active {
+    background-color: var(--brand);
+    width: rem(16px);
+    border-radius: var(--border-radius-4);
+  }
+}
+
+.slide {
+  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
+  padding-inline-end: var(--slide-spacing);
+
+  &:last-child {
+    flex: 0 0 var(--slide-width);
+    padding-inline-end: 0;
+  }
+}

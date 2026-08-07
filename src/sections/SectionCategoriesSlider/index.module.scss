@@ -3,32 +3,6 @@
 .block {
   --slide-width: fit-content;
   --slide-spacing: var(--gap-default);
-
-  overflow: hidden;
-  contain: layout;
-}
-
-.slider {
-  display: grid;
-  width: 100%;
-}
-
-.slide {
-  flex: 0 0 var(--slide-width);
-  padding-inline-end: var(--slide-spacing);
-
-  &:last-child {
-    flex: 0 0 var(--slide-width);
-    padding-inline-end: 0;
-  }
-}
-
-.providers {
-  @include flex(null, center);
-  @include scroll-x;
-
-  gap: var(--gap-default);
-  margin-top: var(--gap-default);
 }
 
 .toggle {
@@ -42,6 +16,7 @@
   gap: var(--gap-6);
   height: rem(48px);
   text-align: center;
+  white-space: nowrap;
   font-size: rem(14px);
   line-height: 1;
 

@@ -103,10 +103,6 @@
   min-width: rem(296px);
 }
 
-.slider {
-  display: grid;
-}
-
 .slide {
   padding-inline-end: var(--slide-spacing);
   flex: 0 0 calc((var(--slide-width) + var(--slide-spacing)) / var(--slide-count));
@@ -117,13 +113,6 @@
     flex: 0 0 calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
     max-width: calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
   }
-}
-
-.navigation {
-  @include flex(flex-end, center);
-
-  gap: var(--gap-default);
-  margin-bottom: var(--gap-default);
 }
 
 .label {

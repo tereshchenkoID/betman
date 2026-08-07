@@ -1,15 +1,13 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { useState, useMemo, useEffect } from 'react'
-import { useKeenSlider } from 'keen-slider/react'
+import { useMemo, Fragment } from 'react'
 
 import { NAVIGATION } from '@/constant/config'
 
 import { useFavorites } from '@/context/FavoritesContext'
 
-import Action from '@/components/Action'
-import Icon from '@/components/Icon'
+import Slider from '@/modules/Slider'
 import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 import ThumbnailMore from '@/modules/Thumbnails/ThumbnailMore'
 
@@ -46,9 +44,6 @@ const Section = ({
   const t = useTranslations()
   const { favorites, meta } = useFavorites()
 
-  const [isPrevDisabled, setIsPrevDisabled] = useState(true)
-  const [isNextDisabled, setIsNextDisabled] = useState(true)
-
   const pathString = mock?.hasMore?.join('/') || ''
 
   const moreUrl = useMemo(() => {
@@ -64,99 +59,38 @@ const Section = ({
       isPriority: idx < 8,
     }))
 
-    if (meta?.results > 8) {
+    if (Number(meta?.results) > 8) {
       gameSlides.push({ type: SLIDE_TYPE.MORE })
     }
 
     return gameSlides
   }, [favorites, meta?.results])
 
-  const updateSliderState = (slider) => {
-    if (!slider.track?.details) return
-
-    const { rel, maxIdx } = slider.track.details
-
-    setIsPrevDisabled(rel === 0)
-    setIsNextDisabled(maxIdx === 0 || rel >= maxIdx)
-  }
-
-  const [sliderRef, instanceRef] = useKeenSlider({
-    initial: 0,
-    loop: false,
-    mode: 'free',
-    selector: `.${style.slide}`,
-    slides: {
-      perView: 'auto',
-      origin: 'auto',
-    },
-    detailsChanged(slider) {
-      updateSliderState(slider)
-    },
-    created(slider) {
-      updateSliderState(slider)
-    },
-    updated(slider) {
-      updateSliderState(slider)
-    },
-  })
-
-  useEffect(() => {
-    if (instanceRef.current) {
-      instanceRef.current.update()
-    }
-  }, [instanceRef, slides.length])
-
   if (meta?.results === '0') return null
 
   return (
-    <div className={style.block}>
-      <div className={style.header}>
-        <h2 className={style.title}>{mock?.title}</h2>
-        {
-          mock?.hasMore?.length > 0 &&
-          <Action
-            to={moreUrl}
-            classes={['outline', 'md', style.more]}
-            placeholder={`${t('more')} (${meta?.results})`}
-          />
-        }
-        <div className={style.navigation}>
-          <Action
-            onChange={() => instanceRef.current?.prev()}
-            isDisabled={isPrevDisabled}
-            classes={['primary', 'md', 'square', style.prev]}
-            aria-label="Previous"
-          >
-            <Icon name="icon-navigation-chevron-left" />
-          </Action>
-          <Action
-            onChange={() => instanceRef.current?.next()}
-            isDisabled={isNextDisabled}
-            classes={['primary', 'md', 'square', style.next]}
-            aria-label="Next"
-          >
-            <Icon name="icon-navigation-chevron-right" />
-          </Action>
-        </div>
-      </div>
-
-      <div className={style.slider}>
-        <div
-          ref={sliderRef}
-          className="keen-slider"
-        >
-          {
-            slides.map((el, idx) =>
-            <div
-              key={idx}
-              className={style.slide}
-            >
-              {renderSlide(el, settings, user, moreUrl)}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+    <Slider
+      className={style.block}
+      slideClassName={style.slide}
+      more={{
+        isVisible: true,
+        to: moreUrl,
+        results: meta?.results
+      }}
+      title={{
+        isVisible: true,
+        text: mock?.title
+      }}
+    >
+      {
+        slides.map((el, idx) =>
+          <Fragment key={idx}>
+            {
+              renderSlide(el, settings, user, moreUrl, idx)
+            }
+          </Fragment>
+        )}
+    </Slider>
   )
 }
 

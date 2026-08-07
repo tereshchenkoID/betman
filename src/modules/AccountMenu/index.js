@@ -160,13 +160,16 @@ const AccountMenu = ({ user, setToggle }) => {
           }
         </menu>
       </div>
-      <div className={style.bottom}>
-        <Action
-          classes={['primary', 'wide', 'md']}
-          placeholder={t('logout')}
-          onChange={handleLogout}
-        />
-      </div>
+      {
+        user?.session_type !== 'tma' &&
+        <div className={style.bottom}>
+          <Action
+            classes={['primary', 'wide', 'md']}
+            placeholder={t('logout')}
+            onChange={handleLogout}
+          />
+        </div>
+      }
     </div>
   )
 }

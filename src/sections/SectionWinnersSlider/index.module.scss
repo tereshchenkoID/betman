@@ -4,10 +4,6 @@
   --slide-width: 19rem; // 304px
   --slide-spacing: var(--gap-default);
 
-  position: relative;
-  overflow: hidden;
-  contain: layout;
-
   &::after {
     position: absolute;
     inset-block: 0;
@@ -17,15 +13,6 @@
     width: rem(64px);
     content: '';
   }
-}
-
-.slider {
-  display: grid;
-}
-
-.slide {
-  flex: 0 0 calc(var(--slide-width) + var(--slide-spacing));
-  padding-inline-end: var(--slide-spacing);
 }
 
 .skeleton {
