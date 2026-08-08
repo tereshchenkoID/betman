@@ -1,0 +1,40 @@
+@use '@/scss/config' as *;
+
+.form {
+  display: grid;
+  gap: var(--gap-24);
+  overflow: hidden;
+  padding: var(--gap-40) var(--gap-16);
+  margin-inline: auto;
+  background-color: var(--material);
+  border-radius: var(--border-radius-16);
+  width: 100%;
+  text-align: center;
+
+  @include tab-s {
+    max-width: rem(560px);
+  }
+}
+
+.container {
+  display: grid;
+  gap: var(--gap-12);
+}
+
+.link {
+  @include flex($justify-content: center, $wrap: wrap);
+
+  gap: var(--gap-4);
+  font-size: rem(14px);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: var(--gap-default);
+}
+
+.divider {
+  margin-block: var(--gap-default);
+}

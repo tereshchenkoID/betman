@@ -153,7 +153,7 @@ const SectionRegistration = ({
   return (
     <section>
       <form className={style.form}>
-        <h1 className={style.title}>{t('create_account')}</h1>
+        <h1>{t('create_account')}</h1>
         <div className={style.steps}>
           {
             Array.from({ length: 2 }).map((_, idx) =>

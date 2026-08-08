@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+import Inner from '@/modules/Inner'
 import Wheel from './Wheel'
 import Countdown from './Countdown'
 
@@ -52,7 +53,7 @@ const SectionWheelOfFortune = ({
       </div>
       {
         data?.description &&
-        <p>{data?.description}</p>
+        <Inner data={data?.description} />
       }
     </section>
   )

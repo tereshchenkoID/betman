@@ -15,13 +15,14 @@ import Action from '@/components/Action'
 // import Providers from '@/modules/Providers'
 
 import style from './index.module.scss'
+import RecoveryModal from "@/modules/Modals/RecoveryModal";
 
-const Login = () => {
+const Login = ({ isTitle = false }) => {
   const t = useTranslations()
   const VALIDATION_RULES = useValidations()
 
   const router = useRouter()
-  const { closeModal } = useModal()
+  const { openModal, closeModal } = useModal()
   const { filter, handlePropsChange } = useFilterState({
     username: '',
     password: ''
@@ -60,6 +61,10 @@ const Login = () => {
       className={style.block}
       onSubmit={handleSubmit}
     >
+      {
+        isTitle &&
+        <h1 className={style.title}>{t('sign_up')}</h1>
+      }
       <div className={style.container}>
         <Field
           data={filter.username}
@@ -94,6 +99,14 @@ const Login = () => {
         classes={['primary', 'lg']}
         placeholder={t('login')}
         isDisabled={isDisabled}
+      />
+      <Action
+        classes={['md', 'outline']}
+        placeholder={t('forgot_password')}
+        onClick={() => {
+          closeModal()
+          openModal('recovery', {}, { title: t('forgot_password') })
+        }}
       />
       <p className={style.link}>
         {t('dont_have_account')}

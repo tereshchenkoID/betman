@@ -1,0 +1,15 @@
+@use '@/scss/config' as *;
+
+.block {
+  display: grid;
+  gap: var(--gap-24);
+  text-align: center;
+}
+
+.link {
+  @include flex($justify-content: center, $wrap: wrap);
+
+  margin-bottom: var(--gap-12);
+  font-size: rem(14px);
+  gap: var(--gap-4);
+}

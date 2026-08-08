@@ -63,6 +63,10 @@ export const NAVIGATION = {
     icon: 'icon-human-user-add',
     url: '/invite-friends',
   },
+  password_recovery: {
+    text: 'navigation.password_recovery',
+    url: '/password-recovery',
+  },
 }
 
 export const ROUTES_USER = {

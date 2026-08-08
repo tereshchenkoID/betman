@@ -18,7 +18,8 @@
     "quests": "Quests",
     "invite_friends": "Invite friends",
     "wheels_of_fortune": "Wheels of Fortune",
-    "promocode": "Promocode"
+    "promocode": "Promocode",
+    "password_recovery": "Password Recovery"
   },
   "section": {
     "bingo": "Bingo",
@@ -33,7 +34,8 @@
     "favorites": "Favorite games",
     "quests": "Quests",
     "info": "Info",
-    "wheels_of_fortune": "Claim your bonus upon registration!"
+    "wheels_of_fortune": "Claim your bonus upon registration!",
+    "password_recovery": "Password Recovery"
   },
   "notification": {
     "already_registered": "Already registered?",
@@ -51,7 +53,9 @@
     "enter_promocode": "Enter promo code in the field below",
     "failed_request": "Request failed",
     "copy_success": "Successfully copied",
-    "copy_error": "Copying error"
+    "copy_error": "Copying error",
+    "recovery_password": "Enter the email address associated with your account and we will send you a link to reset your password.",
+    "recovery_text": "We do not recognize the email address if you do not already have an account."
   },
   "errors": {
     "field_required": "Field is required",
@@ -63,7 +67,8 @@
     "maximum": "Maximum number of characters is - {max}",
     "invalid_date": "Invalid date format",
     "age_restriction": "You must be at least 18 years old",
-    "latin_alphanumeric": "Alphanumeric Latin characters only"
+    "latin_alphanumeric": "Alphanumeric Latin characters only",
+    "fetch": "Fetch error"
   },
   "payments": {
     "crypto": "Crypto Wallet",
@@ -138,6 +143,7 @@
   "forgot_password": "Forgot your password?",
   "dont_have_account": "Don't have an account?",
   "create_account": "Create account",
+  "send_link": "Send Link",
   "continue": "Continue",
   "cancel": "Cancel",
   "first_name": "First name",
