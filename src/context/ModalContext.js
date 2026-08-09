@@ -98,7 +98,7 @@ export function ModalProvider({ children }) {
         window.scrollTo(0, parseInt(savedTop, 10) * -1)
       }
     }
-  }, [modals.length > 0])
+  }, [modals.length])
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal, closeAllModals }}>

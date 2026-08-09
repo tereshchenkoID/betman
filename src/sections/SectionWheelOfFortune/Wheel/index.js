@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import Image from 'next/image'
 import { toast } from '@/utils/toast'
 
 import { useModal } from '@/context/ModalContext'
@@ -291,9 +292,11 @@ const Wheel = ({
   return (
     <div className={style.block}>
       <div className={style.indicator}>
-        <img
+        <Image
           src="/images/wheels/indicator.svg"
           alt="Indicator"
+          width={100}
+          height={100}
         />
       </div>
 
@@ -311,7 +314,7 @@ const Wheel = ({
         onClick={handleButtonClick}
         disabled={user?.id && !OPTIONS.canSpin}
       >
-        <img
+        <Image
           className={style.logo}
           src="/images/logo-mobile.svg"
           width={102}

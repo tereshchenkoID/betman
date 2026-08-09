@@ -52,7 +52,7 @@ export const WebSocketProvider = ({ children, user }) => {
         router.refresh()
       })
     }
-  }, [])
+  }, [handleLogout, router])
 
   const { socketRef, sendWhenReady } = useWebSocket({
     url: process.env.NEXT_PUBLIC_WSS_BASE_URL,

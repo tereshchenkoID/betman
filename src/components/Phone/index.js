@@ -54,7 +54,9 @@ const Phone = ({
 
   useEffect(() => {
     if (countriesCache[locale]) {
-      setCountries(countriesCache[locale])
+      startTransition(() => {
+        setCountries(countriesCache[locale])
+      })
       return
     }
 

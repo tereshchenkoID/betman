@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {startTransition, useEffect, useState} from 'react'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'
 
@@ -55,7 +55,9 @@ const Uploader = ({
   }
 
   useEffect(() => {
-    setBlobs(data || [])
+    startTransition(() => {
+      setBlobs(data || [])
+    })
   }, [data])
 
   return (
@@ -95,6 +97,7 @@ const Uploader = ({
                 <div className={style.media}>
                   {
                     item.file &&
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       className={style.img}
                       src={URL.createObjectURL(item.file)}

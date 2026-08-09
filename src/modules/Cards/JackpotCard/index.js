@@ -31,7 +31,9 @@ const JackpotCard = ({
   const isExtended = classes.includes('extended')
 
   useEffect(() => {
-    setAmount(data?.amount)
+    startTransition(() => {
+      setAmount(data?.amount)
+    })
   }, [data?.amount])
 
   useEffect(() => {

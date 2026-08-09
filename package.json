@@ -13,19 +13,21 @@
     "browser-image-compression": "^2.0.2",
     "classnames": "^2.5.1",
     "keen-slider": "^6.8.6",
-    "next": "^16.2.12",
+    "next": "^16.3.0",
     "next-intl": "^4.13.0",
     "nextjs-toploader": "^3.9.17",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-phone-input-2": "^2.15.1",
-    "react-select": "^5.10.2",
     "react-toastify": "^11.1.0"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^10.8.0",
-    "eslint-config-next": "^0.2.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0",
     "sass": "^1.100.0"
+  },
+  "allowScripts": {
+    "@swc/core@1.15.46": true,
+    "unrs-resolver@1.12.2": true
   }
 }

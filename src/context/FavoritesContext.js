@@ -28,11 +28,15 @@ export const FavoritesProvider = ({
   const [meta, setMeta] = useState(initialMeta)
 
   useEffect(() => {
-    setFavorites(data)
+    startTransition(() => {
+      setFavorites(data)
+    })
   }, [data])
 
   useEffect(() => {
-    setMeta(initialMeta)
+    startTransition(() => {
+      setMeta(initialMeta)
+    })
   }, [initialMeta])
 
   const list = useMemo(() => {

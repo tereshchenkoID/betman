@@ -110,8 +110,8 @@ const SectionRegistration = ({
     }
   }
 
-  const checkFieldOnBlur = async (key) => {
-    const value = filter[key]
+  const checkFieldOnBlur = useCallback(async (key, overrideValue) => {
+    const value = overrideValue !== undefined ? overrideValue : filter[key]
     if (!value) return
 
     try {
@@ -119,6 +119,8 @@ const SectionRegistration = ({
         method: 'POST',
         params: { key, value }
       })
+
+      console.log(res)
 
       if (res?.code === '0') {
         setFieldError(key, null)
@@ -130,7 +132,7 @@ const SectionRegistration = ({
     } catch (e) {
       toast.error(`Check field: ${key}:`)
     }
-  }
+  }, [filter, setFieldError, setFieldSuccess])
 
   const handleCheck = async (e) => {
     e && e.preventDefault()
@@ -146,9 +148,11 @@ const SectionRegistration = ({
 
   useEffect(() => {
     if (promocode) {
-      checkFieldOnBlur('promocode').catch(console.error)
+      startTransition(() => {
+        checkFieldOnBlur('promocode').catch(console.error)
+      })
     }
-  }, [])
+  }, [checkFieldOnBlur, promocode])
 
   return (
     <section>

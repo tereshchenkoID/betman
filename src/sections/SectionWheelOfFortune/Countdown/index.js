@@ -48,7 +48,7 @@ const Countdown = ({ targetTimestamp, onExpire }) => {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [targetTimestamp])
+  }, [onExpire, targetTimestamp])
 
   const pad = (num) => String(num).padStart(2, '0')
 
