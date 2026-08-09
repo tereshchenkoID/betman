@@ -1,12 +1,12 @@
 'use client'
 
-import {useLocale} from 'next-intl'
-import {useEffect, useMemo, useRef, useState, useTransition} from 'react'
+import { useLocale } from 'next-intl'
+import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
 import classNames from 'classnames'
 import PhoneInput from 'react-phone-input-2'
 
-import {runRules} from '@/helpers/rules'
-import {action} from './action'
+import { runRules } from '@/helpers/rules'
+import { action } from './action'
 
 import Preload from '@/components/Preload'
 
