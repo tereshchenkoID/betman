@@ -1,6 +1,11 @@
 @use '@/scss/config' as *;
 
 :root {
+  --tg-safe-top: 0;
+  --tg-safe-bottom: 0;
+  --tg-viewport-height: 100dvh;
+
+
   --brand: #034659;
   --brand-hover: #034C5D;
   --brand-disabled: rgba(21, 120, 106, 0.3);
@@ -97,7 +102,8 @@ body {
 
   @include scroll-y;
 
-  //display: flex;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
   line-height: var(--line-height);
@@ -108,7 +114,7 @@ body {
   text-size-adjust: 100%;
   min-width: var(--min-width);
   scroll-behavior: smooth;
-  max-height: var(--tg-viewport-height, 100dvh);
+  //max-height: var(--tg-viewport-height, 100dvh);
   overflow-x: hidden;
   padding-inline: var(--gap-16);
 

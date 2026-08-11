@@ -1,22 +1,19 @@
 @use '@/scss/config' as *;
 
 .block {
+  @include size(100%);
   @include flex($direction: column);
   @include scroll-y;
 
   position: fixed;
-  //inset-block: var(--header-height) var(--aside-height);
-
-  inset: calc(max(var(--tg-safe-top), env(safe-area-inset-top)) + var(--header-height)) 0 calc(max(var(--tg-safe-bottom), env(safe-area-inset-bottom)) + var(--aside-height)) 0;
-  //inset-block: calc(max(var(--tg-safe-top), env(safe-area-inset-top)) + var(--header-height)) 0 calc(max(var(--tg-safe-bottom), env(safe-area-inset-bottom)) + var(--aside-height)) 0;
-  //inset-inline: auto 0;
+  inset-block: calc(var(--tg-safe-top) + var(--header-height)) auto calc(var(--tg-safe-bottom) + var(--aside-height)) 0;
+  inset-inline: auto 0;
   background-color: var(--material);
-  width: 100%;
   max-height: calc(100% - var(--header-height));
 
   @include tab-s {
-    inset-inline-start: auto;
-    width: rem(320px);
+    @include size(rem(320px), auto);
+
     border-radius: var(--border-radius-16);
     border: rem(1px) solid var(--tertiary-disabled);
     max-height: unset;

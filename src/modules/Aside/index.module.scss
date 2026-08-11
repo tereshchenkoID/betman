@@ -4,7 +4,7 @@
   position: fixed;
   inset-inline: 0;
   //inset-block-end: 0;
-  inset-block-end: max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  inset-block-end: var(--tg-safe-bottom);
   background-color: var(--bg);
   height: var(--aside-height);
   z-index: $z-index-8;
@@ -34,8 +34,8 @@
     gap: var(--gap-2);
     position: fixed;
     overflow-y: auto;
-    //max-height: calc(var(--tg-viewport-height, 100dvh) - var(--header-height) - var(--gap-12));
-    max-height: calc(100dvh - var(--header-height) - var(--gap-12));
+    max-height: calc(var(--tg-viewport-height, 100dvh) - var(--header-height) - var(--gap-12));
+    //max-height: calc(100dvh - var(--header-height) - var(--gap-12));
   }
 }
 
