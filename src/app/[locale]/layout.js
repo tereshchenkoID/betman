@@ -1,9 +1,10 @@
-// import Script from 'next/script'
+import Script from 'next/script'
 import localFont from 'next/font/local'
 import { getMessages } from 'next-intl/server'
 import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { preload } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import classNames from 'classnames'
@@ -17,6 +18,7 @@ import { getFavorites } from '@/app/actions/static'
 
 import Toastify from '@/components/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
+import Telegram from '@/modules/Telegram'
 import WSUpdater from '@/modules/WSUpdater'
 import SessionHandler from '@/modules/SessionHandler'
 
@@ -82,7 +84,8 @@ export default async function RootLayout({ children, params }) {
   ])
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+    <GoogleTagManager gtmId="GTM-PK9TK23W" />
     <body
       className={
         classNames(
@@ -92,10 +95,15 @@ export default async function RootLayout({ children, params }) {
         )
       }
     >
+    <Script
+      src="https://telegram.org/js/telegram-web-app.js"
+      strategy="beforeInteractive"
+    />
     <NextIntlClientProvider
       messages={messages}
       locale={locale}
     >
+      <Telegram />
       <SessionHandler />
       <FavoritesProvider
         user={user}

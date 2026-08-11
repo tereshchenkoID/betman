@@ -36,6 +36,10 @@ const WSUpdater = ({ user }) => {
     if (cmd === 'update' && topic === 'message') {
       openModal('notification', { data }, { title: data?.title || '' })
     }
+
+    if (topic === 'analytics') {
+      window.dataLayer.push(data);
+    }
   }, [lastMessage, router, openModal])
 
   useEffect(() => {

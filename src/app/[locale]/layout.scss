@@ -108,7 +108,7 @@ body {
   text-size-adjust: 100%;
   min-width: var(--min-width);
   scroll-behavior: smooth;
-  //max-height: var(--tg-viewport-height, 100dvh);
+  max-height: var(--tg-viewport-height, 100dvh);
   overflow-x: hidden;
   padding-inline: var(--gap-16);
 

@@ -3,8 +3,8 @@
 .block {
   position: fixed;
   inset-inline: 0;
-  inset-block-end: 0;
-  //inset-block-end: max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  //inset-block-end: 0;
+  inset-block-end: max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
   background-color: var(--bg);
   height: var(--aside-height);
   z-index: $z-index-8;

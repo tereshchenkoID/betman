@@ -32,6 +32,23 @@ export const registerWithCredentialsAction = async (filterData) => {
   return data
 }
 
+export const loginWithTelegramAction = async (telegramUser) => {
+  const data = await apiRequest('telegraf/', {
+    method: 'POST',
+    params: {
+      data: telegramUser
+    },
+  })
+
+  alert(JSON.stringify(telegramUser))
+
+  if (data?.token) {
+    await saveSession(data?.token)
+  }
+
+  return data
+}
+
 export const loginWithCredentialsAction = async (username, password) => {
   const data = await apiRequest('login/', {
     method: 'POST',
