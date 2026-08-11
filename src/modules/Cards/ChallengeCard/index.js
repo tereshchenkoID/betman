@@ -42,6 +42,7 @@ const ChallengeCard = ({ data }) => {
             height={128}
             decoding="async"
             onError={(e) => imageError(e, false)}
+            unoptimized={true}
           />
         </div>
       </Link>

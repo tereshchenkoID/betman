@@ -40,6 +40,7 @@ const BonusCard = ({ settings, data }) => {
               width={158}
               height={28}
               decoding="async"
+              unoptimized={true}
             />
           </div>
         </div>

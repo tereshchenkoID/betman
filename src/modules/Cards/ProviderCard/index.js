@@ -38,6 +38,7 @@ const ProviderCard = ({ data }) => {
             decoding="async"
             sizes="70px"
             onError={(e) => imageError(e, false)}
+            unoptimized={true}
           />
         </div>
       }

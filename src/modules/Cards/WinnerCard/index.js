@@ -75,6 +75,7 @@ const WinnerCard = ({ user, data }) => {
           height={110}
           sizes="88px"
           onError={(e) => imageError(e, false)}
+          unoptimized={true}
         />
       }
     </article>

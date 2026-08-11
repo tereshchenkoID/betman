@@ -22,6 +22,7 @@ const BigLinkCard = ({ data }) => {
           height={52}
           decoding="async"
           onError={(e) => imageError(e, false)}
+          unoptimized={true}
         />
       }
       <p>{data?.title}</p>

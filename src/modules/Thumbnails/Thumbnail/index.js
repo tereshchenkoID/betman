@@ -70,6 +70,7 @@ const Thumbnail = ({
           loading={isPriority ? 'eager': 'lazy'}
           sizes="125px"
           onError={imageError}
+          unoptimized={true}
         />
       }
       <div className={style.details}>

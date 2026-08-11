@@ -90,6 +90,7 @@ export default function GoogleButton() {
         alt={'Google'}
         width={34}
         height={34}
+        unoptimized={true}
       />
     </Action>
   )
