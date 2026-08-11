@@ -3,7 +3,9 @@
 :root {
   --tg-safe-top: 0;
   --tg-safe-bottom: 0;
-  --tg-viewport-height: 100dvh;
+  --tg-viewport-height: 100svh;
+
+  --toastify-toast-top: var(--tg-safe-top)!important;
 
   --brand: #034659;
   --brand-hover: #034C5D;
@@ -99,10 +101,8 @@ html {
 body {
   --background-size: 30%;
 
-  @include scroll-y;
+  //@include scroll-y;
 
-  //display: flex;
-  //flex-direction: column;
   margin: 0;
   line-height: var(--line-height);
   font-family: var(--font-family);
@@ -126,7 +126,7 @@ body {
     background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) var(--background-size));
     background-repeat: repeat-x;
     background-size: auto 8rem;
-    content: "";
+    content: '';
   }
 }
 
@@ -427,10 +427,4 @@ section {
       border-bottom-color: var(--primary);
     }
   }
-}
-
-.Toastify__toast-container--top-center,
-.Toastify__toast-container--top-left,
-.Toastify__toast-container--top-right {
-  top: var(--tg-safe-top);
 }

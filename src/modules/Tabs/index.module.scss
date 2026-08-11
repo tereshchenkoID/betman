@@ -7,7 +7,6 @@
 
 .list {
   @include flex($align-items: center);
-  //@include scroll-x;
 
   position: relative;
   min-height: rem(44px);
