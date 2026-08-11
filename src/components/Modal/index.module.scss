@@ -10,7 +10,7 @@
 
   @include tab-s {
     align-items: center;
-    padding: var(--gap-16);
+    padding: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16) calc(var(--tg-safe-bottom) + var(--gap-16)) var(--gap-16);
   }
 
   &.sm {
@@ -86,7 +86,6 @@
   position: absolute;
   inset: 0;
   background-color: var(--material-disabled);
-  //background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
 }
 

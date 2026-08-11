@@ -33,7 +33,6 @@ const BannerCard = ({ data }) => {
             priority
             fetchPriority="high"
             sizes="320px"
-            unoptimized
             onError={imageError}
           />
         }

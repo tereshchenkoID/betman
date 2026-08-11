@@ -78,7 +78,10 @@ export default function Telegram() {
 
       try {
         const res = await loginWithTelegramAction(user)
-        if (res?.token || res?.data?.token) {
+
+        alert(JSON.stringify(res))
+
+        if (res?.token) {
           router.refresh()
         }
       } catch (e) {

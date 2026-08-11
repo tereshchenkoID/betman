@@ -40,8 +40,6 @@ export const loginWithTelegramAction = async (telegramUser) => {
     },
   })
 
-  alert(JSON.stringify(telegramUser))
-
   if (data?.token) {
     await saveSession(data?.token)
   }

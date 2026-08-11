@@ -302,11 +302,13 @@ main {
   display: grid;
   gap: var(--gap-16);
   position: relative;
+  width: 100%;
   min-height: 100svh;
   padding-block: var(--gap-16);
   overflow: hidden;
   margin-inline: auto;
   max-width: var(--max-width);
+  flex-shrink: 0;
   z-index: 0;
 
   @include desk-s {
@@ -429,8 +431,8 @@ section {
   }
 }
 
-//.Toastify__toast-container--top-center,
-//.Toastify__toast-container--top-left,
-//.Toastify__toast-container--top-right {
-//  top: max(var(--tg-safe-top), env(safe-area-inset-top));
-//}
+.Toastify__toast-container--top-center,
+.Toastify__toast-container--top-left,
+.Toastify__toast-container--top-right {
+  top: var(--tg-safe-top);
+}
