@@ -6,7 +6,7 @@
   @include scroll-y;
 
   position: fixed;
-  inset-block: calc(var(--tg-safe-top) + var(--header-height)) auto calc(var(--tg-safe-bottom) + var(--aside-height)) 0;
+  inset-block: calc(var(--tg-safe-top) + var(--header-height)) calc(var(--tg-safe-bottom) + var(--aside-height));
   inset-inline: auto 0;
   background-color: var(--material);
   max-height: calc(100% - var(--header-height));

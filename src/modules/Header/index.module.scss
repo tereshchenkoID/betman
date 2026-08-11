@@ -2,7 +2,7 @@
 
 .block {
   position: sticky;
-  top: 0;
+  top: var(--tg-safe-top);
   margin-inline: rem(-16px);
   z-index: $z-index-9;
   background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
@@ -66,7 +66,7 @@
 .account {
   position: fixed;
   inset-inline: 0;
-  inset-block-end: var(--aside-height);
+  inset-block-end: calc(var(--aside-height) + var(--tg-safe-bottom));
   padding: var(--gap-12) var(--gap-16);
   border-bottom: rem(1px) solid var(--tertiary-disabled);
   background-color: var(--bg);

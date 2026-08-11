@@ -1,6 +1,8 @@
 @use '@/scss/config' as *;
 
 .block {
+  font-size: var(--font-size);
+
   &.disabled {
     opacity: 0.5;
     pointer-events: none;

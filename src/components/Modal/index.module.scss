@@ -5,7 +5,7 @@
 
   position: fixed;
   inset: 0;
-  //inset: max(var(--tg-safe-top)) 0 max(var(--tg-safe-bottom), env(safe-area-inset-bottom));
+  padding: var(--tg-safe-top) 0 var(--tg-safe-bottom);
   z-index: $z-index-9;
 
   @include tab-s {
