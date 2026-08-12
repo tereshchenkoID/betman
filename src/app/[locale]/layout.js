@@ -97,7 +97,7 @@ export default async function RootLayout({ children, params }) {
     >
     <Script
       src="https://telegram.org/js/telegram-web-app.js"
-      strategy="afterInteractive"
+      strategy="beforeInteractive"
     />
     <NextIntlClientProvider
       messages={messages}
