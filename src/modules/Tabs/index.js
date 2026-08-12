@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl'
 
 import classNames from 'classnames'
 
+import Status from '@/modules/Status'
+
 import style from './index.module.scss'
 
 const Tabs = ({ options, data, action }) => {
@@ -25,6 +27,13 @@ const Tabs = ({ options, data, action }) => {
               onClick={() => action(el)}
             >
               {t(el.key)}
+              {
+                el.verification &&
+                <Status
+                  data={el.verification}
+                  classes={['default', 'sm', style.status]}
+                />
+              }
             </button>
           )
         }

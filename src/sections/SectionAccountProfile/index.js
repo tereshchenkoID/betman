@@ -21,25 +21,6 @@ import Security from './Security'
 
 import style from './index.module.scss'
 
-const DATA = [
-  {
-    key: 'profile',
-    value: 0,
-  },
-  {
-    key: 'address',
-    value: 1,
-  },
-  {
-    key: 'verification',
-    value: 2,
-  },
-  {
-    key: 'security',
-    value: 3,
-  },
-]
-
 const SectionAccountProfile = ({
   user,
   countries,
@@ -53,6 +34,28 @@ const SectionAccountProfile = ({
   const searchParams = useSearchParams()
   const [uploadedPhotos, setUploadedPhotos] = useState([])
   const [isCompressing, setIsCompressing] = useState(false)
+
+  const DATA = [
+    {
+      key: 'profile',
+      value: 0,
+    },
+    {
+      key: 'address',
+      value: 1,
+    },
+    {
+      key: 'verification',
+      value: 2,
+      ...(user?.profile?.isVerify !== '3' && {
+        verification: user?.profile?.isVerify,
+      }),
+    },
+    {
+      key: 'security',
+      value: 3,
+    },
+  ]
 
   const { filter, setFilter, handlePropsChange } = useFilterState(data)
 

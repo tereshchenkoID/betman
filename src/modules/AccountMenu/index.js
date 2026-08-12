@@ -96,13 +96,13 @@ const AccountMenu = ({ user, setToggle }) => {
           </Link>
           <div className={style.actions}>
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}/deposit`}
+              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}?tab=deposit`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('deposit')}
               onChange={() => setToggle(false)}
             />
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}/withdrawal`}
+              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}?tab=withdrawal`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('withdrawal')}
               onChange={() => setToggle(false)}
