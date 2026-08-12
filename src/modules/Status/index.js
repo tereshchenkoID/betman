@@ -2,14 +2,17 @@ import classNames from 'classnames'
 
 import style from './index.module.scss'
 
-const Status = ({ data, size = 'sm' }) => {
+const Status = ({
+  data,
+  classes = ['default', 'sm'],
+}) => {
   return (
     <span
       className={
         classNames(
           style.block,
           style[`block-${data}`],
-          style[size]
+          classes && classes.map(el => style[el] || el),
         )
       }
     />

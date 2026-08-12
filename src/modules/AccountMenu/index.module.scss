@@ -124,8 +124,8 @@
 
   position: relative;
   gap: var(--gap-4);
+}
 
-  * {
-    position: static;
-  }
+.status {
+  position: static;
 }

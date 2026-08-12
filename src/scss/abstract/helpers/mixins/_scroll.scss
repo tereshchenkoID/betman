@@ -30,7 +30,7 @@
 
 @mixin scroll-x {
   background-clip: content-box;
-  padding-bottom: var(--gap-16);
+  padding-bottom: var(--gap-default);
   overflow-x: auto;
   scroll-behavior: smooth;
   overscroll-behavior-x: contain;

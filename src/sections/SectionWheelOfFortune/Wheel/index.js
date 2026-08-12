@@ -10,9 +10,6 @@ import { action} from './action'
 
 import style from './index.module.scss'
 
-// ==========================================
-// WHEEL VISUAL CONFIGURATION
-// ==========================================
 const baseLayoutWidth = 500;
 
 const WHEEL_CONFIG = {
@@ -60,11 +57,10 @@ const WHEEL_CONFIG = {
 
 const Wheel = ({
   mock,
-  settings,
   user,
   wheelsRound
 }) => {
-  // const router = useRouter()
+  const router = useRouter()
   const t = useTranslations()
   const { wheels, wheelsCounter } = wheelsRound
   const { openModal } = useModal()
@@ -94,7 +90,6 @@ const Wheel = ({
       const size = canvas.width // 1200
       const center = size / 2
 
-      // Pull theme CSS custom variables
       const rootStyles = getComputedStyle(document.documentElement)
       const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
       const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Roboto', sans-serif"
@@ -130,7 +125,7 @@ const Wheel = ({
           const endAngle = (((i + 1) * angleStep + rotation) - 90) * Math.PI / 180
           const middleAngle = startAngle + (endAngle - startAngle) / 2
 
-          // --- Sector Background Gradient ---
+          // Sector Background Gradient
           ctx.save()
           ctx.beginPath()
           ctx.moveTo(center, center)
@@ -146,7 +141,7 @@ const Wheel = ({
           ctx.fill()
           ctx.restore()
 
-          // --- Text Render Plane ---
+          // Text Render Plane
           ctx.save()
           ctx.translate(center, center)
           ctx.rotate(middleAngle + Math.PI / 2)
@@ -236,26 +231,14 @@ const Wheel = ({
 
     if (res.code === '0') {
       animateWheel(res?.data)
-      // router.refresh()
     }
     else {
       toast.error(res?.error_message)
     }
-
-    // console.log(res)
-
-    // const formData = new FormData()
-    // formData.append('round_id', currentHash)
-    //
-    // const { error, data } = await request('POST', 'wheel/spin/', formData)
-    // if (!error) {
-    //   animateWheel(data)
-    // }
   }
 
   // Handle CSS rotation calculations and interpolation easing
   const animateWheel = (data) => {
-    // updateWheelsCounter()
     const duration = data?.time * 1000
     const startTimestamp = performance.now()
     const startRotation = rotationRef.current
@@ -277,7 +260,8 @@ const Wheel = ({
         timerRef.current = requestAnimationFrame(step)
       } else {
         setSpinning(false)
-        toast.success(data?.info);
+        toast.success(data?.info)
+        router.refresh()
       }
     }
     timerRef.current = requestAnimationFrame(step)
@@ -295,8 +279,8 @@ const Wheel = ({
         <Image
           src="/images/wheels/indicator.svg"
           alt="Indicator"
-          width={100}
-          height={100}
+          width={80}
+          height={105}
           unoptimized={true}
         />
       </div>

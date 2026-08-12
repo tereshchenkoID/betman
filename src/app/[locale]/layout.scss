@@ -1,8 +1,8 @@
 @use '@/scss/config' as *;
 
 :root {
-  --tg-safe-top: 0;
-  --tg-safe-bottom: 0;
+  --tg-safe-top: 0px;
+  --tg-safe-bottom: 0px;
   --tg-viewport-height: 100svh;
 
   --toastify-toast-top: var(--tg-safe-top)!important;
@@ -272,7 +272,9 @@ h6 {
 }
 
 h1 {
+  margin-bottom: var(--gap-12);
   font-size: rem(32px);
+  line-height: 1;
 }
 
 h2 {
@@ -301,13 +303,12 @@ main {
   position: relative;
   width: 100%;
   min-height: var(--tg-viewport-height);
-  padding-block: var(--gap-16);
   overflow: hidden;
   margin-inline: auto;
   max-width: var(--max-width);
   flex-shrink: 0;
   z-index: 0;
-  padding-top: var(--tg-safe-top);
+  padding-block: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16);
 
   @include desk-s {
     padding-block-end: var(--gap-62);

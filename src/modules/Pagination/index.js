@@ -9,10 +9,7 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const Pagination = ({
-  data,
-  classes = [],
-}) => {
+const Pagination = ({ data, classes = [] }) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -35,6 +32,34 @@ const Pagination = ({
     return queryString ? `${pathname}?${queryString}` : pathname
   }
 
+  const getPaginationRange = () => {
+    const delta = 1
+    const range = []
+    const rangeWithDots = []
+
+    for (let i = Math.max(2, page - delta); i <= Math.min(totalPages - 1, page + delta); i++) {
+      range.push(i)
+    }
+
+    if (page - delta > 2) {
+      rangeWithDots.push(1, '...')
+    } else {
+      rangeWithDots.push(1)
+    }
+
+    rangeWithDots.push(...range)
+
+    if (page + delta < totalPages - 1) {
+      rangeWithDots.push('...', totalPages)
+    } else if (totalPages > 1) {
+      rangeWithDots.push(totalPages)
+    }
+
+    return rangeWithDots
+  }
+
+  const pages = getPaginationRange()
+
   return (
     <div
       className={
@@ -51,7 +76,27 @@ const Pagination = ({
       >
         <Icon name={'icon-navigation-chevron-left'} />
       </Action>
-      <p>{page} / {totalPages}</p>
+
+      {
+        pages.map((el, idx) =>
+          el === '...'
+            ?
+              <span key={idx}>...</span>
+            :
+              <Action
+                key={idx}
+                to={createPageUrl(el)}
+                classes={[
+                  'square',
+                  'md',
+                  el === page ? 'primary' : 'secondary',
+                ]}
+              >
+                {el}
+              </Action>
+        )
+      }
+
       <Action
         to={createPageUrl(page + 1)}
         classes={['primary', 'square', 'md']}

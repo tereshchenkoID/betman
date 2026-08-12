@@ -1,12 +1,14 @@
 @use '@/scss/config' as *;
 
 .block {
-  @include size(rem(30px), auto);
+  --logo-size: 1.875rem; // 30px
+
+  @include size(var(--logo-size), auto);
 
   display: block;
   flex-shrink: 0;
 
   @include desk-s {
-    width: rem(145px);
+    --logo-size: 9.0625rem; // 145px
   }
 }

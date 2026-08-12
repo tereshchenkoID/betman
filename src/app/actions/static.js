@@ -41,6 +41,8 @@ export const getWheelsRound = cache(async () => {
   return {
     wheels: res,
     wheelsCounter: counter,
+    timer: res?.timer,
+    message: res?.message,
   }
 })
 

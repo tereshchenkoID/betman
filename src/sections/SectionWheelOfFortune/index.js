@@ -1,7 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 import Inner from '@/modules/Inner'
 import Wheel from './Wheel'
@@ -12,7 +12,6 @@ import style from './index.module.scss'
 const SectionWheelOfFortune = ({
   data,
   meta,
-  settings,
   user,
   wheelsRound
 }) => {
@@ -24,13 +23,16 @@ const SectionWheelOfFortune = ({
       <div>
         <h1>{data?.title}</h1>
         {
-          data?.message &&
-          <div className={style.header}>
-            <span>{data?.message}</span>
-            <Countdown
-              targetTimestamp={data?.timer}
-              onExpire={() => router.refresh()}
-            />
+          wheelsRound?.message &&
+          <div>
+            <span>{wheelsRound?.message}</span>
+            {
+              wheelsRound?.timer &&
+              <Countdown
+                targetTimestamp={wheelsRound?.timer}
+                onExpire={router.refresh}
+              />
+            }
           </div>
         }
       </div>
@@ -47,7 +49,6 @@ const SectionWheelOfFortune = ({
         />
         <Wheel
           mock={data?.sectors}
-          settings={settings}
           user={user}
           wheelsRound={wheelsRound}
         />

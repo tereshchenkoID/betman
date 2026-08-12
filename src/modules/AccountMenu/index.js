@@ -47,6 +47,8 @@ const AccountMenu = ({ user, setToggle }) => {
     })
   }
 
+  console.log(user)
+
   return (
     <div className={style.block}>
       <div className={style.top}>
@@ -62,7 +64,7 @@ const AccountMenu = ({ user, setToggle }) => {
           />
           <Status
             data={user?.profile?.isVerify}
-            size={'md'}
+            classes={['default', 'md']}
           />
         </div>
         <div>
@@ -152,7 +154,10 @@ const AccountMenu = ({ user, setToggle }) => {
                   {t(el.text)}
                   {
                     (el.text === ROUTES_USER.profile.text && user?.profile?.isVerify !== '3') &&
-                    <Status data={user?.profile?.isVerify} />
+                    <Status
+                      data={user?.profile?.isVerify}
+                      classes={['default', 'sm', style.status]}
+                    />
                   }
                 </p>
                 <Icon name={'icon-navigation-chevron-right'} />
