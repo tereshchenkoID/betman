@@ -1,10 +1,21 @@
 @use '@/scss/config' as *;
 
-.body {
-  overflow: hidden;
+.header {
+  @include flex($justify-content: flex-end, $wrap: wrap);
+
+  margin-bottom: var(--gap-24);
+  gap: var(--gap-24);
+}
+
+.select {
+  width: rem(120px);
 }
 
 .table {
+  display: grid;
+}
+
+.scroll {
   @include scroll-x;
 }
 
@@ -66,4 +77,10 @@
   &.green {
     color: var(--green);
   }
+}
+
+.stats {
+  @include flex($align-items: center, $wrap: wrap);
+
+  gap: var(--gap-16);
 }

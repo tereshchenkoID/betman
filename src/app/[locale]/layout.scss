@@ -101,7 +101,7 @@ html {
 body {
   --background-size: 30%;
 
-  //@include scroll-y;
+  @include scroll-y;
 
   margin: 0;
   line-height: var(--line-height);
@@ -303,11 +303,9 @@ main {
   position: relative;
   width: 100%;
   min-height: var(--tg-viewport-height);
-  overflow: hidden;
   margin-inline: auto;
   max-width: var(--max-width);
   flex-shrink: 0;
-  z-index: 0;
   padding-block: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16);
 
   @include desk-s {

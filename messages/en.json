@@ -221,5 +221,13 @@
   "step": "Step",
   "activate": "Activate",
   "promocode": "Promocode",
-  "day": "d"
+  "quantity": "Quantity",
+  "day": "d",
+  "mo": "Mo",
+  "tu": "Tu",
+  "we": "We",
+  "th": "Th",
+  "fr": "Fr",
+  "sa": "Sa",
+  "su": "Su"
 }

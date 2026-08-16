@@ -21,14 +21,6 @@
     }
   }
 
-  &.md {
-    .content {
-      @include tab-s {
-        max-width: rem(560px);
-      }
-    }
-  }
-
   &.lg {
     .content {
       height: 100%;

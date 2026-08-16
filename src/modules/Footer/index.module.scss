@@ -13,7 +13,7 @@
 
   @include desk-s {
     padding-bottom: 0;
-    z-index: $z-index-8;
+    z-index: 0;
   }
 
   &.auth {

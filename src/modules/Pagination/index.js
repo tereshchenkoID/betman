@@ -1,5 +1,3 @@
-'use client'
-
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from '@/i18n/routing'
 import classNames from 'classnames'
@@ -76,27 +74,25 @@ const Pagination = ({ data, classes = [] }) => {
       >
         <Icon name={'icon-navigation-chevron-left'} />
       </Action>
-
       {
         pages.map((el, idx) =>
           el === '...'
             ?
-              <span key={idx}>...</span>
+            <span key={idx}>...</span>
             :
-              <Action
-                key={idx}
-                to={createPageUrl(el)}
-                classes={[
-                  'square',
-                  'md',
-                  el === page ? 'primary' : 'secondary',
-                ]}
-              >
-                {el}
-              </Action>
+            <Action
+              key={idx}
+              to={createPageUrl(el)}
+              classes={[
+                'square',
+                'md',
+                el === page ? 'primary' : 'secondary',
+              ]}
+            >
+              {el}
+            </Action>
         )
       }
-
       <Action
         to={createPageUrl(page + 1)}
         classes={['primary', 'square', 'md']}

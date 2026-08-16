@@ -20,6 +20,7 @@ const Select = ({
   classes = null,
   isDisabled = false,
   isRequired = false,
+  isSearch = true,
   rules = [],
 }) => {
   const t = useTranslations()
@@ -29,9 +30,9 @@ const Select = ({
   const [touched, setTouched] = useState(false)
   const [error, setError] = useState(null)
 
-  const filters = data.filter(el =>
-    el?.label?.toLowerCase().includes(search.toLowerCase())
-  )
+  const filters = isSearch && search
+    ? data.filter(el => el?.label?.toLowerCase().includes(search.toLowerCase()))
+    : data
 
   const validate = (val = value) => {
     const err = runRules(val, rules)
@@ -88,16 +89,19 @@ const Select = ({
       {
         toggle &&
         <div className={style.dropdown}>
-          <div className={style.head}>
-            <input
-              type={type}
-              value={search}
-              className={style.input}
-              placeholder={'Search'}
-              onChange={e => setSearch(e.currentTarget.value)}
-              autoComplete={'on'}
-            />
-          </div>
+          {
+            isSearch &&
+            <div className={style.head}>
+              <input
+                type={type}
+                value={search}
+                className={style.input}
+                placeholder={'Search'}
+                onChange={e => setSearch(e.currentTarget.value)}
+                autoComplete={'on'}
+              />
+            </div>
+          }
           <div className={style.list}>
             {
               filters.length > 0

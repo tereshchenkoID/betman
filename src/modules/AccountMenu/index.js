@@ -156,7 +156,7 @@ const AccountMenu = ({ user, setToggle }) => {
                     (el.text === ROUTES_USER.profile.text && user?.profile?.isVerify !== '3') &&
                     <Status
                       data={user?.profile?.isVerify}
-                      classes={['default', 'sm', style.status]}
+                      classes={['sm']}
                     />
                   }
                 </p>

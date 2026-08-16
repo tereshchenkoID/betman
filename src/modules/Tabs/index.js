@@ -31,7 +31,7 @@ const Tabs = ({ options, data, action }) => {
                 el.verification &&
                 <Status
                   data={el.verification}
-                  classes={['default', 'sm', style.status]}
+                  classes={['sm']}
                 />
               }
             </button>
