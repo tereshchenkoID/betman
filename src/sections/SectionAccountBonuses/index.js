@@ -14,11 +14,11 @@ import style from './index.module.scss'
 
 const OPTIONS = [
   {
-    key: 'active',
+    key: 'available',
     value: 0
   },
   {
-    key: 'available',
+    key: 'active',
     value: 1
   },
   {

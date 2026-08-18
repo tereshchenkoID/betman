@@ -13,27 +13,16 @@
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  margin-bottom: var(--gap-default);
-}
 
-.picture {
-  @include flex(center, center);
-
-  padding: var(--gap-default);
-  background-color: var(--primary-disabled);
-  width: 100%;
-  aspect-ratio: 1.5 / 1;
-  border-radius: var(--border-radius-default);
+  &:not(:last-child) {
+    margin-bottom: var(--gap-default);
+  }
 }
 
 .content {
   display: grid;
-  gap: var(--gap-16);
+  gap: var(--gap-default) var(--gap-16);
   margin-bottom: var(--gap-default);
-
-  @include tab-s {
-    grid-template-columns: 1fr 1.5fr;
-  }
 }
 
 .title {

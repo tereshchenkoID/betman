@@ -1,6 +1,5 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
 import classNames from 'classnames'
 
 import { BONUS_STATUS } from '@/constant/config'
@@ -40,8 +39,6 @@ const BonusCard = ({ settings, data }) => {
     })
   }
 
-  console.log(data)
-
   return (
     <div
       className={
@@ -53,29 +50,16 @@ const BonusCard = ({ settings, data }) => {
     >
       <div className={style.content}>
         <div>
-          <div className={style.picture}>
-            <Image
-              className={style.image}
-              src={'/images/logo-desktop.svg'}
-              alt={settings.name}
-              width={158}
-              height={28}
-              decoding="async"
-              unoptimized={true}
-            />
-          </div>
-        </div>
-        <div>
-          <div className={style.row}>
-            {
-              data?.status &&
+          {
+            data?.status &&
+            <div className={style.row}>
               <Notification
                 text={t(BONUS_STATUS[data.status])}
                 type={STATUS_TYPE[data.status]}
                 classes={style.status}
               />
-            }
-          </div>
+            </div>
+          }
           <div className={style.row}>
             <h3>{data.name}</h3>
             {
