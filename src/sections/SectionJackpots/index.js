@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 
 import Empty from '@/modules/Empty'
+import Title from '@/modules/Title'
 import JackpotCard from '@/modules/Cards/JackpotCard'
 
 import style from './index.module.scss'
@@ -16,7 +17,7 @@ const SectionJackpots = ({
 
   return (
     <section>
-      <h1>{t('section.jackpot')}</h1>
+      <Title title={t('section.jackpot')} />
       {
         meta?.results !== "0"
           ?

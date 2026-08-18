@@ -1,11 +1,5 @@
 @use '@/scss/config' as *;
 
-.block {
-  display: grid;
-  gap: var(--gap-24);
-  position: relative;
-}
-
 .list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -16,18 +10,11 @@
   }
 }
 
-.content {
-  display: grid;
-  gap: var(--gap-24);
-  align-content: flex-start;
-  position: relative;
-  min-height: rem(150px);
-}
-
-.container {
+.section {
   display: grid;
   gap: var(--gap-32);
   align-items: flex-start;
+  min-height: rem(200px);
 
   @include desk-s {
     grid-template-columns: rem(460px) 1fr;

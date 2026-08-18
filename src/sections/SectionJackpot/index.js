@@ -1,16 +1,18 @@
 'use client'
 
+import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
 import Tabs from '@/modules/Tabs'
-import Back from '@/modules/Back'
+import Title from '@/modules/Title'
 import Inner from '@/modules/Inner'
 import JackpotCard from '@/modules/Cards/JackpotCard'
 import SectionGames from '@/sections/SectionGames'
 
 import style from './index.module.scss'
+import Loader from "@/components/Loader";
 
 const OPTIONS = [
   {
@@ -36,18 +38,22 @@ const SectionJackpot = ({
   meta,
 }) => {
   const router = useRouter()
+  const [isPending, startTransition] = useTransition()
+
   const active = OPTIONS.find(opt => opt.key === tab) || OPTIONS[0]
 
-  const handleActive = (tab) => {
-    router.push(`${NAVIGATION.jackpots.url}/${id}/${tab.key}`)
+  const handleActive = (el) => {
+    startTransition(() => {
+      router.push(`${NAVIGATION.jackpots.url}/${id}/${el.key}`, { scroll: false })
+    })
   }
 
   return (
     <section>
-      <div className={style.header}>
-        <Back />
-        <h1>{data?.title}</h1>
-      </div>
+      <Title
+        title={data?.title}
+        isBack={true}
+      />
       <Tabs
         options={OPTIONS}
         data={active}
@@ -55,25 +61,33 @@ const SectionJackpot = ({
       />
       <div className={style.content}>
         {
-          active?.key === OPTIONS[0]?.key &&
-          <JackpotCard
-            data={data}
-            user={user}
-            classes={['extended']}
-          />
-        }
-        {
-          active?.key === OPTIONS[1]?.key &&
-          <SectionGames
-            url={`jackpot/${id}/games`}
-            user={user}
-            data={games}
-            meta={meta}
-          />
-        }
-        {
-          active?.key === OPTIONS[2]?.key &&
-          <Inner data={data?.description} />
+          isPending
+            ?
+              <Loader />
+            :
+              <>
+                {
+                  active?.key === OPTIONS[0]?.key &&
+                  <JackpotCard
+                    data={data}
+                    user={user}
+                    classes={['extended']}
+                  />
+                }
+                {
+                  active?.key === OPTIONS[1]?.key &&
+                  <SectionGames
+                    url={`jackpot/${id}/games`}
+                    user={user}
+                    data={games}
+                    meta={meta}
+                  />
+                }
+                {
+                  active?.key === OPTIONS[2]?.key &&
+                  <Inner data={data?.description} />
+                }
+              </>
         }
       </div>
     </section>

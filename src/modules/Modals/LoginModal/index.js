@@ -17,7 +17,7 @@ import Action from '@/components/Action'
 import style from './index.module.scss'
 import RecoveryModal from "@/modules/Modals/RecoveryModal";
 
-const Login = ({ isTitle = false }) => {
+const LoginModal = ({ isTitle = false }) => {
   const t = useTranslations()
   const VALIDATION_RULES = useValidations()
 
@@ -63,7 +63,7 @@ const Login = ({ isTitle = false }) => {
     >
       {
         isTitle &&
-        <h1 className={style.title}>{t('sign_up')}</h1>
+        <h1>{t('sign_up')}</h1>
       }
       <div className={style.container}>
         <Field
@@ -123,4 +123,4 @@ const Login = ({ isTitle = false }) => {
   )
 }
 
-export default Login
+export default LoginModal

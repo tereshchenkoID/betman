@@ -10,7 +10,11 @@ import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const Favorite = ({ data, user }) => {
+const Favorite = ({
+  data,
+  user,
+  className = 'square',
+}) => {
   const t = useTranslations()
   const { isFavorite, toggleFavorite } = useFavorites(data)
   const { openModal, closeAllModals } = useModal()
@@ -27,7 +31,7 @@ const Favorite = ({ data, user }) => {
 
   return (
     <Action
-      classes={['secondary', 'md', 'square', style.block, isFavorite(data) ? style.active : style.default]}
+      classes={['secondary', 'md', className, style.block, isFavorite(data) ? style.active : style.default]}
       onChange={handleToggle}
       aria-label={`${t('notification.add_favorite')} ${data?.title}`}
     >

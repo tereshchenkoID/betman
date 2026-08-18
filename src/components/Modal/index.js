@@ -39,20 +39,19 @@ const Modal = ({
       <div className={style.content}>
         <div className={style.wrapper}>
           {
-            !isTiny && (
-              <div className={style.header}>
-                <h3 id={titleId} className={style.title}>{title}</h3>
-                {
-                  !isPointer &&
-                  <Action
-                    classes={['secondary', 'sm', 'square', style.close]}
-                    onChange={onClose}
-                  >
-                    <Icon name="icon-navigation-close" />
-                  </Action>
-                }
-              </div>
-            )
+            !isTiny &&
+            <div className={style.header}>
+              <h3 id={titleId} className={style.title}>{title}</h3>
+              {
+                !isPointer &&
+                <Action
+                  classes={['secondary', 'sm', 'square', style.close]}
+                  onChange={onClose}
+                >
+                  <Icon name="icon-navigation-close" />
+                </Action>
+              }
+            </div>
           }
           <div className={style.body}>
             {children}

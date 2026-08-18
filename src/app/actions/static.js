@@ -31,6 +31,13 @@ export async function getPages() {
   });
 }
 
+export async function getBonuses() {
+  return apiRequest('counter/', {
+    cache: 'force-cache',
+    next: { tags: ['bonuses'] },
+  });
+}
+
 export const getWheelsRound = cache(async () => {
   const res = await apiRequest('wheel/rounds/', {
     next: { tags: ['wheels-rounds'] },

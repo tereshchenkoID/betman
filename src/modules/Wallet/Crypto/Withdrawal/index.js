@@ -21,7 +21,7 @@ const INITIAL_FILTER = {
   payment_type: null
 }
 
-const Withdrawal = ({ data }) => {
+const Withdrawal = ({ data, user }) => {
   const t = useTranslations()
   const [isPending, startTransition] = useTransition()
 
@@ -76,7 +76,7 @@ const Withdrawal = ({ data }) => {
           <div className={style.row}>
             <p className={style.cell}>{t('commission')}:</p>
             <strong>
-              {commission} {auth?.currency?.text}
+              {commission} {user?.currency?.text}
             </strong>
           </div>
 
@@ -105,7 +105,7 @@ const Withdrawal = ({ data }) => {
               data.withdraw?.quickAmount.map((el, idx) =>
                 <Action
                   key={idx}
-                  placeholder={`${el} ${auth.currency.code}`}
+                  placeholder={`${el} ${user.currency.code}`}
                   classes={['primary', 'md']}
                   onChange={() => handlePropsChange('amount', el)}
                 />

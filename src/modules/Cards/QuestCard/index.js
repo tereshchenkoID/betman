@@ -43,7 +43,7 @@ const QuestCard = ({ data }) => {
         placeholder={'i'}
         alt={'i'}
         onChange={() => {
-          openModal('quest', { data: bonus }, { title: bonus?.title })
+          openModal('quest', { data: bonus?.info }, { title: bonus?.title })
         }}
       />
       <div className={style.content}>

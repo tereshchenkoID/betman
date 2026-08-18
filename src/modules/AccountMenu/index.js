@@ -12,6 +12,8 @@ import {
 
 import { logoutAction } from '@/app/actions/auth'
 
+import { useGlobalData } from '@/hooks/useGlobalData'
+import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 
 import Action from '@/components/Action'
@@ -35,6 +37,7 @@ const DATA = [
 const AccountMenu = ({ user, setToggle }) => {
   const t = useTranslations()
   const router = useRouter()
+  const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
 
   const handleLogout = async () => {
     setToggle(false)
@@ -46,8 +49,6 @@ const AccountMenu = ({ user, setToggle }) => {
       })
     })
   }
-
-  console.log(user)
 
   return (
     <div className={style.block}>
@@ -91,18 +92,18 @@ const AccountMenu = ({ user, setToggle }) => {
             aria-label={t(ROUTES_USER.wallet.text)}
             onClick={() => setToggle(false)}
           >
-            <div className={style.count}>{t('balance')}: <h3>{fixed(user?.credits?.real_balance)}</h3> {user?.currency?.text}</div>
+            <div className={style.count}>{t('balance')}: <h3>{fixed(credits?.real_balance)}</h3> {user?.currency?.text}</div>
             <Icon name={'icon-navigation-chevron-right'} />
           </Link>
           <div className={style.actions}>
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}?tab=deposit`}
+              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias}/deposit`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('deposit')}
               onChange={() => setToggle(false)}
             />
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias || 'voucher'}?tab=withdrawal`}
+              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias}/withdrawal`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('withdrawal')}
               onChange={() => setToggle(false)}
@@ -122,15 +123,15 @@ const AccountMenu = ({ user, setToggle }) => {
             onClick={() => setToggle(false)}
           >
             <div className={style.amount}>
-              <div className={style.count}>{t('bonus')}: <h3>{fixed(user?.credits?.bonus?.amount)}</h3> {user?.currency?.text}</div>
+              <div className={style.count}>{t('bonus')}: <h3>{fixed(credits?.bonus?.amount)}</h3> {user?.currency?.text}</div>
               <Icon name={'icon-navigation-chevron-right'} />
             </div>
             {
-              user?.credits?.bonus?.total_bets > 0 &&
+              credits?.bonus?.total_bets > 0 &&
               <Scale
-                amount={user?.credits?.bonus.total_bets}
-                percentage={user?.credits?.bonus.percentage}
-                max={user?.credits?.bonus.refund_sum}
+                amount={credits?.bonus.total_bets}
+                percentage={credits?.bonus.percentage}
+                max={credits?.bonus.refund_sum}
                 currency={user?.currency?.text}
               />
             }

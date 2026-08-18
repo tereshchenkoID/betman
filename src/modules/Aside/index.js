@@ -5,7 +5,7 @@ import { usePathname } from '@/i18n/routing'
 import { Link } from '@/i18n/routing'
 import classNames from 'classnames'
 
-import { NAVIGATION } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import Icon from '@/components/Icon'
 
@@ -19,9 +19,11 @@ const isActive = (current, link) => {
 }
 
 const Aside = ({
+  user,
   settings,
   wheels,
-  quests
+  quests,
+  bonuses
 }) => {
   const t = useTranslations()
   const pathname = usePathname()
@@ -30,17 +32,21 @@ const Aside = ({
 
   const DATA = [
     NAVIGATION.home,
+    user?.id && {
+      ...ROUTES_USER.bonuses,
+      badge: bonuses?.data || false
+    },
     settings.modules?.wheel === '1' && {
       ...NAVIGATION.wheels_of_fortune,
       badge: wheelsCounter || false
     },
     NAVIGATION.jackpots,
-    NAVIGATION.tournament,
+    // NAVIGATION.tournament,
     settings.modules?.quest === '1' && {
       ...NAVIGATION.quests,
       badge: questsCounter || false
     },
-    NAVIGATION.promotions
+    NAVIGATION.promotions,
   ].filter(Boolean);
 
   return (

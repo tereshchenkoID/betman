@@ -1,34 +1,19 @@
-@use '@/scss/config' as *;
+@use 'config' as *;
 
-.header {
-  @include flex($justify-content: flex-end, $wrap: wrap);
-
-  margin-bottom: var(--gap-24);
-  gap: var(--gap-24);
-}
-
-.select {
-  width: rem(120px);
+.body {
+  overflow: hidden;
 }
 
 .table {
-  display: grid;
-}
-
-.scroll {
   @include scroll-x;
 }
 
 .row {
   display: grid;
+  grid-template-columns: repeat(2, rem(100px)) 1fr rem(120px) repeat(2, 1fr) rem(100px) 1fr;
   gap: var(--gap-2);
-  grid-template-columns: 0.5fr 1fr 2fr 1fr 1fr;
-  min-width: rem(800px);
+  min-width: rem(1060px);
   font-size: rem(14px);
-
-  &:not(:last-child) {
-    margin-bottom: var(--gap-2);
-  }
 
   &.first {
 
@@ -43,6 +28,10 @@
         border-radius:  0 rem(8px) 0 0;
       }
     }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--gap-2);
   }
 
   &:not(.first) {
@@ -61,26 +50,36 @@
       }
     }
   }
+
+  &.expired {
+    .cell {
+      opacity: 0.5;
+    }
+  }
+
+  &.new {
+    .cell {
+      font-weight: var(--typography-bold);
+      opacity: 1;
+    }
+  }
 }
 
-
 .cell {
-  @include flex($align-items: center);
+  @include flex($align-items: center, $wrap: wrap);
 
   background-color: var(--primary-disabled);
   padding: var(--gap-default);
-
-  &.red {
-    color: var(--red);
-  }
-
-  &.green {
-    color: var(--green);
-  }
+  gap: var(--gap-default);
 }
 
-.stats {
-  @include flex($align-items: center, $wrap: wrap);
+.link {
+  color: var(--tertiary);
+  font-size: rem(12px);
 
-  gap: var(--gap-16);
+  @include hover {
+    &:hover {
+      color: var(--link);
+    }
+  }
 }

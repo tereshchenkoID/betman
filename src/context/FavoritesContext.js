@@ -68,16 +68,16 @@ export const FavoritesProvider = ({
       if (res?.code === '0') {
         toast.success(res?.message)
 
-        startTransition(() => {
-          router.refresh()
-        })
+        // startTransition(() => {
+        //   router.refresh()
+        // })
       } else {
         setFavorites(data)
         setMeta(initialMeta)
         toast.error(res?.error_message || 'Error')
       }
     },
-    [user?.id, list, data, initialMeta, router]
+    [user?.id, list, data, initialMeta]
   )
 
   const isFavorite = useCallback(

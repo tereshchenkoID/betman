@@ -2,6 +2,7 @@
 
 import React, {
   useState,
+  useEffect,
   useImperativeHandle,
   forwardRef,
 } from 'react'
@@ -133,6 +134,12 @@ const Slider = forwardRef(({
     },
     activePlugins
   )
+
+  useEffect(() => {
+    if (instanceRef.current) {
+      instanceRef.current.update()
+    }
+  }, [children, instanceRef])
 
   useImperativeHandle(ref, () => instanceRef.current, [instanceRef])
 

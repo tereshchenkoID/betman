@@ -12,6 +12,7 @@
 .row {
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
   margin-bottom: var(--gap-default);
 }
 
@@ -21,7 +22,7 @@
   padding: var(--gap-default);
   background-color: var(--primary-disabled);
   width: 100%;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 1.5 / 1;
   border-radius: var(--border-radius-default);
 }
 
@@ -45,7 +46,11 @@
 }
 
 .info {
-  @include flex($direction: column);
+  @include flex;
 
   gap: var(--gap-default);
+}
+
+.status {
+  text-align: center;
 }

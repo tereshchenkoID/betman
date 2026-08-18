@@ -1,9 +1,7 @@
 @use '@/scss/config' as *;
 
-.block {
-  display: grid;
-  gap: var(--gap-24);
-  position: relative;
+.section {
+  min-height: rem(200px);
 }
 
 .verify,

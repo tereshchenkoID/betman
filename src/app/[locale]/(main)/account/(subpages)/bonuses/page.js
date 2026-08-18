@@ -1,25 +1,7 @@
-import { apiRequest } from '@/app/actions/api'
-import { getSettings } from '@/app/actions/static'
+import { redirect, RedirectType } from 'next/navigation'
 
-import SectionAccountBonuses from '@/sections/SectionAccountBonuses'
+import { ROUTES_USER } from '@/constant/config'
 
 export default async function Bonuses() {
-  const [
-    settings,
-    res,
-  ] = await Promise.all([
-    getSettings(),
-    apiRequest('bonuses/', {
-      method: 'GET',
-      next: { tags: ['bonuses'] }
-    })
-  ])
-
-  return (
-    <SectionAccountBonuses
-      settings={settings}
-      data={res?.data}
-      meta={res?.meta}
-    />
-  )
+  redirect(`${ROUTES_USER.bonuses.url}/active`, RedirectType.replace)
 }

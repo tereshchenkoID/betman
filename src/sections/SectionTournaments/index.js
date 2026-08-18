@@ -2,14 +2,14 @@
 
 import { useTranslations } from 'next-intl'
 
-import style from './index.module.scss'
+import Title from '@/modules/Title'
 
 const SectionTournaments = ({ data, meta }) => {
   const t = useTranslations()
 
   return (
     <section>
-      <h1>{t('section.tournaments')}</h1>
+      <Title title={t('section.tournaments')} />
       <p>{t('notification.tournaments_empty')}</p>
     </section>
   )

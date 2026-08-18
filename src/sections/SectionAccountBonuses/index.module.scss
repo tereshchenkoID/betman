@@ -1,23 +1,21 @@
 @use '@/scss/config' as *;
 
-.block {
-  @include scroll-x;
-
-  display: grid;
-  gap: var(--gap-24);
+.section {
+  min-height: rem(200px);
 }
 
 .list {
+  --bonus-count: 1;
+
   display: grid;
-  gap: var(--gap-24);
+  grid-template-columns: repeat(var(--bonus-count), 1fr);
+  gap: var(--gap-default);
 
   @include tab-s {
-    grid-template-columns: repeat(2, 1fr);
-    overflow: unset;
+    --bonus-count: 2;
   }
 
   @include desk-s {
-    grid-template-columns: repeat(3, 1fr);
-    overflow: unset;
+    --bonus-count: 3;
   }
 }

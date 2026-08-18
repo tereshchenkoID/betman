@@ -109,13 +109,6 @@ export const ROUTES_USER = {
 
 export const LIST_COUNT = 16
 
-export const TASK_STATUS = {
-  0: 'new',
-  1: 'done',
-  2: 'pending',
-  3: 'expired',
-}
-
 export const USER_VERIFY = {
   0: 'not',
   1: 'verification',
@@ -123,11 +116,24 @@ export const USER_VERIFY = {
   3: 'verified',
 }
 
+export const TASK_STATUS = {
+  0: 'new',
+  1: 'done',
+  2: 'pending',
+  3: 'expired',
+}
+
 export const VOUCHER_STATUS = {
   0: 'new',
   1: 'paid',
   2: 'expired',
   3: 'cancelled'
+}
+
+export const BONUS_STATUS = {
+  0: 'expired',
+  1: 'finished',
+  2: 'deactivated',
 }
 
 export const PAYMENT_TYPE = {

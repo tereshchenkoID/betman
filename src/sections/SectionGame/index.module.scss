@@ -48,10 +48,6 @@
 
   gap: var(--gap-default);
 
-  @include tab-s {
-    gap: var(--gap-16);
-  }
-
   &:last-child {
     @include scroll-x;
 

@@ -6,6 +6,8 @@ import classNames from 'classnames'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
+import { useGlobalData } from '@/hooks/useGlobalData'
+import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 
 import Icon from '@/components/Icon'
@@ -25,6 +27,7 @@ const MENU = [
 
 const SectionAccount = ({ user }) => {
   const t = useTranslations()
+  const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
 
   return (
     <section className={style.block}>
@@ -36,7 +39,7 @@ const SectionAccount = ({ user }) => {
           )
         }
       >
-        <h2 className={style.subtitle}>{user?.credits?.real_balance} <p className={style.amount}>{user?.currency.text}</p></h2>
+        <h2 className={style.subtitle}>{credits?.real_balance} <p className={style.amount}>{user?.currency.text}</p></h2>
         <Action
           to={ROUTES_USER.wallet.url}
           classes={['primary', 'lg']}
@@ -52,7 +55,7 @@ const SectionAccount = ({ user }) => {
         }
       >
         <div>
-          <h2 className={style.subtitle}>{fixed(user?.credits?.bonus?.amount)} <p className={style.amount}>{user?.currency?.text}</p></h2>
+          <h2 className={style.subtitle}>{fixed(credits?.bonus?.amount)} <p className={style.amount}>{user?.currency?.text}</p></h2>
         </div>
         <Action
           to={ROUTES_USER.bonuses.url}

@@ -13,7 +13,6 @@ import { useWebSocket } from '@/hooks/useWebSocket'
 import { consoleHelper } from '@/helpers/console'
 
 import { logoutAction } from '@/app/actions/auth'
-import { revalidateAction } from '@/app/actions/revalidate'
 
 const WebSocketContext = createContext(null)
 
@@ -36,7 +35,7 @@ export const WebSocketProvider = ({ children, user }) => {
 
   const onMessage = useCallback((message, socket) => {
     setLastMessage(message)
-    const { cmd, topic } = message
+    const { cmd } = message
 
     if (cmd === 'ping') {
       socket.send(JSON.stringify({ cmd: 'pong' }))
@@ -45,14 +44,7 @@ export const WebSocketProvider = ({ children, user }) => {
     if (cmd === 'logout') {
       handleLogout()
     }
-
-    if (cmd === 'set-credits' && topic === 'account') {
-      startTransition(async () => {
-        await revalidateAction('user')
-        router.refresh()
-      })
-    }
-  }, [handleLogout, router])
+  }, [handleLogout])
 
   const { socketRef, sendWhenReady } = useWebSocket({
     url: process.env.NEXT_PUBLIC_WSS_BASE_URL,

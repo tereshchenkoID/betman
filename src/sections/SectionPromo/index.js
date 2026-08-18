@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Fragment } from 'react'
 
-import Back from '@/modules/Back'
+import Title from '@/modules/Title'
 import Inner from '@/modules/Inner'
 
 import style from './index.module.scss'
@@ -17,10 +17,10 @@ const SectionPromo = ({ data, meta }) => {
       {
         data?.map((el, idx) =>
           <Fragment key={idx}>
-            <div className={style.header}>
-              <Back />
-              <h1>{el?.title}</h1>
-            </div>
+            <Title
+              isBack={true}
+              title={el?.title}
+            />
             <div className={style.content}>
               {
                 el?.image &&

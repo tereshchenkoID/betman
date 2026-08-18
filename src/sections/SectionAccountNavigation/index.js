@@ -38,17 +38,21 @@ const SectionAccountNavigation = () => {
   return (
     <section className={style.block}>
       {
-        DATA.map((el, idx) =>
-          <Action
-            key={idx}
-            classes={[isActiveLink(el.url) ? 'primary' : 'secondary', 'md', style.link]}
-            to={el.url}
-          >
-            <Icon name={el.icon} />
-            <span>{t(el.text)}</span>
-          </Action>
+        DATA.map((el, idx) => {
+          const isActive = isActiveLink(el.url)
+
+          return (
+            <Action
+              key={idx}
+              to={el.url}
+              classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
+              isActive={isActive}
+            >
+              <Icon name={el.icon} />
+              <span>{t(el.text)}</span>
+            </Action>
         )
-      }
+      })}
     </section>
   )
 }

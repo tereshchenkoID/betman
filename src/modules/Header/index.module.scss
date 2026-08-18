@@ -7,12 +7,21 @@
   z-index: $z-index-9;
   background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
   height: var(--header-height);
+  box-shadow: var(--box-shadow-default);
 
   @include desk-s {
     margin-inline: 0;
     padding-block: var(--gap-default);
     background: none;
+    box-shadow: none;
   }
+}
+
+.logo {
+  @include size(rem(145px), auto);
+
+  display: block;
+  flex-shrink: 0;
 }
 
 .container {
@@ -34,12 +43,30 @@
   }
 }
 
-.right {
-  @include flex($align-items: center);
+.right,
+.wrapper {
+  @include flex;
 
   position: relative;
-  gap: var(--gap-default);
-  padding-bottom: 0;
+  gap: var(--gap-4);
+
+  @include tab-s {
+    gap: var(--gap-default);
+  }
+}
+
+.wrapper {
+  align-items: center;
+}
+
+.right {
+  align-items: flex-end;
+  flex-direction: column-reverse;
+
+  @include tab-s {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .balance {

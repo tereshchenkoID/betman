@@ -7,6 +7,7 @@ import { useRouter } from '@/i18n/routing'
 import { useWebSocketContext } from '@/context/WebSocketContext'
 import { useModal } from '@/context/ModalContext'
 import { revalidateAction } from '@/app/actions/revalidate'
+import { eventBus } from '@/utils/eventBus'
 
 const WSUpdater = ({ user }) => {
   const t = useTranslations()
@@ -21,15 +22,11 @@ const WSUpdater = ({ user }) => {
 
     if (cmd === 'update' && topic === 'credits') {
       startTransition(async () => {
-        await revalidateAction('user')
-        router.refresh()
-      })
-    }
+        eventBus.emit(`ws:${topic}`, data)
 
-    if (cmd === 'update' && topic === 'tasks') {
-      startTransition(async () => {
-        await revalidateAction('quests')
-        router.refresh()
+        startTransition(async () => {
+          await revalidateAction('user')
+        })
       })
     }
 

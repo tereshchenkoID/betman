@@ -4,15 +4,14 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/routing'
 
-import { NAVIGATION } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
-import Logo from '@/modules/Logo'
-import Icon from '@/components/Icon'
 import Action from '@/components/Action'
+import Icon from '@/components/Icon'
+import Logo from '@/modules/Logo'
 import FullScreen from '@/modules/FullScreen'
 import Favourite from '@/modules/Favorite'
 import LoginModal from '@/modules/Modals/LoginModal'
-import Checked from '@/modules/Checked'
 import Back from '@/modules/Back'
 import AccountMenu from '@/modules/AccountMenu'
 
@@ -52,17 +51,32 @@ const SectionGame = ({
             <Logo />
           </div>
           <div className={style.options}>
-            <Checked
-              data={mode}
-              onChange={handleChange}
-              placeholder={[t('real'), t('demo')]}
-            />
+            {
+              mode === '1' &&
+              <Action
+                classes={['secondary', 'md']}
+                placeholder={t('real')}
+                onChange={() => handleChange('0')}
+              />
+            }
             {
               game &&
-              <Favourite
-                data={game}
-                user={user}
-              />
+              <>
+                {
+                  user?.id &&
+                  <Action
+                    to={ROUTES_USER.wallet.url}
+                    classes={['secondary', 'md', 'circle']}
+                  >
+                    <Icon name={ROUTES_USER.wallet.icon} />
+                  </Action>
+                }
+                <Favourite
+                  data={game}
+                  user={user}
+                  className={'circle'}
+                />
+              </>
             }
             <FullScreen />
             {

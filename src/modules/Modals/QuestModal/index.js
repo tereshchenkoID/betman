@@ -1,9 +1,9 @@
 import Inner from '@/modules/Inner'
 
-const Quest = ({ data }) => {
+const QuestModal = ({ data }) => {
   return (
-    <Inner data={data?.info} />
+    <Inner data={data} />
   )
 }
 
-export default Quest
+export default QuestModal

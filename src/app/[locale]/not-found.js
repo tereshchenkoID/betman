@@ -1,5 +1,6 @@
 import { getCachedUser } from '@/app/actions/auth'
 import {
+  getBonuses,
   getCategories,
   getPages,
   getProviders,
@@ -33,6 +34,8 @@ export default async function NotFoundPage() {
     getQuests()
   ])
 
+  const bonuses = user?.id ? await getBonuses() : null
+
   return (
     <>
       <Header
@@ -41,9 +44,11 @@ export default async function NotFoundPage() {
       />
       <main>
         <Aside
+          user={user}
           settings={settings}
           wheels={wheels}
           quests={quests}
+          bonuses={bonuses}
         />
         <Content>
           <SectionNotFound />

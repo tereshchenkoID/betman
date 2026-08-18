@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
 import Inner from '@/modules/Inner'
+import Title from '@/modules/Title'
 import Wheel from './Wheel'
 import Countdown from './Countdown'
 
@@ -21,7 +22,7 @@ const SectionWheelOfFortune = ({
   return (
     <section className={style.block}>
       <div>
-        <h1>{data?.title}</h1>
+        <Title title={data?.title} />
         {
           wheelsRound?.message &&
           <div>

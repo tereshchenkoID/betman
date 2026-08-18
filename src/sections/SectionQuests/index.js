@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import QuestCard from '@/modules/Cards/QuestCard'
 import Empty from '@/modules/Empty'
+import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
@@ -12,7 +13,7 @@ const SectionQuests = ({ data, meta }) => {
 
   return (
     <section>
-      <h1>{t('section.quests')}</h1>
+      <Title title={t('section.quests')} />
       {
         meta?.results !== "0"
           ?

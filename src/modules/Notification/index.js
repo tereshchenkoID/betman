@@ -18,7 +18,7 @@ const Notification = ({
         )
       }
     >
-      <p className={style.text}>{text}</p>
+      <p>{text}</p>
     </div>
   )
 }

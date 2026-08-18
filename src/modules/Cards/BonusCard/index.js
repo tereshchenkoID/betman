@@ -1,23 +1,35 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import classNames from 'classnames'
 
-import { date } from '@/helpers/date'
+import { BONUS_STATUS } from '@/constant/config'
+
+import { useModal } from '@/context/ModalContext'
 import { toast } from '@/utils/toast'
+import { date } from '@/helpers/date'
 import { action } from './action'
 
-import Toggle from '@/components/Toggle'
 import Action from '@/components/Action'
 import Scale from '@/modules/Scale'
+import Icon from '@/components/Icon'
+import Notification from '@/modules/Notification'
 
 import style from './index.module.scss'
 
+const STATUS_TYPE = {
+  0: 'warning',
+  1: 'success',
+  2: 'error',
+}
+
 const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
+  const { openModal } = useModal()
 
-  const handleChange = (value) => {
+  const handleChange = () => {
     startTransition(async () => {
-      const res = await action(data?.id, value)
+      const res = await action(data?.id, '0')
 
       if (res?.code === '0') {
         toast.success(res.message)
@@ -28,10 +40,19 @@ const BonusCard = ({ settings, data }) => {
     })
   }
 
+  console.log(data)
+
   return (
-    <div className={style.block}>
+    <div
+      className={
+        classNames(
+          style.block,
+          data?.enable === '0' && style.disabled
+        )
+      }
+    >
       <div className={style.content}>
-        <div className={style.left}>
+        <div>
           <div className={style.picture}>
             <Image
               className={style.image}
@@ -44,13 +65,29 @@ const BonusCard = ({ settings, data }) => {
             />
           </div>
         </div>
-        <div className={style.right}>
+        <div>
+          <div className={style.row}>
+            {
+              data?.status &&
+              <Notification
+                text={t(BONUS_STATUS[data.status])}
+                type={STATUS_TYPE[data.status]}
+                classes={style.status}
+              />
+            }
+          </div>
           <div className={style.row}>
             <h3>{data.name}</h3>
-            <Toggle
-              data={data?.enable}
-              onChange={(e) => handleChange(e)}
-            />
+            {
+              data?.enable === '1' &&
+              <Action
+                classes={['secondary', 'md', 'square']}
+                aria-label={t('delete')}
+                onChange={handleChange}
+              >
+                <Icon name={'icon-actions-delete'} />
+              </Action>
+            }
           </div>
           <div className={style.row}>
             <p>{t('amount')}:</p>
@@ -74,9 +111,11 @@ const BonusCard = ({ settings, data }) => {
         {
           data?.info &&
           <Action
-            to={data?.info}
             placeholder={t('details')}
-            classes={['outline', 'md', 'wide']}
+            classes={['secondary', 'md', 'wide']}
+            onChange={() => {
+              openModal('quest', { data: data?.info }, { title: data?.name })
+            }}
           />
         }
       </div>

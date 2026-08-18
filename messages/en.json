@@ -181,8 +181,6 @@
   "password_old": "Old password",
   "password_new": "New password",
   "date_update": "Update date",
-  "wallet_history": "Wallet history",
-  "casino_history": "Game history",
   "amount": "Amount",
   "date_time": "Date/Time",
   "game": "Game",
@@ -198,6 +196,10 @@
   "code": "Code",
   "id": "ID",
   "expired": "Expires",
+  "active": "Active",
+  "available": "Available",
+  "finished": "Finished",
+  "deactivated": "Deactivated",
   "wager": "Wager",
   "pay": "Pay",
   "min": "Min",
@@ -229,5 +231,6 @@
   "th": "Th",
   "fr": "Fr",
   "sa": "Sa",
-  "su": "Su"
+  "su": "Su",
+  "delete": "Delete"
 }

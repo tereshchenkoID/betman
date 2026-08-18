@@ -4,7 +4,7 @@ import Details from './Details'
 
 import style from './index.module.scss'
 
-const PaymentDetails = ({ data }) => {
+const PaymentDetailsModal = ({ data }) => {
   const t = useTranslations()
 
   if (!data?.details) return null
@@ -28,4 +28,4 @@ const PaymentDetails = ({ data }) => {
   )
 }
 
-export default PaymentDetails
+export default PaymentDetailsModal

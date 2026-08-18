@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { NAVIGATION } from '@/constant/config'
 
 import Action from '@/components/Action'
-import Back from '@/modules/Back'
+import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
@@ -14,10 +14,10 @@ const SectionNotFound = () => {
 
   return (
     <section>
-      <div className={style.header}>
-        <Back />
-        <h1>{t('notification.404_link')}</h1>
-      </div>
+      <Title
+        title={t('notification.404_link')}
+        isBack={true}
+      />
       <div className={style.content}>
         <h2 className={style.subtitle}>404</h2>
         <h2>{t('notification.404_title')}</h2>

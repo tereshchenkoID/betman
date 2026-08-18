@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import classNames from 'classnames'
@@ -11,68 +8,20 @@ import { date } from '@/helpers/date'
 import { fixed } from '@/helpers/fixed'
 
 import Action from '@/components/Action'
-import Select from '@/components/Select'
-import DateRange from '@/components/DateRange'
 import Pagination from '@/modules/Pagination'
 import Empty from '@/modules/Empty'
 // import Stat from './Stat'
 
 import style from './index.module.scss'
 
-const QUANTITY = [
-  {
-    value: 10,
-    label: '10'
-  },
-  {
-    value: 20,
-    label: '20'
-  },
-  {
-    value: 50,
-    label: '50'
-  },
-  {
-    value: 100,
-    label: '100'
-  }
-]
-
 const SectionAccountHistoryCasino = ({ user, data, meta }) => {
   const t = useTranslations()
-
-  const [quantity, setQuantity] = useState( {
-    value: 10,
-    label: '10'
-  })
-
-  const [range, setRange] = useState({
-    from: new Date().setHours(0, 0, 0, 0),
-    to: new Date().getTime(),
-  })
 
   return (
     <section>
       {/*<div className={style.stats}>*/}
       {/*  <Stat />*/}
       {/*</div>*/}
-
-      <div className={style.header}>
-        <DateRange
-          placeholder="Date Range"
-          value={range}
-          onChange={(range) => setRange(range)}
-        />
-
-        <Select
-          placeholder={t('quantity')}
-          classes={[style.select]}
-          data={QUANTITY.map(({ value, label }) => ({ value, label }))}
-          value={quantity}
-          isSearch={false}
-          onChange={value => setQuantity(value)}
-        />
-      </div>
       {
         meta?.results !== '0'
           ?

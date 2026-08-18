@@ -1,19 +1,23 @@
-@use '@/scss/config' as *;
-
-.body {
-  overflow: hidden;
-}
+@use 'config' as *;
 
 .table {
+  display: grid;
+}
+
+.scroll {
   @include scroll-x;
 }
 
 .row {
   display: grid;
-  grid-template-columns: repeat(2, rem(100px)) 1fr rem(120px) repeat(2, 1fr) rem(100px) 1fr;
   gap: var(--gap-2);
-  min-width: rem(1060px);
+  grid-template-columns: 0.5fr 1fr 2fr 1fr 1fr;
+  min-width: rem(800px);
   font-size: rem(14px);
+
+  &:not(:last-child) {
+    margin-bottom: var(--gap-2);
+  }
 
   &.first {
 
@@ -28,10 +32,6 @@
         border-radius:  0 rem(8px) 0 0;
       }
     }
-  }
-
-  &:not(:last-child) {
-    margin-bottom: var(--gap-2);
   }
 
   &:not(.first) {
@@ -50,36 +50,26 @@
       }
     }
   }
-
-  &.expired {
-    .cell {
-      opacity: 0.5;
-    }
-  }
-
-  &.new {
-    .cell {
-      font-weight: var(--typography-bold);
-      opacity: 1;
-    }
-  }
 }
 
+
 .cell {
-  @include flex($align-items: center, $wrap: wrap);
+  @include flex($align-items: center);
 
   background-color: var(--primary-disabled);
   padding: var(--gap-default);
-  gap: var(--gap-default);
+
+  &.red {
+    color: var(--red);
+  }
+
+  &.green {
+    color: var(--green);
+  }
 }
 
-.link {
-  color: var(--tertiary);
-  font-size: rem(12px);
+.stats {
+  @include flex($align-items: center, $wrap: wrap);
 
-  @include hover {
-    &:hover {
-      color: var(--link);
-    }
-  }
+  gap: var(--gap-16);
 }

@@ -5,7 +5,7 @@ import {
   getProviders,
   getPages,
   getWheelsRound,
-  getQuests
+  getQuests, getBonuses
 } from '@/app/actions/static'
 
 import Header from '@/modules/Header'
@@ -32,6 +32,8 @@ export default async function MainLayout({ children }) {
     getQuests()
   ])
 
+  const bonuses = user?.id ? await getBonuses() : null
+
   return (
     <>
       <Header
@@ -40,9 +42,11 @@ export default async function MainLayout({ children }) {
       />
       <main>
         <Aside
+          user={user}
           settings={settings}
           wheels={wheels}
           quests={quests}
+          bonuses={bonuses}
         />
         <Content>{children}</Content>
       </main>

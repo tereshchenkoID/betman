@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 
 import { getCachedUser } from '@/app/actions/auth'
 
@@ -16,9 +17,8 @@ const COMPONENTS_MAP = {
   },
 }
 
-export default async function Wallet({ params, searchParams }) {
-  const { method } = await params
-  const { tab = 'deposit' } = await searchParams
+export default async function Wallet({ params }) {
+  const { method, tab } = await params
   const user = await getCachedUser()
 
   const ActiveComponent = COMPONENTS_MAP[method]?.[tab]
@@ -31,10 +31,27 @@ export default async function Wallet({ params, searchParams }) {
 
   return (
     <>
-      <ActiveComponent
-        user={user}
-        data={payment}
-      />
+      <div>
+        {
+          (method === 'crypto' && tab === 'deposit') &&
+          <Image
+            src={'/images/crypto.webp'}
+            alt={'Crypto'}
+            width={460}
+            height={118}
+            decoding="async"
+            unoptimized={true}
+            style={{
+              borderRadius: 'var(--border-radius-6)',
+              marginBottom: 'var(--gap-12)',
+            }}
+          />
+        }
+        <ActiveComponent
+          user={user}
+          data={payment}
+        />
+      </div>
       <SectionTooltip alias={`${method}/${tab}`} />
     </>
   )
