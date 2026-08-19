@@ -90,7 +90,7 @@ const SectionHome = async ({ skeleton, locale }) => {
 
   return (
     <>
-      <h1>{t('casino')}</h1>
+      <h1 className={style.title}>{t('casino')}</h1>
       {
         skeleton?.map((el, idx) =>
         <SectionWrapper

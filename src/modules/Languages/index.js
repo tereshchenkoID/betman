@@ -2,9 +2,8 @@
 
 import { useRef, useState } from 'react'
 import { useLocale } from 'next-intl'
-// import { useParams } from 'next/navigation'
-import Image from 'next/image'
 import { usePathname, useRouter } from '@/i18n/routing'
+import Image from 'next/image'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 
@@ -19,7 +18,6 @@ const Languages = ({ settings }) => {
   const currentLocale = useLocale()
   const pathname = usePathname()
   const router = useRouter()
-  // const params = useParams()
 
   const currentLang = settings?.languages?.find(el => el.code === currentLocale) || {
     code: currentLocale,
@@ -29,10 +27,6 @@ const Languages = ({ settings }) => {
   const handleChange = (newLocale) => {
     setToggle(false)
     router.replace(pathname, { locale: newLocale })
-    // router.replace(
-    //   { pathname, query: params },
-    //   { locale: newLocale }
-    // )
   }
 
   useOutsideClick(
@@ -63,7 +57,6 @@ const Languages = ({ settings }) => {
           unoptimized={true}
         />
       </button>
-
       {
         (toggle && settings?.languages?.length > 1) &&
         <div className={style.dropdown}>

@@ -48,7 +48,7 @@ const PromoCard = ({ data }) => {
           button?.text &&
           <Action
             to={button?.link}
-            classes={['outline', 'sm', style.link]}
+            classes={['outline', 'md', style.link]}
             placeholder={button?.text}
             alt={button?.text}
             target={button?.newtab === '1' ? '_blank' : undefined}

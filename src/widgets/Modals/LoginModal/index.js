@@ -12,10 +12,8 @@ import { loginWithCredentialsAction } from '@/app/actions/auth'
 
 import Field from '@/components/Field'
 import Action from '@/components/Action'
-// import Providers from '@/modules/Providers'
 
 import style from './index.module.scss'
-import RecoveryModal from "@/modules/Modals/RecoveryModal";
 
 const LoginModal = ({ isTitle = false }) => {
   const t = useTranslations()
@@ -117,8 +115,6 @@ const LoginModal = ({ isTitle = false }) => {
           onChange={closeModal}
         />
       </p>
-      {/*<hr />*/}
-      {/*<Providers />*/}
     </form>
   )
 }

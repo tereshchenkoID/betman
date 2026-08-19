@@ -300,7 +300,7 @@ main {
   gap: var(--gap-16);
   position: relative;
   width: 100%;
-  min-height: var(--tg-viewport-height);
+  min-height: calc(var(--tg-viewport-height) - var(--header-height));
   margin-inline: auto;
   max-width: var(--max-width);
   flex-shrink: 0;

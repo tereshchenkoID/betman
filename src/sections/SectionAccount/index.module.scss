@@ -1,15 +1,16 @@
 .block {
+  --grid-count: 1;
+
   display: grid;
-  align-content: flex-start;
+  grid-template-columns: repeat(var(--grid-count), 1fr);
   gap: var(--gap-16);
 
-  @include tab-s {
-    grid-template-columns: repeat(2, 1fr);
+  @include mob-m {
+    --grid-count: 2;
   }
 
-  @include desk-s {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+  @include tab-m {
+    --grid-count: 3;
   }
 }
 

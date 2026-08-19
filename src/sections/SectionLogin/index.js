@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
-import LoginModal from '@/modules/Modals/LoginModal'
+import LoginModal from '@/widgets/Modals/LoginModal'
 
 import style from './index.module.scss'
 

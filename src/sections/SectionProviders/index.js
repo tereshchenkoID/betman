@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import ProviderCard from '@/modules/Cards/ProviderCard'
 import Empty from '@/modules/Empty'
+import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
@@ -12,7 +13,7 @@ const SectionPromotions = ({ data, meta }) => {
 
   return (
     <section>
-      <h1>{t('section.providers')}</h1>
+      <Title title={t('section.providers')} />
       {
         meta?.results !== "0"
           ?

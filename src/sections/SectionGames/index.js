@@ -9,7 +9,7 @@ import { apiRequest } from '@/app/actions/api'
 
 import Action from '@/components/Action'
 import Empty from '@/modules/Empty'
-import Back from '@/modules/Back'
+import Title from '@/modules/Title'
 import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 
 import style from './index.module.scss'
@@ -60,10 +60,10 @@ const SectionGames = ({
     <>
       {
         active &&
-        <div className={style.header}>
-          <Back />
-          <h1>{active}</h1>
-        </div>
+        <Title
+          isBack={true}
+          title={active}
+        />
       }
       {
         isData ?

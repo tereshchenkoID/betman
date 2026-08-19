@@ -39,7 +39,7 @@ export default function Telegram() {
           tgObject.safeAreaInset?.bottom ||
           0
         const height =
-          tgObject.viewportHeight ||
+          tgObject.viewportStableHeight ||
           tgObject.viewport?.height ||
           window.innerHeight
 

@@ -3,10 +3,12 @@
   align-items: center;
   gap: var(--gap-24);
   margin-bottom: rem(40px);
-  max-width: rem(1000px);
+  max-width: rem(600px);
+  margin-inline: auto;
 
   @include tab-l {
     grid-template-columns: 3fr 2fr;
+    max-width: rem(1000px);
   }
 }
 

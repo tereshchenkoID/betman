@@ -8,7 +8,7 @@ import {
   useEffect
 } from 'react'
 
-import { MODAL_REGISTRY } from '@/modules/Modals/registry'
+import { MODAL_REGISTRY } from '@/widgets/Modals/registry'
 
 import Modal from '@/components/Modal'
 

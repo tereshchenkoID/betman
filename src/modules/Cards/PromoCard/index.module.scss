@@ -25,6 +25,7 @@
 
   padding: var(--gap-12);
   background-color: var(--material);
+  gap: var(--gap-2);
 }
 
 .badges {
@@ -46,5 +47,5 @@
 .text {
   @include line-clamp(3);
 
-  font-size: rem(12px);
+  font-size: rem(14px);
 }
