@@ -1,4 +1,5 @@
 import { apiRequest } from '@/app/actions/api'
+import { cache } from 'react'
 
 function metaData(data) {
   if (!data) return {};
@@ -38,18 +39,20 @@ function metaData(data) {
   };
 }
 
-export async function getPageMetadata(page) {
+export const getPageMetadata = cache(async (page) => {
   try {
     const data = await apiRequest(`metatags/${page}`, {
-      cache: 'force-cache',
-      next: { revalidate: 3600 },
-    });
+      next: {
+        revalidate: 3600,
+        tags: ['metatags']
+      },
+    })
 
-    if (!data) return null;
+    if (!data) return null
 
-    return metaData(data);
+    return metaData(data)
   } catch (error) {
-    console.error(`Error metadata: ${page}:`, error);
-    return null;
+    console.error(`Error metadata: ${page}:`, error)
+    return null
   }
-}
+})

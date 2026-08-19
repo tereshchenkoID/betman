@@ -25,10 +25,12 @@ export default async function Game({ params }) {
     getPageMetadata(`game/${id}/`, locale),
     getCachedUser(),
     apiRequest(`game/${id}/`),
-    apiRequest(`v1/?gameId=${id}&demo=${mode}/`, {
+    apiRequest(`v1/?gameId=${id}&demo=${mode}`, {
       method: 'POST',
     }),
   ])
+
+  console.log(link)
 
   if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
     notFound()
