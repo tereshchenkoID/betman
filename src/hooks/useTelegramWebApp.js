@@ -11,7 +11,7 @@ const useTelegramWebApp = () => {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
       const webApp = window.Telegram.WebApp
-      webApp.ready()
+      // webApp.ready()
       startTransition(() => {
         setTg(webApp)
       })

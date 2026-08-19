@@ -5,13 +5,12 @@ import { useRouter } from '@/i18n/routing'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 import useTelegram from '@/hooks/useTelegram'
 
-let isAuthRequested = false
-
 export default function Telegram() {
   const router = useRouter()
 
   const { initData, user } = useTelegram()
   const tgSetupDone = useRef(false)
+  const authRequested = useRef(false)
 
   useEffect(() => {
     if (tgSetupDone.current) return
@@ -68,29 +67,41 @@ export default function Telegram() {
       }
 
       tgSetupDone.current = true
+
+      // cleanup для Strict Mode
+      return () => {
+        tgObject.offEvent('viewportChanged', updateLayout)
+        tgObject.offEvent('safeAreaChanged', updateLayout)
+      }
     }
   }, [])
 
   useEffect(() => {
+    if (authRequested.current) return        // уже звали
+    if (!user?.id || !initData) return       // ждём реальные данные из TG
+
+    const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+    const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+    if (!isInsideTelegram) return
+
+    authRequested.current = true             // ← блокируем повторные вызовы
+
+
     const handleAuth = async () => {
-      const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
-      const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+      // const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+      // const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
 
-      if (!isInsideTelegram) return
-
-      isAuthRequested = true
+      // if (!isInsideTelegram) return
 
       try {
         const res = await loginWithTelegramAction(user)
 
         if (res?.token) {
           router.refresh()
-        } else {
-          isAuthRequested = false
         }
       } catch (e) {
         console.error('Telegram auth error:', e)
-        isAuthRequested = false
+        authRequested.current = false
       }
     }
 

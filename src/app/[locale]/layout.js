@@ -132,10 +132,6 @@ export default async function RootLayout({ children, params }) {
         </ModalProvider>
         <Toastify />
         <SpeedInsights />
-        {/*<Script*/}
-        {/*  src="https://accounts.google.com/gsi/client"*/}
-        {/*  strategy="lazyOnload"*/}
-        {/*/>*/}
       </FavoritesProvider>
     </NextIntlClientProvider>
     </body>
