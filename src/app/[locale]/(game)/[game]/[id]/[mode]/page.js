@@ -30,8 +30,6 @@ export default async function Game({ params }) {
     }),
   ])
 
-  console.log(link)
-
   if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
     notFound()
   }

@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import {
   createContext,
   useContext,
@@ -23,7 +22,6 @@ export const FavoritesProvider = ({
   data = [],
   meta: initialMeta,
 }) => {
-  const router = useRouter()
   const [favorites, setFavorites] = useState(data)
   const [meta, setMeta] = useState(initialMeta)
 
@@ -67,10 +65,6 @@ export const FavoritesProvider = ({
 
       if (res?.code === '0') {
         toast.success(res?.message)
-
-        // startTransition(() => {
-        //   router.refresh()
-        // })
       } else {
         setFavorites(data)
         setMeta(initialMeta)

@@ -7,10 +7,10 @@ import {
 } from '@/app/actions/static'
 
 import SectionNotFound from '@/sections/SectionNotFound'
-import Header from '@/modules/Header'
-import Aside from '@/modules/Aside'
+import Header from '@/widgets/Header'
+import Aside from '@/widgets/Aside'
+import Footer from '@/widgets/Footer'
 import Content from '@/modules/Content'
-import Footer from '@/modules/Footer'
 
 export default async function NotFoundPage() {
   const [

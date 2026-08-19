@@ -6,9 +6,9 @@ import {
   getPages,
 } from '@/app/actions/static'
 
-import Header from '@/modules/Header'
-import Footer from '@/modules/Footer'
-import Aside from '@/modules/Aside'
+import Header from '@/widgets/Header'
+import Footer from '@/widgets/Footer'
+import Aside from '@/widgets/Aside'
 import Content from '@/modules/Content'
 
 export default async function MainLayout({ children }) {

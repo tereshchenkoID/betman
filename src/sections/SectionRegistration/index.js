@@ -120,8 +120,6 @@ const SectionRegistration = ({
         params: { key, value }
       })
 
-      console.log(res)
-
       if (res?.code === '0') {
         setFieldError(key, null)
         setFieldSuccess(key, res?.message)

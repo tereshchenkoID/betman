@@ -5,6 +5,14 @@
   border-radius: var(--border-radius-default);
   background-color: var(--material);
   overflow: hidden;
+
+  @include hover {
+    &:hover {
+      .picture {
+        transform: scale(1.05);
+      }
+    }
+  }
 }
 
 .link {
@@ -14,6 +22,8 @@
 }
 
 .picture {
+  @include transition;
+
   position: absolute;
   inset: 0;
   height: 100%;
