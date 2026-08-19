@@ -50,6 +50,7 @@ const SectionGame = ({
           <div className={style.options}>
             <Back />
             <Logo />
+            {iframe?.timestamp}
           </div>
           <div className={style.options}>
             {
