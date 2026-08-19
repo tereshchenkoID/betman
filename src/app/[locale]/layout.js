@@ -103,7 +103,10 @@ export default async function RootLayout({ children, params }) {
       messages={messages}
       locale={locale}
     >
-      <Telegram />
+      {
+        user?.session_type === 'tma' &&
+        <Telegram />
+      }
       <SessionHandler />
       <FavoritesProvider
         user={user}
