@@ -1,20 +1,39 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
+//
+// const useTelegramWebApp = () => {
+//   const [tg, setTg] = useState(() => {
+//     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+//       return window.Telegram.WebApp
+//     }
+//     return null
+//   })
+//
+//   useEffect(() => {
+//     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+//       const webApp = window.Telegram.WebApp
+//       webApp.ready()
+//       setTg(webApp)
+//     }
+//   }, [])
+//
+//   return tg
+// }
+//
+// export default useTelegramWebApp
+
+
+// useTelegramWebApp.ts
+import { useState } from 'react'
 
 const useTelegramWebApp = () => {
-  const [tg, setTg] = useState(() => {
-    if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
-      return window.Telegram.WebApp
-    }
-    return null
-  })
-
-  useEffect(() => {
+  const [tg] = useState(() => {
     if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
       const webApp = window.Telegram.WebApp
       webApp.ready()
-      setTg(webApp)
+      return webApp
     }
-  }, [])
+    return null
+  })
 
   return tg
 }
