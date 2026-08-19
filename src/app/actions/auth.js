@@ -71,7 +71,7 @@ export const logoutAction = async () => {
 export const getCachedUser = cache(async () => {
   return await apiRequest('authSession/', {
     method: 'GET',
-    cache: 'no-cache',
-    next: { tags: ['user'] }
+    // cache: 'no-cache',
+    next: { revalidate: 0, tags: ['user'] }
   })
 })
