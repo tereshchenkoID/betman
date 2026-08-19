@@ -30,9 +30,9 @@ export default async function Game({ params }) {
     }),
   ])
 
-  if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
-    notFound()
-  }
+  // if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
+  //   notFound()
+  // }
 
   const jsonLd = {
     "@context": "https://schema.org",
