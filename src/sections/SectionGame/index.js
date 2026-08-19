@@ -114,22 +114,38 @@ const SectionGame = ({
 
       <div className={style.wrapper}>
         {
-          (mode === '0' && !user?.id)
-            ?
-              <div className={style.login}>
-                <h2 className={style.subtitle}>{t('sign_up')}</h2>
-                <LoginModal />
-              </div>
-            :
-              !iframe?.iframe
-                ?
-                  <div className={style.error}>{t('notification.game_empty')}</div>
-                :
-                  <Frame
-                    src={iframe?.iframe}
-                    title={String(id)}
-                  />
+          (mode === '0') &&
+            <>
+              {
+                !iframe?.iframe
+                  ?
+                    <div className={style.error}>{t('notification.game_empty')}</div>
+                  :
+                    <Frame
+                      src={iframe?.iframe}
+                      title={String(id)}
+                    />
               }
+            </>
+        }
+
+        {/*{*/}
+        {/*  (mode === '0' && !user?.id)*/}
+        {/*    ?*/}
+        {/*      <div className={style.login}>*/}
+        {/*        <h2 className={style.subtitle}>{t('sign_up')}</h2>*/}
+        {/*        <LoginModal />*/}
+        {/*      </div>*/}
+        {/*    :*/}
+        {/*      !iframe?.iframe*/}
+        {/*        ?*/}
+        {/*          <div className={style.error}>{t('notification.game_empty')}</div>*/}
+        {/*        :*/}
+        {/*          <Frame*/}
+        {/*            src={iframe?.iframe}*/}
+        {/*            title={String(id)}*/}
+        {/*          />*/}
+        {/*      }*/}
       </div>
     </section>
   )
