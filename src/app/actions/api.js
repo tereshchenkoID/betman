@@ -17,12 +17,19 @@ export const apiRequest = async (endpoint, {
   const token = cookieStore.get('NEXT_SID')?.value
   const headersList = await headers()
   let locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
+  const clientIp = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() || headersList.get('x-real-ip') || ''
+  const userAgent = headersList.get('user-agent') || ''
+
+  console.log(clientIp)
 
   const options = {
     method,
     cache,
     headers: {
       'Accept-Language': locale,
+      'X-Forwarded-For': clientIp,
+      'X-Real-IP': clientIp,
+      'User-Agent': userAgent,
     },
     next
   };
