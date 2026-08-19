@@ -80,8 +80,8 @@ export default function Telegram() {
         const res = await loginWithTelegramAction(user)
 
         if (res?.token) {
-          alert(res?.token)
-          router.refresh()
+          // router.refresh()
+          window.location.reload()
         }
       } catch (e) {
         console.error('Telegram auth error:', e)
