@@ -48,8 +48,8 @@ const Header = ({ user, settings }) => {
         >
           <Image
             src="/images/logo-desktop.svg"
-            width={102}
-            height={35}
+            width={145}
+            height={36}
             alt="Logo"
             loading={'eager'}
             unoptimized={true}

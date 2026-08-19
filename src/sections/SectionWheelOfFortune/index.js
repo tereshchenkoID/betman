@@ -22,7 +22,10 @@ const SectionWheelOfFortune = ({
   return (
     <section className={style.block}>
       <div>
-        <Title title={data?.title} />
+        <Title
+          isBack={true}
+          title={data?.title}
+        />
         {
           wheelsRound?.message &&
           <div>

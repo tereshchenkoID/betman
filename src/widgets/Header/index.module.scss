@@ -16,7 +16,7 @@
 }
 
 .logo {
-  @include size(rem(145px), auto);
+  @include size(rem(145px), rem(36px));
 
   display: block;
   flex-shrink: 0;

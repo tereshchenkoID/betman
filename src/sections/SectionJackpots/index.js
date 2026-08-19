@@ -17,7 +17,10 @@ const SectionJackpots = ({
 
   return (
     <section>
-      <Title title={t('section.jackpot')} />
+      <Title
+        isBack={true}
+        title={t('section.jackpot')}
+      />
       {
         meta?.results !== "0"
           ?

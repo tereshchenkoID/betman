@@ -13,7 +13,10 @@ const SectionQuests = ({ data, meta }) => {
 
   return (
     <section>
-      <Title title={t('section.quests')} />
+      <Title
+        isBack={true}
+        title={t('section.quests')}
+      />
       {
         meta?.results !== "0"
           ?
