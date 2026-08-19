@@ -1,5 +1,3 @@
-@use '@/scss/config' as *;
-
 .block {
   @include size(100%, calc(var(--skeleton-height) * var(--skeleton--rows) + var(--skeleton-gap, var(--gap-default)) * (var(--skeleton-rows) - 1)));
 

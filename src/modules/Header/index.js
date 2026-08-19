@@ -51,6 +51,7 @@ const Header = ({ user, settings }) => {
             width={102}
             height={35}
             alt="Logo"
+            loading={'eager'}
             unoptimized={true}
           />
         </Link>

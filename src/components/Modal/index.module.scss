@@ -1,5 +1,3 @@
-@use '@/scss/config' as *;
-
 .block {
   @include flex(center, flex-end);
 

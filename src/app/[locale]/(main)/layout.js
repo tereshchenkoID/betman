@@ -4,8 +4,6 @@ import {
   getCategories,
   getProviders,
   getPages,
-  getWheelsRound,
-  getQuests, getBonuses
 } from '@/app/actions/static'
 
 import Header from '@/modules/Header'
@@ -20,19 +18,13 @@ export default async function MainLayout({ children }) {
     categories,
     providers,
     pages,
-    wheels,
-    quests,
   ] = await Promise.all([
     getCachedUser(),
     getSettings(),
     getCategories(),
     getProviders(),
     getPages(),
-    getWheelsRound(),
-    getQuests()
   ])
-
-  const bonuses = user?.id ? await getBonuses() : null
 
   return (
     <>
@@ -44,9 +36,6 @@ export default async function MainLayout({ children }) {
         <Aside
           user={user}
           settings={settings}
-          wheels={wheels}
-          quests={quests}
-          bonuses={bonuses}
         />
         <Content>{children}</Content>
       </main>

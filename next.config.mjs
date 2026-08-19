@@ -1,11 +1,17 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from 'next-intl/plugin'
+import { fileURLToPath } from 'url'
+import path from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const withNextIntl = createNextIntlPlugin(
   './src/i18n/request.js'
-);
+)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // --- Static & Asset Headers ---
   async headers() {
     return [
       {
@@ -19,17 +25,30 @@ const nextConfig = {
       },
     ]
   },
+
+  // --- Experimental Settings ---
   experimental: {
     serverActions: {
       bodySizeLimit: '10mb',
     },
   },
-  // productionBrowserSourceMaps: true,
+
+  // --- Compiler & Output Options ---
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
       ? { exclude: ['error', 'warn'] }
       : false,
   },
+
+  // --- Sass / Styling Configuration ---
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'src/styles')],
+    additionalData: `
+      @use "@/scss/config" as *;
+    `,
+  },
+
+  // --- Image Optimization ---
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [320, 576, 768, 992, 1280],

@@ -14,6 +14,7 @@ import Favourite from '@/modules/Favorite'
 import LoginModal from '@/modules/Modals/LoginModal'
 import Back from '@/modules/Back'
 import AccountMenu from '@/modules/AccountMenu'
+import Frame from './Frame'
 
 import style from './index.module.scss'
 
@@ -123,16 +124,10 @@ const SectionGame = ({
                 ?
                   <div className={style.error}>{t('notification.game_empty')}</div>
                 :
-                  <div className={style.game}>
-                    <iframe
-                      className={style.iframe}
-                      src={iframe?.iframe}
-                      frameBorder="0"
-                      scrolling="auto"
-                      title={String(id)}
-                      allow="autoplay *; screen-wake-lock *; fullscreen *"
-                    />
-                  </div>
+                  <Frame
+                    src={iframe?.iframe}
+                    title={String(id)}
+                  />
               }
       </div>
     </section>

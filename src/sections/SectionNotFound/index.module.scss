@@ -1,5 +1,3 @@
-@use '@/scss/config' as *;
-
 .content {
   @include flex($align-items: flex-start, $direction: column);
 

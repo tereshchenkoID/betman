@@ -1,5 +1,3 @@
-@use '@/scss/config' as *;
-
 .block {
   @include size(rem(320px), rem(128px));
 

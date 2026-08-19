@@ -1,12 +1,9 @@
 import { getCachedUser } from '@/app/actions/auth'
 import {
-  getBonuses,
-  getCategories,
-  getPages,
-  getProviders,
-  getQuests,
   getSettings,
-  getWheelsRound
+  getCategories,
+  getProviders,
+  getPages,
 } from '@/app/actions/static'
 
 import SectionNotFound from '@/sections/SectionNotFound'
@@ -22,19 +19,13 @@ export default async function NotFoundPage() {
     categories,
     providers,
     pages,
-    wheels,
-    quests,
   ] = await Promise.all([
     getCachedUser(),
     getSettings(),
     getCategories(),
     getProviders(),
     getPages(),
-    getWheelsRound(),
-    getQuests()
   ])
-
-  const bonuses = user?.id ? await getBonuses() : null
 
   return (
     <>
@@ -46,9 +37,6 @@ export default async function NotFoundPage() {
         <Aside
           user={user}
           settings={settings}
-          wheels={wheels}
-          quests={quests}
-          bonuses={bonuses}
         />
         <Content>
           <SectionNotFound />

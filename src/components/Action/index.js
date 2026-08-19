@@ -58,7 +58,6 @@ const Action = forwardRef(({
       <span className={style.placeholder}>
         {children || placeholder}
       </span>
-
       {
         isLoading &&
         <span className={style.spinner}>
