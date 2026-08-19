@@ -60,25 +60,6 @@ export const loginWithCredentialsAction = async (username, password) => {
   return data
 }
 
-export const loginWithGoogleAction = async ({ email, name, picture }) => {
-  const data = await apiRequest('login/', {
-    method: 'POST',
-    params: {
-      email,
-      name,
-      image: picture,
-      provider: 'google',
-      type: '1'
-    },
-  })
-
-  if (data?.token) {
-    await saveSession(data.token)
-  }
-
-  return data
-}
-
 export const logoutAction = async () => {
   await apiRequest('logout/', { method: 'GET' }).catch(() => {})
 

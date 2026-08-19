@@ -10,7 +10,6 @@ export default function Telegram() {
 
   const { initData, user } = useTelegram()
   const tgSetupDone = useRef(false)
-  const authRequested = useRef(false)
 
   useEffect(() => {
     if (tgSetupDone.current) return
@@ -67,41 +66,36 @@ export default function Telegram() {
       }
 
       tgSetupDone.current = true
-
-      // cleanup для Strict Mode
-      return () => {
-        tgObject.offEvent('viewportChanged', updateLayout)
-        tgObject.offEvent('safeAreaChanged', updateLayout)
-      }
     }
   }, [])
 
   useEffect(() => {
-    if (authRequested.current) return        // уже звали
-    if (!user?.id || !initData) return       // ждём реальные данные из TG
+    if (!user?.id || !initData) return
 
     const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
     const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
     if (!isInsideTelegram) return
 
-    authRequested.current = true             // ← блокируем повторные вызовы
-
+    if (sessionStorage.getItem('tg_auth_sent')) return
+    sessionStorage.setItem('tg_auth_sent', 'true')
 
     const handleAuth = async () => {
-      // const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
-      // const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+      const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+      const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
 
-      // if (!isInsideTelegram) return
+      if (!isInsideTelegram) return
 
       try {
         const res = await loginWithTelegramAction(user)
 
         if (res?.token) {
           router.refresh()
+        } else {
+          sessionStorage.removeItem('tg_auth_sent')
         }
       } catch (e) {
         console.error('Telegram auth error:', e)
-        authRequested.current = false
+        sessionStorage.removeItem('tg_auth_sent')
       }
     }
 
