@@ -43,8 +43,7 @@ export const loginWithTelegramAction = async (telegramUser) => {
 
   if (data?.token) {
     await saveSession(data?.token)
-
-    revalidateTag('user', 'max')
+    // revalidateTag('user', 'max')
   }
 
   return data
@@ -74,7 +73,7 @@ export const logoutAction = async () => {
 export const getCachedUser = cache(async () => {
   return await apiRequest('authSession/', {
     method: 'GET',
-    // cache: 'no-cache',
+    cache: 'no-cache',
     next: { tags: ['user'] }
   })
 })

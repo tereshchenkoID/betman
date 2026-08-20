@@ -80,13 +80,13 @@ export default function Telegram({ auth }) {
 
     const handleAuth = async () => {
       try {
-        await loginWithTelegramAction(user)
+        // await loginWithTelegramAction(user)
 
-        // const res = await loginWithTelegramAction(user)
+        const res = await loginWithTelegramAction(user)
 
-        // if (res?.token) {
-        //   router.refresh()
-        // }
+        if (res?.token) {
+          router.refresh()
+        }
       } catch (e) {
         console.error('Telegram auth error:', e)
       }
