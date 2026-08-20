@@ -3,7 +3,7 @@
 import { cache } from 'react'
 import { apiRequest } from '@/app/actions/api'
 
-export async function getSettings() {
+export const getSettings = cache(async () => {
   return apiRequest('settings/', {
     cache: 'force-cache',
     next: {
@@ -11,9 +11,9 @@ export async function getSettings() {
       tags: ['settings']
     },
   });
-}
+})
 
-export async function getCategories() {
+export const getCategories = cache(async () => {
   return apiRequest('categories/', {
     cache: 'force-cache',
     next: {
@@ -21,9 +21,9 @@ export async function getCategories() {
       tags: ['categories']
     },
   });
-}
+})
 
-export async function getProviders() {
+export const getProviders = cache(async () => {
   return apiRequest('providers/', {
     cache: 'force-cache',
     next: {
@@ -31,9 +31,9 @@ export async function getProviders() {
       tags: ['providers']
     },
   });
-}
+})
 
-export async function getPages() {
+export const getPages = cache(async () => {
   return apiRequest('pages/', {
     cache: 'force-cache',
     next: {
@@ -41,14 +41,14 @@ export async function getPages() {
       tags: ['pages']
     },
   });
-}
+})
 
-export async function getBonuses() {
+export const getBonuses = cache(async () => {
   return apiRequest('counter/', {
     cache: 'force-cache',
     next: { tags: ['bonuses'] },
   });
-}
+})
 
 export const getWheelsRound = cache(async () => {
   const res = await apiRequest('wheel/rounds/', {
