@@ -70,12 +70,12 @@ export default function Telegram() {
   }, [])
 
   useEffect(() => {
-    const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
-    const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
-
-    if (!isInsideTelegram) return
-
     const handleAuth = async () => {
+      const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+      const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+
+      if (!isInsideTelegram) return
+
       try {
         await loginWithTelegramAction(user)
 
@@ -90,7 +90,7 @@ export default function Telegram() {
     }
 
     handleAuth().catch()
-  }, [user, router])
+  }, [initData, user, router])
 
   return null
 }
