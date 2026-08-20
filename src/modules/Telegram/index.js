@@ -77,13 +77,11 @@ export default function Telegram() {
       if (!isInsideTelegram) return
 
       try {
-        await loginWithTelegramAction(user)
+        const res = await loginWithTelegramAction(user)
 
-        // const res = await loginWithTelegramAction(user)
-        //
-        // if (res?.token) {
-        //   router.refresh()
-        // }
+        if (res?.token) {
+          router.refresh()
+        }
       } catch (e) {
         console.error('Telegram auth error:', e)
       }

@@ -43,8 +43,6 @@ export const loginWithTelegramAction = async (telegramUser) => {
 
   if (data?.token) {
     await saveSession(data?.token)
-
-    revalidateTag('user', 'max')
   }
 
   return data
