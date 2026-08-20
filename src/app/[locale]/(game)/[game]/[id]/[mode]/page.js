@@ -7,11 +7,18 @@ import { getCachedUser } from '@/app/actions/auth'
 import { apiRequest } from '@/app/actions/api'
 
 import SectionGame from '@/sections/SectionGame'
+import { cache } from 'react'
 
 export async function generateMetadata({ params }) {
   const { locale, id } = await params
   return await getPageMetadata(`game/${id}/`, locale)
 }
+
+const getGameIframe = cache(async (id, mode) => {
+  return await apiRequest(`v1/?gameId=${id}&demo=${mode}`, {
+    method: 'POST',
+  })
+})
 
 export default async function Game({ params }) {
   const { locale, id, mode } = await params
@@ -25,9 +32,10 @@ export default async function Game({ params }) {
     getPageMetadata(`game/${id}/`, locale),
     getCachedUser(),
     apiRequest(`game/${id}/`),
-    apiRequest(`v1/?gameId=${id}&demo=${mode}`, {
-      method: 'POST',
-    }),
+    getGameIframe(id, mode)
+    // apiRequest(`v1/?gameId=${id}&demo=${mode}`, {
+    //   method: 'POST',
+    // }),
   ])
 
   if (!res || isNaN(Number(id)) || isNaN(Number(mode))) {
