@@ -5,7 +5,7 @@ import { useRouter } from '@/i18n/routing'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 import useTelegram from '@/hooks/useTelegram'
 
-export default function Telegram() {
+export default function Telegram({ auth }) {
   const router = useRouter()
 
   const { initData, user } = useTelegram()
@@ -70,6 +70,7 @@ export default function Telegram() {
   }, [])
 
   useEffect(() => {
+    if (auth?.id) return
     if (!initData) return
 
     const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
@@ -92,7 +93,7 @@ export default function Telegram() {
     }
 
     handleAuth().catch()
-  }, [initData, user, router])
+  }, [initData, user, router, auth?.id])
 
   return null
 }
