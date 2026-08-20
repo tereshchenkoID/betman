@@ -80,8 +80,6 @@ export default function Telegram({ auth }) {
 
     const handleAuth = async () => {
       try {
-        // await loginWithTelegramAction(user)
-
         const res = await loginWithTelegramAction(user)
 
         if (res?.token) {
