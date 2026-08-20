@@ -3,7 +3,6 @@
 import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { apiRequest } from '@/app/actions/api'
-import {revalidateTag} from "next/cache";
 
 const saveSession = async (token) => {
   if (!token) return
@@ -72,7 +71,7 @@ export const logoutAction = async () => {
 export const getCachedUser = cache(async () => {
   return await apiRequest('authSession/', {
     method: 'GET',
-    // cache: 'no-cache',
+    cache: 'no-cache',
     next: { tags: ['user'] }
   })
 })
