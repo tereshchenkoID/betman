@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -83,6 +83,7 @@ const GameModal = ({ data, user }) => {
               onChange={closeAllModals}
               classes={['tertiary', 'md', style.action]}
               placeholder={t('demo')}
+              prefetch={false}
             />
           }
           <Action

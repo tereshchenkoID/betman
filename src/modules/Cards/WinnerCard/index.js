@@ -1,6 +1,6 @@
 import Image from 'next/image'
+import { useRouter } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 

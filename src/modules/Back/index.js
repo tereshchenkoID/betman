@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 
 import Icon from '@/components/Icon'
 import Action from '@/components/Action'

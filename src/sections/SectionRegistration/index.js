@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
+import { useSearchParams } from 'next/navigation'
 import { startTransition, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import classNames from 'classnames'

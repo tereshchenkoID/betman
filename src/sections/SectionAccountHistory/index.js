@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl'
 import { startTransition, useState } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 
 import { ROUTES_USER } from '@/constant/config'
 
