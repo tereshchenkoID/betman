@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
@@ -97,6 +97,7 @@ const Thumbnail = ({
                 classes={['link', 'sm', style.demo]}
                 placeholder={t('demo')}
                 aria-label={`${t('demo')} ${data?.title}`}
+                prefetch={false}
               />
             }
           </div>
