@@ -79,13 +79,16 @@ const JackpotCard = ({
           />
         }
       </Link>
-      <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
-        className={style.info}
-        aria-label={data?.title}
-      >
-        {data?.title}
-      </Link>
+      {
+        data?.title &&
+        <Link
+          href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+          className={style.info}
+          aria-label={data?.title}
+        >
+          {data?.title}
+        </Link>
+      }
       <Link
         href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
         className={style.total}

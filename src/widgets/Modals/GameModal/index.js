@@ -53,6 +53,7 @@ const GameModal = ({ data, user }) => {
               <Badge
                 key={idx}
                 data={el.value}
+                link={el.link}
                 classes={['secondary', 'md']}
               />
             )

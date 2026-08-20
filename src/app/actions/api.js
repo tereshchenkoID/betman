@@ -27,8 +27,6 @@ export const apiRequest = async (endpoint, {
     next
   };
 
-  console.log(url?.pathname)
-
   const isProtected = PROTECTED.some(prefix => endpoint.startsWith(prefix))
 
   if (isProtected && !token) {

@@ -54,7 +54,7 @@ const nextConfig = {
     deviceSizes: [320, 576, 768, 992, 1280],
     minimumCacheTTL: 60 * 60 * 24,
     dangerouslyAllowSVG: true,
-    contentDispositionType: 'attachment',
+    contentDispositionType: 'inline',
     remotePatterns: [
       {
         protocol: 'https',

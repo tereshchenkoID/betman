@@ -2,6 +2,8 @@ import { Link } from '@/i18n/routing'
 
 import classNames from 'classnames'
 
+import { useModal } from '@/context/ModalContext'
+
 import style from './index.module.scss'
 
 const Badge = ({
@@ -10,6 +12,8 @@ const Badge = ({
   link = null,
   ...rest
 }) => {
+  const { closeAllModals } = useModal()
+
   return (
     link
       ?
@@ -21,6 +25,7 @@ const Badge = ({
               classes && classes.map(el => style[el] || el),
             )
           }
+          onClick={closeAllModals}
           aria-label={data}
         >
           {data}
