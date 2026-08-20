@@ -23,8 +23,8 @@ const SectionAccountInviteFriends = ({ user, data }) => {
             className={style.image}
             src={'/images/invite_friend.webp'}
             alt={'Invite Friend'}
-            width={1024}
-            height={1024}
+            width={586}
+            height={500}
             decoding="async"
             unoptimized={true}
           />
