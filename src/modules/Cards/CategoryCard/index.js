@@ -1,5 +1,4 @@
-import { Link } from '@/i18n/routing'
-import { usePathname } from 'next/navigation'
+import { Link, usePathname } from '@/i18n/routing'
 import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'

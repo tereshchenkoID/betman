@@ -76,12 +76,12 @@ export default async function RootLayout({ children, params }) {
   const [
     messages,
     user,
-    favorites,
   ] = await Promise.all([
     getMessages({ locale }),
     getCachedUser(),
-    getFavorites()
   ])
+
+  const favorites = user?.id ? await getFavorites() : []
 
   return (
     <html lang={locale} suppressHydrationWarning>

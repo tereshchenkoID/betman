@@ -9,11 +9,6 @@
   overflow: hidden;
   font-size: rem(14px);
 
-  &.active {
-    pointer-events: none;
-    background-color: var(--primary);
-  }
-
   @include hover {
     &:hover {
       background-color: var(--material-hover);

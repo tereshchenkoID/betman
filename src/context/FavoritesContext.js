@@ -26,10 +26,12 @@ export const FavoritesProvider = ({
   const [meta, setMeta] = useState(initialMeta)
 
   useEffect(() => {
+    if (!user?.id) return
+
     startTransition(() => {
       setFavorites(data)
     })
-  }, [data])
+  }, [data, user?.id])
 
   useEffect(() => {
     startTransition(() => {
