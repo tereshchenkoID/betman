@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionRecovery from '@/sections/SectionRecovery'
 import SeoSection from '@/sections/SectionSeo'

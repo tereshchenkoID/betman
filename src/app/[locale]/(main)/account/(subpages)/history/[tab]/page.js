@@ -1,5 +1,5 @@
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionAccountHistory from '@/sections/SectionAccountHistory'
 

@@ -85,3 +85,10 @@ export const getFavorites = cache(async () => {
     next: { tags: ['favorites'] },
   })
 })
+
+export const getCachedUser = cache(async () => {
+  return await apiRequest('authSession/', {
+    method: 'GET',
+    cache: 'no-cache',
+  })
+})

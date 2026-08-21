@@ -2,8 +2,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/auth'
-import { getSettings, getWheelsRound } from '@/app/actions/static'
+import { getSettings, getWheelsRound, getCachedUser } from '@/app/actions/static'
 
 import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
 import SeoSection from '@/sections/SectionSeo'

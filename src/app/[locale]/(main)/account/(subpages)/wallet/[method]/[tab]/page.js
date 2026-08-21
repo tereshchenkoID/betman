@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionTooltip from '@/sections/SectionTooltip'
 

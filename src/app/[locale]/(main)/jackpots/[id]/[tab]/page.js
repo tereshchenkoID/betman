@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { NAVIGATION, LIST_COUNT } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 import { apiRequest } from '@/app/actions/api'
 
 import SectionJackpot from '@/sections/SectionJackpot'

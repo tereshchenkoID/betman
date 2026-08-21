@@ -1,17 +1,6 @@
-import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/auth'
-
-import SectionAccount from '@/sections/SectionAccount'
-
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('profile', locale)
-}
+import { redirect, RedirectType } from 'next/navigation'
+import { ROUTES_USER } from '@/constant/config'
 
 export default async function Account() {
-  const user = await getCachedUser()
-
-  return (
-    <SectionAccount user={user} />
-  )
+  redirect(ROUTES_USER.profile.url, RedirectType.replace)
 }

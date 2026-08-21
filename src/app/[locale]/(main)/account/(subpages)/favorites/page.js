@@ -1,4 +1,4 @@
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionAccountFavorites from '@/sections/SectionAccountFavorites'
 

@@ -11,7 +11,6 @@ import Icon from '@/components/Icon'
 import style from './index.module.scss'
 
 const DATA = [
-  ROUTES_USER.account,
   ROUTES_USER.profile,
   ROUTES_USER.history,
   ROUTES_USER.wallet,

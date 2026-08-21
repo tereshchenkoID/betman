@@ -1,6 +1,5 @@
 import { apiRequest } from '@/app/actions/api'
-import { getSettings } from '@/app/actions/static'
-import { getCachedUser } from '@/app/actions/auth'
+import { getSettings, getCachedUser } from '@/app/actions/static'
 
 import { USER_VERIFY } from '@/constant/config'
 

@@ -2,7 +2,7 @@ import { NAVIGATION } from '@/constant/config'
 import { redirect } from 'next/navigation'
 
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionLogin from '@/sections/SectionLogin'
 import SeoSection from '@/sections/SectionSeo'

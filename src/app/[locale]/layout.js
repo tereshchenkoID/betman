@@ -13,8 +13,7 @@ import { ModalProvider } from '@/context/ModalContext'
 import { WebSocketProvider } from '@/context/WebSocketContext'
 import { FavoritesProvider } from '@/context/FavoritesContext'
 
-import { getCachedUser } from '@/app/actions/auth'
-import { getFavorites } from '@/app/actions/static'
+import { getFavorites, getCachedUser } from '@/app/actions/static'
 
 import Toastify from '@/components/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'

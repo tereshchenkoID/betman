@@ -2,7 +2,7 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 import SectionGames from '@/sections/SectionGames'
 

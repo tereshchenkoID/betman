@@ -1,6 +1,5 @@
 'use server'
 
-import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { apiRequest } from '@/app/actions/api'
 
@@ -67,10 +66,3 @@ export const logoutAction = async () => {
   cookieStore.delete('NEXT_SID')
   return { success: true }
 }
-
-export const getCachedUser = cache(async () => {
-  return await apiRequest('authSession/', {
-    method: 'GET',
-    cache: 'no-cache',
-  })
-})

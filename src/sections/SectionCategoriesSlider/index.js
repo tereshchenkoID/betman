@@ -1,5 +1,4 @@
-import { getCategories, getProviders } from '@/app/actions/static'
-import { getCachedUser } from '@/app/actions/auth'
+import { getCategories, getCachedUser } from '@/app/actions/static'
 
 import Section from './section'
 

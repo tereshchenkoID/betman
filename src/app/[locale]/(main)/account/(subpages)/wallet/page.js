@@ -2,7 +2,7 @@ import { redirect, RedirectType } from 'next/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
-import { getCachedUser } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
 export default async function Wallet() {
   const user = await getCachedUser()
