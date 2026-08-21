@@ -54,7 +54,7 @@ const Languages = ({ settings }) => {
           height={20}
           priority
           sizes="20px"
-          unoptimized={true}
+          unoptimized
         />
       </button>
       {
@@ -77,7 +77,7 @@ const Languages = ({ settings }) => {
                       width={20}
                       height={20}
                       sizes="20px"
-                      unoptimized={true}
+                      unoptimized
                     />
                   </p>
                   {el.text}

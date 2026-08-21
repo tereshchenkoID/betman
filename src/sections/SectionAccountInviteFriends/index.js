@@ -26,7 +26,7 @@ const SectionAccountInviteFriends = ({ user, data }) => {
             width={586}
             height={500}
             decoding="async"
-            unoptimized={true}
+            unoptimized
           />
         </div>
         <div className={style.left}>

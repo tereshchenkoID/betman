@@ -52,7 +52,8 @@ const Section = ({ user, settings }) => {
             height={36}
             alt="Logo"
             loading={'eager'}
-            unoptimized={true}
+            unoptimized
+            priority
           />
         </Link>
 

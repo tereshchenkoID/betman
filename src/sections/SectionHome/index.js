@@ -16,13 +16,13 @@ import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton
 
 import SectionCategories from '@/sections/SectionCategoriesSlider'
 import SectionBanners from '@/sections/SectionBannersSlider'
-import SectionJackpots from '@/sections/SectionJackpotsSlider'
 import SectionChallenge from '@/sections/SectionChallenge'
 import SectionBigLinks from '@/sections/SectionBigLinksSlider'
 import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
+const SectionJackpots = dynamic(() => import('../SectionJackpotsSlider'))
 
 const SECTIONS_CONFIG = {
   categories: {

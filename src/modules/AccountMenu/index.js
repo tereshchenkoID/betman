@@ -60,8 +60,9 @@ const AccountMenu = ({ user, setToggle }) => {
             priority
             width="40"
             height="40"
+            sizes="40px"
             decoding="async"
-            unoptimized={true}
+            unoptimized
           />
           <Status
             data={user?.profile?.isVerify}

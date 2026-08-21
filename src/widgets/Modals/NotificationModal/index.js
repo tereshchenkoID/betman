@@ -14,7 +14,7 @@ const NotificationModal = ({ data }) => {
             alt={data?.title}
             fill
             sizes="120px"
-            unoptimized={true}
+            unoptimized
           />
         </div>
       }

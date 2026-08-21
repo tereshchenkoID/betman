@@ -22,11 +22,7 @@ import Telegram from '@/modules/Telegram'
 import WSUpdater from '@/modules/WSUpdater'
 import SessionHandler from '@/modules/SessionHandler'
 
-import 'keen-slider/keen-slider.min.css'
-import 'react-phone-input-2/lib/style.css'
-
 import './layout.scss'
-import './icons.scss'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -69,8 +65,6 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children, params }) {
-  preload('/images/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
-  preload('/images/logo-mobile.svg', { as: 'image', type: 'image/svg+xml' })
   preconnect('https://www.googletagmanager.com')
   preconnect('https://telegram.org')
 

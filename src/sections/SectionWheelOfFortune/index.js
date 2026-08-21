@@ -49,7 +49,7 @@ const SectionWheelOfFortune = ({
           fill
           sizes="100vw"
           loading="eager"
-          unoptimized={true}
+          unoptimized
         />
         <Wheel
           mock={data?.sectors}

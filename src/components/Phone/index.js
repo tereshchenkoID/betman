@@ -10,6 +10,8 @@ import { action } from './action'
 
 import Preload from '@/components/Preload'
 
+import 'react-phone-input-2/lib/style.css'
+import './index.scss'
 import style from './index.module.scss'
 
 const countriesCache = {}
@@ -32,6 +34,7 @@ const Phone = ({
 
   const [countries, setCountries] = useState(countriesCache[locale] || null)
   const [isPending, startTransition] = useTransition()
+  const [isMounted, setIsMounted] = useState(true)
 
   const inputRef = useRef(null)
 
@@ -56,6 +59,7 @@ const Phone = ({
     if (countriesCache[locale]) {
       startTransition(() => {
         setCountries(countriesCache[locale])
+        setIsMounted(false)
       })
       return
     }
@@ -65,8 +69,13 @@ const Phone = ({
       if (res) {
         countriesCache[locale] = res
         setCountries(res)
+        setIsMounted(false)
       }
     })
+
+    return () => {
+      setIsMounted(false)
+    }
   }, [locale])
 
   const localization = useMemo(() => {
@@ -89,7 +98,7 @@ const Phone = ({
     }, {})
   }, [countries])
 
-  if (isPending) {
+  if (isMounted) {
     return <Preload count={1} className={style.skeleton} />
   }
 
@@ -101,11 +110,16 @@ const Phone = ({
 
   return (
     <div
-      className={classNames(style.block, {
-        [style.disabled]: isDisabled,
-        [style.focused]: isLabelActive,
-        [style.error]: showError,
-      })}
+      className={
+        classNames(
+          style.block,
+          {
+            [style.disabled]: isDisabled,
+            [style.focused]: isLabelActive,
+            [style.error]: showError,
+          }
+        )
+      }
     >
       <div className={style.wrapper}>
         <label
@@ -127,9 +141,14 @@ const Phone = ({
             onBlur: handleBlur,
             onFocus: () => setFocused(true),
           }}
-          containerClass={classNames(style['react-tel-input'], {
-            [style.filled]: isFilled,
-          })}
+          containerClass={
+            classNames(
+              style['react-tel-input'],
+              {
+                [style.filled]: isFilled,
+              }
+            )
+          }
           disableCountryCode={false}
           placeholder={placeholder}
           country={country}

@@ -27,7 +27,7 @@ const PromoCard = ({ data }) => {
             priority
             decoding="async"
             onError={imageError}
-            unoptimized={true}
+            unoptimized
           />
         }
         <div className={style.badges}>

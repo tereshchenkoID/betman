@@ -66,11 +66,10 @@ const Thumbnail = ({
           width={250}
           height={280}
           priority={isPriority}
-          fetchPriority={isPriority ? 'high': 'low'}
-          loading={isPriority ? 'eager': 'lazy'}
-          sizes="125px"
+          decoding="async"
+          sizes="250px"
           onError={imageError}
-          unoptimized={true}
+          unoptimized
         />
       }
       <div className={style.details}>

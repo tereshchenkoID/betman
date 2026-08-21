@@ -33,7 +33,7 @@ const SectionPromo = ({ data, meta }) => {
                   priority
                   decoding="async"
                   sizes="360"
-                  unoptimized={true}
+                  unoptimized
                 />
               }
               <h2>{el?.title}</h2>

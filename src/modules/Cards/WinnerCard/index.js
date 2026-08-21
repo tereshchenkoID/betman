@@ -68,14 +68,15 @@ const WinnerCard = ({ user, data }) => {
       {
         data?.game?.image &&
         <Image
-          src={data?.game?.image}
           className={style.image}
+          src={data?.game?.image}
           alt={data?.game?.title}
           width={88}
           height={110}
+          decoding="async"
           sizes="88px"
           onError={(e) => imageError(e, false)}
-          unoptimized={true}
+          unoptimized
         />
       }
     </article>

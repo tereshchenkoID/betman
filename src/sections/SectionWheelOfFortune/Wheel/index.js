@@ -281,7 +281,7 @@ const Wheel = ({
           alt="Indicator"
           width={80}
           height={105}
-          unoptimized={true}
+          unoptimized
         />
       </div>
 
@@ -305,7 +305,7 @@ const Wheel = ({
           width={102}
           height={35}
           alt="Logo"
-          unoptimized={true}
+          unoptimized
         />
       </button>
     </div>

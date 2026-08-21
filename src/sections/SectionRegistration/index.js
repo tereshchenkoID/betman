@@ -353,7 +353,7 @@ const SectionRegistration = ({
                   width={50}
                   height={50}
                   decoding="async"
-                  unoptimized={true}
+                  unoptimized
                 />
               </div>
               <hr className={style.divider} />

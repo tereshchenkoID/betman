@@ -40,7 +40,7 @@ export default async function Wallet({ params }) {
             width={460}
             height={118}
             decoding="async"
-            unoptimized={true}
+            unoptimized
             style={{
               borderRadius: 'var(--border-radius-6)',
               marginBottom: 'var(--gap-12)',
