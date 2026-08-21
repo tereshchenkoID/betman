@@ -73,6 +73,10 @@
 
 .options {
   font-size: rem(12px);
+
+  &:empty {
+    display: none;
+  }
 }
 
 .option {

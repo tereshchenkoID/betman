@@ -49,7 +49,7 @@ const GameModal = ({ data, user }) => {
       <div className={style.content}>
         <div className={style.tags}>
           {
-            data.groups.map((el, idx) =>
+            data?.groups?.map((el, idx) =>
               <Badge
                 key={idx}
                 data={el.value}
@@ -62,14 +62,14 @@ const GameModal = ({ data, user }) => {
         <h3>{data.title}</h3>
         <ul className={style.options}>
           {
-            data.minStake !== null &&
+            data.minStake &&
             <li className={style.option}>
               <p>{t('min_bet')}:</p>
               <p>{data.minStake} {user?.currency?.text}</p>
             </li>
           }
           {
-            data.maxStake !== null &&
+            data.maxStake &&
             <li className={style.option}>
               <p>{t('max_bet')}:</p>
               <p>{data.maxStake} {user?.currency?.text}</p>

@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { useRouter } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/routing'
+import Image from 'next/image'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -20,7 +20,7 @@ const WinnerCard = ({ user, data }) => {
   const handlePlay = () => {
     if (user?.id) {
       closeAllModals()
-      router.push(`${NAVIGATION.game.url}/${data.id}/0`)
+      router.push(`${NAVIGATION.game.url}/${data?.game?.id}/0`)
     }
     else {
       openModal('login', {}, { title: t('sign_up') })
@@ -28,7 +28,9 @@ const WinnerCard = ({ user, data }) => {
   }
 
   const handleClick = () => {
-    openModal('game', { data, user })
+    if (data?.game) {
+      openModal('game', { data: data?.game, user })
+    }
   }
 
   return (
@@ -40,12 +42,12 @@ const WinnerCard = ({ user, data }) => {
       <div className={style.info}>
         <div className={style.winnings}>
           <h2>{data.winnings}</h2>
-          <p className={style.currency}>{user?.currency.text}</p>
+          <p className={style.currency}>{user?.currency?.text}</p>
         </div>
 
         <div className={style.winnings}>
           <p className={style.currency}>{t('stake')}:</p>
-          <p className={style.currency}><strong>{data.totalBet}</strong> {user?.currency.text}</p>
+          <p className={style.currency}><strong>{data.totalBet}</strong> {user?.currency?.text}</p>
         </div>
 
         <div className={style.player}>
@@ -57,7 +59,7 @@ const WinnerCard = ({ user, data }) => {
         </div>
 
         <div className={style.hidden}>
-          <p className={style.title}>{data.game.title}</p>
+          <p className={style.title}>{data?.game?.title}</p>
           <Action
             classes={['primary', 'md']}
             placeholder={t('play')}
@@ -66,10 +68,10 @@ const WinnerCard = ({ user, data }) => {
         </div>
       </div>
       {
-        data?.game?.image &&
+        data?.game?.images?.length > 0 &&
         <Image
           className={style.image}
-          src={data?.game?.image}
+          src={data?.game?.images?.[0]}
           alt={data?.game?.title}
           width={88}
           height={110}
