@@ -1,21 +1,22 @@
-import {
-  getWheelsRound,
-  getQuests,
-  getBonuses
-} from '@/app/actions/static'
+import { getCachedUser } from '@/app/actions/auth'
+import { getWheelsRound, getQuests, getBonuses, getSettings } from '@/app/actions/static'
 
 import Section from './section'
 
-export default async function Aside({ user, settings }) {
+export default async function AsideLayout() {
   const [
+    settings,
+    user,
     wheels,
     quests,
-    bonuses
   ] = await Promise.all([
+    getSettings(),
+    getCachedUser(),
     getWheelsRound(),
     getQuests(),
-    user?.id ? getBonuses() : null
   ])
+
+  const bonuses = user?.id ? await getBonuses() : null
 
   return (
     <Section

@@ -69,14 +69,8 @@ export const logoutAction = async () => {
 }
 
 export const getCachedUser = cache(async () => {
-  const cookieStore = await cookies()
-  const sessionId = cookieStore.get('NEXT_SID')?.value || 'guest'
-
-  console.log(sessionId)
-
   return await apiRequest('authSession/', {
     method: 'GET',
     cache: 'no-cache',
-    // next: { tags: ['user'] }
   })
 })

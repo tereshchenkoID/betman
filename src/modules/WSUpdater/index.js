@@ -6,7 +6,6 @@ import { useRouter } from '@/i18n/routing'
 
 import { useWebSocketContext } from '@/context/WebSocketContext'
 import { useModal } from '@/context/ModalContext'
-// import { revalidateAction } from '@/app/actions/revalidate'
 import { eventBus } from '@/utils/eventBus'
 
 const WSUpdater = ({ user }) => {

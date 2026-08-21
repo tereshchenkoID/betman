@@ -13,7 +13,6 @@ export async function generateMetadata({ params }) {
 
 export default async function Home({ params }) {
   const { locale } = await params
-
   const [
     metaTags,
     skeleton

@@ -5,7 +5,7 @@ import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleTagManager } from '@next/third-parties/google'
-import { preload } from 'react-dom'
+import { preload, preconnect } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import classNames from 'classnames'
 
@@ -71,17 +71,19 @@ export const metadata = {
 export default async function RootLayout({ children, params }) {
   preload('/images/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
   preload('/images/logo-mobile.svg', { as: 'image', type: 'image/svg+xml' })
+  preconnect('https://www.googletagmanager.com')
+  preconnect('https://telegram.org')
 
   const { locale } = await params
   const [
     messages,
     user,
+    favorites,
   ] = await Promise.all([
     getMessages({ locale }),
     getCachedUser(),
+    getFavorites().catch(() => [])
   ])
-
-  const favorites = user?.id ? await getFavorites() : []
 
   return (
     <html lang={locale} suppressHydrationWarning>
