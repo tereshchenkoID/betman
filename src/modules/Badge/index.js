@@ -22,7 +22,7 @@ const Badge = ({
           className={
             classNames(
               style.block,
-              classes && classes.map(el => style[el] || el),
+              classes?.map(el => style[el] || el),
             )
           }
           onClick={closeAllModals}
@@ -35,7 +35,7 @@ const Badge = ({
           className={
             classNames(
               style.block,
-              classes && classes.map(el => style[el] || el),
+              classes?.map(el => style[el] || el),
             )
           }
           {...rest}

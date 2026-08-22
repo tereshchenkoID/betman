@@ -56,7 +56,7 @@ const JackpotCard = ({
       className={
         classNames(
           style.block,
-          classes.map(c => style[c] || c)
+          classes?.map(el => style[el] || el)
         )
       }
       style={{ backgroundImage: 'url(/images/coins.webp)' }}

@@ -21,7 +21,7 @@ const Preload = ({
             key={idx}
             className={style.item}
           />
-      )}
+        )}
     </div>
   )
 }

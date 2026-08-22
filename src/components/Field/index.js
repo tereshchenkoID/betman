@@ -63,10 +63,10 @@ const Field = ({
           {
             [style.disabled]: isDisabled,
             [style.focused]: isLabelActive,
-            [style.error]: showError, // Юзаем нашу вычисленную переменную
+            [style.error]: showError,
             [style.password]: visibility,
           },
-          classes && classes.map(el => style[el] || el),
+          classes?.map(el => style[el] || el),
         )
       }
     >

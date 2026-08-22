@@ -63,7 +63,7 @@ const Pagination = ({ data, classes = [] }) => {
       className={
         classNames(
           style.block,
-          classes && classes.map((el) => style[el] || el)
+          classes?.map((el) => style[el] || el)
         )
       }
     >

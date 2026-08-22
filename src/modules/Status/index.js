@@ -12,7 +12,7 @@ const Status = ({
         classNames(
           style.block,
           style[`block-${data}`],
-          classes && classes.map(el => style[el] || el),
+          classes?.map(el => style[el] || el),
         )
       }
     />

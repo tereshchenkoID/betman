@@ -13,30 +13,6 @@ const withNextIntl = createNextIntlPlugin(
 const nextConfig = {
   compress: true,
 
-  // --- Static & Asset Headers ---
-  async headers() {
-    return [
-      {
-        source: '/:path*.js',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/images/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ]
-  },
-
   // --- Experimental Settings ---
   experimental: {
     optimizePackageImports: ['classnames', 'react-toastify'],

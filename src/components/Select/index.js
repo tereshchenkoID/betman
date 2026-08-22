@@ -69,7 +69,7 @@ const Select = ({
             [style.chosen]: value,
             [style.error]: error,
           },
-          classes && classes.map(el => style[el] || el),
+          classes?.map(el => style[el] || el),
         )
       }
     >

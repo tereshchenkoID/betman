@@ -31,7 +31,7 @@ const Action = forwardRef(({
         [style.loading]: isLoading,
         [style.disabled]: isDisabled,
       },
-      classes && classes.map(el => style[el] || el),
+      classes?.map(el => style[el] || el),
     ),
     onClick: onChange,
     'aria-label': placeholder || 'Action',
