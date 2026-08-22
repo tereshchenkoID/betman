@@ -31,7 +31,7 @@ const GameModal = ({ data, user }) => {
     <div
       className={style.block}
       style={{
-        backgroundImage: `url(${data?.images?.[0]})`,
+        backgroundImage: `url(${data?.images?.[1]})`,
       }}
     >
       <div className={style.header}>

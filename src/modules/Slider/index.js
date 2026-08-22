@@ -24,7 +24,7 @@ const Slider = forwardRef(({
   autoplay = false,
   autoplayInterval = 2500,
   marquee = false,
-  animationConfig = { duration: 10000, easing: (t) => t },
+  animationConfig = { duration: 20000, easing: (t) => t },
 
   more = {
     isVisible: false,
@@ -54,7 +54,7 @@ const Slider = forwardRef(({
 
     const nextAnimation = () => {
       if (isHovered || !slider.track?.details) return
-      slider.moveToIdx(slider.track.details.abs + 5, true, animationConfig)
+      slider.moveToIdx(slider.track.details.abs + 2, true, animationConfig)
     }
 
     slider.on('created', () => {

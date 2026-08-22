@@ -69,7 +69,7 @@ const Section = ({
               <h2 className={style.subtitle}>{t('section.info')}</h2>
               <ul className={style.list}>
                 {
-                  pages?.data.map((el, idx) =>
+                  pages?.data?.map((el, idx) =>
                     <li key={idx}>
                       <Action
                         to={el.url}

@@ -49,10 +49,11 @@
   a {
     display: initial;
     text-decoration: underline;
+    color: var(--link);
 
     @include hover {
       &:hover {
-        color: var(--link)!important;
+        color: var(--link-hover);
       }
     }
   }
