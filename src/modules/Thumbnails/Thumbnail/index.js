@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
 import classNames from 'classnames'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
 import { imageError } from '@/helpers/image'
+import { useGamePlay } from '@/hooks/useGamePlay'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -23,22 +22,7 @@ const Thumbnail = ({
   isNumeric = false
 }) => {
   const t = useTranslations()
-  const router = useRouter()
-  const { openModal, closeModal, closeAllModals } = useModal()
-
-  const handlePlay = () => {
-    if (user?.id) {
-      closeAllModals()
-      router.push(`${NAVIGATION.game.url}/${data.id}/0`)
-    }
-    else {
-      openModal('login', {}, { title: t('sign_up') })
-    }
-  }
-
-  const handleClick = () => {
-    openModal('game', { data, user })
-  }
+  const { handlePlay, handleDemo, handleOpenGameModal } = useGamePlay(user)
 
   return (
     <article
@@ -54,7 +38,7 @@ const Thumbnail = ({
       <button
         type="button"
         className={style.action}
-        onClick={handleClick}
+        onClick={() => handleOpenGameModal(data)}
         aria-label={`${t('details')} ${data?.title}`}
       />
       {
@@ -62,7 +46,7 @@ const Thumbnail = ({
         <Image
           src={data?.images?.[0]}
           className={style.image}
-          alt={data?.title}
+          alt={data?.title || 'Thumbnail'}
           width={250}
           height={280}
           priority={isPriority}
@@ -83,7 +67,7 @@ const Thumbnail = ({
           <div className={style.actions}>
             <Action
               classes={['primary', 'lg', 'square', style.play]}
-              onChange={handlePlay}
+              onChange={() => handlePlay(data?.id)}
               aria-label={`${t('play')} ${data?.title}`}
             >
               <Icon name={'icon-status-play-alt'} />
@@ -92,7 +76,7 @@ const Thumbnail = ({
               data?.hasDemo === "1" &&
               <Action
                 to={`${NAVIGATION.game.url}/${data.id}/1`}
-                onChange={closeModal}
+                onChange={handleDemo}
                 classes={['link', 'sm', style.demo]}
                 placeholder={t('demo')}
                 aria-label={`${t('demo')} ${data?.title}`}

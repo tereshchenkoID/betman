@@ -5,12 +5,11 @@
   border-radius: 50%;
   border: rem(1px) solid var(--material);
 
-  &-0,
-  &-2 {
+  &-1 {
     background-color: var(--red);
   }
 
-  &-1 {
+  &-2 {
     background-color: var(--yellow);
   }
 

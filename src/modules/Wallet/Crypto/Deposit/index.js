@@ -52,7 +52,7 @@ const Deposit = ({ user }) => {
         type={'submit'}
         classes={['primary', 'lg']}
         placeholder={t('deposit')}
-        isDisabled={filter?.amount === '' || isPending}
+        isDisabled={user?.level === '1' || filter?.amount === '' || isPending}
       />
     </form>
   )

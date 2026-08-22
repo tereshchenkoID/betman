@@ -69,6 +69,7 @@
 }
 
 .info,
+.level,
 .link {
   padding: var(--gap-default);
   gap: var(--gap-default);
@@ -95,6 +96,33 @@
 
   &.column {
     flex-direction: column;
+  }
+}
+
+.level {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  border-radius: inherit;
+
+  &-1 {
+    --level-color: var(--red);
+  }
+
+  &-2 {
+    --level-color: var(--amber);
+  }
+
+  &-3 {
+    --level-color: var(--green);
+  }
+
+  span {
+    display: block;
+
+    &:last-child {
+      color: var(--level-color);
+    }
   }
 }
 

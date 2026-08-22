@@ -1,15 +1,19 @@
 'use client'
 
-import { useTransition } from 'react'
+import { useTranslations } from 'next-intl'
+import { useEffect, useTransition } from 'react'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import classNames from 'classnames'
 
-import { ROUTES_USER } from '@/constant/config'
+import {ROUTES_USER, USER_VERIFY} from '@/constant/config'
+
+import { useModal } from '@/context/ModalContext'
 
 import Loader from '@/components/Loader'
 import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
+import Notification from "@/modules/Notification";
 
 const DATA = [
   {
@@ -23,8 +27,10 @@ const DATA = [
 ]
 
 const SectionAccountWallet = ({ user, children }) => {
+  const t = useTranslations()
   const pathname = usePathname()
   const router = useRouter()
+  const { openModal } = useModal()
   const [isPending, startTransition] = useTransition()
 
   const pathSegments = pathname.split('/').filter(Boolean)
@@ -48,6 +54,12 @@ const SectionAccountWallet = ({ user, children }) => {
     })
   }
 
+  useEffect(() => {
+    if (user?.level !== '3') {
+      openModal('verify', { user }, { title: t('verification') })
+    }
+  }, [])
+
   return (
     <>
       <section className={style.list}>
@@ -68,6 +80,15 @@ const SectionAccountWallet = ({ user, children }) => {
           )
         }
       </section>
+      {
+        user?.level !== '3' &&
+        <section>
+          <Notification
+            text={'Verification text'}
+            type={user?.level !== '3' ? 'error' : 'success'}
+          />
+        </section>
+      }
       <section>
         <Tabs
           options={DATA}

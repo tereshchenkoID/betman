@@ -19,7 +19,8 @@
     "invite_friends": "Invite friends",
     "wheels_of_fortune": "Lucky wheel",
     "promocode": "Promocode",
-    "password_recovery": "Password Recovery"
+    "password_recovery": "Password Recovery",
+    "verification": "Verification"
   },
   "section": {
     "bingo": "Bingo",
@@ -35,7 +36,8 @@
     "quests": "Quests",
     "info": "Info",
     "wheels_of_fortune": "Claim your bonus upon registration!",
-    "password_recovery": "Password Recovery"
+    "password_recovery": "Password Recovery",
+    "verification": "Verification"
   },
   "notification": {
     "already_registered": "Already registered?",
@@ -118,6 +120,11 @@
     "passport": "Passport",
     "id_card": "ID Card",
     "driver_license": "Driver license"
+  },
+  "level": {
+    "verification": "Verification",
+    "complete_verification": "Complete verification",
+    "verified": "Verified"
   },
   "name": "Betman",
   "voucher": "Voucher ID",

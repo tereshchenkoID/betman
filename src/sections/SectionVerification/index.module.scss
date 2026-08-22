@@ -1,0 +1,137 @@
+.block {
+  display: grid;
+  gap: var(--gap-16);
+}
+
+.levels {
+  @include flex($direction: column);
+
+  gap: var(--gap-16);
+
+  @include tab-s {
+    flex-direction: row;
+  }
+}
+
+.level {
+  @include flex($direction: column);
+
+  flex: 1;
+  gap: var(--gap-default);
+  position: relative;
+  border-radius: var(--border-radius-default);
+  background-color: var(--material);
+  border: rem(1px) solid var(--material);
+  overflow: hidden;
+  padding: var(--gap-12);
+  font-size: rem(14px);
+  opacity: 0.7;
+  pointer-events: none;
+
+  &.active {
+    border-color: var(--primary);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.header {
+  @include flex(space-between, center);
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.badge {
+  --badge-border-color: var(--brand);
+  --badge-color: var(--text-for-material);
+
+  @include flex(center, center);
+  @include size(fit-content, rem(24px));
+
+  gap: var(--gap-4);
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: var(--border-radius-full);
+  background-color: var(--material-disabled);
+  border: rem(1px) solid var(--badge-border-color);
+  padding-inline: var(--gap-default);
+  font-size: rem(12px);
+  line-height: 1;
+  text-align: center;
+  color: var(--badge-color);
+
+  &-0,
+  &-2 {
+    --badge-border-color: var(--red);
+    --badge-color: var(--red);
+  }
+
+  &-1 {
+    --badge-border-color: var(--amber);
+    --badge-color: var(--amber);
+  }
+
+  &-3 {
+    --badge-border-color: var(--green);
+    --badge-color: var(--green);
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-16);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--gap-default);
+  font-size: rem(14px);
+}
+
+.icon {
+  @include size(rem(32px));
+  @include flex(center, center);
+
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.status {
+  text-align: center;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--gap-12);
+  border-radius: var(--border-radius-default);
+  background-color: var(--material);
+  border: rem(1px) solid var(--primary);
+  overflow: hidden;
+  padding: var(--gap-12);
+
+  span {
+    display: block;
+
+    &:first-child {
+      color: var(--link);
+    }
+
+    &:last-child {
+      font-size: rem(14px);
+    }
+  }
+
+  @include hover {
+    &:hover {
+      background-color: var(--material-hover);
+      border-color: var(--link);
+    }
+  }
+}

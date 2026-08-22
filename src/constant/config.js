@@ -58,15 +58,10 @@ export const NAVIGATION = {
     text: 'navigation.not_found',
     url: '/not-found',
   },
-  invite_friends: {
-    text: 'navigation.invite_friends',
-    icon: 'icon-human-user-add',
-    url: '/invite-friends',
-  },
   password_recovery: {
     text: 'navigation.password_recovery',
     url: '/password-recovery',
-  },
+  }
 }
 
 export const ROUTES_USER = {
@@ -105,6 +100,16 @@ export const ROUTES_USER = {
     icon: 'icon-actions-scan',
     url: '/account/promocode',
   },
+  verification: {
+    text: 'navigation.verification',
+    icon: 'icon-commerce-wallet',
+    url: '/verification',
+  },
+  invite_friends: {
+    text: 'navigation.invite_friends',
+    icon: 'icon-human-user-add',
+    url: '/invite-friends',
+  }
 }
 
 export const LIST_COUNT = 16

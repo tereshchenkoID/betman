@@ -85,13 +85,16 @@ const SectionAccountHistory = ({
           action={handleActive}
         />
       </section>
-      <section>
+      <section className={style.section}>
         <div className={style.header}>
           <DateRange
             placeholder="Date Range"
             value={range}
             onChange={(range) => setRange(range)}
           />
+        </div>
+        <p>{tab}</p>
+        <div className={style.footer}>
           <Select
             placeholder={t('quantity')}
             classes={[style.select]}
@@ -101,9 +104,6 @@ const SectionAccountHistory = ({
             onChange={value => setQuantity(value)}
           />
         </div>
-      </section>
-      <section className={style.section}>
-        <p>{tab}</p>
       </section>
     </>
   )

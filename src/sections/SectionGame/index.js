@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/routing'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -28,9 +29,15 @@ const SectionGame = ({
   const t = useTranslations()
   const router = useRouter()
   const [toggle, setToggle] = useState(false)
+  const { openModal } = useModal()
 
   const handleChange = (value) => {
-    router.push(`${NAVIGATION.game.url}/${id}/${value}`)
+    if (user?.level === '1' && mode === '1') {
+      openModal('verify', { user }, { title: t('verification') })
+    }
+    else {
+      router.push(`${NAVIGATION.game.url}/${id}/${value}`)
+    }
   }
 
   const handleLogin = (e) => {
@@ -120,7 +127,7 @@ const SectionGame = ({
                 <LoginModal />
               </div>
             :
-              !iframe?.iframe
+              (user?.level === '1' && mode === '0') || !iframe?.iframe
                 ?
                   <div className={style.error}>{t('notification.game_empty')}</div>
                 :

@@ -19,7 +19,8 @@
     "invite_friends": "Запросити друзів",
     "wheels_of_fortune": "Lucky wheel",
     "promocode": "Промокод",
-    "password_recovery": "Відновлення паролю"
+    "password_recovery": "Відновлення паролю",
+    "verification": "Верифікація"
   },
   "section": {
     "bingo": "Бінго",
@@ -35,7 +36,8 @@
     "quests": "Квести",
     "info": "Інформація",
     "wheels_of_fortune": "Забери свій бонус за реєстрацію!",
-    "password_recovery": "Відновлення паролю"
+    "password_recovery": "Відновлення паролю",
+    "verification": "Верифікація"
   },
   "notification": {
     "already_registered": "Вже зареєстровані?",

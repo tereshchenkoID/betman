@@ -103,8 +103,8 @@ const Section = ({ user, settings }) => {
                       <Icon name={'icon-human-avatar'} />
                     </Action>
                     {
-                      user?.profile?.isVerify !== '3' &&
-                      <Status data={user?.profile?.isVerify} />
+                      user?.level !== '3' &&
+                      <Status data={user?.level} />
                     }
                   </div>
                 :

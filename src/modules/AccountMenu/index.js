@@ -7,7 +7,6 @@ import classNames from 'classnames'
 import {
   NAVIGATION,
   ROUTES_USER,
-  USER_VERIFY
 } from '@/constant/config'
 
 import { logoutAction } from '@/app/actions/auth'
@@ -20,7 +19,6 @@ import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Scale from '@/modules/Scale'
 import Status from '@/modules/Status'
-import Notification from '@/modules/Notification'
 
 import style from './index.module.scss'
 
@@ -29,7 +27,7 @@ const DATA = [
   ROUTES_USER.wallet,
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
-  NAVIGATION.invite_friends,
+  ROUTES_USER.invite_friends,
   ROUTES_USER.history,
   ROUTES_USER.favourites
 ]
@@ -65,7 +63,7 @@ const AccountMenu = ({ user, setToggle }) => {
             unoptimized
           />
           <Status
-            data={user?.profile?.isVerify}
+            data={user?.level}
             classes={['default', 'md']}
           />
         </div>
@@ -82,10 +80,29 @@ const AccountMenu = ({ user, setToggle }) => {
         </div>
       </div>
       <div className={style.center}>
-        <Notification
-          text={t(`verify_status.${USER_VERIFY[user?.profile?.isVerify]}`)}
-          type={user?.profile?.isVerify < 3 ? 'error' : 'success'}
-        />
+        <div className={style.container}>
+          <Link
+            href={ROUTES_USER.verification.url}
+            className={
+              classNames(
+                style.level,
+                style[`level-${user?.level}`]
+              )
+            }
+            aria-label={t(ROUTES_USER.verification.text)}
+            onClick={() => setToggle(false)}
+          >
+            <Icon
+              name={'icon-data-protection'}
+              size={'lg'}
+            />
+            <p>
+              <span>{t('level.verification')}</span>
+              <span>{t(user?.level === '3' ? 'level.verified' : 'level.complete_verification')}</span>
+            </p>
+            <Icon name={'icon-navigation-chevron-right'} />
+          </Link>
+        </div>
         <div className={style.container}>
           <Link
             href={ROUTES_USER.wallet.url}
@@ -155,9 +172,9 @@ const AccountMenu = ({ user, setToggle }) => {
                 <p className={style.text}>
                   {t(el.text)}
                   {
-                    (el.text === ROUTES_USER.profile.text && user?.profile?.isVerify !== '3') &&
+                    (el.text === ROUTES_USER.profile.text && user?.level !== '3') &&
                     <Status
-                      data={user?.profile?.isVerify}
+                      data={user?.level}
                       classes={['sm']}
                     />
                   }

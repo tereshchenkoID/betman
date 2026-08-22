@@ -10,4 +10,5 @@ export const MODAL_REGISTRY = {
   notification: dynamic(() => import('./NotificationModal')),
   paymentDetails: dynamic(() => import('./PaymentDetailsModal')),
   cryptoDeposit: dynamic(() => import('./CryptoDepositModal')),
+  verify: dynamic(() => import('./VerifyModal')),
 }

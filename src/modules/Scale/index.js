@@ -29,7 +29,6 @@ const Scale = ({
             width: `${percentage}%`,
           }}
         />
-        <p className={style.label}>{percentage}%</p>
       </div>
     </div>
   )

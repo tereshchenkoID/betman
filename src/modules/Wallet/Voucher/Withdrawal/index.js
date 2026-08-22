@@ -79,7 +79,7 @@ const Withdrawal = ({ user, data }) => {
         type={'submit'}
         classes={['primary', 'lg', 'wide']}
         placeholder={t('withdrawal')}
-        isDisabled={!isValid || isPending}
+        isDisabled={user?.level === '1' || user?.level === '2' || !isValid || isPending}
       />
     </form>
   )

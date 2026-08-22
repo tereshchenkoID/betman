@@ -1,11 +1,11 @@
 .section {
+  display: grid;
+  gap: var(--gap-16);
   min-height: rem(200px);
 }
 
 .header {
-  @include flex($justify-content: flex-end, $wrap: wrap);
-
-  gap: var(--gap-24);
+  @include flex(flex-end);
 }
 
 .select {

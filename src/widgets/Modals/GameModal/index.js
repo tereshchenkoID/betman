@@ -1,9 +1,8 @@
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import { useGamePlay } from '@/hooks/useGamePlay'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -14,18 +13,7 @@ import style from './index.module.scss'
 
 const GameModal = ({ data, user }) => {
   const t = useTranslations()
-  const router = useRouter()
-  const { openModal, closeModal, closeAllModals } = useModal()
-
-  const handlePlay = () => {
-    if (user?.id) {
-      closeAllModals()
-      router.push(`${NAVIGATION.game.url}/${data.id}/0`)
-    }
-    else {
-      openModal('login', {}, { title: t('sign_up') })
-    }
-  }
+  const { handlePlay, handleDemo } = useGamePlay(user)
 
   return (
     <div
@@ -81,7 +69,7 @@ const GameModal = ({ data, user }) => {
             data.hasDemo === "1" &&
             <Action
               to={`${NAVIGATION.game.url}/${data.id}/1`}
-              onChange={closeAllModals}
+              onChange={handleDemo}
               classes={['tertiary', 'md', style.action]}
               placeholder={t('demo')}
               prefetch={false}
@@ -90,7 +78,7 @@ const GameModal = ({ data, user }) => {
           <Action
             classes={['primary', 'md', style.action]}
             placeholder={t('play')}
-            onChange={handlePlay}
+            onChange={() => handlePlay(data?.id)}
           />
         </div>
       </div>

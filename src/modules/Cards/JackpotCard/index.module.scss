@@ -10,6 +10,7 @@
   padding: var(--gap-32) var(--gap-16);
   gap: var(--gap-16);
   background-color: var(--material);
+  overflow: hidden;
   background-size: rem(600px);
   background-position: 0 0, 100% 0;
   background-repeat: no-repeat;

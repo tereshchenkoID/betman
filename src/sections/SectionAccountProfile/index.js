@@ -21,13 +21,6 @@ import Security from './Security'
 
 import style from './index.module.scss'
 
-const OPTIONS = [
-  { key: 'profile', value: 0 },
-  { key: 'address', value: 1 },
-  { key: 'verification', value: 2 },
-  { key: 'security', value: 3 },
-]
-
 const SectionAccountProfile = ({
   settings,
   data,
@@ -44,6 +37,31 @@ const SectionAccountProfile = ({
   const [_, setIsCompressing] = useState(false)
 
   const { filter, setFilter, handlePropsChange } = useFilterState(data)
+
+  const OPTIONS = [
+    {
+      key: 'profile',
+      value: 0,
+      ...(user?.level === '1' && {
+        verification: user?.level,
+      }),
+    },
+    {
+      key: 'address',
+      value: 1,
+    },
+    {
+      key: 'verification',
+      value: 2,
+      ...((user?.level === '1' || user?.level === '2') && {
+        verification: user?.level,
+      }),
+    },
+    {
+      key: 'security',
+      value: 3,
+    },
+  ]
 
   const active = OPTIONS.find(opt => opt.key === tab) || OPTIONS[0]
 
