@@ -17,8 +17,6 @@ import style from './index.module.scss'
 const SectionAccountHistoryCasino = ({ user, data, meta }) => {
   const t = useTranslations()
 
-  console.log(data)
-
   return (
     <div>
       {

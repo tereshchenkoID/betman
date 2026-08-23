@@ -7,15 +7,15 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const Pagination = ({ data, classes = [] }) => {
+const Pagination = ({ meta, classes = [] }) => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const page = Number(data?.page) || 1
-  const totalPages = Number(data?.pages) || 0
-  const totalResults = Number(data?.results) || 0
+  const page = Number(meta?.page) || 1
+  const totalPages = Number(meta?.pages) || 0
+  const totalResults = Number(meta?.results) || 0
 
-  if (!data || totalPages <= 1 || totalResults === 0) return null
+  if (!meta || totalPages <= 1 || totalResults === 0) return null
 
   const createPageUrl = (targetPage) => {
     const params = new URLSearchParams(searchParams)

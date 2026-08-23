@@ -10,11 +10,11 @@ import { ROUTES_USER } from '@/constant/config'
 
 import DateRange from '@/components/DateRange'
 import Select from '@/components/Select'
+import Loader from '@/components/Loader'
 import Tabs from '@/modules/Tabs'
 import Pagination from '@/modules/Pagination'
 
 import style from './index.module.scss'
-import Loader from "@/components/Loader";
 
 const DATA = [
   { key: 'games', value: 0 },
@@ -66,12 +66,6 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
     })
   }
 
-  const handleTabChange = (item) => {
-    startTransition(() => {
-      router.push(`${ROUTES_USER.history.url}/${item.key}`, { scroll: false })
-    })
-  }
-
   const handleActive = (el) => {
     startTransition(() => {
       router.push(`${ROUTES_USER.history.url}/${el.key}`, { scroll: false })
@@ -93,10 +87,9 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
         <Tabs
           options={DATA}
           data={activeTab}
-          action={handleTabChange}
+          action={handleActive}
         />
       </section>
-
       <section className={style.section}>
         <div className={style.header}>
           <DateRange
@@ -134,7 +127,7 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
             isSearch={false}
             onChange={(selected) => updateQuery({ quantity: selected.value })}
           />
-          <Pagination data={meta} />
+          <Pagination meta={meta} />
         </div>
       </section>
     </>
