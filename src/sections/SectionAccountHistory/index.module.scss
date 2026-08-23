@@ -8,6 +8,21 @@
   @include flex(flex-end);
 }
 
+.footer {
+  @include flex(space-between, center, column-reverse, wrap);
+
+  gap: var(--gap-16);
+
+  @include mob-m {
+    flex-direction: row;
+  }
+}
+
+.container {
+  position: relative;
+  min-height: rem(200px);
+}
+
 .select {
-  width: rem(120px);
+  width: rem(80px);
 }

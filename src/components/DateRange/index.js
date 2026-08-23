@@ -3,7 +3,6 @@ import { useTranslations, useLocale } from 'next-intl'
 import classNames from 'classnames'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
-
 import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
@@ -18,19 +17,33 @@ const DateRange = ({
   isDisabled = false,
 }) => {
   const t = useTranslations()
-
   const locale = useLocale()
   const blockRef = useRef(null)
 
   const [toggle, setToggle] = useState(false)
+
+  const [internalRange, setInternalRange] = useState(() => ({
+    from: value.from ? Number(value.from) : null,
+    to: value.to ? Number(value.to) : null,
+  }))
+
   const [currentMonth, setCurrentMonth] = useState(() =>
-    value.from ? new Date(value.from) : new Date()
+    value.from ? new Date(Number(value.from)) : new Date()
   )
+
+  useEffect(() => {
+    startTransition(() => {
+      setInternalRange({
+        from: value.from ? Number(value.from) : null,
+        to: value.to ? Number(value.to) : null,
+      })
+    })
+  }, [value.from, value.to])
 
   useEffect(() => {
     if (value.from) {
       startTransition(() => {
-        setCurrentMonth(new Date(value.from))
+        setCurrentMonth(new Date(Number(value.from)))
       })
     }
   }, [value.from])
@@ -39,9 +52,6 @@ const DateRange = ({
 
   const year = currentMonth.getFullYear()
   const month = currentMonth.getMonth()
-
-  const fromDate = useMemo(() => (value.from ? new Date(value.from) : null), [value.from])
-  const toDate = useMemo(() => (value.to ? new Date(value.to) : null), [value.to])
 
   const daysInMonth = useMemo(() => {
     const days = []
@@ -62,24 +72,26 @@ const DateRange = ({
   const handleDayClick = (day) => {
     if (!day) return
 
-    const selectedTime = day.getTime()
+    const { from, to } = internalRange
 
-    if (!value.from || (value.from && value.to)) {
+    if (!from || (from && to)) {
       const startOfDay = new Date(day).setHours(0, 0, 0, 0)
-      onChange?.({ from: startOfDay, to: null })
+      setInternalRange({ from: startOfDay, to: null })
       return
     }
 
-    if (selectedTime < value.from) {
-      const startOfSelected = new Date(day).setHours(0, 0, 0, 0)
-      const endOfPreviousFrom = new Date(value.from).setHours(23, 59, 59, 999)
-      onChange?.({ from: startOfSelected, to: endOfPreviousFrom })
-    } else {
-      const endOfSelected = new Date(day).setHours(23, 59, 59, 999)
-      onChange?.({ from: value.from, to: endOfSelected })
-    }
+    const clickedTime = day.getTime()
+    const minTime = Math.min(from, clickedTime)
+    const maxTime = Math.max(from, clickedTime)
 
+    const normalizedFrom = new Date(minTime).setHours(0, 0, 0, 0)
+    const normalizedTo = new Date(maxTime).setHours(23, 59, 59, 999)
+
+    const newRange = { from: normalizedFrom, to: normalizedTo }
+
+    setInternalRange(newRange)
     setToggle(false)
+    onChange?.(newRange)
   }
 
   const changeMonth = (offset) => {
@@ -87,29 +99,46 @@ const DateRange = ({
   }
 
   const isSelected = (day) => {
-    if (!day) return false
-    const dayStr = day.toDateString()
-    return dayStr === fromDate?.toDateString() || dayStr === toDate?.toDateString()
+    if (!day || !internalRange.from) return false
+    const dayTime = new Date(day).setHours(0, 0, 0, 0)
+    const fromTime = new Date(internalRange.from).setHours(0, 0, 0, 0)
+    const toTime = internalRange.to ? new Date(internalRange.to).setHours(0, 0, 0, 0) : null
+
+    return dayTime === fromTime || dayTime === toTime
   }
 
   const isInRange = (day) => {
-    if (!day || !fromDate || !toDate) return false
+    if (!day || !internalRange.from || !internalRange.to) return false
     const dayTime = new Date(day).setHours(0, 0, 0, 0)
-    const fromTime = new Date(fromDate).setHours(0, 0, 0, 0)
-    const toTime = new Date(toDate).setHours(0, 0, 0, 0)
+    const minTime = Math.min(internalRange.from, internalRange.to)
+    const maxTime = Math.max(internalRange.from, internalRange.to)
+
+    const fromTime = new Date(minTime).setHours(0, 0, 0, 0)
+    const toTime = new Date(maxTime).setHours(0, 0, 0, 0)
 
     return dayTime > fromTime && dayTime < toTime
   }
 
-  const formatDate = (date) => {
-    if (!date) return ''
-    return date.toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })
+  const formatDate = (timestamp) => {
+    if (!timestamp) return ''
+    return new Date(timestamp).toLocaleDateString(locale, {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
   }
 
-  const renderValue = () => {
-    if (!fromDate) return null
-    if (!toDate) return formatDate(fromDate)
-    return `${formatDate(fromDate)} – ${formatDate(toDate)}`
+  const renderDisplayValue = () => {
+    const propFrom = value.from ? Number(value.from) : null
+    const propTo = value.to ? Number(value.to) : null
+
+    if (!propFrom) return null
+    if (!propTo) return formatDate(propFrom)
+
+    const min = Math.min(propFrom, propTo)
+    const max = Math.max(propFrom, propTo)
+
+    return `${formatDate(min)} – ${formatDate(max)}`
   }
 
   const now = new Date()
@@ -138,23 +167,14 @@ const DateRange = ({
         onClick={() => !isDisabled && setToggle((prev) => !prev)}
       >
         <label className={style.label}>{placeholder}</label>
-        <span>{renderValue()}</span>
+        <span>{renderDisplayValue()}</span>
         <Icon name="icon-navigation-chevron-down" />
       </button>
 
       {
         toggle &&
         <div className={style.dropdown}>
-          <div
-            className={
-              classNames(
-                style.header,
-                {
-                  [style.current]: isCurrentMonth
-                }
-              )
-            }
-          >
+          <div className={classNames(style.header, { [style.current]: isCurrentMonth })}>
             <button
               type="button"
               aria-label="Change month"
@@ -184,9 +204,11 @@ const DateRange = ({
           <div className={style.days}>
             {
               daysInMonth.map((day, idx) =>
-                !day
-                  ?
-                    <div key={`empty-${idx}`} className={style.empty} />
+                !day ?
+                  <div
+                    key={`empty-${idx}`}
+                    className={style.empty}
+                  />
                   :
                     <button
                       key={day.getTime()}
@@ -205,7 +227,8 @@ const DateRange = ({
                     >
                       {day.getDate()}
                     </button>
-            )}
+                )
+            }
           </div>
         </div>
       }

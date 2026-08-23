@@ -78,19 +78,19 @@ const Pagination = ({ data, classes = [] }) => {
         pages.map((el, idx) =>
           el === '...'
             ?
-            <span key={idx}>...</span>
+              <span key={idx}>...</span>
             :
-            <Action
-              key={idx}
-              to={createPageUrl(el)}
-              classes={[
-                'square',
-                'md',
-                el === page ? 'primary' : 'secondary',
-              ]}
-            >
-              {el}
-            </Action>
+              <Action
+                key={idx}
+                to={createPageUrl(el)}
+                classes={[
+                  'square',
+                  'md',
+                  el === page ? 'primary' : 'secondary',
+                ]}
+              >
+                {el}
+              </Action>
         )
       }
       <Action

@@ -1,7 +1,9 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { startTransition, useState } from 'react'
+import { notFound, useSearchParams } from 'next/navigation'
+import { useTransition } from 'react'
 import { useRouter, usePathname } from '@/i18n/routing'
 
 import { ROUTES_USER } from '@/constant/config'
@@ -9,66 +11,66 @@ import { ROUTES_USER } from '@/constant/config'
 import DateRange from '@/components/DateRange'
 import Select from '@/components/Select'
 import Tabs from '@/modules/Tabs'
+import Pagination from '@/modules/Pagination'
 
 import style from './index.module.scss'
+import Loader from "@/components/Loader";
 
 const DATA = [
-  {
-    key: 'games',
-    value: 0,
-  },
-  {
-    key: 'deposit',
-    value: 1,
-  },
-  {
-    key: 'withdrawal',
-    value: 2,
-  },
-  {
-    key: 'bonuses',
-    value: 3,
-  },
+  { key: 'games', value: 0 },
+  { key: 'deposit', value: 1 },
+  { key: 'withdrawal', value: 2 },
+  { key: 'bonuses', value: 3 },
 ]
 
 const QUANTITY = [
-  {
-    value: 10,
-    label: '10'
-  },
-  {
-    value: 20,
-    label: '20'
-  },
-  {
-    value: 50,
-    label: '50'
-  },
-  {
-    value: 100,
-    label: '100'
-  }
+  { value: 10, label: '10' },
+  { value: 20, label: '20' },
+  { value: 50, label: '50' },
+  { value: 100, label: '100' },
 ]
 
-const SectionAccountHistory = ({
-  user,
-  data,
-  meta,
-  currentPage,
-  tab
-}) => {
+const COMPONENTS_MAP = {
+  games: dynamic(() => import('./Games')),
+  deposit: dynamic(() => import('./Deposit')),
+}
+
+const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
   const t = useTranslations()
   const pathname = usePathname()
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const [isPending, startTransition] = useTransition()
 
-  const [quantity, setQuantity] = useState(QUANTITY[0])
+  const quantity = Number(searchParams.get('quantity')) || queryParams.quantity
+  const from = searchParams.get('from') ? Number(searchParams.get('from')) : queryParams.from
+  const to = searchParams.get('to') ? Number(searchParams.get('to')) : queryParams.to
 
-  const [range, setRange] = useState({
-    from: new Date().setHours(0, 0, 0, 0),
-    to: new Date().getTime(),
-  })
+  const updateQuery = (newParams) => {
+    const params = new URLSearchParams(searchParams.toString())
 
-  const active = DATA.find((item) => pathname.includes(item.key)) || DATA[0]
+    Object.entries(newParams).forEach(([key, val]) => {
+      if (val !== undefined && val !== null && val !== '') {
+        params.set(key, String(val))
+      } else {
+        params.delete(key)
+      }
+    })
+
+    if (!newParams.page) {
+      params.set('page', '1')
+    }
+
+    startTransition(() => {
+      router.push(`${pathname}?${params.toString()}`, { scroll: false })
+    })
+  }
+
+  const handleTabChange = (item) => {
+    startTransition(() => {
+      router.push(`${ROUTES_USER.history.url}/${item.key}`, { scroll: false })
+    })
+  }
 
   const handleActive = (el) => {
     startTransition(() => {
@@ -76,33 +78,63 @@ const SectionAccountHistory = ({
     })
   }
 
+  const ActiveComponent = COMPONENTS_MAP[tab]
+
+  if (!ActiveComponent) {
+    notFound()
+  }
+
+  const activeTab = DATA.find((item) => pathname.includes(item.key)) || DATA[0]
+  const selectedQuantity = QUANTITY.find((el) => el.value === quantity) || QUANTITY[0]
+
   return (
     <>
       <section>
         <Tabs
           options={DATA}
-          data={active}
-          action={handleActive}
+          data={activeTab}
+          action={handleTabChange}
         />
       </section>
+
       <section className={style.section}>
         <div className={style.header}>
           <DateRange
             placeholder="Date Range"
-            value={range}
-            onChange={(range) => setRange(range)}
+            value={{ from, to }}
+            onChange={(range) => {
+              if (range?.from && range?.to) {
+                updateQuery({
+                  from: range.from,
+                  to: range.to,
+                })
+              }
+            }}
           />
         </div>
-        <p>{tab}</p>
+        <div className={style.container}>
+          {
+            isPending
+              ?
+                <Loader />
+              :
+                <ActiveComponent
+                  user={user}
+                  data={data}
+                  meta={meta}
+                />
+          }
+        </div>
         <div className={style.footer}>
           <Select
             placeholder={t('quantity')}
             classes={[style.select]}
-            data={QUANTITY.map(({ value, label }) => ({ value, label }))}
-            value={quantity}
+            data={QUANTITY}
+            value={selectedQuantity}
             isSearch={false}
-            onChange={value => setQuantity(value)}
+            onChange={(selected) => updateQuery({ quantity: selected.value })}
           />
+          <Pagination data={meta} />
         </div>
       </section>
     </>
