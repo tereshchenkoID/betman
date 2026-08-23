@@ -12,6 +12,7 @@
   @include flex(space-between, center, column-reverse, wrap);
 
   gap: var(--gap-16);
+  margin-top: var(--gap-16);
 
   @include mob-m {
     flex-direction: row;
@@ -20,7 +21,7 @@
 
 .container {
   position: relative;
-  min-height: rem(200px);
+  min-height: rem(100px);
 }
 
 .select {

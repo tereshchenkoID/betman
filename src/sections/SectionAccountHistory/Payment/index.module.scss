@@ -8,9 +8,9 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(2, rem(100px)) 1fr rem(120px) repeat(2, 1fr) rem(100px) 1fr;
+  grid-template-columns: rem(80px) repeat(2, rem(170px)) repeat(2, rem(110px)) rem(160px) 1fr;
   gap: var(--gap-2);
-  min-width: rem(1060px);
+  min-width: rem(1000px);
   font-size: rem(14px);
 
   &.first {

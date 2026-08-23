@@ -42,8 +42,10 @@
   }
 
   &::after {
+    @include transition;
     @include size(0, rem(3px));
 
+    margin-inline: auto;
     inset-inline: 0;
     inset-block-end: rem(-8px);
     z-index: $z-index-1;

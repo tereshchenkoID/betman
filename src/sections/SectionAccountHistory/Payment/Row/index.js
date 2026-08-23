@@ -19,7 +19,7 @@ const Row = ({ data }) => {
 
   const handleCancel = () => {
     startTransition(async () => {
-      const res = await action(data.id)
+      const res = await action(data?.id)
 
       if (res.code === '0') {
         toast.success(res.message)
@@ -65,28 +65,26 @@ const Row = ({ data }) => {
       className={
         classNames(
           style.row,
-          style[VOUCHER_STATUS[data.status]],
+          style[VOUCHER_STATUS[data?.status]],
         )
       }
     >
-      <div className={style.cell}>{data.id}</div>
-      <div className={style.cell}>{t(`voucher_status.${VOUCHER_STATUS[data.status]}`)}</div>
-      <div className={style.cell}>{t(`payments.${data.payment.alias}`)}</div>
-      <div className={style.cell}>{t(PAYMENT_TYPE[data.type])}</div>
-      <div className={style.cell}>{data.type === '1' ? '-' : '+'}{data.amount}</div>
-      <div className={style.cell}>{date(data.date)}</div>
+      <div className={style.cell}>{data?.id}</div>
+      <div className={style.cell}>{date(data?.date)}</div>
+      <div className={style.cell}>{t(`payments.${data?.payment.alias}`)}</div>
+      <div className={style.cell}>{t(`voucher_status.${VOUCHER_STATUS[data?.status]}`)}</div>
+      <div className={style.cell}>{t(PAYMENT_TYPE[data?.type])}</div>
+      <div className={style.cell}>{data?.type === '1' ? '-' : '+'}{data?.amount}</div>
       <div className={style.cell}>
         <Action
           classes={['primary', 'sm']}
           placeholder={t('show')}
           onChange={() => {
-            openModal('paymentDetails', { data }, { title: `${t('details')}: ${data.id}` })
+            openModal('paymentDetails', { data }, { title: `${t('details')}: ${data?.id}` })
           }}
         />
-      </div>
-      <div className={style.cell}>
         {
-          data.actions?.map((el, idx) =>
+          data?.actions?.map((el, idx) =>
             renderAction(el, idx)
           )
         }

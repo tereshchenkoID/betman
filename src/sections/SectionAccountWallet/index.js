@@ -5,25 +5,19 @@ import { useEffect, useTransition } from 'react'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 import classNames from 'classnames'
 
-import {ROUTES_USER, USER_VERIFY} from '@/constant/config'
+import { ROUTES_USER } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
 
 import Loader from '@/components/Loader'
 import Tabs from '@/modules/Tabs'
+import Notification from '@/modules/Notification'
 
 import style from './index.module.scss'
-import Notification from "@/modules/Notification";
 
 const DATA = [
-  {
-    key: 'deposit',
-    value: 0
-  },
-  {
-    key: 'withdrawal',
-    value: 1
-  },
+  { key: 'deposit', value: 0 },
+  { key: 'withdrawal', value: 1 },
 ]
 
 const SectionAccountWallet = ({ user, children }) => {

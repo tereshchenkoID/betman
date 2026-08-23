@@ -1,5 +1,32 @@
 .block {
   display: grid;
   gap: var(--gap-24);
+  min-height: rem(200px);
   text-align: center;
+}
+
+.list {
+  --crypto-count: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--crypto-count), 1fr);
+  gap: var(--gap-default);
+
+  @include mob-m {
+    --crypto-count: 3;
+  }
+
+  @include tab-s {
+    --crypto-count: 4;
+  }
+}
+
+.card {
+  display: grid;
+  gap: var(--gap-default);
+  border-radius: var(--border-radius-default);
+  background-color: var(--material-hover);
+  overflow: hidden;
+  padding: var(--gap-12);
+  pointer-events: none;
 }

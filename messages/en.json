@@ -243,5 +243,9 @@
   "sa": "Sa",
   "su": "Su",
   "delete": "Delete",
-  "fs_left": "Free spin left"
+  "fs_left": "Free spin left",
+  "crypto": "Crypto",
+  "date": "Date",
+  "payout": "Payout",
+  "payout_date": "Payout date"
 }

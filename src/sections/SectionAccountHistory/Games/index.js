@@ -40,37 +40,37 @@ const Games = ({ user, data }) => {
               className={
                 classNames(
                   style.row,
-                  style[el.diff[0] === '+' ? 'green' : 'red']
+                  style[el?.diff[0] === '+' ? 'green' : 'red']
                 )
               }
             >
-              <div className={style.cell}>{date(el.dateTime)}</div>
+              <div className={style.cell}>{date(el?.dateTime)}</div>
               <div className={style.cell}>
                 <div className={style.preview}>
                   <Image
                     src={el?.game?.image}
                     className={style.image}
-                    alt={el.game.title || 'Preview'}
+                    alt={el?.game.title || 'Preview'}
                     width={40}
                     height={40}
                     decoding="async"
                     sizes="40px"
-                    onError={imageError}
+                    onError={(e) => imageError(e, false)}
                     unoptimized
                   />
                 </div>
                 <Action
-                  to={`${NAVIGATION.game.url}/${el.game.id}/0`}
+                  to={`${NAVIGATION.game.url}/${el?.game.id}/0`}
                   classes={['outline']}
-                  placeholder={el.game.title}
+                  placeholder={el?.game.title}
                 />
               </div>
-              <div className={style.cell}>{el.amount}</div>
+              <div className={style.cell}>{el?.amount}</div>
               <div className={style.cell}>
-                {t(el.diff[0] === '+' ? 'win' : 'lose')}
+                {t(el?.diff[0] === '+' ? 'win' : 'lose')}
               </div>
               <div className={style.cell}>
-                {el.diff[0] === '+' && '+'}{fixed(el.diff)}
+                {el?.diff[0] === '+' && '+'}{fixed(el?.diff)}
               </div>
             </div>
           )

@@ -26,7 +26,9 @@ const DATA = [
 
 const COMPONENTS_MAP = {
   games: dynamic(() => import('./Games')),
-  deposit: dynamic(() => import('./Deposit')),
+  deposit: dynamic(() => import('./Payment')),
+  withdrawal: dynamic(() => import('./Payment')),
+  bonuses: dynamic(() => import('./Bonuses')),
 }
 
 const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
@@ -109,31 +111,33 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
                   {
                     meta?.results !== '0'
                       ?
-                        <ActiveComponent
-                          user={user}
-                          data={data}
-                          meta={meta}
-                        />
+                        <>
+                          <ActiveComponent
+                            user={user}
+                            data={data}
+                            meta={meta}
+                          />
+                          <div className={style.footer}>
+                            {
+                              meta?.pages !== '1' &&
+                              <Select
+                                placeholder={t('quantity')}
+                                classes={[style.select]}
+                                data={QUANTITY}
+                                value={selectedQuantity}
+                                isSearch={false}
+                                onChange={(selected) => updateQuery({ quantity: selected.value })}
+                              />
+                            }
+                            <Pagination meta={meta} />
+                          </div>
+                        </>
                       :
                         <Empty />
                   }
                 </>
           }
         </div>
-        {
-          meta?.results !== '0' &&
-          <div className={style.footer}>
-            <Select
-              placeholder={t('quantity')}
-              classes={[style.select]}
-              data={QUANTITY}
-              value={selectedQuantity}
-              isSearch={false}
-              onChange={(selected) => updateQuery({ quantity: selected.value })}
-            />
-            <Pagination meta={meta} />
-          </div>
-        }
       </section>
     </>
   )

@@ -5,12 +5,12 @@ import { QUANTITY } from '@/constant/config'
 
 import SectionAccountHistory from '@/sections/SectionAccountHistory'
 
-const getDefaultRange = () => {
+const defaultRange = () => {
   const now = new Date()
-  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0)
+  const from = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0)
 
   return {
-    from: startOfDay.getTime(),
+    from: from.getTime(),
     to: now.getTime(),
   }
 }
@@ -19,13 +19,11 @@ export default async function History({ params, searchParams }) {
   const { tab } = await params
   const { page, quantity, from, to } = await searchParams
 
-  const defaultRange = getDefaultRange()
-
   const queryParams = {
     page: page || 1,
     quantity: quantity || QUANTITY[0]?.value,
-    from: from ? from : defaultRange.from,
-    to: to ? to : defaultRange.to,
+    from: from ? from : defaultRange().from,
+    to: to ? to : defaultRange().to,
   }
 
   const [user, res] = await Promise.all([

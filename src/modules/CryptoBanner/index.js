@@ -15,7 +15,8 @@ const CryptoBanner = () => {
     <button
       type="button"
       className={style.block}
-      onClick={() => openModal('crypto', {}, { title: 'Crypto', size: 'md' })}
+      onClick={() => openModal('crypto', {}, { title: t('crypto'), size: 'md' })}
+      aria-label={'Open Crypto Modal'}
     >
       <Image
         className={style.image}
