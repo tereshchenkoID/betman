@@ -8,7 +8,8 @@ export const MODAL_REGISTRY = {
   quest: dynamic(() => import('./QuestModal')),
   search: dynamic(() => import('./SearchModal')),
   notification: dynamic(() => import('./NotificationModal')),
+  verify: dynamic(() => import('./VerifyModal')),
+  crypto: dynamic(() => import('./CryptoModal')),
   paymentDetails: dynamic(() => import('./PaymentDetailsModal')),
   cryptoDeposit: dynamic(() => import('./CryptoDepositModal')),
-  verify: dynamic(() => import('./VerifyModal')),
 }

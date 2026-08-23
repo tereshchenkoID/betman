@@ -41,3 +41,11 @@
 .status {
   text-align: center;
 }
+
+.footer {
+  @include flex(space-between, center);
+
+  span {
+    color: var(--red);
+  }
+}

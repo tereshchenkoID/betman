@@ -19,6 +19,14 @@
     }
   }
 
+  &.md {
+    .content {
+      @include tab-s {
+        max-width: rem(600px);
+      }
+    }
+  }
+
   &.lg {
     .content {
       height: 100%;
@@ -51,7 +59,6 @@
   }
 
   &.lock {
-
     .shadow {
       pointer-events: none;
     }

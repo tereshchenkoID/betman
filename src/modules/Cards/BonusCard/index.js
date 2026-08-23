@@ -50,18 +50,8 @@ const BonusCard = ({ settings, data }) => {
     >
       <div className={style.content}>
         <div>
-          {
-            data?.status &&
-            <div className={style.row}>
-              <Notification
-                text={t(BONUS_STATUS[data.status])}
-                type={STATUS_TYPE[data.status]}
-                classes={style.status}
-              />
-            </div>
-          }
           <div className={style.row}>
-            <h3>{data.name}</h3>
+            <h3>{data?.name}</h3>
             {
               data?.enable === '1' &&
               <Action
@@ -72,14 +62,24 @@ const BonusCard = ({ settings, data }) => {
                 <Icon name={'icon-actions-delete'} />
               </Action>
             }
+            {
+              data?.status &&
+              <div className={style.row}>
+                <Notification
+                  text={t(BONUS_STATUS[data?.status])}
+                  type={STATUS_TYPE[data?.status]}
+                  classes={style.status}
+                />
+              </div>
+            }
           </div>
           <div className={style.row}>
             <p>{t('amount')}:</p>
-            <p>{data.amount} {data.currency}</p>
+            <p>{data?.amount} {data?.currency}</p>
           </div>
           <div className={style.row}>
             <p>{t('expired')}:</p>
-            <p>{date(data.expired_at, 3)}</p>
+            <p>{date(data?.expired_at, 3)}</p>
           </div>
         </div>
       </div>
@@ -105,14 +105,20 @@ const BonusCard = ({ settings, data }) => {
       </div>
       <div className={style.scale}>
         <Scale
-          amount={data.total_bets}
-          percentage={data.percentage}
-          max={data.refund_sum}
-          currency={data.currency}
+          amount={data?.total_bets}
+          percentage={data?.percentage}
+          max={data?.refund_sum}
+          currency={data?.currency}
           isInverted={true}
         />
       </div>
-      <div>{t('wager')}: {data.wager}</div>
+      <div className={style.footer}>
+        <div>{t('wager')}: {data?.wager}</div>
+        {
+          data?.fs &&
+          <div>{t('fs_left')}: <span>{data?.fs_left}</span> / <strong>{data?.fs}</strong></div>
+        }
+      </div>
     </div>
   )
 }

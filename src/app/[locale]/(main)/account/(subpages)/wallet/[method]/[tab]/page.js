@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 
 import { getCachedUser } from '@/app/actions/static'
 
 import SectionTooltip from '@/sections/SectionTooltip'
+import CryptoBanner from '@/modules/CryptoBanner'
 
 const COMPONENTS_MAP = {
   crypto: {
@@ -34,18 +34,7 @@ export default async function Wallet({ params }) {
       <div>
         {
           (method === 'crypto' && tab === 'deposit') &&
-          <Image
-            src={'/images/crypto.webp'}
-            alt={'Crypto'}
-            width={460}
-            height={118}
-            decoding="async"
-            unoptimized
-            style={{
-              borderRadius: 'var(--border-radius-6)',
-              marginBottom: 'var(--gap-12)',
-            }}
-          />
+          <CryptoBanner />
         }
         <ActiveComponent
           user={user}
