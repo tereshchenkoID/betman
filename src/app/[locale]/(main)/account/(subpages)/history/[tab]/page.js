@@ -1,6 +1,8 @@
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser } from '@/app/actions/static'
 
+import { QUANTITY } from '@/constant/config'
+
 import SectionAccountHistory from '@/sections/SectionAccountHistory'
 
 const getDefaultRange = () => {
@@ -20,10 +22,10 @@ export default async function History({ params, searchParams }) {
   const defaultRange = getDefaultRange()
 
   const queryParams = {
-    page: Number(page) || 1,
-    quantity: Number(quantity) || 10,
-    from: from ? Number(from) : defaultRange.from,
-    to: to ? Number(to) : defaultRange.to,
+    page: page || 1,
+    quantity: quantity || QUANTITY[0]?.value,
+    from: from ? from : defaultRange.from,
+    to: to ? to : defaultRange.to,
   }
 
   const [user, res] = await Promise.all([

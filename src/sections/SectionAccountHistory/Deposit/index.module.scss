@@ -1,8 +1,8 @@
-.body {
-  overflow: hidden;
+.table {
+  display: grid;
 }
 
-.table {
+.scroll {
   @include scroll-x;
 }
 

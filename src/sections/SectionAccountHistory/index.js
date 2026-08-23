@@ -6,13 +6,14 @@ import { notFound, useSearchParams } from 'next/navigation'
 import { useTransition } from 'react'
 import { useRouter, usePathname } from '@/i18n/routing'
 
-import { ROUTES_USER } from '@/constant/config'
+import { ROUTES_USER, QUANTITY } from '@/constant/config'
 
 import DateRange from '@/components/DateRange'
 import Select from '@/components/Select'
 import Loader from '@/components/Loader'
 import Tabs from '@/modules/Tabs'
 import Pagination from '@/modules/Pagination'
+import Empty from '@/modules/Empty'
 
 import style from './index.module.scss'
 
@@ -21,13 +22,6 @@ const DATA = [
   { key: 'deposit', value: 1 },
   { key: 'withdrawal', value: 2 },
   { key: 'bonuses', value: 3 },
-]
-
-const QUANTITY = [
-  { value: 10, label: '10' },
-  { value: 20, label: '20' },
-  { value: 50, label: '50' },
-  { value: 100, label: '100' },
 ]
 
 const COMPONENTS_MAP = {
@@ -111,24 +105,35 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
               ?
                 <Loader />
               :
-                <ActiveComponent
-                  user={user}
-                  data={data}
-                  meta={meta}
-                />
+                <>
+                  {
+                    meta?.results !== '0'
+                      ?
+                        <ActiveComponent
+                          user={user}
+                          data={data}
+                          meta={meta}
+                        />
+                      :
+                        <Empty />
+                  }
+                </>
           }
         </div>
-        <div className={style.footer}>
-          <Select
-            placeholder={t('quantity')}
-            classes={[style.select]}
-            data={QUANTITY}
-            value={selectedQuantity}
-            isSearch={false}
-            onChange={(selected) => updateQuery({ quantity: selected.value })}
-          />
-          <Pagination meta={meta} />
-        </div>
+        {
+          meta?.results !== '0' &&
+          <div className={style.footer}>
+            <Select
+              placeholder={t('quantity')}
+              classes={[style.select]}
+              data={QUANTITY}
+              value={selectedQuantity}
+              isSearch={false}
+              onChange={(selected) => updateQuery({ quantity: selected.value })}
+            />
+            <Pagination meta={meta} />
+          </div>
+        }
       </section>
     </>
   )
