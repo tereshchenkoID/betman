@@ -34,8 +34,6 @@ export default async function History({ params, searchParams }) {
     }),
   ])
 
-  console.log(res)
-
   return (
     <SectionAccountHistory
       user={user}

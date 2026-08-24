@@ -14,8 +14,6 @@ const Bonuses = ({ user, data }) => {
   const t = useTranslations()
   const { openModal } = useModal()
 
-  console.log(data)
-
   return (
     <div className={style.table}>
       <div className={style.scroll}>
