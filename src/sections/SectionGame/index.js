@@ -93,7 +93,7 @@ const SectionGame = ({
                 classes={['secondary', 'md', 'circle']}
                 onChange={(e) => handleLogin(e)}
               >
-                <Icon name={'icon-human-avatar'} />
+                <Icon name="human-avatar" />
               </Action>
             }
           </div>

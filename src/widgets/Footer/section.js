@@ -96,7 +96,7 @@ const Section = ({
                   className={style.social}
                   aria-label={el.link}
                 >
-                  <Icon name={`icon-misc-${el.icon}`} />
+                  <Icon name={`misc-${el.icon}`} />
                 </a>
               )
             }

@@ -1,7 +1,7 @@
 export const NAVIGATION = {
   home: {
     text: 'navigation.home',
-    icon: 'icon-navigation-home',
+    icon: 'navigation-home',
     url: '/',
   },
   games_hall: {
@@ -10,27 +10,27 @@ export const NAVIGATION = {
   },
   tournament: {
     text: 'navigation.tournaments',
-    icon: 'icon-games-trophy',
+    icon: 'games-trophy',
     url: '/tournaments',
   },
   quests: {
     text: 'navigation.quests',
-    icon: 'icon-commerce-payment-summary',
+    icon: 'commerce-payment-summary',
     url: '/quests',
   },
   jackpots: {
     text: 'navigation.jackpots',
-    icon: 'icon-games-jackpot-hub',
+    icon: 'games-jackpot-hub',
     url: '/jackpots',
   },
   wheels_of_fortune: {
     text: 'navigation.wheels_of_fortune',
-    icon: 'icon-games-spinner',
+    icon: 'games-spinner',
     url: '/wheel-of-fortune',
   },
   promotions: {
     text: 'navigation.promo',
-    icon: 'icon-commerce-gift',
+    icon: 'commerce-gift',
     url: '/promotions',
   },
   providers: {
@@ -51,7 +51,7 @@ export const NAVIGATION = {
   },
   info: {
     text: 'navigation.info',
-    icon: 'icon-navigation-home',
+    icon: 'navigation-home',
     url: '/info',
   },
   not_found: {
@@ -67,47 +67,47 @@ export const NAVIGATION = {
 export const ROUTES_USER = {
   account: {
     text: 'navigation.account',
-    icon: 'icon-human-user',
+    icon: 'human-user',
     url: '/account',
   },
   wallet: {
     text: 'navigation.wallet',
-    icon: 'icon-commerce-wallet',
+    icon: 'commerce-wallet',
     url: '/account/wallet',
   },
   profile: {
     text: 'navigation.profile',
-    icon: 'icon-human-user-id',
+    icon: 'human-user-id',
     url: '/account/profile',
   },
   history: {
     text: 'navigation.history',
-    icon: 'icon-commerce-transactions',
+    icon: 'commerce-transactions',
     url: '/account/history',
   },
   bonuses: {
     text: 'navigation.bonus',
-    icon: 'icon-commerce-bonus',
+    icon: 'commerce-bonus',
     url: '/account/bonuses',
   },
   favourites: {
     text: 'navigation.favorites',
-    icon: 'icon-toggle-favorite-filled',
+    icon: 'toggle-favorite-filled',
     url: '/account/favorites',
   },
   promocode: {
     text: 'navigation.promocode',
-    icon: 'icon-actions-scan',
+    icon: 'actions-scan',
     url: '/account/promocode',
   },
   verification: {
     text: 'navigation.verification',
-    icon: 'icon-commerce-wallet',
+    icon: 'commerce-wallet',
     url: '/verification',
   },
   invite_friends: {
     text: 'navigation.invite_friends',
-    icon: 'icon-human-user-add',
+    icon: 'human-user-add',
     url: '/invite-friends',
   }
 }

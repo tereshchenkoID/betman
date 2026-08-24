@@ -115,7 +115,7 @@ const SearchModal = ({ user }) => {
             classes={['secondary', 'md', 'square', style.remove]}
             onChange={handleReset}
           >
-            <Icon size="lg" name="icon-navigation-close" />
+            <Icon name="navigation-close" size="lg" />
           </Action>
         }
         <Action
@@ -123,7 +123,7 @@ const SearchModal = ({ user }) => {
           classes={['primary', 'square', style.button]}
           isDisabled={!isSearchValid(search)}
         >
-          <Icon size="lg" name="icon-navigation-search" />
+          <Icon name="navigation-search" size="lg" />
         </Action>
       </form>
       <Tabs

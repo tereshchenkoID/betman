@@ -24,19 +24,19 @@ const LEVELS = [
     },
     list: [
       {
-        icon: 'icon-commerce-wallet',
+        icon: 'commerce-wallet',
         text: 'Make deposit'
       },
       {
-        icon: 'icon-games-slot',
+        icon: 'games-slot',
         text: 'Play for real'
       },
       {
-        icon: 'icon-commerce-bonus',
+        icon: 'commerce-bonus',
         text: 'Bonuses & rewards'
       },
       {
-        icon: 'icon-sports-futsal',
+        icon: 'sports-futsal',
         text: 'Sports Betting'
       }
     ]
@@ -51,19 +51,19 @@ const LEVELS = [
     },
     list: [
       {
-        icon: 'icon-commerce-wallet',
+        icon: 'commerce-wallet',
         text: 'Withdrawal funds'
       },
       {
-        icon: 'icon-games-slot',
+        icon: 'games-slot',
         text: 'Higher Limits'
       },
       {
-        icon: 'icon-commerce-bonus',
+        icon: 'commerce-bonus',
         text: 'More Payment Methods'
       },
       {
-        icon: 'icon-sports-futsal',
+        icon: 'sports-futsal',
         text: 'Full Account Security'
       }
     ]
@@ -75,19 +75,19 @@ const LEVELS = [
     button: null,
     list: [
       {
-        icon: 'icon-commerce-wallet',
+        icon: 'commerce-wallet',
         text: 'Withdrawal funds'
       },
       {
-        icon: 'icon-games-slot',
+        icon: 'games-slot',
         text: 'Higher Limits'
       },
       {
-        icon: 'icon-commerce-bonus',
+        icon: 'commerce-bonus',
         text: 'More Payment Methods'
       },
       {
-        icon: 'icon-sports-futsal',
+        icon: 'sports-futsal',
         text: 'Full Account Security'
       }
     ]
@@ -125,7 +125,7 @@ const SectionVerification = ({ user }) => {
     if (level < cardLevel) {
       return (
         <div className={style.badge}>
-          <Icon name="icon-toggle-lock" size="sm" />
+          <Icon name="toggle-lock" size="sm" />
           <p>Locked</p>
         </div>
       )
@@ -224,7 +224,7 @@ const SectionVerification = ({ user }) => {
                           >
                             {
                               isLocked &&
-                              <Icon name="icon-toggle-lock" />
+                              <Icon name="toggle-lock" />
                             }
                             <span>{el.button.text}</span>
                           </Action>
@@ -241,18 +241,12 @@ const SectionVerification = ({ user }) => {
         href={'./'}
         className={style.info}
       >
-        <Icon
-          name={'icon-status-info'}
-          size={'xl'}
-        />
+        <Icon name="status-info" size="xl" />
         <p>
           <span>Why verify</span>
           <span>Verification helps us keep your account secure, prevent fraud and comply with regulations</span>
         </p>
-        <Icon
-          name={'icon-navigation-chevron-right'}
-          size={'lg'}
-        />
+        <Icon name="navigation-chevron-right" size="lg" />
       </Link>
     </section>
   )

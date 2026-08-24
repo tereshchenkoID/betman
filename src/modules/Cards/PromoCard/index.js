@@ -54,7 +54,7 @@ const PromoCard = ({ data }) => {
             target={button?.newtab === '1' ? '_blank' : undefined}
           >
             <span>{button?.text}</span>
-            <Icon name="icon-navigation-chevron-right-small" />
+            <Icon name="navigation-chevron-right-small" />
           </Action>
         }
       </div>

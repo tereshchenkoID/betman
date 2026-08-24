@@ -185,7 +185,7 @@ const Slider = forwardRef(({
                 classes={['primary', navigation.size, 'square', style.prev]}
                 aria-label="Previous"
               >
-                <Icon name="icon-navigation-chevron-left" />
+                <Icon name="navigation-chevron-left" />
               </Action>
               <Action
                 onChange={() => instanceRef.current?.next()}
@@ -193,7 +193,7 @@ const Slider = forwardRef(({
                 classes={['primary', navigation.size, 'square', style.next]}
                 aria-label="Next"
               >
-                <Icon name="icon-navigation-chevron-right" />
+                <Icon name="navigation-chevron-right" />
               </Action>
             </div>
           }

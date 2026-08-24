@@ -74,7 +74,7 @@ const AccountMenu = ({ user, setToggle }) => {
             onChange={() => setToggle(false)}
           >
             <span>{t('personal_area')}</span>
-            <Icon name={'icon-navigation-chevron-right'} />
+            <Icon name="navigation-chevron-right" />
           </Action>
           <p className={style.nickname}>{user?.username}</p>
         </div>
@@ -92,15 +92,12 @@ const AccountMenu = ({ user, setToggle }) => {
             aria-label={t(ROUTES_USER.verification.text)}
             onClick={() => setToggle(false)}
           >
-            <Icon
-              name={'icon-data-protection'}
-              size={'lg'}
-            />
+            <Icon name="data-protection" size="lg" />
             <p>
               <span>{t('level.verification')}</span>
               <span>{t(user?.level === '3' ? 'level.verified' : 'level.complete_verification')}</span>
             </p>
-            <Icon name={'icon-navigation-chevron-right'} />
+            <Icon name="navigation-chevron-right" />
           </Link>
         </div>
         <div className={style.container}>
@@ -111,7 +108,7 @@ const AccountMenu = ({ user, setToggle }) => {
             onClick={() => setToggle(false)}
           >
             <div className={style.count}>{t('balance')}: <h3>{fixed(credits?.real_balance)}</h3> {user?.currency?.text}</div>
-            <Icon name={'icon-navigation-chevron-right'} />
+            <Icon name="navigation-chevron-right" />
           </Link>
           <div className={style.actions}>
             <Action
@@ -142,7 +139,7 @@ const AccountMenu = ({ user, setToggle }) => {
           >
             <div className={style.amount}>
               <div className={style.count}>{t('bonus')}: <h3>{fixed(credits?.bonus?.amount)}</h3> {user?.currency?.text}</div>
-              <Icon name={'icon-navigation-chevron-right'} />
+              <Icon name="navigation-chevron-right" />
             </div>
             {
               credits?.bonus?.total_bets > 0 &&
@@ -165,10 +162,7 @@ const AccountMenu = ({ user, setToggle }) => {
                 onClick={() => setToggle(false)}
                 aria-label={t(el.text)}
               >
-                <Icon
-                  name={el.icon}
-                  size={'sm'}
-                />
+                <Icon name={el.icon} size="sm" />
                 <p className={style.text}>
                   {t(el.text)}
                   {
@@ -179,7 +173,7 @@ const AccountMenu = ({ user, setToggle }) => {
                     />
                   }
                 </p>
-                <Icon name={'icon-navigation-chevron-right'} />
+                <Icon name="navigation-chevron-right" />
               </Link>
             )
           }

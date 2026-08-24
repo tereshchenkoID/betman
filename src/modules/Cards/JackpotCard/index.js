@@ -110,7 +110,7 @@ const JackpotCard = ({
           classes={['secondary', 'md', style.badge]}
         />
         <p>{t('all_games')}</p>
-        <Icon name="icon-navigation-chevron-right-small" />
+        <Icon name="navigation-chevron-right-small" />
       </Link>
 
       <Slider

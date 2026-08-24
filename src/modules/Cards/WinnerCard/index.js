@@ -31,10 +31,7 @@ const WinnerCard = ({ user, data }) => {
         </div>
 
         <div className={style.player}>
-          <Icon
-            name={'icon-human-avatar'}
-            size={'sm'}
-          />
+          <Icon name="human-avatar" size="sm" />
           <p>{data.maskedUsername}</p>
         </div>
 

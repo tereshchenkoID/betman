@@ -59,7 +59,7 @@ const BonusCard = ({ settings, data }) => {
                 aria-label={t('delete')}
                 onChange={handleChange}
               >
-                <Icon name={'icon-actions-delete'} />
+                <Icon name="actions-delete" />
               </Action>
             }
             {

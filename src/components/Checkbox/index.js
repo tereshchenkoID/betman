@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
 
@@ -35,7 +35,7 @@ const Checkbox = ({
   return (
     <label
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,
@@ -59,7 +59,7 @@ const Checkbox = ({
         }}
       />
       <span className={style.item}>
-        <Icon name={'icon-status-checkmark'} />
+        <Icon name="status-checkmark" />
       </span>
       <span className={style.text}>{placeholder}</span>
     </label>

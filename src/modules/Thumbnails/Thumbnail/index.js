@@ -70,7 +70,7 @@ const Thumbnail = ({
               onChange={() => handlePlay(data?.id)}
               aria-label={`${t('play')} ${data?.title}`}
             >
-              <Icon name={'icon-status-play-alt'} />
+              <Icon name={'status-play-alt'} />
             </Action>
             {
               data?.hasDemo === "1" &&

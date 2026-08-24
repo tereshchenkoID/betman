@@ -1,4 +1,6 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
+
+import style from './index.module.scss'
 
 const Icon = ({
   name,
@@ -7,20 +9,20 @@ const Icon = ({
   ...rest
 }) => {
   return (
-    <i
+    <svg
       className={
-        classNames(
-          'icon',
-          name,
-          size,
-          classes && classes.map(el => el),
+        clsx(
+          style.icon,
+          style[size],
+          classes
         )
       }
       aria-hidden="true"
       role="img"
-      aria-label={name}
       {...rest}
-    />
+    >
+      <use href={`/images/iconography.svg#${name}`} />
+    </svg>
   )
 }
 

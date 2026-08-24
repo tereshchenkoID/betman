@@ -84,7 +84,7 @@ const Select = ({
           {isRequired && <span>*</span>}
         </label>
         <span>{value && (value.label || t('select_value'))}</span>
-        <Icon name={'icon-navigation-chevron-down'} />
+        <Icon name="navigation-chevron-down" />
       </button>
       {
         toggle &&

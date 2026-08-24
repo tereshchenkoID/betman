@@ -100,7 +100,7 @@ const Field = ({
               onClick={() => onChange('')}
               aria-label={'Clear'}
             >
-              <Icon name="icon-navigation-close" size={'sm'} />
+              <Icon name="navigation-close" size="sm" />
             </button>
           }
 
@@ -112,7 +112,7 @@ const Field = ({
               onClick={() => setShow(!show)}
               aria-label={'Visibility'}
             >
-              <Icon name={show ? 'icon-toggle-view' : 'icon-toggle-view-off'} size={'sm'} />
+              <Icon name={show ? 'toggle-view' : 'toggle-view-off'} size={'sm'} />
             </button>
           }
         </div>

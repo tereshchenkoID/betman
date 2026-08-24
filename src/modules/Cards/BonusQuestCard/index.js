@@ -58,7 +58,7 @@ const BonusQuestCard = ({ user, data }) => {
               />
             :
               <p className={style.title}>
-                <Icon name={'icon-toggle-lock'} size={'sm'}/>
+                <Icon name="toggle-lock" size="sm" />
                 {button}
               </p>
         }

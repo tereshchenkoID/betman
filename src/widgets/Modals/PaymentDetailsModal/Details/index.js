@@ -33,7 +33,7 @@ const Details = ({ name, value }) => {
           classes={['secondary', 'md', 'square']}
           onChange={() => copy(value)}
         >
-          <Icon name={copied ? 'icon-status-checkmark' : 'icon-actions-copy'} />
+          <Icon name={copied ? 'status-checkmark' : 'actions-copy'} />
         </Action>
       </div>
     )

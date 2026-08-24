@@ -31,7 +31,7 @@ const GameModal = ({ data, user }) => {
           classes={['secondary', 'md', 'square']}
           onChange={closeModal}
         >
-          <Icon name={'icon-navigation-close'} />
+          <Icon name="navigation-close" />
         </Action>
       </div>
       <div className={style.content}>

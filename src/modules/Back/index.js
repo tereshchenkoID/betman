@@ -20,7 +20,7 @@ const Back = ({ url = null }) => {
       classes={['secondary', 'md', 'square']}
       placeholder="Back"
     >
-      <Icon name="icon-navigation-chevron-left" />
+      <Icon name="navigation-chevron-left" />
     </Action>
   )
 }

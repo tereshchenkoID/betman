@@ -79,7 +79,7 @@ const EmailVerification = ({
         {
           filter.profile.isVerifyEmail === "2" &&
           <div className={style.verify}>
-            <Icon name={'icon-status-checkmark'}/>
+            <Icon name="status-checkmark" />
             {t('verify_status.verified')}
           </div>
         }
@@ -96,7 +96,7 @@ const EmailVerification = ({
             classes={['primary', 'lg',  style.action]}
             onChange={() => handleSubmit(true)}
           >
-            <Icon name={'icon-time-arrow-clockwise'}/>
+            <Icon name="time-arrow-clockwise" />
           </Action>
         }
       </div>

@@ -61,7 +61,7 @@ const Action = forwardRef(({
       {
         isLoading &&
         <span className={style.spinner}>
-          <Icon size="lg" name="icon-games-spinner" />
+          <Icon name="games-spinner"  size="lg" />
         </span>
       }
     </Tag>

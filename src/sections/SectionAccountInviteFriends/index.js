@@ -66,7 +66,7 @@ const SectionAccountInviteFriends = ({ user, data }) => {
               classes={['primary', 'lg', 'square']}
               onChange={() => copy(data)}
             >
-              <Icon name={copied ? 'icon-status-checkmark' : 'icon-actions-copy'} />
+              <Icon name={copied ? 'status-checkmark' : 'actions-copy'} />
             </Action>
           </div>
         </div>

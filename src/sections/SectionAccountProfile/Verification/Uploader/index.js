@@ -71,7 +71,7 @@ const Uploader = ({
     >
       <div className={style.upload}>
         <label htmlFor={id} className={style.label}>
-          <Icon name="icon-navigation-add" />
+          <Icon name="navigation-add" />
           <span>{t('upload_file')}</span>
         </label>
         <input
@@ -109,7 +109,7 @@ const Uploader = ({
                   classes={['primary', 'md', 'square', style.close]}
                   onChange={() => handleRemove(idx)}
                 >
-                  <Icon name={'icon-navigation-close'} />
+                  <Icon name="navigation-close" />
                 </Action>
               </div>
               <Select

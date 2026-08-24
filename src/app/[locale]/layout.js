@@ -1,11 +1,10 @@
 import Script from 'next/script'
-import localFont from 'next/font/local'
 import { getMessages } from 'next-intl/server'
 import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleTagManager } from '@next/third-parties/google'
-import { preload, preconnect } from 'react-dom'
+import { preconnect } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import clsx from 'clsx'
 
@@ -37,12 +36,6 @@ const barlowCondensed = Oswald({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-alt',
-})
-
-const iconography = localFont({
-  src: '../../../public/fonts/iconography.woff2',
-  display: 'swap',
-  variable: '--font-iconography',
 })
 
 export const metadata = {
@@ -84,7 +77,6 @@ export default async function RootLayout({ children, params }) {
     <body
       className={
         clsx(
-          iconography.variable,
           barlowCondensed.variable,
           roboto.variable,
         )

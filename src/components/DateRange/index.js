@@ -168,7 +168,7 @@ const DateRange = ({
       >
         <label className={style.label}>{placeholder}</label>
         <span>{renderDisplayValue()}</span>
-        <Icon name="icon-navigation-chevron-down" />
+        <Icon name="navigation-chevron-down" />
       </button>
 
       {
@@ -189,7 +189,7 @@ const DateRange = ({
               aria-label="Change month"
               onClick={() => changeMonth(-1)}
             >
-              <Icon name="icon-navigation-chevron-left" />
+              <Icon name="navigation-chevron-left" />
             </button>
             <span>
               {currentMonth.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}
@@ -199,7 +199,7 @@ const DateRange = ({
               aria-label="Change month"
               onClick={() => changeMonth(1)}
             >
-              <Icon name="icon-navigation-chevron-right" />
+              <Icon name="navigation-chevron-right" />
             </button>
           </div>
 

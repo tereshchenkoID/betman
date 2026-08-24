@@ -23,7 +23,7 @@ const Voucher = ({ user, data, isPaid }) => {
               classes={['primary', 'square', 'sm']}
               onChange={() => copy(data.code)}
             >
-              <Icon name={copied ? 'icon-status-checkmark' : 'icon-actions-copy'} />
+              <Icon name={copied ? 'status-checkmark' : 'actions-copy'} />
             </Action>
           </strong>
           <strong className={style.amount}>

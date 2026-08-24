@@ -173,10 +173,7 @@ const SectionRegistration = ({
                 {
                   step > idx
                   ?
-                    <Icon
-                      size={'lg'}
-                      name={'icon-status-checkmark'}
-                    />
+                    <Icon name="status-checkmark" size="lg" />
                   :
                     idx + 1
                 }

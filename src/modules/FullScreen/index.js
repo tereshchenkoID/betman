@@ -28,7 +28,7 @@ const FullScreen = () => {
       classes={['secondary', 'md', 'circle']}
       onChange={handleToggle}
     >
-      <Icon name={toggle ? 'icon-toggle-minimize' : 'icon-toggle-maximize'} />
+      <Icon name={toggle ? 'toggle-minimize' : 'toggle-maximize'} />
     </Action>
   )
 }

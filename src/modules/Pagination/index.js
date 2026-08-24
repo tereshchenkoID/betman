@@ -72,7 +72,7 @@ const Pagination = ({ meta, classes = [] }) => {
         classes={['primary', 'square', 'md']}
         isDisabled={page <= 1}
       >
-        <Icon name={'icon-navigation-chevron-left'} />
+        <Icon name="navigation-chevron-left" />
       </Action>
       {
         pages.map((el, idx) =>
@@ -98,7 +98,7 @@ const Pagination = ({ meta, classes = [] }) => {
         classes={['primary', 'square', 'md']}
         isDisabled={page >= totalPages}
       >
-        <Icon name={'icon-navigation-chevron-right'} />
+        <Icon name="navigation-chevron-right" />
       </Action>
     </div>
   )

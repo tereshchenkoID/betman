@@ -46,7 +46,7 @@ const SectionCategories = ({
         aria-label={t('search')}
         onClick={() => openModal('search', { user }, { title: t('search'), size: 'lg' })}
       >
-        <Icon name="icon-navigation-search" />
+        <Icon name="navigation-search" />
         {t('search')}
       </button>
 
@@ -55,7 +55,7 @@ const SectionCategories = ({
         className={style.toggle}
         aria-label={t('all_providers')}
       >
-        <Icon name="icon-games-gambling" />
+        <Icon name="games-gambling" />
         {t('all_providers')}
       </Link>
 

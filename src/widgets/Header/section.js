@@ -90,7 +90,7 @@ const Section = ({ user, settings }) => {
                 openModal('search', { user }, { title: t('search'), size: 'lg' })
               }
             >
-              <Icon name={'icon-navigation-search'} />
+              <Icon name="navigation-search" />
             </Action>
             {
               user?.id
@@ -100,7 +100,7 @@ const Section = ({ user, settings }) => {
                       classes={['secondary', 'md', 'circle']}
                       onChange={() => setToggle(!toggle)}
                     >
-                      <Icon name={'icon-human-avatar'} />
+                      <Icon name="human-avatar" />
                     </Action>
                     {
                       user?.level !== '3' &&

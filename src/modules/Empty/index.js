@@ -11,10 +11,7 @@ const Empty = () => {
 
   return (
     <div className={style.block}>
-      <Icon
-        classes={[style.picture]}
-        name={'icon-navigation-search'}
-      />
+      <Icon name="navigation-search" classes={[style.picture]} />
       <p className={style.title}>{t('empty')}</p>
       <p className={style.subtitle}>{t('notification.empty')}</p>
     </div>

@@ -48,7 +48,7 @@ const Modal = ({
                   classes={['secondary', 'sm', 'square', style.close]}
                   onChange={onClose}
                 >
-                  <Icon name="icon-navigation-close" />
+                  <Icon name="navigation-close" />
                 </Action>
               }
             </div>
