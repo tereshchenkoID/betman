@@ -82,10 +82,10 @@ export default async function RootLayout({ children, params }) {
         )
       }
     >
-    <Script
-      src="https://telegram.org/js/telegram-web-app.js"
-      strategy="beforeInteractive"
-    />
+    {/*<Script*/}
+    {/*  src="https://telegram.org/js/telegram-web-app.js"*/}
+    {/*  strategy="beforeInteractive"*/}
+    {/*/>*/}
     <NextIntlClientProvider
       messages={messages}
       locale={locale}
