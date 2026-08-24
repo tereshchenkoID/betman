@@ -12,10 +12,6 @@ const SectionPage = ({ data, meta }) => {
       {
         data?.map((el, idx) =>
           <Fragment key={idx}>
-            {
-              el?.title &&
-              <h1>{el?.title}</h1>
-            }
             <Inner data={el?.description}/>
           </Fragment>
         )
