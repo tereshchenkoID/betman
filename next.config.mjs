@@ -15,6 +15,7 @@ const nextConfig = {
 
   // --- Experimental Settings ---
   experimental: {
+    optimizeCss: true,
     optimizePackageImports: ['clsx', 'lodash-es', 'react-toastify'],
     serverActions: {
       bodySizeLimit: '10mb',

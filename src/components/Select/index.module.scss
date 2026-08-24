@@ -18,7 +18,7 @@
     .selected {
       background-color: var(--primary);
 
-      i {
+      svg {
         transform: rotateZ(180deg);
       }
     }
@@ -79,7 +79,7 @@
   border-radius: var(--border-radius-6);
   border-bottom: rem(2px) solid var(--primary);
 
-  i {
+  svg {
     @include transition;
 
     color: var(--text-for-material);

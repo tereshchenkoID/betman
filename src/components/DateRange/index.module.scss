@@ -19,7 +19,7 @@
     .selected {
       background-color: var(--primary);
 
-      i {
+      svg {
         transform: rotateZ(180deg);
       }
     }
@@ -81,7 +81,7 @@
   border-bottom: rem(2px) solid var(--primary);
   white-space: nowrap;
 
-  i {
+  svg {
     @include transition;
 
     color: var(--text-for-material);

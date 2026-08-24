@@ -93,7 +93,8 @@
     "done": "Completed",
     "new": "New",
     "pending": "Pending",
-    "expired": "Expired"
+    "expired": "Expired",
+    "not_logged": "Not logged"
   },
   "footer": {
     "legal_text_1": "Access for persons under 18 years of age is strictly prohibited.",

@@ -65,7 +65,7 @@ const CryptoModal = () => {
                         <h5>{el?.name}</h5>
                         <Action
                           tag={'p'}
-                          classes={['primary', 'md', 'wide']}
+                          classes={['tertiary', 'md', 'wide']}
                           placeholder={el?.bonus}
                         />
                       </div>

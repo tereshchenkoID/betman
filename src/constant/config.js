@@ -126,6 +126,7 @@ export const TASK_STATUS = {
   1: 'done',
   2: 'pending',
   3: 'expired',
+  4: 'not_logged'
 }
 
 export const VOUCHER_STATUS = {
