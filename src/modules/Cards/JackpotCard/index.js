@@ -4,7 +4,7 @@ import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { startTransition, useEffect, useState } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -54,7 +54,7 @@ const JackpotCard = ({
   return (
     <article
       className={
-        classNames(
+        clsx(
           style.block,
           classes?.map(el => style[el] || el)
         )

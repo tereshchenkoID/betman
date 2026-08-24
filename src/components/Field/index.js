@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
 import Icon from '@/components/Icon'
@@ -58,7 +58,7 @@ const Field = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,
@@ -121,7 +121,7 @@ const Field = ({
         showError &&
         <p
           className={
-            classNames(
+            clsx(
               style.message,
               style.error
             )
@@ -134,7 +134,7 @@ const Field = ({
         showSuccess &&
         <p
           className={
-            classNames(
+            clsx(
               style.message,
               style.success
             )

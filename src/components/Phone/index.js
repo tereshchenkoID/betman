@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl'
 import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import PhoneInput from 'react-phone-input-2'
 
 import { runRules } from '@/helpers/rules'
@@ -111,7 +111,7 @@ const Phone = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,
@@ -142,7 +142,7 @@ const Phone = ({
             onFocus: () => setFocused(true),
           }}
           containerClass={
-            classNames(
+            clsx(
               style['react-tel-input'],
               {
                 [style.filled]: isFilled,

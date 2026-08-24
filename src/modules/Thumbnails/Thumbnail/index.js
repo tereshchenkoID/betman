@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -27,7 +27,7 @@ const Thumbnail = ({
   return (
     <article
       className={
-        classNames(
+        clsx(
           style.block,
           isEmpty && style.empty,
           isNumeric && style.numeric

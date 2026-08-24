@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -23,7 +23,7 @@ const Modal = ({
       aria-labelledby={!isTiny ? titleId : undefined}
       aria-label={'Dialog'}
       className={
-        classNames(
+        clsx(
           style.block,
           style[size],
           isTiny && style.tiny,

@@ -7,7 +7,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { preload, preconnect } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { ModalProvider } from '@/context/ModalContext'
 import { WebSocketProvider } from '@/context/WebSocketContext'
@@ -83,7 +83,7 @@ export default async function RootLayout({ children, params }) {
     <GoogleTagManager gtmId="GTM-PK9TK23W" />
     <body
       className={
-        classNames(
+        clsx(
           iconography.variable,
           barlowCondensed.variable,
           roboto.variable,

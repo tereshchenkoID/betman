@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { usePathname } from '@/i18n/routing'
 import { Link } from '@/i18n/routing'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
@@ -62,7 +62,7 @@ const Section = ({
                   href={el.url}
                   aria-label={t(el.text)}
                   className={
-                    classNames(
+                    clsx(
                       style.link,
                       {
                         [style.active]: isActive(pathname, el.url)

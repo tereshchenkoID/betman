@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -148,7 +148,7 @@ const Slider = forwardRef(({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           style[navigation.size],
           className
@@ -173,7 +173,7 @@ const Slider = forwardRef(({
             navigation.isVisible &&
             <div
               className={
-                classNames(
+                clsx(
                   style.navigation,
                   style[navigation.position]
                 )
@@ -208,7 +208,7 @@ const Slider = forwardRef(({
                 <div
                   key={idx}
                   className={
-                    classNames(
+                    clsx(
                       style.slide,
                       slideClassName && slideClassName
                     )
@@ -229,7 +229,7 @@ const Slider = forwardRef(({
               key={idx}
               onClick={() => instanceRef.current?.moveToIdx(idx)}
               className={
-                classNames(
+                clsx(
                   style.dot,
                   currentSlide === idx && style.active
                 )

@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -21,7 +21,7 @@ const Games = ({ user, data }) => {
       <div className={style.scroll}>
         <div
           className={
-            classNames(
+            clsx(
               style.row,
               style.first
             )
@@ -38,7 +38,7 @@ const Games = ({ user, data }) => {
             <div
               key={idx}
               className={
-                classNames(
+                clsx(
                   style.row,
                   style[el?.diff[0] === '+' ? 'green' : 'red']
                 )

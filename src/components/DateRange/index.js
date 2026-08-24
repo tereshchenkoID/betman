@@ -1,6 +1,6 @@
 import { useState, useRef, useMemo, useEffect, startTransition } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import Icon from '@/components/Icon'
@@ -149,12 +149,12 @@ const DateRange = ({
     <div
       ref={blockRef}
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,
             [style.active]: toggle,
-            [style.chosen]: Boolean(value.from),
+            [style.chosen]: value.from,
           },
           classes && classes.map((el) => style[el] || el)
         )
@@ -174,7 +174,16 @@ const DateRange = ({
       {
         toggle &&
         <div className={style.dropdown}>
-          <div className={classNames(style.header, { [style.current]: isCurrentMonth })}>
+          <div
+            className={
+              clsx(
+                style.header,
+                {
+                  [style.current]: isCurrentMonth
+                }
+              )
+            }
+          >
             <button
               type="button"
               aria-label="Change month"
@@ -214,7 +223,7 @@ const DateRange = ({
                       key={day.getTime()}
                       type="button"
                       className={
-                        classNames(
+                        clsx(
                           style.day,
                           {
                             [style.today]: day.toDateString() === isToday,

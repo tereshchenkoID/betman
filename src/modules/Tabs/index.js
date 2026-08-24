@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Status from '@/modules/Status'
 
@@ -18,7 +18,7 @@ const Tabs = ({ options, data, action }) => {
               key={idx}
               type="button"
               className={
-                classNames(
+                clsx(
                   style.option,
                   data.value === el.value && style.active,
                 )

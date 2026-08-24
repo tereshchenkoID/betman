@@ -1,6 +1,6 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { VOUCHER_STATUS, PAYMENT_TYPE } from '@/constant/config'
 import { toast } from '@/utils/toast'
@@ -63,7 +63,7 @@ const Row = ({ data }) => {
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.row,
           style[VOUCHER_STATUS[data?.status]],
         )

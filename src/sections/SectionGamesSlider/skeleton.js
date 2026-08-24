@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Preload from '@/components/Preload'
 
@@ -10,7 +10,7 @@ const Skeleton = () => {
       <Preload
         count={1}
         className={
-          classNames(
+          clsx(
             style.skeleton,
             style.top
           )
@@ -19,7 +19,7 @@ const Skeleton = () => {
       <Preload
         count={7}
         className={
-          classNames(
+          clsx(
             style.skeleton,
             style.bottom
           )

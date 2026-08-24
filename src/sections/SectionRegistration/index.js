@@ -5,7 +5,7 @@ import { useRouter } from '@/i18n/routing'
 import { useSearchParams } from 'next/navigation'
 import { startTransition, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -163,7 +163,7 @@ const SectionRegistration = ({
               <div
                 key={idx}
                 className={
-                  classNames(
+                  clsx(
                     style.step,
                     step === idx && style.active,
                     step > idx && style.completed

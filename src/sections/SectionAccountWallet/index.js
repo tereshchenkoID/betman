@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useEffect, useTransition } from 'react'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { ROUTES_USER } from '@/constant/config'
 
@@ -63,7 +63,7 @@ const SectionAccountWallet = ({ user, children }) => {
               key={idx}
               onClick={(e) => handleMethod(e, el)}
               className={
-                classNames(
+                clsx(
                   style.link,
                   pathSegments.includes(el.alias) && style.active
                 )

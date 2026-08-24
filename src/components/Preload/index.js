@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -9,7 +9,7 @@ const Preload = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           className
         )

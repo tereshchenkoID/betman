@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing'
 import { forwardRef } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Icon from '@/components/Icon'
 
@@ -24,7 +24,7 @@ const Action = forwardRef(({
 
   const props = {
     ref,
-    className: classNames(
+    className: clsx(
       style.block,
       {
         [style.active]: isActive,

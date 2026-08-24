@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Row from './Row'
 
@@ -13,7 +13,7 @@ const Payment = ({ user, data }) => {
       <div className={style.scroll}>
         <div
           className={
-            classNames(
+            clsx(
               style.row,
               style.first
             )

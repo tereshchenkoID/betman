@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { TASK_STATUS } from '@/constant/config'
 
@@ -19,7 +19,7 @@ const QuestCard = ({ data }) => {
   return (
     <article
       className={
-        classNames(
+        clsx(
           style.block,
           status !== '0' && style.disable
         )

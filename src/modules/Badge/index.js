@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing'
 
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { useModal } from '@/context/ModalContext'
 
@@ -20,7 +20,7 @@ const Badge = ({
         <Link
           href={`/${link.join('/')}`}
           className={
-            classNames(
+            clsx(
               style.block,
               classes?.map(el => style[el] || el),
             )
@@ -33,7 +33,7 @@ const Badge = ({
       :
         <p
           className={
-            classNames(
+            clsx(
               style.block,
               classes?.map(el => style[el] || el),
             )

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
@@ -111,7 +111,7 @@ const SectionVerification = ({ user }) => {
       return (
         <div
           className={
-            classNames(
+            clsx(
               style.badge,
               style[`badge-${user?.profile?.isVerify}`]
             )
@@ -164,7 +164,7 @@ const SectionVerification = ({ user }) => {
               <article
                 key={el.level}
                 className={
-                  classNames(
+                  clsx(
                     style.level,
                     cardLevel === level && style.active
                   )

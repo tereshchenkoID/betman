@@ -15,7 +15,7 @@ const nextConfig = {
 
   // --- Experimental Settings ---
   experimental: {
-    optimizePackageImports: ['classnames', 'react-toastify'],
+    optimizePackageImports: ['clsx', 'react-toastify'],
     serverActions: {
       bodySizeLimit: '10mb',
     },

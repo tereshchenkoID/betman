@@ -1,6 +1,6 @@
 import {startTransition, useEffect, useState} from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -63,7 +63,7 @@ const Uploader = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           blobs.length > 0 && style.active
         )

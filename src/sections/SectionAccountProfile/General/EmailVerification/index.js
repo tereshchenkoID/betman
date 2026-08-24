@@ -1,6 +1,6 @@
 import { startTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { toast } from '@/utils/toast'
 import { action } from '../action.js'
@@ -49,7 +49,7 @@ const EmailVerification = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.row,
           style[`count-${filter.profile.isVerifyEmail}`]
         )

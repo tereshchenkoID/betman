@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Action from '@/components/Action'
 import Inner from '@/modules/Inner'
@@ -22,7 +22,7 @@ const Section = ({ data, meta }) => {
           <div
             key={idx}
             className={
-              classNames(
+              clsx(
                 style.content,
                 !toggle && style.collapsed
               )

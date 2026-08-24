@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { startTransition } from 'react'
 import { Link, useRouter } from '@/i18n/routing'
 import Image from 'next/image'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import {
   NAVIGATION,
@@ -84,7 +84,7 @@ const AccountMenu = ({ user, setToggle }) => {
           <Link
             href={ROUTES_USER.verification.url}
             className={
-              classNames(
+              clsx(
                 style.level,
                 style[`level-${user?.level}`]
               )
@@ -132,7 +132,7 @@ const AccountMenu = ({ user, setToggle }) => {
           <Link
             href={ROUTES_USER.bonuses.url}
             className={
-              classNames(
+              clsx(
                 style.info,
                 style.column
               )

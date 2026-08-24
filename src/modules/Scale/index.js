@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -12,7 +12,7 @@ const Scale = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           isInverted && style.inverted
         )

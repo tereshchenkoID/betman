@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -69,7 +69,7 @@ const SectionWrapper = ({ data }) => {
   return (
     <section
       className={
-        classNames(
+        clsx(
           style.block,
           style[data?.type]
         )

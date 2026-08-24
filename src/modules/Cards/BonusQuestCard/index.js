@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { ROUTES_USER } from '@/constant/config'
 
@@ -18,7 +18,7 @@ const BonusQuestCard = ({ user, data }) => {
   return (
     <article
       className={
-        classNames(
+        clsx(
           style.block,
           status !== '0' && style.disable
         )

@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, Fragment } from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -75,7 +75,7 @@ const Section = ({
   return (
     <Slider
       className={
-        classNames(
+        clsx(
           style.block,
           mock?.isNumeric === '1' && style.numeric
         )

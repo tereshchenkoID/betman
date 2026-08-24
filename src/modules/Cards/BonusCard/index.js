@@ -1,6 +1,6 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { BONUS_STATUS } from '@/constant/config'
 
@@ -42,7 +42,7 @@ const BonusCard = ({ settings, data }) => {
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           data?.enable === '0' && style.disabled
         )

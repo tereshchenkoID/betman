@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { runRules } from '@/helpers/rules'
@@ -61,7 +61,7 @@ const Select = ({
     <div
       ref={blockRef}
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,

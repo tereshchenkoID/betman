@@ -1,6 +1,6 @@
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from '@/i18n/routing'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -61,7 +61,7 @@ const Pagination = ({ meta, classes = [] }) => {
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           classes?.map((el) => style[el] || el)
         )

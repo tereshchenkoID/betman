@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -13,7 +13,7 @@ const Toggle = ({
   return (
     <label
       className={
-        classNames(
+        clsx(
           style.block,
           {
             [style.disabled]: isDisabled,

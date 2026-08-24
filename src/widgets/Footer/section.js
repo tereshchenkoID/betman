@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -23,7 +23,7 @@ const Section = ({
   return (
     <footer
       className={
-        classNames(
+        clsx(
           style.block,
           !user?.id && style.auth
         )

@@ -1,5 +1,5 @@
 import { Link, usePathname } from '@/i18n/routing'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -15,7 +15,7 @@ const CategoryCard = ({ data }) => {
     <Link
       href={data.link || `${NAVIGATION.games_hall.url}/${data.slug}`}
       className={
-        classNames(
+        clsx(
           style.block,
           isActive && style.active
         )

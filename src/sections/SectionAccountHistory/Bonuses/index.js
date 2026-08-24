@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import { BONUS_STATUS } from '@/constant/config'
 
@@ -19,7 +19,7 @@ const Bonuses = ({ user, data }) => {
       <div className={style.scroll}>
         <div
           className={
-            classNames(
+            clsx(
               style.row,
               style.first
             )

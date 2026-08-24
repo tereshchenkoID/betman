@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -9,7 +9,7 @@ const Status = ({
   return (
     <span
       className={
-        classNames(
+        clsx(
           style.block,
           style[`block-${data}`],
           classes?.map(el => style[el] || el),

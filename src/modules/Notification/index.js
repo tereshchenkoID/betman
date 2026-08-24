@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -11,7 +11,7 @@ const Notification = ({
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           style[type],
           classes

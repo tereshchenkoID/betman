@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 import style from './index.module.scss'
 
@@ -10,7 +10,7 @@ const Top = ({ size, count }) => {
   return (
     <div
       className={
-        classNames(
+        clsx(
           style.block,
           style[size]
         )
