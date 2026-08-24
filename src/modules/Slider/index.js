@@ -126,7 +126,7 @@ const Slider = forwardRef(({
     {
       initial: 0,
       loop: marquee ? true : (options.loop || false),
-      mode: 'free',
+      mode: 'snap',
       selector: ':scope > .keen-slider__slide, :scope > div',
       slides: { perView: 'auto', origin: 'auto' },
       detailsChanged: updateState,
