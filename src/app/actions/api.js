@@ -6,6 +6,15 @@ import { routing } from '@/i18n/routing'
 
 const PROTECTED = ['user/', 'profile/'];
 
+const getClientIp = (headersList) => {
+  const forwarded = headersList.get('x-forwarded-for')
+  if (forwarded) {
+    return forwarded.split(',')[0].trim()
+  }
+
+  return headersList.get('x-real-ip') || null
+}
+
 export const apiRequest = async (endpoint, {
   method = 'GET',
   params = {},
@@ -17,12 +26,14 @@ export const apiRequest = async (endpoint, {
   const token = cookieStore.get('NEXT_SID')?.value
   const headersList = await headers()
   let locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
+  const clientIp = getClientIp(headersList)
 
   const options = {
     method,
     cache,
     headers: {
       'Accept-Language': locale,
+      ...(clientIp && { 'X-Forwarded-For': clientIp, 'X-Real-IP': clientIp }),
     },
     next
   };
