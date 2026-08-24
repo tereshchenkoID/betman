@@ -59,7 +59,7 @@
 
 .item {
   @include flex(center, center);
-  @include transition(all);
+  @include transition;
   @include size(rem(20px));
 
   flex-shrink: 0;
@@ -67,8 +67,6 @@
   border-radius: var(--border-radius-4);
 
   svg {
-    @include transition;
-
     opacity: 0;
   }
 }

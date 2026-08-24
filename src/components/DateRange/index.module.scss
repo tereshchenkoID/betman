@@ -82,8 +82,6 @@
   white-space: nowrap;
 
   svg {
-    @include transition;
-
     color: var(--text-for-material);
   }
 }

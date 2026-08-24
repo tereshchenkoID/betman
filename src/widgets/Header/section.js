@@ -3,9 +3,8 @@
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
-import Image from 'next/image'
 
-import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+import { ROUTES_USER } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
@@ -19,6 +18,7 @@ import Languages from '@/modules/Languages'
 import Account from '@/modules/Account'
 import AccountMenu from '@/modules/AccountMenu'
 import Status from '@/modules/Status'
+import Logo from '@/modules/Logo'
 
 import style from './index.module.scss'
 
@@ -40,22 +40,7 @@ const Section = ({ user, settings }) => {
   return (
     <header className={style.block}>
       <div className={style.container}>
-        <Link
-          href={NAVIGATION.home.url}
-          rel="noreferrer"
-          className={style.logo}
-          aria-label="Logo"
-        >
-          <Image
-            src="/images/logo-desktop.svg"
-            width={145}
-            height={36}
-            alt="Logo"
-            loading={'eager'}
-            unoptimized
-            priority
-          />
-        </Link>
+        <Logo />
 
         <div
           ref={blockRef}

@@ -14,10 +14,10 @@ import { FavoritesProvider } from '@/context/FavoritesContext'
 
 import { getFavorites, getCachedUser } from '@/app/actions/static'
 
-import Toastify from '@/components/Toastify'
+import Toastify from '@/widgets/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
-import Telegram from '@/modules/Telegram'
 import WSUpdater from '@/modules/WSUpdater'
+import Telegram from '@/modules/Telegram'
 import SessionHandler from '@/modules/SessionHandler'
 
 import './layout.scss'
@@ -28,6 +28,7 @@ const roboto = Roboto({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family',
+  preload: true,
 })
 
 const barlowCondensed = Oswald({
@@ -36,29 +37,24 @@ const barlowCondensed = Oswald({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-alt',
+  preload: false,
 })
 
 export const metadata = {
   icons: {
     icon: [
-      { url: '/icons/logo32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icons/logo64.png', sizes: '64x64', type: 'image/png' },
-      { url: '/icons/logo96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icons/logo.svg', type: 'image/svg+xml' },
       { url: '/icons/logo192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
-      { url: '/icons/logo120.png', sizes: '120x120' },
-      { url: '/icons/logo152.png', sizes: '152x152' },
-      { url: '/icons/logo167.png', sizes: '167x167' },
-      { url: '/icons/logo180.png', sizes: '180x180' },
-      { url: '/icons/logo192.png', sizes: '192x192' },
+      { url: '/icons/logo180.png', sizes: '180x180', type: 'image/png' },
     ],
   },
 }
 
 export default async function RootLayout({ children, params }) {
   preconnect('https://www.googletagmanager.com')
-  preconnect('https://telegram.org')
 
   const { locale } = await params
   const [

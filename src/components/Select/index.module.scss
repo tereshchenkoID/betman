@@ -80,8 +80,6 @@
   border-bottom: rem(2px) solid var(--primary);
 
   svg {
-    @include transition;
-
     color: var(--text-for-material);
   }
 }

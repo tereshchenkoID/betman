@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 import { NAVIGATION } from '@/constant/config'
 
 import { useGamePlay } from '@/hooks/useGamePlay'
+import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -14,6 +15,7 @@ import style from './index.module.scss'
 const GameModal = ({ data, user }) => {
   const t = useTranslations()
   const { handlePlay, handleDemo } = useGamePlay(user)
+  const { closeModal } = useModal()
 
   return (
     <div

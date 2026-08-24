@@ -15,13 +15,6 @@
   }
 }
 
-.logo {
-  @include size(rem(145px), rem(36px));
-
-  display: block;
-  flex-shrink: 0;
-}
-
 .container {
   @include flex(space-between, center);
 

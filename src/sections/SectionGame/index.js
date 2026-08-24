@@ -2,14 +2,14 @@
 
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
+import { Link, useRouter } from '@/i18n/routing'
+import Image from 'next/image'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import Logo from '@/modules/Logo'
 import FullScreen from '@/modules/FullScreen'
 import Favourite from '@/modules/Favorite'
 import LoginModal from '@/widgets/Modals/LoginModal'
@@ -56,7 +56,22 @@ const SectionGame = ({
         <div className={style.container}>
           <div className={style.options}>
             <Back />
-            <Logo />
+            <Link
+              href={NAVIGATION.home.url}
+              rel="noreferrer"
+              className={style.logo}
+              aria-label="Logo"
+            >
+              <Image
+                src="/images/logo-desktop.svg"
+                width={140}
+                height={34}
+                alt="Logo"
+                loading="eager"
+                unoptimized
+                priority
+              />
+            </Link>
           </div>
           <div className={style.options}>
             {

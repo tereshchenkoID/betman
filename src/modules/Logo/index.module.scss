@@ -1,12 +1,6 @@
 .block {
-  --logo-size: 1.875rem; // 30px
-
-  @include size(var(--logo-size), auto);
+  @include size(rem(145px), rem(36px));
 
   display: block;
   flex-shrink: 0;
-
-  @include desk-s {
-    --logo-size: 9.0625rem; // 145px
-  }
 }

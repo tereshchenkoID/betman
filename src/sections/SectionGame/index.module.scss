@@ -86,3 +86,19 @@
   text-align: center;
   color: var(--text-for-material);
 }
+
+.logo {
+  --logo-size: 2.5rem; // 40px
+
+  @include size(var(--logo-size), auto);
+
+  overflow: hidden;
+
+  @include tab-s {
+    --logo-size: 8.75rem; // 140px
+  }
+
+  img {
+    @include size(rem(140px), rem(34px));
+  }
+}

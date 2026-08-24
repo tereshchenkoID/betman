@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 
 import { NAVIGATION } from '@/constant/config'
@@ -12,16 +13,15 @@ const Logo = () => {
       className={style.block}
       aria-label="Logo"
     >
-      <picture>
-        <source media="(max-width: 1279px)" srcSet={'/images/logo-mobile.svg'} />
-        <img
-          srcSet={'/images/logo-desktop.svg'}
-          width={30}
-          height={30}
-          alt={'Logo'}
-          loading={'eager'}
-        />
-      </picture>
+      <Image
+        src="/images/logo-desktop.svg"
+        width={145}
+        height={36}
+        alt="Logo"
+        loading={'eager'}
+        unoptimized
+        priority
+      />
     </Link>
   )
 }
