@@ -104,9 +104,15 @@
 
     .prev,
     .next {
+      display: none;
+
       &:disabled {
         opacity: 0;
         z-index: -1;
+      }
+
+      @include tab-s {
+        @include flex;
       }
     }
 

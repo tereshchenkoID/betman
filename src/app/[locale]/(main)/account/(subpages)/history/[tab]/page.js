@@ -26,7 +26,10 @@ export default async function History({ params, searchParams }) {
     to: to ? to : defaultRange().to,
   }
 
-  const [user, res] = await Promise.all([
+  const [
+    user,
+    res
+  ] = await Promise.all([
     getCachedUser(),
     apiRequest(`history/${tab}`, {
       method: 'POST',

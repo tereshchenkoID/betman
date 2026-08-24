@@ -40,7 +40,6 @@ const Section = ({
       ...NAVIGATION.wheels_of_fortune,
       badge: wheelsCounter || false
     },
-    NAVIGATION.jackpots,
     settings.modules?.quest === '1' && {
       ...NAVIGATION.quests,
       badge: questsCounter || false
