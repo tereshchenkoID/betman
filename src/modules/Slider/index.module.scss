@@ -21,6 +21,15 @@
     }
   }
 
+  &:has(.center) {
+    .slider {
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   &:has(.navigation) {
     .slider {
       &::before,
@@ -30,7 +39,7 @@
         position: absolute;
         inset-block: 0;
         background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
-        width: rem(35px);
+        width: rem(65px);
         opacity: 1;
         z-index: $z-index-2;
         content: '';
@@ -43,13 +52,6 @@
 
       &::after {
         inset-inline-end: rem(-1px);
-      }
-
-      @include tab-s {
-        &::before,
-        &::after {
-          width: rem(65px);
-        }
       }
     }
   }
