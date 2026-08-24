@@ -19,7 +19,7 @@
     "nextjs-toploader": "^3.9.17",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-phone-input-2": "^2.15.1",
+    "react-international-phone": "^4.8.0",
     "react-toastify": "^11.1.0"
   },
   "devDependencies": {
