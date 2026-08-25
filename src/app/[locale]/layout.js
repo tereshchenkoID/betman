@@ -4,7 +4,7 @@ import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleTagManager } from '@next/third-parties/google'
-import { preconnect } from 'react-dom'
+import { preconnect, preload } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import clsx from 'clsx'
 
@@ -54,7 +54,9 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children, params }) {
+  preload('/images/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
   preconnect('https://www.googletagmanager.com')
+  preconnect('https://telegram.org')
 
   const { locale } = await params
   const [
@@ -78,13 +80,10 @@ export default async function RootLayout({ children, params }) {
         )
       }
     >
-    {
-      user?.session_type === 'tma' &&
-      <Script
-        src="https://telegram.org/js/telegram-web-app.js"
-        strategy="beforeInteractive"
-      />
-    }
+    <Script
+      src="https://telegram.org/js/telegram-web-app.js"
+      strategy="beforeInteractive"
+    />
     <NextIntlClientProvider
       messages={messages}
       locale={locale}
