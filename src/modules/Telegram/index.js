@@ -51,12 +51,12 @@ export default function Telegram({ auth }) {
         document.documentElement.style.setProperty('--tg-viewport-height', `${height}px`)
       }
 
-      setTimeout(() => {
-        updateLayout()
-        if (tgObject.isVersionAtLeast('8.0')) {
-          tgObject.requestFullscreen()
-        }
-      }, 100)
+      // setTimeout(() => {
+      //   updateLayout()
+      //   if (tgObject.isVersionAtLeast('8.0')) {
+      //     tgObject.requestFullscreen()
+      //   }
+      // }, 100)
 
       tgObject.onEvent('viewportChanged', updateLayout)
       tgObject.onEvent('safeAreaChanged', updateLayout)
@@ -79,19 +79,27 @@ export default function Telegram({ auth }) {
     if (!isInsideTelegram) return
 
     const handleAuth = async () => {
-      try {
-        const res = await loginWithTelegramAction(user)
+      const res = await loginWithTelegramAction(initData)
 
-        if (res?.token) {
-          router.refresh()
-        }
-      } catch (e) {
-        console.error('Telegram auth error:', e)
+      if (res?.token) {
+        router.refresh()
       }
+
+      // try {
+      //   const res = await loginWithTelegramAction(initData)
+      //
+      //   if (res?.token) {
+      //     router.refresh()
+      //   }
+      // } catch (e) {
+      //   console.error('Telegram auth error:', e)
+      // }
     }
 
-    handleAuth().catch()
-  }, [initData, user, router, auth?.id])
+    handleAuth().then(() => {
+      console.log('success')
+    })
+  }, [initData, router, auth?.id])
 
   return null
 }

@@ -71,7 +71,7 @@ export const getQuests = cache(async () => {
   })
 
   const quests = res?.data || []
-  const counter = quests.filter(q => q.status === "0").length
+  const counter = quests.filter(el => el.status === "0").length
 
   return {
     quests: res,
