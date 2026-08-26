@@ -1,5 +1,6 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
+import { useRouter } from '@/i18n/navigation'
 import clsx from 'clsx'
 
 import { BONUS_STATUS } from '@/constant/config'
@@ -24,6 +25,7 @@ const STATUS_TYPE = {
 
 const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
+  const router = useRouter()
   const { openModal } = useModal()
 
   const handleChange = () => {
@@ -32,6 +34,7 @@ const BonusCard = ({ settings, data }) => {
 
       if (res?.code === '0') {
         toast.success(res.message)
+        router.refresh()
       }
       else {
         toast.error(res.error_message)
