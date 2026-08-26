@@ -1,5 +1,5 @@
 import { useSearchParams } from 'next/navigation'
-import { usePathname } from '@/i18n/routing'
+import { usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 
 import Action from '@/components/Action'

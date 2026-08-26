@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { usePathname, Link } from '@/i18n/routing'
+import { usePathname, Link } from '@/i18n/navigation'
 import clsx from 'clsx'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'

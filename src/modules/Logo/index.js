@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 import useTelegram from '@/hooks/useTelegram'
 

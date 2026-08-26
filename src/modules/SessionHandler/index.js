@@ -1,7 +1,7 @@
 'use client'
 
 import { startTransition, useEffect } from 'react'
-import { useRouter, usePathname } from '@/i18n/routing'
+import { useRouter, usePathname } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 
 import { logoutAction } from '@/app/actions/auth'

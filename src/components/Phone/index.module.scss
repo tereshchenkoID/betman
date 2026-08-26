@@ -1,13 +1,13 @@
-:global(.react-international-phone-country-selector-button__dropdown-arrow) {
-  display: none;
-}
-
-:global(.react-international-phone-country-selector) {
-  position: static;
-}
-
 .block {
   position: relative;
+
+  :global(.react-international-phone-country-selector-button__dropdown-arrow) {
+    display: none;
+  }
+
+  :global(.react-international-phone-country-selector) {
+    position: static;
+  }
 
   &.disabled {
     opacity: 0.5;

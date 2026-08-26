@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { notFound, useSearchParams } from 'next/navigation'
 import { useTransition } from 'react'
-import { useRouter, usePathname } from '@/i18n/routing'
+import { useRouter, usePathname } from '@/i18n/navigation'
 
 import { ROUTES_USER, QUANTITY } from '@/constant/config'
 

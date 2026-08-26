@@ -4,7 +4,7 @@ import { toast } from '@/utils/toast'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
 import { useValidations } from '@/hooks/useValidations'

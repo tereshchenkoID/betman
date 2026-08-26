@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 
 import { NAVIGATION } from '@/constant/config'
@@ -41,6 +41,7 @@ const ChallengeCard = ({ data }) => {
             width={320}
             height={128}
             decoding="async"
+            loading="eager"
             onError={(e) => imageError(e, false)}
             unoptimized
           />

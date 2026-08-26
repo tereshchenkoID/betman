@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 
 import clsx from 'clsx'
 

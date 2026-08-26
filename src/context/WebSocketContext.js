@@ -7,7 +7,7 @@ import {
   useCallback,
   startTransition
 } from 'react'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { consoleHelper } from '@/helpers/console'

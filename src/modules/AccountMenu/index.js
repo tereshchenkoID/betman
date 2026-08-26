@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { startTransition } from 'react'
-import { Link, useRouter } from '@/i18n/routing'
+import { Link, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
 import clsx from 'clsx'
 

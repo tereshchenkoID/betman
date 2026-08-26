@@ -1,13 +1,16 @@
 import createNextIntlPlugin from 'next-intl/plugin'
 import { fileURLToPath } from 'url'
 import path from 'path'
+import bundleAnalyzer from '@next/bundle-analyzer'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const withNextIntl = createNextIntlPlugin(
-  './src/i18n/request.js'
-)
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.js')
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,7 +19,15 @@ const nextConfig = {
   // --- Experimental Settings ---
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['clsx', 'lodash-es', 'react-toastify'],
+    optimizePackageImports: [
+      'next-intl',
+      'use-intl',
+      'react-toastify',
+      '@next/third-parties',
+      'clsx',
+      'lodash-es',
+      'react-international-phone',
+    ],
     serverActions: {
       bodySizeLimit: '10mb',
     },
@@ -54,4 +65,8 @@ const nextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+const configWithIntl = withNextIntl(nextConfig)
+
+export default process.env.ANALYZE === 'true'
+  ? withBundleAnalyzer(configWithIntl)
+  : configWithIntl

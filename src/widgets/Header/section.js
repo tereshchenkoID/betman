@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 
 import { ROUTES_USER } from '@/constant/config'

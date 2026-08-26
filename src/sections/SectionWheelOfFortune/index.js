@@ -1,14 +1,20 @@
 'use client'
 
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
 import Inner from '@/modules/Inner'
 import Title from '@/modules/Title'
-import Wheel from './Wheel'
 import Countdown from './Countdown'
+import Preload from '@/components/Preload'
 
 import style from './index.module.scss'
+
+const Wheel = dynamic(() => import('./Wheel'), {
+  ssr: false,
+  loading: () =>  <Preload count={1} className={style.skeleton} />,
+})
 
 const SectionWheelOfFortune = ({
   data,

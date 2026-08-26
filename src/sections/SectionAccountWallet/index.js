@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useEffect, useTransition } from 'react'
-import { Link, usePathname, useRouter } from '@/i18n/routing'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import clsx from 'clsx'
 
 import { ROUTES_USER } from '@/constant/config'

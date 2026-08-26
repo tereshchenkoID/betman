@@ -1,7 +1,7 @@
 'use client'
 
 import { useTransition } from 'react'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 

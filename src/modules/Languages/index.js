@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { useLocale } from 'next-intl'
-import { usePathname, useRouter } from '@/i18n/routing'
+import { usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'

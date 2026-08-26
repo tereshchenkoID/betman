@@ -2,7 +2,7 @@
 
 import { useTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 
 import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 

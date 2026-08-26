@@ -1,4 +1,4 @@
-import { Link } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 import { forwardRef } from 'react'
 import clsx from 'clsx'
 

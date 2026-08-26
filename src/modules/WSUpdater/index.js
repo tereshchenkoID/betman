@@ -2,7 +2,7 @@
 
 import { useEffect, startTransition } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from '@/i18n/navigation'
 
 import { useWebSocketContext } from '@/context/WebSocketContext'
 import { useModal } from '@/context/ModalContext'

@@ -1,4 +1,4 @@
-import { Link, usePathname } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
