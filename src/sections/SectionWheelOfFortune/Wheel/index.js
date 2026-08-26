@@ -80,7 +80,6 @@ const Wheel = ({ mock, user, wheelsRound }) => {
   const canvasRef = useRef(null)
   const timerRef = useRef(null)
   const rotationRef = useRef(0)
-  const drawCanvasFrameRef = useRef(null)
 
   const [spinning, setSpinning] = useState(false)
 
@@ -95,8 +94,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
     [spinning, wheelsCounter, angleStep]
   )
 
-  // Держим актуальную функцию отрисовки в Ref (без useCallback и оверхеда React)
-  drawCanvasFrameRef.current = (currentRotation) => {
+  const drawCanvasFrame = (currentRotation) => {
     const canvas = canvasRef.current
     if (!canvas || count === 0) return
 
@@ -187,10 +185,10 @@ const Wheel = ({ mock, user, wheelsRound }) => {
     ctx.restore()
   }
 
-  // Первоначальный рендер при загрузке данных и кастомных шрифтов
+  // Первоначальный рендер при готовности шрифтов
   useEffect(() => {
     document.fonts.ready.then(() => {
-      drawCanvasFrameRef.current?.(rotationRef.current)
+      drawCanvasFrame(rotationRef.current)
     })
   }, [mock, count, angleStep])
 
@@ -241,7 +239,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
       const currentRot = startRotation + (finalRotation - startRotation) * easeOut
 
       rotationRef.current = currentRot
-      drawCanvasFrameRef.current?.(currentRot)
+      drawCanvasFrame(currentRot)
 
       if (progress < 1) {
         timerRef.current = requestAnimationFrame(step)
@@ -279,7 +277,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
         type="button"
         className={style.spin}
         onClick={handleButtonClick}
-        disabled={Boolean(user?.id) && !OPTIONS.canSpin}
+        disabled={user?.id && !OPTIONS.canSpin}
       >
         <Image
           className={style.logo}
