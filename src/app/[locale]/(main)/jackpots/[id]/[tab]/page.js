@@ -8,19 +8,19 @@ import { apiRequest } from '@/app/actions/api'
 
 import SectionJackpot from '@/sections/SectionJackpot'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('jackpots', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('jackpots')
 }
 
 export default async function Jackpot({ params }) {
-  const { locale, id, tab } = await params
-  const metaTags = await getPageMetadata('jackpots', locale)
+  const { id, tab } = await params
 
   const [
+    metaTags,
     user,
     res,
   ] = await Promise.all([
+    await getPageMetadata('jackpots'),
     getCachedUser(),
     apiRequest(`jackpot/${id}/general`, {
       method: 'GET'
@@ -55,7 +55,7 @@ export default async function Jackpot({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       'query-input': 'required name=search_term_string'
     }
   }

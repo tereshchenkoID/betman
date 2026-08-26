@@ -1,7 +1,12 @@
-import { redirect, RedirectType } from 'next/navigation'
+import { redirect } from '@/i18n/routing'
 
 import { ROUTES_USER } from '@/constant/config'
 
-export default function History() {
-  redirect(`${ROUTES_USER.history.url}/games`, RedirectType.replace)
+export default async function History({ params }) {
+  const { locale } = await params
+
+  redirect({
+    href: `${ROUTES_USER.history.url}/games`,
+    locale
+  })
 }

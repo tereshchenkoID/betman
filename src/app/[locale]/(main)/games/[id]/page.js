@@ -1,27 +1,26 @@
 import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
+import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
-import { apiRequest } from '@/app/actions/api'
 
 import SeoSection from '@/sections/SectionSeo'
 import SectionGames from '@/sections/SectionGames'
 import SectionCategoriesSlider from '@/sections/SectionCategoriesSlider'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('games', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('games')
 }
 
 export default async function Games({ params }) {
-  const { id, locale } = await params
+  const { id } = await params
 
   const [
     metaTags,
     user,
     res,
   ] = await Promise.all([
-    getPageMetadata('games', locale),
+    getPageMetadata('games'),
     getCachedUser(),
     apiRequest(`games/${id}/`, {
       method: 'POST',
@@ -48,7 +47,7 @@ export default async function Games({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

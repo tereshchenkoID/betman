@@ -1,26 +1,24 @@
 import { NAVIGATION } from '@/constant/config'
 
+import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getSettings, getCachedUser } from '@/app/actions/static'
-import { apiRequest } from '@/app/actions/api'
 
 import SectionJackpots from '@/sections/SectionJackpots'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('jackpots', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('jackpots')
 }
 
 export default async function Jackpots({ params }) {
-  const { locale } = await params
-  const metaTags = await getPageMetadata('jackpots', locale)
-
   const [
+    metaTags,
     settings,
     user,
     res,
   ] = await Promise.all([
+    getPageMetadata('jackpots'),
     getSettings(),
     getCachedUser(),
     apiRequest('jackpots/', {
@@ -44,7 +42,7 @@ export default async function Jackpots({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       'query-input': 'required name=search_term_string'
     }
   }

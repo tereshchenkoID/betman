@@ -1,8 +1,8 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { Link } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
-import { useRef, useState } from 'react'
 
 import { ROUTES_USER } from '@/constant/config'
 

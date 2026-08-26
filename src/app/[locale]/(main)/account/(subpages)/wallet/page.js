@@ -1,12 +1,18 @@
-import { redirect, RedirectType } from 'next/navigation'
+import { redirect } from '@/i18n/routing'
 
 import { ROUTES_USER } from '@/constant/config'
 
 import { getCachedUser } from '@/app/actions/static'
 
-export default async function Wallet() {
+export const dynamic = 'force-dynamic'
+
+export default async function Wallet({ params }) {
+  const { locale } = await params
   const user = await getCachedUser()
   const method = user?.payements?.[0]?.alias || 'voucher'
 
-  redirect(`${ROUTES_USER.wallet.url}/${method}/deposit`, RedirectType.replace)
+  redirect({
+    href: `${ROUTES_USER.wallet.url}/${method}/deposit`,
+    locale,
+  })
 }

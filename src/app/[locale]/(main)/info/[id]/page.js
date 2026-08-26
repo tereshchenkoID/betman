@@ -5,19 +5,18 @@ import { apiRequest } from '@/app/actions/api'
 
 import SectionPage from '@/sections/SectionPage'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('info', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('info')
 }
 
 export default async function Info({ params }) {
-  const { id, locale } = await params
+  const { id } = await params
 
   const [
     metaTags,
     page,
   ] = await Promise.all([
-    getPageMetadata('info', locale),
+    getPageMetadata('info'),
     apiRequest(`page/${id}`, {
       method: 'POST',
       params: {
@@ -42,7 +41,7 @@ export default async function Info({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

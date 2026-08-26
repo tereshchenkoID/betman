@@ -1,8 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { usePathname } from '@/i18n/routing'
-import { Link } from '@/i18n/routing'
+import { usePathname, Link } from '@/i18n/routing'
 import clsx from 'clsx'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
@@ -44,6 +43,8 @@ const Section = ({
       ...NAVIGATION.quests,
       badge: questsCounter || false
     },
+    settings.modules?.jackpots === '1' && NAVIGATION.jackpots,
+    settings.modules?.tournament === '1' && NAVIGATION.tournament,
     NAVIGATION.promotions,
   ].filter(Boolean);
 

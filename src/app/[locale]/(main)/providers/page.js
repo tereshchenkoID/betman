@@ -6,19 +6,16 @@ import { getProviders } from '@/app/actions/static'
 import SectionProviders from '@/sections/SectionProviders'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('providers', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('providers')
 }
 
-export default async function Providers({ params }) {
-  const { locale } = await params
-
+export default async function Providers() {
   const [
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('providers', locale),
+    getPageMetadata('providers'),
     getProviders()
   ])
 
@@ -38,7 +35,7 @@ export default async function Providers({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

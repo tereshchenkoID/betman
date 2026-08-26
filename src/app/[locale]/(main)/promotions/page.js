@@ -6,19 +6,16 @@ import { apiRequest } from '@/app/actions/api'
 import SectionPromotions from '@/sections/SectionPromotions'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('promotions', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('promotions')
 }
 
-export default async function Promotions({ params }) {
-  const { locale } = await params
-
+export default async function Promotions() {
   const [
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('promotions', locale),
+    getPageMetadata('promotions'),
     apiRequest('promotions/', {
       method: 'GET',
     }),
@@ -40,7 +37,7 @@ export default async function Promotions({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

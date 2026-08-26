@@ -41,6 +41,11 @@ const barlowCondensed = Oswald({
 })
 
 export const metadata = {
+  title: {
+    default: `404 - Page Not Found | ${process.env.ORGANIZATION_NAME}`,
+    template: `%s | ${process.env.ORGANIZATION_NAME}`,
+  },
+  description: 'Page not found',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

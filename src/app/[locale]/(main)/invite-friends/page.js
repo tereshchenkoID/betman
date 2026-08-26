@@ -5,13 +5,13 @@ import { getSettings, getCachedUser } from '@/app/actions/static'
 
 import SectionAccountInviteFriends from '@/sections/SectionAccountInviteFriends'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('profile', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('profile')
 }
 
 export default async function InviteFriends({ params }) {
   const { locale } = await params
+
   const [
     user,
     settings

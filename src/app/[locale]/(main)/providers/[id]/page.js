@@ -1,25 +1,26 @@
+import { notFound } from 'next/navigation'
+
 import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
 import SectionGames from '@/sections/SectionGames'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('providers', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('providers')
 }
 
 export default async function Provider({ params }) {
-  const { id, locale } = await params
+  const { id } = await params
 
   const [
     metaTags,
     user,
     res,
   ] = await Promise.all([
-    getPageMetadata('providers', locale),
+    getPageMetadata('providers'),
     getCachedUser(),
     apiRequest(`games/${id}/`, {
       method: 'POST',
@@ -29,6 +30,12 @@ export default async function Provider({ params }) {
       }
     }),
   ])
+
+  console.log(res)
+
+  if (res?.meta?.results === '0') {
+    notFound()
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -46,7 +53,7 @@ export default async function Provider({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

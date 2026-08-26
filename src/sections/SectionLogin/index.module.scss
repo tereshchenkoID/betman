@@ -1,11 +1,11 @@
 .form {
-  padding: var(--gap-40) var(--gap-16);
+  padding: var(--gap-24);
   margin-inline: auto;
   background-color: var(--material);
   border-radius: var(--border-radius-16);
   width: 100%;
 
   @include tab-s {
-    max-width: rem(560px);
+    max-width: rem(460px);
   }
 }

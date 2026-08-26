@@ -1,7 +1,12 @@
-import { redirect, RedirectType } from 'next/navigation'
+import { redirect } from '@/i18n/routing'
 
 import { ROUTES_USER } from '@/constant/config'
 
-export default async function Profile() {
-  redirect(`${ROUTES_USER.profile.url}/general`, RedirectType.replace)
+export default async function Profile({ params }) {
+  const { locale } = await params
+
+  redirect({
+    href: `${ROUTES_USER.profile.url}/general`,
+    locale
+  })
 }

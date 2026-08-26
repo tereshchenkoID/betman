@@ -1,5 +1,6 @@
+import { redirect } from '@/i18n/routing'
+
 import { NAVIGATION } from '@/constant/config'
-import { redirect } from 'next/navigation'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
@@ -7,9 +8,8 @@ import { getCachedUser } from '@/app/actions/static'
 import SectionLogin from '@/sections/SectionLogin'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('login', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('login')
 }
 
 export default async function Login({ params }) {
@@ -19,12 +19,15 @@ export default async function Login({ params }) {
     metaTags,
     user,
   ] = await Promise.all([
-    getPageMetadata('login', locale),
+    getPageMetadata('login'),
     getCachedUser(),
   ])
 
   if (user?.id) {
-    redirect(`/${locale}`)
+    redirect({
+      href: '/',
+      locale
+    })
   }
 
   const jsonLd = {
@@ -43,7 +46,7 @@ export default async function Login({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

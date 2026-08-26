@@ -7,19 +7,16 @@ import { getCachedUser } from '@/app/actions/static'
 import SectionVerification from '@/sections/SectionVerification'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('verification', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('verification')
 }
 
-export default async function Verification({ params }) {
-  const { locale } = await params
-
+export default async function Verification() {
   const [
     metaTags,
     user,
   ] = await Promise.all([
-    getPageMetadata('verification', locale),
+    getPageMetadata('verification'),
     getCachedUser()
   ])
 
@@ -43,7 +40,7 @@ export default async function Verification({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

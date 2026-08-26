@@ -1,5 +1,6 @@
+import { redirect } from '@/i18n/routing'
+
 import { NAVIGATION } from '@/constant/config'
-import { redirect } from 'next/navigation'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
@@ -8,9 +9,8 @@ import { getCachedUser } from '@/app/actions/static'
 import SectionRecovery from '@/sections/SectionRecovery'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('recovery', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('recovery')
 }
 
 export default async function PasswordRecovery({ params, searchParams }) {
@@ -18,7 +18,10 @@ export default async function PasswordRecovery({ params, searchParams }) {
   const { hash } = await searchParams
 
   if (!hash) {
-    redirect(`/${locale}`)
+    redirect({
+      href: '/',
+      locale
+    })
   }
 
   const [
@@ -26,7 +29,7 @@ export default async function PasswordRecovery({ params, searchParams }) {
     user,
     res,
   ] = await Promise.all([
-    getPageMetadata('login', locale),
+    getPageMetadata('login'),
     getCachedUser(),
     apiRequest('password/', {
       method: 'POST',
@@ -35,7 +38,10 @@ export default async function PasswordRecovery({ params, searchParams }) {
   ])
 
   if (user?.id) {
-    redirect(`/${locale}`)
+    redirect({
+      href: '/',
+      locale
+    })
   }
 
   const jsonLd = {
@@ -54,7 +60,7 @@ export default async function PasswordRecovery({ params, searchParams }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

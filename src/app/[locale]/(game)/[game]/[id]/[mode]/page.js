@@ -2,19 +2,19 @@ import { notFound } from 'next/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
-import { apiRequest } from '@/app/actions/api'
 
 import SectionGame from '@/sections/SectionGame'
 
 export async function generateMetadata({ params }) {
-  const { locale, id } = await params
-  return await getPageMetadata(`game/${id}/`, locale)
+  const { id } = await params
+  return await getPageMetadata(`game/${id}/`)
 }
 
 export default async function Game({ params }) {
-  const { locale, id, mode } = await params
+  const { id, mode } = await params
 
   const [
     metaTags,
@@ -22,7 +22,7 @@ export default async function Game({ params }) {
     res,
     link
   ] = await Promise.all([
-    getPageMetadata(`game/${id}/`, locale),
+    getPageMetadata(`game/${id}/`),
     getCachedUser(),
     apiRequest(`game/${id}/`),
     apiRequest(`v1/?gameId=${id}&demo=${mode}`, {
@@ -50,7 +50,7 @@ export default async function Game({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

@@ -61,7 +61,7 @@ const LoginModal = ({ isTitle = false }) => {
     >
       {
         isTitle &&
-        <h1>{t('sign_up')}</h1>
+        <h1 className={style.title}>{t('sign_up')}</h1>
       }
       <div className={style.container}>
         <Field

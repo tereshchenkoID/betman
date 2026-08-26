@@ -5,19 +5,12 @@ import { getPageMetadata } from '@/app/actions/metadata'
 import SectionTournaments from '@/sections/SectionTournaments'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('tournaments', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('tournaments')
 }
 
-export default async function Tournaments({ params }) {
-  const { locale } = await params
-
-  const [
-    metaTags,
-  ] = await Promise.all([
-    getPageMetadata('tournaments', locale),
-  ])
+export default async function Tournaments() {
+  const metaTags = await getPageMetadata('tournaments')
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -35,7 +28,7 @@ export default async function Tournaments({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

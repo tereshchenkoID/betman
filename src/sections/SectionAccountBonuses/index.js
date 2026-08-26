@@ -2,6 +2,7 @@
 
 import { useTransition } from 'react'
 import { useRouter } from '@/i18n/routing'
+
 import { ROUTES_USER } from '@/constant/config'
 
 import Loader from '@/components/Loader'

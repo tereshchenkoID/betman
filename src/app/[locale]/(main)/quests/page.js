@@ -6,19 +6,16 @@ import { getQuests } from '@/app/actions/static'
 import SeoSection from '@/sections/SectionSeo'
 import SectionQuests from '@/sections/SectionQuests'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('quests', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('quests')
 }
 
-export default async function Quests({ params }) {
-  const { locale } = await params
-
+export default async function Quests() {
   const [
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('quests', locale),
+    getPageMetadata('quests'),
     getQuests(),
   ])
 
@@ -38,7 +35,7 @@ export default async function Quests({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

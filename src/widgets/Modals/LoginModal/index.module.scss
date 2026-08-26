@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.title {
+  font-size: rem(20px);
+}
+
 .container {
   display: grid;
   gap: var(--gap-12);

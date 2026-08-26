@@ -67,7 +67,7 @@ const SectionRecovery = ({ data, hash }) => {
   return (
     <section>
       <form className={style.form} onSubmit={handleSubmit}>
-        <h1>{t(NAVIGATION.password_recovery.text)}</h1>
+        <h1 className={style.title}>{t(NAVIGATION.password_recovery.text)}</h1>
         {
           message &&
           <Notification

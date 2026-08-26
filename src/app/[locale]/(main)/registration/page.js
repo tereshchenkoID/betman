@@ -1,16 +1,16 @@
-import { redirect } from 'next/navigation'
+import { redirect } from '@/i18n/routing'
+
 import { NAVIGATION } from '@/constant/config'
 
+import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
-import { apiRequest } from '@/app/actions/api'
 
 import SeoSection from '@/sections/SectionSeo'
 import SectionRegistration from '@/sections/SectionRegistration'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('registration', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('registration')
 }
 
 export default async function Promotions({ params }) {
@@ -21,7 +21,7 @@ export default async function Promotions({ params }) {
     user,
     countries,
   ] = await Promise.all([
-    getPageMetadata('registration', locale),
+    getPageMetadata('registration'),
     getCachedUser(),
     apiRequest('countries/', {
       method: 'GET',
@@ -29,7 +29,10 @@ export default async function Promotions({ params }) {
   ])
 
   if (user?.id) {
-    redirect(`/${locale}`)
+    redirect({
+      href: '/',
+      locale
+    })
   }
 
   const jsonLd = {
@@ -48,7 +51,7 @@ export default async function Promotions({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

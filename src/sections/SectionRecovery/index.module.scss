@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--gap-24);
   overflow: hidden;
-  padding: var(--gap-40) var(--gap-16);
+  padding: var(--gap-24);
   margin-inline: auto;
   background-color: var(--material);
   border-radius: var(--border-radius-16);
@@ -10,8 +10,12 @@
   text-align: center;
 
   @include tab-s {
-    max-width: rem(560px);
+    max-width: rem(460px);
   }
+}
+
+.title {
+  font-size: rem(20px);
 }
 
 .container {

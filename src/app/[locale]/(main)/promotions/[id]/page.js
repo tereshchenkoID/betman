@@ -7,19 +7,18 @@ import { apiRequest } from '@/app/actions/api'
 
 import SectionPromo from '@/sections/SectionPromo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('promo', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('promo')
 }
 
 export default async function Promo({ params }) {
-  const { id, locale } = await params
+  const { id } = await params
 
   const [
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('promo', locale),
+    getPageMetadata('promo'),
     apiRequest(`promo/${id}`, {
       method: 'GET',
     }),
@@ -45,7 +44,7 @@ export default async function Promo({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

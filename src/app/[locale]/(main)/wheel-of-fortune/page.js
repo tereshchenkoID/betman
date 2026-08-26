@@ -1,20 +1,17 @@
 import { NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
+import { getPageMetadata } from '@/app/actions/metadata'
 import { getSettings, getWheelsRound, getCachedUser } from '@/app/actions/static'
 
 import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('wheel-of-fortune', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('wheel-of-fortune')
 }
 
-export default async function WheelOfFortune({ params }) {
-  const { locale } = await params
-
+export default async function WheelOfFortune() {
   const [
     metaTags,
     settings,
@@ -22,7 +19,7 @@ export default async function WheelOfFortune({ params }) {
     wheelsRound,
     res,
   ] = await Promise.all([
-    getPageMetadata('wheel-of-fortune', locale),
+    getPageMetadata('wheel-of-fortune'),
     getSettings(),
     getCachedUser(),
     getWheelsRound(),
@@ -47,7 +44,7 @@ export default async function WheelOfFortune({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

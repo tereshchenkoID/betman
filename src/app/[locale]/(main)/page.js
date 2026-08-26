@@ -6,9 +6,8 @@ import { NAVIGATION } from '@/constant/config'
 import SectionHome from '@/sections/SectionHome'
 import SeoSection from '@/sections/SectionSeo'
 
-export async function generateMetadata({ params }) {
-  const { locale } = await params
-  return await getPageMetadata('home', locale)
+export async function generateMetadata() {
+  return await getPageMetadata('home')
 }
 
 export default async function Home({ params }) {
@@ -17,7 +16,7 @@ export default async function Home({ params }) {
     metaTags,
     skeleton
   ] = await Promise.all([
-    getPageMetadata('home', locale),
+    getPageMetadata('home'),
     apiRequest('casino/', {
       method: 'GET',
     })
@@ -39,7 +38,7 @@ export default async function Home({ params }) {
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.link}`,
+      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
       "query-input": "required name=search_term_string"
     }
   }

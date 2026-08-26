@@ -1,8 +1,7 @@
 'use server'
 
 import { cookies, headers } from 'next/headers'
-import { redirect } from 'next/navigation'
-import { routing } from '@/i18n/routing'
+import { routing, redirect } from '@/i18n/routing'
 
 const PROTECTED = ['user/', 'profile/'];
 
@@ -79,7 +78,11 @@ export const apiRequest = async (endpoint, {
     const json = await res.json()
 
     if (json?.code === '2' || json?.code === '4') {
-      redirect(`/${locale}?expired=1`)
+      redirect({
+        href: '/',
+        locale,
+        query: { expired: '1' }
+      })
     }
 
     return json
