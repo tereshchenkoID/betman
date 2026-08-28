@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState, useTransition } from 'react'
+import { useCallback, useEffect, useState, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { apiRequest } from '@/app/actions/api'
@@ -19,7 +19,7 @@ import style from './index.module.scss'
 
 const OPTIONS = [
   { key: 'games', value: 0 },
-  { key: 'all_providers', value: 1 },
+  { key: 'providers', value: 1 },
 ]
 
 const SECTIONS = {

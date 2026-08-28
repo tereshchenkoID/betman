@@ -101,7 +101,10 @@ const SectionGame = ({
                 />
               </>
             }
-            <FullScreen />
+            {
+              user?.session_type !== 'tma' &&
+              <FullScreen />
+            }
             {
               user?.id &&
               <Action

@@ -14,7 +14,6 @@ import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 
 import 'keen-slider/keen-slider.min.css'
-import './index.scss'
 import style from './index.module.scss'
 
 const Slider = forwardRef(({

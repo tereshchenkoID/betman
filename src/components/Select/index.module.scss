@@ -167,8 +167,10 @@
 }
 
 .text {
+  padding-inline: var(--gap-8);
   text-align: center;
   font-size: rem(12px);
+  word-break: break-all;
 }
 
 .message {

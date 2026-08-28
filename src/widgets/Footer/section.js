@@ -65,7 +65,7 @@ const Section = ({
           </div>
           {
             pages &&
-            <div>
+            <div className={style.column}>
               <h2 className={style.subtitle}>{t('section.info')}</h2>
               <ul className={style.list}>
                 {
