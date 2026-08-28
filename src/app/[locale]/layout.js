@@ -2,8 +2,8 @@ import Script from 'next/script'
 import { getMessages } from 'next-intl/server'
 import { Oswald, Roboto } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { Suspense } from 'react'
 import { preconnect, preload } from 'react-dom'
 import NextTopLoader from 'nextjs-toploader'
 import clsx from 'clsx'
@@ -42,7 +42,7 @@ const barlowCondensed = Oswald({
 
 export const metadata = {
   title: {
-    default: `404 - Page Not Found | ${process.env.ORGANIZATION_NAME}`,
+    default: `Play with ${process.env.ORGANIZATION_NAME}`,
     template: `%s | ${process.env.ORGANIZATION_NAME}`,
   },
   description: 'Page not found',
@@ -94,7 +94,9 @@ export default async function RootLayout({ children, params }) {
       locale={locale}
     >
       <Telegram auth={user} />
-      <SessionHandler />
+      <Suspense fallback={null}>
+        <SessionHandler />
+      </Suspense>
       <FavoritesProvider
         user={user}
         data={favorites?.data}
@@ -118,7 +120,6 @@ export default async function RootLayout({ children, params }) {
           </WebSocketProvider>
         </ModalProvider>
         <Toastify />
-        <SpeedInsights />
       </FavoritesProvider>
     </NextIntlClientProvider>
     </body>

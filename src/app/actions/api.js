@@ -20,6 +20,7 @@ export const apiRequest = async (endpoint, {
   params = {},
   cache = 'no-cache',
   next = {},
+  timeout = 15000,
 } = {}) => {
   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
   const cookieStore = await cookies()
@@ -35,7 +36,8 @@ export const apiRequest = async (endpoint, {
       'Accept-Language': locale,
       ...(clientIp && { 'X-Forwarded-For': clientIp, 'X-Real-IP': clientIp }),
     },
-    next
+    next,
+    signal: AbortSignal.timeout(timeout),
   };
 
   const isProtected = PROTECTED.some(prefix => endpoint.startsWith(prefix))
@@ -48,15 +50,15 @@ export const apiRequest = async (endpoint, {
     options.headers['Authorization'] = `Bearer ${token}`;
   }
 
-  if (method === 'GET' && Object.keys(params).length > 0) {
+  if (['GET', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
-        url.searchParams.append(key, value);
+        url.searchParams.append(key, String(value));
       }
     });
   }
 
-  if (['POST', 'PUT', 'PATCH'].includes(method) && Object.keys(params).length > 0) {
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
     const formData = new FormData();
 
     Object.entries(params).forEach(([key, value]) => {
@@ -71,7 +73,9 @@ export const apiRequest = async (endpoint, {
       }
     });
 
-    options.body = formData;
+    if (method !== 'DELETE') {
+      options.body = formData;
+    }
   }
 
   try {
@@ -90,6 +94,10 @@ export const apiRequest = async (endpoint, {
   } catch (error) {
     if (error?.message === 'NEXT_REDIRECT' || error?.digest?.startsWith('NEXT_REDIRECT')) {
       throw error
+    }
+
+    if (error.name === 'TimeoutError') {
+      return { code: '3', error_message: 'Request timeout' }
     }
 
     return { code: '3', error_message: 'Internal server error'};

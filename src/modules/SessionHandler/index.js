@@ -10,15 +10,15 @@ export default function SessionHandler() {
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
+  const isExpired = searchParams.get('expired') === '1'
 
   useEffect(() => {
-    if (searchParams.get('expired') === '1') {
+    if (isExpired) {
       logoutAction().then(() => {
         const params = new URLSearchParams(searchParams.toString())
         params.delete('expired')
 
         const newQuery = params.toString() ? `?${params.toString()}` : ''
-        router.replace(`${pathname}${newQuery}`)
 
         startTransition(() => {
           router.replace(`${pathname}${newQuery}`, { scroll: false })
@@ -26,7 +26,7 @@ export default function SessionHandler() {
         })
       })
     }
-  }, [pathname, searchParams, router])
+  }, [pathname, searchParams, router, isExpired])
 
   return null
 }
