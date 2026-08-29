@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { notFound, useSearchParams } from 'next/navigation'
-import { useTransition } from 'react'
+import { Suspense, useTransition } from 'react'
 import { useRouter, usePathname } from '@/i18n/navigation'
 
 import { ROUTES_USER, QUANTITY } from '@/constant/config'
@@ -129,7 +129,9 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
                                 onChange={(selected) => updateQuery({ quantity: selected.value })}
                               />
                             }
-                            <Pagination meta={meta} />
+                            <Suspense fallback={null}>
+                              <Pagination meta={meta} />
+                            </Suspense>
                           </div>
                         </>
                       :

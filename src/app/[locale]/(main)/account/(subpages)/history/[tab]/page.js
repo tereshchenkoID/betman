@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser } from '@/app/actions/static'
 
@@ -38,12 +39,14 @@ export default async function History({ params, searchParams }) {
   ])
 
   return (
-    <SectionAccountHistory
-      user={user}
-      data={res?.data}
-      meta={res?.meta}
-      tab={tab}
-      queryParams={queryParams}
-    />
+    <Suspense fallback={null}>
+      <SectionAccountHistory
+        user={user}
+        data={res?.data}
+        meta={res?.meta}
+        tab={tab}
+        queryParams={queryParams}
+      />
+    </Suspense>
   )
 }

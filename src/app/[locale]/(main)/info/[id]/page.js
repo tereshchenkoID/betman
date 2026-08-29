@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
@@ -14,7 +16,7 @@ export default async function Info({ params }) {
 
   const [
     metaTags,
-    page,
+    res,
   ] = await Promise.all([
     getPageMetadata('info'),
     apiRequest(`page/${id}`, {
@@ -24,6 +26,10 @@ export default async function Info({ params }) {
       }
     }),
   ])
+
+  if (res?.meta?.results === '0') {
+    notFound()
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -49,8 +55,8 @@ export default async function Info({ params }) {
   return (
     <>
       <SectionPage
-        data={page?.data}
-        meta={page?.meta}
+        data={res?.data}
+        meta={res?.meta}
       />
       <script
         type="application/ld+json"

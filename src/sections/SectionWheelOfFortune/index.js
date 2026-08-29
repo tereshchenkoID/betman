@@ -23,7 +23,6 @@ const SectionWheelOfFortune = ({
   wheelsRound
 }) => {
   const router = useRouter()
-  if (meta?.results === '0') return null
 
   return (
     <section className={style.block}>
@@ -57,11 +56,14 @@ const SectionWheelOfFortune = ({
           loading="eager"
           unoptimized
         />
-        <Wheel
-          mock={data?.sectors}
-          user={user}
-          wheelsRound={wheelsRound}
-        />
+        {
+          meta?.results !== '0' &&
+          <Wheel
+            mock={data?.sectors}
+            user={user}
+            wheelsRound={wheelsRound}
+          />
+        }
       </div>
       {
         data?.description &&

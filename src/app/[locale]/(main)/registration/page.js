@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { redirect } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
@@ -58,10 +59,12 @@ export default async function Promotions({ params }) {
 
   return (
     <>
-      <SectionRegistration
-        user={user}
-        countries={countries?.data}
-      />
+      <Suspense fallback={null}>
+        <SectionRegistration
+          user={user}
+          countries={countries?.data}
+        />
+      </Suspense>
       <SeoSection alias={'registration'} />
       <script
         type="application/ld+json"

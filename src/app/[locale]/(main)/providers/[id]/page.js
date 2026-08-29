@@ -31,8 +31,6 @@ export default async function Provider({ params }) {
     }),
   ])
 
-  console.log(res)
-
   if (res?.meta?.results === '0') {
     notFound()
   }
