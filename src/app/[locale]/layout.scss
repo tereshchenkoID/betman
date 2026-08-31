@@ -93,13 +93,15 @@
 }
 
 html {
+  @include scroll-y;
+
   background-color: var(--bg);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   --background-size: 30%;
-
-  @include scroll-y;
 
   margin: 0;
   line-height: var(--line-height);
@@ -109,8 +111,6 @@ body {
   color: var(--text-for-material);
   text-size-adjust: 100%;
   min-width: var(--min-width);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
   padding-inline: var(--gap-16);
 
   @include desk-s {

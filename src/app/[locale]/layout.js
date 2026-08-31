@@ -102,7 +102,6 @@ export default async function RootLayout({ children, params }) {
         data={favorites?.data}
         meta={favorites?.meta}
       >
-        <ScrollToTop />
         <NextTopLoader
           color="#0490A8"
           crawlSpeed={400}
@@ -121,6 +120,9 @@ export default async function RootLayout({ children, params }) {
         </ModalProvider>
         <Toastify />
       </FavoritesProvider>
+      <Suspense fallback={null}>
+        <ScrollToTop />
+      </Suspense>
     </NextIntlClientProvider>
     </body>
     </html>

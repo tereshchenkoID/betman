@@ -21,7 +21,7 @@ const Back = ({
     <Action
       onChange={handleBack}
       classes={['secondary', 'md', 'square', classes]}
-      placeholder="Back"
+      aria-label="Back"
     >
       <Icon name="navigation-chevron-left" />
     </Action>

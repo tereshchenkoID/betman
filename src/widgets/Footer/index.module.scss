@@ -75,6 +75,14 @@
   display: grid;
   justify-items: flex-start;
   gap: var(--gap-16);
+  position: relative;
+  padding-inline-end: var(--gap-40);
+}
+
+.up {
+  position: absolute;
+  inset-block-start: var(--gap-default);
+  inset-inline-end: 0;
 }
 
 .copyright {
@@ -88,7 +96,6 @@
 }
 
 .social {
-
   @include hover {
     &:hover {
       color: var(--text-for-material);

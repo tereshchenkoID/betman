@@ -29,11 +29,11 @@ const SectionPromo = ({ data, meta }) => {
                   src={el?.image}
                   className={style.image}
                   alt={el?.title || 'Promo image'}
-                  width={760}
-                  height={380}
+                  width={1152}
+                  height={576}
                   priority
                   decoding="async"
-                  sizes="360"
+                  sizes="576"
                   unoptimized
                 />
               }
