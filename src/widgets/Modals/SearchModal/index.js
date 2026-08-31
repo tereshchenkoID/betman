@@ -10,7 +10,7 @@ import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
 
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 import ProviderCard from '@/modules/Cards/ProviderCard'
 import Empty from '@/modules/Empty'
 import Tabs from '@/modules/Tabs'

@@ -1,0 +1,13 @@
+.block {
+  position: relative;
+
+  h1 {
+    padding-left: rem(48px);
+  }
+}
+
+.button {
+  position: absolute;
+  top: var(--gap-2);
+  z-index: $z-index-1;
+}

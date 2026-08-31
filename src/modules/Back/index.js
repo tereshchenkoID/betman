@@ -3,7 +3,10 @@ import { useRouter } from '@/i18n/navigation'
 import Icon from '@/components/Icon'
 import Action from '@/components/Action'
 
-const Back = ({ url = null }) => {
+const Back = ({
+  url = null,
+  classes = null
+}) => {
   const router = useRouter()
 
   const handleBack = () => {
@@ -17,7 +20,7 @@ const Back = ({ url = null }) => {
   return (
     <Action
       onChange={handleBack}
-      classes={['secondary', 'md', 'square']}
+      classes={['secondary', 'md', 'square', classes]}
       placeholder="Back"
     >
       <Icon name="navigation-chevron-left" />

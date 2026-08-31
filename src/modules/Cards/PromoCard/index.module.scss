@@ -1,4 +1,16 @@
 .block {
+  height: 100%;
+
+  @include hover {
+    &:hover {
+      .image {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+.wrapper {
   display: grid;
   grid-template-rows: auto 1fr;
   position: relative;
@@ -15,13 +27,14 @@
 }
 
 .image {
-  position: relative;
+  @include transition;
+
   height: 100%;
   object-fit: cover;
 }
 
 .content {
-  @include flex($justify-content: flex-end, $direction: column);
+  @include flex(flex-end, null, column);
 
   padding: var(--gap-12);
   background-color: var(--material);
@@ -29,7 +42,7 @@
 }
 
 .badges {
-  @include flex($justify-content: flex-end, $wrap: wrap);
+  @include flex(flex-end, null, null,  wrap);
 
   position: absolute;
   inset-block-start: 0;

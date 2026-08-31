@@ -12,7 +12,6 @@ const Section = ({ data, meta }) => {
       {
         data?.map((el, idx) =>
           <Fragment key={idx}>
-            <h2>{el?.title}</h2>
             <Inner data={el?.text} />
           </Fragment>
         )

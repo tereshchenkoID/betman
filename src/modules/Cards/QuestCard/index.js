@@ -47,7 +47,10 @@ const QuestCard = ({ data }) => {
         }}
       />
       <div className={style.content}>
-        <p className={style.title}>{title}</p>
+        {
+          (title && title !== '') &&
+          <p className={style.title}>{title}</p>
+        }
         {
           button &&
           <>

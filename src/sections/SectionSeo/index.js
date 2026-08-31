@@ -6,7 +6,7 @@ const SectionSeo = async ({ alias }) => {
   const res = await apiRequest('seo/', {
     method: 'POST',
     params: {
-      alias: alias || 'casino'
+      alias: alias || 'home'
     }
   })
 

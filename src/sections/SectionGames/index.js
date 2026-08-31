@@ -10,7 +10,7 @@ import { apiRequest } from '@/app/actions/api'
 import Action from '@/components/Action'
 import Empty from '@/modules/Empty'
 import Title from '@/modules/Title'
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 
 import style from './index.module.scss'
 

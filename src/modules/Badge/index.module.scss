@@ -7,6 +7,7 @@
   border-radius: var(--border-radius-full);
   text-transform: uppercase;
   text-align: center;
+  line-height: 1;
 
   &.lg {
     padding-inline: var(--gap-default);
@@ -16,7 +17,7 @@
 
   &.md {
     padding-inline: var(--gap-6);
-    height: rem(14px);
+    height: rem(16px);
     font-size: rem(10px);
   }
 
@@ -31,6 +32,6 @@
   }
 
   &.secondary {
-    background-color: var(--primary-hover);
+    background-color: var(--primary);
   }
 }

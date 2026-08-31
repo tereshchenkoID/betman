@@ -6,8 +6,8 @@ import clsx from 'clsx'
 import { NAVIGATION } from '@/constant/config'
 
 import Slider from '@/modules/Slider'
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
-import ThumbnailMore from '@/modules/Thumbnails/ThumbnailMore'
+import Thumbnail from '@/modules/Cards/Thumbnail'
+import ThumbnailMore from '@/modules/Cards/ThumbnailMore'
 
 import style from './index.module.scss'
 

@@ -3,7 +3,7 @@
 import { useFavorites } from '@/context/FavoritesContext'
 
 import Empty from '@/modules/Empty'
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 
 import style from './index.module.scss'
 

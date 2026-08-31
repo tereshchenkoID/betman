@@ -8,8 +8,8 @@ import { NAVIGATION } from '@/constant/config'
 import { useFavorites } from '@/context/FavoritesContext'
 
 import Slider from '@/modules/Slider'
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
-import ThumbnailMore from '@/modules/Thumbnails/ThumbnailMore'
+import Thumbnail from '@/modules/Cards/Thumbnail'
+import ThumbnailMore from '@/modules/Cards/ThumbnailMore'
 
 import style from './index.module.scss'
 

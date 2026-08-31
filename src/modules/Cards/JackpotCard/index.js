@@ -12,9 +12,9 @@ import { useWebSocketContext } from '@/context/WebSocketContext'
 import { imageError } from '@/helpers/image'
 
 import Icon from '@/components/Icon'
-import Badge from '@/modules/Badge'
-import Thumbnail from '@/modules/Thumbnails/Thumbnail'
 import Slider from '@/modules/Slider'
+import Badge from '@/modules/Badge'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 
 import style from './index.module.scss'
 
