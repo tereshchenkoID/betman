@@ -129,7 +129,6 @@ body {
 }
 
 input {
-
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     padding: 0;
@@ -137,16 +136,29 @@ input {
     -moz-appearance: textfield;
   }
 
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active,
-  &:-internal-autofill-selected
-  &:is(:-webkit-autofill, :autofill) {
+  &:is(:-webkit-autofill, :autofill),
+  &:is(:-webkit-autofill, :autofill):hover,
+  &:is(:-webkit-autofill, :autofill):focus,
+  &:is(:-webkit-autofill, :autofill):active {
     -webkit-box-shadow: 0 0 0 30px var(--material-hover) inset !important;
     -webkit-text-fill-color: var(--text-for-material);
     -webkit-background-clip: text;
     background-color: transparent!important;
+  }
+
+  &::-webkit-contacts-auto-fill-button,
+  &::-webkit-caps-lock-indicator,
+  &::-webkit-credentials-auto-fill-button,
+  &::-webkit-strong-password-auto-fill-button {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+
+  &::-webkit-date-and-time-value {
+    text-align: left;
   }
 
   &[type='datetime-local'],
@@ -160,10 +172,6 @@ input {
     &::-webkit-calendar-picker-indicator {
       opacity: 0;
     }
-  }
-
-  &::-webkit-date-and-time-value {
-    text-align: left;
   }
 
   &:focus {

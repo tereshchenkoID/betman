@@ -14,6 +14,11 @@
       background-color: var(--material-hover);
     }
   }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .picture {

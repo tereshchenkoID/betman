@@ -73,8 +73,8 @@ const Field = ({
       <div className={style.wrapper}>
         <input
           ref={inputRef}
-          className={style.input}
           type={inputType}
+          className={style.input}
           value={data || ''}
           onChange={e => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
@@ -82,7 +82,7 @@ const Field = ({
           required={isRequired}
           min={min}
           max={max}
-          autoComplete={'on'}
+          autoComplete={'off'}
         />
         <label
           className={style.label}

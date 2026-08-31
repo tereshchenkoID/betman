@@ -36,7 +36,6 @@ const SectionPromo = ({ data, meta }) => {
                   unoptimized
                 />
               }
-              <h2>{el?.title}</h2>
               <Inner data={el?.description} />
             </div>
           </Fragment>

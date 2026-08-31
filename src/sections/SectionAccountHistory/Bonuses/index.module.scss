@@ -8,7 +8,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: rem(80px) rem(160px) repeat(4, 1fr) rem(160px) rem(80px);
+  grid-template-columns: rem(80px) rem(160px) repeat(4, 1fr) rem(160px) rem(100px);
   gap: var(--gap-2);
   min-width: rem(1000px);
   font-size: rem(14px);

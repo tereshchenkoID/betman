@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
@@ -14,7 +15,14 @@ const ProviderCard = ({ data }) => {
   return (
     <Link
       href={data.link || `${NAVIGATION.providers.url}/${data.slug}`}
-      className={style.block}
+      className={
+        clsx(
+          style.block,
+          {
+            [style.disabled]: data?.results === '0'
+          }
+        )
+      }
       onClick={closeAllModals}
       aria-label={data.name}
       prefetch={false}
