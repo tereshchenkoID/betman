@@ -5,7 +5,6 @@
   @include flex($direction: column);
 
   position: fixed;
-  //inset: var(--tg-safe-top) 0 var(--tg-safe-bottom) 0;
   inset: var(--tg-safe-top) 0 0 0;
   background-color: var(--bg);
 }

@@ -8,7 +8,6 @@
   inset-inline: auto 0;
   background-color: var(--material);
   max-height: calc(100svh - var(--header-height) - var(--aside-height));
-  border: 1px solid green;
 
   @include tab-s {
     @include size(rem(320px), auto);

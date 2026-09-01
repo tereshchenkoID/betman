@@ -11,22 +11,13 @@
       opacity: 0.7;
     }
   }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: 0;
-    height: calc(50% - rem(44px));
-    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
-    z-index: $z-index-1;
-  }
 }
 
 .content {
   display: grid;
   gap: var(--gap-default);
   padding: 0 var(--gap-12) var(--gap-12);
+  background-color: var(--color-black);
   position: absolute;
   inset-inline: 0;
   inset-block-end: 0;

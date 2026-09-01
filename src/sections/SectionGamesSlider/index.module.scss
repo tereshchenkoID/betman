@@ -25,22 +25,19 @@
 
   &.numeric {
     --slide-width: 100%;
-    --slide-spacing: 40px;
-    --slide-count: 2;
+    --slide-spacing: 20px;
+    --slide-count: 3;
 
     @include mob-m {
-      --slide-count: 3;
-    }
-
-    @include tab-s {
       --slide-count: 4;
     }
 
-    @include tab-m {
+    @include tab-s {
       --slide-count: 5;
     }
 
     @include desk-m {
+      --slide-spacing: 40px;
       --slide-count: 6;
     }
 
