@@ -7,7 +7,7 @@
   inset-block: calc(var(--tg-safe-top) + var(--header-height)) var(--aside-height);
   inset-inline: auto 0;
   background-color: var(--material);
-  max-height: calc(100svh - var(--header-height) - var(--aside-height));
+  max-height: calc(100svh - var(--tg-safe-top) - var(--header-height) - var(--aside-height));
 
   @include tab-s {
     @include size(rem(320px), auto);
