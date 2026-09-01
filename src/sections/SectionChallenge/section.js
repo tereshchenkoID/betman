@@ -10,7 +10,7 @@ const Section = ({ data, meta }) => {
       {
         data?.map((el, idx) =>
           <ChallengeCard
-            key={idx}
+            key={el?.id || idx}
             data={el}
           />
         )

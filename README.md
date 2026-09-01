@@ -12,7 +12,7 @@ Production web application built with **Next.js 16** and **React 19**.
 |---|---|
 | **Core** | Next.js 16 (App Router), React 19 |
 | **Language** | JavaScript (`jsconfig.json`) with type hints via `@types/react`, `@types/react-dom` |
-| **Styling** | Sass (Modern Compiler API), Clsx |
+| **Styling** | Sass, Clsx |
 | **Localization** | next-intl |
 | **Analytics & Performance** | @vercel/speed-insights, @next/third-parties, nextjs-toploader |
 | **UI & Interaction** | keen-slider, react-phone-input-2, react-toastify |

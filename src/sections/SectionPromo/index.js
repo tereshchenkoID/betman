@@ -17,7 +17,7 @@ const SectionPromo = ({ data, meta }) => {
     <section>
       {
         data?.map((el, idx) =>
-          <Fragment key={idx}>
+          <Fragment key={el?.id || idx}>
             <Title
               isBack={true}
               title={el?.title}

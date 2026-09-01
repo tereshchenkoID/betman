@@ -141,7 +141,7 @@ const SearchModal = ({ user }) => {
                     ?
                       activeList.map((el, idx) =>
                         <Thumbnail
-                          key={idx}
+                          key={el?.id || idx}
                           data={el}
                           user={user}
                           isEmpty={true}
@@ -150,7 +150,7 @@ const SearchModal = ({ user }) => {
                     :
                       activeList.map((el, idx) =>
                         <ProviderCard
-                          key={idx}
+                          key={el?.id || idx}
                           data={el}
                         />
                       )

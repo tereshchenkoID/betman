@@ -61,7 +61,10 @@ const SectionCategories = ({
 
       {
         categories.map((el, idx) =>
-        <CategoryCard key={idx} data={el} />
+        <CategoryCard
+          key={el?.id || idx}
+          data={el}
+        />
       )}
     </Slider>
   )

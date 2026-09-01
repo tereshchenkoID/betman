@@ -20,7 +20,7 @@ const Section = ({ data, meta }) => {
       {
         data?.map((el, idx) =>
           <div
-            key={idx}
+            key={el?.id || idx}
             className={
               clsx(
                 style.content,

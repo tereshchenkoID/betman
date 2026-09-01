@@ -36,7 +36,7 @@ const Section = ({
             <ul className={style.list}>
               {
                 categories?.data?.map((el, idx) =>
-                  <li key={idx}>
+                  <li key={el?.id || idx}>
                     <Action
                       to={`${NAVIGATION.games_hall.url}/${el.slug}`}
                       classes={['link', style.link]}
@@ -52,7 +52,7 @@ const Section = ({
             <ul className={style.list}>
               {
                 providers?.data?.map((el, idx) =>
-                  <li key={idx}>
+                  <li key={el?.id || idx}>
                     <Action
                       to={`${NAVIGATION.games_hall.url}/${el.slug}`}
                       classes={['link', style.link]}
@@ -70,7 +70,7 @@ const Section = ({
               <ul className={style.list}>
                 {
                   pages?.data?.map((el, idx) =>
-                    <li key={idx}>
+                    <li key={el?.id || idx}>
                       <Action
                         to={el.url}
                         classes={['link', style.link]}
@@ -91,7 +91,7 @@ const Section = ({
             {
               settings.social.map((el, idx) =>
                 <a
-                  key={idx}
+                  key={el?.icon || idx}
                   href={el.link}
                   className={style.social}
                   aria-label={el.link}

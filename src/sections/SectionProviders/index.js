@@ -21,7 +21,7 @@ const SectionPromotions = ({ data, meta }) => {
               {
                 data?.map((el, idx) =>
                   <ProviderCard
-                    key={idx}
+                    key={el?.id || idx}
                     data={el}
                     size={'sm'}
                   />

@@ -28,7 +28,7 @@ const SectionJackpots = ({
               {
                 data?.map((el, idx) =>
                   <JackpotCard
-                    key={idx}
+                    key={el?.id || idx}
                     data={el}
                     user={user}
                     classes={['extended']}

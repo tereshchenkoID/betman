@@ -42,7 +42,7 @@ const SectionAccountNavigation = () => {
 
           return (
             <Action
-              key={idx}
+              key={el?.icon || idx}
               to={el.url}
               classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
               isActive={isActive}

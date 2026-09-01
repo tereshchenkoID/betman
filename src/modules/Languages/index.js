@@ -64,7 +64,7 @@ const Languages = ({ settings }) => {
             settings.languages.map((el, idx) =>
               currentLocale !== el.code && (
                 <Action
-                  key={idx}
+                  key={el?.code || idx}
                   aria-label={el.text}
                   classes={['secondary', 'md']}
                   onChange={() => handleChange(el.code)}

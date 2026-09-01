@@ -24,7 +24,7 @@ const SectionPromotions = ({ data, meta }) => {
               {
                 data?.map((el, idx) =>
                   <PromoCard
-                    key={idx}
+                    key={el?.id || idx}
                     data={el}
                   />
                 )

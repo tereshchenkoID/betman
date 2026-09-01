@@ -19,7 +19,7 @@ const SectionPage = ({ data, meta }) => {
     <section className={style.block}>
       {
         data?.map((el, idx) =>
-          <Fragment key={idx}>
+          <Fragment key={el?.id || idx}>
             {
               startsWithH1(el?.description) &&
               <Back classes={style.button} />

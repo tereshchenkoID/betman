@@ -30,7 +30,7 @@ const Payment = ({ user, data }) => {
         {
           data?.map((el, idx) =>
             <Row
-              key={idx}
+              key={el?.id || idx}
               data={el}
             />
           )

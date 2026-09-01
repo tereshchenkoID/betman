@@ -55,7 +55,7 @@ const Section = ({
           {
             DATA.map((el, idx) =>
               <li
-                key={idx}
+                key={el?.icon || idx}
                 className={style.item}
               >
                 <Link

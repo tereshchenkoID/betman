@@ -24,7 +24,7 @@ const SectionQuests = ({ data, meta }) => {
               {
                 data?.map((el, idx) =>
                   <QuestCard
-                    key={idx}
+                    key={el?.id || idx}
                     data={el}
                   />
                 )

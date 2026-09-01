@@ -156,7 +156,7 @@ const AccountMenu = ({ user, setToggle }) => {
           {
             DATA.map((el, idx) =>
               <Link
-                key={idx}
+                key={el?.icon || idx}
                 href={el.url}
                 className={style.link}
                 onClick={() => setToggle(false)}

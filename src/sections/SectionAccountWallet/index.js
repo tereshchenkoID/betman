@@ -60,7 +60,7 @@ const SectionAccountWallet = ({ user, children }) => {
         {
           user?.payements.map((el, idx) =>
             <Link
-              key={idx}
+              key={el?.id || idx}
               onClick={(e) => handleMethod(e, el)}
               className={
                 clsx(

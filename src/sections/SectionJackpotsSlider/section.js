@@ -1,4 +1,5 @@
 'use client'
+
 import { useTranslations } from 'next-intl'
 
 import { NAVIGATION } from '@/constant/config'
@@ -35,7 +36,7 @@ const SectionJackpots = ({
       {
         data?.map((el, idx) =>
           <JackpotCard
-            key={idx}
+            key={el?.id || idx}
             data={el}
             classes={['default']}
             user={user}

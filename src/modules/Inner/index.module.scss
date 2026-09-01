@@ -1,4 +1,8 @@
 .block {
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+
   * {
     color: var(--text-for-material);
   }
@@ -60,5 +64,37 @@
         color: var(--link-hover);
       }
     }
+  }
+
+  div {
+    &:has(table) {
+      @include scroll-x;
+
+      display: grid;
+      width: 100%;
+    }
+  }
+
+  table {
+    display: table;
+    border: rem(1px) solid var(--primary);
+    border-collapse: collapse;
+    overflow: hidden;
+  }
+
+  tr {
+    &:first-child {
+      background-color: var(--primary);
+    }
+  }
+
+  td {
+    padding-inline: var(--gap-default);
+    overflow: hidden;
+    min-width: rem(120px);
+  }
+
+  caption {
+    display: none;
   }
 }

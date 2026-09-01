@@ -11,7 +11,7 @@ const Section = ({ data, meta }) => {
     <div>
       {
         data?.map((el, idx) =>
-          <Fragment key={idx}>
+          <Fragment key={el?.id || idx}>
             <Inner data={el?.text} />
           </Fragment>
         )

@@ -23,7 +23,7 @@ const SectionBanners = ({ data, meta }) => {
       {
         data.map((el, idx) =>
           <BannerCard
-            key={idx}
+            key={el?.id || idx}
             data={el}
           />
         )

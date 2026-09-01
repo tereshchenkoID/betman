@@ -77,7 +77,7 @@ const SectionAccountBonuses = ({
                               />
                             :
                               <BonusCard
-                                key={idx}
+                                key={el?.id || idx}
                                 data={el}
                                 settings={settings}
                               />

@@ -84,7 +84,7 @@ const Section = ({
     >
       {
         slides.map((el, idx) =>
-          <Fragment key={idx}>
+          <Fragment key={el?.id || idx}>
             {
               renderSlide(el, settings, user, moreUrl, idx)
             }

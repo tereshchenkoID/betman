@@ -19,7 +19,7 @@ const SectionAccountFavorites = ({ user }) => {
               {
                 favorites?.map((el, idx) =>
                   <Thumbnail
-                    key={idx}
+                    key={el?.id || idx}
                     data={el}
                     user={user}
                   />

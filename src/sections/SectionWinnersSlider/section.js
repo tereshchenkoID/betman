@@ -20,7 +20,7 @@ const Section = ({ data, meta, user }) => {
       {
         data?.map((el, idx) =>
           <WinnerCard
-            key={idx}
+            key={el?.id || idx}
             data={el}
             user={user}
           />
