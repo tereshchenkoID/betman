@@ -2,11 +2,9 @@
   position: fixed;
   inset-inline: 0;
   inset-block-end: 0;
-  //inset-block-end: var(--tg-safe-bottom);
   background-color: var(--bg);
   height: var(--aside-height);
   z-index: $z-index-8;
-  border: 1px solid yellow;
 
   @include desk-s {
     position: static;

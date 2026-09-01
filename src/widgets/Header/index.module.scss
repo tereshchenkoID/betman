@@ -85,7 +85,6 @@
   position: fixed;
   inset-inline: 0;
   inset-block-end: var(--aside-height);
-  //inset-block-end: calc(var(--aside-height) + var(--tg-safe-bottom));
   padding: var(--gap-12) var(--gap-16);
   border-bottom: rem(1px) solid var(--tertiary-disabled);
   background-color: var(--bg);
