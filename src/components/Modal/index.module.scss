@@ -3,12 +3,15 @@
 
   position: fixed;
   inset: 0;
-  padding: var(--tg-safe-top) 0 var(--tg-safe-bottom);
+  padding-top: var(--tg-safe-top);
+  //padding: var(--tg-safe-top) 0 var(--tg-safe-bottom);
   z-index: $z-index-9;
 
   @include tab-s {
     align-items: center;
-    padding: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16) calc(var(--tg-safe-bottom) + var(--gap-16)) var(--gap-16);
+    padding: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16);
+
+    //padding: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16) calc(var(--tg-safe-bottom) + var(--gap-16)) var(--gap-16);
   }
 
   &.sm {
