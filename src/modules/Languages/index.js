@@ -62,27 +62,26 @@ const Languages = ({ settings }) => {
         <div className={style.dropdown}>
           {
             settings.languages.map((el, idx) =>
-              currentLocale !== el.code && (
-                <Action
-                  key={el?.code || idx}
-                  aria-label={el.text}
-                  classes={['secondary', 'md']}
-                  onChange={() => handleChange(el.code)}
-                >
-                  <p className={style.icon}>
-                    <Image
-                      src={`/images/countries/${el.code}.svg`}
-                      className={style.image}
-                      alt={el.text}
-                      width={20}
-                      height={20}
-                      sizes="20px"
-                      unoptimized
-                    />
-                  </p>
-                  {el.text}
-                </Action>
-              )
+              <Action
+                key={el?.code || idx}
+                aria-label={el.text}
+                classes={[currentLocale === el.code ? 'primary' : 'secondary', 'md']}
+                onChange={() => handleChange(el.code)}
+                isActive={currentLocale === el.code}
+              >
+                <p className={style.icon}>
+                  <Image
+                    src={`/images/countries/${el.code}.svg`}
+                    className={style.image}
+                    alt={el.text}
+                    width={20}
+                    height={20}
+                    sizes="20px"
+                    unoptimized
+                  />
+                </p>
+                {el.text}
+              </Action>
           )}
         </div>
       }
