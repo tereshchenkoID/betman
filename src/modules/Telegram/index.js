@@ -49,8 +49,6 @@ export default function Telegram({ auth }) {
         document.documentElement.style.setProperty('--tg-safe-top', `${top}px`)
         document.documentElement.style.setProperty('--tg-safe-bottom', `${bottom}px`)
         document.documentElement.style.setProperty('--tg-viewport-height', `${height}px`)
-
-        alert(top)
       }
 
       setTimeout(() => {
