@@ -1,10 +1,12 @@
 .block {
   position: fixed;
   inset-inline: 0;
-  inset-block-end: var(--tg-safe-bottom);
+  inset-block-end: 0;
+  //inset-block-end: var(--tg-safe-bottom);
   background-color: var(--bg);
   height: var(--aside-height);
   z-index: $z-index-8;
+  border: 1px solid yellow;
 
   @include desk-s {
     position: static;
@@ -28,7 +30,7 @@
     @include size(rem(240px), auto);
 
     position: fixed;
-    top: calc(var(--header-height) + var(--tg-safe-top) + var(--gap-12));
+    top: calc(var(--header-height) + var(--tg-safe-top) + var(--gap-16));
     flex-direction: column;
     gap: var(--gap-2);
     overflow-y: auto;

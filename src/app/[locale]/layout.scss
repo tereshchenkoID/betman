@@ -1,5 +1,5 @@
 :root {
-  --tg-safe-top: 0;
+  --tg-safe-top: 0px;
   --tg-safe-bottom: 0px;
   --tg-viewport-height: 100svh;
 
@@ -323,7 +323,8 @@ main {
   min-height: calc(var(--tg-viewport-height) - var(--header-height));
   margin-inline: auto;
   max-width: var(--max-width);
-  flex-shrink: 0;
+  //flex-shrink: 0;
+  //border: 1px solid red;
 
   @include desk-s {
     padding-block-end: var(--gap-62);
