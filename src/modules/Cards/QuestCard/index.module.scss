@@ -4,6 +4,7 @@
   background-color: var(--material);
   overflow: hidden;
   padding-bottom: rem(44px);
+  aspect-ratio: 0.66;
 
   &.disable {
     .picture {

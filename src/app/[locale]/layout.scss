@@ -1,6 +1,6 @@
 :root {
   --tg-safe-top: 0px;
-  --tg-safe-bottom: 0px;
+  --tg-safe-bottom: 0;
   --tg-viewport-height: 100svh;
 
   --toastify-toast-top: var(--tg-safe-top)!important;
@@ -75,11 +75,12 @@
   --box-shadow-default: 0 0 0.25rem 0 rgba(0, 0, 0, 0.32), 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.2);
 
   --header-height: 4.375rem;
-  --aside-height: 3.5rem;
+  //--aside-height: 3.5rem;
+  --aside-height: calc(3.5rem + var(--tg-safe-bottom));
 
-  @include desk-s {
-    --header-height: 5.25rem;
-  }
+  //@include desk-s {
+  //  --header-height: 5.25rem;
+  //}
 }
 
 * {
@@ -320,7 +321,8 @@ main {
   position: relative;
   width: 100%;
   padding-block: var(--gap-16);
-  min-height: calc(var(--tg-viewport-height) - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+  //min-height: calc(var(--tg-viewport-height) - var(--header-height));
   margin-inline: auto;
   max-width: var(--max-width);
   //flex-shrink: 0;
