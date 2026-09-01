@@ -12,8 +12,10 @@ import Icon from '@/components/Icon'
 import style from './index.module.scss'
 
 const BonusQuestCard = ({ user, data }) => {
-  const { status, button, bonus } = data
+  const { status, button, bonus, link } = data
   const { openModal } = useModal()
+
+  console.log(data)
 
   return (
     <article
@@ -50,7 +52,7 @@ const BonusQuestCard = ({ user, data }) => {
           status === '0'
             ?
               <Action
-                to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias}/deposit`}
+                to={link}
                 classes={['primary', 'md']}
                 placeholder={button}
                 alt={button}
