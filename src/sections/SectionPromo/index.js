@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 import { Fragment } from 'react'
 
-import Action from '@/components/Action'
 import Title from '@/modules/Title'
 import Inner from '@/modules/Inner'
 
@@ -38,15 +37,6 @@ const SectionPromo = ({ data, meta }) => {
                 />
               }
               <Inner data={el?.description} />
-              {
-                el?.button?.text &&
-                <Action
-                  to={el?.button?.link}
-                  classes={['primary', 'md', style.button]}
-                  placeholder={el?.button?.text}
-                  target={el?.button?.newtab === '1' ? '_blank' : undefined}
-                />
-              }
             </div>
           </Fragment>
         )

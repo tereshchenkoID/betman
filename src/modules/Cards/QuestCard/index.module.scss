@@ -4,7 +4,6 @@
   background-color: var(--material);
   overflow: hidden;
   padding-bottom: rem(44px);
-  aspect-ratio: 0.66;
 
   &.disable {
     .picture {
@@ -33,6 +32,7 @@
 .picture {
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 0.79;
 }
 
 .title {

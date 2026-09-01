@@ -80,6 +80,10 @@
     border: rem(1px) solid var(--primary);
     border-collapse: collapse;
     overflow: hidden;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0;
+    }
   }
 
   tr {

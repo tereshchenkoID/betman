@@ -64,10 +64,10 @@ export function ModalProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    document.documentElement.style.overflowY = modals.length > 0 ? 'hidden' : 'auto'
+    document.body.style.overflowY = modals.length > 0 ? 'hidden' : 'auto'
 
     return () => {
-      document.documentElement.style.overflowY = 'auto'
+      document.body.style.overflowY = 'auto'
     }
   }, [modals.length])
 
