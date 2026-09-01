@@ -107,7 +107,7 @@ const Section = ({
           </div>
           <p className={style.copyright}>© {new Date().getFullYear()} - {t('name')}. {t('footer.legal_text_3')}</p>
           <Action
-            onChange={() => window.scrollTo({ top: 0, left: 0 })}
+            onChange={() => document.body.scrollTo({ top: 0, left: 0 })}
             classes={['primary', 'md', 'square', style.up]}
             aria-label="Scroll to top"
           >

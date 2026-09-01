@@ -1,5 +1,5 @@
 :root {
-  --tg-safe-top: 0px;
+  --tg-safe-top: 0;
   --tg-safe-bottom: 0px;
   --tg-viewport-height: 100svh;
 
@@ -93,15 +93,22 @@
 }
 
 html {
-  @include scroll-y;
+  //@include scroll-y;
 
+  overflow: hidden;
   background-color: var(--bg);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  //scroll-behavior: smooth;
+  //overflow-x: hidden;
+  border: 2px solid red;
+  height: 100%;
+
+  padding-top: var(--tg-safe-top);
 }
 
 body {
-  --background-size: 30%;
+  //--background-size: 30%;
+
+  @include scroll-y;
 
   margin: 0;
   line-height: var(--line-height);
@@ -113,19 +120,25 @@ body {
   min-width: var(--min-width);
   padding-inline: var(--gap-16);
 
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  height: calc(100vh - var(--tg-safe-top));
+  border: 2px solid blue;
+
   @include desk-s {
     --background-size: 88%;
   }
 
-  &::before {
-    position: absolute;
-    inset: 0;
-    background-attachment: fixed;
-    background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) var(--background-size));
-    background-repeat: repeat-x;
-    background-size: auto 8rem;
-    content: '';
-  }
+  //&::before {
+  //  position: absolute;
+  //  inset: 0;
+  //  background-attachment: fixed;
+  //  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) var(--background-size));
+  //  background-repeat: repeat-x;
+  //  background-size: auto 8rem;
+  //  content: '';
+  //}
 }
 
 input {
@@ -306,11 +319,11 @@ main {
   gap: var(--gap-16);
   position: relative;
   width: 100%;
+  padding-block: var(--gap-16);
   min-height: calc(var(--tg-viewport-height) - var(--header-height));
   margin-inline: auto;
   max-width: var(--max-width);
   flex-shrink: 0;
-  padding-block: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16);
 
   @include desk-s {
     padding-block-end: var(--gap-62);

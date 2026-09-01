@@ -1,6 +1,6 @@
 .block {
   position: sticky;
-  top: var(--tg-safe-top);
+  top: 0;
   margin-inline: rem(-16px);
   z-index: $z-index-9;
   background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);

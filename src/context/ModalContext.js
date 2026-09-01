@@ -75,30 +75,30 @@ export function ModalProvider({ children }) {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [modals.length, closeModal])
 
-  useEffect(() => {
-    if (!modals.length) return
-
-    const scrollY = window.scrollY
-
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${scrollY}px`
-    document.body.style.width = '100%'
-    document.body.style.overflowY = 'scroll'
-
-    return () => {
-      const savedTop = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflowY = ''
-
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
-
-      if (savedTop) {
-        window.scrollTo(0, parseInt(savedTop, 10) * -1)
-      }
-    }
-  }, [modals.length])
+  // useEffect(() => {
+  //   if (!modals.length) return
+  //
+  //   const scrollY = window.scrollY
+  //
+  //   document.body.style.position = 'fixed'
+  //   document.body.style.top = `-${scrollY}px`
+  //   document.body.style.width = '100%'
+  //   document.body.style.overflowY = 'scroll'
+  //
+  //   return () => {
+  //     const savedTop = document.body.style.top
+  //     document.body.style.position = ''
+  //     document.body.style.top = ''
+  //     document.body.style.width = ''
+  //     document.body.style.overflowY = ''
+  //
+  //     window.scrollTo(0, parseInt(scrollY || '0') * -1)
+  //
+  //     if (savedTop) {
+  //       window.scrollTo(0, parseInt(savedTop, 10) * -1)
+  //     }
+  //   }
+  // }, [modals.length])
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal, closeAllModals }}>
