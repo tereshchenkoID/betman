@@ -26,13 +26,17 @@ const Section = ({ user, settings }) => {
   const t = useTranslations()
   const blockRef = useRef(null)
   const { openModal } = useModal()
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(null)
   const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
+
+  const handleToggle = (data) => {
+    setToggle((prev) => (prev === data ? null : data))
+  }
 
   useOutsideClick(
     blockRef,
     () => {
-      setToggle(!toggle)
+      setToggle(null)
     },
     toggle
   )
@@ -51,7 +55,7 @@ const Section = ({ user, settings }) => {
             <Link
               href={ROUTES_USER.wallet.url}
               className={style.balance}
-              onClick={() => setToggle(false)}
+              onClick={() => setToggle(null)}
               aria-label={t(ROUTES_USER.wallet.text)}
             >
               <strong>{fixed(credits?.total_balance, 2)}</strong>
@@ -59,7 +63,12 @@ const Section = ({ user, settings }) => {
             </Link>
           }
           <div className={style.wrapper}>
-            <Languages settings={settings} />
+            <Languages
+              settings={settings}
+              isOpen={toggle === 'languages'}
+              onToggle={() => handleToggle('languages')}
+              onClose={() => setToggle(null)}
+            />
             {
               user?.id &&
               <Action
@@ -83,7 +92,7 @@ const Section = ({ user, settings }) => {
                   <div className={style.avatar}>
                     <Action
                       classes={['secondary', 'md', 'circle']}
-                      onChange={() => setToggle(!toggle)}
+                      onChange={() => handleToggle('account')}
                     >
                       <Icon name="human-avatar" />
                     </Action>
@@ -98,10 +107,10 @@ const Section = ({ user, settings }) => {
                   </div>
             }
             {
-              toggle &&
+              toggle === 'account' &&
               <AccountMenu
                 user={user}
-                setToggle={setToggle}
+                setToggle={() => setToggle(null)}
               />
             }
           </div>
