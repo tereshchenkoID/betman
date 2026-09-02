@@ -7,8 +7,10 @@
 
   position: relative;
   border-radius: var(--border-radius-4);
-  padding: var(--gap-32) var(--gap-16);
-  gap: var(--gap-16);
+  padding: var(--gap-16);
+  //padding: var(--gap-32) var(--gap-16);
+  //gap: var(--gap-16);
+  gap: var(--gap-12);
   background-color: var(--material);
   overflow: hidden;
   background-size: rem(600px);
@@ -96,7 +98,7 @@
 .total {
   @include flex(space-between, center, column);
 
-  padding: var(--gap-16) var(--gap-default);
+  padding: var(--gap-default);
   border-radius: var(--border-radius-6);
   background-color: var(--material-hover);
   min-width: rem(296px);
@@ -128,6 +130,7 @@
   @include flex($align-items: baseline);
 
   gap: var(--gap-default);
+  line-height: 1.2;
 }
 
 .currency {

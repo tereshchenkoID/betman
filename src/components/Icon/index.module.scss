@@ -12,7 +12,7 @@ $sizes: (
   @include transition;
   @include size(var(--size));
 
-  display: inline-block;
+  display: block;
   flex-shrink: 0;
   fill: currentColor;
 

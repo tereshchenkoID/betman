@@ -25,7 +25,7 @@
 
   &.numeric {
     --slide-width: 100%;
-    --slide-spacing: 20px;
+    --slide-spacing: 1.25rem; // 20px
     --slide-count: 3;
 
     @include mob-m {
@@ -37,7 +37,6 @@
     }
 
     @include desk-m {
-      --slide-spacing: 40px;
       --slide-count: 6;
     }
 
@@ -70,8 +69,8 @@
   inset-inline-start: 0;
   inset-block-end: rem(-1px);
   width: var(--slide-spacing);
-  transform: translateX(30%);
-  font-size: 50cqw;
+  transform: translateX(15%);
+  font-size: 30cqw;
   z-index: $z-index-2;
   line-height: 1;
   font-weight: var(--typography-bold);
