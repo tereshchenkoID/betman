@@ -45,7 +45,6 @@ const Section = ({ user, settings }) => {
     <header className={style.block}>
       <div className={style.container}>
         <Logo />
-
         <div
           ref={blockRef}
           className={style.right}
@@ -80,9 +79,10 @@ const Section = ({ user, settings }) => {
             }
             <Action
               classes={['secondary', 'md', 'circle']}
-              onChange={() =>
+              onChange={() => {
+                setToggle(null)
                 openModal('search', { user }, { title: t('search'), size: 'lg' })
-              }
+              }}
             >
               <Icon name="navigation-search" />
             </Action>
@@ -103,7 +103,10 @@ const Section = ({ user, settings }) => {
                   </div>
                 :
                   <div className={style.account}>
-                    <Account />
+                    <Account
+                      settings={settings}
+                      onClose={() => setToggle(null)}
+                    />
                   </div>
             }
             {

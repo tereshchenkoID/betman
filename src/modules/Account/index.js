@@ -8,7 +8,7 @@ import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const Account = ({ settings }) => {
+const Account = ({ settings, onClose }) => {
   const t = useTranslations()
   const { openModal } = useModal()
 
@@ -17,9 +17,10 @@ const Account = ({ settings }) => {
       <Action
         classes={['primary', 'md']}
         placeholder={t(NAVIGATION.login.text)}
-        onChange={() =>
+        onChange={() => {
+          onClose()
           openModal('login', {}, { title: t('sign_up') })
-        }
+        }}
       />
       {
         settings?.modules?.registration !== '0' &&
