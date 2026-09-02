@@ -13,7 +13,10 @@ const SectionPromotions = ({ data, meta }) => {
 
   return (
     <section>
-      <Title title={t('section.providers')} />
+      <Title
+        isBack={true}
+        title={t('section.providers')}
+      />
       {
         meta?.results !== "0"
           ?

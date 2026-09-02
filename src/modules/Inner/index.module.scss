@@ -47,7 +47,8 @@
 
       position: absolute;
       inset-inline-start: 0;
-      inset-block-start: rem(9px);
+      inset-block-start: 0.5lh;
+      transform: translateY(-50%);
       border-radius: 50%;
       background-color: var(--link);
       content: '';
