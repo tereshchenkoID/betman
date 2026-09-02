@@ -1,0 +1,50 @@
+.block {
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
+
+  @include hover {
+    &:hover {
+      .mob,
+      .desk {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+.desk,
+.mob {
+  @include transition;
+}
+
+.desk {
+  display: none;
+
+  @include mob-m {
+    display: block;
+  }
+}
+
+.mob {
+  @include mob-m {
+    display: none;
+  }
+}
+
+.skeleton {
+  --skeleton-cols: 1;
+  --skeleton-rows: 1;
+  --skeleton-height: 18.06rem; // 289px
+
+  @include mob-m {
+    --skeleton-height: 27.68rem; // 443px
+  }
+
+  @include tab-s {
+    --skeleton-height: 8.31rem; // 133px
+  }
+
+  @include desk-s {
+    --skeleton-height: 13.875rem; // 222px
+  }
+}
