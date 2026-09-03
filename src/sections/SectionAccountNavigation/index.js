@@ -43,25 +43,21 @@ const SectionAccountNavigation = () => {
           position: 'right',
           size: 'md'
         }}
-        dots={{
-          isVisible: false,
-        }}
       >
         {
           DATA.map((el, idx) => {
             const isActive = isActiveLink(el.url)
 
             return (
-              <div key={el?.icon || idx}>
-                <Action
-                  to={el.url}
-                  classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
-                  isActive={isActive}
-                >
-                  <Icon name={el.icon} />
-                  <span>{t(el.text)}</span>
-                </Action>
-              </div>
+              <Action
+                to={el.url}
+                key={el?.icon || idx}
+                classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
+                isActive={isActive}
+              >
+                <Icon name={el.icon} />
+                <span>{t(el.text)}</span>
+              </Action>
           )
         })}
       </Slider>

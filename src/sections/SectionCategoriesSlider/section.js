@@ -37,7 +37,9 @@ const SectionCategories = ({
     <Slider
       className={style.block}
       navigation={{
-        isVisible: false,
+        isVisible: true,
+        position: 'right',
+        size: 'md'
       }}
     >
       <button
@@ -58,7 +60,6 @@ const SectionCategories = ({
         <Icon name="games-gambling" />
         {t('all_providers')}
       </Link>
-
       {
         categories.map((el, idx) =>
         <CategoryCard

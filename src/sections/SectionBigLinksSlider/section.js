@@ -12,7 +12,9 @@ const Section = ({ data, meta }) => {
     <Slider
       className={style.block}
       navigation={{
-        isVisible: false,
+        isVisible: true,
+        position: 'right',
+        size: 'md'
       }}
     >
       {
