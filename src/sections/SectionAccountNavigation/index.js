@@ -6,6 +6,7 @@ import { usePathname } from '@/i18n/navigation'
 import { ROUTES_USER } from '@/constant/config'
 
 import Action from '@/components/Action'
+import Slider from '@/modules/Slider'
 import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
@@ -36,22 +37,34 @@ const SectionAccountNavigation = () => {
 
   return (
     <section className={style.block}>
-      {
-        DATA.map((el, idx) => {
-          const isActive = isActiveLink(el.url)
+      <Slider
+        navigation={{
+          isVisible: true,
+          position: 'right',
+          size: 'md'
+        }}
+        dots={{
+          isVisible: false,
+        }}
+      >
+        {
+          DATA.map((el, idx) => {
+            const isActive = isActiveLink(el.url)
 
-          return (
-            <Action
-              key={el?.icon || idx}
-              to={el.url}
-              classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
-              isActive={isActive}
-            >
-              <Icon name={el.icon} />
-              <span>{t(el.text)}</span>
-            </Action>
-        )
-      })}
+            return (
+              <div key={el?.icon || idx}>
+                <Action
+                  to={el.url}
+                  classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
+                  isActive={isActive}
+                >
+                  <Icon name={el.icon} />
+                  <span>{t(el.text)}</span>
+                </Action>
+              </div>
+          )
+        })}
+      </Slider>
     </section>
   )
 }

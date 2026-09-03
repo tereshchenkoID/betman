@@ -1,12 +1,8 @@
 .block {
-  @include flex;
-  @include scroll-x;
-
-  overflow-y: hidden;
-  gap: var(--gap-default);
+  --slide-width: fit-content;
+  --slide-spacing: var(--gap-default);
 }
 
 .link {
-  gap: var(--gap-default);
-  flex-shrink: 0;
+  white-space: nowrap;
 }

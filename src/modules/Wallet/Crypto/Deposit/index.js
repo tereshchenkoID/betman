@@ -2,6 +2,7 @@
 
 import { useTransition } from 'react'
 import { useTranslations } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
@@ -19,6 +20,9 @@ const INITIAL_FILTER = { amount: '' }
 const Deposit = ({ user }) => {
   const t = useTranslations()
   const { openModal } = useModal()
+  const searchParams = useSearchParams()
+  const bonus = searchParams.get('bonus')
+
   const [isPending, startTransition] = useTransition()
 
   const { filter, setFilter, handlePropsChange } = useFilterState(INITIAL_FILTER)
@@ -27,7 +31,7 @@ const Deposit = ({ user }) => {
     e && e.preventDefault()
 
     startTransition(async () => {
-      const res = await action(filter.amount, user.currency)
+      const res = await action(filter.amount, user.currency, bonus)
 
       if (res?.code === '0') {
         openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg'})
