@@ -12,12 +12,13 @@ import style from './index.module.scss'
 
 const PromoCard = ({ data }) => {
   const { title, category, teaser, button, image } = data
+  const { link, text, newtab } = button
 
   return (
     <Link
       className={style.block}
-      href={button?.link}
-      target={button?.newtab === '1' ? '_blank' : undefined}
+      href={link}
+      target={newtab === '1' ? '_blank' : undefined}
       aria-label={title || teaser}
     >
       <article className={style.wrapper}>
@@ -51,13 +52,13 @@ const PromoCard = ({ data }) => {
           <h2>{title}</h2>
           <p className={style.text}>{teaser}</p>
           {
-            button?.text &&
+            text &&
             <Action
               tag={'span'}
               classes={['outline', 'md', style.link]}
-              placeholder={button?.text}
+              placeholder={text}
             >
-              <span>{button?.text}</span>
+              <span>{text}</span>
               <Icon name="navigation-chevron-right-small" />
             </Action>
           }

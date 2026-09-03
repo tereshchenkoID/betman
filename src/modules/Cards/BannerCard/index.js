@@ -1,8 +1,6 @@
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
@@ -11,23 +9,24 @@ import style from './index.module.scss'
 
 const BannerCard = ({ data }) => {
   const { title, subtitle, description, alt, button } = data
+  const { link, text, newtab } = button
 
   return (
     <article className={style.block}>
       <Link
-        href={button?.link || NAVIGATION.home.url}
+        href={link}
         className={style.link}
-        target={button?.newtab === '1' ? '_blank' : undefined}
-        rel={button?.newtab === '1' ? 'noopener noreferrer' : undefined}
-        prefetch={false}
+        target={newtab === '1' ? '_blank' : undefined}
+        rel={newtab === '1' ? 'noopener noreferrer' : undefined}
         aria-label={title || alt || description || 'Banner card'}
+        prefetch={false}
       >
         {
           data?.image &&
           <Image
             src={data?.image}
             className={style.picture}
-            alt={alt || title || ''}
+            alt={alt || title || 'Banner image'}
             width={320}
             height={128}
             priority
@@ -42,11 +41,11 @@ const BannerCard = ({ data }) => {
           { subtitle && <p className={style.subtitle}>{subtitle}</p> }
           { description && <p className={style.description}>{description}</p> }
           {
-            button?.text !== '' &&
+            text !== '' &&
             <Action
               tag={'span'}
               classes={['primary', 'sm', style.button]}
-              placeholder={button?.text}
+              placeholder={text}
               aria-hidden="true"
             />
           }

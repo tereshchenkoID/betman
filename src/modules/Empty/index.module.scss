@@ -5,6 +5,7 @@
   .picture {
     --size: rem(100px);
 
+    margin-inline: auto;
     font-size: rem(100px);
     color: var(--primary-hover);
   }

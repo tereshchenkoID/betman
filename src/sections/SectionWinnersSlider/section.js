@@ -7,7 +7,7 @@ import Slider from '@/modules/Slider'
 import style from './index.module.scss'
 
 const Section = ({ data, meta, user }) => {
-  if (meta?.results === '0') return null
+  if (meta?.results === '0' || meta?.results < 10) return null
 
   return (
     <Slider

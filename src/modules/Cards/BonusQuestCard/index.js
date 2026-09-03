@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import clsx from 'clsx'
 
-import { ROUTES_USER } from '@/constant/config'
-
 import { useModal } from '@/context/ModalContext'
 import { imageError } from '@/helpers/image'
 
@@ -14,8 +12,6 @@ import style from './index.module.scss'
 const BonusQuestCard = ({ user, data }) => {
   const { status, button, bonus, link } = data
   const { openModal } = useModal()
-
-  console.log(data)
 
   return (
     <article

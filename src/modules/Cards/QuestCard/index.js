@@ -13,7 +13,8 @@ import style from './index.module.scss'
 
 const QuestCard = ({ data }) => {
   const t = useTranslations()
-  const { title, status, bonus, button } = data
+  const { title, status, bonus, button, image } = data
+  const { link, text, newtab } = button
   const { openModal } = useModal()
 
   return (
@@ -26,10 +27,10 @@ const QuestCard = ({ data }) => {
       }
     >
       {
-        data?.image &&
+        image &&
         <Image
-          src={data?.image}
-          alt={title}
+          src={image}
+          alt={title || 'Quest image'}
           className={style.picture}
           width={170}
           height={160}
@@ -58,11 +59,11 @@ const QuestCard = ({ data }) => {
               status === '0'
                 ?
                   <Action
-                    to={button.link}
+                    to={link}
                     classes={['primary', 'md']}
-                    placeholder={button.text}
-                    alt={button.text}
-                    target={button.newtab === '1' ? '_blank' : undefined}
+                    placeholder={text}
+                    alt={text}
+                    target={newtab === '1' ? '_blank' : undefined}
                     isDisabled={status === '1'}
                   />
                 :

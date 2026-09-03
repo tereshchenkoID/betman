@@ -95,6 +95,7 @@ const Section = ({
                   href={el.link}
                   className={style.social}
                   aria-label={el.link}
+                  target={'_blank'}
                 >
                   <Icon name={`misc-${el.icon}`} />
                 </a>

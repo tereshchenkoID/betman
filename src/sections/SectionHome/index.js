@@ -27,25 +27,9 @@ const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
 const SectionJackpots = dynamic(() => import('../SectionJackpotsSlider'))
 
 const SECTIONS_CONFIG = {
-  "main-banner": {
-    Component: SectionMainBanner,
-    Fallback: SectionMainBannerSkeleton,
-  },
-  categories: {
-    Component: SectionCategories,
-    Fallback: SectionCategoriesSkeleton,
-  },
-  banners: {
-    Component: SectionBanners,
-    Fallback: SectionBannersSkeleton,
-  },
   games: {
     Component: SectionGamesSlider,
     Fallback: SectionGamesSliderSkeleton,
-  },
-  favorites: {
-    Component: SectionFavoritesSlider,
-    Fallback: SectionFavoritesSkeleton,
   },
   winners: {
     Component: SectionWinners,
@@ -55,6 +39,18 @@ const SECTIONS_CONFIG = {
     Component: SectionJackpots,
     Fallback: SectionJackpotsSkeleton,
   },
+  categories: {
+    Component: SectionCategories,
+    Fallback: SectionCategoriesSkeleton,
+  },
+  banners: {
+    Component: SectionBanners,
+    Fallback: SectionBannersSkeleton,
+  },
+  favorites: {
+    Component: SectionFavoritesSlider,
+    Fallback: SectionFavoritesSkeleton,
+  },
   challenges: {
     Component: SectionChallenge,
     Fallback: SectionChallengeSkeleton,
@@ -62,6 +58,10 @@ const SECTIONS_CONFIG = {
   'big-links': {
     Component: SectionBigLinks,
     Fallback: SectionBigLinksSkeleton,
+  },
+  'main-banner': {
+    Component: SectionMainBanner,
+    Fallback: SectionMainBannerSkeleton,
   },
 }
 

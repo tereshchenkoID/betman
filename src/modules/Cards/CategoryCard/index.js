@@ -9,25 +9,24 @@ import style from './index.module.scss'
 
 const CategoryCard = ({ data }) => {
   const pathname = usePathname()
-  const isActive = Boolean(data?.slug && pathname.includes(data.slug))
+  const { icon, title, link, slug } = data
 
   return (
     <Link
-      href={data.link || `${NAVIGATION.games_hall.url}/${data.slug}`}
+      href={link || `${NAVIGATION.games_hall.url}/${slug}`}
       className={
         clsx(
           style.block,
-          isActive && style.active
+          {
+            [style.active]: Boolean(slug && pathname.includes(slug)) && style.active
+          }
         )
       }
-      aria-label={data.title}
+      aria-label={title || slug}
       prefetch={false}
     >
-      {
-        data?.icon &&
-        <Icon name={data?.icon} />
-      }
-      <p className={style.text}>{data.title}</p>
+      { icon && <Icon name={icon} /> }
+      <p className={style.text}>{title}</p>
     </Link>
   )
 }

@@ -25,6 +25,7 @@ const JackpotCard = ({
 }) => {
   const t = useTranslations()
   const { lastMessage } = useWebSocketContext()
+  const { id, title, image, currency, counter, } = data
   const [games] = useState(() => data?.games || [])
   const [amount, setAmount] = useState(data?.amount)
 
@@ -41,7 +42,7 @@ const JackpotCard = ({
     const { cmd, data: payload, topic } = lastMessage
 
     if (cmd === 'update' && topic === 'jackpots') {
-      const currentUpdate = payload.find((item) => item.id === data?.id)
+      const currentUpdate = payload.find((item) => item.id === id)
 
       if (currentUpdate) {
         startTransition(() => {
@@ -49,7 +50,7 @@ const JackpotCard = ({
         })
       }
     }
-  }, [data?.id, lastMessage])
+  }, [id, lastMessage])
 
   return (
     <article
@@ -62,15 +63,15 @@ const JackpotCard = ({
       style={{ backgroundImage: 'url(/images/coins.webp)' }}
     >
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${id}/general`}
         className={style.logo}
-        aria-label={data?.title}
+        aria-label={title}
       >
         {
-          data?.image &&
+          image &&
           <Image
-            src={data?.image}
-            alt={data?.title || 'Jackpot image'}
+            src={image}
+            alt={title || 'Jackpot image'}
             fill
             sizes="164px"
             decoding="async"
@@ -80,33 +81,33 @@ const JackpotCard = ({
         }
       </Link>
       {
-        data?.title &&
+        title &&
         <Link
-          href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+          href={`${NAVIGATION.jackpots.url}/${id}/general`}
           className={style.info}
-          aria-label={data?.title}
+          aria-label={title}
         >
-          {data?.title}
+          {title}
         </Link>
       }
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/general`}
+        href={`${NAVIGATION.jackpots.url}/${id}/general`}
         className={style.total}
         aria-label={t('jackpot_total')}
       >
         <p className={style.label}>{t('jackpot_total')}</p>
         <div className={style.amount}>
           <h3 className={style.number}>{amount}</h3>
-          <h4 className={style.currency}>{data?.currency}</h4>
+          <h4 className={style.currency}>{currency}</h4>
         </div>
       </Link>
       <Link
-        href={`${NAVIGATION.jackpots.url}/${data?.id}/games`}
+        href={`${NAVIGATION.jackpots.url}/${id}/games`}
         className={style.eligible}
         aria-label={t('all_games')}
       >
         <Badge
-          data={data?.counter}
+          data={counter}
           classes={['secondary', 'md', style.badge]}
         />
         <p>{t('all_games')}</p>

@@ -23,6 +23,7 @@ const Thumbnail = ({
 }) => {
   const t = useTranslations()
   const { handlePlay, handleDemo, handleOpenGameModal } = useGamePlay(user)
+  const { id, title, images, groups } = data
 
   return (
     <article
@@ -33,20 +34,20 @@ const Thumbnail = ({
           isNumeric && style.numeric
         )
       }
-      aria-label={data?.title}
+      aria-label={title}
     >
       <button
         type="button"
         className={style.action}
         onClick={() => handleOpenGameModal(data)}
-        aria-label={`${t('details')} ${data?.title}`}
+        aria-label={`${t('details')} ${title}`}
       />
       {
-        data?.images?.length > 0 &&
+        images?.length > 0 &&
         <Image
-          src={data?.images?.[0]}
+          src={images?.[0]}
           className={style.image}
-          alt={data?.title || 'Thumbnail'}
+          alt={title || 'Thumbnail image'}
           width={250}
           height={280}
           priority={isPriority}
@@ -66,30 +67,30 @@ const Thumbnail = ({
         <div className={style.content}>
           <div className={style.actions}>
             <Action
-              classes={['primary', 'lg', 'square', style.play]}
-              onChange={() => handlePlay(data?.id)}
-              aria-label={`${t('play')} ${data?.title}`}
+              classes={['primary', 'lg', 'square']}
+              onChange={() => handlePlay(id)}
+              aria-label={`${t('play')} ${title}`}
             >
               <Icon name={'status-play-alt'} />
             </Action>
             {
               data?.hasDemo === "1" &&
               <Action
-                to={`${NAVIGATION.game.url}/${data.id}/1`}
+                to={`${NAVIGATION.game.url}/${id}/1`}
                 onChange={handleDemo}
-                classes={['link', 'sm', style.demo]}
+                classes={['link', 'sm']}
                 placeholder={t('demo')}
-                aria-label={`${t('demo')} ${data?.title}`}
+                aria-label={`${t('demo')} ${title}`}
                 prefetch={false}
               />
             }
           </div>
-          <p className={style.title}>{data.title}</p>
+          <p className={style.title}>{title}</p>
           {
             !isNumeric &&
             <div className={style.tags}>
               {
-                data?.groups?.map((el, idx) =>
+                groups?.map((el, idx) =>
                   <Badge
                     key={idx}
                     data={el.value}

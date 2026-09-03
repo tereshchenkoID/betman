@@ -18,8 +18,8 @@ const getClientIp = (headersList) => {
 export const apiRequest = async (endpoint, {
   method = 'GET',
   params = {},
-  cache = 'no-cache',
-  next = {},
+  // cache = 'no-store',
+  // next = {},
   timeout = 15000,
 } = {}) => {
   const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
@@ -31,12 +31,14 @@ export const apiRequest = async (endpoint, {
 
   const options = {
     method,
-    cache,
+    cache: 'no-store',
+    next: { revalidate: 0 },
+    // cache,
     headers: {
       'Accept-Language': locale,
       ...(clientIp && { 'X-Forwarded-For': clientIp, 'X-Real-IP': clientIp }),
     },
-    next,
+    // next,
     signal: AbortSignal.timeout(timeout),
   };
 

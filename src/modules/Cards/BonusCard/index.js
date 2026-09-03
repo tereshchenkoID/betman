@@ -27,10 +27,29 @@ const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
   const router = useRouter()
   const { openModal } = useModal()
+  const {
+    id,
+    enable,
+    name,
+    status,
+    amount,
+    currency,
+    expired_at,
+    info,
+    fs,
+    fs_left,
+    total_bets,
+    percentage,
+    refund_sum,
+    wager,
+    button
+  } = data
+
+  const { link, text, newtab } = button
 
   const handleChange = () => {
     startTransition(async () => {
-      const res = await action(data?.id, '0')
+      const res = await action(id, '0')
 
       if (res?.code === '0') {
         toast.success(res.message)
@@ -47,16 +66,16 @@ const BonusCard = ({ settings, data }) => {
       className={
         clsx(
           style.block,
-          data?.enable === '0' && style.disabled
+          enable === '0' && style.disabled
         )
       }
     >
       <div className={style.content}>
         <div>
           <div className={style.row}>
-            <h3>{data?.name}</h3>
+            <h3>{name}</h3>
             {
-              data?.enable === '1' &&
+              enable === '1' &&
               <Action
                 classes={['secondary', 'md', 'square']}
                 aria-label={t('delete')}
@@ -66,11 +85,11 @@ const BonusCard = ({ settings, data }) => {
               </Action>
             }
             {
-              data?.status &&
+              status &&
               <div className={style.row}>
                 <Notification
-                  text={t(BONUS_STATUS[data?.status])}
-                  type={STATUS_TYPE[data?.status]}
+                  text={t(BONUS_STATUS[status])}
+                  type={STATUS_TYPE[status]}
                   classes={style.status}
                 />
               </div>
@@ -78,48 +97,48 @@ const BonusCard = ({ settings, data }) => {
           </div>
           <div className={style.row}>
             <p>{t('amount')}:</p>
-            <p>{data?.amount} {data?.currency}</p>
+            <p>{amount} {currency}</p>
           </div>
           <div className={style.row}>
             <p>{t('expired')}:</p>
-            <p>{date(data?.expired_at, 3)}</p>
+            <p>{date(expired_at, 3)}</p>
           </div>
         </div>
       </div>
       <div className={style.info}>
         {
-          data?.button?.link &&
+          link &&
           <Action
-            to={data?.button?.link}
-            placeholder={data?.button?.text}
+            to={link}
+            placeholder={text}
             classes={['primary', 'md', 'wide']}
           />
         }
         {
-          data?.info &&
+          info &&
           <Action
             placeholder={t('details')}
             classes={['secondary', 'md', 'wide']}
             onChange={() => {
-              openModal('quest', { data: data?.info }, { title: data?.name })
+              openModal('quest', { data: info }, { title: name })
             }}
           />
         }
       </div>
       <div className={style.scale}>
         <Scale
-          amount={data?.total_bets}
-          percentage={data?.percentage}
-          max={data?.refund_sum}
-          currency={data?.currency}
+          amount={total_bets}
+          percentage={percentage}
+          max={refund_sum}
+          currency={currency}
           isInverted={true}
         />
       </div>
       <div className={style.footer}>
-        <div>{t('wager')}: {data?.wager}</div>
+        <div>{t('wager')}: {wager}</div>
         {
-          data?.fs &&
-          <div>{t('fs_left')}: <span>{data?.fs_left}</span> / <strong>{data?.fs}</strong></div>
+          fs &&
+          <div>{t('fs_left')}: <span>{fs_left}</span> / <strong>{fs}</strong></div>
         }
       </div>
     </div>

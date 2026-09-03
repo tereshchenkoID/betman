@@ -10,11 +10,12 @@ import { imageError } from '@/helpers/image'
 import style from './index.module.scss'
 
 const ProviderCard = ({ data }) => {
+  const { title, results, slug, image, name } = data
   const { closeAllModals } = useModal()
 
   return (
     <Link
-      href={data.link || `${NAVIGATION.providers.url}/${data.slug}`}
+      href={data.link || `${NAVIGATION.providers.url}/${slug}`}
       className={
         clsx(
           style.block,
@@ -24,15 +25,15 @@ const ProviderCard = ({ data }) => {
         )
       }
       onClick={closeAllModals}
-      aria-label={data.name}
+      aria-label={title || name}
       prefetch={false}
     >
       {
-        data.image &&
+        image &&
         <div className={style.picture}>
           <Image
-            src={data?.image}
-            alt={data?.name || 'Provider image'}
+            src={image}
+            alt={name || 'Provider image'}
             fill
             decoding="async"
             sizes="70px"
@@ -42,8 +43,8 @@ const ProviderCard = ({ data }) => {
         </div>
       }
       <div className={style.content}>
-        <p>{data?.title}</p>
-        <strong className={style.count}>{data?.results}</strong>
+        <p>{title}</p>
+        <strong className={style.count}>{results}</strong>
       </div>
     </Link>
   )

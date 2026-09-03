@@ -6,17 +6,19 @@ import { imageError } from '@/helpers/image'
 import style from './index.module.scss'
 
 const BigLinkCard = ({ data }) => {
+  const { title, image, hasMore } = data
+
   return (
     <Link
-      href={`/${data?.hasMore?.join('/')}`}
+      href={`/${hasMore.join('/')}`}
       className={style.block}
       prefetch={false}
     >
       {
-        data?.image &&
+        image &&
         <Image
-          src={data?.image}
-          alt={data?.title}
+          src={image}
+          alt={title}
           className={style.image}
           width={77}
           height={52}
@@ -25,7 +27,7 @@ const BigLinkCard = ({ data }) => {
           unoptimized
         />
       }
-      <p>{data?.title}</p>
+      <p>{title}</p>
     </Link>
   )
 }

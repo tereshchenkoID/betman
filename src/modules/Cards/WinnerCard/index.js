@@ -11,45 +11,49 @@ import style from './index.module.scss'
 
 const WinnerCard = ({ user, data }) => {
   const t = useTranslations()
+  const { game, winnings, maskedUsername, totalBet } = data
+  const { id, title, images } = game
+  const currency = user?.currency?.text
+
   const { handlePlay, handleOpenGameModal } = useGamePlay(user)
 
   return (
     <article className={style.block}>
       <div
         className={style.action}
-        onClick={() => handleOpenGameModal(data?.game)}
+        onClick={() => handleOpenGameModal(game)}
       />
       <div className={style.info}>
         <div className={style.winnings}>
-          <h2>{data.winnings}</h2>
-          <p className={style.currency}>{user?.currency?.text}</p>
+          <h2>{winnings}</h2>
+          <p className={style.currency}>{currency}</p>
         </div>
 
         <div className={style.winnings}>
           <p className={style.currency}>{t('stake')}:</p>
-          <p className={style.currency}><strong>{data.totalBet}</strong> {user?.currency?.text}</p>
+          <p className={style.currency}><strong>{totalBet}</strong> {currency}</p>
         </div>
 
         <div className={style.player}>
           <Icon name="human-avatar" size="sm" />
-          <p>{data.maskedUsername}</p>
+          <p>{maskedUsername}</p>
         </div>
 
         <div className={style.hidden}>
-          <p className={style.title}>{data?.game?.title}</p>
+          <p className={style.title}>{title}</p>
           <Action
             classes={['primary', 'md']}
             placeholder={t('play')}
-            onChange={() => handlePlay(data?.game?.id)}
+            onChange={() => handlePlay(id)}
           />
         </div>
       </div>
       {
-        data?.game?.images?.length > 0 &&
+        images?.length > 0 &&
         <Image
           className={style.image}
-          src={data?.game?.images?.[0]}
-          alt={data?.game?.title}
+          src={images?.[0]}
+          alt={title || `Winner ${id}`}
           width={88}
           height={110}
           decoding="async"

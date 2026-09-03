@@ -1,6 +1,6 @@
 .block {
-  @include flex(null, null, null, wrap);
-  //@include scroll-x;
+  @include flex;
+  @include scroll-x;
 
   overflow-y: hidden;
   gap: var(--gap-default);
