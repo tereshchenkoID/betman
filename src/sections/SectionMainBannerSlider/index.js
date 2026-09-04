@@ -24,6 +24,10 @@ const SectionMainBannerSlider = ({ mock }) => {
         className={style.mob}
         width={664}
         height={570}
+        priority
+        fetchPriority="high"
+        loading="eager"
+        sizes="(max-width: 560px) 100vw, 1px"
         decoding="async"
         onError={(e) => imageError(e, false)}
         unoptimized
@@ -34,6 +38,10 @@ const SectionMainBannerSlider = ({ mock }) => {
         className={style.desk}
         width={1184}
         height={216}
+        priority
+        fetchPriority="high"
+        loading="eager"
+        sizes="(max-width: 560px) 1px, (max-width: 1920px) 100vw, 1184px"
         decoding="async"
         onError={(e) => imageError(e, false)}
         unoptimized
