@@ -1,6 +1,6 @@
-import { ROUTES_USER } from '@/constant/config'
-
 import { redirect } from '@/i18n/navigation'
+
+import { ROUTES_USER } from '@/constant/config'
 
 export default async function Profile({ params }) {
   const { locale } = await params

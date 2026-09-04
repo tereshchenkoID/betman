@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { useGamePlay } from '@/hooks/useGamePlay'
-
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

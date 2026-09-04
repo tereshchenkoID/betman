@@ -8,11 +8,11 @@ import {
   useState 
 } from 'react'
 
+import { useRouter } from '@/i18n/navigation'
+
 import { logoutAction } from '@/app/actions/auth'
 
-import { useRouter } from '@/i18n/navigation'
 import { useWebSocket } from '@/hooks/useWebSocket'
-
 import { consoleHelper } from '@/helpers/console'
 
 const WebSocketContext = createContext(null)

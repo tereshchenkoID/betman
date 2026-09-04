@@ -3,11 +3,11 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
+import { useRouter } from '@/i18n/navigation'
+
 import { BONUS_STATUS } from '@/constant/config'
 
-import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
-
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
 

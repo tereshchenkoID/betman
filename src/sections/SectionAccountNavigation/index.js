@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
-import { ROUTES_USER } from '@/constant/config'
-
 import { usePathname } from '@/i18n/navigation'
+
+import { ROUTES_USER } from '@/constant/config'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'

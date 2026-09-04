@@ -2,9 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 
+import { Link } from '@/i18n/navigation'
+
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
-import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'

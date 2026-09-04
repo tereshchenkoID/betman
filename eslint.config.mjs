@@ -18,10 +18,10 @@ const eslintConfig = defineConfig([
         {
           groups: [
             ['^react', '^next', '^[a-z]'],
+            ['^@/i18n'],
             ['^@/constant'],
             ['^@/app/actions'],
-            ['^@/i18n', '^@/context', '^@/hooks'],
-            ['^@/utils', '^@/helpers'],
+            ['^@/context', '^@/hooks', '^@/utils', '^@/helpers'],
             ['^@/components', '^@/modules', '^@/widgets', '^@/sections'],
             ['^\\./action'],
             ['^\\./(?!(index\\.module\\.scss|.*\\.css$))'],

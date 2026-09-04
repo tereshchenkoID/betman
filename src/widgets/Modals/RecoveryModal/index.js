@@ -8,7 +8,6 @@ import { apiRequest } from '@/app/actions/api'
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
 import { useValidations } from '@/hooks/useValidations'
-
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'

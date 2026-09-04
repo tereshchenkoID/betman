@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { Link, usePathname } from '@/i18n/navigation'
+
+import { NAVIGATION } from '@/constant/config'
 
 import Icon from '@/components/Icon'
 

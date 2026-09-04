@@ -2,9 +2,9 @@
 
 import { useTransition } from 'react'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { useRouter } from '@/i18n/navigation'
+
+import { NAVIGATION } from '@/constant/config'
 
 import Loader from '@/components/Loader'
 import JackpotCard from '@/modules/Cards/JackpotCard'

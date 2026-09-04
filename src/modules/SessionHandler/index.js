@@ -3,9 +3,9 @@
 import { startTransition, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-import { logoutAction } from '@/app/actions/auth'
-
 import { usePathname, useRouter } from '@/i18n/navigation'
+
+import { logoutAction } from '@/app/actions/auth'
 
 export default function SessionHandler() {
   const pathname = usePathname()

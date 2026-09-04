@@ -7,8 +7,8 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
-import { useModal } from '@/context/ModalContext'
 
+import { useModal } from '@/context/ModalContext'
 import { toast } from '@/utils/toast'
 
 import { action } from './action'

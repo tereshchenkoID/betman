@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { Link } from '@/i18n/navigation'
+
+import { NAVIGATION } from '@/constant/config'
 
 import style from './index.module.scss'
 

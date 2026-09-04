@@ -3,13 +3,13 @@
 import { useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
+import { Link } from '@/i18n/navigation'
+
 import { ROUTES_USER } from '@/constant/config'
 
-import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 import { useGlobalData } from '@/hooks/useGlobalData'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
-
 import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 

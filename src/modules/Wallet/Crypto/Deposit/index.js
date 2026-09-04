@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl'
 
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
-
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'

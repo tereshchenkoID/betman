@@ -5,9 +5,9 @@ import dynamic from 'next/dynamic'
 import { notFound, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { QUANTITY, ROUTES_USER } from '@/constant/config'
-
 import { usePathname, useRouter } from '@/i18n/navigation'
+
+import { QUANTITY, ROUTES_USER } from '@/constant/config'
 
 import DateRange from '@/components/DateRange'
 import Loader from '@/components/Loader'

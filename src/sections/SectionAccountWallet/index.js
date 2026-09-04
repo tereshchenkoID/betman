@@ -4,9 +4,10 @@ import { useEffect, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
+
 import { ROUTES_USER } from '@/constant/config'
 
-import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Loader from '@/components/Loader'

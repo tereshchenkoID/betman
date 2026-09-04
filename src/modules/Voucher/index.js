@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl'
 
 import { useCopy } from '@/hooks/useCopy'
-
 import { date } from '@/helpers/date'
 
 import Action from '@/components/Action'

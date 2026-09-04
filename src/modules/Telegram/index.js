@@ -2,9 +2,10 @@
 
 import { useEffect, useRef } from 'react'
 
+import { useRouter } from '@/i18n/navigation'
+
 import { loginWithTelegramAction } from '@/app/actions/auth'
 
-import { useRouter } from '@/i18n/navigation'
 import useTelegram from '@/hooks/useTelegram'
 
 export default function Telegram({ auth }) {

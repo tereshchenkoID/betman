@@ -1,9 +1,9 @@
+import { redirect } from '@/i18n/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
-
-import { redirect } from '@/i18n/navigation'
 
 import SectionAccountNavigation from '@/sections/SectionAccountNavigation'
 

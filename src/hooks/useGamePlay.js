@@ -1,8 +1,9 @@
 import { useTranslations } from 'next-intl'
 
+import { useRouter } from '@/i18n/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
-import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 export const useGamePlay = (user) => {

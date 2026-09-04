@@ -1,12 +1,12 @@
 import { Suspense } from 'react'
 
+import { redirect } from '@/i18n/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
-
-import { redirect } from '@/i18n/navigation'
 
 import SectionRegistration from '@/sections/SectionRegistration'
 import SeoSection from '@/sections/SectionSeo'

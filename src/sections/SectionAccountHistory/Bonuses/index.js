@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import { BONUS_STATUS } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
-
 import { date } from '@/helpers/date'
 
 import Action from '@/components/Action'

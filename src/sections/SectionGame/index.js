@@ -4,9 +4,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
+import { Link, useRouter } from '@/i18n/navigation'
+
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
-import { Link, useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'

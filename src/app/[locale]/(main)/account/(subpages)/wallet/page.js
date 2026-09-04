@@ -1,8 +1,8 @@
+import { redirect } from '@/i18n/navigation'
+
 import { ROUTES_USER } from '@/constant/config'
 
 import { getCachedUser } from '@/app/actions/static'
-
-import { redirect } from '@/i18n/navigation'
 
 export const dynamic = 'force-dynamic'
 
