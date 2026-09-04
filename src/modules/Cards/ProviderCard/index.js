@@ -1,10 +1,11 @@
-import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
+
 import { imageError } from '@/helpers/image'
 
 import style from './index.module.scss'

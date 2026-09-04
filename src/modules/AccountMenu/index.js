@@ -1,7 +1,6 @@
-import { useTranslations } from 'next-intl'
 import { startTransition } from 'react'
-import { Link, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import {
@@ -11,7 +10,9 @@ import {
 
 import { logoutAction } from '@/app/actions/auth'
 
+import { Link, useRouter } from '@/i18n/navigation'
 import { useGlobalData } from '@/hooks/useGlobalData'
+
 import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 

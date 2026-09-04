@@ -2,8 +2,8 @@
 
 import { useFavorites } from '@/context/FavoritesContext'
 
-import Empty from '@/modules/Empty'
 import Thumbnail from '@/modules/Cards/Thumbnail'
+import Empty from '@/modules/Empty'
 
 import style from './index.module.scss'
 

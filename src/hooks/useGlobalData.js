@@ -1,6 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef, startTransition } from 'react'
+import {
+  startTransition, useEffect, useRef, useState 
+} from 'react'
+
 import { eventBus } from '@/utils/eventBus'
 
 export function useGlobalData(eventName, initialData, customMerger) {

@@ -1,20 +1,21 @@
 'use client'
 
-import { Link } from '@/i18n/navigation'
+import { startTransition, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { startTransition, useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { Link } from '@/i18n/navigation'
 import { useWebSocketContext } from '@/context/WebSocketContext'
+
 import { imageError } from '@/helpers/image'
 
 import Icon from '@/components/Icon'
-import Slider from '@/modules/Slider'
 import Badge from '@/modules/Badge'
 import Thumbnail from '@/modules/Cards/Thumbnail'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

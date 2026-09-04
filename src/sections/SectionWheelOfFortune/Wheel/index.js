@@ -1,12 +1,16 @@
 'use client'
 
-import { useRouter } from '@/i18n/navigation'
-import { useTranslations } from 'next-intl'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  useEffect, useMemo, useRef, useState 
+} from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
+import { useRouter } from '@/i18n/navigation'
+import { useModal } from '@/context/ModalContext'
+
 import { toast } from '@/utils/toast'
 
-import { useModal } from '@/context/ModalContext'
 import { action } from './action'
 
 import style from './index.module.scss'

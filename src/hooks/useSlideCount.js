@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useSlideCount = (elementRef, defaultCount = 7) => {
   const [slideCount, setSlideCount] = useState(defaultCount)

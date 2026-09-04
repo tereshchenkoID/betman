@@ -1,6 +1,5 @@
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'

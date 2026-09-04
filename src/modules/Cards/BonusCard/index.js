@@ -1,20 +1,22 @@
 import { startTransition } from 'react'
-import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
-import { useRouter } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { BONUS_STATUS } from '@/constant/config'
 
+import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
+
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
-import { action } from './action'
 
 import Action from '@/components/Action'
-import Scale from '@/modules/Scale'
 import Icon from '@/components/Icon'
 import Notification from '@/modules/Notification'
+import Scale from '@/modules/Scale'
+
+import { action } from './action'
 
 import style from './index.module.scss'
 

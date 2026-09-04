@@ -1,4 +1,6 @@
-import { getCategories, getPages, getProviders, getSettings, getCachedUser } from '@/app/actions/static'
+import {
+  getCachedUser, getCategories, getPages, getProviders, getSettings 
+} from '@/app/actions/static'
 
 import Footer from '@/widgets/Footer/section'
 

@@ -1,5 +1,7 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+
 import stylistic from '@stylistic/eslint-plugin'
 
 const eslintConfig = defineConfig([
@@ -8,8 +10,43 @@ const eslintConfig = defineConfig([
   {
     plugins: {
       '@stylistic': stylistic,
+      'simple-import-sort': simpleImportSort,
     },
     rules: {
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^react', '^next', '^[a-z]'],
+            ['^@/constant'],
+            ['^@/app/actions'],
+            ['^@/i18n', '^@/context', '^@/hooks'],
+            ['^@/utils', '^@/helpers'],
+            ['^@/components', '^@/modules', '^@/widgets', '^@/sections'],
+            ['^\\./action'],
+            ['^\\./(?!(index\\.module\\.scss|.*\\.css$))'],
+            ['^.+\\.s?css$'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
+
+      '@stylistic/comma-spacing': ['error', { before: false, after: true }],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
+
+      '@stylistic/object-curly-newline': [
+        'error',
+        {
+          ImportDeclaration: { multiline: true, minProperties: 4 },
+          ExportDeclaration: { multiline: true, minProperties: 4 },
+          // Звичайні об'єкти в коді НЕ чіпаємо:
+          ObjectExpression: { consistent: true },
+          ObjectPattern: { consistent: true },
+        },
+      ],
+
+      '@stylistic/object-property-newline': 'off',
+
       '@stylistic/indent': [
         'error',
         2,
@@ -23,6 +60,7 @@ const eslintConfig = defineConfig([
             'ConditionalExpression',
             'JSXAttribute',
             'JSXExpressionContainer',
+            'CallExpression > ObjectExpression',
           ],
         },
       ],
@@ -36,13 +74,10 @@ const eslintConfig = defineConfig([
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/quotes': ['error', 'single'],
       '@stylistic/jsx-quotes': ['error', 'prefer-double'],
-      '@stylistic/object-curly-spacing': ['error', 'always'],
     },
   },
 
-  // Override default ignores of eslint-config-next.
   globalIgnores([
-    // Default ignores of eslint-config-next:
     '.next/**',
     'out/**',
     'build/**',

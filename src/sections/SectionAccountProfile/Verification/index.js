@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 
 import Action from '@/components/Action'
+
 import Uploader from './Uploader'
 
 import style from '../index.module.scss'

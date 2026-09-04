@@ -1,10 +1,11 @@
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { TASK_STATUS } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
+
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

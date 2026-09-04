@@ -8,8 +8,8 @@ import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import Title from '@/modules/Title'
 import Notification from '@/modules/Notification'
+import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 

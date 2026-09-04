@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
 import { useCopy } from '@/hooks/useCopy'
+
 import { date } from '@/helpers/date'
 
-import Icon from '@/components/Icon'
 import Action from '@/components/Action'
+import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 

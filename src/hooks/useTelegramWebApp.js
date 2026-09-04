@@ -1,4 +1,4 @@
-import { useState, useEffect, startTransition } from 'react'
+import { startTransition, useEffect, useState } from 'react'
 
 const useTelegramWebApp = () => {
   const [tg, setTg] = useState(() => {

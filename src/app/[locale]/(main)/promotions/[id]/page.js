@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { getPageMetadata } from '@/app/actions/metadata'
 import { apiRequest } from '@/app/actions/api'
+import { getPageMetadata } from '@/app/actions/metadata'
 
 import SectionPromo from '@/sections/SectionPromo'
 

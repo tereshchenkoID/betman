@@ -1,7 +1,7 @@
-import Header from '@/widgets/Header'
+import Content from '@/modules/Content'
 import Aside from '@/widgets/Aside'
 import Footer from '@/widgets/Footer'
-import Content from '@/modules/Content'
+import Header from '@/widgets/Header'
 import SectionNotFound from '@/sections/SectionNotFound'
 
 export default async function NotFoundPage() {

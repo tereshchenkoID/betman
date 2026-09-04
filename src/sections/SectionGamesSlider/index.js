@@ -1,7 +1,7 @@
 import { LIST_COUNT } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
-import { getSettings, getCachedUser } from '@/app/actions/static'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
 import Section from './section'
 

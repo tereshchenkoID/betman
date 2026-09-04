@@ -2,13 +2,13 @@ import { useTranslations } from 'next-intl'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useGamePlay } from '@/hooks/useGamePlay'
 import { useModal } from '@/context/ModalContext'
+import { useGamePlay } from '@/hooks/useGamePlay'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import Favourite from '@/modules/Favorite'
 import Badge from '@/modules/Badge'
+import Favourite from '@/modules/Favorite'
 
 import style from './index.module.scss'
 

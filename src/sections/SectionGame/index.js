@@ -1,20 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
-import { Link, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+
+import { Link, useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import FullScreen from '@/modules/FullScreen'
-import Favourite from '@/modules/Favorite'
-import LoginModal from '@/widgets/Modals/LoginModal'
-import Back from '@/modules/Back'
 import AccountMenu from '@/modules/AccountMenu'
+import Back from '@/modules/Back'
+import Favourite from '@/modules/Favorite'
+import FullScreen from '@/modules/FullScreen'
+import LoginModal from '@/widgets/Modals/LoginModal'
+
 import Frame from './Frame'
 
 import style from './index.module.scss'

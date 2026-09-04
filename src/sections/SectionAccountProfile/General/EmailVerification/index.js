@@ -3,13 +3,14 @@ import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { toast } from '@/utils/toast'
-import { action } from '../action.js'
 
-import Field from '@/components/Field'
 import Action from '@/components/Action'
+import Field from '@/components/Field'
 import Icon from '@/components/Icon'
 
 import style from '../../index.module.scss'
+
+import { action } from '../action.js'
 
 const EmailVerification = ({
   filter,

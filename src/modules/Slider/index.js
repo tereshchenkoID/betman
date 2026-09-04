@@ -1,14 +1,14 @@
 'use client'
 
 import React, {
-  useState,
+  forwardRef,
   useEffect,
   useImperativeHandle,
-  forwardRef,
+  useState,
 } from 'react'
-import { useKeenSlider } from 'keen-slider/react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
+import { useKeenSlider } from 'keen-slider/react'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'

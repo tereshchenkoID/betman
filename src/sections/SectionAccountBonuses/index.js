@@ -1,15 +1,16 @@
 'use client'
 
 import { useTransition } from 'react'
-import { useRouter } from '@/i18n/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
+import { useRouter } from '@/i18n/navigation'
+
 import Loader from '@/components/Loader'
-import Empty from '@/modules/Empty'
-import Tabs from '@/modules/Tabs'
 import BonusCard from '@/modules/Cards/BonusCard'
 import BonusQuestCard from '@/modules/Cards/BonusQuestCard'
+import Empty from '@/modules/Empty'
+import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
 

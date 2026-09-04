@@ -1,6 +1,7 @@
 'use client'
 
 import { memo } from 'react'
+
 import style from './index.module.scss'
 
 const Frame = ({ src, title }) => {

@@ -1,10 +1,11 @@
 'use client'
 
 import { startTransition, useEffect } from 'react'
-import { useRouter, usePathname } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 
 import { logoutAction } from '@/app/actions/auth'
+
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 export default function SessionHandler() {
   const pathname = usePathname()

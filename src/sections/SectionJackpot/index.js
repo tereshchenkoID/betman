@@ -1,16 +1,17 @@
 'use client'
 
 import { useTransition } from 'react'
-import { useRouter } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { useRouter } from '@/i18n/navigation'
+
+import Loader from '@/components/Loader'
+import JackpotCard from '@/modules/Cards/JackpotCard'
+import Inner from '@/modules/Inner'
 import Tabs from '@/modules/Tabs'
 import Title from '@/modules/Title'
-import Inner from '@/modules/Inner'
-import JackpotCard from '@/modules/Cards/JackpotCard'
 import SectionGames from '@/sections/SectionGames'
-import Loader from '@/components/Loader'
 
 import style from './index.module.scss'
 

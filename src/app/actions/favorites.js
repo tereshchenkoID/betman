@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidateTag } from 'next/cache'
+
 import { apiRequest } from '@/app/actions/api'
 
 export async function addFavoritesAction(id, isFavourite) {

@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
+
 import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionVerification from '@/sections/SectionVerification'
 import SeoSection from '@/sections/SectionSeo'
+import SectionVerification from '@/sections/SectionVerification'
 
 export async function generateMetadata() {
   return await getPageMetadata('verification')

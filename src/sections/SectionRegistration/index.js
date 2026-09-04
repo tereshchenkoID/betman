@@ -1,9 +1,10 @@
 'use client'
 
+import {
+  startTransition, useCallback, useEffect, useState 
+} from 'react'
 import Image from 'next/image'
-import { useRouter } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
-import { startTransition, useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
@@ -11,18 +12,20 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { registerWithCredentialsAction } from '@/app/actions/auth'
-import { toast } from '@/utils/toast'
 
+import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
 import { useValidations } from '@/hooks/useValidations'
 
+import { toast } from '@/utils/toast'
+
 import Action from '@/components/Action'
+import Checkbox from '@/components/Checkbox'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
-import Checkbox from '@/components/Checkbox'
-import Select from '@/components/Select'
 import Phone from '@/components/Phone'
+import Select from '@/components/Select'
 
 import style from './index.module.scss'
 

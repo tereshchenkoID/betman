@@ -4,9 +4,9 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SeoSection from '@/sections/SectionSeo'
-import SectionGames from '@/sections/SectionGames'
 import SectionCategoriesSlider from '@/sections/SectionCategoriesSlider'
+import SectionGames from '@/sections/SectionGames'
+import SeoSection from '@/sections/SectionSeo'
 
 export async function generateMetadata() {
   return await getPageMetadata('games')

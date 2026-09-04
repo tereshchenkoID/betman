@@ -5,8 +5,8 @@ import { ROUTES_USER } from '@/constant/config'
 import { useFavorites } from '@/context/FavoritesContext'
 import { useModal } from '@/context/ModalContext'
 
-import Icon from '@/components/Icon'
 import Action from '@/components/Action'
+import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 

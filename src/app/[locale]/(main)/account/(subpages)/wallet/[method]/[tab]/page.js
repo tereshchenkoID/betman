@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionTooltip from '@/sections/SectionTooltip'
 import CryptoBanner from '@/modules/CryptoBanner'
+import SectionTooltip from '@/sections/SectionTooltip'
 
 const COMPONENTS_MAP = {
   crypto: {

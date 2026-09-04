@@ -1,5 +1,5 @@
+import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useState, useCallback } from 'react'
 
 import { toast } from '@/utils/toast'
 

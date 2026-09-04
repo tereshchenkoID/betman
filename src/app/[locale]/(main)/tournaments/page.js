@@ -2,8 +2,8 @@ import { NAVIGATION } from '@/constant/config'
 
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import SectionTournaments from '@/sections/SectionTournaments'
 import SeoSection from '@/sections/SectionSeo'
+import SectionTournaments from '@/sections/SectionTournaments'
 
 export async function generateMetadata() {
   return await getPageMetadata('tournaments')

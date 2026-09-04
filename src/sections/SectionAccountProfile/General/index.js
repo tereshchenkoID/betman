@@ -6,9 +6,10 @@ import { useValidations } from '@/hooks/useValidations'
 import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Phone from '@/components/Phone'
-import EmailVerification from './EmailVerification'
-// import PhoneVerification from './PhoneVerification'
 
+import EmailVerification from './EmailVerification'
+
+// import PhoneVerification from './PhoneVerification'
 import style from '../index.module.scss'
 
 const getCleanProfile = (profileObj) => {

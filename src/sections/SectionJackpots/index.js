@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 
+import JackpotCard from '@/modules/Cards/JackpotCard'
 import Empty from '@/modules/Empty'
 import Title from '@/modules/Title'
-import JackpotCard from '@/modules/Cards/JackpotCard'
 
 import style from './index.module.scss'
 

@@ -1,17 +1,19 @@
 'use client'
 
-import { useCallback, useEffect, useState, useTransition } from 'react'
+import {
+  useCallback, useEffect, useState, useTransition 
+} from 'react'
 import { useTranslations } from 'next-intl'
 
 import { apiRequest } from '@/app/actions/api'
+
 import { useFilterState } from '@/hooks/useFilterState'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
-
-import Thumbnail from '@/modules/Cards/Thumbnail'
 import ProviderCard from '@/modules/Cards/ProviderCard'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 import Empty from '@/modules/Empty'
 import Tabs from '@/modules/Tabs'
 

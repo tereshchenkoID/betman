@@ -1,7 +1,7 @@
-import { apiRequest } from '@/app/actions/api'
-import { getSettings, getCachedUser } from '@/app/actions/static'
-
 import { USER_VERIFY } from '@/constant/config'
+
+import { apiRequest } from '@/app/actions/api'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
 import SectionAccountProfile from '@/sections/SectionAccountProfile'
 import SectionTooltip from '@/sections/SectionTooltip'

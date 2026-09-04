@@ -1,6 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin'
-import { fileURLToPath } from 'url'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
 import bundleAnalyzer from '@next/bundle-analyzer'
 
 const __filename = fileURLToPath(import.meta.url)

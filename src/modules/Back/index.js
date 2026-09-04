@@ -1,7 +1,7 @@
 import { useRouter } from '@/i18n/navigation'
 
-import Icon from '@/components/Icon'
 import Action from '@/components/Action'
+import Icon from '@/components/Icon'
 
 const Back = ({
   url = null,

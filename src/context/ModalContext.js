@@ -2,15 +2,14 @@
 
 import {
   createContext,
-  useState,
-  useContext,
   useCallback,
-  useEffect
+  useContext,
+  useEffect,
+  useState 
 } from 'react'
 
-import { MODAL_REGISTRY } from '@/widgets/Modals/registry'
-
 import Modal from '@/components/Modal'
+import { MODAL_REGISTRY } from '@/widgets/Modals/registry'
 
 const ModalContext = createContext()
 

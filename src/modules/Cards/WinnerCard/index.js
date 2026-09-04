@@ -1,8 +1,9 @@
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+
+import { useGamePlay } from '@/hooks/useGamePlay'
 
 import { imageError } from '@/helpers/image'
-import { useGamePlay } from '@/hooks/useGamePlay'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'

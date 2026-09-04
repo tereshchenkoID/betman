@@ -1,7 +1,6 @@
-import { Link } from '@/i18n/navigation'
-
 import clsx from 'clsx'
 
+import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import style from './index.module.scss'

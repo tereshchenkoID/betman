@@ -1,14 +1,17 @@
 'use client'
 
+import {
+  useCallback, useEffect, useMemo, useRef, useState, useTransition 
+} from 'react'
+import { CountrySelector, defaultCountries, usePhoneInput } from 'react-international-phone'
 import { useLocale } from 'next-intl'
-import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from 'react'
-import { usePhoneInput, CountrySelector, defaultCountries } from 'react-international-phone'
 import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
-import { action } from './action'
 
 import Preload from '@/components/Preload'
+
+import { action } from './action'
 
 import 'react-international-phone/style.css'
 import style from './index.module.scss'

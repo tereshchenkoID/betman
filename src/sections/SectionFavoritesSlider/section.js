@@ -1,16 +1,16 @@
 'use client'
 
-import { useMemo, Fragment, useRef } from 'react'
-import { useSlideCount } from '@/hooks/useSlideCount'
+import { Fragment, useMemo, useRef } from 'react'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { useFavorites } from '@/context/FavoritesContext'
+import { useSlideCount } from '@/hooks/useSlideCount'
 
-import Slider from '@/modules/Slider'
 import Thumbnail from '@/modules/Cards/Thumbnail'
 import ThumbnailMore from '@/modules/Cards/ThumbnailMore'
 import ThumbnailPreload from '@/modules/Cards/ThumbnailPreload'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

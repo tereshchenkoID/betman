@@ -1,7 +1,7 @@
-import Header from '@/widgets/Header'
-import Footer from '@/widgets/Footer'
-import Aside from '@/widgets/Aside'
 import Content from '@/modules/Content'
+import Aside from '@/widgets/Aside'
+import Footer from '@/widgets/Footer'
+import Header from '@/widgets/Header'
 
 export default async function MainLayout({ children }) {
   return (

@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
+
 import Icon from '@/components/Icon'
 
 import style from './index.module.scss'

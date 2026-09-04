@@ -1,11 +1,10 @@
 'use client'
 
+import { Fragment } from 'react'
 import Image from 'next/image'
 
-import { Fragment } from 'react'
-
-import Title from '@/modules/Title'
 import Inner from '@/modules/Inner'
+import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 

@@ -1,24 +1,25 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 
 import { ROUTES_USER } from '@/constant/config'
 
+import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
-import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { useGlobalData } from '@/hooks/useGlobalData'
+import { useOutsideClick } from '@/hooks/useOutsideClick'
+
 import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import Languages from '@/modules/Languages'
 import Account from '@/modules/Account'
 import AccountMenu from '@/modules/AccountMenu'
-import Status from '@/modules/Status'
+import Languages from '@/modules/Languages'
 import Logo from '@/modules/Logo'
+import Status from '@/modules/Status'
 
 import style from './index.module.scss'
 

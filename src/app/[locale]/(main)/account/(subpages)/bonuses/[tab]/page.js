@@ -1,5 +1,5 @@
 import { apiRequest } from '@/app/actions/api'
-import { getSettings, getCachedUser } from '@/app/actions/static'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
 import SectionAccountBonuses from '@/sections/SectionAccountBonuses'
 

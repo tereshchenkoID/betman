@@ -1,7 +1,7 @@
 'use client'
 
-import Slider from '@/modules/Slider'
 import BigLinkCard from '@/modules/Cards/BigLinkCard'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

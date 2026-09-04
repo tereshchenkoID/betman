@@ -2,17 +2,18 @@
 
 import {
   createContext,
-  useContext,
-  useState,
-  useMemo,
-  useCallback,
-  useEffect,
   startTransition,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
 } from 'react'
+
+import { addFavoritesAction } from '@/app/actions/favorites'
 
 import { toast } from '@/utils/toast'
 import { consoleHelper } from '@/helpers/console'
-import { addFavoritesAction } from '@/app/actions/favorites'
 
 const FavoritesContext = createContext(null)
 

@@ -1,24 +1,26 @@
 'use client'
 
-import { useTransition, useState } from 'react'
+import { useState, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/navigation'
 
 import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
+import { useRouter } from '@/i18n/navigation'
 import { useFilterState } from '@/hooks/useFilterState'
-import { compress } from '@/helpers/compress'
+
 import { toast } from '@/utils/toast'
+import { compress } from '@/helpers/compress'
+
+import Loader from '@/components/Loader'
+import Notification from '@/modules/Notification'
+import Tabs from '@/modules/Tabs'
 
 import { action } from './action'
 
-import Tabs from '@/modules/Tabs'
-import Notification from '@/modules/Notification'
-import Loader from '@/components/Loader'
-import General from './General'
 import Address from './Address'
-import Verification from './Verification'
+import General from './General'
 import Security from './Security'
+import Verification from './Verification'
 
 import style from './index.module.scss'
 

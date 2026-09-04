@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, startTransition } from 'react'
+import { startTransition, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/navigation'
 
-import { useWebSocketContext } from '@/context/WebSocketContext'
+import { useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
+import { useWebSocketContext } from '@/context/WebSocketContext'
+
 import { eventBus } from '@/utils/eventBus'
 
 const WSUpdater = ({ user }) => {

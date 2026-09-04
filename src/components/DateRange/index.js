@@ -1,8 +1,11 @@
-import { useState, useRef, useMemo, useEffect, startTransition } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
+import {
+  startTransition, useEffect, useMemo, useRef, useState 
+} from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
+
 import Icon from '@/components/Icon'
 
 import style from './index.module.scss'

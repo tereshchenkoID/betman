@@ -2,10 +2,10 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getSettings, getWheelsRound, getCachedUser } from '@/app/actions/static'
+import { getCachedUser, getSettings, getWheelsRound } from '@/app/actions/static'
 
-import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
 import SeoSection from '@/sections/SectionSeo'
+import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
 
 export async function generateMetadata() {
   return await getPageMetadata('wheel-of-fortune')

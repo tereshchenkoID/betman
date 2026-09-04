@@ -2,6 +2,7 @@ import Image from 'next/image'
 import clsx from 'clsx'
 
 import { useModal } from '@/context/ModalContext'
+
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

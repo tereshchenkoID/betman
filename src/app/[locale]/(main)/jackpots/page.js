@@ -2,7 +2,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getSettings, getCachedUser } from '@/app/actions/static'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
 import SectionJackpots from '@/sections/SectionJackpots'
 import SeoSection from '@/sections/SectionSeo'

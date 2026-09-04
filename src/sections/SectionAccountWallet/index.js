@@ -1,17 +1,17 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { useEffect, useTransition } from 'react'
-import { Link, usePathname, useRouter } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { ROUTES_USER } from '@/constant/config'
 
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Loader from '@/components/Loader'
-import Tabs from '@/modules/Tabs'
 import Notification from '@/modules/Notification'
+import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
 

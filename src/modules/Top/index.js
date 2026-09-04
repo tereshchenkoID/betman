@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl'
-
 import clsx from 'clsx'
 
 import style from './index.module.scss'

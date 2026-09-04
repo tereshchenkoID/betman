@@ -1,5 +1,6 @@
-import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
+
+import { Link } from '@/i18n/navigation'
 
 import Icon from '@/components/Icon'
 

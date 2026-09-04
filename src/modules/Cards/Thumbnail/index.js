@@ -4,8 +4,9 @@ import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { imageError } from '@/helpers/image'
 import { useGamePlay } from '@/hooks/useGamePlay'
+
+import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'

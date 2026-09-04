@@ -1,14 +1,15 @@
 'use client'
 
-import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+
+import { Link } from '@/i18n/navigation'
 import { useModal } from '@/context/ModalContext'
 
 import Icon from '@/components/Icon'
-import Slider from '@/modules/Slider'
 import CategoryCard from '@/modules/Cards/CategoryCard'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

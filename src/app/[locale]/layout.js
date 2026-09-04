@@ -1,26 +1,27 @@
-import Script from 'next/script'
-import { getMessages } from 'next-intl/server'
-import { Oswald, Roboto } from 'next/font/google'
-import { NextIntlClientProvider } from 'next-intl'
-import { GoogleTagManager } from '@next/third-parties/google'
 import { Suspense } from 'react'
 import { preconnect, preload } from 'react-dom'
+import { Oswald, Roboto } from 'next/font/google'
+import Script from 'next/script'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import NextTopLoader from 'nextjs-toploader'
 import clsx from 'clsx'
 
+import { getCachedUser, getFavorites } from '@/app/actions/static'
+
+import { FavoritesProvider } from '@/context/FavoritesContext'
 import { ModalProvider } from '@/context/ModalContext'
 import { WebSocketProvider } from '@/context/WebSocketContext'
-import { FavoritesProvider } from '@/context/FavoritesContext'
 
-import { getFavorites, getCachedUser } from '@/app/actions/static'
-
-import Toastify from '@/widgets/Toastify'
 import ScrollToTop from '@/modules/ScrollToTop'
-import WSUpdater from '@/modules/WSUpdater'
-import Telegram from '@/modules/Telegram'
 import SessionHandler from '@/modules/SessionHandler'
+import Telegram from '@/modules/Telegram'
+import WSUpdater from '@/modules/WSUpdater'
+import Toastify from '@/widgets/Toastify'
 
 import './layout.scss'
+
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const roboto = Roboto({
   weight: ['400', '700'],

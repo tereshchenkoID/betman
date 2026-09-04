@@ -1,19 +1,20 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-import { useTranslations } from 'next-intl'
-import { notFound, useSearchParams } from 'next/navigation'
 import { Suspense, useTransition } from 'react'
-import { useRouter, usePathname } from '@/i18n/navigation'
+import dynamic from 'next/dynamic'
+import { notFound, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
-import { ROUTES_USER, QUANTITY } from '@/constant/config'
+import { QUANTITY, ROUTES_USER } from '@/constant/config'
+
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 import DateRange from '@/components/DateRange'
-import Select from '@/components/Select'
 import Loader from '@/components/Loader'
-import Tabs from '@/modules/Tabs'
-import Pagination from '@/modules/Pagination'
+import Select from '@/components/Select'
 import Empty from '@/modules/Empty'
+import Pagination from '@/modules/Pagination'
+import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
 

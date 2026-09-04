@@ -1,4 +1,6 @@
-import { getWheelsRound, getQuests, getBonuses, getSettings, getCachedUser } from '@/app/actions/static'
+import {
+  getBonuses, getCachedUser, getQuests, getSettings, getWheelsRound 
+} from '@/app/actions/static'
 
 import Section from './section'
 

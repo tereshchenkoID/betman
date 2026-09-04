@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { useOutsideClick } from '@/hooks/useOutsideClick'
+
 import { runRules } from '@/helpers/rules'
 
 import Action from '@/components/Action'

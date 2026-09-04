@@ -1,7 +1,7 @@
-import { getPageMetadata } from '@/app/actions/metadata'
-import { apiRequest } from '@/app/actions/api'
-
 import { NAVIGATION } from '@/constant/config'
+
+import { apiRequest } from '@/app/actions/api'
+import { getPageMetadata } from '@/app/actions/metadata'
 
 import SectionHome from '@/sections/SectionHome'
 import SeoSection from '@/sections/SectionSeo'

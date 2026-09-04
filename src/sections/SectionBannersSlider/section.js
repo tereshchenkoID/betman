@@ -1,7 +1,7 @@
 'use client'
 
-import Slider from '@/modules/Slider'
 import BannerCard from '@/modules/Cards/BannerCard'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

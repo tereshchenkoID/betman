@@ -1,7 +1,6 @@
 'use client'
 
 import WinnerCard from '@/modules/Cards/WinnerCard'
-
 import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'

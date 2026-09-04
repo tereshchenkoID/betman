@@ -1,8 +1,9 @@
 'use client'
 
-import { useLocale } from 'next-intl'
-import { usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
+import { useLocale } from 'next-intl'
+
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 import Action from '@/components/Action'
 

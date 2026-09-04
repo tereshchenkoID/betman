@@ -1,8 +1,9 @@
-import { useTranslations } from 'next-intl'
-import Image from 'next/image'
 import { useEffect, useState, useTransition } from 'react'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import { apiRequest } from '@/app/actions/api'
+
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

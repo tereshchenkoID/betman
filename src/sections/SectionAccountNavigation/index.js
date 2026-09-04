@@ -1,13 +1,14 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { usePathname } from '@/i18n/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
+import { usePathname } from '@/i18n/navigation'
+
 import Action from '@/components/Action'
-import Slider from '@/modules/Slider'
 import Icon from '@/components/Icon'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

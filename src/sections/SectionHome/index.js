@@ -1,26 +1,26 @@
-import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
+import { getTranslations } from 'next-intl/server'
 import clsx from 'clsx'
+
+import SectionBanners from '@/sections/SectionBannersSlider'
+import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
+import SectionBigLinks from '@/sections/SectionBigLinksSlider'
+import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
+import SectionCategories from '@/sections/SectionCategoriesSlider'
+import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
+import SectionChallenge from '@/sections/SectionChallenge'
+import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
+import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
+import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
+import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
+import SectionMainBanner from '@/sections/SectionMainBannerSlider'
+import SectionMainBannerSkeleton from '@/sections/SectionMainBannerSlider/skeleton'
+import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
 
 import style from './index.module.scss'
 
-import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
-import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
 import SectionGamesSliderSkeleton from '../SectionGamesSlider/skeleton'
-import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
-import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
-import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
-import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
-import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
-import SectionMainBannerSkeleton from '@/sections/SectionMainBannerSlider/skeleton'
-
-import SectionCategories from '@/sections/SectionCategoriesSlider'
-import SectionBanners from '@/sections/SectionBannersSlider'
-import SectionChallenge from '@/sections/SectionChallenge'
-import SectionBigLinks from '@/sections/SectionBigLinksSlider'
-import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
-import SectionMainBanner from '@/sections/SectionMainBannerSlider'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))

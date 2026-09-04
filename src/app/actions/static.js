@@ -1,6 +1,7 @@
 'use server'
 
 import { cache } from 'react'
+
 import { apiRequest } from '@/app/actions/api'
 
 export const getSettings = cache(async () => {

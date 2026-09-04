@@ -1,4 +1,4 @@
-import { getSettings, getCachedUser } from '@/app/actions/static'
+import { getCachedUser, getSettings } from '@/app/actions/static'
 
 import Header from '@/widgets/Header/section'
 

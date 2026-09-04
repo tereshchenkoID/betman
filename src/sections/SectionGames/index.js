@@ -8,9 +8,9 @@ import { LIST_COUNT } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 
 import Action from '@/components/Action'
+import Thumbnail from '@/modules/Cards/Thumbnail'
 import Empty from '@/modules/Empty'
 import Title from '@/modules/Title'
-import Thumbnail from '@/modules/Cards/Thumbnail'
 
 import style from './index.module.scss'
 

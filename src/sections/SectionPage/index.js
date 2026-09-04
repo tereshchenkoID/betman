@@ -2,8 +2,8 @@
 
 import { Fragment } from 'react'
 
-import Inner from '@/modules/Inner'
 import Back from '@/modules/Back'
+import Inner from '@/modules/Inner'
 
 import style from './index.module.scss'
 

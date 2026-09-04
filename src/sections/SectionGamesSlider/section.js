@@ -1,13 +1,13 @@
 'use client'
 
-import { useMemo, Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
-import Slider from '@/modules/Slider'
 import Thumbnail from '@/modules/Cards/Thumbnail'
 import ThumbnailMore from '@/modules/Cards/ThumbnailMore'
+import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 

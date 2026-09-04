@@ -3,8 +3,8 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getQuests } from '@/app/actions/static'
 
-import SeoSection from '@/sections/SectionSeo'
 import SectionQuests from '@/sections/SectionQuests'
+import SeoSection from '@/sections/SectionSeo'
 
 export async function generateMetadata() {
   return await getPageMetadata('quests')

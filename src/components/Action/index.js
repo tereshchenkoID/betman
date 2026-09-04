@@ -1,6 +1,7 @@
-import { Link } from '@/i18n/navigation'
 import { forwardRef } from 'react'
 import clsx from 'clsx'
+
+import { Link } from '@/i18n/navigation'
 
 import Icon from '@/components/Icon'
 

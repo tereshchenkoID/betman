@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-import Icon from '@/components/Icon'
 import Action from '@/components/Action'
+import Icon from '@/components/Icon'
 
 const FullScreen = () => {
   const [toggle, setToggle] = useState(false)
