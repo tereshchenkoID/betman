@@ -1,6 +1,8 @@
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 
+import Icon from '@/components/Icon'
+
 import style from './index.module.scss'
 
 const ThumbnailMore = ({ url }) => {
@@ -16,7 +18,8 @@ const ThumbnailMore = ({ url }) => {
       aria-label={t('more_games')}
       prefetch={false}
     >
-      <p className={style.text}>{t('more_games')}</p>
+      <Icon name={'navigation-add-alt'} />
+      <p>{t('more_games')}</p>
     </Link>
   )
 }

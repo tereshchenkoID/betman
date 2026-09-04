@@ -1,15 +1,16 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
-import { useMemo, Fragment } from 'react'
+import { useMemo, Fragment, useRef } from 'react'
+import { useSlideCount } from '@/hooks/useSlideCount'
 
-import { NAVIGATION } from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { useFavorites } from '@/context/FavoritesContext'
 
 import Slider from '@/modules/Slider'
 import Thumbnail from '@/modules/Cards/Thumbnail'
 import ThumbnailMore from '@/modules/Cards/ThumbnailMore'
+import ThumbnailPreload from '@/modules/Cards/ThumbnailPreload'
 
 import style from './index.module.scss'
 
@@ -19,12 +20,14 @@ const SLIDE_TYPE = {
   PLACEHOLDER: 'placeholder',
 }
 
-const renderSlide = (slide, settings, user, moreUrl) => {
+const renderSlide = (slide, settings, user) => {
   switch (slide.type) {
     case SLIDE_TYPE.MORE:
-      return <ThumbnailMore url={moreUrl} settings={settings} />
+      return <ThumbnailMore url={`${NAVIGATION.games_hall.url}/top`} settings={settings} />
 
-    case SLIDE_TYPE.GAME:
+    case SLIDE_TYPE.PLACEHOLDER:
+      return <ThumbnailPreload />
+
     default:
       return (
         <Thumbnail
@@ -41,14 +44,9 @@ const Section = ({
   settings,
   user,
 }) => {
-  const t = useTranslations()
+  const blockRef = useRef(null)
   const { favorites, meta } = useFavorites()
-
-  const pathString = mock?.hasMore?.join('/') || ''
-
-  const moreUrl = useMemo(() => {
-    return pathString ? `/${pathString}` : NAVIGATION.games_hall.url
-  }, [pathString])
+  const slideCount = useSlideCount(blockRef, 7)
 
   const slides = useMemo(() => {
     if (!favorites?.length) return []
@@ -59,38 +57,58 @@ const Section = ({
       isPriority: idx < 8,
     }))
 
-    if (Number(meta?.results) > 8) {
-      gameSlides.push({ type: SLIDE_TYPE.MORE })
+    let currentLength = gameSlides.length
+
+    if (currentLength < slideCount) {
+      gameSlides.push({
+        type: SLIDE_TYPE.MORE,
+        id: 'placeholder-more',
+      })
+      currentLength++
+
+      const placeholdersNeeded = slideCount - currentLength
+      for (let i = 0; i < placeholdersNeeded; i++) {
+        gameSlides.push({
+          type: SLIDE_TYPE.PLACEHOLDER,
+          id: `placeholder-${i}`,
+        })
+      }
     }
 
     return gameSlides
-  }, [favorites, meta?.results])
+  }, [favorites, slideCount])
 
   if (meta?.results === '0') return null
 
   return (
-    <Slider
-      className={style.block}
-      slideClassName={style.slide}
-      more={{
-        isVisible: true,
-        to: moreUrl,
-        results: meta?.results
-      }}
-      title={{
-        isVisible: true,
-        text: mock?.title
-      }}
-    >
-      {
-        slides.map((el, idx) =>
-          <Fragment key={el?.id || idx}>
-            {
-              renderSlide(el, settings, user, moreUrl, idx)
-            }
-          </Fragment>
-        )}
-    </Slider>
+    <div className={style.block} ref={blockRef}>
+      <Slider
+        slideClassName={style.slide}
+        more={{
+          isVisible: true,
+          to: ROUTES_USER.favourites.url,
+          results: meta?.results
+        }}
+        title={{
+          isVisible: true,
+          text: mock?.title
+        }}
+      >
+        {
+          slides.map((el, idx) =>
+            <Fragment key={el?.id || idx}>
+              {
+                renderSlide(
+                  el,
+                  settings,
+                  user,
+                  idx
+                )
+              }
+            </Fragment>
+          )}
+      </Slider>
+    </div>
   )
 }
 

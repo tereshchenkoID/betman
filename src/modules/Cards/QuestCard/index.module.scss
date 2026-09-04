@@ -21,12 +21,22 @@
   inset-inline: 0;
   inset-block-end: 0;
   z-index: $z-index-1;
+
+  &::before {
+    position: absolute;
+    inset-block-end: 100%;
+    inset-inline: 0;
+    height: rem(24px);
+    background: linear-gradient(to top, var(--color-black), transparent);
+    pointer-events: none;
+    content: '';
+  }
 }
 
 .info {
   position: absolute;
-  inset-block-start: var(--gap-default);
-  inset-inline: var(--gap-default);
+  inset-block-start: var(--gap-12);
+  inset-inline: var(--gap-12);
 }
 
 .picture {

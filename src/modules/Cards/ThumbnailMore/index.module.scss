@@ -1,5 +1,5 @@
 .block {
-  @include flex(center, center);
+  @include flex(center, center, column);
 
   position: relative;
   overflow: hidden;
@@ -9,6 +9,10 @@
   background-size: 100%;
   background-position: 50%;
   aspect-ratio: 1 / 1.12;
+  gap: var(--gap-4);
+  text-transform: uppercase;
+  font-family: var(--font-family-alt);
+  font-size: rem(14px);
 
   &::after {
     position: absolute;
@@ -23,12 +27,9 @@
       background-size: 105%;
     }
   }
-}
 
-.text {
-  position: relative;
-  z-index: $z-index-1;
-  text-transform: uppercase;
-  font-family: var(--font-family-alt);
-  font-size: rem(14px)
+  * {
+    position: relative;
+    z-index: $z-index-1;
+  }
 }

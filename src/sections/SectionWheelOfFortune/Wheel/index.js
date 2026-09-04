@@ -185,7 +185,6 @@ const Wheel = ({ mock, user, wheelsRound }) => {
     ctx.restore()
   }
 
-  // Первоначальный рендер при готовности шрифтов
   useEffect(() => {
     document.fonts.ready.then(() => {
       drawCanvasFrame(rotationRef.current)
@@ -221,10 +220,12 @@ const Wheel = ({ mock, user, wheelsRound }) => {
   }
 
   const animateWheel = (data) => {
+    const rawIndex = Number(data?.id)
+    const targetIndex = !isNaN(rawIndex) && mock[rawIndex] !== undefined ? rawIndex : 0
     const duration = data?.time * 1000
     const startTimestamp = performance.now()
     const startRotation = rotationRef.current
-    const sectorCenter = data?.id * angleStep + angleStep / 2
+    const sectorCenter = targetIndex * angleStep + angleStep / 2
     const targetAngle = 360 - sectorCenter
     const extraSpins = Math.max(2, Math.floor(data?.time * 0.7)) * 360
     const finalRotation =

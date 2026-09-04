@@ -1,0 +1,14 @@
+.block {
+  @include flex(center, center);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-10);
+  border: rem(1px) solid var(--primary);
+  background-color: var(--material);
+  aspect-ratio: 1 / 1.12;
+}
+
+.image {
+  max-width: 80%;
+}

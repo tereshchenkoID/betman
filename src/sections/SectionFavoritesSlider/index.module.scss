@@ -35,6 +35,16 @@
     flex: 0 0 calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
     max-width: calc(((100% + var(--slide-spacing)) / var(--slide-count)) - var(--slide-spacing));
   }
+
+  //&:nth-child(n + var(--slide-count) + 1)) {
+  //  border: 1px solid red;
+  //  //display: none;
+  //}
+}
+
+.placeholder {
+  height: 100%;
+  border: 1px solid red;
 }
 
 .skeleton {
