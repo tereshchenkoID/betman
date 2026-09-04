@@ -7,7 +7,6 @@ Production web application built with **Next.js 16** and **React 19**.
 ---
 
 ## 🛠 Tech Stack
-
 | Category | Technologies |
 |---|---|
 | **Core** | Next.js 16 (App Router), React 19 |
@@ -23,8 +22,9 @@ Production web application built with **Next.js 16** and **React 19**.
 
 ---
 
-## 📁 Project Structure
 
+
+## 📁 Project Structure
 ```
 betman/
 ├── .husky/              # Git hooks automation scripts (pre-commit)
@@ -38,14 +38,16 @@ betman/
 ├── next.config.mjs       # Next.js configuration
 └── package.json
 ```
-
 ---
 
-## 🌍 Localization
 
+
+## 🌍 Localization
 The project uses **next-intl** for internationalization, with translation dictionaries stored in the `messages/` directory at the project root (one file per locale). Routing, locale detection, and message loading are configured through `next.config.mjs` and the App Router middleware conventions.
 
 ---
+
+
 
 ## 🚀 Getting Started
 
@@ -83,7 +85,6 @@ Open [http://localhost:3000](http://localhost:3000) to see the result. The app u
 
 
 
-
 ## 🎨 Code Style & Formatting
 The project enforces strict, automated code quality and formatting standardizations:
 
@@ -106,7 +107,6 @@ The project enforces strict, automated code quality and formatting standardizati
 
 
 
-
 ## 💬 Commit Convention
 The project enforces standardized commit messages using **Conventional Commits** managed by **Commitlint** and **Husky** (`commit-msg` hook). Every commit message must strictly follow this structure:
 
@@ -123,13 +123,10 @@ The project enforces standardized commit messages using **Conventional Commits**
 | **`revert`** | Reverting a previous commit |
 
 ### Validation Rules
-
 - **Header Length**: Maximum **100 characters**.
 - **Case**: Summaries can start with either uppercase or lowercase letters.
 - **Language**: English or Ukrainian descriptions are supported.
 - **Mandatory Fields**: Both `<type>` and `<short summary>` are strictly required.
-
-### Examples
 
 **✅ Valid Commits:**
 ```bash
@@ -144,6 +141,8 @@ git commit -m "fixed bug"        # Missing commit type
 git commit -m "feat"             # Missing commit summary
 git commit -m "WIP"              # Non-compliant type and format
 ```
+
+
 
 ## 📦 Key Dependencies Explained
 - **next-intl** — routing-aware i18n: locale-prefixed URLs, message dictionaries, server/client translation hooks.
