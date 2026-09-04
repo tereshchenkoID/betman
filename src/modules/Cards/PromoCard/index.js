@@ -12,7 +12,7 @@ import style from './index.module.scss'
 
 const PromoCard = ({ data }) => {
   const { title, category, teaser, button, image } = data
-  const { link, text, newtab } = button
+  const { link, text, newtab } = button || {}
 
   return (
     <Link

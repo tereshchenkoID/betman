@@ -9,7 +9,7 @@ import style from './index.module.scss'
 
 const ChallengeCard = ({ data }) => {
   const { title, subtitle, image, description, alt, button } = data
-  const { link, text, newtab } = button
+  const { link, text, newtab } = button || {}
 
   return (
     <article className={style.block}>

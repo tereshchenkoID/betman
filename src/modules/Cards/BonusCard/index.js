@@ -1,5 +1,6 @@
 import { startTransition } from 'react'
 import { useTranslations } from 'next-intl'
+import { useSearchParams } from 'next/navigation'
 import { useRouter } from '@/i18n/navigation'
 import clsx from 'clsx'
 
@@ -27,6 +28,9 @@ const BonusCard = ({ settings, data }) => {
   const t = useTranslations()
   const router = useRouter()
   const { openModal } = useModal()
+  const searchParams = useSearchParams()
+  const bonus = searchParams.get('bonus')
+
   const {
     id,
     enable,
@@ -45,11 +49,11 @@ const BonusCard = ({ settings, data }) => {
     button
   } = data
 
-  const { link, text, newtab } = button
+  const { link, text } = button || {}
 
   const handleChange = () => {
     startTransition(async () => {
-      const res = await action(id, '0')
+      const res = await action(id, '0', bonus)
 
       if (res?.code === '0') {
         toast.success(res.message)
