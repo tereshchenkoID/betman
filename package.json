@@ -14,12 +14,8 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "eslint"
-    ],
-    "*.scss": [
-      "stylelint --allow-empty-input"
-    ]
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint --max-warnings=0",
+    "*.scss": "stylelint --allow-empty-input"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.0",

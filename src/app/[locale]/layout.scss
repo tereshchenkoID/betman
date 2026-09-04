@@ -83,6 +83,9 @@ html {
 }
 
 body {
+  --toastify-toast-top: calc(var(--tg-safe-top) + var(--gap-default));
+  --toastify-toast-right: var(--gap-default);
+
   @include scroll-y;
 
   margin: 0;
@@ -287,11 +290,4 @@ main {
 
 section {
   position: relative;
-}
-
-.Toastify__toast-container--top-center,
-.Toastify__toast-container--top-left,
-.Toastify__toast-container--top-right {
-  --toastify-toast-top: calc(var(--tg-safe-top) + var(--gap-default));
-  --toastify-toast-right: var(--gap-default);
 }
