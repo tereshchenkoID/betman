@@ -1,12 +1,12 @@
 .form {
   display: grid;
   gap: var(--gap-24);
-  overflow: hidden;
-  padding: var(--gap-24);
   margin-inline: auto;
-  background-color: var(--material);
+  padding: var(--gap-24);
   border-radius: var(--border-radius-16);
   width: 100%;
+  background-color: var(--material);
+  overflow: hidden;
   text-align: center;
 
   @include tab-s {

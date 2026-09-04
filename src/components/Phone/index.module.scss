@@ -37,8 +37,8 @@
   display: grid;
   grid-template-columns: auto 1fr;
   padding-top: var(--gap-2);
-  background-color: var(--primary-disabled);
   border-radius: var(--border-radius-6);
+  background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
 
   &:focus-within {
@@ -47,49 +47,48 @@
 }
 
 .field {
+  padding-inline: var(--gap-12);
   border: 0;
   outline: none;
-  padding-inline: var(--gap-12);
   background-color: transparent;
-  text-align: left;
   font-size: rem(14px);
+  text-align: left;
 }
 
 .flag {
-  @include size(rem(48px), 100%);
-
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  border-right: rem(1px) solid var(--primary);
-
   --react-international-phone-flag-width: 24px;
   --react-international-phone-flag-height: 24px;
   --react-international-phone-country-selector-background-color-hover: transparent;
+
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  border-right: rem(1px) solid var(--primary);
+
+  @include size(rem(48px), 100%);
 }
 
 .dropdown {
-  @include scroll-y;
-
-  position: absolute;
-  top: calc(rem(48px) + var(--gap-default));
-  inset-inline: 0;
-  z-index: $z-index-1;
-  background-color: var(--material);
-  border-radius: var(--border-radius-10);
-  box-shadow: var(--box-shadow-default);
-  padding: 0;
-  width: 100%;
-  outline: 0;
-
   --react-international-phone-dropdown-item-dial-code-color: var(--link);
   --react-international-phone-dropdown-item-font-size: 14px;
   --react-international-phone-selected-dropdown-item-background-color: var(--primary);
   --react-international-phone-dropdown-preferred-list-divider-margin: var(--gap-default) 0;
   --react-international-phone-dropdown-preferred-list-divider-color: var(--primary);
 
+  position: absolute;
+  top: calc(rem(48px) + var(--gap-default));
+  inset-inline: 0;
+  padding: 0;
+  outline: 0;
+  border-radius: var(--border-radius-10);
+  width: 100%;
+  background-color: var(--material);
+  box-shadow: var(--box-shadow-default);
+  z-index: $z-index-1;
+
   li {
-    @include transition;
+    --react-international-phone-flag-width: 24px;
+    --react-international-phone-flag-height: 24px;
 
     display: grid;
     grid-template-columns: auto auto 1fr;
@@ -99,8 +98,7 @@
     background-color: transparent;
     color: var(--text-for-material);
 
-    --react-international-phone-flag-width: 24px;
-    --react-international-phone-flag-height: 24px;
+    @include transition;
   }
 
   img {
@@ -108,6 +106,8 @@
 
     margin-inline: var(--gap-4) var(--gap-12);
   }
+
+  @include scroll-y;
 }
 
 .label {
@@ -116,10 +116,10 @@
   position: absolute;
   inset-block-start: rem(-6px);
   inset-inline-start: var(--gap-12);
-  pointer-events: none;
+  z-index: $z-index-1;
   font-size: rem(10px);
   color: var(--text-for-material);
-  z-index: $z-index-1;
+  pointer-events: none;
 
   span {
     margin-inline-start: var(--gap-4);
@@ -129,9 +129,9 @@
 
 .message {
   margin-top: var(--gap-2);
+  font-size: rem(12px);
   text-align: left;
   color: var(--red);
-  font-size: rem(12px);
 }
 
 .skeleton {

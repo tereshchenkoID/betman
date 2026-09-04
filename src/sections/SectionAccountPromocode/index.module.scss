@@ -1,7 +1,7 @@
 .block {
   display: grid;
-  gap: var(--gap-32);
   align-items: flex-start;
+  gap: var(--gap-32);
 
   @include desk-s {
     grid-template-columns: rem(460px) 1fr;

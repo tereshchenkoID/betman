@@ -6,23 +6,23 @@
 .list {
   @include flex($align-items: center);
 
+  gap: var(--gap-default);
   position: relative;
   min-height: rem(44px);
-  mask-image: linear-gradient(90deg, var(--black) calc(100% - rem(44px)), transparent);
   overflow-y: hidden;
+  mask-image: linear-gradient(90deg, var(--black) calc(100% - rem(44px)), transparent);
   font-size: rem(14px);
-  gap: var(--gap-default);
 }
 
 .option {
-  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--gap-4);
-  min-width: max-content;
-  height: rem(28px);
+  position: relative;
   padding: var(--gap-6) var(--gap-default);
   border-radius: var(--border-radius-6);
+  min-width: max-content;
+  height: rem(28px);
   background-color: transparent;
   text-align: center;
   color: var(--sub-text);
@@ -37,20 +37,20 @@
 
   &::before {
     inset: 0;
-    z-index: -1;
     border-radius: inherit;
+    z-index: -1;
   }
 
   &::after {
     @include transition;
     @include size(0, rem(3px));
 
-    margin-inline: auto;
-    inset-inline: 0;
     inset-block-end: rem(-8px);
-    z-index: $z-index-1;
+    inset-inline: 0;
+    margin-inline: auto;
     border-radius: var(--border-radius-full);
     background-color: var(--link);
+    z-index: $z-index-1;
   }
 
   @include hover {

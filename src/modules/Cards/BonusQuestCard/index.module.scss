@@ -1,9 +1,9 @@
 .block {
   position: relative;
+  aspect-ratio: 2.5;
   border-radius: var(--border-radius-default);
   background-color: var(--material);
   overflow: hidden;
-  aspect-ratio: 2.5;
 
   &.disable {
     .picture {
@@ -16,8 +16,8 @@
   display: grid;
   gap: var(--gap-default);
   position: absolute;
-  inset-inline: 0;
   inset-block-end: 0;
+  inset-inline: 0;
   padding: var(--gap-12);
   z-index: $z-index-1;
 }
@@ -39,7 +39,7 @@
   align-items: center;
   gap: var(--gap-default);
   min-height: rem(32px);
-  font-weight: var(--typography-bold);
   font-size: rem(14px);
+  font-weight: var(--typography-bold);
   line-height: 1.2;
 }

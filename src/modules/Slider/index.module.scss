@@ -64,8 +64,8 @@
 
         position: absolute;
         inset-block: 0;
-        background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
         width: rem(65px);
+        background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
         opacity: 1;
         z-index: $z-index-2;
         content: '';
@@ -196,14 +196,14 @@
   @include transition;
   @include size(rem(8px));
 
-  cursor: pointer;
-  background-color: var(--primary-disabled);
   border-radius: 50%;
+  background-color: var(--primary-disabled);
+  cursor: pointer;
 
   &.active {
-    background-color: var(--brand);
-    width: rem(16px);
     border-radius: var(--border-radius-4);
+    width: rem(16px);
+    background-color: var(--brand);
   }
 }
 

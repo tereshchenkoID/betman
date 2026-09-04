@@ -4,9 +4,9 @@
   align-items: center;
   gap: var(--gap-12);
   padding: var(--gap-default) var(--gap-12);
-  background-color: var(--material);
   border: rem(1px) solid var(--primary-hover);
   border-radius: var(--border-radius-10);
+  background-color: var(--material);
 
   @include hover {
     &:hover {

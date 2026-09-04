@@ -1,10 +1,10 @@
 .block {
   display: grid;
   position: relative;
-  background-color: var(--material-hover);
-  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
-  padding-bottom: var(--aside-height);
   margin-inline: rem(-16px);
+  padding-bottom: var(--aside-height);
+  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
+  background-color: var(--material-hover);
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
@@ -24,9 +24,9 @@
 
 .container {
   margin-inline: auto;
-  max-width: var(--max-width);
   padding: var(--gap-24) var(--gap-16);
   width: 100%;
+  max-width: var(--max-width);
 }
 
 .top {

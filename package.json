@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "analyze": "ANALYZE=true next build --webpack"
   },
   "dependencies": {
@@ -32,7 +34,10 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
-    "sass": "^1.100.0"
+    "sass": "^1.100.0",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1"
   },
   "allowScripts": {
     "@parcel/watcher": true,

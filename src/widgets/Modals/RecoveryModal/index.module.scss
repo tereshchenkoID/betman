@@ -7,7 +7,7 @@
 .link {
   @include flex($justify-content: center, $wrap: wrap);
 
+  gap: var(--gap-4);
   margin-bottom: var(--gap-12);
   font-size: rem(14px);
-  gap: var(--gap-4);
 }

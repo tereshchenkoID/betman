@@ -8,8 +8,8 @@
 
 .row {
   display: grid;
-  gap: var(--gap-2);
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  gap: var(--gap-2);
   min-width: rem(800px);
   font-size: rem(14px);
 
@@ -18,32 +18,28 @@
   }
 
   &.first {
-
     .cell {
       background-color: var(--primary-hover);
 
       &:first-child {
-        border-radius: rem(8px) 0 0 0;
+        border-radius: var(--border-radius-8) 0 0;
       }
 
       &:last-child {
-        border-radius:  0 rem(8px) 0 0;
+        border-radius: 0 var(--border-radius-8) 0 0;
       }
     }
   }
 
   &:not(.first) {
-
     &:last-child {
-
       .cell {
-
         &:first-child {
-          border-radius: 0 0 0 rem(8px);
+          border-radius: 0 0 0 var(--border-radius-8);
         }
 
         &:last-child {
-          border-radius:  0 0 rem(8px) 0;
+          border-radius: 0 0 var(--border-radius-8);
         }
       }
     }
@@ -61,9 +57,9 @@
 .cell {
   @include flex($align-items: center);
 
-  background-color: var(--primary-disabled);
-  padding: var(--gap-default);
   gap: var(--gap-default);
+  padding: var(--gap-default);
+  background-color: var(--primary-disabled);
 
   &:nth-child(4),
   &:nth-child(5) {

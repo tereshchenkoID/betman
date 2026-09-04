@@ -6,14 +6,14 @@
   position: fixed;
   inset-block: calc(var(--tg-safe-top) + var(--header-height)) var(--aside-height);
   inset-inline: auto 0;
-  background-color: var(--material);
   max-height: calc(100svh - var(--tg-safe-top) - var(--header-height) - var(--aside-height));
+  background-color: var(--material);
 
   @include tab-s {
     @include size(rem(320px), auto);
 
-    border-radius: var(--border-radius-16);
     border: rem(1px) solid var(--tertiary-disabled);
+    border-radius: var(--border-radius-16);
     max-height: unset;
   }
 
@@ -63,16 +63,16 @@
 }
 
 .container {
-  background-color: var(--material-hover);
   border-radius: var(--border-radius-default);
+  background-color: var(--material-hover);
   font-size: rem(13px);
 }
 
 .info,
 .level,
 .link {
-  padding: var(--gap-default);
   gap: var(--gap-default);
+  padding: var(--gap-default);
 
   &:not(:last-child) {
     border-bottom: rem(1px) solid var(--tertiary-disabled);
@@ -93,7 +93,6 @@
 }
 
 .info {
-
   &.column {
     flex-direction: column;
   }
@@ -148,6 +147,6 @@
 .text {
   @include flex(null, center);
 
-  position: relative;
   gap: var(--gap-4);
+  position: relative;
 }

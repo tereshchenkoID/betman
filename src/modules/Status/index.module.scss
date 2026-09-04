@@ -2,8 +2,8 @@
   @include size(rem(8px));
 
   display: inline-flex;
-  border-radius: 50%;
   border: rem(1px) solid var(--material);
+  border-radius: 50%;
 
   &-1 {
     background-color: var(--red);

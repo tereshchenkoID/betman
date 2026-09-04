@@ -40,8 +40,8 @@
   &.tiny {
     .content {
       @include tab-s {
-        min-width: auto;
         width: fit-content;
+        min-width: auto;
       }
     }
 
@@ -74,8 +74,8 @@
 }
 
 .title {
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
   color: var(--text-for-material);
 }
 
@@ -89,12 +89,12 @@
 .content {
   @include flex;
 
-  background-color: var(--material);
   border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
-  overflow: hidden;
-  max-height: 100%;
-  min-width: rem(320px);
   width: 100%;
+  min-width: rem(320px);
+  max-height: 100%;
+  background-color: var(--material);
+  overflow: hidden;
   z-index: $z-index-1;
   color: var(--text-for-material);
 

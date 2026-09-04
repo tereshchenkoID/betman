@@ -3,10 +3,10 @@
 
   @include flex(center, center);
 
+  position: relative;
+  aspect-ratio: 1 / 1;
   width: 100%;
   max-width: calc(var(--wheel-size) * rem(1px));
-  aspect-ratio: 1 / 1;
-  position: relative;
   container-type: inline-size;
   contain: layout;
 }
@@ -24,9 +24,9 @@
   @include size(100%);
 
   display: block;
+  position: relative;
   border-radius: 50%;
   object-fit: cover;
-  position: relative;
   will-change: transform;
 }
 
@@ -35,8 +35,8 @@
 
   position: absolute;
   top: 0;
-  transform: translateY(-55%);
   z-index: $z-index-1;
+  transform: translateY(-55%);
   pointer-events: none;
 
   img {
@@ -51,9 +51,9 @@
   @include transition;
 
   position: absolute;
-  border-radius: 50%;
-  border: none;
   padding: 0;
+  border: none;
+  border-radius: 50%;
 
   &::after,
   &::before {
@@ -64,7 +64,7 @@
 
   &::after {
     inset: var(--gap-default);
-    background: radial-gradient(50% 50% at 50% 50%, #00313A 0%, #021417 42%, #040708 80%, #000000 100%);
+    background: radial-gradient(50% 50% at 50% 50%, #00313A 0%, #021417 42%, #040708 80%, #000 100%);
   }
 
   &::before {
@@ -84,7 +84,7 @@
 .logo {
   @include size(50%, auto);
 
-  margin: auto;
   position: relative;
+  margin: auto;
   z-index: $z-index-1;
 }

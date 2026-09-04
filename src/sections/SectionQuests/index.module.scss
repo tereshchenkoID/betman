@@ -2,8 +2,8 @@
   --count: 2;
 
   display: grid;
-  align-items: center;
   grid-template-columns: repeat(var(--count), 1fr);
+  align-items: center;
   gap: var(--gap-default);
 
   @include mob-m {

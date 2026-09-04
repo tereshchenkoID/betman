@@ -2,14 +2,14 @@
   @include transition;
 
   display: inline-flex;
-  position: relative;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: var(--gap-default);
+  position: relative;
   border-radius: var(--border-radius-full);
   overflow: hidden;
-  text-align: center;
   line-height: 1.5;
+  text-align: center;
 
   &:disabled,
   &.disabled,
@@ -31,15 +31,15 @@
   }
 
   &.sm {
-    padding-inline: var(--gap-12);
     gap: var(--gap-4);
+    padding-inline: var(--gap-12);
     height: rem(24px);
     font-size: rem(12px);
   }
 
   &.square {
-    padding: 0;
     aspect-ratio: 1 / 1;
+    padding: 0;
     border-radius: var(--border-radius-4);
   }
 
@@ -58,8 +58,8 @@
 
     &:disabled,
     &.disabled {
-      color: var(--text-for-brand-disabled);
       background: var(--link-disabled);
+      color: var(--text-for-brand-disabled);
     }
 
     &:active,
@@ -197,6 +197,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

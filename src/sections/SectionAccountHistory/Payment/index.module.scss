@@ -14,16 +14,15 @@
   font-size: rem(14px);
 
   &.first {
-
     .cell {
       background-color: var(--primary-hover);
 
       &:first-child {
-        border-radius: rem(8px) 0 0 0;
+        border-radius: var(--border-radius-8) 0 0;
       }
 
       &:last-child {
-        border-radius:  0 rem(8px) 0 0;
+        border-radius:  0 var(--border-radius-8) 0 0;
       }
     }
   }
@@ -33,17 +32,14 @@
   }
 
   &:not(.first) {
-
     &:last-child {
-
       .cell {
-
         &:first-child {
-          border-radius: 0 0 0 rem(8px);
+          border-radius: 0 0 0 var(--border-radius-8);
         }
 
         &:last-child {
-          border-radius:  0 0 rem(8px) 0;
+          border-radius:  0 0 var(--border-radius-8);
         }
       }
     }
@@ -57,8 +53,8 @@
 
   &.new {
     .cell {
-      font-weight: var(--typography-bold);
       opacity: 1;
+      font-weight: var(--typography-bold);
     }
   }
 }
@@ -66,14 +62,14 @@
 .cell {
   @include flex($align-items: center, $wrap: wrap);
 
-  background-color: var(--primary-disabled);
-  padding: var(--gap-default);
   gap: var(--gap-default);
+  padding: var(--gap-default);
+  background-color: var(--primary-disabled);
 }
 
 .link {
-  color: var(--tertiary);
   font-size: rem(12px);
+  color: var(--tertiary);
 
   @include hover {
     &:hover {

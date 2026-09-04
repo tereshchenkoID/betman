@@ -2,10 +2,10 @@
   @include flex(center, center);
 
   gap: var(--gap-default);
-  background-color: var(--material);
   padding: var(--gap-default) var(--gap-16);
-  border-radius: var(--border-radius-10);
   border: rem(1px) solid var(--primary-hover);
+  border-radius: var(--border-radius-10);
+  background-color: var(--material);
   overflow: hidden;
   font-size: rem(14px);
 

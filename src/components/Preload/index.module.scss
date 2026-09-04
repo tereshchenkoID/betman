@@ -12,10 +12,10 @@
 .item {
   @include size(100%);
 
-  min-height: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0, var(--bg) 25%, rgba(0, 0, 0, 0.2) 50%) 100% / 200% 100%;
-  background-color: var(--material);
   border-radius: var(--border-radius-6);
+  min-height: 0;
+  background: linear-gradient(90deg, rgb(0 0 0 / 10%) 0, var(--bg) 25%, rgb(0 0 0 / 20%) 50%) 100% / 200% 100%;
+  background-color: var(--material);
   animation: skeleton 2s linear infinite;
 }
 

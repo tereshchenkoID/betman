@@ -15,9 +15,9 @@ Production web application built with **Next.js 16** and **React 19**.
 | **Styling** | Sass, Clsx |
 | **Localization** | next-intl |
 | **Analytics & Performance** | @vercel/speed-insights, @next/third-parties, nextjs-toploader |
-| **UI & Interaction** | keen-slider, react-phone-input-2, react-toastify |
+| **UI & Interaction** | keen-slider, react-international-phone, react-toastify |
 | **Media** | browser-image-compression |
-| **Linting** | ESLint 9 (flat config), eslint-config-next |
+| **Linting & Formatting** | ESLint 9 (flat config) with `@stylistic`, Stylelint 17 (`stylelint-order`, `stylelint-config-standard-scss`) |
 | **Optimization** | Critters (critical CSS inlining) |
 | **Deployment** | Vercel |
 
@@ -31,7 +31,8 @@ betman/
 ├── public/               # Static assets (images, icons, fonts)
 ├── src/                  # Application source code
 ├── .browserslistrc       # Target browsers for autoprefixing/transpilation
-├── eslint.config.mjs     # ESLint flat config
+├── .stylelintrc.json     # Stylelint configuration & CSS property ordering
+├── eslint.config.mjs     # ESLint flat config with @stylistic formatting rules
 ├── jsconfig.json         # Path aliases & JS language service config
 ├── next.config.mjs       # Next.js configuration
 └── package.json
@@ -74,9 +75,26 @@ Open [http://localhost:3000](http://localhost:3000) to see the result. The app u
 | `npm run dev` | Starts the Next.js development server |
 | `npm run build` | Builds an optimized production bundle |
 | `npm start` | Serves the production build |
-| `npm run lint` | Runs ESLint across the project |
-
+| `npm run lint` | Runs ESLint and Stylelint code checks |
+| `npm run lint:fix` | Automatically fixes JS/JSX formatting and SCSS property order |
+| `npm run stylelint` | Runs Stylelint across SCSS files |
+| `npm run stylelint:fix` | Automatically formats and sorts CSS properties in SCSS files |
+| `npm run analyze` | Builds application with bundle analyzer enabled |
 ---
+
+## 🎨 Code Style & Formatting
+
+The project enforces strict, automated code quality and formatting standardizations:
+
+- **ESLint 9 Flat Config (`eslint.config.mjs`)**:
+    - Code formatting powered by `@stylistic/eslint-plugin` (2-space indent, no semicolons, single quotes for JS, double quotes for JSX).
+    - Import sorting managed by `eslint-plugin-simple-import-sort` with predefined module groups.
+    - Smart multiline formatting for imports without forcing unnecessary line breaks on code objects.
+
+- **Stylelint 17 (`.stylelintrc.json`)**:
+    - Enforces strict SCSS syntax standards via `stylelint-config-standard-scss`.
+    - Properties ordering managed by `stylelint-order` (Flex/Grid Layout -> Positioning -> Box Model -> Visuals -> Transitions -> Typography).
+    - Modern CSS color notation (`rgb(r g b / a)`).
 
 ## 📦 Key Dependencies Explained
 

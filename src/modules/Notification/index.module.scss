@@ -1,14 +1,14 @@
 .block {
-  padding: var(--gap-4) var(--gap-default);
   position: relative;
+  padding: var(--gap-4) var(--gap-default);
+  border: rem(1px) solid currentcolor;
   border-radius: var(--border-radius-default);
-  border: rem(1px) solid currentColor;
   font-size: rem(12px);
 
   &::before {
     @include absolute-filled;
 
-    background-color: currentColor;
+    background-color: currentcolor;
     opacity: 0.1;
     content: ''
   }

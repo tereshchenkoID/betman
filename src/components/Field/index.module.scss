@@ -71,19 +71,19 @@
   @include size(100%);
 
   padding-inline: var(--gap-12) rem(48px);
-  background-color: var(--primary-disabled);
   border: 0;
   border-radius: var(--border-radius-6);
-  border-bottom: rem(2px) solid var(--primary);
+  background-color: var(--primary-disabled);
   overflow: hidden;
-  text-align: left;
   font-size: var(--font-size);
+  text-align: left;
+  border-bottom: rem(2px) solid var(--primary);
 }
 
 .message {
   margin-top: var(--gap-2);
-  text-align: left;
   font-size: rem(12px);
+  text-align: left;
 
   &.error {
     color: var(--red);

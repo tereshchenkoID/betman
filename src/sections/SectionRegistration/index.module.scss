@@ -1,12 +1,12 @@
 .form {
   display: grid;
   gap: var(--gap-24);
-  overflow: hidden;
-  padding: var(--gap-24);
   margin-inline: auto;
-  background-color: var(--material);
+  padding: var(--gap-24);
   border-radius: var(--border-radius-16);
   width: 100%;
+  background-color: var(--material);
+  overflow: hidden;
   text-align: center;
 
   @include tab-s {
@@ -32,20 +32,19 @@
   position: relative;
   border-radius: 50%;
   background-color: var(--material-hover);
-  color: var(--text-for-material);
   font-size: rem(14px);
+  color: var(--text-for-material);
 
   &:not(:last-child) {
-
     &::after {
       @include size(rem(32px), rem(2px));
 
       position: absolute;
       top: 50%;
       left: calc(100% + rem(4px));
-      transform: translateY(0);
       border-radius: var(--border-radius-4);
       background-color: var(--material-hover);
+      transform: translateY(0);
       content: '';
     }
   }
@@ -82,8 +81,8 @@
 .bonus {
   display: grid;
   grid-template-columns: auto rem(50px);
-  gap: var(--gap-default);
   align-items: center;
+  gap: var(--gap-default);
 }
 
 .image {

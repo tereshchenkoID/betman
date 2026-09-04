@@ -1,13 +1,13 @@
 .block {
   @include flex($align-items: center);
 
+  gap: var(--gap-6);
   padding: var(--gap-default) var(--gap-16);
-  background-color: var(--material);
   border: rem(1px) solid var(--primary-hover);
   border-radius: var(--border-radius-full);
-  overflow: hidden;
-  gap: var(--gap-6);
   min-height: rem(48px);
+  background-color: var(--material);
+  overflow: hidden;
 
   &.active {
     pointer-events: none;
@@ -22,7 +22,7 @@
 }
 
 .text {
-  text-align: center;
   font-size: rem(14px);
   line-height: 1;
+  text-align: center;
 }

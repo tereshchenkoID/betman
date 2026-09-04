@@ -1,18 +1,18 @@
 .block {
   @include flex(center, center, column);
 
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--border-radius-10);
-  border: rem(1px) solid var(--primary);
-  background-color: var(--material);
-  background-size: 100%;
-  background-position: 50%;
-  aspect-ratio: 1 / 1.12;
   gap: var(--gap-4);
-  text-transform: uppercase;
+  position: relative;
+  aspect-ratio: 1 / 1.12;
+  border: rem(1px) solid var(--primary);
+  border-radius: var(--border-radius-10);
+  background-color: var(--material);
+  background-position: 50%;
+  background-size: 100%;
+  overflow: hidden;
   font-family: var(--font-family-alt);
   font-size: rem(14px);
+  text-transform: uppercase;
 
   &::after {
     position: absolute;

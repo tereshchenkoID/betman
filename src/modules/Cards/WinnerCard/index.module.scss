@@ -3,10 +3,10 @@
 
   display: grid;
   grid-template-columns: 1fr rem(88px);
+  position: relative;
   border-radius: var(--border-radius-10);
   background-color: var(--material);
   overflow: hidden;
-  position: relative;
   flex-shrink: 0;
 
   @include hover {
@@ -62,8 +62,8 @@
 .winnings {
   @include flex($align-items: baseline);
 
-  margin-bottom: var(--gap-default);
   gap: var(--gap-4);
+  margin-bottom: var(--gap-default);
 }
 
 .currency {

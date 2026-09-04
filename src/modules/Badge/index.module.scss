@@ -1,13 +1,13 @@
 .block {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  white-space: nowrap;
-  overflow: hidden;
+  align-items: center;
   border-radius: var(--border-radius-full);
-  text-transform: uppercase;
-  text-align: center;
+  overflow: hidden;
   line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
 
   &.lg {
     padding-inline: var(--gap-default);

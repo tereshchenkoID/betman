@@ -14,7 +14,7 @@ $sizes: (
 
   display: block;
   flex-shrink: 0;
-  fill: currentColor;
+  fill: currentcolor;
 
   @each $name, $size in $sizes {
     &.#{$name} {

@@ -19,13 +19,13 @@
   flex: 1;
   gap: var(--gap-default);
   position: relative;
+  padding: var(--gap-12);
+  border: rem(1px) solid var(--material);
   border-radius: var(--border-radius-default);
   background-color: var(--material);
-  border: rem(1px) solid var(--material);
-  overflow: hidden;
-  padding: var(--gap-12);
-  font-size: rem(14px);
   opacity: 0.7;
+  overflow: hidden;
+  font-size: rem(14px);
   pointer-events: none;
 
   &.active {
@@ -51,16 +51,16 @@
   @include size(fit-content, rem(24px));
 
   gap: var(--gap-4);
-  white-space: nowrap;
-  overflow: hidden;
+  padding-inline: var(--gap-default);
+  border: rem(1px) solid var(--badge-border-color);
   border-radius: var(--border-radius-full);
   background-color: var(--material-disabled);
-  border: rem(1px) solid var(--badge-border-color);
-  padding-inline: var(--gap-default);
+  overflow: hidden;
   font-size: rem(12px);
   line-height: 1;
   text-align: center;
   color: var(--badge-color);
+  white-space: nowrap;
 
   &-0,
   &-2 {
@@ -110,11 +110,11 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--gap-12);
+  padding: var(--gap-12);
+  border: rem(1px) solid var(--primary);
   border-radius: var(--border-radius-default);
   background-color: var(--material);
-  border: rem(1px) solid var(--primary);
   overflow: hidden;
-  padding: var(--gap-12);
 
   span {
     display: block;

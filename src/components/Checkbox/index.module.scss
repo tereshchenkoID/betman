@@ -1,9 +1,9 @@
 .block {
   @include flex($align-items: flex-start);
 
+  gap: var(--gap-default);
   position: relative;
   cursor: pointer;
-  gap: var(--gap-default);
 
   &.disabled {
     opacity: 0.5;
@@ -32,10 +32,10 @@
 }
 
 .text {
-  text-align: start;
   font-size: rem(14px);
-  color: var(--text-for-material);
   line-height: 1.1;
+  text-align: start;
+  color: var(--text-for-material);
 }
 
 .input {
@@ -45,7 +45,6 @@
   opacity: 0;
 
   &:checked ~ {
-
     .item {
       border-color: var(--brand);
       background-color: var(--brand);
@@ -73,7 +72,7 @@
 
 .message {
   margin-top: var(--gap-2);
+  font-size: rem(12px);
   text-align: left;
   color: var(--red);
-  font-size: rem(12px);
 }

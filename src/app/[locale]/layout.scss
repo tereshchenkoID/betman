@@ -2,37 +2,29 @@
   --tg-safe-top: 0px;
   --tg-safe-bottom: 0px;
   --tg-viewport-height: 100svh;
-
   --toastify-toast-top: var(--tg-safe-top)!important;
-
   --brand: #034659;
   --brand-hover: #034C5D;
-  --brand-disabled: rgba(21, 120, 106, 0.3);
+  --brand-disabled: rgb(21 120 106 / 30%);
   --text-for-brand: #fff;
-  --text-for-brand-disabled: rgba(255, 255, 255, 0.24);
-
-  --primary: rgba(3, 76, 93, 0.6);
-  --primary-hover: rgba(3, 113, 131, 0.45);
-  --primary-disabled: rgba(3, 76, 93, 0.35);
+  --text-for-brand-disabled: rgb(255 255 255 / 24%);
+  --primary: rgb(3 76 93 / 60%);
+  --primary-hover: rgb(3 113 131 / 45%);
+  --primary-disabled: rgb(3 76 93 / 35%);
   --text-for-primary: #fff;
-  --text-for-primary-disabled: rgba(255, 255, 255, 0.4);
-
+  --text-for-primary-disabled: rgb(255 255 255 / 40%);
   --link: #0490A8;
   --link-hover: #036F82;
-  --link-disabled: rgba(4, 144, 168, 0.4);
-
+  --link-disabled: rgb(4 144 168 / 40%);
   --material: #001416;
   --material-hover: #033c43;
-  --material-disabled: rgba(3, 70, 89, 0.35);
+  --material-disabled: rgb(3 70 89 / 35%);
   --text-for-material: #fff;
-  --text-for-material-disabled: rgba(255, 255, 255, 0.4);
-
+  --text-for-material-disabled: rgb(255 255 255 / 40%);
   --tertiary: #fff;
-  --tertiary-hover: rgba(255, 255, 255, 0.32);
-  --tertiary-disabled: rgba(255, 255, 255, 0.1);
-
-  --sub-text: rgba(255, 255, 255, 0.68);
-
+  --tertiary-hover: rgb(255 255 255 / 32%);
+  --tertiary-disabled: rgb(255 255 255 / 10%);
+  --sub-text: rgb(255 255 255 / 68%);
   --bg: #031b1f;
   --amber: #FFA238;
   --yellow: #ffe100;
@@ -41,17 +33,14 @@
   --blue: #0A89D1;
   --white: #fff;
   --black: #000;
-
   --max-width: 90rem;
   --min-width: 22.5rem;
   --font-size: 16px;
   --line-height: 1.5;
   --typography-regular: 400;
   --typography-bold: 700;
-
   --color-white: #fff;
   --color-black: #000;
-
   --gap-default: 0.5rem;
   --gap-2: 0.125rem;
   --gap-4: 0.25rem;
@@ -63,17 +52,15 @@
   --gap-32: 2rem;
   --gap-40: 2.5rem;
   --gap-62: 3.875rem;
-
   --border-radius-default: 0.5rem;
   --border-radius-2: 0.125rem;
   --border-radius-4: 0.25rem;
   --border-radius-6: 0.375rem;
+  --border-radius-8: 0.5rem;
   --border-radius-10: 0.625rem;
   --border-radius-16: 1rem;
   --border-radius-full: 62.5rem;
-
-  --box-shadow-default: 0 0 0.25rem 0 rgba(0, 0, 0, 0.32), 0 0.375rem 0.5rem 0 rgba(0, 0, 0, 0.2);
-
+  --box-shadow-default: 0 0 0.25rem 0 rgb(0 0 0 / 32%), 0 0.375rem 0.5rem 0 rgb(0 0 0 / 20%);
   --header-height: 4.375rem;
   --aside-height: calc(3.5rem + var(--tg-safe-bottom));
 }
@@ -89,45 +76,44 @@
 }
 
 html {
-  overflow: hidden;
-  background-color: var(--bg);
   padding-top: var(--tg-safe-top);
   height: 100%;
+  background-color: var(--bg);
+  overflow: hidden;
 }
 
 body {
   @include scroll-y;
 
   margin: 0;
-  min-width: var(--min-width);
   padding-inline: var(--gap-16);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  min-width: var(--min-width);
   height: calc(100vh - var(--tg-safe-top));
+  overflow-x: hidden;
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--typography-regular);
   line-height: var(--line-height);
-  text-size-adjust: 100%;
   color: var(--text-for-material);
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
 }
 
 input {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     padding: 0;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
+    appearance: none;
   }
 
   &:is(:-webkit-autofill, :autofill),
   &:is(:-webkit-autofill, :autofill):hover,
   &:is(:-webkit-autofill, :autofill):focus,
   &:is(:-webkit-autofill, :autofill):active {
-    -webkit-box-shadow: 0 0 0 30px var(--material-hover) inset !important;
-    -webkit-text-fill-color: var(--text-for-material);
-    -webkit-background-clip: text;
     background-color: transparent!important;
+    box-shadow: 0 0 0 30px var(--material-hover) inset !important;
+    -webkit-text-fill-color: var(--text-for-material);
+    background-clip: text;
   }
 
   &::-webkit-contacts-auto-fill-button,
@@ -148,10 +134,8 @@ input {
   &[type='datetime-local'],
   &[type='date'] {
     width: 100%;
-    direction: ltr;
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    direction: ltr;
 
     &::-webkit-calendar-picker-indicator {
       opacity: 0;
@@ -174,9 +158,9 @@ button {
 
 a {
   display: block;
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 a,
@@ -193,8 +177,8 @@ hr {
   @include size(100%, rem(1px));
 
   display: block;
-  padding-block: 0;
   margin-block: 0;
+  padding-block: 0;
   border: 0;
   background-color: var(--primary-hover);
 }
@@ -225,7 +209,7 @@ img {
 
 input,
 textarea {
-  caret-color: currentColor;
+  caret-color: currentcolor;
 
   &::placeholder {
     color: var(--text-for-material);
@@ -243,8 +227,8 @@ svg {
 }
 
 menu {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -253,12 +237,12 @@ h3,
 h4,
 h5,
 h6 {
-  text-transform: uppercase;
   font-family: var(--font-family-alt);
+  font-weight: var(--typography-regular);
+  text-transform: uppercase;
   font-optical-sizing: auto;
   font-style: normal;
-  font-weight: var(--typography-regular);
-  filter: drop-shadow(rem(1px) rem(2px) 0px var(--material-hover));
+  filter: drop-shadow(rem(1px) rem(2px) 0 var(--material-hover));
 }
 
 h1 {
@@ -289,11 +273,11 @@ main {
   display: grid;
   gap: var(--gap-16);
   position: relative;
-  width: 100%;
-  padding-block: var(--gap-16);
-  min-height: calc(100svh - var(--header-height));
   margin-inline: auto;
+  padding-block: var(--gap-16);
+  width: 100%;
   max-width: var(--max-width);
+  min-height: calc(100svh - var(--header-height));
 
   @include desk-s {
     padding-block-end: var(--gap-62);

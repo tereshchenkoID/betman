@@ -74,10 +74,10 @@
   @include size(100%, rem(48px));
   @include flex(space-between, center);
 
-  padding-inline: var(--gap-12);
   padding-top: var(--gap-2);
-  background-color: var(--primary-disabled);
+  padding-inline: var(--gap-12);
   border-radius: var(--border-radius-6);
+  background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
   white-space: nowrap;
 
@@ -90,22 +90,21 @@
   position: absolute;
   top: calc(100% + var(--gap-default));
   inset-inline: 0;
-  z-index: $z-index-1;
-  background-color: var(--material);
   border-radius: var(--border-radius-10);
+  background-color: var(--material);
   box-shadow: var(--box-shadow-default);
+  z-index: $z-index-1;
 }
 
 .header {
   @include flex(space-between, center);
 
   padding: var(--gap-default);
-  border-bottom: rem(1px) solid var(--primary-hover);
-  color: var(--text-for-material);
   font-size: rem(14px);
+  color: var(--text-for-material);
+  border-bottom: rem(1px) solid var(--primary-hover);
 
   &.current {
-
     span {
       color: var(--link);
     }
@@ -119,10 +118,10 @@
 .weeks {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  padding-inline: var(--gap-default);
   padding-top: var(--gap-default);
-  text-align: center;
+  padding-inline: var(--gap-default);
   font-size: rem(11px);
+  text-align: center;
 }
 
 .days {
@@ -139,12 +138,12 @@
 .day {
   @include flex(center, center);
 
-  height: rem(32px);
   border-radius: var(--border-radius-4);
-  color: var(--text-for-material);
-  font-size: rem(13px);
-  cursor: pointer;
+  height: rem(32px);
   transition: background-color 0.15s ease;
+  font-size: rem(13px);
+  color: var(--text-for-material);
+  cursor: pointer;
 
   @include hover {
     &:hover {

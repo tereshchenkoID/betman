@@ -73,10 +73,10 @@
   @include size(100%, rem(48px));
   @include flex(space-between, center);
 
-  padding-inline: var(--gap-12);
   padding-top: var(--gap-2);
-  background-color: var(--primary-disabled);
+  padding-inline: var(--gap-12);
   border-radius: var(--border-radius-6);
+  background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
 
   svg {
@@ -88,10 +88,10 @@
   position: absolute;
   top: calc(100% + var(--gap-default));
   inset-inline: 0;
-  z-index: $z-index-1;
-  background-color: var(--material);
   border-radius: var(--border-radius-10);
+  background-color: var(--material);
   box-shadow: var(--box-shadow-default);
+  z-index: $z-index-1;
 }
 
 .list {
@@ -111,13 +111,13 @@
   @include size(100%, rem(34px));
 
   padding-inline: var(--gap-default);
-  background-color: var(--primary);
-  border-radius: var(--border-radius-4);
   border: rem(1px) solid var(--primary-hover);
+  border-radius: var(--border-radius-4);
+  background-color: var(--primary);
   overflow: hidden;
+  font-size: rem(14px);
   text-align: start;
   color: var(--text-for-material);
-  font-size: rem(14px);
 
   &:focus {
     border-color: var(--link);
@@ -132,9 +132,9 @@
   }
 
   &:is(:-webkit-autofill, :autofill) {
-    -webkit-box-shadow: 0 0 0 30px var(--primary) inset !important;
+    box-shadow: 0 0 0 30px var(--primary) inset !important;
     -webkit-text-fill-color: var(--text-for-material);
-    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   &::placeholder {
@@ -143,10 +143,10 @@
 }
 
 .option {
-  padding: var(--gap-default);
   justify-content: flex-start;
-  width: 100%;
+  padding: var(--gap-default);
   border-radius: var(--border-radius-6);
+  width: 100%;
   background-color: transparent;
 
   &:not(:last-child) {
@@ -160,22 +160,22 @@
 
   @include hover {
     &:hover {
-      color: var(--text-for-primary);
       background-color: var(--primary-hover);
+      color: var(--text-for-primary);
     }
   }
 }
 
 .text {
   padding-inline: var(--gap-8);
-  text-align: center;
   font-size: rem(12px);
+  text-align: center;
   word-break: break-all;
 }
 
 .message {
   margin-top: var(--gap-2);
+  font-size: rem(12px);
   text-align: left;
   color: var(--red);
-  font-size: rem(12px);
 }

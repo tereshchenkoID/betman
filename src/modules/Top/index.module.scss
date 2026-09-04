@@ -1,11 +1,11 @@
 .block {
   @include flex($align-items: center);
 
-  padding: var(--gap-2) var(--gap-4);
   gap: var(--gap-4);
-  background-color: var(--color-success);
+  padding: var(--gap-2) var(--gap-4);
   border-radius: var(--border-radius-4);
   width: fit-content;
+  background-color: var(--color-success);
   color: var(--color-white);
 
   &.lg {

@@ -16,6 +16,6 @@
 .link {
   @include flex($justify-content: center, $wrap: wrap);
 
-  font-size: rem(14px);
   gap: var(--gap-4);
+  font-size: rem(14px);
 }

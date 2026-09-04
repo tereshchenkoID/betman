@@ -2,10 +2,10 @@
   position: sticky;
   top: 0;
   margin-inline: rem(-16px);
-  z-index: $z-index-9;
-  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
   height: var(--header-height);
+  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
   box-shadow: var(--box-shadow-default);
+  z-index: $z-index-9;
 
   @include desk-s {
     margin-inline: 0;
@@ -18,11 +18,10 @@
 .container {
   @include flex(space-between, center);
 
-  position: relative;
-  padding-inline: var(--gap-2);
-  padding: var(--gap-2) var(--gap-16);
   gap: var(--gap-24);
+  position: relative;
   margin-inline: auto;
+  padding: var(--gap-2) var(--gap-16);
   max-width: var(--max-width);
   height: 100%;
 
@@ -38,8 +37,8 @@
 .wrapper {
   @include flex;
 
-  position: relative;
   gap: var(--gap-4);
+  position: relative;
 
   @include tab-s {
     gap: var(--gap-default);
@@ -51,8 +50,8 @@
 }
 
 .right {
-  align-items: flex-end;
   flex-direction: column-reverse;
+  align-items: flex-end;
 
   @include tab-s {
     flex-direction: row;
@@ -83,11 +82,11 @@
 
 .account {
   position: fixed;
-  inset-inline: 0;
   inset-block-end: var(--aside-height);
+  inset-inline: 0;
   padding: var(--gap-12) var(--gap-16);
-  border-bottom: rem(1px) solid var(--tertiary-disabled);
   background-color: var(--bg);
+  border-bottom: rem(1px) solid var(--tertiary-disabled);
 
   @include desk-s {
     position: static;

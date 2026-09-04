@@ -2,7 +2,6 @@
   width: 100%;
 
   &.active {
-
     .label {
       border-bottom-color: var(--link);
     }
@@ -19,17 +18,17 @@
   @include flex(center, center);
   @include transition;
 
+  gap: var(--gap-default);
   position: relative;
   padding-inline: var(--gap-24);
   border-radius: var(--border-radius-6);
-  overflow: hidden;
-  gap: var(--gap-default);
-  background-color: var(--primary);
-  border-bottom: rem(2px) solid var(--primary);
   min-width: rem(100px);
   height: rem(48px);
+  background-color: var(--primary);
+  overflow: hidden;
   text-align: center;
   cursor: pointer;
+  border-bottom: rem(2px) solid var(--primary);
 
   @include hover {
     &:hover {

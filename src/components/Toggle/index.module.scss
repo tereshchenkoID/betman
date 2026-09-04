@@ -1,9 +1,9 @@
 .block {
   @include flex($align-items: center);
 
+  gap: var(--gap-default);
   position: relative;
   cursor: pointer;
-  gap: var(--gap-default);
 
   &.disabled {
     opacity: 0.5;
@@ -30,9 +30,9 @@
   @include size(rem(50px), rem(28px));
   @include transition(background-color);
 
+  position: relative;
   border-radius: rem(50px);
   background-color: var(--primary);
-  position: relative;
   cursor: pointer;
 
   &::after {

@@ -1,7 +1,7 @@
 .block {
   display: grid;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 
   * {
     color: var(--text-for-material);
@@ -13,8 +13,8 @@
   h4,
   h5,
   h6 {
-    text-transform: unset;
     margin-bottom: var(--gap-4);
+    text-transform: unset;
   }
 
   h1 {
@@ -29,8 +29,8 @@
   img {
     margin-bottom: var(--gap-12);
     width: revert-layer;
-    height: revert-layer;
     max-width: 100%;
+    height: revert-layer;
   }
 
   ul {
@@ -46,11 +46,11 @@
       @include size(rem(4px));
 
       position: absolute;
-      inset-inline-start: 0;
       inset-block-start: 0.5lh;
-      transform: translateY(-50%);
+      inset-inline-start: 0;
       border-radius: 50%;
       background-color: var(--link);
+      transform: translateY(-50%);
       content: '';
     }
   }
@@ -95,8 +95,8 @@
 
   td {
     padding-inline: var(--gap-default);
-    overflow: hidden;
     min-width: rem(120px);
+    overflow: hidden;
   }
 
   caption {

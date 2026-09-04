@@ -34,9 +34,9 @@
   @include flex($direction: column);
   @include size(50%, 100%);
 
+  gap: var(--gap-2);
   position: relative;
   padding: var(--gap-12);
-  gap: var(--gap-2);
 }
 
 .button {
@@ -44,13 +44,13 @@
 }
 
 .title {
-  font-weight: var(--typography-bold);
   font-size: rem(12px);
+  font-weight: var(--typography-bold);
 }
 
 .subtitle {
-  font-weight: var(--typography-bold);
   font-size: rem(14px);
+  font-weight: var(--typography-bold);
   color: var(--yellow);
 }
 

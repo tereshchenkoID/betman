@@ -1,7 +1,7 @@
 .block {
   position: relative;
-  min-height: rem(150px);
   border-radius: var(--border-radius-default);
+  min-height: rem(150px);
   background-color: var(--material);
   overflow: hidden;
 }
@@ -11,8 +11,8 @@
 
   display: grid;
   align-items: center;
-  position: relative;
   gap: var(--gap-32);
+  position: relative;
   padding: var(--gap-16);
   background-color: inherit;
 
@@ -22,9 +22,9 @@
 }
 
 .picture {
-  order: 1;
-  max-width: rem(400px);
   margin-inline: auto;
+  max-width: rem(400px);
+  order: 1;
 
   @include tab-s {
     order: 2;

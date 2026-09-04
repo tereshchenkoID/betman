@@ -1,18 +1,18 @@
 .block {
   display: grid;
+  position: relative;
+  aspect-ratio: 1 / 1.12;
+  border: rem(1px) solid var(--primary);
+  border-radius: var(--border-radius-10);
   overflow: hidden;
   cursor: pointer;
-  position: relative;
-  border-radius: var(--border-radius-10);
-  border: rem(1px) solid var(--primary);
-  aspect-ratio: 1 / 1.12;
 
   @include desk-s {
     @include hover {
       &:hover {
         .details {
-          opacity: 1;
           border-radius: inherit;
+          opacity: 1;
         }
       }
     }
@@ -60,18 +60,18 @@
   display: none;
   position: absolute;
   inset: 0;
+  padding: var(--gap-12);
+  background-position: 50% 0;
+  background-size: cover;
+  backdrop-filter: blur(2px);
   opacity: 0;
   z-index: $z-index-1;
-  background-size: cover;
-  background-position: 50% 0;
-  padding: var(--gap-12);
-  backdrop-filter: blur(2px);
 
   &::before {
     position: absolute;
     inset: 0;
     background: var(--bg);
-    mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0.8) 70%, var(--bg));
+    mask-image: linear-gradient(180deg, transparent, rgb(0 0 0 / 40%) 10%, rgb(0 0 0 / 80%) 70%, var(--bg));
     content: '';
   }
 
@@ -100,10 +100,10 @@
 
 .content {
   display: grid;
-  align-content: flex-end;
-  position: relative;
-  gap: var(--gap-default);
   grid-area: 1 / 1 / 1 / -1;
+  align-content: flex-end;
+  gap: var(--gap-default);
+  position: relative;
 }
 
 .title {

@@ -10,8 +10,8 @@
 
 .section {
   display: grid;
-  gap: var(--gap-32);
   align-items: flex-start;
+  gap: var(--gap-32);
   min-height: rem(200px);
 
   @include desk-s {
@@ -25,8 +25,8 @@
   gap: var(--gap-default);
   position: relative;
   padding: var(--gap-default);
-  background-color: var(--material-hover);
   border-radius: var(--border-radius-6);
+  background-color: var(--material-hover);
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 

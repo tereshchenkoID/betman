@@ -1,9 +1,9 @@
 .block {
   position: relative;
+  padding-bottom: rem(44px);
   border-radius: var(--border-radius-default);
   background-color: var(--material);
   overflow: hidden;
-  padding-bottom: rem(44px);
 
   &.disable {
     .picture {
@@ -15,11 +15,11 @@
 .content {
   display: grid;
   gap: var(--gap-default);
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
   padding: 0 var(--gap-12) var(--gap-12);
   background-color: var(--color-black);
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
   z-index: $z-index-1;
 
   &::before {
@@ -40,13 +40,13 @@
 }
 
 .picture {
+  aspect-ratio: 0.79;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 0.79;
 }
 
 .title {
-  font-weight: var(--typography-bold);
   font-size: rem(14px);
+  font-weight: var(--typography-bold);
   line-height: 1.2;
 }
