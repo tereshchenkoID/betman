@@ -18,7 +18,7 @@ const SectionPromotions = ({ data, meta }) => {
         title={t('section.providers')}
       />
       {
-        meta?.results !== "0"
+        meta?.results !== '0'
           ?
             <div className={style.list}>
               {

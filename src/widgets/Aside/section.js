@@ -46,7 +46,7 @@ const Section = ({
     settings.modules?.jackpots === '1' && NAVIGATION.jackpots,
     settings.modules?.tournament === '1' && NAVIGATION.tournament,
     NAVIGATION.promotions,
-  ].filter(Boolean);
+  ].filter(Boolean)
 
   return (
     <aside className={style.block}>

@@ -45,23 +45,23 @@ export default async function PasswordRecovery({ params, searchParams }) {
   }
 
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": metaTags?.title,
-    "url": process.env.BASE_URL,
-    "description": metaTags?.description,
-    "publisher": {
-      "@type": "Organization",
-      "name": process.env.ORGANIZATION_NAME,
-      "logo": {
-        "@type": "ImageObject",
-        "url": process.env.ORGANIZATION_LOGO
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': metaTags?.title,
+    'url': process.env.BASE_URL,
+    'description': metaTags?.description,
+    'publisher': {
+      '@type': 'Organization',
+      'name': process.env.ORGANIZATION_NAME,
+      'logo': {
+        '@type': 'ImageObject',
+        'url': process.env.ORGANIZATION_LOGO
       }
     },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
-      "query-input": "required name=search_term_string"
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
+      'query-input': 'required name=search_term_string'
     }
   }
 

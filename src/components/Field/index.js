@@ -46,7 +46,7 @@ const Field = ({
   }
 
   const isFilled = !!data
-  const showError = error && (touched || (isFilled && error !== runRules('', rules)));
+  const showError = error && (touched || (isFilled && error !== runRules('', rules)))
   const showSuccess = !showError && success && isFilled
 
   const isLabelActive = focused || isFilled || type === 'date'

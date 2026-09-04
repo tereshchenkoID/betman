@@ -344,7 +344,7 @@ const SectionRegistration = ({
                   onChange={e => handlePropsChange('bonus', e)}
                 />
                 <Image
-                  src={`/images/bonus.webp`}
+                  src={'/images/bonus.webp'}
                   className={style.image}
                   alt={'Bonus'}
                   width={50}

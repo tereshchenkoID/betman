@@ -10,9 +10,9 @@ import Title from '@/modules/Title'
 import Inner from '@/modules/Inner'
 import JackpotCard from '@/modules/Cards/JackpotCard'
 import SectionGames from '@/sections/SectionGames'
+import Loader from '@/components/Loader'
 
 import style from './index.module.scss'
-import Loader from "@/components/Loader";
 
 const OPTIONS = [
   {

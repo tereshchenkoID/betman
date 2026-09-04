@@ -20,7 +20,7 @@ const EmailVerification = ({
 }) => {
   const t = useTranslations()
   const [code, setCode] = useState('')
-  const type = filter.profile.isVerifyEmail === "0" ? 'getCode' : 'verify'
+  const type = filter.profile.isVerifyEmail === '0' ? 'getCode' : 'verify'
 
   const handleSubmit = async (repeat) => {
     const params = {
@@ -28,7 +28,7 @@ const EmailVerification = ({
       value: 'email',
     }
 
-    if (filter.profile.isVerifyEmail !== "0" && !repeat) {
+    if (filter.profile.isVerifyEmail !== '0' && !repeat) {
       params.code = code
     }
 
@@ -61,14 +61,14 @@ const EmailVerification = ({
         data={filter.profile.email}
         onChange={value => handlePropsChange('profile.email', value)}
         isRequired={true}
-        isDisabled={filter.profile.isVerifyEmail === "1"}
+        isDisabled={filter.profile.isVerifyEmail === '1'}
         rules={rules}
         onValidate={err => setFieldError('email', err)}
         error={error}
       />
       <div className={style.wrapper}>
         {
-          filter.profile.isVerifyEmail === "1" &&
+          filter.profile.isVerifyEmail === '1' &&
           <Field
             placeholder={t('code')}
             data={code}
@@ -77,21 +77,21 @@ const EmailVerification = ({
           />
         }
         {
-          filter.profile.isVerifyEmail === "2" &&
+          filter.profile.isVerifyEmail === '2' &&
           <div className={style.verify}>
             <Icon name="status-checkmark" />
             {t('verify_status.verified')}
           </div>
         }
         {
-          filter.profile.isVerifyEmail !== "2" &&
+          filter.profile.isVerifyEmail !== '2' &&
           <Action
-            placeholder={filter.profile.isVerifyEmail === "0" ? t('verify_status.verify') : t('send')}
+            placeholder={filter.profile.isVerifyEmail === '0' ? t('verify_status.verify') : t('send')}
             onChange={() => handleSubmit(false)}
           />
         }
         {
-          filter.profile.isVerifyEmail === "1" &&
+          filter.profile.isVerifyEmail === '1' &&
           <Action
             classes={['primary', 'lg',  style.action]}
             onChange={() => handleSubmit(true)}

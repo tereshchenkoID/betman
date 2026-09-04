@@ -87,7 +87,7 @@ export const useWebSocket = ({
     if (socket.readyState === WebSocket.OPEN) {
       socket.send(data)
     } else {
-      socket.addEventListener("open", () => socket.send(data), { once: true })
+      socket.addEventListener('open', () => socket.send(data), { once: true })
     }
   }
 

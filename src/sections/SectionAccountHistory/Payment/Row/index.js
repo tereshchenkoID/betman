@@ -38,7 +38,7 @@ const Row = ({ data }) => {
         <Action
           key={idx}
           onChange={() => {
-            openModal('cryptoDeposit', { data: action.link }, { title: t('deposit'), size: 'lg'})
+            openModal('cryptoDeposit', { data: action.link }, { title: t('deposit'), size: 'lg' })
           }}
           classes={['primary', 'sm']}
           placeholder={label}

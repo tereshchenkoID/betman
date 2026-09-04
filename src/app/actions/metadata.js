@@ -1,7 +1,7 @@
 import { apiRequest } from '@/app/actions/api'
 
 function metaData(data) {
-  if (!data) return {};
+  if (!data) return {}
 
   return {
     title: data.title || '',
@@ -35,7 +35,7 @@ function metaData(data) {
         images: data.twitter.image ? [data.twitter.image] : [],
       }
     })
-  };
+  }
 }
 
 export const getPageMetadata = async (page) => {

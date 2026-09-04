@@ -34,7 +34,7 @@ const Deposit = ({ user }) => {
       const res = await action(filter.amount, user.currency, bonus)
 
       if (res?.code === '0') {
-        openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg'})
+        openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg' })
         setFilter(INITIAL_FILTER)
       }
       else {

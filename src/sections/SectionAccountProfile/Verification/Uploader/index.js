@@ -1,4 +1,4 @@
-import {startTransition, useEffect, useState} from 'react'
+import { startTransition, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 

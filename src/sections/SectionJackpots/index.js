@@ -22,7 +22,7 @@ const SectionJackpots = ({
         title={t('section.jackpot')}
       />
       {
-        meta?.results !== "0"
+        meta?.results !== '0'
           ?
             <div className={style.list}>
               {

@@ -22,7 +22,7 @@ const PhoneVerification = ({
 }) => {
   const t = useTranslations()
   const [code, setCode] = useState('')
-  const type = filter.profile.isVerifyPhone === "0" ? 'getCode' : 'verify'
+  const type = filter.profile.isVerifyPhone === '0' ? 'getCode' : 'verify'
 
   const handleSubmit = async (repeat) => {
     const params = {
@@ -30,7 +30,7 @@ const PhoneVerification = ({
       value: 'phone',
     }
 
-    if (filter.profile.isVerifyPhone !== "0" && !repeat) {
+    if (filter.profile.isVerifyPhone !== '0' && !repeat) {
       params.code = code
     }
 
@@ -63,14 +63,14 @@ const PhoneVerification = ({
         country={user?.country?.value?.toLowerCase()}
         onChange={value => handlePropsChange('profile.phone', value)}
         isRequired={true}
-        isDisabled={filter.profile.isVerifyPhone === "1"}
+        isDisabled={filter.profile.isVerifyPhone === '1'}
         rules={rules}
         onValidate={err => setFieldError('phone', err)}
         error={error}
       />
       <div className={style.wrapper}>
         {
-          filter.profile.isVerifyPhone === "1" &&
+          filter.profile.isVerifyPhone === '1' &&
           <Field
             placeholder={t('code')}
             data={code}
@@ -79,21 +79,21 @@ const PhoneVerification = ({
           />
         }
         {
-          filter.profile.isVerifyPhone === "2" &&
+          filter.profile.isVerifyPhone === '2' &&
           <div className={style.verify}>
             <Icon name="status-checkmark" />
             {t('verify_status.verified')}
           </div>
         }
         {
-          filter.profile.isVerifyPhone !== "2" &&
+          filter.profile.isVerifyPhone !== '2' &&
           <Action
-            placeholder={filter.profile.isVerifyPhone === "0" ? t('verify_status.verify') : t('send')}
+            placeholder={filter.profile.isVerifyPhone === '0' ? t('verify_status.verify') : t('send')}
             onChange={() => handleSubmit(false)}
           />
         }
         {
-          filter.profile.isVerifyPhone === "1" &&
+          filter.profile.isVerifyPhone === '1' &&
           <Action
             classes={['primary', 'lg',  style.action]}
             onChange={() => handleSubmit(true)}

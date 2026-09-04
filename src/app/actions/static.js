@@ -10,7 +10,7 @@ export const getSettings = cache(async () => {
       revalidate: 3600,
       tags: ['settings']
     },
-  });
+  })
 })
 
 export const getCategories = cache(async () => {
@@ -20,7 +20,7 @@ export const getCategories = cache(async () => {
       revalidate: 3600,
       tags: ['categories']
     },
-  });
+  })
 })
 
 export const getProviders = cache(async () => {
@@ -30,7 +30,7 @@ export const getProviders = cache(async () => {
       revalidate: 3600,
       tags: ['providers']
     },
-  });
+  })
 })
 
 export const getPages = cache(async () => {
@@ -40,14 +40,14 @@ export const getPages = cache(async () => {
       revalidate: 3600,
       tags: ['pages']
     },
-  });
+  })
 })
 
 export const getBonuses = cache(async () => {
   return apiRequest('counter/', {
     cache: 'force-cache',
     next: { tags: ['bonuses'] },
-  });
+  })
 })
 
 export const getWheelsRound = cache(async () => {
@@ -71,7 +71,7 @@ export const getQuests = cache(async () => {
   })
 
   const quests = res?.data || []
-  const counter = quests.filter(el => el.status === "0").length
+  const counter = quests.filter(el => el.status === '0').length
 
   return {
     quests: res,

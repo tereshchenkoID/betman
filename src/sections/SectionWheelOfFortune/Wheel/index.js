@@ -104,8 +104,8 @@ const Wheel = ({ mock, user, wheelsRound }) => {
 
     const rootStyles = getComputedStyle(document.documentElement)
     const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
-    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || "'Roboto', sans-serif"
-    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || "'Oswald', sans-serif"
+    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || '\'Roboto\', sans-serif'
+    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || '\'Oswald\', sans-serif'
 
     const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
     const radius = center - outerBorderWidth

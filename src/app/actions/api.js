@@ -4,7 +4,7 @@ import { cookies, headers } from 'next/headers'
 import { redirect } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 
-const PROTECTED = ['user/', 'profile/'];
+const PROTECTED = ['user/', 'profile/']
 
 const getClientIp = (headersList) => {
   const forwarded = headersList.get('x-forwarded-for')
@@ -40,43 +40,43 @@ export const apiRequest = async (endpoint, {
     },
     // next,
     signal: AbortSignal.timeout(timeout),
-  };
+  }
 
   const isProtected = PROTECTED.some(prefix => endpoint.startsWith(prefix))
 
   if (isProtected && !token) {
-    return null;
+    return null
   }
 
   if (token) {
-    options.headers['Authorization'] = `Bearer ${token}`;
+    options.headers['Authorization'] = `Bearer ${token}`
   }
 
   if (['GET', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
-        url.searchParams.append(key, String(value));
+        url.searchParams.append(key, String(value))
       }
-    });
+    })
   }
 
   if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
-    const formData = new FormData();
+    const formData = new FormData()
 
     Object.entries(params).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
+      if (value === undefined || value === null) return
 
       if (value instanceof File || value instanceof Blob) {
-        formData.append(key, value);
+        formData.append(key, value)
       } else if (typeof value === 'object') {
-        formData.append(key, JSON.stringify(value));
+        formData.append(key, JSON.stringify(value))
       } else {
-        formData.append(key, value);
+        formData.append(key, value)
       }
-    });
+    })
 
     if (method !== 'DELETE') {
-      options.body = formData;
+      options.body = formData
     }
   }
 
@@ -102,6 +102,6 @@ export const apiRequest = async (endpoint, {
       return { code: '3', error_message: 'Request timeout' }
     }
 
-    return { code: '3', error_message: 'Internal server error'};
+    return { code: '3', error_message: 'Internal server error' }
   }
-};
+}

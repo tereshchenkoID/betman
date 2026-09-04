@@ -71,7 +71,7 @@ export default async function Jackpot({ params }) {
         meta={games?.meta}
       />
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </>

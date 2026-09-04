@@ -74,7 +74,7 @@ const Thumbnail = ({
               <Icon name={'status-play-alt'} />
             </Action>
             {
-              data?.hasDemo === "1" &&
+              data?.hasDemo === '1' &&
               <Action
                 to={`${NAVIGATION.game.url}/${id}/1`}
                 onChange={handleDemo}

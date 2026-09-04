@@ -30,7 +30,7 @@ const WSUpdater = ({ user }) => {
     }
 
     if (topic === 'analytics') {
-      window.dataLayer.push(data);
+      window.dataLayer.push(data)
     }
   }, [lastMessage, router, openModal])
 

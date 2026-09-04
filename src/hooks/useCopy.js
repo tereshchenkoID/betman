@@ -36,11 +36,11 @@ export const useCopy = () => {
 
     if (success) {
       setCopied(true)
-      toast.success(t('notification.copy_success'));
+      toast.success(t('notification.copy_success'))
 
       setTimeout(() => setCopied(false), 1200)
     } else {
-      toast.error(t('notification.copy_error'));
+      toast.error(t('notification.copy_error'))
     }
 
     return success

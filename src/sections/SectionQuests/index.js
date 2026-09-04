@@ -18,7 +18,7 @@ const SectionQuests = ({ data, meta }) => {
         title={t('section.quests')}
       />
       {
-        meta?.results !== "0"
+        meta?.results !== '0'
           ?
             <div className={style.list}>
               {

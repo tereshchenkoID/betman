@@ -68,7 +68,7 @@ const GameModal = ({ data, user }) => {
         </ul>
         <div className={style.actions}>
           {
-            data.hasDemo === "1" &&
+            data.hasDemo === '1' &&
             <Action
               to={`${NAVIGATION.game.url}/${data.id}/1`}
               onChange={handleDemo}
