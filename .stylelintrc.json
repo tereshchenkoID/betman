@@ -3,7 +3,8 @@
     "stylelint-config-standard-scss"
   ],
   "plugins": [
-    "stylelint-order"
+    "stylelint-order",
+    "@stylistic/stylelint-plugin"
   ],
   "ignoreFiles": [
     "src/scss/**",
@@ -11,6 +12,14 @@
   ],
   "rules": {
     "no-empty-source": null,
+    "@stylistic/max-empty-lines": 1,
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ],
     "color-hex-length": "short",
     "selector-class-pattern": null,
     "scss/at-rule-no-unknown": true,
@@ -38,7 +47,6 @@
       "flex-wrap",
       "grid",
       "grid-template",
-      "grid-template-patterns",
       "grid-template-columns",
       "grid-template-rows",
       "grid-template-areas",
