@@ -17,7 +17,7 @@ Production web application built with **Next.js 16** and **React 19**.
 | **Analytics & Performance** | @vercel/speed-insights, @next/third-parties, nextjs-toploader |
 | **UI & Interaction** | keen-slider, react-international-phone, react-toastify |
 | **Media** | browser-image-compression |
-| **Linting & Formatting** | ESLint 9 (flat config) with `@stylistic`, Stylelint 17 (`stylelint-order`, `stylelint-config-standard-scss`) |
+| **Linting & Formatting** | ESLint 9 (flat config) with `@stylistic`, Stylelint 17 (`stylelint-order`), Husky 9, lint-staged |
 | **Optimization** | Critters (critical CSS inlining) |
 | **Deployment** | Vercel |
 
@@ -27,6 +27,7 @@ Production web application built with **Next.js 16** and **React 19**.
 
 ```
 betman/
+├── .husky/              # Git hooks automation scripts (pre-commit)
 ├── messages/            # next-intl translation files (locale JSONs)
 ├── public/               # Static assets (images, icons, fonts)
 ├── src/                  # Application source code
@@ -69,7 +70,6 @@ Open [http://localhost:3000](http://localhost:3000) to see the result. The app u
 ---
 
 ## 📜 Available Scripts
-
 | Script | Description |
 |---|---|
 | `npm run dev` | Starts the Next.js development server |
@@ -83,7 +83,6 @@ Open [http://localhost:3000](http://localhost:3000) to see the result. The app u
 ---
 
 ## 🎨 Code Style & Formatting
-
 The project enforces strict, automated code quality and formatting standardizations:
 
 - **ESLint 9 Flat Config (`eslint.config.mjs`)**:
@@ -96,8 +95,13 @@ The project enforces strict, automated code quality and formatting standardizati
     - Properties ordering managed by `stylelint-order` (Flex/Grid Layout -> Positioning -> Box Model -> Visuals -> Transitions -> Typography).
     - Modern CSS color notation (`rgb(r g b / a)`).
 
-## 📦 Key Dependencies Explained
+- **Automated Git Hooks (Husky & lint-staged)**:
+  - Intercepts `git commit` to automatically format staged files.
+  - Runs `eslint --fix` on `.js`, `.jsx`, `.ts`, `.tsx` files.
+  - Runs `stylelint --fix` on `.scss` files.
+  - Prevents bad code or unformatted styles from being committed to the repository.
 
+## 📦 Key Dependencies Explained
 - **next-intl** — routing-aware i18n: locale-prefixed URLs, message dictionaries, server/client translation hooks.
 - **nextjs-toploader** — YouTube/GitHub-style top progress bar for route transitions.
 - **keen-slider** — lightweight, dependency-free carousel/slider (used for image galleries, banners, etc.).

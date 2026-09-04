@@ -15,10 +15,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "eslint --fix"
+      "eslint"
     ],
     "*.scss": [
-      "stylelint --fix --allow-empty-input"
+      "stylelint --allow-empty-input"
     ]
   },
   "dependencies": {
