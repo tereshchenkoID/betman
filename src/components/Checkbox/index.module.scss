@@ -1,5 +1,5 @@
 .block {
-  @include flex($align-items: flex-start);
+  @include flex(null, flex-start);
 
   gap: var(--gap-default);
   position: relative;

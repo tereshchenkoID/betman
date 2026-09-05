@@ -60,7 +60,7 @@
 }
 
 .winnings {
-  @include flex($align-items: baseline);
+  @include flex(null, baseline);
 
   gap: var(--gap-4);
   margin-bottom: var(--gap-default);
@@ -76,7 +76,7 @@
 }
 
 .player {
-  @include flex($align-items: center);
+  @include flex(null, center);
 
   gap: var(--gap-6);
   font-size: rem(12px);

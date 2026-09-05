@@ -60,7 +60,7 @@
 }
 
 .balance {
-  @include flex($align-items: center);
+  @include flex(null, center);
 
   gap: var(--gap-4);
   overflow: hidden;

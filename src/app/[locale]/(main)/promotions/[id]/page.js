@@ -44,7 +44,7 @@ export default async function Promo({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.API_BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
       'query-input': 'required name=search_term_string'
     }
   }

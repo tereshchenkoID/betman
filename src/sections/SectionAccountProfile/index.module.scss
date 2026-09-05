@@ -10,7 +10,7 @@
 
 .verify,
 .wrapper {
-  @include flex($align-items: center);
+  @include flex(null, center);
 
   gap: var(--gap-default);
 }

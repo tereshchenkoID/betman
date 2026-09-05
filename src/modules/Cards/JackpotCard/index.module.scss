@@ -127,7 +127,7 @@
 }
 
 .amount {
-  @include flex($align-items: baseline);
+  @include flex(null, baseline);
 
   gap: var(--gap-default);
   line-height: 1.2;
@@ -139,7 +139,7 @@
 }
 
 .eligible {
-  @include flex($align-items: center);
+  @include flex(null, center);
 
   order: 1;
   margin-inline: auto;
