@@ -165,7 +165,7 @@ const Slider = forwardRef(({
             <Action
               to={more.to}
               classes={['outline', 'md', style.more]}
-              placeholder={`${t('more')} (${more.results})`}
+              placeholder={`${t('all')} (${more.results})`}
             />
           }
           {
