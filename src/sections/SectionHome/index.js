@@ -4,24 +4,25 @@ import { getTranslations } from 'next-intl/server'
 import clsx from 'clsx'
 
 import SectionBanners from '@/sections/SectionBannersSlider'
-import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
 import SectionBigLinks from '@/sections/SectionBigLinksSlider'
-import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
 import SectionCategories from '@/sections/SectionCategoriesSlider'
-import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
-import SectionChallenge from '@/sections/SectionChallenge'
-import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
 import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
-import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
-import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
 import SectionMainBanner from '@/sections/SectionMainBannerSlider'
+
+import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
+import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
+import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
+import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
+import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
+import SectionGamesSliderSkeleton from '@/sections/SectionGamesSlider/skeleton'
+import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
 import SectionMainBannerSkeleton from '@/sections/SectionMainBannerSlider/skeleton'
 import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
-import SectionGamesSliderSkeleton from '../SectionGamesSlider/skeleton'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
 const SectionJackpots = dynamic(() => import('../SectionJackpotsSlider'))
+const SectionChallenge = dynamic(() => import('../SectionChallenge'))
 
 import style from './index.module.scss'
 

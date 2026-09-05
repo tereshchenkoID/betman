@@ -22,7 +22,11 @@ const eslintConfig = defineConfig([
             ['^@/constant'],
             ['^@/app/actions'],
             ['^@/context', '^@/hooks', '^@/utils', '^@/helpers'],
-            ['^@/components', '^@/modules', '^@/widgets', '^@/sections', '^\\.\\./'],
+            ['^@/components', '^@/modules', '^@/widgets', '^@/sections(?!.*/skeleton$)', '^\\.\\./'],
+            [
+              '^@/sections.*/skeleton$',
+              '^\\.\\./.*/skeleton$'
+            ],
             ['^\\./action'],
             ['^\\./(?!(index\\.module\\.scss|.*\\.css$))'],
             ['^.+\\.s?css$'],
