@@ -8,10 +8,9 @@ import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
 import Phone from '@/components/Phone'
+import { action } from '../action.js'
 
 import style from '../../index.module.scss'
-
-import { action } from '../action.js'
 
 const PhoneVerification = ({
   user,

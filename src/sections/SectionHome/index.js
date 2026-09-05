@@ -17,14 +17,13 @@ import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
 import SectionMainBanner from '@/sections/SectionMainBannerSlider'
 import SectionMainBannerSkeleton from '@/sections/SectionMainBannerSlider/skeleton'
 import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
-
-import style from './index.module.scss'
-
 import SectionGamesSliderSkeleton from '../SectionGamesSlider/skeleton'
 
 const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
 const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
 const SectionJackpots = dynamic(() => import('../SectionJackpotsSlider'))
+
+import style from './index.module.scss'
 
 const SECTIONS_CONFIG = {
   games: {

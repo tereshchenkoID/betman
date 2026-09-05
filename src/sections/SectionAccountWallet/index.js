@@ -53,7 +53,7 @@ const SectionAccountWallet = ({ user, children }) => {
     if (user?.level !== '3') {
       openModal('verify', { user }, { title: t('verification') })
     }
-  }, [])
+  }, [openModal, t, user])
 
   return (
     <>

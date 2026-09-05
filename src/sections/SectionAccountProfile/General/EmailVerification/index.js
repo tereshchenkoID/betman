@@ -7,10 +7,9 @@ import { toast } from '@/utils/toast'
 import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
+import { action } from '../action.js'
 
 import style from '../../index.module.scss'
-
-import { action } from '../action.js'
 
 const EmailVerification = ({
   filter,
