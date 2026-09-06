@@ -66,7 +66,7 @@ const SectionGame = ({
               aria-label="Logo"
             >
               <Image
-                src="/images/logo-desktop.svg"
+                src="/images/logo/logo-desktop.svg"
                 width={140}
                 height={34}
                 alt="Logo"

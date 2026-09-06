@@ -17,7 +17,7 @@ const eslintConfig = defineConfig([
         'error',
         {
           groups: [
-            ['^react', '^next', '^[a-z]'],
+            ['^react', '^next', '^@next', '^[a-z]'],
             ['^@/i18n'],
             ['^@/constant'],
             ['^@/app/actions'],

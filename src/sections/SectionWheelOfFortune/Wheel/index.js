@@ -286,7 +286,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
       >
         <Image
           className={style.logo}
-          src="/images/logo-mobile.svg"
+          src="/images/logo/logo-mobile.svg"
           width={102}
           height={35}
           alt="Logo"

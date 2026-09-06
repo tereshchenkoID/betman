@@ -7,7 +7,7 @@ const ThumbnailPreload = () => {
     <div className={style.block}>
       <Image
         className={style.image}
-        src="/images/logo-desktop.svg"
+        src="/images/logo/logo-desktop.svg"
         width={145}
         height={36}
         alt="Logo"

@@ -11,7 +11,7 @@ export const imageError = (e, fallbackSrc = true) => {
     img.dataset.fallbackTried = 'true'
     img.style.objectFit = 'contain'
     img.style.padding = '10%'
-    img.src = '/images/logo-desktop.svg'
+    img.src = '/images/logo/logo-desktop.svg'
     return
   }
 

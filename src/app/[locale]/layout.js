@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import NextTopLoader from 'nextjs-toploader'
+import { GoogleTagManager } from '@next/third-parties/google'
 import clsx from 'clsx'
 
 import { getCachedUser, getFavorites } from '@/app/actions/static'
@@ -20,8 +21,6 @@ import WSUpdater from '@/modules/WSUpdater'
 import Toastify from '@/widgets/Toastify'
 
 import './layout.scss'
-
-import { GoogleTagManager } from '@next/third-parties/google'
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -60,7 +59,7 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children, params }) {
-  preload('/images/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
+  preload('/images/logo/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
   preconnect('https://www.googletagmanager.com')
   preconnect('https://telegram.org')
 

@@ -3,36 +3,36 @@
   --tg-safe-bottom: 0px;
   --tg-viewport-height: 100svh;
   --toastify-toast-top: var(--tg-safe-top)!important;
-  --white: 255 255 255; // #FFF
-  --black: 0 0 0; // #000
-  --brand: 3 70 89; // #034659
-  --brand-hover: 3 76 93; // #034C5D
+  --white: 255 255 255;               // #FFF
+  --black: 0 0 0;                     // #000
+  --brand: 3 70 89;                   // #034659
+  --brand-hover: 3 76 93;             // #034C5D
   --brand-disabled: rgb(21 120 106 / 30%);
-  --text-for-brand: 255 255 255; // #fff
-  --text-for-brand-disabled: rgb(255 255 255 / 24%);
-  --primary: rgb(3 76 93 / 60%);
+  --text-for-brand: var(--white);     // #FFF
+  --text-for-brand-disabled: rgb(var(--white) / 24%);
+  --primary: rgb(var(--brand-hover) / 60%);
   --primary-hover: rgb(3 113 131 / 45%);
-  --primary-disabled: rgb(3 76 93 / 35%);
-  --text-for-primary: 255 255 255; // #fff
-  --text-for-primary-disabled: rgb(255 255 255 / 40%);
-  --link: 4 144 168; // #0490A8
-  --link-hover: 3 111 130; // #036F82
-  --link-disabled: rgb(4 144 168 / 40%);
-  --material: 0 20 22; // #001416
-  --material-hover: 3 60 67; // #033c43
+  --primary-disabled: rgb(var(--brand-hover) / 35%);
+  --text-for-primary: var(--white);   // #FFF
+  --text-for-primary-disabled: rgb(var(--white) / 40%);
+  --link: 4 144 168;                  // #0490A8
+  --link-hover: 3 111 130;            // #036F82
+  --link-disabled: rgb(var(--link) / 40%);
+  --material: 0 20 22;                // #001416
+  --material-hover: 3 60 67;          // #033c43
   --material-disabled: rgb(3 70 89 / 35%);
-  --text-for-material: 255 255 255; // #FFF
-  --text-for-material-disabled: rgb(255 255 255 / 40%);
-  --tertiary: 255 255 255; // #FFF
-  --tertiary-hover: rgb(255 255 255 / 32%);
-  --tertiary-disabled: rgb(255 255 255 / 10%);
-  --sub-text: rgb(255 255 255 / 68%);
-  --bg: 3 27 31; // #031b1f
-  --amber: 255 162 56; // #FFA238
-  --yellow: 255 225 0; // #FFE100
-  --green: 0 168 87; // #00A857
-  --red: 229 57 53; // #E53935
-  --blue: 10 137 209; // #0A89D1
+  --text-for-material: var(--white);  // #FFF
+  --text-for-material-disabled: rgb(var(--white) / 40%);
+  --tertiary: var(--white);           // #FFF
+  --tertiary-hover: rgb(var(--white) / 32%);
+  --tertiary-disabled: rgb(var(--white) / 10%);
+  --sub-text: rgb(var(--white) / 68%);
+  --bg: 3 27 31;                      // #031b1f
+  --amber: 255 162 56;                // #FFA238
+  --yellow: 255 225 0;                // #FFE100
+  --green: 0 168 87;                  // #00A857
+  --red: 229 57 53;                   // #E53935
+  --blue: 10 137 209;                 // #0A89D1
   --max-width: 90rem;
   --min-width: 22.5rem;
   --font-size: 16px;

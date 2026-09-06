@@ -15,7 +15,7 @@ const Logo = () => {
       aria-label="Logo"
     >
       <Image
-        src="/images/logo-desktop.svg"
+        src="/images/logo/logo-desktop.svg"
         width={145}
         height={36}
         alt="Logo"

@@ -38,7 +38,7 @@ const Languages = ({
         aria-label={currentLang.text}
       >
         <Image
-          src={`/images/countries/${currentLang.code}.svg`}
+          src={`/images/countries/${currentLang.code}.webp`}
           className={style.image}
           alt={currentLang.text}
           width={20}
@@ -62,12 +62,13 @@ const Languages = ({
               >
                 <p className={style.icon}>
                   <Image
-                    src={`/images/countries/${el.code}.svg`}
+                    src={`/images/countries/${el.code}.webp`}
                     className={style.image}
                     alt={el.text}
                     width={20}
                     height={20}
                     sizes="20px"
+                    loading="lazy"
                     unoptimized
                   />
                 </p>
