@@ -8,7 +8,6 @@ import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
-import Notification from '@/modules/Notification'
 import Title from '@/modules/Title'
 
 import style from './index.module.scss'
@@ -17,7 +16,7 @@ const LEVELS = [
   {
     level: '1',
     title: '1 level',
-    text: 'Verify tour basic details to unlock real money play and bonuses',
+    text: 'Verify your basic details to unlock real money play and bonuses',
     button: {
       url: `${ROUTES_USER.profile.url}/profile`,
       text: 'Verify Level 1'
@@ -44,7 +43,8 @@ const LEVELS = [
   {
     level: '2',
     title: '2 level',
-    text: 'Verify tour identify to unlock withdrawal and higher limit',
+    text: 'Verify your identity to unlock withdrawal and higher limits',
+    disabled: 'Complete Level 1 to unlock',
     button: {
       url: `${ROUTES_USER.profile.url}/verification`,
       text: 'Verify Level 2'
@@ -71,7 +71,8 @@ const LEVELS = [
   {
     level: '3',
     title: '3 level',
-    text: 'Verified',
+    text: 'Complete advanced verification for maximum trust and unlimited access',
+    disabled: 'Complete Level 2 to unlock',
     button: null,
     list: [
       {
@@ -98,51 +99,66 @@ const SectionVerification = ({ user }) => {
   const t = useTranslations()
 
   const level = user?.level
-  const isFully = level >= 3
 
-  const levels = LEVELS.filter((item) =>
-    isFully ? item.level === '3' : item.level !== '3'
-  )
-
-  const renderBadge = (value) => {
+  const renderIcon = (value) => {
     const cardLevel = value
 
     if (cardLevel === '2' && level === '2') {
       return (
-        <div
-          className={
-            clsx(
-              style.badge,
-              style[`badge-${user?.profile?.isVerify}`]
-            )
-          }
-        >
-          <p>{t(`verify_status.${USER_VERIFY[user?.profile?.isVerify]}`)}</p>
-        </div>
+        <Icon
+          name="status-info"
+          size="sm"
+        />
       )
     }
 
     if (level < cardLevel) {
       return (
-        <div className={style.badge}>
-          <Icon name="toggle-lock" size="sm" />
-          <p>Locked</p>
-        </div>
+        <Icon
+          name="toggle-lock"
+          size="sm"
+        />
       )
     }
 
     if (level > cardLevel) {
       return (
-        <div className={style.badge}>
-          <p>Complete</p>
-        </div>
+        <Icon
+          name="status-checkmark"
+          size="sm"
+        />
+      )
+    }
+
+    return level
+  }
+
+  const renderBadge = (value) => {
+    const cardLevel = value
+
+    if (cardLevel === level) {
+      return (
+        <Icon
+          name="status-info"
+          size="sm"
+        />
+      )
+    }
+
+    if (level < cardLevel) {
+      return (
+        <Icon
+          name="toggle-lock"
+          size="sm"
+        />
       )
     }
 
     return (
-      <div className={style.badge}>
-        <p>Not verified</p>
-      </div>
+      <Icon
+        name="status-checkmark"
+        size="sm"
+      />
     )
   }
 
@@ -152,102 +168,101 @@ const SectionVerification = ({ user }) => {
         <Title title={t('section.verification')} />
         <p>Complete verifications to unlock all features</p>
       </div>
+      <div className={style.wrapper}>
+        <div className={style.levels}>
+          {
+            LEVELS.map((el) => {
+              const cardLevel = el.level
+              const isLocked = level < cardLevel
+              const isPassed = level > cardLevel
+              const isActive = level === cardLevel
 
-      <div className={style.levels}>
-        {
-          levels.map((el) => {
-            const cardLevel = el.level
-            const isLocked = level < cardLevel
-            const isPassed = level > cardLevel
-
-            return (
-              <article
-                key={el.level}
-                className={
-                  clsx(
-                    style.level,
-                    cardLevel === level && style.active
-                  )
-                }
-              >
-                <div className={style.header}>
-                  <div className={style.badge}>Level {cardLevel}</div>
-                  {
-                    !isFully &&
-                    renderBadge(cardLevel)
-                  }
-                </div>
-
-                {/*{*/}
-                {/*  (cardLevel === '2' && level === '2') &&*/}
-                {/*  <Notification*/}
-                {/*    text={t(`verify_status.${USER_VERIFY[user?.profile?.isVerify]}`)}*/}
-                {/*    type={user?.profile?.isVerify < 3 ? 'error' : 'success'}*/}
-                {/*    classes={style.status}*/}
-                {/*  />*/}
-                {/*}*/}
-
-                <h2>{el.title}</h2>
-                <p>{el.text}</p>
-
-                <ul className={style.list}>
-                  {
-                    el.list.map((item, idx) =>
-                      <li
-                        key={idx}
-                        className={style.item}
-                      >
-                        <span className={style.icon}>
-                          <Icon name={item.icon} />
-                        </span>
-                        <p>{item.text}</p>
-                      </li>
+              return (
+                <article
+                  key={el.level}
+                  className={
+                    clsx(
+                      style.level,
+                      style[`level-${cardLevel}`],
+                      isPassed && style.passed,
+                      isActive && style.active
                     )
                   }
-                </ul>
+                >
+                  <div className={style.circle}>
+                    <span>
+                      {renderIcon(cardLevel)}
+                    </span>
+                  </div>
 
-                <div className={style.footer}>
+                  <div className={style.header}>
+                    <h2>{el.title}</h2>
+                    {
+                      (level < '3' || cardLevel !== '3') &&
+                      <div className={style.status}>
+                        {renderBadge(cardLevel)}
+                        { level > cardLevel && 'Verified' }
+                        { level === cardLevel && 'Not Verified' }
+                        { level < cardLevel && 'Locked' }
+                      </div>
+                    }
+                  </div>
+                  <p className={style.text}>{el.text}</p>
                   {
-                    isPassed
-                      ?
-                        <Notification
-                          text="Verified"
-                          type="success"
-                          classes={style.status}
-                        />
-                      :
-                        el.button &&
-                          <Action
-                            to={el.button.url}
-                            classes={['primary', 'wide', 'md']}
-                            isDisabled={isLocked}
-                          >
-                            {
-                              isLocked &&
-                              <Icon name="toggle-lock" />
-                            }
-                            <span>{el.button.text}</span>
-                          </Action>
+                    (el.disabled && !isActive && !isPassed) &&
+                    <p className={style.disabled}>{el.disabled}</p>
                   }
-                </div>
-              </article>
-            )
-          })
-        }
-      </div>
+                  <ul className={style.list}>
+                    {
+                      el.list.map((item, idx) =>
+                        <li
+                          key={idx}
+                          className={style.item}
+                        >
+                          <span className={style.icon}>
+                            <Icon name={item.icon} />
+                          </span>
+                          <p className={style.label}>{item.text}</p>
+                        </li>
+                      )
+                    }
+                  </ul>
+                  <div className={style.footer}>
+                    {
+                      (!isPassed && el.button) &&
+                      <Action
+                        to={el.button.url}
+                        classes={['primary', 'wide', 'md']}
+                        isDisabled={isLocked}
+                      >
+                        {
+                          isLocked &&
+                          <Icon name="toggle-lock" />
+                        }
+                        <span>{el.button.text}</span>
+                      </Action>
+                    }
+                  </div>
+                </article>
+              )
+            })
+          }
+        </div>
 
-      {/* pages/why-verified */}
-      <Link
-        href={'./'}
-        className={style.info}
-      >
-        <Icon name="status-info" size="xl" />
-        <p>
-          <span>Why verify</span>
-          <span>Verification helps us keep your account secure, prevent fraud and comply with regulations</span>
-        </p>
-        <Icon name="navigation-chevron-right" size="lg" />
-      </Link>
+        <Link
+          href={'./'}
+          className={style.info}
+        >
+          <span>
+            <Icon name="status-info" size="lg" />
+          </span>
+          <div>
+            <p>Why verify</p>
+            <p>Verification helps us keep your account secure, prevent fraud and comply with regulations</p>
+          </div>
+          <Icon name="navigation-chevron-right" size="lg" />
+        </Link>
+      </div>
     </section>
   )
 }
