@@ -69,11 +69,11 @@
 
 .link {
   font-size: rem(12px);
-  color: var(--tertiary);
+  color: rgb(var(--tertiary));
 
   @include hover {
     &:hover {
-      color: var(--link);
+      color: rgb(var(--link));
     }
   }
 }

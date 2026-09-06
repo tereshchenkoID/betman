@@ -11,7 +11,7 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: var(--text-for-material);
+      color: rgb(var(--text-for-material));
     }
   }
 
@@ -29,17 +29,17 @@
   &.active {
     .selected {
       background-color: var(--primary);
-      border-bottom-color: var(--link);
+      border-bottom-color: rgb(var(--link));
     }
   }
 
   &.error {
     .label {
-      color: var(--red);
+      color: rgb(var(--red));
     }
 
     .selected {
-      border-bottom-color: var(--red);
+      border-bottom-color: rgb(var(--red));
     }
   }
 
@@ -47,7 +47,7 @@
     @include hover {
       &:hover {
         .selected {
-          border-bottom-color: var(--link);
+          border-bottom-color: rgb(var(--link));
         }
       }
     }
@@ -66,7 +66,7 @@
 
   span {
     margin-inline-start: var(--gap-4);
-    color: var(--red);
+    color: rgb(var(--red));
   }
 }
 
@@ -82,7 +82,7 @@
   white-space: nowrap;
 
   svg {
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
   }
 }
 
@@ -91,7 +91,7 @@
   top: calc(100% + var(--gap-default));
   inset-inline: 0;
   border-radius: var(--border-radius-10);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-1;
 }
@@ -101,12 +101,12 @@
 
   padding: var(--gap-default);
   font-size: rem(14px);
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
   border-bottom: rem(1px) solid var(--primary-hover);
 
   &.current {
     span {
-      color: var(--link);
+      color: rgb(var(--link));
     }
   }
 
@@ -142,7 +142,7 @@
   height: rem(32px);
   transition: background-color 0.15s ease;
   font-size: rem(13px);
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
   cursor: pointer;
 
   @include hover {
@@ -156,10 +156,10 @@
   }
 
   &.active {
-    background-color: var(--link);
+    background-color: rgb(var(--link));
   }
 
   &.today {
-    border: rem(1px) solid var(--link);
+    border: rem(1px) solid rgb(var(--link));
   }
 }

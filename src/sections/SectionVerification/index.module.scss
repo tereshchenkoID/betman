@@ -19,24 +19,23 @@
 }
 
 .level {
-  --status-color: var(--primary);
-  --level-color: var(--red);
-  --line-color: var(--material-hover);
+  --status-color: var(--brand-hover);
+  --line-color: rgb(var(--brand-hover));
 
   @include flex($direction: column);
 
   gap: var(--gap-default);
   position: relative;
   padding: var(--gap-16);
-  border: rem(1px) solid var(--material-hover);
+  border: rem(1px) solid rgb(var(--material-hover));
   border-radius: var(--border-radius-default);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   opacity: 0.6;
   font-size: rem(14px);
   border-inline-start-width: rem(3px);
   border-inline-start-color: currentcolor;
   pointer-events: none;
-  color: var(--level-color);
+  color: rgb(var(--level-color));
 
   &::before {
     position: absolute;
@@ -60,14 +59,7 @@
     pointer-events: auto;
 
     .circle {
-      &::before {
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        box-shadow: 0 0 rem(14px) currentcolor;
-        opacity: 0.4;
-        content: '';
-      }
+      box-shadow: 0 0 rem(14px) rgb(var(--level-color) / 70%);
     }
   }
 
@@ -75,7 +67,7 @@
     --level-color: var(--red);
 
     &.passed {
-      --line-color: linear-gradient(to bottom, var(--red), var(--amber));
+      --line-color: linear-gradient(to bottom, rgb(var(--level-color)), rgb(var(--amber)));
     }
   }
 
@@ -83,7 +75,7 @@
     --level-color: var(--amber);
 
     &.passed {
-      --line-color: linear-gradient(to bottom, var(--amber), var(--green));
+      --line-color: linear-gradient(to bottom, rgb(var(--level-color)), rgb(var(--green)));
     }
   }
 
@@ -107,7 +99,7 @@
   background-color: currentcolor;
 
   span {
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
   }
 }
 
@@ -126,31 +118,21 @@
   gap: var(--gap-4);
   position: relative;
   padding-inline: var(--gap-default);
-  border: rem(1px) solid currentcolor;
+  border: rem(1px) solid rgb(var(--status-color));
   border-radius: var(--border-radius-full);
+  background-color: rgb(var(--status-color) / 20%);
   overflow: hidden;
   font-size: rem(12px);
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-
-  &::before {
-    position: absolute;
-    inset: 0;
-    background-color: currentcolor;
-    opacity: 0.2;
-    content: '';
-  }
-}
-
-.status {
-  color: var(--status-color);
+  color: rgb(var(--status-color));
 }
 
 .text,
 .label,
 .disabled {
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 }
 
 .disabled {
@@ -183,16 +165,8 @@
   @include size(rem(32px));
   @include flex(center, center);
 
-  position: relative;
-
-  &::before {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background-color: currentcolor;
-    opacity: 0.2;
-    content: '';
-  }
+  border-radius: 50%;
+  background-color: rgb(var(--level-color) / 20%);
 }
 
 .info {
@@ -203,7 +177,7 @@
   padding: var(--gap-12);
   border: rem(1px) solid var(--primary);
   border-radius: var(--border-radius-default);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 
   span {
@@ -212,7 +186,7 @@
 
     border-radius: 50%;
     background-color: var(--material-disabled);
-    color: var(--link);
+    color: rgb(var(--link));
   }
 
   p {
@@ -223,8 +197,8 @@
 
   @include hover {
     &:hover {
-      background-color: var(--material-hover);
-      border-color: var(--link);
+      background-color: rgb(var(--material-hover));
+      border-color: rgb(var(--link));
     }
   }
 }

@@ -7,7 +7,7 @@
     inset-block: 0;
     inset-inline-end: rem(-1px);
     width: rem(64px);
-    background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
+    background: linear-gradient(90deg, transparent 0%, rgb(var(--bg)) 100%);
     z-index: $z-index-1;
     content: '';
   }

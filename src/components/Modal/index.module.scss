@@ -76,7 +76,7 @@
 .title {
   text-align: center;
   text-transform: uppercase;
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 }
 
 .shadow {
@@ -93,10 +93,10 @@
   width: 100%;
   min-width: rem(320px);
   max-height: 100%;
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
   z-index: $z-index-1;
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 
   @include tab-s {
     border-radius: var(--border-radius-16);

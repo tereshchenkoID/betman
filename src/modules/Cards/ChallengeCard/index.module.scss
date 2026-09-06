@@ -2,7 +2,7 @@
   position: relative;
   border-radius: var(--border-radius-default);
   min-height: rem(150px);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .subtitle {
-  color: var(--yellow);
+  color: rgb(var(--yellow));
 
   @include tab-s {
     font-size: rem(32px);

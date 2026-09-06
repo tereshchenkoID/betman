@@ -3,7 +3,7 @@
   inset-block-end: 0;
   inset-inline: 0;
   height: var(--aside-height);
-  background-color: var(--bg);
+  background-color: rgb(var(--bg));
   z-index: $z-index-8;
 
   @include desk-s {
@@ -50,11 +50,11 @@
 
   &.active {
     pointer-events: none;
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
 
     @include desk-s {
-      background: linear-gradient(90deg, var(--brand-disabled) 56%, transparent 100%);
-      color: var(--link);
+      background: linear-gradient(90deg, rgb(var(--brand)) 56%, transparent 100%);
+      color: rgb(var(--link));
     }
   }
 
@@ -64,12 +64,12 @@
     gap: var(--gap-default);
     border-radius: var(--border-radius-full);
     font-size: rem(16px);
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
   }
 
   @include hover {
     &:hover {
-      background: linear-gradient(90deg, var(--material) 56%, transparent 100%);
+      background: linear-gradient(90deg, rgb(var(--material)) 56%, transparent 100%);
     }
   }
 }
@@ -82,10 +82,10 @@
   inset-block-start: 0;
   inset-inline-start: 50%;
   border-radius: 50%;
-  background-color: var(--link);
+  background-color: rgb(var(--link));
   transform: translateX(rem(12px));
   font-size: rem(12px);
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 
   @include desk-s {
     position: static;

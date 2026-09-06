@@ -5,7 +5,7 @@
   padding: var(--gap-24);
   border-radius: var(--border-radius-16);
   width: 100%;
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
   text-align: center;
 
@@ -31,9 +31,9 @@
 
   position: relative;
   border-radius: 50%;
-  background-color: var(--material-hover);
+  background-color: rgb(var(--material-hover));
   font-size: rem(14px);
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 
   &:not(:last-child) {
     &::after {
@@ -43,19 +43,19 @@
       top: 50%;
       left: calc(100% + rem(4px));
       border-radius: var(--border-radius-4);
-      background-color: var(--material-hover);
+      background-color: rgb(var(--material-hover));
       transform: translateY(0);
       content: '';
     }
   }
 
   &.active {
-    background-color: var(--brand);
+    background-color: rgb(var(--brand));
   }
 
   &.completed {
     background-color: transparent;
-    color: var(--green);
+    color: rgb(var(--green));
   }
 }
 

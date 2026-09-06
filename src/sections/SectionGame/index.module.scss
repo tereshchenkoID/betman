@@ -6,14 +6,14 @@
 
   position: fixed;
   inset: var(--tg-safe-top) 0 0 0;
-  background-color: var(--bg);
+  background-color: rgb(var(--bg));
 }
 
 .header {
   position: relative;
   width: 100%;
   height: var(--header-height);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   z-index: $z-index-2;
   flex-shrink: 0;
 }
@@ -76,7 +76,7 @@
   border-radius: var(--border-radius-16);
   width: 100%;
   max-width: rem(560px);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   flex-shrink: 0;
 }
 
@@ -84,7 +84,7 @@
   margin-bottom: var(--gap-16);
   text-align: center;
   text-transform: uppercase;
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 }
 
 .logo {

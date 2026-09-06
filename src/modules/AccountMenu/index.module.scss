@@ -7,7 +7,7 @@
   inset-block: calc(var(--tg-safe-top) + var(--header-height)) var(--aside-height);
   inset-inline: auto 0;
   max-height: calc(100svh - var(--tg-safe-top) - var(--header-height) - var(--aside-height));
-  background-color: var(--material);
+  background-color: rgb(var(--material));
 
   @include tab-s {
     @include size(rem(320px), auto);
@@ -64,7 +64,7 @@
 
 .container {
   border-radius: var(--border-radius-default);
-  background-color: var(--material-hover);
+  background-color: rgb(var(--material-hover));
   font-size: rem(13px);
 }
 
@@ -80,7 +80,7 @@
 
   @include hover {
     &:hover {
-      color: var(--link);
+      color: rgb(var(--link));
     }
   }
 }
@@ -105,15 +105,15 @@
   border-radius: inherit;
 
   &-1 {
-    --level-color: var(--red);
+    --level-color: rgb(var(--red));
   }
 
   &-2 {
-    --level-color: var(--amber);
+    --level-color: rgb(var(--amber));
   }
 
   &-3 {
-    --level-color: var(--green);
+    --level-color: rgb(var(--green));
   }
 
   span {

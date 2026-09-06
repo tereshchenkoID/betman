@@ -70,8 +70,8 @@
   &::before {
     position: absolute;
     inset: 0;
-    background: var(--bg);
-    mask-image: linear-gradient(180deg, transparent, rgb(0 0 0 / 40%) 10%, rgb(0 0 0 / 80%) 70%, var(--bg));
+    background: rgb(var(--bg));
+    mask-image: linear-gradient(180deg, transparent, rgb(0 0 0 / 40%) 10%, rgb(0 0 0 / 80%) 70%, rgb(var(--bg)));
     content: '';
   }
 

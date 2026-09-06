@@ -46,11 +46,11 @@
   }
 
   &.red {
-    --row-status-color: var(--red);
+    --row-status-color: rgb(var(--red));
   }
 
   &.green {
-    --row-status-color: var(--green);
+    --row-status-color: rgb(var(--green));
   }
 }
 
@@ -78,7 +78,7 @@
   @include size(rem(40px));
 
   border-radius: var(--border-radius-4);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 }
 

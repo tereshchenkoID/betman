@@ -26,13 +26,13 @@
   position: relative;
   padding: var(--gap-default);
   border-radius: var(--border-radius-6);
-  background-color: var(--material-hover);
+  background-color: rgb(var(--material-hover));
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
   &.active {
-    background-color: var(--brand);
-    color: var(--text-for-brand);
+    background-color: rgb(var(--brand));
+    color: rgb(var(--text-for-brand));
     pointer-events: none;
   }
 }

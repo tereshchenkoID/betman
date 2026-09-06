@@ -5,7 +5,7 @@
   grid-template-columns: 1fr rem(88px);
   position: relative;
   border-radius: var(--border-radius-10);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
   flex-shrink: 0;
 
@@ -45,7 +45,7 @@
 
   position: absolute;
   inset: 0;
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   transform: translateX(100%);
 }
 
@@ -71,7 +71,7 @@
   color: var(--sub-text);
 
   strong {
-    color: var(--text-for-brand);
+    color: rgb(var(--text-for-brand));
   }
 }
 

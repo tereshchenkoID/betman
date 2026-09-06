@@ -10,7 +10,7 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: var(--text-for-material);
+      color: rgb(var(--text-for-material));
     }
   }
 
@@ -28,17 +28,17 @@
   &.active {
     .selected {
       background-color: var(--primary);
-      border-bottom-color: var(--link);
+      border-bottom-color: rgb(var(--link));
     }
   }
 
   &.error {
     .label {
-      color: var(--red);
+      color: rgb(var(--red));
     }
 
     .selected {
-      border-bottom-color: var(--red);
+      border-bottom-color: rgb(var(--red));
     }
   }
 
@@ -46,7 +46,7 @@
     @include hover {
       &:hover {
         .selected {
-          border-bottom-color: var(--link);
+          border-bottom-color: rgb(var(--link));
         }
       }
     }
@@ -65,7 +65,7 @@
 
   span {
     margin-inline-start: var(--gap-4);
-    color: var(--red);
+    color: rgb(var(--red));
   }
 }
 
@@ -80,7 +80,7 @@
   border-bottom: rem(2px) solid var(--primary);
 
   svg {
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
   }
 }
 
@@ -89,7 +89,7 @@
   top: calc(100% + var(--gap-default));
   inset-inline: 0;
   border-radius: var(--border-radius-10);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-1;
 }
@@ -117,13 +117,13 @@
   overflow: hidden;
   font-size: rem(14px);
   text-align: start;
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 
   &:focus {
-    border-color: var(--link);
+    border-color: rgb(var(--link));
 
     &::placeholder {
-      color: var(--text-for-material);
+      color: rgb(var(--text-for-material));
     }
   }
 
@@ -133,7 +133,7 @@
 
   &:is(:-webkit-autofill, :autofill) {
     box-shadow: 0 0 0 30px var(--primary) inset !important;
-    -webkit-text-fill-color: var(--text-for-material);
+    -webkit-text-fill-color: rgb(var(--text-for-material));
     background-clip: text;
   }
 
@@ -161,7 +161,7 @@
   @include hover {
     &:hover {
       background-color: var(--primary-hover);
-      color: var(--text-for-primary);
+      color: rgb(var(--text-for-primary));
     }
   }
 }
@@ -177,5 +177,5 @@
   margin-top: var(--gap-2);
   font-size: rem(12px);
   text-align: left;
-  color: var(--red);
+  color: rgb(var(--red));
 }

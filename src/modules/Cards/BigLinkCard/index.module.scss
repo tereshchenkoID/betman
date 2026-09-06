@@ -6,11 +6,11 @@
   padding: var(--gap-default) var(--gap-12);
   border: rem(1px) solid var(--primary-hover);
   border-radius: var(--border-radius-10);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
 
   @include hover {
     &:hover {
-      background-color: var(--material-hover);
+      background-color: rgb(var(--material-hover));
 
       .image {
         transform: scale(1.1);

@@ -21,7 +21,7 @@
 
   position: relative;
   border-radius: var(--border-radius-2);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 }
 
@@ -29,5 +29,5 @@
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
-  background-color: var(--link);
+  background-color: rgb(var(--link));
 }

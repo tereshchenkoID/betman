@@ -7,6 +7,6 @@
 
 .hidden {
   font-weight: var(--typography-bold);
-  color: var(--link);
+  color: rgb(var(--link));
   cursor: pointer;
 }

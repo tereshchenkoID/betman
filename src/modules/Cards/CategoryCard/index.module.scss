@@ -6,7 +6,7 @@
   border: rem(1px) solid var(--primary-hover);
   border-radius: var(--border-radius-full);
   min-height: rem(48px);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 
   &.active {
@@ -16,7 +16,7 @@
 
   @include hover {
     &:hover {
-      background-color: var(--material-hover);
+      background-color: rgb(var(--material-hover));
     }
   }
 }

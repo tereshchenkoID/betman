@@ -13,7 +13,7 @@
   padding: var(--gap-default);
   border: rem(1px) solid var(--tertiary-disabled);
   border-radius: var(--border-radius-6);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
 }
 
 .toggle,

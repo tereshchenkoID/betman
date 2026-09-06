@@ -12,7 +12,7 @@
   padding: var(--gap-16);
   border-radius: var(--border-radius-4);
   width: rem(328px);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   background-position: 0 0, 100% 0;
   background-size: rem(600px);
   overflow: hidden;
@@ -101,7 +101,7 @@
   padding: var(--gap-default);
   border-radius: var(--border-radius-6);
   min-width: rem(296px);
-  background-color: var(--material-hover);
+  background-color: rgb(var(--material-hover));
 }
 
 .slide {

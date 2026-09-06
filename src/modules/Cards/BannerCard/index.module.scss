@@ -3,7 +3,7 @@
 
   position: relative;
   border-radius: var(--border-radius-default);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 
   @include hover {
@@ -51,7 +51,7 @@
 .subtitle {
   font-size: rem(14px);
   font-weight: var(--typography-bold);
-  color: var(--yellow);
+  color: rgb(var(--yellow));
 }
 
 .description {

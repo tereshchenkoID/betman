@@ -12,11 +12,11 @@
 
   &.error {
     .item {
-      border-color: var(--red);
+      border-color: rgb(var(--red));
     }
 
     .text {
-      color: var(--red);
+      color: rgb(var(--red));
     }
   }
 
@@ -24,7 +24,7 @@
     @include hover {
       &:hover {
         .item {
-          border-color: var(--brand);
+          border-color: rgb(var(--brand));
         }
       }
     }
@@ -35,7 +35,7 @@
   font-size: rem(14px);
   line-height: 1.1;
   text-align: start;
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
 }
 
 .input {
@@ -46,8 +46,8 @@
 
   &:checked ~ {
     .item {
-      border-color: var(--brand);
-      background-color: var(--brand);
+      border-color: rgb(var(--brand));
+      background-color: rgb(var(--brand));
 
       svg {
         opacity: 1;
@@ -62,7 +62,7 @@
   @include size(rem(20px));
 
   flex-shrink: 0;
-  border: rem(1px) solid var(--tertiary);
+  border: rem(1px) solid rgb(var(--tertiary));
   border-radius: var(--border-radius-4);
 
   svg {
@@ -74,5 +74,5 @@
   margin-top: var(--gap-2);
   font-size: rem(12px);
   text-align: left;
-  color: var(--red);
+  color: rgb(var(--red));
 }

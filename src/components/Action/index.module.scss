@@ -53,8 +53,8 @@
   }
 
   &.primary {
-    background: var(--link);
-    color: var(--text-for-brand);
+    background: rgb(var(--link));
+    color: rgb(var(--text-for-brand));
 
     &:disabled,
     &.disabled {
@@ -64,19 +64,19 @@
 
     &:active,
     &.active {
-      background: var(--link-hover);
+      background: rgb(var(--link-hover));
     }
 
     @include hover {
       &:hover {
-        background: var(--link-hover);
+        background: rgb(var(--link-hover));
       }
     }
   }
 
   &.secondary {
     background-color: var(--primary);
-    color: var(--text-for-primary);
+    color: rgb(var(--text-for-primary));
 
     &:active,
     &.active {
@@ -97,7 +97,7 @@
   }
 
   &.tertiary {
-    border: rem(1px) solid var(--tertiary);
+    border: rem(1px) solid rgb(var(--tertiary));
 
     &:disabled,
     &.disabled {
@@ -112,12 +112,12 @@
   }
 
   &.brand {
-    background-color: var(--link);
-    color: var(--text-for-brand);
+    background-color: rgb(var(--link));
+    color: rgb(var(--text-for-brand));
 
     &:active,
     &.active {
-      background: var(--link-hover);
+      background: rgb(var(--link-hover));
     }
 
     &:disabled,
@@ -127,14 +127,14 @@
 
     @include hover {
       &:hover {
-        background: var(--link-hover);
+        background: rgb(var(--link-hover));
       }
     }
   }
 
   &.link {
     border-radius: 0;
-    color: var(--tertiary);
+    color: rgb(var(--tertiary));
 
     &:disabled,
     &.disabled {
@@ -152,11 +152,11 @@
     padding: 0;
     border-radius: 0;
     height: auto;
-    color: var(--link);
+    color: rgb(var(--link));
 
     @include hover {
       &:hover {
-        color: var(--link-hover);
+        color: rgb(var(--link-hover));
       }
     }
 

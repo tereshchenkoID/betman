@@ -4,7 +4,7 @@
   margin-inline: rem(-16px);
   padding-bottom: var(--aside-height);
   border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
-  background-color: var(--material-hover);
+  background-color: rgb(var(--material-hover));
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
@@ -98,7 +98,7 @@
 .social {
   @include hover {
     &:hover {
-      color: var(--text-for-material);
+      color: rgb(var(--text-for-material));
     }
   }
 }

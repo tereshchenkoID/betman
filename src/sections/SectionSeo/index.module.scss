@@ -15,7 +15,7 @@
       inset-block-end: 0;
       inset-inline: 0;
       height: rem(40px);
-      background: linear-gradient(to bottom, transparent, var(--bg));
+      background: linear-gradient(to bottom, transparent, rgb(var(--bg)));
       pointer-events: none;
       content: '';
     }

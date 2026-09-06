@@ -16,7 +16,7 @@
   position: relative;
   border-radius: var(--border-radius-default);
   height: 100%;
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   overflow: hidden;
 }
 
@@ -38,7 +38,7 @@
 
   gap: var(--gap-2);
   padding: var(--gap-12);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
 }
 
 .badges {

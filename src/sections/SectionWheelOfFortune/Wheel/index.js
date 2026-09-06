@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  useEffect, useMemo, useRef, useState 
+  useEffect, useMemo, useRef, useState
 } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -107,7 +107,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
     const center = size / 2
 
     const rootStyles = getComputedStyle(document.documentElement)
-    const colorWhite = rootStyles.getPropertyValue('--color-white').trim() || '#ffffff'
+    const colorWhite = '#fff'
     const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || '\'Roboto\', sans-serif'
     const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || '\'Oswald\', sans-serif'
 

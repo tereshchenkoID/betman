@@ -48,7 +48,7 @@
 }
 
 .subtitle {
-  color: var(--link);
+  color: rgb(var(--link));
 }
 
 .divider {
@@ -95,7 +95,7 @@
   padding: var(--gap-12);
   border: rem(1px) solid var(--material-disabled);
   border-radius: var(--border-radius-default);
-  background: linear-gradient(0deg, transparent 0%, var(--material) 100%);
+  background: linear-gradient(0deg, transparent 0%, rgb(var(--material)) 100%);
 
   @include tab-l {
     width: calc(50% - var(--gap-16));
@@ -106,7 +106,7 @@
     display: none;
     position: absolute;
     top: 50%;
-    background-color: var(--link);
+    background-color: rgb(var(--link));
     content: '';
 
     @include tab-l {
@@ -117,7 +117,7 @@
   &::after {
     @include size(rem(10px));
 
-    outline: rem(2px) solid var(--link);
+    outline: rem(2px) solid rgb(var(--link));
     outline-offset: rem(2px);
     border-radius: 50%;
   }
@@ -158,7 +158,7 @@
 }
 
 .title {
-  color: var(--link);
+  color: rgb(var(--link));
 }
 
 .image {

@@ -1,31 +1,24 @@
 .block {
-  position: relative;
   padding: var(--gap-4) var(--gap-default);
-  border: rem(1px) solid currentcolor;
+  border: rem(1px) solid rgb(var(--notification-color));
   border-radius: var(--border-radius-default);
+  background-color: rgb(var(--notification-color) / 10%);
   font-size: rem(12px);
-
-  &::before {
-    @include absolute-filled;
-
-    background-color: currentcolor;
-    opacity: 0.1;
-    content: ''
-  }
+  color: rgb(var(--notification-color));
 
   &.error {
-    color: var(--red);
+    --notification-color: var(--red);
   }
 
   &.info {
-    color: var(--blue);
+    --notification-color: var(--blue);
   }
 
   &.warning {
-    color: var(--amber);
+    --notification-color: var(--amber);
   }
 
   &.success {
-    color: var(--green);
+    --notification-color: var(--green);
   }
 }

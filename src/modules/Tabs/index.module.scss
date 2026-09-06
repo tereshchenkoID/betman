@@ -10,7 +10,7 @@
   position: relative;
   min-height: rem(44px);
   overflow-y: hidden;
-  mask-image: linear-gradient(90deg, var(--black) calc(100% - rem(44px)), transparent);
+  mask-image: linear-gradient(90deg, rgb(var(--black)) calc(100% - rem(44px)), transparent);
   font-size: rem(14px);
 }
 
@@ -49,7 +49,7 @@
     inset-inline: 0;
     margin-inline: auto;
     border-radius: var(--border-radius-full);
-    background-color: var(--link);
+    background-color: rgb(var(--link));
     z-index: $z-index-1;
   }
 
@@ -61,7 +61,7 @@
 
   &.active {
     pointer-events: none;
-    color: var(--text-for-primary);
+    color: rgb(var(--text-for-primary));
 
     &::after {
       width: 100%;

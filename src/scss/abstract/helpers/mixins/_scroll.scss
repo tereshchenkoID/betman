@@ -23,8 +23,8 @@
   }
 
   &::-webkit-scrollbar-track {
-    border: rem(1px) solid var(--material-hover);
-    background-color: var(--material-hover);
+    border: rem(1px) solid rgb(var(--material-hover));
+    background-color: rgb(var(--material-hover));
   }
 }
 
@@ -45,11 +45,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--material-hover);
+    background-color: rgb(var(--material-hover));
     border-radius: var(--border-radius-4);
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: var(--material-hover);
+    background-color: rgb(var(--material-hover));
   }
 }

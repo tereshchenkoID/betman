@@ -6,7 +6,7 @@
   aspect-ratio: 1 / 1.12;
   border: rem(1px) solid var(--primary);
   border-radius: var(--border-radius-10);
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   background-position: 50%;
   background-size: 100%;
   overflow: hidden;
@@ -17,7 +17,7 @@
   &::after {
     position: absolute;
     inset: 0;
-    background-color: var(--material);
+    background-color: rgb(var(--material));
     opacity: 0.65;
     content: '';
   }

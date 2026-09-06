@@ -16,11 +16,11 @@
 
   &.error {
     .label {
-      color: var(--red);
+      color: rgb(var(--red));
     }
 
     .wrapper {
-      border-bottom-color: var(--red);
+      border-bottom-color: rgb(var(--red));
     }
   }
 
@@ -69,7 +69,7 @@
 }
 
 .dropdown {
-  --react-international-phone-dropdown-item-dial-code-color: var(--link);
+  --react-international-phone-dropdown-item-dial-code-color: rgb(var(--link));
   --react-international-phone-dropdown-item-font-size: 14px;
   --react-international-phone-selected-dropdown-item-background-color: var(--primary);
   --react-international-phone-dropdown-preferred-list-divider-margin: var(--gap-default) 0;
@@ -82,7 +82,7 @@
   outline: 0;
   border-radius: var(--border-radius-10);
   width: 100%;
-  background-color: var(--material);
+  background-color: rgb(var(--material));
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-1;
 
@@ -96,7 +96,7 @@
     padding: var(--gap-default);
     width: 100%;
     background-color: transparent;
-    color: var(--text-for-material);
+    color: rgb(var(--text-for-material));
 
     @include transition;
   }
@@ -118,12 +118,12 @@
   inset-inline-start: var(--gap-12);
   z-index: $z-index-1;
   font-size: rem(10px);
-  color: var(--text-for-material);
+  color: rgb(var(--text-for-material));
   pointer-events: none;
 
   span {
     margin-inline-start: var(--gap-4);
-    color: var(--red);
+    color: rgb(var(--red));
   }
 }
 
@@ -131,7 +131,7 @@
   margin-top: var(--gap-2);
   font-size: rem(12px);
   text-align: left;
-  color: var(--red);
+  color: rgb(var(--red));
 }
 
 .skeleton {

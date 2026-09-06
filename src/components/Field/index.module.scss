@@ -8,22 +8,22 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: var(--text-for-material);
+      color: rgb(var(--text-for-material));
     }
 
     .input {
-      border-color: var(--link);
+      border-color: rgb(var(--link));
       background-color: var(--primary);
     }
   }
 
   &.error {
     .label {
-      color: var(--red);
+      color: rgb(var(--red));
     }
 
     .input {
-      border-color: var(--red);
+      border-color: rgb(var(--red));
     }
   }
 
@@ -37,7 +37,7 @@
     @include hover {
       &:hover {
         .input {
-          border-bottom-color: var(--link);
+          border-bottom-color: rgb(var(--link));
         }
       }
     }
@@ -62,7 +62,7 @@
 
   span {
     margin-inline-start: var(--gap-4);
-    color: var(--red);
+    color: rgb(var(--red));
   }
 }
 
@@ -86,11 +86,11 @@
   text-align: left;
 
   &.error {
-    color: var(--red);
+    color: rgb(var(--red));
   }
 
   &.success {
-    color: var(--green);
+    color: rgb(var(--green));
   }
 }
 

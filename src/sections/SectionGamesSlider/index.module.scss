@@ -76,7 +76,7 @@
   font-weight: var(--typography-bold);
   line-height: 1;
   text-align: center;
-  color: var(--link);
+  color: rgb(var(--link));
   pointer-events: none;
   letter-spacing: rem(-12px);
 }
