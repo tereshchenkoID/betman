@@ -10,7 +10,7 @@ import style from './index.module.scss'
 
 const CategoryCard = ({ data }) => {
   const pathname = usePathname()
-  const { icon, title, link, slug } = data
+  const { title, icon, link, slug } = data
 
   return (
     <Link
@@ -23,7 +23,7 @@ const CategoryCard = ({ data }) => {
           }
         )
       }
-      aria-label={title || slug}
+      aria-label={slug}
       prefetch={false}
     >
       { icon && <Icon name={icon} /> }

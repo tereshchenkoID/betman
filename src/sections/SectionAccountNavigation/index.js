@@ -19,7 +19,7 @@ const DATA = [
   ROUTES_USER.bonuses,
   ROUTES_USER.promocode,
   ROUTES_USER.invite_friends,
-  ROUTES_USER.favourites
+  ROUTES_USER.favorites
 ]
 
 const SectionAccountNavigation = () => {

@@ -90,7 +90,7 @@ export const ROUTES_USER = {
     icon: 'commerce-bonus',
     url: '/account/bonuses',
   },
-  favourites: {
+  favorites: {
     text: 'navigation.favorites',
     icon: 'toggle-favorite-filled',
     url: '/account/favorites',
@@ -112,7 +112,7 @@ export const ROUTES_USER = {
   }
 }
 
-export const LIST_COUNT = 16
+export const LIST_COUNT = 8
 
 export const USER_VERIFY = {
   0: 'not',

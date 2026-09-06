@@ -22,6 +22,13 @@
     "password_recovery": "Password Recovery",
     "verification": "Verification"
   },
+  "categories": {
+    "favorites": "Favorites",
+    "last-played": "Last-played",
+    "slots": "Slots",
+    "top": "Top",
+    "jackpots": "Jackpots"
+  },
   "section": {
     "bingo": "Bingo",
     "casino": "Casino",

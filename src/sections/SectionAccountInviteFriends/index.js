@@ -75,19 +75,19 @@ const SectionAccountInviteFriends = ({ user, data }) => {
         <h1 className={style.description}>{t('invite.how_work')}</h1>
         <div className={style.steps}>
           <div className={style.step}>
-            <h5>{t('step')} 1</h5>
+            <h5 className={style.title}>{t('step')} 1</h5>
             <p>{t('invite.step_1')}</p>
           </div>
           <div className={style.step}>
-            <h5>{t('step')} 2</h5>
+            <h5 className={style.title}>{t('step')} 2</h5>
             <p>{t('invite.step_2')}</p>
           </div>
           <div className={style.step}>
-            <h5>{t('step')} 3</h5>
+            <h5 className={style.title}>{t('step')} 3</h5>
             <p>{t('invite.step_3')}</p>
           </div>
           <div className={style.step}>
-            <h5>{t('step')} 4</h5>
+            <h5 className={style.title}>{t('step')} 4</h5>
             <p>{t('invite.step_4')}</p>
           </div>
         </div>

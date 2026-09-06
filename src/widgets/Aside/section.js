@@ -33,7 +33,10 @@ const Section = ({
   const DATA = [
     NAVIGATION.home,
     user?.id && {
-      ...ROUTES_USER.bonuses,
+      ...{
+        ...ROUTES_USER.bonuses,
+        url: `${ROUTES_USER.bonuses.url}/${bonuses?.data ? 'active' : 'available'}`,
+      },
       badge: bonuses?.data || false
     },
     settings.modules?.wheel === '1' && {

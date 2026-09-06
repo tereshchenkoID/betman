@@ -44,7 +44,7 @@ const ProviderCard = ({ data }) => {
         </div>
       }
       <div className={style.content}>
-        <p>{title}</p>
+        { title && <p>{title}</p> }
         <strong className={style.count}>{results}</strong>
       </div>
     </Link>

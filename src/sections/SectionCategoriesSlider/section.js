@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { Link } from '@/i18n/navigation'
 
-import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+import { NAVIGATION } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
 
@@ -21,17 +21,6 @@ const SectionCategories = ({
 }) => {
   const t = useTranslations()
   const { openModal } = useModal()
-
-  const categories = [
-    ...(user?.id ? [{
-      id: '0',
-      title: t(ROUTES_USER.favourites.text),
-      slug: 'favourites',
-      link: ROUTES_USER.favourites.url,
-      icon: ROUTES_USER.favourites.icon
-    }] : []),
-    ...data || []
-  ]
 
   if (meta?.results === '0') return null
 
@@ -53,7 +42,6 @@ const SectionCategories = ({
         <Icon name="navigation-search" />
         {t('search')}
       </button>
-
       <Link
         href={NAVIGATION.providers.url}
         className={style.toggle}
@@ -63,7 +51,7 @@ const SectionCategories = ({
         {t('all_providers')}
       </Link>
       {
-        categories.map((el, idx) =>
+        data.map((el, idx) =>
         <CategoryCard
           key={el?.id || idx}
           data={el}

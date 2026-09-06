@@ -38,7 +38,7 @@ const Section = ({
                 categories?.data?.map((el, idx) =>
                   <li key={el?.id || idx}>
                     <Action
-                      to={`${NAVIGATION.games_hall.url}/${el.slug}`}
+                      to={el.link || `${NAVIGATION.games_hall.url}/${el.slug}`}
                       classes={['link', style.link]}
                       placeholder={el.title}
                     />

@@ -35,7 +35,7 @@ const Favorite = ({
       onChange={handleToggle}
       aria-label={`${t('notification.add_favorite')} ${data?.title}`}
     >
-      <Icon name={ROUTES_USER.favourites.icon} />
+      <Icon name={ROUTES_USER.favorites.icon} />
     </Action>
   )
 }

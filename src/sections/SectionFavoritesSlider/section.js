@@ -86,7 +86,7 @@ const Section = ({
         slideClassName={style.slide}
         more={{
           isVisible: true,
-          to: ROUTES_USER.favourites.url,
+          to: ROUTES_USER.favorites.url,
           results: meta?.results
         }}
         title={{
