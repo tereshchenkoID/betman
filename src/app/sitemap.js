@@ -8,15 +8,14 @@ export default async function sitemap() {
 
   const staticPages = [
     '',
-    '/casino',
-    '/info',
     '/jackpots',
     '/promotions',
     '/providers',
     '/quests',
-    '/registration',
     '/tournaments',
     '/wheel-of-fortune',
+    '/registration',
+    '/login',
   ]
 
   const routes = []

@@ -52,7 +52,7 @@ const Languages = ({
         (isOpen && settings?.languages?.length > 1) &&
         <div className={style.dropdown}>
           {
-            settings.languages.map((el, idx) =>
+            settings?.languages?.map((el, idx) =>
               <Action
                 key={el?.code || idx}
                 aria-label={el.text}

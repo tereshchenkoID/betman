@@ -9,7 +9,7 @@ import Action from '@/components/Action'
 import style from './index.module.scss'
 
 const BannerCard = ({ data }) => {
-  const { title, subtitle, description, alt, button } = data
+  const { id, title, subtitle, description, alt, button } = data
   const { link, text, newtab } = button || {}
 
   return (
@@ -19,7 +19,7 @@ const BannerCard = ({ data }) => {
         className={style.link}
         target={newtab === '1' ? '_blank' : undefined}
         rel={newtab === '1' ? 'noopener noreferrer' : undefined}
-        aria-label={title || alt || description || 'Banner card'}
+        aria-label={title || alt || description || `Banner card ${id}`}
         prefetch={false}
       >
         {
@@ -27,7 +27,7 @@ const BannerCard = ({ data }) => {
           <Image
             src={data?.image}
             className={style.picture}
-            alt={alt || title || 'Banner image'}
+            alt={alt || title || `Banner image ${id}`}
             width={320}
             height={128}
             priority

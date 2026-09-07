@@ -98,6 +98,7 @@ body {
   color: rgb(var(--text-for-material));
   scroll-behavior: smooth;
   text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 input {
@@ -112,7 +113,7 @@ input {
   &:is(:-webkit-autofill, :autofill):focus,
   &:is(:-webkit-autofill, :autofill):active {
     background-color: transparent!important;
-    box-shadow: 0 0 0 30px rgb(var(--material-hover)) inset !important;
+    box-shadow: 0 0 0 rem(30px) rgb(var(--material-hover)) inset !important;
     -webkit-text-fill-color: rgb(var(--text-for-material));
     background-clip: text;
   }
