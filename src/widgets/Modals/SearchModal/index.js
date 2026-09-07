@@ -8,6 +8,7 @@ import { useTranslations } from 'next-intl'
 import { apiRequest } from '@/app/actions/api'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
@@ -56,7 +57,7 @@ const SearchModal = ({ user }) => {
         },
       })
 
-      if (res) {
+      if (res?.code === '0') {
         const { data: resData, meta: resMeta } = res
 
         setData((prev) => {
@@ -68,6 +69,9 @@ const SearchModal = ({ user }) => {
           }
         })
         setMeta(resMeta)
+      }
+      else {
+        toast.error(res?.error_message)
       }
     })
   }, [])

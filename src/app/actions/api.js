@@ -5,7 +5,13 @@ import { cookies, headers } from 'next/headers'
 import { redirect } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 
-const PROTECTED = ['user/', 'profile/']
+import { checkRateLimit } from '@/app/lib/rateLimit'
+
+const PROTECTED_PREFIXES = ['user/', 'profile/']
+const MUTATING_METHODS = ['POST', 'PUT', 'PATCH']
+const BODY_METHODS = ['POST', 'PUT', 'PATCH', 'DELETE']
+const QUERY_METHODS = ['GET', 'DELETE']
+const DEFAULT_RATE_LIMIT = { max: 30, windowMs: 60_000 }
 
 const getClientIp = (headersList) => {
   const forwarded = headersList.get('x-forwarded-for')
@@ -16,6 +22,45 @@ const getClientIp = (headersList) => {
   return headersList.get('x-real-ip') || null
 }
 
+const buildQueryUrl = (url, params) => {
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      url.searchParams.append(key, String(value))
+    }
+  })
+
+  return url
+}
+
+const buildFormData = (params) => {
+  const formData = new FormData()
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value === undefined || value === null) return
+
+    if (value instanceof File || value instanceof Blob) {
+      formData.append(key, value)
+    } else if (typeof value === 'object') {
+      formData.append(key, JSON.stringify(value))
+    } else {
+      formData.append(key, value)
+    }
+  })
+
+  return formData
+}
+
+const applyRateLimit = (endpoint, clientIp) => {
+  const { allowed, resetAt } = checkRateLimit(`${endpoint}:${clientIp || 'unknown'}`, DEFAULT_RATE_LIMIT)
+
+  if (allowed) return null
+
+  return {
+    code: '3',
+    error_message: `Too many attempts. Try again in ${Math.ceil((resetAt - Date.now()) / 1000)} sec.`,
+  }
+}
+
 export const apiRequest = async (endpoint, {
   method = 'GET',
   params = {},
@@ -23,12 +68,25 @@ export const apiRequest = async (endpoint, {
   // next = {},
   timeout = 15000,
 } = {}) => {
-  const url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
   const cookieStore = await cookies()
-  const token = cookieStore.get('NEXT_SID')?.value
   const headersList = await headers()
-  let locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
-  const clientIp = getClientIp(headersList)
+
+
+  const token = cookieStore.get('NEXT_SID')?.value
+  const locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
+  const ip = getClientIp(headersList)
+
+  if (MUTATING_METHODS.includes(method)) {
+    const rateLimitError = applyRateLimit(endpoint, ip)
+    if (rateLimitError) return rateLimitError
+  }
+
+  const isProtected = PROTECTED_PREFIXES.some((prefix) => endpoint.startsWith(prefix))
+  if (isProtected && !token) return null
+
+  let url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
+
+  console.log(params, endpoint)
 
   const options = {
     method,
@@ -37,48 +95,21 @@ export const apiRequest = async (endpoint, {
     // cache,
     headers: {
       'Accept-Language': locale,
-      ...(clientIp && { 'X-Forwarded-For': clientIp, 'X-Real-IP': clientIp }),
+      ...(ip && { 'X-Forwarded-For': ip, 'X-Real-IP': ip }),
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
     // next,
     signal: AbortSignal.timeout(timeout),
   }
 
-  const isProtected = PROTECTED.some(prefix => endpoint.startsWith(prefix))
+  const hasParams = Object.keys(params).length > 0
 
-  if (isProtected && !token) {
-    return null
+  if (QUERY_METHODS.includes(method) && hasParams) {
+    url = buildQueryUrl(url, params)
   }
 
-  if (token) {
-    options.headers['Authorization'] = `Bearer ${token}`
-  }
-
-  if (['GET', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
-    Object.entries(params).forEach(([key, value]) => {
-      if (value !== undefined && value !== null) {
-        url.searchParams.append(key, String(value))
-      }
-    })
-  }
-
-  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method) && Object.keys(params).length > 0) {
-    const formData = new FormData()
-
-    Object.entries(params).forEach(([key, value]) => {
-      if (value === undefined || value === null) return
-
-      if (value instanceof File || value instanceof Blob) {
-        formData.append(key, value)
-      } else if (typeof value === 'object') {
-        formData.append(key, JSON.stringify(value))
-      } else {
-        formData.append(key, value)
-      }
-    })
-
-    if (method !== 'DELETE') {
-      options.body = formData
-    }
+  if (BODY_METHODS.includes(method) && hasParams && method !== 'DELETE') {
+    options.body = buildFormData(params)
   }
 
   try {
