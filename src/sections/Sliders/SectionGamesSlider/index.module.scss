@@ -78,7 +78,11 @@
   text-align: center;
   color: rgb(var(--link));
   pointer-events: none;
-  letter-spacing: rem(-12px);
+  letter-spacing: rem(-4px);
+
+  @include tab-s {
+    letter-spacing: rem(-6px);
+  }
 }
 
 .skeleton {
