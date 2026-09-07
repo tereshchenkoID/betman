@@ -18,6 +18,7 @@ const Field = ({
   classes = null,
   isDisabled = false,
   isRequired = false,
+  isClear = true,
   rules = [],
   min = null,
   max = null,
@@ -94,7 +95,7 @@ const Field = ({
         </label>
         <div className={style.options}>
           {
-            (data && !isDisabled) &&
+            (data && !isDisabled && isClear) &&
             <button
               type="button"
               className={style.clear}

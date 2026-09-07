@@ -8,10 +8,14 @@
 
 .row {
   display: grid;
-  grid-template-columns: rem(80px) rem(160px) repeat(4, 1fr) rem(160px) rem(100px);
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   gap: var(--gap-2);
-  min-width: rem(1000px);
+  min-width: rem(800px);
   font-size: rem(14px);
+
+  &:not(:last-child) {
+    margin-block-end: var(--gap-2);
+  }
 
   &.first {
     .cell {
@@ -27,10 +31,6 @@
     }
   }
 
-  &:not(:last-child) {
-    margin-bottom: var(--gap-2);
-  }
-
   &:not(.first) {
     &:last-child {
       .cell {
@@ -44,12 +44,45 @@
       }
     }
   }
+
+  &.red {
+    --row-status-color: rgb(var(--red));
+  }
+
+  &.green {
+    --row-status-color: rgb(var(--green));
+  }
 }
 
 .cell {
-  @include flex($align-items: center, $wrap: wrap);
+  @include flex($align-items: center);
 
   gap: var(--gap-default);
   padding: var(--gap-default);
   background-color: var(--primary-disabled);
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    color: var(--row-status-color);
+  }
+}
+
+.stats {
+  @include flex($align-items: center, $wrap: wrap);
+
+  gap: var(--gap-16);
+}
+
+.preview {
+  @include flex(center, center);
+  @include size(rem(40px));
+
+  border-radius: var(--border-radius-4);
+  background-color: rgb(var(--material));
+  overflow: hidden;
+}
+
+.image {
+  padding: 0;
+  height: 100%;
 }

@@ -33,7 +33,7 @@
   &:has(.right) {
     .slider {
       position: relative;
-      padding-right: rem(72px);
+      padding-inline-end: rem(72px);
 
       &::before,
       &::after {
@@ -108,12 +108,12 @@
   gap: var(--gap-12);
 
   &:has(.top) {
-    margin-bottom: var(--gap-default);
+    margin-block-end: var(--gap-default);
   }
 }
 
 .title {
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .more,

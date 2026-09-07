@@ -2,22 +2,22 @@
   display: grid;
   position: relative;
   margin-inline: rem(-16px);
-  padding-bottom: var(--aside-height);
+  padding-block-end: var(--aside-height);
   border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
   background-color: rgb(var(--material-hover));
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
   @include desk-s {
-    padding-bottom: 0;
+    padding-block-end: 0;
     z-index: 0;
   }
 
   &.auth {
-    padding-bottom: calc(var(--aside-height) + rem(57px));
+    padding-block-end: calc(var(--aside-height) + rem(57px));
 
     @include desk-s {
-      padding-bottom: 0;
+      padding-block-end: 0;
     }
   }
 }
@@ -52,7 +52,7 @@
   display: grid;
   align-content: flex-start;
   gap: var(--gap-default);
-  margin-top: var(--gap-12);
+  margin-block-start: var(--gap-12);
 
   @include mob-m {
     grid-template-columns: repeat(2, 1fr);

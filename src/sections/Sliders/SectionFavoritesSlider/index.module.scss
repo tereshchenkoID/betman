@@ -54,7 +54,7 @@
     --skeleton-cols: 1;
     --skeleton-height: 2rem; // 32px
 
-    margin-bottom: var(--gap-default);
+    margin-block-end: var(--gap-default);
   }
 
   &.bottom {

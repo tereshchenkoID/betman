@@ -74,7 +74,7 @@
 }
 
 html {
-  padding-top: var(--tg-safe-top);
+  padding-block-start: var(--tg-safe-top);
   height: 100%;
   background-color: rgb(var(--bg));
   overflow: hidden;

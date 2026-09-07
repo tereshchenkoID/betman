@@ -26,14 +26,14 @@
   position: relative;
 
   input {
-    padding-right: rem(50px);
+    padding-inline-end: rem(50px);
   }
 }
 
 .remove {
   position: absolute;
-  top: 50%;
-  right: rem(64px);
+  inset-block-start: 50%;
+  inset-inline-end: rem(64px);
   transform: translateY(-50%);
 }
 

@@ -40,8 +40,8 @@
       @include size(rem(32px), rem(2px));
 
       position: absolute;
-      top: 50%;
-      left: calc(100% + rem(4px));
+      inset-block-start: 50%;
+      inset-inline-start: calc(100% + rem(4px));
       border-radius: var(--border-radius-4);
       background-color: rgb(var(--material-hover));
       transform: translateY(0);

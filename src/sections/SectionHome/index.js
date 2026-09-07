@@ -3,25 +3,25 @@ import dynamic from 'next/dynamic'
 import { getTranslations } from 'next-intl/server'
 import clsx from 'clsx'
 
-import SectionBanners from '@/sections/SectionBannersSlider'
-import SectionBigLinks from '@/sections/SectionBigLinksSlider'
-import SectionCategories from '@/sections/SectionCategoriesSlider'
-import SectionFavoritesSlider from '@/sections/SectionFavoritesSlider'
-import SectionMainBanner from '@/sections/SectionMainBannerSlider'
+import SectionBanners from '@/sections/Sliders/SectionBannersSlider'
+import SectionBigLinks from '@/sections/Sliders/SectionBigLinksSlider'
+import SectionCategories from '@/sections/Sliders/SectionCategoriesSlider'
+import SectionFavoritesSlider from '@/sections/Sliders/SectionFavoritesSlider'
+import SectionMainBanner from '@/sections/Sliders/SectionMainBannerSlider'
 
-import SectionBannersSkeleton from '@/sections/SectionBannersSlider/skeleton'
-import SectionBigLinksSkeleton from '@/sections/SectionBigLinksSlider/skeleton'
-import SectionCategoriesSkeleton from '@/sections/SectionCategoriesSlider/skeleton'
 import SectionChallengeSkeleton from '@/sections/SectionChallenge/skeleton'
-import SectionFavoritesSkeleton from '@/sections/SectionFavoritesSlider/skeleton'
-import SectionGamesSliderSkeleton from '@/sections/SectionGamesSlider/skeleton'
-import SectionJackpotsSkeleton from '@/sections/SectionJackpotsSlider/skeleton'
-import SectionMainBannerSkeleton from '@/sections/SectionMainBannerSlider/skeleton'
-import SectionWinnersSkeleton from '@/sections/SectionWinnersSlider/skeleton'
+import SectionBannersSkeleton from '@/sections/Sliders/SectionBannersSlider/skeleton'
+import SectionBigLinksSkeleton from '@/sections/Sliders/SectionBigLinksSlider/skeleton'
+import SectionCategoriesSkeleton from '@/sections/Sliders/SectionCategoriesSlider/skeleton'
+import SectionFavoritesSkeleton from '@/sections/Sliders/SectionFavoritesSlider/skeleton'
+import SectionGamesSliderSkeleton from '@/sections/Sliders/SectionGamesSlider/skeleton'
+import SectionJackpotsSkeleton from '@/sections/Sliders/SectionJackpotsSlider/skeleton'
+import SectionMainBannerSkeleton from '@/sections/Sliders/SectionMainBannerSlider/skeleton'
+import SectionWinnersSkeleton from '@/sections/Sliders/SectionWinnersSlider/skeleton'
 
-const SectionGamesSlider = dynamic(() => import('../SectionGamesSlider'))
-const SectionWinners = dynamic(() => import('../SectionWinnersSlider'))
-const SectionJackpots = dynamic(() => import('../SectionJackpotsSlider'))
+const SectionGamesSlider = dynamic(() => import('../Sliders/SectionGamesSlider'))
+const SectionWinners = dynamic(() => import('../Sliders/SectionWinnersSlider'))
+const SectionJackpots = dynamic(() => import('../Sliders/SectionJackpotsSlider'))
 const SectionChallenge = dynamic(() => import('../SectionChallenge'))
 
 import style from './index.module.scss'

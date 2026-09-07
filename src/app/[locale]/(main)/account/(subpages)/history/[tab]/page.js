@@ -5,7 +5,7 @@ import { QUANTITY } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionAccountHistory from '@/sections/SectionAccountHistory'
+import SectionAccountHistory from '@/sections/Account/SectionAccountHistory'
 
 const defaultRange = () => {
   const now = new Date()

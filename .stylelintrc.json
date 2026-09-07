@@ -13,6 +13,17 @@
   "rules": {
     "no-empty-source": null,
     "@stylistic/max-empty-lines": 1,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "-webkit-contacts-auto-fill-button",
+          "-webkit-caps-lock-indicator",
+          "-webkit-credentials-auto-fill-button",
+          "-webkit-strong-password-auto-fill-button"
+        ]
+      }
+    ],
     "rule-empty-line-before": [
       "always",
       {

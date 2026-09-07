@@ -18,7 +18,7 @@ const Section = ({ data, meta }) => {
       }}
     >
       {
-        data.map((el, idx) =>
+        data?.map((el, idx) =>
           <BigLinkCard
             key={el?.id || idx}
             data={el}

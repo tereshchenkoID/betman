@@ -1,4 +1,4 @@
-import { getCachedUser, getSettings } from '@/app/actions/static'
+import { getBonuses, getCachedUser, getSettings } from '@/app/actions/static'
 
 import Header from '@/widgets/Header/section'
 
@@ -11,10 +11,13 @@ export default async function HeaderLayout() {
     getSettings(),
   ])
 
+  const bonuses = user?.id ? await getBonuses() : null
+
   return (
     <Header
       user={user}
       settings={settings}
+      bonuses={bonuses}
     />
   )
 }

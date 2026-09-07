@@ -50,7 +50,7 @@
       @include desk-s {
         grid-column: 3;
         grid-row: 1;
-        margin-top: var(--gap-24);
+        margin-block-start: var(--gap-24);
         text-align: end;
       }
     }

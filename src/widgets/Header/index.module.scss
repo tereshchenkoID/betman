@@ -1,6 +1,6 @@
 .block {
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
   margin-inline: rem(-16px);
   height: var(--header-height);
   background-image: linear-gradient(180deg, rgb(var(--material)) 0%, rgb(var(--bg)) 88%);

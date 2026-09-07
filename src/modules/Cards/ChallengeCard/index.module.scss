@@ -48,7 +48,7 @@
 .button {
   @include transition;
 
-  margin-top: var(--gap-12);
+  margin-block-start: var(--gap-12);
   min-width: rem(120px);
 }
 

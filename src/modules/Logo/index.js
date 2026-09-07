@@ -19,7 +19,7 @@ const Logo = () => {
         width={145}
         height={36}
         alt="Logo"
-        loading={'eager'}
+        loading="eager"
         unoptimized
         priority
       />

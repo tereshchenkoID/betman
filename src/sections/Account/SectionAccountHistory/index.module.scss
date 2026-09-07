@@ -12,7 +12,7 @@
   @include flex(space-between, center, column-reverse, wrap);
 
   gap: var(--gap-16);
-  margin-top: var(--gap-16);
+  margin-block-start: var(--gap-16);
 
   @include mob-m {
     flex-direction: row;

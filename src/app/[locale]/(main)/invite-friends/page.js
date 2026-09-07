@@ -3,7 +3,7 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser, getSettings } from '@/app/actions/static'
 
-import SectionAccountInviteFriends from '@/sections/SectionAccountInviteFriends'
+import SectionAccountInviteFriends from '@/sections/Account/SectionAccountInviteFriends'
 
 export async function generateMetadata() {
   return await getPageMetadata('profile')

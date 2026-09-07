@@ -20,12 +20,11 @@
   padding: rem(1px);
   border-radius: 50%;
   width: rem(50px);
-  background: conic-gradient(transparent 10%, var(--link, var(--black))) content-box;
+  background: conic-gradient(transparent 10%, rgb(var(--link)), rgb(var(--black))) content-box;
   mask:
     repeating-conic-gradient(transparent 0deg, rgb(var(--link)) 1deg 20deg, transparent 21deg 36deg),
-    radial-gradient(farthest-side, transparent calc(100% - var(--b) - 1px), var(--black) calc(100% - var(--b)));
-  mask-composite: destination-in;
-          mask-composite: intersect;
+    radial-gradient(farthest-side, transparent calc(100% - var(--b) - 1px), rgb(var(--black)) calc(100% - var(--b)));
+  mask-composite: intersect;
   animation: spin 1s infinite steps(10);
 }
 

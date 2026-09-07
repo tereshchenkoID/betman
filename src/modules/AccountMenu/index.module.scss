@@ -38,7 +38,7 @@
 }
 
 .bottom {
-  margin-top: auto;
+  margin-block-start: auto;
   border-top: rem(1px) solid var(--tertiary-disabled);
 }
 
@@ -51,6 +51,8 @@
   @include size(rem(40px));
 
   position: relative;
+  border-radius: 50%;
+  background-color: rgb(var(--material-hover));
 
   img {
     border-radius: 50%;

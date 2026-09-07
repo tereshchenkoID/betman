@@ -41,8 +41,8 @@ const Languages = ({
           src={`/images/countries/${currentLang.code}.webp`}
           className={style.image}
           alt={currentLang.text}
-          width={20}
-          height={20}
+          width={28}
+          height={28}
           priority
           sizes="20px"
           unoptimized

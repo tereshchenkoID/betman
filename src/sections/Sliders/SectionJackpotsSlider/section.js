@@ -26,7 +26,7 @@ const SectionJackpots = ({
       more={{
         isVisible: true,
         to: NAVIGATION.jackpots.url,
-        results: meta?.results
+        results: meta?.results || 0
       }}
       title={{
         isVisible: true,

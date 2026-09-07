@@ -5,35 +5,35 @@
 
 @mixin absolute-center($args...) {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
   transform: translate(-50%, -50%) $args;
 }
 
 @mixin absolute-center-left($args) {
   position: absolute;
-  top: 50%;
-  left: $args;
+  inset-block-start: 50%;
+  inset-inline-start: $args;
   transform: translateY(-50%);
 }
 
 @mixin absolute-center-right($args) {
   position: absolute;
-  top: 50%;
-  right: $args;
+  inset-block-start: 50%;
+  inset-inline-end: $args;
   transform: translateY(-50%);
 }
 
 @mixin absolute-center-top($args) {
   position: absolute;
-  top: $args;
-  left: 50%;
+  inset-block-start: $args;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
 }
 
 @mixin absolute-center-bottom($args) {
   position: absolute;
-  bottom: $args;
-  left: 50%;
+  inset-block-end: $args;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
 }

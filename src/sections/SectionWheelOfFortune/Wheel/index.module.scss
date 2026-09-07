@@ -34,7 +34,7 @@
   @include size(calc(80 / var(--wheel-size) * 100cqw), calc(105 / var(--wheel-size) * 100cqw));
 
   position: absolute;
-  top: 0;
+  inset-block-start: 0;
   z-index: $z-index-1;
   transform: translateY(-55%);
   pointer-events: none;

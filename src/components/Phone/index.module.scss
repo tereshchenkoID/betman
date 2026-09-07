@@ -36,7 +36,7 @@
 
   display: grid;
   grid-template-columns: auto 1fr;
-  padding-top: var(--gap-2);
+  padding-block-start: var(--gap-2);
   border-radius: var(--border-radius-6);
   background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
@@ -76,7 +76,7 @@
   --react-international-phone-dropdown-preferred-list-divider-color: var(--primary);
 
   position: absolute;
-  top: calc(rem(48px) + var(--gap-default));
+  inset-block-start: calc(rem(48px) + var(--gap-default));
   inset-inline: 0;
   padding: 0;
   outline: 0;
@@ -128,7 +128,7 @@
 }
 
 .message {
-  margin-top: var(--gap-2);
+  margin-block-start: var(--gap-2);
   font-size: rem(12px);
   text-align: left;
   color: rgb(var(--red));

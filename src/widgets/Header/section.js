@@ -23,7 +23,7 @@ import Status from '@/modules/Status'
 
 import style from './index.module.scss'
 
-const Section = ({ user, settings }) => {
+const Section = ({ user, settings, bonuses }) => {
   const t = useTranslations()
   const blockRef = useRef(null)
   const { openModal } = useModal()
@@ -115,6 +115,7 @@ const Section = ({ user, settings }) => {
               <AccountMenu
                 user={user}
                 setToggle={() => setToggle(null)}
+                bonuses={bonuses}
               />
             }
           </div>

@@ -84,7 +84,7 @@
   @include flex(space-between);
 
   position: absolute;
-  top: var(--gap-default);
+  inset-block-start: var(--gap-default);
   inset-inline: var(--gap-default);
   z-index: $z-index-1;
 }
@@ -94,7 +94,7 @@
   justify-items: center;
   gap: var(--gap-6);
   position: absolute;
-  top: 22%;
+  inset-block-start: 22%;
   inset-inline: 0;
 }
 

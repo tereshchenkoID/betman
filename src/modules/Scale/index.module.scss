@@ -12,7 +12,7 @@
   @include flex(space-between, center);
 
   gap: var(--gap-4);
-  margin-bottom: var(--gap-4);
+  margin-block-end: var(--gap-4);
   font-size: rem(12px);
 }
 

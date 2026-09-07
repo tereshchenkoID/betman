@@ -8,8 +8,8 @@
   align-items: center;
   gap: var(--gap-default);
   position: absolute;
-  top: calc(100% + var(--gap-default));
-  right: 0;
+  inset-block-start: calc(100% + var(--gap-default));
+  inset-inline-end: 0;
   padding: var(--gap-default);
   border: rem(1px) solid var(--tertiary-disabled);
   border-radius: var(--border-radius-6);

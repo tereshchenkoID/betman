@@ -25,5 +25,5 @@
 .load {
   @include flex(center);
 
-  margin-top: var(--gap-24);
+  margin-block-start: var(--gap-24);
 }

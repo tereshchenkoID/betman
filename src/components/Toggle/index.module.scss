@@ -40,8 +40,8 @@
     @include size(rem(24px));
 
     position: absolute;
-    top: rem(2px);
-    left: rem(2px);
+    inset-block-start: rem(2px);
+    inset-inline-start: rem(2px);
     border-radius: 50%;
     background: rgb(var(--link));
     content: '';
@@ -49,6 +49,6 @@
 }
 
 .label {
-  margin-left: rem(3px);
+  margin-inline-start: rem(3px);
   color: rgb(var(--red));
 }

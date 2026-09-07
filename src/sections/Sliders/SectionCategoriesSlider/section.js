@@ -51,7 +51,7 @@ const SectionCategories = ({
         {t('all_providers')}
       </Link>
       {
-        data.map((el, idx) =>
+        data?.map((el, idx) =>
         <CategoryCard
           key={el?.id || idx}
           data={el}

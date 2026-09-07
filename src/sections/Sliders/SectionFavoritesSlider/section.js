@@ -87,7 +87,7 @@ const Section = ({
         more={{
           isVisible: true,
           to: ROUTES_USER.favorites.url,
-          results: meta?.results
+          results: meta?.results || 0
         }}
         title={{
           isVisible: true,

@@ -63,7 +63,7 @@
   @include flex(null, baseline);
 
   gap: var(--gap-4);
-  margin-bottom: var(--gap-default);
+  margin-block-end: var(--gap-default);
 }
 
 .currency {

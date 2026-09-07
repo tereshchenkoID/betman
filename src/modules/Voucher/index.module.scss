@@ -59,7 +59,7 @@
 
 .label {
   display: inline-flex;
-  margin-right: rem(5px);
+  margin-inline-end: rem(5px);
   min-width: rem(100px);
   font-family: var(--font-family)!important;
   font-size: rem(12px);
@@ -67,8 +67,8 @@
 
 .status {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
   opacity: 0.3;
   transform: translate(-50%, -50%) rotateZ(-25deg);
   font-family: var(--font-family-alt);

@@ -41,7 +41,7 @@
   @include flex($direction: column);
 
   gap: var(--gap-default);
-  margin-top: var(--gap-12);
+  margin-block-start: var(--gap-12);
 }
 
 .wrapper {
@@ -75,6 +75,6 @@
 
 .close {
   position: absolute;
-  top: rem(-4px);
-  right: rem(-4px);
+  inset-block-start: rem(-4px);
+  inset-inline-end: rem(-4px);
 }

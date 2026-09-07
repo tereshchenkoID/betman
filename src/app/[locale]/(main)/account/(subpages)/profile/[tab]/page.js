@@ -3,7 +3,7 @@ import { USER_VERIFY } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser, getSettings } from '@/app/actions/static'
 
-import SectionAccountProfile from '@/sections/SectionAccountProfile'
+import SectionAccountProfile from '@/sections/Account/SectionAccountProfile'
 import SectionTooltip from '@/sections/SectionTooltip'
 
 export default async function Profile({ params }) {

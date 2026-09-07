@@ -5,7 +5,7 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionAccountNavigation from '@/sections/SectionAccountNavigation'
+import SectionAccountNavigation from '@/sections/Account/SectionAccountNavigation'
 
 export async function generateMetadata() {
   return await getPageMetadata('profile')

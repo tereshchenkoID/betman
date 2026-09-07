@@ -89,7 +89,7 @@ const Section = ({
           <Logo />
           <div className={style.socials}>
             {
-              settings.social.map((el, idx) =>
+              settings?.social?.map((el, idx) =>
                 <a
                   key={el?.icon || idx}
                   href={el.link}

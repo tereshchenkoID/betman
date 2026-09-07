@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  useCallback, useEffect, useState, useTransition 
+  useCallback, useEffect, useState, useTransition
 } from 'react'
 import { useTranslations } from 'next-intl'
 
@@ -109,6 +109,7 @@ const SearchModal = ({ user }) => {
           data={search}
           placeholder={t('search')}
           onChange={setSearch}
+          isClear={false}
         />
         {
           Boolean(meta?.q || search) &&

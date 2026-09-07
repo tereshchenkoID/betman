@@ -13,14 +13,14 @@
   align-items: center;
 
   &:not(:last-child) {
-    margin-bottom: var(--gap-default);
+    margin-block-end: var(--gap-default);
   }
 }
 
 .content {
   display: grid;
   gap: var(--gap-default) var(--gap-16);
-  margin-bottom: var(--gap-default);
+  margin-block-end: var(--gap-default);
 }
 
 .title {

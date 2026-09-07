@@ -2,7 +2,7 @@
   display: grid;
   align-items: center;
   gap: var(--gap-24);
-  margin-bottom: rem(40px);
+  margin-block-end: rem(40px);
   margin-inline: auto;
   max-width: rem(600px);
 
@@ -67,7 +67,7 @@
 }
 
 .description {
-  margin-bottom: var(--gap-12);
+  margin-block-end: var(--gap-12);
   text-align: center;
 }
 
@@ -77,8 +77,8 @@
   &::before {
     display: none;
     position: absolute;
-    left: 50%;
     inset-block: 0;
+    inset-inline-start: 50%;
     width: rem(1px);
     background-color: var(--primary-hover);
     transform: translateX(-50%);
@@ -105,7 +105,7 @@
   &::before {
     display: none;
     position: absolute;
-    top: 50%;
+    inset-block-start: 50%;
     background-color: rgb(var(--link));
     content: '';
 
@@ -128,12 +128,12 @@
 
   &:nth-child(odd) {
     &::after {
-      right: 0;
+      inset-inline-end: 0;
       transform: translate(rem(22px), -50%);
     }
 
     &::before {
-      right: 0;
+      inset-inline-end: 0;
       transform: translate(rem(8px), -50%);
     }
   }
@@ -142,18 +142,18 @@
     margin-inline-start: auto;
 
     &::after {
-      left: 0;
+      inset-inline-start: 0;
       transform: translate(rem(-22px), -50%);
     }
 
     &::before {
-      left: 0;
+      inset-inline-start: 0;
       transform: translate(rem(-8px), -50%);
     }
   }
 
   &:not(:last-child) {
-    margin-bottom: var(--gap-default);
+    margin-block-end: var(--gap-default);
   }
 }
 

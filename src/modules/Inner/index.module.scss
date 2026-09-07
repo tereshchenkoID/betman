@@ -13,7 +13,7 @@
   h4,
   h5,
   h6 {
-    margin-bottom: var(--gap-4);
+    margin-block-end: var(--gap-4);
     text-transform: unset;
   }
 
@@ -27,7 +27,7 @@
   }
 
   img {
-    margin-bottom: var(--gap-12);
+    margin-block-end: var(--gap-12);
     width: revert-layer;
     max-width: 100%;
     height: revert-layer;
@@ -83,7 +83,7 @@
     overflow: hidden;
 
     h1, h2, h3, h4, h5, h6 {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
   }
 

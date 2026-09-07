@@ -3,7 +3,7 @@
 }
 
 .content {
-  margin-bottom: var(--gap-default);
+  margin-block-end: var(--gap-default);
 
   &.collapsed {
     position: relative;

@@ -88,7 +88,10 @@ const SectionVerification = ({ user }) => {
   return (
     <section className={style.block}>
       <div>
-        <Title title={t('section.verification')} />
+        <Title
+          title={t('section.verification')}
+          isBack={true}
+        />
         <p>Complete verifications to unlock all features</p>
       </div>
 

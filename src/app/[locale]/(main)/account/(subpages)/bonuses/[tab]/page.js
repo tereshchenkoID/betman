@@ -1,7 +1,7 @@
 import { apiRequest } from '@/app/actions/api'
 import { getCachedUser, getSettings } from '@/app/actions/static'
 
-import SectionAccountBonuses from '@/sections/SectionAccountBonuses'
+import SectionAccountBonuses from '@/sections/Account/SectionAccountBonuses'
 
 export default async function Bonus({ params }) {
   const { tab } = await params

@@ -5,10 +5,7 @@ import clsx from 'clsx'
 
 import { Link, useRouter } from '@/i18n/navigation'
 
-import {
-  NAVIGATION,
-  ROUTES_USER,
-} from '@/constant/config'
+import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { logoutAction } from '@/app/actions/auth'
 
@@ -23,20 +20,23 @@ import Status from '@/modules/Status'
 
 import style from './index.module.scss'
 
-const DATA = [
-  ROUTES_USER.profile,
-  ROUTES_USER.wallet,
-  ROUTES_USER.bonuses,
-  ROUTES_USER.promocode,
-  ROUTES_USER.invite_friends,
-  ROUTES_USER.history,
-  ROUTES_USER.favorites
-]
-
-const AccountMenu = ({ user, setToggle }) => {
+const AccountMenu = ({ user, setToggle, bonuses }) => {
   const t = useTranslations()
   const router = useRouter()
   const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
+
+  const DATA = [
+    ROUTES_USER.profile,
+    ROUTES_USER.wallet,
+    {
+      ...ROUTES_USER.bonuses,
+      url: `${ROUTES_USER.bonuses.url}/${bonuses?.data ? 'active' : 'available'}`,
+    },
+    ROUTES_USER.promocode,
+    ROUTES_USER.invite_friends,
+    ROUTES_USER.history,
+    ROUTES_USER.favorites
+  ]
 
   const handleLogout = async () => {
     setToggle(false)
@@ -153,7 +153,10 @@ const AccountMenu = ({ user, setToggle }) => {
             }
           </Link>
         </div>
-        <menu className={style.container}>
+        <menu
+          role="menu"
+          className={style.container}
+        >
           {
             DATA.map((el, idx) =>
               <Link
