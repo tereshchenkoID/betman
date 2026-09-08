@@ -71,7 +71,6 @@ export const apiRequest = async (endpoint, {
   const cookieStore = await cookies()
   const headersList = await headers()
 
-
   const token = cookieStore.get('NEXT_SID')?.value
   const locale = headersList.get('x-next-locale') || cookieStore.get('NEXT_LOCALE')?.value || routing.defaultLocale
   const ip = getClientIp(headersList)
@@ -85,8 +84,6 @@ export const apiRequest = async (endpoint, {
   if (isProtected && !token) return null
 
   let url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
-
-  console.log(params, endpoint)
 
   const options = {
     method,

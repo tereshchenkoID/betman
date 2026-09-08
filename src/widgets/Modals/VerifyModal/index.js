@@ -14,12 +14,12 @@ const VerifyModal = ({ user }) => {
 
   return (
     <div className={style.block}>
-      <p>Verification text</p>
+      <p>{t('notification.verification_text')}</p>
       <Action
         to={`${ROUTES_USER.profile.url}/${user?.level === '1' ? 'profile' : 'verification'}`}
         onChange={closeModal}
         classes={['tertiary', 'md', 'wide']}
-        placeholder={'Verify account'}
+        placeholder={t('notification.verification_button')}
       />
     </div>
   )

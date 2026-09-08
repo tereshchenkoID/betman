@@ -79,8 +79,8 @@ const SectionAccountWallet = ({ user, children }) => {
         user?.level !== '3' &&
         <section>
           <Notification
-            text={'Verification text'}
-            type={user?.level !== '3' ? 'error' : 'success'}
+            text={t('notification.verification_text')}
+            type={'error'}
           />
         </section>
       }

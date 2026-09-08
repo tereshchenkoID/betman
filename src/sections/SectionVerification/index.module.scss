@@ -85,6 +85,10 @@
     &::before {
       display: none;
     }
+
+    .list {
+      grid-template-columns: 1fr;
+    }
   }
 }
 

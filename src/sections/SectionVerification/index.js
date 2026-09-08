@@ -16,74 +16,71 @@ const LEVELS = [
   {
     level: '1',
     title: '1 level',
-    text: 'Verify your basic details to unlock real money play and bonuses',
+    text: 'verify_steps.step_1.text',
     button: {
       url: `${ROUTES_USER.profile.url}/profile`,
-      text: 'Verify Level 1'
+      text: 'verify_steps.step_1.button'
     },
     list: [
-      { icon: 'commerce-wallet', text: 'Make deposit' },
-      { icon: 'games-slot', text: 'Play for real' },
-      { icon: 'commerce-bonus', text: 'Bonuses & rewards' },
-      { icon: 'sports-futsal', text: 'Sports Betting' }
+      { icon: 'commerce-wallet', text: 'verify_steps.step_1.items.0' },
+      { icon: 'games-slot', text: 'verify_steps.step_1.items.1' },
+      { icon: 'commerce-bonus', text: 'verify_steps.step_1.items.2' },
+      { icon: 'games-spinner', text: 'verify_steps.step_1.items.3' }
     ]
   },
   {
     level: '2',
     title: '2 level',
-    text: 'Verify your identity to unlock withdrawal and higher limits',
-    disabled: 'Complete Level 1 to unlock',
+    text: 'verify_steps.step_2.text',
+    disabled: 'verify_steps.step_2.disabled',
     button: {
       url: `${ROUTES_USER.profile.url}/verification`,
-      text: 'Verify Level 2'
+      text: 'verify_steps.step_2.button'
     },
     list: [
-      { icon: 'commerce-wallet', text: 'Withdrawal funds' },
-      { icon: 'games-slot', text: 'Higher Limits' },
-      { icon: 'commerce-bonus', text: 'More Payment Methods' },
-      { icon: 'sports-futsal', text: 'Full Account Security' }
+      { icon: 'commerce-withdraw', text: 'verify_steps.step_2.items.0' },
+      { icon: 'games-slot', text: 'verify_steps.step_2.items.1' },
+      { icon: 'commerce-bank-card', text: 'verify_steps.step_2.items.2' },
+      { icon: 'toggle-lock', text: 'verify_steps.step_2.items.3' }
     ]
   },
   {
     level: '3',
     title: '3 level',
-    text: 'Complete advanced verification for maximum trust and unlimited access',
-    disabled: 'Complete Level 2 to unlock',
+    text: 'verify_steps.step_3.text',
+    disabled: 'verify_steps.step_3.disabled',
     button: null,
     list: [
-      { icon: 'commerce-wallet', text: 'Withdrawal funds' },
-      { icon: 'games-slot', text: 'Higher Limits' },
-      { icon: 'commerce-bonus', text: 'More Payment Methods' },
-      { icon: 'sports-futsal', text: 'Full Account Security' }
+      { icon: 'games-sparks', text: 'verify_steps.step_3.items.0' },
     ]
   }
 ]
 
+const renderStatus = (isPassed, isActive, isLocked) => {
+  if (isPassed) return 'verify_status.verified'
+  if (isActive) return 'verify_status.not'
+  if (isLocked) return 'verify_status.locked'
+  return ''
+}
+
+const renderIcon = (level, cardLevel, isPassed, isLocked) => {
+  if (cardLevel === '2' && level === '2') {
+    return <Icon name="status-info" size="sm" />
+  }
+  if (isLocked) return <Icon name="toggle-lock" size="sm" />
+  if (isPassed) return <Icon name="status-checkmark" size="sm" />
+  return cardLevel
+}
+
+const renderBadgeIcon = (cardLevel, isPassed, isLocked, isActive) => {
+  if (isActive) return <Icon name="status-info" size="sm" />
+  if (isLocked) return <Icon name="toggle-lock" size="sm" />
+  return <Icon name="status-checkmark" size="sm" />
+}
+
 const SectionVerification = ({ user }) => {
   const t = useTranslations()
   const level = user?.level || '1'
-
-  const getStatusText = (isPassed, isActive, isLocked) => {
-    if (isPassed) return 'Verified'
-    if (isActive) return 'Not Verified'
-    if (isLocked) return 'Locked'
-    return ''
-  }
-
-  const renderIcon = (cardLevel, isPassed, isLocked) => {
-    if (cardLevel === '2' && level === '2') {
-      return <Icon name="status-info" size="sm" />
-    }
-    if (isLocked) return <Icon name="toggle-lock" size="sm" />
-    if (isPassed) return <Icon name="status-checkmark" size="sm" />
-    return cardLevel
-  }
-
-  const renderBadgeIcon = (cardLevel, isPassed, isLocked, isActive) => {
-    if (isActive) return <Icon name="status-info" size="sm" />
-    if (isLocked) return <Icon name="toggle-lock" size="sm" />
-    return <Icon name="status-checkmark" size="sm" />
-  }
 
   return (
     <section className={style.block}>
@@ -92,7 +89,7 @@ const SectionVerification = ({ user }) => {
           title={t('section.verification')}
           isBack={true}
         />
-        <p>Complete verifications to unlock all features</p>
+        <p>{t('verify_steps.subtitle')}</p>
       </div>
 
       <div className={style.wrapper}>
@@ -108,33 +105,33 @@ const SectionVerification = ({ user }) => {
             return (
               <article
                 key={cardLevel}
-                className={clsx(
-                  style.level,
-                  style[`level-${cardLevel}`],
-                  isPassed && style.passed,
-                  isActive && style.active
-                )}
+                className={
+                  clsx(
+                    style.level,
+                    style[`level-${cardLevel}`],
+                    isPassed && style.passed,
+                    isActive && style.active
+                  )
+                }
               >
                 <div className={style.circle}>
-                  <span>{renderIcon(cardLevel, isPassed, isLocked, isActive)}</span>
+                  <span>{renderIcon(level, cardLevel, isPassed, isLocked, isActive)}</span>
                 </div>
 
                 <div className={style.header}>
-                  <h2>{el.title}</h2>
+                  <h2>{showStatus ? el.title : t('verify_status.verified')}</h2>
                   {
                     showStatus &&
                     <div className={style.status}>
                       {renderBadgeIcon(cardLevel, isPassed, isLocked, isActive)}
-                      {getStatusText(isPassed, isActive, isLocked)}
+                      {t(renderStatus(isPassed, isActive, isLocked))}
                     </div>
                   }
                 </div>
-
-                <p className={style.text}>{el.text}</p>
-
+                <p className={style.text}>{t(el.text)}</p>
                 {
                   (el.disabled && !isActive && !isPassed) &&
-                  <p className={style.disabled}>{el.disabled}</p>
+                  <p className={style.disabled}>{t(el.disabled)}</p>
                 }
 
                 <ul className={style.list}>
@@ -147,7 +144,7 @@ const SectionVerification = ({ user }) => {
                       <span className={style.icon}>
                         <Icon name={item.icon} />
                       </span>
-                      <p className={style.label}>{item.text}</p>
+                      <p className={style.label}>{t(item.text)}</p>
                     </li>
                   )}
                 </ul>
@@ -164,7 +161,7 @@ const SectionVerification = ({ user }) => {
                         isLocked &&
                         <Icon name="toggle-lock" />
                       }
-                      <span>{el.button.text}</span>
+                      <span>{t(el.button.text)}</span>
                     </Action>
                   }
                 </div>
@@ -173,13 +170,16 @@ const SectionVerification = ({ user }) => {
           })}
         </div>
 
-        <Link href="./" className={style.info}>
+        <Link
+          href={'/info/verification-policy'}
+          className={style.info}
+        >
           <span>
             <Icon name="status-info" size="lg" />
           </span>
           <div>
-            <p>Why verify</p>
-            <p>Verification helps us keep your account secure, prevent fraud and comply with regulations</p>
+            <p>{t('verify_steps.link')}</p>
+            <p>{t('verify_steps.sublink')}</p>
           </div>
           <Icon name="navigation-chevron-right" size="lg" />
         </Link>

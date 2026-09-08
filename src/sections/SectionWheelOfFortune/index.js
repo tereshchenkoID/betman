@@ -1,9 +1,13 @@
 'use client'
 
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
+
+import { useModal } from '@/context/ModalContext'
 
 import Preload from '@/components/Preload'
 import Inner from '@/modules/Inner'
@@ -24,7 +28,15 @@ const SectionWheelOfFortune = ({
   user,
   wheelsRound
 }) => {
+  const t = useTranslations()
   const router = useRouter()
+  const { openModal } = useModal()
+
+  useEffect(() => {
+    if (user?.level === '1') {
+      openModal('verify', { user }, { title: t('verification') })
+    }
+  }, [openModal, t, user])
 
   return (
     <section className={style.block}>

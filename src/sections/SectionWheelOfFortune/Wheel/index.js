@@ -282,7 +282,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
         type="button"
         className={style.spin}
         onClick={handleButtonClick}
-        disabled={user?.id && !OPTIONS.canSpin}
+        disabled={user?.id && !OPTIONS.canSpin && user?.level === '1'}
       >
         <Image
           className={style.logo}

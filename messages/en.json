@@ -64,7 +64,9 @@
     "copy_success": "Successfully copied",
     "copy_error": "Copying error",
     "recovery_password": "Enter the email address associated with your account and we will send you a link to reset your password.",
-    "recovery_text": "We do not recognize the email address if you do not already have an account."
+    "recovery_text": "We do not recognize the email address if you do not already have an account.",
+    "verification_text": "To access this section and unlock all features, please verify your account.",
+    "verification_button": "Verify account"
   },
   "errors": {
     "field_required": "Field is required",
@@ -94,7 +96,43 @@
     "not": "Not Verified",
     "verification": "Pending Verification",
     "rejected": "Verification Rejected",
-    "verified": "Verified"
+    "verified": "Verified",
+    "locked": "Locked"
+  },
+  "verify_steps": {
+    "subtitle": "Complete verifications to unlock all features",
+    "link": "Why verify",
+    "sublink": "Verification helps us keep your account secure, prevent fraud and comply with regulations",
+    "step_1": {
+      "text": "Verify your basic details to unlock real money play and bonuses",
+      "disabled": "Complete Level 0",
+      "button": "Verify Level 1",
+      "items": {
+        "0": "Make deposit",
+        "1": "Play for real",
+        "2": "Bonuses & rewards",
+        "3": "Lucky wheel"
+      }
+    },
+    "step_2": {
+      "text": "Verify your identity to unlock withdrawal and higher limits",
+      "disabled": "Complete Level 1 to unlock",
+      "button": "Verify Level 2",
+      "items": {
+        "0": "Withdrawal funds",
+        "1": "Higher Limits",
+        "2": "More Payment Methods",
+        "3": "Full Account Security"
+      }
+    },
+    "step_3": {
+      "text": "Complete advanced verification for maximum trust and unlimited access",
+      "disabled": "Complete Level 2 to unlock",
+      "button": "Verify Level 3",
+      "items": {
+        "0": "All featured activated. Enjoy your game!"
+      }
+    }
   },
   "quest_status": {
     "done": "Completed",
@@ -129,11 +167,7 @@
     "id_card": "ID Card",
     "driver_license": "Driver license"
   },
-  "level": {
-    "verification": "Verification",
-    "complete_verification": "Complete verification",
-    "verified": "Verified"
-  },
+  "level": "level",
   "name": "Betman",
   "voucher": "Voucher ID",
   "expired_date": "Active until",
