@@ -56,6 +56,8 @@
       "flex",
       "flex-direction",
       "flex-wrap",
+      "flex-shrink",
+      "flex-grow",
       "grid",
       "grid-template",
       "grid-template-columns",
