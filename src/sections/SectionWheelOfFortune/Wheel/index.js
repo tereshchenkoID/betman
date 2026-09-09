@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  useEffect, useMemo, useRef, useState
+  useCallback, useEffect, useMemo, useRef, useState
 } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -98,102 +98,174 @@ const Wheel = ({ mock, user, wheelsRound }) => {
     [spinning, wheelsCounter, angleStep]
   )
 
-  const drawCanvasFrame = (currentRotation) => {
-    const canvas = canvasRef.current
-    if (!canvas || count === 0) return
+  const drawCanvasFrame = useCallback(
+    (currentRotation) => {
+      const canvas = canvasRef.current
+      if (!canvas || count === 0) return
 
-    const ctx = canvas.getContext('2d')
-    const size = canvas.width
-    const center = size / 2
+      const ctx = canvas.getContext('2d')
+      const size = canvas.width
+      const center = size / 2
 
-    const rootStyles = getComputedStyle(document.documentElement)
-    const colorWhite = '#fff'
-    const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || '\'Roboto\', sans-serif'
-    const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || '\'Oswald\', sans-serif'
+      const rootStyles = getComputedStyle(document.documentElement)
+      const colorWhite = '#fff'
+      const fontFamily = rootStyles.getPropertyValue('--font-family').trim() || '\'Roboto\', sans-serif'
+      const fontFamilyAlt = rootStyles.getPropertyValue('--font-family-alt').trim() || '\'Oswald\', sans-serif'
 
-    const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
-    const radius = center - outerBorderWidth
+      const outerBorderWidth = size * WHEEL_CONFIG.ratios.outerBorder
+      const radius = center - outerBorderWidth
 
-    ctx.clearRect(0, 0, size, size)
+      ctx.clearRect(0, 0, size, size)
 
-    // Sector & Text
-    mock.forEach((sector, i) => {
-      const startAngle = ((i * angleStep + currentRotation - 90) * Math.PI) / 180
-      const endAngle = (((i + 1) * angleStep + currentRotation - 90) * Math.PI) / 180
-      const middleAngle = startAngle + (endAngle - startAngle) / 2
+      // Sector & Text
+      mock.forEach((sector, i) => {
+        const startAngle = ((i * angleStep + currentRotation - 90) * Math.PI) / 180
+        const endAngle = (((i + 1) * angleStep + currentRotation - 90) * Math.PI) / 180
+        const middleAngle = startAngle + (endAngle - startAngle) / 2
 
+        ctx.save()
+        ctx.beginPath()
+        ctx.moveTo(center, center)
+        ctx.arc(center, center, radius, startAngle, endAngle)
+        ctx.closePath()
+
+        const baseColor = WHEEL_CONFIG.colors[i % WHEEL_CONFIG.colors.length]
+        const grad = ctx.createRadialGradient(
+          center,
+          center,
+          radius * 0.25,
+          center,
+          center,
+          radius
+        )
+        grad.addColorStop(0, baseColor)
+        grad.addColorStop(1, darkenColor(baseColor, 40))
+
+        ctx.fillStyle = grad
+        ctx.fill()
+        ctx.restore()
+
+        // Text Render
+        ctx.save()
+        ctx.translate(center, center)
+        ctx.rotate(middleAngle + Math.PI / 2)
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+
+        const titleText = sector.title.toUpperCase()
+        const valueText = sector.value ? sector.value.toUpperCase() : ''
+
+        ctx.fillStyle = colorWhite
+        ctx.font = `700 ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
+        const mainTextY = -radius * WHEEL_CONFIG.ratios.textRadiusDistance
+        ctx.fillText(titleText, 0, mainTextY)
+
+        if (valueText) {
+          ctx.fillStyle = WHEEL_CONFIG.text.valueAlpha
+          ctx.font = `600 ${WHEEL_CONFIG.text.valueSize} ${fontFamily}`
+          ctx.fillText(valueText, 0, mainTextY + WHEEL_CONFIG.text.lineHeightGap)
+        }
+        ctx.restore()
+      })
+
+      // Separators
+      mock.forEach((_, i) => {
+        const lineAngle =
+          ((i * angleStep + currentRotation - 90) * Math.PI) / 180
+        ctx.save()
+        ctx.beginPath()
+        ctx.strokeStyle = WHEEL_CONFIG.ratios.separatorLineColor
+        ctx.lineWidth = size * WHEEL_CONFIG.ratios.separatorLineWidth
+        ctx.moveTo(center, center)
+        ctx.lineTo(
+          center + radius * Math.cos(lineAngle),
+          center + radius * Math.sin(lineAngle)
+        )
+        ctx.stroke()
+        ctx.restore()
+      })
+
+      // Gold Frame
       ctx.save()
       ctx.beginPath()
-      ctx.moveTo(center, center)
-      ctx.arc(center, center, radius, startAngle, endAngle)
-      ctx.closePath()
+      ctx.arc(center, center, center - outerBorderWidth / 2, 0, Math.PI * 2)
+      ctx.lineWidth = outerBorderWidth
 
-      const baseColor = WHEEL_CONFIG.colors[i % WHEEL_CONFIG.colors.length]
-      const grad = ctx.createRadialGradient(center, center, radius * 0.25, center, center, radius)
-      grad.addColorStop(0, baseColor)
-      grad.addColorStop(1, darkenColor(baseColor, 40))
+      const goldGrad = ctx.createRadialGradient(
+        center,
+        center,
+        radius * 0.5,
+        center,
+        center,
+        center
+      )
+      WHEEL_CONFIG.goldGradientStops.forEach((stop) =>
+        goldGrad.addColorStop(stop.offset, stop.color)
+      )
 
-      ctx.fillStyle = grad
-      ctx.fill()
-      ctx.restore()
-
-      // Text Render
-      ctx.save()
-      ctx.translate(center, center)
-      ctx.rotate(middleAngle + Math.PI / 2)
-      ctx.textAlign = 'center'
-      ctx.textBaseline = 'middle'
-
-      const titleText = sector.title.toUpperCase()
-      const valueText = sector.value ? sector.value.toUpperCase() : ''
-
-      ctx.fillStyle = colorWhite
-      ctx.font = `700 ${WHEEL_CONFIG.text.titleSize} ${fontFamilyAlt}`
-      const mainTextY = -radius * WHEEL_CONFIG.ratios.textRadiusDistance
-      ctx.fillText(titleText, 0, mainTextY)
-
-      if (valueText) {
-        ctx.fillStyle = WHEEL_CONFIG.text.valueAlpha
-        ctx.font = `600 ${WHEEL_CONFIG.text.valueSize} ${fontFamily}`
-        ctx.fillText(valueText, 0, mainTextY + WHEEL_CONFIG.text.lineHeightGap)
-      }
-      ctx.restore()
-    })
-
-    // Separators
-    mock.forEach((_, i) => {
-      const lineAngle = ((i * angleStep + currentRotation - 90) * Math.PI) / 180
-      ctx.save()
-      ctx.beginPath()
-      ctx.strokeStyle = WHEEL_CONFIG.ratios.separatorLineColor
-      ctx.lineWidth = size * WHEEL_CONFIG.ratios.separatorLineWidth
-      ctx.moveTo(center, center)
-      ctx.lineTo(center + radius * Math.cos(lineAngle), center + radius * Math.sin(lineAngle))
+      ctx.strokeStyle = goldGrad
+      ctx.shadowBlur = WHEEL_CONFIG.shadows.outerBlur
+      ctx.shadowColor = WHEEL_CONFIG.shadows.outerColor
       ctx.stroke()
       ctx.restore()
-    })
-
-    // Gold Frame
-    ctx.save()
-    ctx.beginPath()
-    ctx.arc(center, center, center - outerBorderWidth / 2, 0, Math.PI * 2)
-    ctx.lineWidth = outerBorderWidth
-
-    const goldGrad = ctx.createRadialGradient(center, center, radius * 0.5, center, center, center)
-    WHEEL_CONFIG.goldGradientStops.forEach((stop) => goldGrad.addColorStop(stop.offset, stop.color))
-
-    ctx.strokeStyle = goldGrad
-    ctx.shadowBlur = WHEEL_CONFIG.shadows.outerBlur
-    ctx.shadowColor = WHEEL_CONFIG.shadows.outerColor
-    ctx.stroke()
-    ctx.restore()
-  }
+    },
+    [mock, count, angleStep]
+  )
 
   useEffect(() => {
+    let isMounted = true
+
     document.fonts.ready.then(() => {
-      drawCanvasFrame(rotationRef.current)
+      if (isMounted) {
+        drawCanvasFrame(rotationRef.current)
+      }
     })
-  }, [mock, count, angleStep])
+
+    return () => {
+      isMounted = false
+    }
+  }, [drawCanvasFrame])
+
+  const animateWheel = useCallback(
+    (data) => {
+      const rawIndex = Number(data?.id)
+      const targetIndex =
+        !isNaN(rawIndex) && mock[rawIndex] !== undefined ? rawIndex : 0
+      const duration = data?.time * 1000
+      const startTimestamp = performance.now()
+      const startRotation = rotationRef.current
+      const sectorCenter = targetIndex * angleStep + angleStep / 2
+      const targetAngle = 360 - sectorCenter
+      const extraSpins = Math.max(2, Math.floor(data?.time * 0.7)) * 360
+      const finalRotation =
+        startRotation +
+        extraSpins +
+        (targetAngle -
+          (startRotation % 360) +
+          (targetAngle - (startRotation % 360) < 0 ? 360 : 0))
+
+      const step = (timestamp) => {
+        const elapsed = timestamp - startTimestamp
+        const progress = Math.min(elapsed / duration, 1)
+        const easeOut = 1 - Math.pow(1 - progress, 4)
+        const currentRot =
+          startRotation + (finalRotation - startRotation) * easeOut
+
+        rotationRef.current = currentRot
+        drawCanvasFrame(currentRot)
+
+        if (progress < 1) {
+          timerRef.current = requestAnimationFrame(step)
+        } else {
+          setSpinning(false)
+          toast.success(data?.info)
+          router.refresh()
+        }
+      }
+      timerRef.current = requestAnimationFrame(step)
+    },
+    [mock, angleStep, drawCanvasFrame, router]
+  )
 
   const handleButtonClick = async () => {
     if (!user?.id) {
@@ -221,40 +293,6 @@ const Wheel = ({ mock, user, wheelsRound }) => {
       setSpinning(false)
       toast.error(res?.error_message)
     }
-  }
-
-  const animateWheel = (data) => {
-    const rawIndex = Number(data?.id)
-    const targetIndex = !isNaN(rawIndex) && mock[rawIndex] !== undefined ? rawIndex : 0
-    const duration = data?.time * 1000
-    const startTimestamp = performance.now()
-    const startRotation = rotationRef.current
-    const sectorCenter = targetIndex * angleStep + angleStep / 2
-    const targetAngle = 360 - sectorCenter
-    const extraSpins = Math.max(2, Math.floor(data?.time * 0.7)) * 360
-    const finalRotation =
-      startRotation +
-      extraSpins +
-      (targetAngle - (startRotation % 360) + (targetAngle - (startRotation % 360) < 0 ? 360 : 0))
-
-    const step = (timestamp) => {
-      const elapsed = timestamp - startTimestamp
-      const progress = Math.min(elapsed / duration, 1)
-      const easeOut = 1 - Math.pow(1 - progress, 4)
-      const currentRot = startRotation + (finalRotation - startRotation) * easeOut
-
-      rotationRef.current = currentRot
-      drawCanvasFrame(currentRot)
-
-      if (progress < 1) {
-        timerRef.current = requestAnimationFrame(step)
-      } else {
-        setSpinning(false)
-        toast.success(data?.info)
-        router.refresh()
-      }
-    }
-    timerRef.current = requestAnimationFrame(step)
   }
 
   useEffect(() => {

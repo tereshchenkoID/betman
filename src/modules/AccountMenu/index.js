@@ -95,8 +95,8 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
           >
             <Icon name="data-protection" size="lg" />
             <p>
-              <span>{t('level.verification')}</span>
-              <span>{t(user?.level === '3' ? 'level.verified' : 'level.complete_verification')}</span>
+              <span>{t('notification.verification')}</span>
+              <span>{t(user?.level === '3' ? 'verify_status.verified' : 'notification.complete_verification')}</span>
             </p>
             <Icon name="navigation-chevron-right" />
           </Link>

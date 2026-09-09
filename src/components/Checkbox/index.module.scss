@@ -32,6 +32,8 @@
 }
 
 .text {
+  @include transition;
+
   font-size: rem(14px);
   line-height: 1.1;
   text-align: start;

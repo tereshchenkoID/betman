@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  startTransition, useCallback, useEffect, useState 
+  startTransition, useCallback, useEffect, useState
 } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
@@ -365,6 +365,7 @@ const SectionRegistration = ({
                   VALIDATION_RULES.required(),
                 ]}
                 onValidate={err => setFieldError('terms', err)}
+                error={errors?.terms}
               />
             </div>
             <div className={style.actions}>

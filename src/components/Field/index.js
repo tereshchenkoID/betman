@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
@@ -30,10 +30,13 @@ const Field = ({
   const [touched, setTouched] = useState(false)
   const [show, setShow] = useState(false)
 
-  useEffect(() => {
-    const err = runRules(data, rules)
+  const handleChange = (e) => {
+    const val = e.target.value
+    onChange?.(val)
+
+    const err = runRules(val, rules)
     onValidate?.(err)
-  }, [data])
+  }
 
   const handleBlur = (e) => {
     setFocused(false)
@@ -47,11 +50,19 @@ const Field = ({
     }
   }
 
-  const isFilled = !!data
-  const showError = error && (touched || (isFilled && error !== runRules('', rules)))
-  const showSuccess = !showError && success && isFilled
+  const handleClear = () => {
+    onChange?.('')
 
+    const err = runRules('', rules)
+    onValidate?.(err)
+
+    inputRef.current?.focus()
+  }
+
+  const isFilled = !!data
   const isLabelActive = focused || isFilled || type === 'date'
+  const showError = !!error && (touched || isFilled)
+  const showSuccess = !showError && success && isFilled
 
   const inputType = visibility && type === 'password'
     ? (show ? 'text' : 'password')
@@ -65,10 +76,10 @@ const Field = ({
           {
             [style.disabled]: isDisabled,
             [style.focused]: isLabelActive,
-            [style.error]: showError,
             [style.password]: visibility,
+            [style.error]: showError,
           },
-          classes?.map(el => style[el] || el),
+          classes?.map((el) => style[el] || el)
         )
       }
     >
@@ -78,14 +89,16 @@ const Field = ({
           type={inputType}
           className={style.input}
           value={data || ''}
-          onChange={e => onChange(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={handleBlur}
           required={isRequired}
           min={min}
           max={max}
-          autoComplete={'off'}
+          autoComplete="off"
+          disabled={isDisabled}
         />
+
         <label
           className={style.label}
           onClick={() => inputRef.current?.focus()}
@@ -93,14 +106,15 @@ const Field = ({
           {placeholder}
           {isRequired && <span>*</span>}
         </label>
+
         <div className={style.options}>
           {
             (data && !isDisabled && isClear) &&
             <button
               type="button"
               className={style.clear}
-              onClick={() => onChange('')}
-              aria-label={'Clear'}
+              onClick={handleClear}
+              aria-label="Clear"
             >
               <Icon name="navigation-close" size="sm" />
             </button>
@@ -111,40 +125,19 @@ const Field = ({
             <button
               type="button"
               className={style.eye}
-              onClick={() => setShow(!show)}
-              aria-label={'Visibility'}
+              onClick={() => setShow((prev) => !prev)}
+              aria-label="Visibility"
             >
-              <Icon name={show ? 'toggle-view' : 'toggle-view-off'} size={'sm'} />
+              <Icon
+                name={show ? 'toggle-view' : 'toggle-view-off'}
+                size="sm"
+              />
             </button>
           }
         </div>
       </div>
-      {
-        showError &&
-        <p
-          className={
-            clsx(
-              style.message,
-              style.error
-            )
-          }
-        >
-          {error}
-        </p>
-      }
-      {
-        showSuccess &&
-        <p
-          className={
-            clsx(
-              style.message,
-              style.success
-            )
-          }
-        >
-          {success}
-        </p>
-      }
+      { showError && <p className={clsx(style.message, style.error)}>{error}</p> }
+      { showSuccess && <p className={clsx(style.message, style.success)}>{success}</p>}
     </div>
   )
 }

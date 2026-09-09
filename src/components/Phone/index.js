@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  useCallback, useEffect, useMemo, useRef, useState, useTransition 
+  useCallback, useEffect, useMemo, useRef, useState, useTransition
 } from 'react'
 import { CountrySelector, defaultCountries, usePhoneInput } from 'react-international-phone'
 import { useLocale } from 'next-intl'
@@ -38,11 +38,6 @@ const Phone = ({
   const [isLoading, setIsLoading] = useState(!countriesCache[locale])
 
   const inputRef = useRef(null)
-
-  useEffect(() => {
-    const err = runRules(data, rules)
-    onValidate?.(err)
-  }, [data])
 
   const handleBlur = (e) => {
     setFocused(false)
@@ -116,6 +111,14 @@ const Phone = ({
     })
   }, [countries])
 
+  const handlePhoneChange = (phoneData) => {
+    const val = phoneData.phone
+    onChange?.(val)
+
+    const err = runRules(val, rules)
+    onValidate?.(err)
+  }
+
   const {
     phone,
     handlePhoneValueChange,
@@ -126,7 +129,7 @@ const Phone = ({
     defaultCountry: 'us',
     value: data || '',
     countries: localizedCountries,
-    onChange: (phoneData) => onChange?.(phoneData.phone),
+    onChange: handlePhoneChange,
   })
 
   const setCombinedRef = useCallback((node) => {
@@ -140,8 +143,8 @@ const Phone = ({
 
   if (countries?.meta?.results === '0') return null
 
-  const isFilled = phone && phone.length > 3
-  const showError = error && (touched || (isFilled && error !== runRules('', rules)))
+  const isFilled = !!(phone && phone.length > 3)
+  const showError = !!error && (touched || isFilled)
 
   return (
     <div
@@ -150,7 +153,7 @@ const Phone = ({
           style.block,
           {
             [style.disabled]: isDisabled || isPending,
-            [style.focused]: focused,
+            [style.focused]: focused || isFilled,
             [style.error]: showError,
           }
         )
@@ -170,7 +173,7 @@ const Phone = ({
           onSelect={(countryData) => setCountry(countryData.iso2)}
           disabled={isDisabled || isPending}
           countries={localizedCountries}
-          preferredCountries={['ua', 'es', 'gb', 'uz', 'ru']}
+          preferredCountries={['en', 'fr', 'ru', 'es']}
           buttonClassName={style.flag}
           dropdownStyleProps={{
             className: style.dropdown,

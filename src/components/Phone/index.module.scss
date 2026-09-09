@@ -15,8 +15,13 @@
   }
 
   &.error {
-    .label {
+    .label,
+    .field {
       color: rgb(var(--red));
+
+      &::placeholder {
+        color: inherit;
+      }
     }
 
     .wrapper {

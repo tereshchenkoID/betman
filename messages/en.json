@@ -65,8 +65,10 @@
     "copy_error": "Copying error",
     "recovery_password": "Enter the email address associated with your account and we will send you a link to reset your password.",
     "recovery_text": "We do not recognize the email address if you do not already have an account.",
+    "verification": "Verification",
     "verification_text": "To access this section and unlock all features, please verify your account.",
-    "verification_button": "Verify account"
+    "verification_button": "Verify account",
+    "verification_complete": "Complete verification"
   },
   "errors": {
     "field_required": "Field is required",

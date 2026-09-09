@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
@@ -15,22 +15,25 @@ const Checkbox = ({
   isDisabled = false,
   onValidate,
   rules = [],
+  error = null,
   ...rest
 }) => {
   const [touched, setTouched] = useState(false)
-  const [error, setError] = useState(null)
 
-  const validate = (val = data) => {
-    const err = runRules(val, rules)
-    setError(err)
+  const handleChange = () => {
+    if (isDisabled) return
+
+    const nextValue = data === '1' ? '0' : '1'
+
+    onChange?.(nextValue)
+    setTouched(true)
+
+    const err = runRules(nextValue, rules)
     onValidate?.(err)
-    return err
   }
 
-  useEffect(() => {
-    const err = runRules(data, rules)
-    onValidate?.(err)
-  }, [])
+  const isChecked = data === '1'
+  const showError = !!error && touched
 
   return (
     <label
@@ -39,24 +42,19 @@ const Checkbox = ({
           style.block,
           {
             [style.disabled]: isDisabled,
-            [style.error]: error,
-            [style.touched]: touched
+            [style.error]: showError,
           },
-          classes && classes.map(el => style[el] || el),
+          classes?.map((el) => style[el] || el)
         )
       }
       {...rest}
     >
       <input
-        type={'checkbox'}
+        type="checkbox"
         className={style.input}
-        checked={data === '1'}
-        onChange={() => {
-          const value = data === '1' ? '0' : '1'
-          onChange(value)
-          setTouched(true)
-          validate(value)
-        }}
+        checked={isChecked}
+        disabled={isDisabled}
+        onChange={handleChange}
       />
       <span className={style.item}>
         <Icon name="status-checkmark" />
