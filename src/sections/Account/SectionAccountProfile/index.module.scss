@@ -37,6 +37,7 @@
 
 .row {
   display: grid;
+  grid-template-columns: 1fr auto;
   align-items: flex-start;
   gap: var(--gap-default);
 

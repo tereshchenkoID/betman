@@ -50,6 +50,8 @@ const PhoneVerification = ({
     })
   }
 
+  console.log(filter.profile.isVerifyPhone)
+
   return (
     <div
       className={
