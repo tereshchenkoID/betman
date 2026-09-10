@@ -38,30 +38,30 @@ const SectionAccountNavigation = () => {
 
   return (
     <section className={style.block}>
-      {/*<Slider*/}
-      {/*  navigation={{*/}
-      {/*    isVisible: true,*/}
-      {/*    position: 'right',*/}
-      {/*    size: 'md'*/}
-      {/*  }}*/}
-      {/*>*/}
-      {/*  {*/}
-      {/*    DATA.map((el, idx) => {*/}
-      {/*      const isActive = isActiveLink(el.url)*/}
+      <Slider
+        navigation={{
+          isVisible: true,
+          position: 'right',
+          size: 'md'
+        }}
+      >
+        {
+          DATA.map((el, idx) => {
+            const isActive = isActiveLink(el.url)
 
-      {/*      return (*/}
-      {/*        <Action*/}
-      {/*          to={el.url}*/}
-      {/*          key={el?.icon || idx}*/}
-      {/*          classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}*/}
-      {/*          isActive={isActive}*/}
-      {/*        >*/}
-      {/*          <Icon name={el.icon} />*/}
-      {/*          <span>{t(el.text)}</span>*/}
-      {/*        </Action>*/}
-      {/*    )*/}
-      {/*  })}*/}
-      {/*</Slider>*/}
+            return (
+              <Action
+                to={el.url}
+                key={el?.icon || idx}
+                classes={[isActive ? 'primary' : 'secondary', 'md', style.link]}
+                isActive={isActive}
+              >
+                <Icon name={el.icon} />
+                <span>{t(el.text)}</span>
+              </Action>
+          )
+        })}
+      </Slider>
     </section>
   )
 }

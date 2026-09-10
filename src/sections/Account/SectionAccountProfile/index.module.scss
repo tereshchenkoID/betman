@@ -37,6 +37,7 @@
 
 .row {
   display: grid;
+  align-items: flex-start;
   gap: var(--gap-default);
 
   &.count-0,
@@ -54,6 +55,7 @@
 }
 
 .verify {
+  padding-top: var(--gap-12);
   font-size: rem(13px);
   color: rgb(var(--green));
 }
