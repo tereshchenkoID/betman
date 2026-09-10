@@ -5,6 +5,7 @@ import { useValidations } from '@/hooks/useValidations'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
+import Phone from '@/components/Phone'
 
 import EmailVerification from './EmailVerification'
 import PhoneVerification from './PhoneVerification'
@@ -25,11 +26,12 @@ const getCleanProfile = (profileObj) => {
 
 const General = ({
   user,
+  settings,
   initial,
   filter,
   handlePropsChange,
   handleSubmit,
-  handleReset,
+  handleReset
 }) => {
   const t = useTranslations()
 
@@ -62,6 +64,7 @@ const General = ({
           data={filter.profile.name}
           onChange={value => handlePropsChange('profile.name', value)}
           isRequired={true}
+          isDisabled={isTelegram}
           rules={[
             VALIDATION_RULES.required(),
             VALIDATION_RULES.minLength(3),
@@ -69,13 +72,13 @@ const General = ({
           ]}
           onValidate={err => setFieldError('name', err)}
           error={errors.name}
-          isDisabled={isTelegram}
         />
         <Field
           placeholder={t('last_name')}
           data={filter.profile.surname}
           onChange={value => handlePropsChange('profile.surname', value)}
           isRequired={true}
+          isDisabled={isTelegram}
           rules={[
             VALIDATION_RULES.required(),
             VALIDATION_RULES.minLength(3),
@@ -83,7 +86,6 @@ const General = ({
           ]}
           onValidate={err => setFieldError('surname', err)}
           error={errors.surname}
-          isDisabled={isTelegram}
         />
         <Field
           type={'date'}
@@ -99,28 +101,65 @@ const General = ({
           error={errors.birthday}
           isDisabled={isTelegram}
         />
-        <PhoneVerification
-          user={user}
-          filter={filter}
-          handlePropsChange={handlePropsChange}
-          error={errors.phone}
-          setFieldError={setFieldError}
-          rules={[
-            VALIDATION_RULES.required(),
-            VALIDATION_RULES.phone(),
-          ]}
-        />
-        <EmailVerification
-          filter={filter}
-          handlePropsChange={handlePropsChange}
-          error={errors.email}
-          setFieldError={setFieldError}
-          rules={[
-            VALIDATION_RULES.required(),
-            VALIDATION_RULES.email(),
-            VALIDATION_RULES.minLength(6),
-          ]}
-        />
+        {
+          settings?.modules?.phone_verification === '1'
+            ?
+              <PhoneVerification
+                user={user}
+                filter={filter}
+                handlePropsChange={handlePropsChange}
+                error={errors.phone}
+                setFieldError={setFieldError}
+                rules={[
+                  VALIDATION_RULES.required(),
+                  VALIDATION_RULES.phone(),
+                ]}
+              />
+            :
+              <Phone
+                data={filter.profile.phone}
+                placeholder={t('phone')}
+                country={user?.country?.value?.toLowerCase()}
+                onChange={value => handlePropsChange('profile.phone', value)}
+                isRequired={true}
+                rules={[
+                  VALIDATION_RULES.required(),
+                  VALIDATION_RULES.phone(),
+                ]}
+                onValidate={err => setFieldError('phone', err)}
+                error={errors.phone}
+              />
+        }
+        {
+          settings?.modules?.email_verification === '1'
+            ?
+              <EmailVerification
+                filter={filter}
+                handlePropsChange={handlePropsChange}
+                error={errors.email}
+                setFieldError={setFieldError}
+                rules={[
+                  VALIDATION_RULES.required(),
+                  VALIDATION_RULES.email(),
+                  VALIDATION_RULES.minLength(6),
+                ]}
+              />
+            :
+              <Field
+                type={'email'}
+                placeholder={t('email')}
+                data={filter.profile.email}
+                onChange={value => handlePropsChange('profile.email', value)}
+                isRequired={true}
+                rules={[
+                  VALIDATION_RULES.required(),
+                  VALIDATION_RULES.email(),
+                  VALIDATION_RULES.minLength(6),
+                ]}
+                onValidate={err => setFieldError('name', err)}
+                error={errors.name}
+              />
+        }
         <div className={style.actions}>
           <Action
             classes={['secondary', 'lg']}

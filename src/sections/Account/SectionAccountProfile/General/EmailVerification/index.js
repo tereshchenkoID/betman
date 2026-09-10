@@ -20,6 +20,7 @@ const EmailVerification = ({
 }) => {
   const t = useTranslations()
   const [code, setCode] = useState('')
+
   const type = filter.profile.isVerifyEmail === '0' ? 'getCode' : 'verify'
 
   const handleSubmit = async (repeat) => {
@@ -36,7 +37,9 @@ const EmailVerification = ({
       const res = await action(params)
 
       if (res?.code === '0') {
-        setCode('')
+        if (!repeat) {
+          setCode('')
+        }
         handlePropsChange('profile.isVerifyEmail', res.isVerifyEmail)
         toast.success(res?.message)
       }
@@ -69,12 +72,14 @@ const EmailVerification = ({
       <div className={style.wrapper}>
         {
           filter.profile.isVerifyEmail === '1' &&
-          <Field
-            placeholder={t('code')}
-            data={code}
-            onChange={value => setCode(value)}
-            isRequired={true}
-          />
+          <div className={style.field}>
+            <Field
+              placeholder={t('code')}
+              data={code}
+              onChange={value => setCode(value)}
+              isRequired={true}
+            />
+          </div>
         }
         {
           filter.profile.isVerifyEmail === '2' &&
@@ -84,10 +89,21 @@ const EmailVerification = ({
           </div>
         }
         {
-          filter.profile.isVerifyEmail !== '2' &&
+          filter.profile.isVerifyEmail === '0' &&
           <Action
-            placeholder={filter.profile.isVerifyEmail === '0' ? t('verify_status.verify') : t('send')}
+            classes={['primary', 'lg',  style.action]}
+            placeholder={t('verify_status.verify')}
             onChange={() => handleSubmit(false)}
+            isDisabled={error}
+          />
+        }
+        {
+          filter.profile.isVerifyEmail === '1' &&
+          <Action
+            classes={['primary', 'lg', style.action]}
+            placeholder={t('send')}
+            onChange={() => handleSubmit(false)}
+            isDisabled={code?.length !== 6}
           />
         }
         {

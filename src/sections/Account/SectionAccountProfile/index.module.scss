@@ -8,11 +8,16 @@
   flex-shrink: 0;
 }
 
-.verify,
 .wrapper {
-  @include flex(null, center);
+  @include flex(null);
 
   gap: var(--gap-default);
+}
+
+.verify {
+  @include flex(null, center);
+
+  gap: var(--gap-4);
 }
 
 .container {
@@ -42,6 +47,10 @@
   &.count-1 {
     grid-template-columns: 1fr;
   }
+}
+
+.field {
+  flex-grow: 1;
 }
 
 .verify {

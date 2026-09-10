@@ -38,7 +38,9 @@ const PhoneVerification = ({
       const res = await action(params)
 
       if (res?.code === '0') {
-        setCode('')
+        if (!repeat) {
+          setCode('')
+        }
         handlePropsChange('profile.isVerifyPhone', res.isVerifyPhone)
         toast.success(res?.message)
       }
@@ -71,12 +73,14 @@ const PhoneVerification = ({
       <div className={style.wrapper}>
         {
           filter.profile.isVerifyPhone === '1' &&
-          <Field
-            placeholder={t('code')}
-            data={code}
-            onChange={value => setCode(value)}
-            isRequired={true}
-          />
+          <div className={style.field}>
+            <Field
+              placeholder={t('code')}
+              data={code}
+              onChange={value => setCode(value)}
+              isRequired={true}
+            />
+          </div>
         }
         {
           filter.profile.isVerifyPhone === '2' &&
@@ -86,10 +90,21 @@ const PhoneVerification = ({
           </div>
         }
         {
-          filter.profile.isVerifyPhone !== '2' &&
+          filter.profile.isVerifyPhone === '0' &&
           <Action
-            placeholder={filter.profile.isVerifyPhone === '0' ? t('verify_status.verify') : t('send')}
+            classes={['primary', 'lg',  style.action]}
+            placeholder={t('verify_status.verify')}
             onChange={() => handleSubmit(false)}
+            isDisabled={error}
+          />
+        }
+        {
+          filter.profile.isVerifyPhone === '1' &&
+          <Action
+            classes={['primary', 'lg', style.action]}
+            placeholder={t('send')}
+            onChange={() => handleSubmit(false)}
+            isDisabled={code?.length !== 6}
           />
         }
         {

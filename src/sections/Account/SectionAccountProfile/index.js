@@ -147,6 +147,7 @@ const SectionAccountProfile = ({
                       user={user}
                       initial={data}
                       filter={filter}
+                      settings={settings}
                       handlePropsChange={handlePropsChange}
                       handleSubmit={handleSubmit}
                       handleReset={handleReset}

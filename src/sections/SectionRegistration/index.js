@@ -203,6 +203,7 @@ const SectionRegistration = ({
                 onBlur={() => checkFieldOnBlur('username')}
               />
               <Field
+                type={'email'}
                 data={filter.email}
                 placeholder={t('email')}
                 onChange={e => handlePropsChange('email', e)}
