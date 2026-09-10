@@ -90,12 +90,12 @@ export const apiRequest = async (endpoint, {
     cache: 'no-store',
     next: { revalidate: 0 },
     // cache,
+    // next,
     headers: {
       'Accept-Language': locale,
       ...(ip && { 'X-Forwarded-For': ip, 'X-Real-IP': ip }),
       ...(token && { Authorization: `Bearer ${token}` }),
     },
-    // next,
     signal: AbortSignal.timeout(timeout),
   }
 
@@ -115,9 +115,11 @@ export const apiRequest = async (endpoint, {
 
     if (json?.code === '2' || json?.code === '4') {
       redirect({
-        href: '/',
+        pathname: {
+          href: '/',
+          query: { expired: '1' }
+        },
         locale,
-        query: { expired: '1' }
       })
     }
 
