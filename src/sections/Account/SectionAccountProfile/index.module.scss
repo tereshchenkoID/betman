@@ -24,6 +24,9 @@
   display: grid;
   align-items: flex-start;
   gap: var(--gap-32);
+  margin-block-start: rem(-6px);
+  padding-block-start: var(--gap-6);
+  overflow: hidden;
 
   @include desk-s {
     grid-template-columns: rem(460px) 1fr;
