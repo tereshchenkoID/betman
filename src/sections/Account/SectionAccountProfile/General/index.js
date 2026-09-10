@@ -156,8 +156,8 @@ const General = ({
                   VALIDATION_RULES.email(),
                   VALIDATION_RULES.minLength(6),
                 ]}
-                onValidate={err => setFieldError('name', err)}
-                error={errors.name}
+                onValidate={err => setFieldError('email', err)}
+                error={errors.email}
               />
         }
         <div className={style.actions}>

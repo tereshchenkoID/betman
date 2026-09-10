@@ -92,9 +92,9 @@ const EmailVerification = ({
           filter.profile.isVerifyEmail === '0' &&
           <Action
             classes={['primary', 'lg',  style.action]}
-            placeholder={t('verify_status.verify')}
+            placeholder={t('verify')}
             onChange={() => handleSubmit(false)}
-            isDisabled={error}
+            isDisabled={error || !filter.profile.email}
           />
         }
         {

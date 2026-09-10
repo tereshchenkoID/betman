@@ -291,5 +291,6 @@
   "crypto": "Crypto",
   "date": "Date",
   "payout": "Payout",
-  "payout_date": "Payout date"
+  "payout_date": "Payout date",
+  "verify": "Verify"
 }
