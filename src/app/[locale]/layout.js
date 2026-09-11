@@ -12,6 +12,7 @@ import { getCachedUser, getFavorites } from '@/app/actions/static'
 
 import { FavoritesProvider } from '@/context/FavoritesContext'
 import { ModalProvider } from '@/context/ModalContext'
+import { UserStoreProvider } from '@/context/UserContext'
 import { WebSocketProvider } from '@/context/WebSocketContext'
 
 import ScrollToTop from '@/modules/ScrollToTop'
@@ -112,12 +113,14 @@ export default async function RootLayout({ children, params }) {
           shadow="none"
           zIndex={14}
         />
-        <ModalProvider>
-          <WebSocketProvider user={user}>
-            {children}
-            <WSUpdater user={user} />
-          </WebSocketProvider>
-        </ModalProvider>
+        <UserStoreProvider user={user}>
+          <ModalProvider>
+            <WebSocketProvider user={user}>
+              {children}
+              <WSUpdater user={user} />
+            </WebSocketProvider>
+          </ModalProvider>
+        </UserStoreProvider>
         <Toastify />
       </FavoritesProvider>
       <Suspense fallback={null}>

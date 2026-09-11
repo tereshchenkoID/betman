@@ -5,6 +5,8 @@ import { revalidateTag } from 'next/cache'
 import { apiRequest } from '@/app/actions/api'
 
 export async function action(params) {
+  console.log(params)
+
   const res = await apiRequest('profile/', {
     method: 'POST',
     params,

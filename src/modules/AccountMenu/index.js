@@ -9,8 +9,7 @@ import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { logoutAction } from '@/app/actions/auth'
 
-import { useGlobalData } from '@/hooks/useGlobalData'
-import { mergeCredits } from '@/utils/mergers'
+import { useUser, useUserStore } from '@/hooks/useUser'
 import { fixed } from '@/helpers/fixed'
 
 import Action from '@/components/Action'
@@ -20,10 +19,13 @@ import Status from '@/modules/Status'
 
 import style from './index.module.scss'
 
-const AccountMenu = ({ user, setToggle, bonuses }) => {
+const AccountMenu = ({ setToggle, bonuses }) => {
   const t = useTranslations()
   const router = useRouter()
-  const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
+  const setUser = useUserStore((state) => state.setUser)
+  const { credits, profile, username, session, level, currency, payements } = useUser()
+
+  // const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
 
   const DATA = [
     ROUTES_USER.profile,
@@ -41,11 +43,15 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
   const handleLogout = async () => {
     setToggle(false)
 
-    await logoutAction().then(() => {
-      startTransition(() => {
-        router.refresh()
-        router.push(NAVIGATION.home.url)
-      })
+    const res = await logoutAction()
+
+    if (res?.user) {
+      setUser(res.user)
+    }
+
+    startTransition(() => {
+      router.refresh()
+      router.push(NAVIGATION.home.url)
     })
   }
 
@@ -54,8 +60,8 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
       <div className={style.top}>
         <div className={style.avatar}>
           <Image
-            src={user?.profile?.photo || '/images/no_avatar.webp'}
-            alt={user?.username}
+            src={profile.photo || '/images/no_avatar.webp'}
+            alt={username}
             priority
             width="40"
             height="40"
@@ -64,7 +70,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             unoptimized
           />
           <Status
-            data={user?.level}
+            data={level}
             classes={['default', 'md']}
           />
         </div>
@@ -77,7 +83,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             <span>{t('personal_area')}</span>
             <Icon name="navigation-chevron-right" />
           </Action>
-          <p className={style.nickname}>{user?.username}</p>
+          <p className={style.nickname}>{username}</p>
         </div>
       </div>
       <div className={style.center}>
@@ -87,7 +93,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             className={
               clsx(
                 style.level,
-                style[`level-${user?.level}`]
+                style[`level-${level}`]
               )
             }
             aria-label={t(ROUTES_USER.verification.text)}
@@ -96,7 +102,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             <Icon name="data-protection" size="lg" />
             <p>
               <span>{t('notification.verification')}</span>
-              <span>{t(user?.level === '3' ? 'verify_status.verified' : 'notification.verification_complete')}</span>
+              <span>{t(level === '3' ? 'verify_status.verified' : 'notification.verification_complete')}</span>
             </p>
             <Icon name="navigation-chevron-right" />
           </Link>
@@ -108,18 +114,18 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             aria-label={t(ROUTES_USER.wallet.text)}
             onClick={() => setToggle(false)}
           >
-            <div className={style.count}>{t('balance')}: <h3>{fixed(credits?.real_balance)}</h3> {user?.currency?.text}</div>
+            <div className={style.count}>{t('balance')}: <h3>{fixed(credits?.real_balance)}</h3> {currency?.text}</div>
             <Icon name="navigation-chevron-right" />
           </Link>
           <div className={style.actions}>
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias}/deposit`}
+              to={`${ROUTES_USER.wallet.url}/${payements?.[0].alias}/deposit`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('deposit')}
               onChange={() => setToggle(false)}
             />
             <Action
-              to={`${ROUTES_USER.wallet.url}/${user?.payements?.[0].alias}/withdrawal`}
+              to={`${ROUTES_USER.wallet.url}/${payements?.[0].alias}/withdrawal`}
               classes={['brand', 'wide', 'md']}
               placeholder={t('withdrawal')}
               onChange={() => setToggle(false)}
@@ -139,16 +145,16 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
             onClick={() => setToggle(false)}
           >
             <div className={style.amount}>
-              <div className={style.count}>{t('bonus')}: <h3>{fixed(credits?.bonus?.amount)}</h3> {user?.currency?.text}</div>
+              <div className={style.count}>{t('bonus')}: <h3>{fixed(credits?.bonus?.amount)}</h3> {currency?.text}</div>
               <Icon name="navigation-chevron-right" />
             </div>
             {
               credits?.bonus?.total_bets > 0 &&
               <Scale
-                amount={credits?.bonus.total_bets}
-                percentage={credits?.bonus.percentage}
-                max={credits?.bonus.refund_sum}
-                currency={user?.currency?.text}
+                amount={credits?.bonus?.total_bets}
+                percentage={credits?.bonus?.percentage}
+                max={credits?.bonus?.refund_sum}
+                currency={currency?.text}
               />
             }
           </Link>
@@ -170,7 +176,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
                 <p className={style.text}>
                   {t(el.text)}
                   {
-                    (el.text === ROUTES_USER.profile.text && user?.level !== '3') &&
+                    (el.text === ROUTES_USER.profile.text && level !== '3') &&
                     <Status
                       data={user?.level}
                       classes={['sm']}
@@ -184,7 +190,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
         </menu>
       </div>
       {
-        user?.session_type !== 'tma' &&
+        session !== 'tma' &&
         <div className={style.bottom}>
           <Action
             classes={['primary', 'wide', 'md']}

@@ -30,7 +30,7 @@ const SECTIONS = {
   1: 'providers',
 }
 
-const SearchModal = ({ user }) => {
+const SearchModal = () => {
   const t = useTranslations()
   const [isPending, startTransition] = useTransition()
   const [data, setData] = useState(null)
@@ -150,7 +150,6 @@ const SearchModal = ({ user }) => {
                         <Thumbnail
                           key={el?.id || idx}
                           data={el}
-                          user={user}
                           isEmpty={true}
                         />
                       )

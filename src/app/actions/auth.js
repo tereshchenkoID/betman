@@ -3,6 +3,7 @@
 import { cookies } from 'next/headers'
 
 import { apiRequest } from '@/app/actions/api'
+import { getCachedUser } from '@/app/actions/static'
 
 const saveSession = async (token) => {
   if (!token) return
@@ -62,8 +63,9 @@ export const loginWithCredentialsAction = async (username, password) => {
 
 export const logoutAction = async () => {
   await apiRequest('logout/', { method: 'GET' }).catch(() => {})
-
   const cookieStore = await cookies()
   cookieStore.delete('NEXT_SID')
-  return { success: true }
+
+  const user = await getCachedUser()
+  return { success: true, user }
 }

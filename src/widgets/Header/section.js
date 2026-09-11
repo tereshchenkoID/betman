@@ -10,6 +10,7 @@ import { ROUTES_USER } from '@/constant/config'
 import { useModal } from '@/context/ModalContext'
 import { useGlobalData } from '@/hooks/useGlobalData'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
+import { useUser } from '@/hooks/useUser'
 import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 
@@ -23,12 +24,15 @@ import Status from '@/modules/Status'
 
 import style from './index.module.scss'
 
-const Section = ({ user, settings, bonuses }) => {
+const Section = ({ settings, bonuses }) => {
   const t = useTranslations()
   const blockRef = useRef(null)
+
+  const { level, currency, credits, isAuth } = useUser()
+
   const { openModal } = useModal()
   const [toggle, setToggle] = useState(null)
-  const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
+  // const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
 
   const handleToggle = (data) => {
     setToggle((prev) => (prev === data ? null : data))
@@ -51,7 +55,7 @@ const Section = ({ user, settings, bonuses }) => {
           className={style.right}
         >
           {
-            user?.id &&
+            isAuth &&
             <Link
               href={ROUTES_USER.wallet.url}
               className={style.balance}
@@ -59,7 +63,7 @@ const Section = ({ user, settings, bonuses }) => {
               aria-label={t(ROUTES_USER.wallet.text)}
             >
               <strong>{fixed(credits?.total_balance, 2)}</strong>
-              <span> {user?.currency.text}</span>
+              <span> {currency?.text}</span>
             </Link>
           }
           <div className={style.wrapper}>
@@ -70,7 +74,7 @@ const Section = ({ user, settings, bonuses }) => {
               onClose={() => setToggle(null)}
             />
             {
-              user?.id &&
+              isAuth &&
               <Action
                 to={ROUTES_USER.wallet.url}
                 classes={['secondary', 'md', 'circle']}
@@ -82,13 +86,13 @@ const Section = ({ user, settings, bonuses }) => {
               classes={['secondary', 'md', 'circle']}
               onChange={() => {
                 setToggle(null)
-                openModal('search', { user }, { title: t('search'), size: 'lg' })
+                openModal('search', { }, { title: t('search'), size: 'lg' })
               }}
             >
               <Icon name="navigation-search" />
             </Action>
             {
-              user?.id
+              isAuth
                 ?
                   <div className={style.avatar}>
                     <Action
@@ -98,8 +102,8 @@ const Section = ({ user, settings, bonuses }) => {
                       <Icon name="human-avatar" />
                     </Action>
                     {
-                      user?.level !== '3' &&
-                      <Status data={user?.level} />
+                      level !== '3' &&
+                      <Status data={level} />
                     }
                   </div>
                 :
@@ -113,7 +117,6 @@ const Section = ({ user, settings, bonuses }) => {
             {
               toggle === 'account' &&
               <AccountMenu
-                user={user}
                 setToggle={() => setToggle(null)}
                 bonuses={bonuses}
               />

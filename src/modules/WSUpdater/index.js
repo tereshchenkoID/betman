@@ -7,10 +7,12 @@ import { useRouter } from '@/i18n/navigation'
 
 import { useModal } from '@/context/ModalContext'
 import { useWebSocketContext } from '@/context/WebSocketContext'
+import { useUser } from '@/hooks/useUser'
 import { eventBus } from '@/utils/eventBus'
 
 const WSUpdater = ({ user }) => {
   const t = useTranslations()
+  const { isAuth, profile } = useUser()
   const router = useRouter()
   const { lastMessage } = useWebSocketContext()
   const { openModal } = useModal()
@@ -36,12 +38,12 @@ const WSUpdater = ({ user }) => {
   }, [lastMessage, router, openModal])
 
   useEffect(() => {
-    const hasBirthday = user?.profile?.birthday
+    const hasBirthday = profile?.birthday
     const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
 
     let shouldShowModal = false
 
-    if (user?.id) {
+    if (isAuth) {
       if (!hasBirthday && !hasAgeSession) {
         shouldShowModal = true
       }
@@ -54,7 +56,7 @@ const WSUpdater = ({ user }) => {
     if (shouldShowModal) {
       openModal('age', { }, { title: t('age.title'), isPointer: true })
     }
-  }, [t, user, openModal])
+  }, [t, openModal, profile?.birthday, isAuth])
 
   return null
 }
