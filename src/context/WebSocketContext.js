@@ -12,6 +12,7 @@ import { useRouter } from '@/i18n/navigation'
 
 import { logoutAction } from '@/app/actions/auth'
 
+import { useUserStore } from '@/hooks/useUser'
 import { useWebSocket } from '@/hooks/useWebSocket'
 import { consoleHelper } from '@/helpers/console'
 
@@ -19,14 +20,18 @@ const WebSocketContext = createContext(null)
 
 export const WebSocketProvider = ({ children, user }) => {
   const router = useRouter()
+  const setUser = useUserStore((state) => state.setUser)
   const [lastMessage, setLastMessage] = useState(null)
 
   const handleLogout = useCallback(() => {
     startTransition(async () => {
-      await logoutAction()
+      const res = await logoutAction()
+      if (res?.user) {
+        setUser(res.user)
+      }
       router.refresh()
     })
-  }, [router])
+  }, [router, setUser])
 
   const onOpen = useCallback((socket) => {
     socket.send(JSON.stringify({ cmd: 'ping' }))

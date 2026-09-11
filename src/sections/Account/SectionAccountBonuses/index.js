@@ -34,7 +34,6 @@ const SectionAccountBonuses = ({
   data,
   meta,
   tab,
-  user,
 }) => {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
@@ -74,7 +73,6 @@ const SectionAccountBonuses = ({
                               <BonusQuestCard
                                 key={idx}
                                 data={el}
-                                user={user}
                               />
                             :
                               <BonusCard

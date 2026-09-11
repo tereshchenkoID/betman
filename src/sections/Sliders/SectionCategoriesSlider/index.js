@@ -1,21 +1,14 @@
-import { getCachedUser, getCategories } from '@/app/actions/static'
+import { getCategories } from '@/app/actions/static'
 
 import Section from './section'
 
 const SectionCategoriesSlider = async () => {
-  const [
-    user,
-    res,
-  ] = await Promise.all([
-    getCachedUser(),
-    getCategories()
-  ])
+  const res = await getCategories()
 
   return (
     <Section
       data={res?.data}
       meta={res?.meta}
-      user={user}
     />
   )
 }

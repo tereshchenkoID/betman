@@ -6,6 +6,8 @@ import clsx from 'clsx'
 
 import { ROUTES_USER } from '@/constant/config'
 
+import { useUser } from '@/hooks/useUser'
+
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Title from '@/modules/Title'
@@ -78,9 +80,11 @@ const renderBadgeIcon = (cardLevel, isPassed, isLocked, isActive) => {
   return <Icon name="status-checkmark" size="sm" />
 }
 
-const SectionVerification = ({ user }) => {
+const SectionVerification = () => {
   const t = useTranslations()
-  const level = user?.level || '1'
+  const { level: userLevel } = useUser()
+
+  const level = userLevel || '1'
 
   return (
     <section className={style.block}>

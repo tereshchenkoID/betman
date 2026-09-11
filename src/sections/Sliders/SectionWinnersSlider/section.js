@@ -5,7 +5,7 @@ import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
-const Section = ({ data, meta, user }) => {
+const Section = ({ data, meta }) => {
   if (meta?.results === '0' || meta?.results < 5) return null
 
   return (
@@ -21,7 +21,6 @@ const Section = ({ data, meta, user }) => {
           <WinnerCard
             key={el?.id || idx}
             data={el}
-            user={user}
           />
         )}
     </Slider>

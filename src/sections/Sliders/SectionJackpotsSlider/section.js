@@ -12,7 +12,6 @@ import style from './index.module.scss'
 const SectionJackpots = ({
   data,
   meta,
-  user
 }) => {
   const t = useTranslations()
 
@@ -39,7 +38,6 @@ const SectionJackpots = ({
             key={el?.id || idx}
             data={el}
             classes={['default']}
-            user={user}
           />
         )}
     </Slider>

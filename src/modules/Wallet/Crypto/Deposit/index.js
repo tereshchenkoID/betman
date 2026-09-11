@@ -4,8 +4,9 @@ import { useTransition } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -17,9 +18,10 @@ import style from './index.module.scss'
 
 const INITIAL_FILTER = { amount: '' }
 
-const Deposit = ({ user }) => {
+const Deposit = () => {
   const t = useTranslations()
   const { openModal } = useModal()
+  const { level, currency } = useUser()
   const searchParams = useSearchParams()
   const bonus = searchParams.get('bonus')
 
@@ -31,7 +33,7 @@ const Deposit = ({ user }) => {
     e && e.preventDefault()
 
     startTransition(async () => {
-      const res = await action(filter.amount, user.currency, bonus)
+      const res = await action(filter.amount, currency, bonus)
 
       if (res?.code === '0') {
         openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg' })
@@ -56,7 +58,7 @@ const Deposit = ({ user }) => {
         type={'submit'}
         classes={['primary', 'lg']}
         placeholder={t('deposit')}
-        isDisabled={user?.level === '1' || filter?.amount === '' || isPending}
+        isDisabled={level === '1' || filter?.amount === '' || isPending}
       />
     </form>
   )

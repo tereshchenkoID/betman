@@ -25,8 +25,6 @@ const AccountMenu = ({ setToggle, bonuses }) => {
   const setUser = useUserStore((state) => state.setUser)
   const { credits, profile, username, session, level, currency, payements } = useUser()
 
-  // const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
-
   const DATA = [
     ROUTES_USER.profile,
     ROUTES_USER.wallet,
@@ -178,7 +176,7 @@ const AccountMenu = ({ setToggle, bonuses }) => {
                   {
                     (el.text === ROUTES_USER.profile.text && level !== '3') &&
                     <Status
-                      data={user?.level}
+                      data={level}
                       classes={['sm']}
                     />
                   }

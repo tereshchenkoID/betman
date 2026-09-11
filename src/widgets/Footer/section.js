@@ -5,6 +5,8 @@ import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { useUser } from '@/hooks/useUser'
+
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Logo from '@/modules/Logo'
@@ -12,20 +14,20 @@ import Logo from '@/modules/Logo'
 import style from './index.module.scss'
 
 const Section = ({
-  user,
   settings,
   categories,
   providers,
   pages,
 }) => {
   const t = useTranslations()
+  const { isAuth } = useUser()
 
   return (
     <footer
       className={
         clsx(
           style.block,
-          !user?.id && style.auth
+          !isAuth && style.auth
         )
       }
     >

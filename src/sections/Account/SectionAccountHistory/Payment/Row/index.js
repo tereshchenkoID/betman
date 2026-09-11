@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { PAYMENT_TYPE, VOUCHER_STATUS } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
 

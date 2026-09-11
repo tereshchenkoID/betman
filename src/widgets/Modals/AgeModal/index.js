@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 
 import Action from '@/components/Action'
 

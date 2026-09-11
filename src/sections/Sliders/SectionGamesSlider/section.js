@@ -20,7 +20,7 @@ const SLIDE_TYPE = {
   PLACEHOLDER: 'placeholder',
 }
 
-const renderSlide = (slide, settings, user, moreUrl, idx) => {
+const renderSlide = (slide, settings, moreUrl, idx) => {
   switch (slide.type) {
     case SLIDE_TYPE.MORE:
       return <ThumbnailMore url={moreUrl} settings={settings} />
@@ -37,7 +37,6 @@ const renderSlide = (slide, settings, user, moreUrl, idx) => {
           }
           <Thumbnail
             data={slide.data}
-            user={user}
             isPriority={slide.isPriority}
             isNumeric={slide?.isNumeric}
           />
@@ -51,7 +50,6 @@ const Section = ({
   meta,
   mock = null,
   settings,
-  user,
 }) => {
   const blockRef = useRef(null)
   const pathString = mock?.hasMore?.join('/') || ''
@@ -120,7 +118,7 @@ const Section = ({
         slides.map((el, idx) =>
           <Fragment key={el?.id || idx}>
             {
-              renderSlide(el, settings, user, moreUrl, idx)
+              renderSlide(el, settings, moreUrl, idx)
             }
           </Fragment>
         )}

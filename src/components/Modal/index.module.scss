@@ -68,9 +68,9 @@
 .header {
   @include flex(center, flex-start);
 
+  flex-shrink: 0;
   position: relative;
   padding: var(--gap-16) rem(50px);
-  flex-shrink: 0;
 }
 
 .title {
@@ -119,4 +119,5 @@
   @include scroll-y;
 
   padding: var(--gap-12) var(--gap-24) var(--gap-24);
+  min-height: rem(200px);
 }

@@ -3,15 +3,17 @@ import clsx from 'clsx'
 
 import { BONUS_STATUS } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 import { date } from '@/helpers/date'
 
 import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const Bonuses = ({ user, data }) => {
+const Bonuses = ({ data }) => {
   const t = useTranslations()
+  const { currency } = useUser()
   const { openModal } = useModal()
 
   return (
@@ -29,8 +31,8 @@ const Bonuses = ({ user, data }) => {
           <div className={style.cell}><strong>{t('date')}</strong></div>
           <div className={style.cell}><strong>{t('bonus')}</strong></div>
           <div className={style.cell}><strong>{t('status')}</strong></div>
-          <div className={style.cell}><strong>{t('amount')}, {user?.currency?.code}</strong></div>
-          <div className={style.cell}><strong>{t('payout')}, {user?.currency?.code}</strong></div>
+          <div className={style.cell}><strong>{t('amount')}, {currency?.code}</strong></div>
+          <div className={style.cell}><strong>{t('payout')}, {currency?.code}</strong></div>
           <div className={style.cell}><strong>{t('payout_date')}</strong></div>
           <div className={style.cell}><strong>{t('details')}</strong></div>
         </div>

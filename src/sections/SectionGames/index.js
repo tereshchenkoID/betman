@@ -16,7 +16,6 @@ import style from './index.module.scss'
 
 const SectionGames = ({
   url,
-  user,
   data,
   meta,
 }) => {
@@ -74,7 +73,6 @@ const SectionGames = ({
                 <Thumbnail
                   key={el?.id || idx}
                   data={el}
-                  user={user}
                 />
               )}
             </div>

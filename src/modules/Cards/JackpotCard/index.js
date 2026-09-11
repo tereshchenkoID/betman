@@ -21,7 +21,6 @@ import style from './index.module.scss'
 
 const JackpotCard = ({
   data,
-  user,
   classes = []
 }) => {
   const t = useTranslations()
@@ -129,7 +128,6 @@ const JackpotCard = ({
             <Thumbnail
               key={el?.id || idx}
               data={el}
-              user={user}
               isEmpty={!isExtended}
             />
           )

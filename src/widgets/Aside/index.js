@@ -1,5 +1,5 @@
 import {
-  getBonuses, getCachedUser, getQuests, getSettings, getWheelsRound 
+  getBonuses, getCachedUser, getQuests, getSettings, getWheelsRound
 } from '@/app/actions/static'
 
 import Section from './section'
@@ -21,7 +21,6 @@ export default async function AsideLayout() {
 
   return (
     <Section
-      user={user}
       settings={settings}
       bonuses={bonuses}
       wheels={wheels}

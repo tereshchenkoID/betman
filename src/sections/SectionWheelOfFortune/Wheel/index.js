@@ -8,7 +8,8 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import { action } from './action'
@@ -75,11 +76,12 @@ const darkenColor = (hex, percent) => {
   )
 }
 
-const Wheel = ({ mock, user, wheelsRound }) => {
+const Wheel = ({ mock, wheelsRound }) => {
   const router = useRouter()
   const t = useTranslations()
   const { wheels, wheelsCounter } = wheelsRound
   const { openModal } = useModal()
+  const { isAuth, level } = useUser()
 
   const canvasRef = useRef(null)
   const timerRef = useRef(null)
@@ -268,7 +270,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
   )
 
   const handleButtonClick = async () => {
-    if (!user?.id) {
+    if (!isAuth) {
       openModal('login', {}, { title: t('sign_up') })
       return
     }
@@ -320,7 +322,7 @@ const Wheel = ({ mock, user, wheelsRound }) => {
         type="button"
         className={style.spin}
         onClick={handleButtonClick}
-        disabled={user?.id && !OPTIONS.canSpin && user?.level === '1'}
+        disabled={isAuth && !OPTIONS.canSpin && level === '1'}
       >
         <Image
           className={style.logo}

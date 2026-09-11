@@ -32,7 +32,7 @@ const COMPONENTS_MAP = {
   bonuses: dynamic(() => import('./Bonuses')),
 }
 
-const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
+const SectionAccountHistory = ({ data, meta, tab, queryParams }) => {
   const t = useTranslations()
   const pathname = usePathname()
   const router = useRouter()
@@ -114,7 +114,6 @@ const SectionAccountHistory = ({ user, data, meta, tab, queryParams }) => {
                       ?
                         <>
                           <ActiveComponent
-                            user={user}
                             data={data}
                             meta={meta}
                           />

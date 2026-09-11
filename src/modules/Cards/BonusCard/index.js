@@ -7,7 +7,7 @@ import { useRouter } from '@/i18n/navigation'
 
 import { BONUS_STATUS } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
 
@@ -26,7 +26,7 @@ const STATUS_TYPE = {
   2: 'error',
 }
 
-const BonusCard = ({ settings, data }) => {
+const BonusCard = ({ data }) => {
   const t = useTranslations()
   const router = useRouter()
   const { openModal } = useModal()

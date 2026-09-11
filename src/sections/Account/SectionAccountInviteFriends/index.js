@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { useCopy } from '@/hooks/useCopy'
+import { useUser } from '@/hooks/useUser'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
@@ -11,9 +12,10 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const SectionAccountInviteFriends = ({ user, data }) => {
+const SectionAccountInviteFriends = ({ data }) => {
   const t = useTranslations()
   const { copy, copied } = useCopy()
+  const { invite } = useUser()
 
   return (
     <section>
@@ -37,19 +39,19 @@ const SectionAccountInviteFriends = ({ user, data }) => {
           <div className={style.links}>
             <Action
               target={'_blank'}
-              to={`viber://forward?text=${user?.invite?.text}${data}`}
+              to={`viber://forward?text=${invite?.text}${data}`}
               placeholder={'Viber'}
               classes={['tertiary', 'md']}
             />
             <Action
               target={'_blank'}
-              to={`https://t.me/share/url?url=${user?.invite?.text}${data}`}
+              to={`https://t.me/share/url?url=${invite?.text}${data}`}
               placeholder={'Telegram'}
               classes={['tertiary', 'md']}
             />
             <Action
               target={'_blank'}
-              to={`https://wa.me/?text=${user?.invite?.text}${data}`}
+              to={`https://wa.me/?text=${invite?.text}${data}`}
               placeholder={'Whatsapp'}
               classes={['tertiary', 'md']}
             />

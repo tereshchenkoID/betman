@@ -11,7 +11,6 @@ import style from './index.module.scss'
 const SectionJackpots = ({
   data,
   meta,
-  user
 }) => {
   const t = useTranslations()
 
@@ -30,7 +29,6 @@ const SectionJackpots = ({
                   <JackpotCard
                     key={el?.id || idx}
                     data={el}
-                    user={user}
                     classes={['extended']}
                   />
                 )

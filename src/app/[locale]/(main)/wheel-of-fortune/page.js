@@ -2,7 +2,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser, getSettings, getWheelsRound } from '@/app/actions/static'
+import { getSettings, getWheelsRound } from '@/app/actions/static'
 
 import SeoSection from '@/sections/SectionSeo'
 import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
@@ -15,13 +15,11 @@ export default async function WheelOfFortune() {
   const [
     metaTags,
     settings,
-    user,
     wheelsRound,
     res,
   ] = await Promise.all([
     getPageMetadata('wheel-of-fortune'),
     getSettings(),
-    getCachedUser(),
     getWheelsRound(),
     apiRequest('wheel/load/', {
       method: 'GET',
@@ -52,7 +50,6 @@ export default async function WheelOfFortune() {
   return (
     <>
       <SectionWheelOfFortune
-        user={user}
         data={res?.data}
         meta={res?.meta}
         settings={settings}

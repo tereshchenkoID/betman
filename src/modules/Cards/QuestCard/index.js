@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { TASK_STATUS } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'

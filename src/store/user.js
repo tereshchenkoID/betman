@@ -6,14 +6,25 @@ export const createUserStore = (initProps) => {
 
     setUser: (user) => set({ user }),
 
-    updateUser: (partialUser) =>
-      set((state) => ({
-        user: state.user ? { ...state.user, ...partialUser } : partialUser,
-      })),
+    updateUser: (partial) =>
+      set((state) => {
+        if (!state.user) return { user: null }
 
-    updateBalance: (balance) =>
-      set((state) => ({
-        user: state.user ? { ...state.user, balance } : null,
-      })),
+        const updated = { ...state.user }
+
+        for (const key in partial) {
+          if (
+            partial[key] &&
+            typeof partial[key] === 'object' &&
+            !Array.isArray(partial[key])
+          ) {
+            updated[key] = { ...updated[key], ...partial[key] }
+          } else {
+            updated[key] = partial[key]
+          }
+        }
+
+        return { user: updated }
+      }),
   }))
 }

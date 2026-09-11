@@ -15,8 +15,9 @@ import { NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { registerWithCredentialsAction } from '@/app/actions/auth'
 
-import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 import { toast } from '@/utils/toast'
 
@@ -34,16 +35,14 @@ const STEP_FIELDS = {
   1: ['name', 'surname', 'birthday', 'phone', 'terms'],
 }
 
-const SectionRegistration = ({
-  user,
-  countries
-}) => {
+const SectionRegistration = ({ countries }) => {
   const t = useTranslations()
 
   const VALIDATION_RULES = useValidations()
 
-  const { openModal } = useModal()
   const router = useRouter()
+  const { openModal } = useModal()
+  const { country } = useUser()
   const searchParams = useSearchParams()
   const invite = searchParams.get('invite')
   const promocode = searchParams.get('promocode')
@@ -63,8 +62,8 @@ const SectionRegistration = ({
     password: '',
     phone: '',
     country: {
-      value: user?.country?.code,
-      label: user?.country?.text
+      value: country?.code,
+      label: country?.text
     },
     city: '',
     address: '',
@@ -133,7 +132,7 @@ const SectionRegistration = ({
         setFieldSuccess(key, null)
       }
     } catch (e) {
-      toast.error(`Check field: ${key}:`)
+      toast.error(`Check field: ${key}: ${e}`)
     }
   }, [filter, setFieldError, setFieldSuccess])
 
@@ -311,7 +310,7 @@ const SectionRegistration = ({
               <Phone
                 data={filter.phone}
                 placeholder={t('phone')}
-                country={user?.country?.value?.toLowerCase()}
+                country={country?.value}
                 onChange={value => handlePropsChange('phone', value)}
                 isRequired={true}
                 rules={[

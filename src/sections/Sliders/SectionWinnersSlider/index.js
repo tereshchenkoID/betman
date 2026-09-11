@@ -1,24 +1,16 @@
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/static'
 
 import Section from './section'
 
 const SectionWinnersSlider = async () => {
-  const [
-    user,
-    res,
-  ] = await Promise.all([
-    getCachedUser(),
-    apiRequest('winners/', {
-      method: 'GET'
-    }),
-  ])
+  const res = await apiRequest('winners/', {
+    method: 'GET'
+  })
 
   return (
     <Section
       data={res?.data}
       meta={res?.meta}
-      user={user}
     />
   )
 }

@@ -6,6 +6,7 @@ import { useRouter } from '@/i18n/navigation'
 
 import { getCachedUser } from '@/app/actions/static'
 
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -17,7 +18,6 @@ import { action } from '../action.js'
 import style from '../../index.module.scss'
 
 const PhoneVerification = ({
-  user,
   filter,
   handlePropsChange,
   error,
@@ -25,6 +25,7 @@ const PhoneVerification = ({
   rules
 }) => {
   const t = useTranslations()
+  const { country } = useUser()
   const router = useRouter()
   const [code, setCode] = useState('')
   const type = filter.profile.isVerifyPhone === '0' ? 'getCode' : 'verify'
@@ -57,8 +58,6 @@ const PhoneVerification = ({
     })
   }
 
-  console.log(filter.profile.isVerifyPhone)
-
   return (
     <div
       className={
@@ -71,7 +70,7 @@ const PhoneVerification = ({
       <Phone
         data={filter.profile.phone}
         placeholder={t('phone')}
-        country={user?.country?.value?.toLowerCase()}
+        country={country?.value}
         onChange={value => handlePropsChange('profile.phone', value)}
         isRequired={true}
         isDisabled={filter.profile.isVerifyPhone === '1'}

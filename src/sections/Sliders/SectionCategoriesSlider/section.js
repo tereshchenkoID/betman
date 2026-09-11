@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 
 import Icon from '@/components/Icon'
 import CategoryCard from '@/modules/Cards/CategoryCard'
@@ -17,7 +17,6 @@ import style from './index.module.scss'
 const SectionCategories = ({
   data,
   meta,
-  user,
 }) => {
   const t = useTranslations()
   const { openModal } = useModal()
@@ -37,7 +36,7 @@ const SectionCategories = ({
         type="button"
         className={style.toggle}
         aria-label={t('search')}
-        onClick={() => openModal('search', { user }, { title: t('search'), size: 'lg' })}
+        onClick={() => openModal('search', { }, { title: t('search'), size: 'lg' })}
       >
         <Icon name="navigation-search" />
         {t('search')}

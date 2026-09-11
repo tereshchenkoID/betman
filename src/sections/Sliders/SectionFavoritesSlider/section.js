@@ -20,7 +20,7 @@ const SLIDE_TYPE = {
   PLACEHOLDER: 'placeholder',
 }
 
-const renderSlide = (slide, settings, user) => {
+const renderSlide = (slide, settings) => {
   switch (slide.type) {
     case SLIDE_TYPE.MORE:
       return <ThumbnailMore url={`${NAVIGATION.games_hall.url}/top`} settings={settings} />
@@ -32,7 +32,6 @@ const renderSlide = (slide, settings, user) => {
       return (
         <Thumbnail
           data={slide.data}
-          user={user}
           isPriority={slide.isPriority}
         />
       )
@@ -42,7 +41,6 @@ const renderSlide = (slide, settings, user) => {
 const Section = ({
   mock = null,
   settings,
-  user,
 }) => {
   const blockRef = useRef(null)
   const { favorites, meta } = useFavorites()
@@ -101,7 +99,6 @@ const Section = ({
                 renderSlide(
                   el,
                   settings,
-                  user,
                   idx
                 )
               }

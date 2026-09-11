@@ -3,7 +3,6 @@ import { Suspense } from 'react'
 import { QUANTITY } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser } from '@/app/actions/static'
 
 import SectionAccountHistory from '@/sections/Account/SectionAccountHistory'
 
@@ -28,21 +27,14 @@ export default async function History({ params, searchParams }) {
     to: to ? to : defaultRange().to,
   }
 
-  const [
-    user,
-    res
-  ] = await Promise.all([
-    getCachedUser(),
-    apiRequest(`history/${tab}`, {
-      method: 'POST',
-      params: queryParams,
-    }),
-  ])
+  const res = await apiRequest(`history/${tab}`, {
+    method: 'POST',
+    params: queryParams,
+  })
 
   return (
     <Suspense fallback={null}>
       <SectionAccountHistory
-        user={user}
         data={res?.data}
         meta={res?.meta}
         tab={tab}

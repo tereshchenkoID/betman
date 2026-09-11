@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
+import { useUser } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 
 import Action from '@/components/Action'
@@ -25,7 +26,6 @@ const getCleanProfile = (profileObj) => {
 }
 
 const General = ({
-  user,
   settings,
   initial,
   filter,
@@ -34,6 +34,7 @@ const General = ({
   handleReset
 }) => {
   const t = useTranslations()
+  const { country } = useUser()
 
   const VALIDATION_RULES = useValidations()
   const [errors, setErrors] = useState({})
@@ -105,7 +106,6 @@ const General = ({
           settings?.modules?.phone_verification === '1'
             ?
               <PhoneVerification
-                user={user}
                 filter={filter}
                 handlePropsChange={handlePropsChange}
                 error={errors.phone}
@@ -119,7 +119,7 @@ const General = ({
               <Phone
                 data={filter.profile.phone}
                 placeholder={t('phone')}
-                country={user?.country?.value?.toLowerCase()}
+                country={country?.value}
                 onChange={value => handlePropsChange('profile.phone', value)}
                 isRequired={true}
                 rules={[

@@ -34,7 +34,6 @@ const SectionJackpot = ({
   id,
   tab,
   data,
-  user,
   games,
   meta,
 }) => {
@@ -71,7 +70,6 @@ const SectionJackpot = ({
                   active?.key === OPTIONS[0]?.key &&
                   <JackpotCard
                     data={data}
-                    user={user}
                     classes={['extended']}
                   />
                 }
@@ -79,7 +77,6 @@ const SectionJackpot = ({
                   active?.key === OPTIONS[1]?.key &&
                   <SectionGames
                     url={`jackpot/${id}/games`}
-                    user={user}
                     data={games}
                     meta={meta}
                   />

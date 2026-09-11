@@ -10,6 +10,7 @@ import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 import { getCachedUser } from '@/app/actions/static'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 import { compress } from '@/helpers/compress'
 
@@ -29,15 +30,15 @@ import style from './index.module.scss'
 const SectionAccountProfile = ({
   settings,
   data,
-  user,
   countries,
   tab,
   children
 }) => {
   const t = useTranslations()
   const router = useRouter()
-  const [isPending, startTransition] = useTransition()
+  const { level } = useUser()
 
+  const [isPending, startTransition] = useTransition()
   const [uploadedPhotos, setUploadedPhotos] = useState([])
   const [_, setIsCompressing] = useState(false)
 
@@ -47,8 +48,8 @@ const SectionAccountProfile = ({
     {
       key: 'profile',
       value: 0,
-      ...(user?.level === '1' && {
-        verification: user?.level,
+      ...(level === '1' && {
+        verification: level,
       }),
     },
     {
@@ -58,8 +59,8 @@ const SectionAccountProfile = ({
     {
       key: 'verification',
       value: 2,
-      ...((user?.level === '1' || user?.level === '2') && {
-        verification: user?.level,
+      ...((level === '1' || level === '2') && {
+        verification: level,
       }),
     },
     {
@@ -102,7 +103,7 @@ const SectionAccountProfile = ({
           }
         })
       } catch (err) {
-        toast.error('Error processing images')
+        toast.error(err)
         return
       } finally {
         setIsCompressing(false)
@@ -150,7 +151,6 @@ const SectionAccountProfile = ({
                   {
                     active.value === 0 &&
                     <General
-                      user={user}
                       initial={data}
                       filter={filter}
                       settings={settings}

@@ -8,7 +8,8 @@ import { Link, usePathname, useRouter } from '@/i18n/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
 import Loader from '@/components/Loader'
 import Notification from '@/modules/Notification'
@@ -21,10 +22,11 @@ const DATA = [
   { key: 'withdrawal', value: 1 },
 ]
 
-const SectionAccountWallet = ({ user, children }) => {
+const SectionAccountWallet = ({ children }) => {
   const t = useTranslations()
   const pathname = usePathname()
   const router = useRouter()
+  const { level, payements } = useUser()
   const { openModal } = useModal()
   const [isPending, startTransition] = useTransition()
 
@@ -33,7 +35,7 @@ const SectionAccountWallet = ({ user, children }) => {
   const currentTabKey = pathSegments[pathSegments.length - 1]
   const currentMethodKey = pathSegments[pathSegments.length - 2]
 
-  const method = user?.payements?.find(p => p.alias === currentMethodKey)?.alias || user?.payements?.[0]?.alias
+  const method = payements?.find(p => p.alias === currentMethodKey)?.alias || payements?.[0]?.alias
   const active = DATA.find((t) => t.key === currentTabKey) || DATA[0]
 
   const handleActive = (el) => {
@@ -50,16 +52,16 @@ const SectionAccountWallet = ({ user, children }) => {
   }
 
   useEffect(() => {
-    if (user?.level !== '3') {
-      openModal('verify', { user }, { title: t('verification') })
+    if (level !== '3') {
+      openModal('verify', { }, { title: t('verification') })
     }
-  }, [openModal, t, user])
+  }, [level, openModal, t])
 
   return (
     <>
       <section className={style.list}>
         {
-          user?.payements.map((el, idx) =>
+          payements.map((el, idx) =>
             <Link
               key={el?.id || idx}
               onClick={(e) => handleMethod(e, el)}
@@ -76,7 +78,7 @@ const SectionAccountWallet = ({ user, children }) => {
         }
       </section>
       {
-        user?.level !== '3' &&
+        level !== '3' &&
         <section>
           <Notification
             text={t('notification.verification_text')}

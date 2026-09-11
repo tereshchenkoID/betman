@@ -7,6 +7,8 @@ import { Link, usePathname } from '@/i18n/navigation'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
+import { useUser } from '@/hooks/useUser'
+
 import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
@@ -19,7 +21,6 @@ const isActive = (current, link) => {
 }
 
 const Section = ({
-  user,
   settings,
   wheels,
   quests,
@@ -27,12 +28,13 @@ const Section = ({
 }) => {
   const t = useTranslations()
   const pathname = usePathname()
+  const { isAuth } = useUser()
   const { wheelsCounter } = wheels
   const { questsCounter } = quests
 
   const DATA = [
     NAVIGATION.home,
-    user?.id && {
+    isAuth && {
       ...{
         ...ROUTES_USER.bonuses,
         url: `${ROUTES_USER.bonuses.url}/${bonuses?.data ? 'active' : 'available'}`,

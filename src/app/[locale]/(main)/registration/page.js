@@ -61,10 +61,7 @@ export default async function Promotions({ params }) {
   return (
     <>
       <Suspense fallback={null}>
-        <SectionRegistration
-          user={user}
-          countries={countries?.data}
-        />
+        <SectionRegistration countries={countries?.data} />
       </Suspense>
       <SeoSection alias={'registration'} />
       <script

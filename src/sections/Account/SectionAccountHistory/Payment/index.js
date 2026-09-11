@@ -1,12 +1,15 @@
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
+import { useUser } from '@/hooks/useUser'
+
 import Row from './Row'
 
 import style from './index.module.scss'
 
-const Payment = ({ user, data }) => {
+const Payment = ({ data }) => {
   const t = useTranslations()
+  const { currency } = useUser()
 
   return (
     <div className={style.table}>
@@ -24,7 +27,7 @@ const Payment = ({ user, data }) => {
           <div className={style.cell}><strong>{t('pay_system')}</strong></div>
           <div className={style.cell}><strong>{t('status')}</strong></div>
           <div className={style.cell}><strong>{t('type')}</strong></div>
-          <div className={style.cell}><strong>{t('amount')}, {user?.currency?.code}</strong></div>
+          <div className={style.cell}><strong>{t('amount')}, {currency?.code}</strong></div>
           <div className={style.cell}><strong>{t('details')}</strong></div>
         </div>
         {

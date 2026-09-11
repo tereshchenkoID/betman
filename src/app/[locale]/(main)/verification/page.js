@@ -48,7 +48,7 @@ export default async function Verification() {
 
   return (
     <>
-      <SectionVerification user={user} />
+      <SectionVerification />
       <SeoSection alias={'verification'} />
       <script
         type="application/ld+json"

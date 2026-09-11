@@ -10,7 +10,7 @@ export const useUserStore = (selector) => {
   const store = useContext(UserStoreContext)
 
   if (!store) {
-    throw new Error('useUserStore must be used within UserStoreProvider')
+    throw new Error('Error User store')
   }
 
   return useStore(store, selector)

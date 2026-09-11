@@ -8,8 +8,8 @@ import { NAVIGATION } from '@/constant/config'
 import { loginWithCredentialsAction } from '@/app/actions/auth'
 import { getCachedUser } from '@/app/actions/static'
 
-import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
+import useModal from '@/hooks/useModal'
 import { useUserStore } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 import { toast } from '@/utils/toast'
@@ -25,7 +25,7 @@ const LoginModal = ({ isTitle = false }) => {
   const VALIDATION_RULES = useValidations()
 
   const router = useRouter()
-  const { openModal, closeModal } = useModal()
+  const { openModal, closeModal, closeAllModals } = useModal()
   const { filter, handlePropsChange } = useFilterState({
     username: '',
     password: ''
@@ -48,10 +48,10 @@ const LoginModal = ({ isTitle = false }) => {
       if (res?.code === '0') {
         localStorage.setItem('age', '0')
 
-        const freshUser = await getCachedUser()
-        setUser(freshUser)
+        const user = await getCachedUser()
+        setUser(user)
 
-        closeModal()
+        closeAllModals()
 
         startTransition(() => {
           router.refresh()

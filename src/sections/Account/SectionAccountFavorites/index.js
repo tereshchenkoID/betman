@@ -10,7 +10,7 @@ import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
-const SectionAccountFavorites = ({ user }) => {
+const SectionAccountFavorites = () => {
   const t = useTranslations()
   const { favorites, meta } = useFavorites()
 
@@ -29,7 +29,6 @@ const SectionAccountFavorites = ({ user }) => {
                   <Thumbnail
                     key={el?.id || idx}
                     data={el}
-                    user={user}
                   />
                 )
               }

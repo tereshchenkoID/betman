@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 import { NAVIGATION } from '@/constant/config'
 
+import { useUser } from '@/hooks/useUser'
 import { date } from '@/helpers/date'
 import { fixed } from '@/helpers/fixed'
 import { imageError } from '@/helpers/image'
@@ -12,8 +13,9 @@ import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const Games = ({ user, data }) => {
+const Games = ({ data }) => {
   const t = useTranslations()
+  const { currency } = useUser()
 
   return (
     <div className={style.table}>
@@ -28,9 +30,9 @@ const Games = ({ user, data }) => {
         >
           <div className={style.cell}><strong>{t('date_time')}</strong></div>
           <div className={style.cell}><strong>{t('game')}</strong></div>
-          <div className={style.cell}><strong>{t('bet')}, {user?.currency?.code}</strong></div>
+          <div className={style.cell}><strong>{t('bet')}, {currency?.code}</strong></div>
           <div className={style.cell}><strong>{t('status')}</strong></div>
-          <div className={style.cell}><strong>{t('amount')}, {user?.currency?.code}</strong></div>
+          <div className={style.cell}><strong>{t('amount')}, {currency?.code}</strong></div>
         </div>
         {
           data?.map((el, idx) =>

@@ -7,11 +7,9 @@ import { Link } from '@/i18n/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
-import { useGlobalData } from '@/hooks/useGlobalData'
+import useModal from '@/hooks/useModal'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { useUser } from '@/hooks/useUser'
-import { mergeCredits } from '@/utils/mergers'
 import { fixed } from '@/helpers/fixed'
 
 import Action from '@/components/Action'
@@ -32,7 +30,6 @@ const Section = ({ settings, bonuses }) => {
 
   const { openModal } = useModal()
   const [toggle, setToggle] = useState(null)
-  // const [credits] = useGlobalData('ws:credits', user?.credits, mergeCredits)
 
   const handleToggle = (data) => {
     setToggle((prev) => (prev === data ? null : data))

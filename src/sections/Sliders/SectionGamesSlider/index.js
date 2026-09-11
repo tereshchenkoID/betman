@@ -1,18 +1,16 @@
 import { LIST_COUNT } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
-import { getCachedUser, getSettings } from '@/app/actions/static'
+import { getSettings } from '@/app/actions/static'
 
 import Section from './section'
 
 const SectionGamesSlider = async ({ mock }) => {
   const [
     settings,
-    user,
     res,
   ] = await Promise.all([
     getSettings(),
-    getCachedUser(),
     apiRequest(`games/${mock.id}/`, {
       method: 'POST',
       params: {
@@ -27,7 +25,6 @@ const SectionGamesSlider = async ({ mock }) => {
       meta={res?.meta}
       mock={mock}
       settings={settings}
-      user={user}
     />
   )
 }

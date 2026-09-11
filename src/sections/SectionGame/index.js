@@ -8,13 +8,14 @@ import { Link, useRouter } from '@/i18n/navigation'
 
 import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import AccountMenu from '@/modules/AccountMenu'
 import Back from '@/modules/Back'
-import Favourite from '@/modules/Favorite'
+import Favorite from '@/modules/Favorite'
 import FullScreen from '@/modules/FullScreen'
 import LoginModal from '@/widgets/Modals/LoginModal'
 
@@ -23,20 +24,21 @@ import Frame from './Frame'
 import style from './index.module.scss'
 
 const SectionGame = ({
-  user,
   game,
   iframe,
   id,
-  mode
+  mode,
+  bonuses
 }) => {
   const t = useTranslations()
   const router = useRouter()
+  const { isAuth, level, session } = useUser()
   const [toggle, setToggle] = useState(false)
   const { openModal } = useModal()
 
   const handleChange = (value) => {
-    if (user?.level === '1' && mode === '1') {
-      openModal('verify', { user }, { title: t('verification') })
+    if (level === '1' && mode === '1') {
+      openModal('verify', { }, { title: t('verification') })
     }
     else {
       router.push(`${NAVIGATION.game.url}/${id}/${value}`)
@@ -44,7 +46,7 @@ const SectionGame = ({
   }
 
   const handleLogin = (e) => {
-    if (user?.id) {
+    if (isAuth) {
       e.stopPropagation()
       setToggle(prev => !prev)
     }
@@ -89,7 +91,7 @@ const SectionGame = ({
               game &&
               <>
                 {
-                  user?.id &&
+                  isAuth &&
                   <Action
                     to={ROUTES_USER.wallet.url}
                     classes={['secondary', 'md', 'circle']}
@@ -97,22 +99,21 @@ const SectionGame = ({
                     <Icon name={ROUTES_USER.wallet.icon} />
                   </Action>
                 }
-                <Favourite
+                <Favorite
                   data={game}
-                  user={user}
                   className={'circle'}
                 />
               </>
             }
             {
-              user?.session_type !== 'tma' &&
+              session !== 'tma' &&
               <FullScreen />
             }
             {
-              user?.id &&
+              isAuth &&
               <Action
                 classes={['secondary', 'md', 'circle']}
-                onChange={(e) => handleLogin(e)}
+                onChange={handleLogin}
               >
                 <Icon name="human-avatar" />
               </Action>
@@ -132,8 +133,8 @@ const SectionGame = ({
             onClick={(e) => e.stopPropagation()}
           >
             <AccountMenu
-              user={user}
               setToggle={setToggle}
+              bonuses={bonuses}
             />
           </div>
         </div>
@@ -141,14 +142,14 @@ const SectionGame = ({
 
       <div className={style.wrapper}>
         {
-          (mode === '0' && !user?.id)
+          (mode === '0' && !isAuth)
             ?
               <div className={style.login}>
                 <h2 className={style.subtitle}>{t('sign_up')}</h2>
                 <LoginModal />
               </div>
             :
-              (user?.level === '1' && mode === '0') || !iframe?.iframe
+              (level === '1' && mode === '0') || !iframe?.iframe
                 ?
                   <div className={style.error}>{t('notification.game_empty')}</div>
                 :

@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import Title from '@/modules/Title'
 
-const SectionTournaments = ({ data, meta }) => {
+const SectionTournaments = () => {
   const t = useTranslations()
 
   return (

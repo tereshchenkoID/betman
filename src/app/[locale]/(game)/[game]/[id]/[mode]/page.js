@@ -4,7 +4,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/static'
+import { getBonuses, getCachedUser } from '@/app/actions/static'
 
 import SectionGame from '@/sections/SectionGame'
 
@@ -55,14 +55,16 @@ export default async function Game({ params }) {
     }
   }
 
+  const bonuses = user?.id ? await getBonuses() : null
+
   return (
     <>
       <SectionGame
-        user={user}
         game={res}
         iframe={link}
         id={id}
         mode={mode}
+        bonuses={bonuses}
       />
       <script
         type="application/ld+json"

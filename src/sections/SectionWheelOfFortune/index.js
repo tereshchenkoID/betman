@@ -7,7 +7,8 @@ import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
 import Preload from '@/components/Preload'
 import Inner from '@/modules/Inner'
@@ -19,24 +20,24 @@ import style from './index.module.scss'
 
 const Wheel = dynamic(() => import('./Wheel'), {
   ssr: false,
-  loading: () =>  <Preload count={1} className={style.skeleton} />,
+  loading: () => <Preload count={1} className={style.skeleton} />,
 })
 
 const SectionWheelOfFortune = ({
   data,
   meta,
-  user,
   wheelsRound
 }) => {
   const t = useTranslations()
   const router = useRouter()
+  const { level } = useUser()
   const { openModal } = useModal()
 
   useEffect(() => {
-    if (user?.level === '1') {
-      openModal('verify', { user }, { title: t('verification') })
+    if (level === '1') {
+      openModal('verify', { }, { title: t('verification') })
     }
-  }, [openModal, t, user])
+  }, [level, openModal, t])
 
   return (
     <section className={style.block}>
@@ -74,7 +75,6 @@ const SectionWheelOfFortune = ({
           meta?.results !== '0' &&
           <Wheel
             mock={data?.sectors}
-            user={user}
             wheelsRound={wheelsRound}
           />
         }
