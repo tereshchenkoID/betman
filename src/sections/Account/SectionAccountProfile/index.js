@@ -109,8 +109,6 @@ const SectionAccountProfile = ({
       }
     }
 
-    console.log(params)
-
     startTransition(async () => {
       const res = await action(params)
 

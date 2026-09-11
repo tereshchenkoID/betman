@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 import { consoleHelper } from '@/helpers/console'
 
@@ -80,7 +80,7 @@ export const useWebSocket = ({
     }
   }, [url, reconnectDelay])
 
-  const sendWhenReady = (data) => {
+  const sendWhenReady = useCallback((data) => {
     const socket = socketRef.current
     if (!socket) return
 
@@ -89,7 +89,7 @@ export const useWebSocket = ({
     } else {
       socket.addEventListener('open', () => socket.send(data), { once: true })
     }
-  }
+  }, [])
 
   return { socketRef, sendWhenReady }
 }
