@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  startTransition, useCallback, useEffect, useState
+  startTransition, useCallback, useEffect, useRef, useState
 } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
@@ -47,6 +47,7 @@ const SectionRegistration = ({
   const searchParams = useSearchParams()
   const invite = searchParams.get('invite')
   const promocode = searchParams.get('promocode')
+  const usernameInputRef = useRef(null)
 
   const [step, setStep] = useState(0)
   const [errors, setErrors] = useState({})
@@ -156,6 +157,12 @@ const SectionRegistration = ({
     }
   }, [checkFieldOnBlur, promocode])
 
+  useEffect(() => {
+    if (step === 0) {
+      usernameInputRef.current?.focus()
+    }
+  }, [step])
+
   return (
     <section>
       <form className={style.form}>
@@ -189,6 +196,21 @@ const SectionRegistration = ({
           <>
             <div className={style.container}>
               <Field
+                data={filter.promocode}
+                placeholder={t('promocode')}
+                onChange={e => {
+                  handlePropsChange('promocode', e)
+                  setFieldSuccess('promocode', null)
+                }}
+                rules={[]}
+                onValidate={err => setFieldError('promocode', err)}
+                error={errors.promocode}
+                success={successes.promocode}
+                onBlur={() => checkFieldOnBlur('promocode')}
+              />
+              <hr className={style.divider} />
+              <Field
+                ref={usernameInputRef}
                 data={filter.username}
                 placeholder={t('username')}
                 onChange={e => handlePropsChange('username', e)}
@@ -230,19 +252,6 @@ const SectionRegistration = ({
                 isRequired={true}
                 onValidate={err => setFieldError('password', err)}
                 error={errors.password}
-              />
-              <Field
-                data={filter.promocode}
-                placeholder={t('promocode')}
-                onChange={e => {
-                  handlePropsChange('promocode', e)
-                  setFieldSuccess('promocode', null)
-                }}
-                rules={[]}
-                onValidate={err => setFieldError('promocode', err)}
-                error={errors.promocode}
-                success={successes.promocode}
-                onBlur={() => checkFieldOnBlur('promocode')}
               />
             </div>
             <div className={style.actions}>
