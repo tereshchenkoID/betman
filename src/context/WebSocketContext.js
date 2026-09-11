@@ -4,8 +4,8 @@ import {
   createContext,
   startTransition,
   useCallback,
-  useContext,
-  useState 
+  useContext, useEffect,
+  useState
 } from 'react'
 
 import { useRouter } from '@/i18n/navigation'
@@ -29,10 +29,8 @@ export const WebSocketProvider = ({ children, user }) => {
   }, [router])
 
   const onOpen = useCallback((socket) => {
-    if (user?.token) {
-      socket.send(JSON.stringify({ cmd: 'login', token: user.token }))
-    }
-  }, [user])
+    socket.send(JSON.stringify({ cmd: 'ping' }))
+  }, [])
 
   const onMessage = useCallback((message, socket) => {
     setLastMessage(message)
@@ -52,6 +50,12 @@ export const WebSocketProvider = ({ children, user }) => {
     onOpen,
     onMessage
   })
+
+  useEffect(() => {
+    if (user?.token) {
+      sendWhenReady(JSON.stringify({ cmd: 'login', token: user.token }))
+    }
+  }, [sendWhenReady, user.token])
 
   return (
     <WebSocketContext.Provider value={{ socketRef, sendWhenReady, lastMessage }}>

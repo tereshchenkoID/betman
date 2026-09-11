@@ -1,4 +1,6 @@
-import { useRef, useState } from 'react'
+import {
+  forwardRef, useImperativeHandle, useRef, useState
+} from 'react'
 import clsx from 'clsx'
 
 import { runRules } from '@/helpers/rules'
@@ -7,7 +9,7 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const Field = ({
+const Field = forwardRef(({
   type = 'text',
   visibility = false,
   data,
@@ -24,11 +26,13 @@ const Field = ({
   max = null,
   error = null,
   success = null,
-}) => {
+}, ref) => {
   const inputRef = useRef(null)
   const [focused, setFocused] = useState(false)
   const [touched, setTouched] = useState(false)
   const [show, setShow] = useState(false)
+
+  useImperativeHandle(ref, () => inputRef.current)
 
   const handleChange = (e) => {
     const val = e.target.value
@@ -140,6 +144,8 @@ const Field = ({
       { showSuccess && <p className={clsx(style.message, style.success)}>{success}</p>}
     </div>
   )
-}
+})
+
+Field.displayName = 'Field'
 
 export default Field

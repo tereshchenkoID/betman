@@ -38,7 +38,7 @@ const buildFormData = (params) => {
   Object.entries(params).forEach(([key, value]) => {
     if (value === undefined || value === null) return
 
-    if (value instanceof File || value instanceof Blob) {
+    if (value instanceof File || value instanceof Blob || (typeof value === 'object' && value?.name && typeof value?.arrayBuffer === 'function')) {
       formData.append(key, value)
     } else if (typeof value === 'object') {
       formData.append(key, JSON.stringify(value))

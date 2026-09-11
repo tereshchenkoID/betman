@@ -2,6 +2,10 @@ import { startTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
+import { useRouter } from '@/i18n/navigation'
+
+import { getCachedUser } from '@/app/actions/static'
+
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -21,6 +25,7 @@ const PhoneVerification = ({
   rules
 }) => {
   const t = useTranslations()
+  const router = useRouter()
   const [code, setCode] = useState('')
   const type = filter.profile.isVerifyPhone === '0' ? 'getCode' : 'verify'
 
@@ -40,6 +45,8 @@ const PhoneVerification = ({
       if (res?.code === '0') {
         if (!repeat) {
           setCode('')
+          await getCachedUser()
+          router.refresh()
         }
         handlePropsChange('profile.isVerifyPhone', res.isVerifyPhone)
         toast.success(res?.message)

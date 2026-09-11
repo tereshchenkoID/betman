@@ -7,6 +7,8 @@ import { useRouter } from '@/i18n/navigation'
 
 import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
 
+import { getCachedUser } from '@/app/actions/static'
+
 import { useFilterState } from '@/hooks/useFilterState'
 import { toast } from '@/utils/toast'
 import { compress } from '@/helpers/compress'
@@ -111,8 +113,12 @@ const SectionAccountProfile = ({
       const res = await action(params)
 
       if (res?.code === '0') {
+        await getCachedUser()
+
         toast.success(res?.message || t('success'))
         setUploadedPhotos([])
+
+        router.refresh()
       } else {
         toast.error(res?.error_message || t('error'))
       }
