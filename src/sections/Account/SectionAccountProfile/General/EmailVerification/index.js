@@ -2,6 +2,10 @@ import { startTransition, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
+import { useRouter } from '@/i18n/navigation'
+
+import { getCachedUser } from '@/app/actions/static'
+
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -19,6 +23,7 @@ const EmailVerification = ({
   rules
 }) => {
   const t = useTranslations()
+  const router = useRouter()
   const [code, setCode] = useState('')
 
   const type = filter.profile.isVerifyEmail === '0' ? 'getCode' : 'verify'
@@ -39,6 +44,8 @@ const EmailVerification = ({
       if (res?.code === '0') {
         if (!repeat) {
           setCode('')
+          await getCachedUser()
+          router.refresh()
         }
         handlePropsChange('profile.isVerifyEmail', res.isVerifyEmail)
         toast.success(res?.message)
