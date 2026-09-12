@@ -14,10 +14,7 @@ import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
-const SectionCategories = ({
-  data,
-  meta,
-}) => {
+const Section = ({ data, meta }) => {
   const t = useTranslations()
   const { openModal } = useModal()
 
@@ -60,4 +57,4 @@ const SectionCategories = ({
   )
 }
 
-export default SectionCategories
+export default Section

@@ -1,6 +1,6 @@
 import { apiRequest } from '@/app/actions/api'
 
-import Section from './section'
+import Section from './_view'
 
 const SectionBigLinksSlider = async () => {
   const res = await apiRequest('big-links/', {

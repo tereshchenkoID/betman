@@ -3,9 +3,9 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
+import SectionCategoriesSlider from '@/sections/SectionCategoriesSlider'
 import SectionGames from '@/sections/SectionGames'
 import SeoSection from '@/sections/SectionSeo'
-import SectionCategoriesSlider from '@/sections/Sliders/SectionCategoriesSlider'
 
 export async function generateMetadata() {
   return await getPageMetadata('games')

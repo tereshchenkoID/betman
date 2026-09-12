@@ -38,10 +38,7 @@ const renderSlide = (slide, settings) => {
   }
 }
 
-const Section = ({
-  mock = null,
-  settings,
-}) => {
+const Section = ({ mock = null, settings }) => {
   const blockRef = useRef(null)
   const { favorites, meta } = useFavorites()
   const slideCount = useSlideCount(blockRef, 7)

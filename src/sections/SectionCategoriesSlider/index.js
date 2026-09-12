@@ -1,6 +1,6 @@
 import { getCategories } from '@/app/actions/static'
 
-import Section from './section'
+import Section from './_view'
 
 const SectionCategoriesSlider = async () => {
   const res = await getCategories()

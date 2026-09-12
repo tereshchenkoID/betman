@@ -5,7 +5,7 @@ import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
-const SectionBanners = ({ data, meta }) => {
+const Section = ({ data, meta }) => {
   if (meta?.results === '0') return null
 
   return (
@@ -32,4 +32,4 @@ const SectionBanners = ({ data, meta }) => {
   )
 }
 
-export default SectionBanners
+export default Section

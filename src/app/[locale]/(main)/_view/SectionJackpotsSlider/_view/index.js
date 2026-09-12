@@ -9,10 +9,7 @@ import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
-const SectionJackpots = ({
-  data,
-  meta,
-}) => {
+const Section = ({ data, meta }) => {
   const t = useTranslations()
 
   if (meta?.results === '0') return null
@@ -44,4 +41,4 @@ const SectionJackpots = ({
   )
 }
 
-export default SectionJackpots
+export default Section

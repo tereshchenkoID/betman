@@ -3,7 +3,7 @@ import { LIST_COUNT } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getSettings } from '@/app/actions/static'
 
-import Section from './section'
+import Section from './_view'
 
 const SectionGamesSlider = async ({ mock }) => {
   const [
