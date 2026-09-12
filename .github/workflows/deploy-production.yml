@@ -1,0 +1,57 @@
+name: Deploy Production (VPS)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js
+        run: npm run build
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          NEXT_PUBLIC_WSS_BASE_URL: ${{ secrets.NEXT_PUBLIC_WSS_BASE_URL }}
+          ORGANIZATION_NAME: ${{ secrets.ORGANIZATION_NAME }}
+          ORGANIZATION_LOGO: ${{ secrets.ORGANIZATION_LOGO }}
+
+      - name: Prepare standalone bundle
+        run: |
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+
+      - name: Deploy to Server via RSync
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: /var/www/app
+          SOURCE: .next/standalone/
+          ARGS: -rltgoDzvO --delete
+
+      - name: Reload PM2 on Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /var/www/app
+            pm2 reload next-app || pm2 start server.js --name "next-app"
