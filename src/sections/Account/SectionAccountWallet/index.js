@@ -6,12 +6,11 @@ import clsx from 'clsx'
 
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 
-import { ROUTES_USER } from '@/constant/config'
+import { PAYMENT_TYPE, ROUTES_USER } from '@/constant/config'
 
 import { useModal } from '@/context/ModalContext'
 
 import Loader from '@/components/Loader'
-import Notification from '@/modules/Notification'
 import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
@@ -29,7 +28,6 @@ const SectionAccountWallet = ({ user, children }) => {
   const [isPending, startTransition] = useTransition()
 
   const pathSegments = pathname.split('/').filter(Boolean)
-
   const currentTabKey = pathSegments[pathSegments.length - 1]
   const currentMethodKey = pathSegments[pathSegments.length - 2]
 
@@ -42,7 +40,7 @@ const SectionAccountWallet = ({ user, children }) => {
     })
   }
 
-  const handleMethod= (e, el) => {
+  const handleMethod = (e, el) => {
     e.preventDefault()
     startTransition(() => {
       router.push(`${ROUTES_USER.wallet.url}/${el.alias}/${DATA[0].key}`, { scroll: false })
@@ -50,10 +48,17 @@ const SectionAccountWallet = ({ user, children }) => {
   }
 
   useEffect(() => {
-    if (user?.level !== '3') {
-      openModal('verify', { user }, { title: t('verification') })
+    if (currentTabKey === PAYMENT_TYPE[0]) {
+      if (user?.level === '1') {
+        openModal('verify', { user }, { title: t('verification') })
+      }
     }
-  }, [openModal, t, user])
+    else if(currentTabKey === PAYMENT_TYPE[1]) {
+      if (user?.level !== '3') {
+        openModal('verify', { user }, { title: t('verification') })
+      }
+    }
+  }, [currentTabKey, openModal, t, user])
 
   return (
     <>
@@ -75,15 +80,6 @@ const SectionAccountWallet = ({ user, children }) => {
           )
         }
       </section>
-      {
-        user?.level !== '3' &&
-        <section>
-          <Notification
-            text={t('notification.verification_text')}
-            type={'error'}
-          />
-        </section>
-      }
       <section>
         <Tabs
           options={DATA}

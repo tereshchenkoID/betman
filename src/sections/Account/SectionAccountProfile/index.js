@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
@@ -27,8 +27,8 @@ import Verification from './Verification'
 import style from './index.module.scss'
 
 const SectionAccountProfile = ({
-  settings,
   data,
+  settings,
   user,
   countries,
   tab,
@@ -129,6 +129,10 @@ const SectionAccountProfile = ({
     setFilter(data)
     setUploadedPhotos([])
   }
+
+  useEffect(() => {
+    setFilter(data)
+  }, [data, setFilter])
 
   return (
     <>
