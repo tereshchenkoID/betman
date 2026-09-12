@@ -44,7 +44,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USER }}
-          TARGET: /var/www/app
+          TARGET: /var/www/betman
           SOURCE: .next/standalone/
           ARGS: -rltgoDzvO --delete
 
@@ -57,6 +57,6 @@ jobs:
           script: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            cd /var/www/app
-            pm2 reload next-app || pm2 start server.js --name "next-app"
+            cd /var/www/betman
+            pm2 reload betman || pm2 start server.js --name "betman"
             pm2 save
