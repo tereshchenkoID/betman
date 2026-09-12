@@ -2,7 +2,7 @@ import {
   getCategories, getPages, getProviders, getSettings
 } from '@/app/actions/static'
 
-import Footer from '@/widgets/Footer/section'
+import Section from './_view'
 
 export default async function FooterLayout() {
   const [
@@ -18,7 +18,7 @@ export default async function FooterLayout() {
   ])
 
   return (
-    <Footer
+    <Section
       settings={settings}
       categories={categories}
       providers={providers}

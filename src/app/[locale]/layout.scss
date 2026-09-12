@@ -66,11 +66,11 @@
 * {
   box-sizing: border-box;
   user-select: none;
-}
 
-*::after,
-*::before {
-  box-sizing: border-box;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
 }
 
 html {

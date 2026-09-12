@@ -1,6 +1,6 @@
 import { apiRequest } from '@/app/actions/api'
 
-import Section from '@/sections/SectionSeo/section'
+import Section from './_view'
 
 const SectionSeo = async ({ alias }) => {
   const res = await apiRequest('seo/', {

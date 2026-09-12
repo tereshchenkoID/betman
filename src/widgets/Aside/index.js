@@ -2,7 +2,7 @@ import {
   getBonuses, getCachedUser, getQuests, getSettings, getWheelsRound
 } from '@/app/actions/static'
 
-import Section from './section'
+import Section from './_view'
 
 export default async function AsideLayout() {
   const [

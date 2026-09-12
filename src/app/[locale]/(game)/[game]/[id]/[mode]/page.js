@@ -6,7 +6,7 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getBonuses, getCachedUser } from '@/app/actions/static'
 
-import Section from './view'
+import Section from './_view'
 
 export async function generateMetadata({ params }) {
   const { id } = await params

@@ -1,6 +1,6 @@
 import { getBonuses, getCachedUser, getSettings } from '@/app/actions/static'
 
-import Header from '@/widgets/Header/section'
+import Section from './_view'
 
 export default async function HeaderLayout() {
   const [
@@ -14,7 +14,7 @@ export default async function HeaderLayout() {
   const bonuses = user?.id ? await getBonuses() : null
 
   return (
-    <Header
+    <Section
       settings={settings}
       bonuses={bonuses}
     />

@@ -1,6 +1,6 @@
 import { apiRequest } from '@/app/actions/api'
 
-import Section from './section'
+import Section from './_view'
 
 const SectionTooltip = async ({ alias }) => {
   const res = await apiRequest('tips/', {

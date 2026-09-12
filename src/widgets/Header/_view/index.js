@@ -75,6 +75,7 @@ const Section = ({ settings, bonuses }) => {
               <Action
                 to={ROUTES_USER.wallet.url}
                 classes={['secondary', 'md', 'circle']}
+                onChange={() => setToggle(null)}
               >
                 <Icon name={ROUTES_USER.wallet.icon} />
               </Action>
