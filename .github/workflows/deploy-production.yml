@@ -33,8 +33,10 @@ jobs:
 
       - name: Prepare standalone bundle
         run: |
-          cp -r public .next/standalone/public
-          cp -r .next/static .next/standalone/.next/static
+          mkdir -p .next/standalone/public
+          cp -r public/* .next/standalone/public/ 2>/dev/null || true
+          mkdir -p .next/standalone/.next/static
+          cp -r .next/static/* .next/standalone/.next/static/
 
       - name: Deploy to Server via RSync
         uses: easingthemes/ssh-deploy@main
