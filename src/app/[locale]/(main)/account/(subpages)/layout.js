@@ -5,7 +5,7 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionAccountNavigation from '@/sections/Account/SectionAccountNavigation'
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('profile')
@@ -27,7 +27,7 @@ export default async function AccountLayout({ children, params }) {
 
   return (
     <>
-      <SectionAccountNavigation />
+      <Section />
       {children}
     </>
   )

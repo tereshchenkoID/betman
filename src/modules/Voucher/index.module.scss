@@ -17,6 +17,7 @@
 .content {
   @include flex($direction: column);
 
+  flex-grow: 1;
   gap: rem(6px);
   position: relative;
   padding: rem(12px) rem(20px);
@@ -25,7 +26,6 @@
   background: no-repeat radial-gradient(circle 17px at -4px 50%, transparent 99.9%, var(--primary)) top left -1px / 50% 100%, no-repeat radial-gradient(circle 17px at calc(100% + 4px) 50%, transparent 99.9%, var(--primary)) top right -1px / calc(50% + 2px) 100%;
   z-index: $z-index-2;
   line-height: 1;
-  flex-grow: 1;
 }
 
 .title,

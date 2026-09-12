@@ -6,7 +6,8 @@ import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
 import SeoSection from '@/sections/SectionSeo'
-import SectionVerification from '@/sections/SectionVerification'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('verification')
@@ -48,7 +49,7 @@ export default async function Verification() {
 
   return (
     <>
-      <SectionVerification />
+      <Section />
       <SeoSection alias={'verification'} />
       <script
         type="application/ld+json"

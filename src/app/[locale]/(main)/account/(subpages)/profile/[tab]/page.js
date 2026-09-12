@@ -3,8 +3,9 @@ import { USER_VERIFY } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getSettings } from '@/app/actions/static'
 
-import SectionAccountProfile from '@/sections/Account/SectionAccountProfile'
 import SectionTooltip from '@/sections/SectionTooltip'
+
+import Section from './_view'
 
 export default async function Profile({ params }) {
   const { tab } = await params
@@ -28,13 +29,13 @@ export default async function Profile({ params }) {
   const alias = tab === 'verification' ? `verification/${verify}` : tab
 
   return (
-    <SectionAccountProfile
+    <Section
       settings={settings}
       data={res}
       countries={countries}
       tab={tab}
     >
       <SectionTooltip alias={alias} />
-    </SectionAccountProfile>
+    </Section>
   )
 }

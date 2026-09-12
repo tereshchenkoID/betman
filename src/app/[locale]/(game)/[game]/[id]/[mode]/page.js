@@ -6,7 +6,7 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getBonuses, getCachedUser } from '@/app/actions/static'
 
-import SectionGame from '@/sections/SectionGame'
+import Section from './view'
 
 export async function generateMetadata({ params }) {
   const { id } = await params
@@ -59,7 +59,7 @@ export default async function Game({ params }) {
 
   return (
     <>
-      <SectionGame
+      <Section
         game={res}
         iframe={link}
         id={id}

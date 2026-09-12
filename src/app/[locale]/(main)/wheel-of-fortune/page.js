@@ -5,7 +5,8 @@ import { getPageMetadata } from '@/app/actions/metadata'
 import { getSettings, getWheelsRound } from '@/app/actions/static'
 
 import SeoSection from '@/sections/SectionSeo'
-import SectionWheelOfFortune from '@/sections/SectionWheelOfFortune'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('wheel-of-fortune')
@@ -49,7 +50,7 @@ export default async function WheelOfFortune() {
 
   return (
     <>
-      <SectionWheelOfFortune
+      <Section
         data={res?.data}
         meta={res?.meta}
         settings={settings}

@@ -6,8 +6,9 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionRecovery from '@/sections/SectionRecovery'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('recovery')
@@ -67,7 +68,7 @@ export default async function PasswordRecovery({ params, searchParams }) {
 
   return (
     <>
-      <SectionRecovery
+      <Section
         data={res}
         hash={hash}
       />

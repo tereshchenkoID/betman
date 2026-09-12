@@ -4,7 +4,7 @@ import { QUANTITY } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 
-import SectionAccountHistory from '@/sections/Account/SectionAccountHistory'
+import Section from './_view'
 
 const defaultRange = () => {
   const now = new Date()
@@ -34,7 +34,7 @@ export default async function History({ params, searchParams }) {
 
   return (
     <Suspense fallback={null}>
-      <SectionAccountHistory
+      <Section
         data={res?.data}
         meta={res?.meta}
         tab={tab}

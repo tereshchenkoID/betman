@@ -5,7 +5,7 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import SectionJackpot from '@/sections/SectionJackpot'
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('jackpots')
@@ -59,7 +59,7 @@ export default async function Jackpot({ params }) {
 
   return (
     <>
-      <SectionJackpot
+      <Section
         id={id}
         tab={tab}
         data={res?.data}

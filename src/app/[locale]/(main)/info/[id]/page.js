@@ -5,7 +5,7 @@ import { NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import SectionPage from '@/sections/SectionPage'
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('info')
@@ -54,7 +54,7 @@ export default async function Info({ params }) {
 
   return (
     <>
-      <SectionPage
+      <Section
         data={res?.data}
         meta={res?.meta}
       />

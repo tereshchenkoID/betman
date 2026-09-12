@@ -1,7 +1,7 @@
 import { apiRequest } from '@/app/actions/api'
 import { getSettings } from '@/app/actions/static'
 
-import SectionAccountBonuses from '@/sections/Account/SectionAccountBonuses'
+import Section from './_view'
 
 export default async function Bonus({ params }) {
   const { tab } = await params
@@ -18,7 +18,7 @@ export default async function Bonus({ params }) {
   ])
 
   return (
-    <SectionAccountBonuses
+    <Section
       settings={settings}
       data={res?.data}
       meta={res?.meta}

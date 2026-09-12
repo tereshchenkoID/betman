@@ -8,8 +8,9 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionRegistration from '@/sections/SectionRegistration'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('registration')
@@ -61,7 +62,7 @@ export default async function Promotions({ params }) {
   return (
     <>
       <Suspense fallback={null}>
-        <SectionRegistration countries={countries?.data} />
+        <Section countries={countries?.data} />
       </Suspense>
       <SeoSection alias={'registration'} />
       <script

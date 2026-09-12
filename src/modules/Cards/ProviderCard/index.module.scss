@@ -24,8 +24,8 @@
 .picture {
   @include size(rem(60px), rem(30px));
 
-  position: relative;
   flex-shrink: 0;
+  position: relative;
 }
 
 .content {

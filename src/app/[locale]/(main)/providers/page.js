@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getProviders } from '@/app/actions/static'
 
-import SectionProviders from '@/sections/SectionProviders'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('providers')
@@ -42,7 +43,7 @@ export default async function Providers() {
 
   return (
     <>
-      <SectionProviders
+      <Section
         data={res?.data}
         meta={res?.meta}
       />

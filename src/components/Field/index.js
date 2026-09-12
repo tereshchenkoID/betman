@@ -133,7 +133,7 @@ const Field = forwardRef(({
               aria-label="Visibility"
             >
               <Icon
-                name={show ? 'toggle-view' : 'toggle-view-off'}
+                name={show ? 'toggle-_view' : 'toggle-_view-off'}
                 size="sm"
               />
             </button>

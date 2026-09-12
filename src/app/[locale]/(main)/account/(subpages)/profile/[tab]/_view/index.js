@@ -1,0 +1,217 @@
+'use client'
+
+import { useState, useTransition } from 'react'
+import { useTranslations } from 'next-intl'
+
+import { useRouter } from '@/i18n/navigation'
+
+import { ROUTES_USER, USER_VERIFY } from '@/constant/config'
+
+import { getCachedUser } from '@/app/actions/static'
+
+import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
+import { toast } from '@/utils/toast'
+import { compress } from '@/helpers/compress'
+
+import Loader from '@/components/Loader'
+import Notification from '@/modules/Notification'
+import Tabs from '@/modules/Tabs'
+
+import { action } from './action'
+
+import Address from './Address'
+import General from './General'
+import Security from './Security'
+import Verification from './Verification'
+
+import style from './index.module.scss'
+
+const Section = ({
+  settings,
+  data,
+  countries,
+  tab,
+  children
+}) => {
+  const t = useTranslations()
+  const router = useRouter()
+  const { level } = useUser()
+
+  const [isPending, startTransition] = useTransition()
+  const [uploadedPhotos, setUploadedPhotos] = useState([])
+  const [_, setIsCompressing] = useState(false)
+
+  const { filter, setFilter, handlePropsChange } = useFilterState(data)
+
+  const OPTIONS = [
+    {
+      key: 'profile',
+      value: 0,
+      ...(level === '1' && {
+        verification: level,
+      }),
+    },
+    {
+      key: 'address',
+      value: 1,
+    },
+    {
+      key: 'verification',
+      value: 2,
+      ...((level === '1' || level === '2') && {
+        verification: level,
+      }),
+    },
+    {
+      key: 'security',
+      value: 3,
+    },
+  ]
+
+  const active = OPTIONS.find(opt => opt.key === tab) || OPTIONS[0]
+
+  const handleActive = (el) => {
+    setFilter(data)
+    setUploadedPhotos([])
+
+    startTransition(() => {
+      router.push(`${ROUTES_USER.profile.url}/${el.key}`, { scroll: false })
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e?.preventDefault()
+
+    const params = { data: filter }
+
+    if (uploadedPhotos.length > 0) {
+      setIsCompressing(true)
+      try {
+        const compressedPhotos = await Promise.all(
+          uploadedPhotos.map(async (item) => {
+            if (!item.file) return item
+            const compressedFile = await compress(item.file)
+            return { ...item, file: compressedFile }
+          })
+        )
+
+        compressedPhotos.forEach((item, index) => {
+          if (item.file) {
+            params[`file-${index + 1}`] = item.file
+            params[`type-${index + 1}`] = item.type?.value || ''
+          }
+        })
+      } catch (err) {
+        toast.error(err)
+        return
+      } finally {
+        setIsCompressing(false)
+      }
+    }
+
+    startTransition(async () => {
+      const res = await action(params)
+
+      if (res?.code === '0') {
+        await getCachedUser()
+
+        toast.success(res?.message || t('success'))
+        setUploadedPhotos([])
+
+        router.refresh()
+      } else {
+        toast.error(res?.error_message || t('error'))
+      }
+    })
+  }
+
+  const handleReset = () => {
+    setFilter(data)
+    setUploadedPhotos([])
+  }
+
+  return (
+    <>
+      <section>
+        <Tabs
+          options={OPTIONS}
+          data={active}
+          action={handleActive}
+        />
+      </section>
+      <section className={style.section}>
+        <div className={style.container}>
+          {
+            isPending
+              ?
+                <Loader />
+              :
+                <>
+                  {
+                    active.value === 0 &&
+                    <General
+                      initial={data}
+                      filter={filter}
+                      settings={settings}
+                      handlePropsChange={handlePropsChange}
+                      handleSubmit={handleSubmit}
+                      handleReset={handleReset}
+                    />
+                  }
+                  {
+                    active.value === 1 &&
+                    <Address
+                      initial={data}
+                      filter={filter}
+                      countries={countries?.data}
+                      handlePropsChange={handlePropsChange}
+                      handleSubmit={handleSubmit}
+                      handleReset={handleReset}
+                    />
+                  }
+                  {
+                    active.value === 2 &&
+                    <Verification
+                      initial={data}
+                      filter={filter}
+                      settings={settings}
+                      handlePropsChange={handlePropsChange}
+                      handleSubmit={handleSubmit}
+                      handleReset={handleReset}
+                      handlePhotoUpload={setUploadedPhotos}
+                      uploadedPhotos={uploadedPhotos}
+                    />
+                  }
+                  {
+                    active.value === 3 &&
+                    <Security
+                      initial={data}
+                      filter={filter}
+                      handlePropsChange={handlePropsChange}
+                      handleSubmit={handleSubmit}
+                      handleReset={handleReset}
+                    />
+                  }
+                  <div>
+                    {
+                      active?.key === 'verification' &&
+                      <>
+                        <Notification
+                          text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
+                          type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
+                        />
+                        <br />
+                      </>
+                    }
+                    {children}
+                  </div>
+                </>
+              }
+        </div>
+      </section>
+    </>
+  )
+}
+
+export default Section

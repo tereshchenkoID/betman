@@ -1,9 +1,9 @@
-import SectionAccountWallet from '@/sections/Account/SectionAccountWallet'
+import Section from './_view'
 
 export default async function WalletLayout({ children }) {
   return (
-    <SectionAccountWallet>
+    <Section>
       {children}
-    </SectionAccountWallet>
+    </Section>
   )
 }

@@ -4,8 +4,9 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getSettings } from '@/app/actions/static'
 
-import SectionJackpots from '@/sections/SectionJackpots'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('jackpots')
@@ -47,7 +48,7 @@ export default async function Jackpots() {
 
   return (
     <>
-      <SectionJackpots
+      <Section
         data={res?.data}
         meta={res?.meta}
         settings={settings}

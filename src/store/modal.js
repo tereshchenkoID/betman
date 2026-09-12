@@ -23,8 +23,12 @@ export const useModalStore = create((set, get) => ({
     const title = modalOptions.title ?? ''
 
     const isOpened = get().modals.some(
-      (m) => m.name === name && m.title === title && title !== ''
+      (m) => m.name === name && m.title === title
     )
+
+    // const isOpened = get().modals.some(
+    //   (m) => m.name === name && m.title === title && title !== ''
+    // )
 
     if (isOpened) return
 

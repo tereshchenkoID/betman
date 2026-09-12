@@ -3,7 +3,8 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 
 import SeoSection from '@/sections/SectionSeo'
-import SectionTournaments from '@/sections/SectionTournaments'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('tournaments')
@@ -35,7 +36,7 @@ export default async function Tournaments() {
 
   return (
     <>
-      <SectionTournaments />
+      <Section />
       <SeoSection alias={'tournaments'} />
       <script
         type="application/ld+json"

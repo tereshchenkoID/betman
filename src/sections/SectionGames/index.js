@@ -14,11 +14,7 @@ import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
-const SectionGames = ({
-  url,
-  data,
-  meta,
-}) => {
+const SectionGames = ({ url, data, meta }) => {
   const t = useTranslations()
   const [isPending, startTransition] = useTransition()
   const [games, setGames] = useState(data)

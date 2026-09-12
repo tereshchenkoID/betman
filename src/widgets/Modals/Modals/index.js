@@ -5,9 +5,6 @@ import { Suspense, useEffect } from 'react'
 import { useModalStore } from '@/store/modal'
 
 import Modal from '@/components/Modal'
-import Preload from '@/components/Preload'
-
-import style from './index.module.scss'
 
 const Modals = () => {
   const modals = useModalStore((state) => state.modals)
@@ -38,24 +35,25 @@ const Modals = () => {
 
   return (
     <>
-      {modals.map((modal) => {
-        const ModalBody = modal.Component
+      {
+        modals.map((modal) => {
+          const ModalBody = modal.Component
 
-        return (
-          <Modal
-            key={modal.id}
-            zIndex={modal.zIndex}
-            title={modal.title}
-            size={modal.size || 'sm'}
-            isPointer={modal.isPointer || false}
-            onClose={closeModal}
-          >
-            <Suspense fallback={<Preload count={4} className={style.skeleton} />}>
-              {ModalBody ? <ModalBody {...(modal.props || {})} /> : modal.body}
+          return (
+            <Suspense key={modal.id} fallback={null}>
+              <Modal
+                zIndex={modal.zIndex}
+                title={modal.title}
+                size={modal.size || 'sm'}
+                isPointer={modal.isPointer || false}
+                onClose={closeModal}
+              >
+                {ModalBody ? <ModalBody {...modal.props} /> : modal.body}
+              </Modal>
             </Suspense>
-          </Modal>
-        )
-      })}
+          )
+        })
+      }
     </>
   )
 }
