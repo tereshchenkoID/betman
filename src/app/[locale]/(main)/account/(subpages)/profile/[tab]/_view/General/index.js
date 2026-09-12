@@ -103,7 +103,7 @@ const General = ({
           isDisabled={isTelegram}
         />
         {
-          settings?.modules?.phone_verification === '1'
+          (settings?.modules?.phone_verification === '1' && filter?.profile?.isVerifyEmail !== '-1')
             ?
               <PhoneVerification
                 filter={filter}
@@ -131,7 +131,7 @@ const General = ({
               />
         }
         {
-          settings?.modules?.email_verification === '1'
+          (settings?.modules?.email_verification === '1' && filter?.profile?.isVerifyPhone !== '-1')
             ?
               <EmailVerification
                 filter={filter}
