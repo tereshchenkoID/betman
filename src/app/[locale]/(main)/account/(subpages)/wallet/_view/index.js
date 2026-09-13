@@ -6,13 +6,12 @@ import clsx from 'clsx'
 
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 
-import { ROUTES_USER } from '@/constant/config'
+import { PAYMENT_TYPE, ROUTES_USER } from '@/constant/config'
 
 import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
 
 import Loader from '@/components/Loader'
-import Notification from '@/modules/Notification'
 import Tabs from '@/modules/Tabs'
 
 import style from './index.module.scss'
@@ -52,10 +51,17 @@ const Section = ({ children }) => {
   }
 
   useEffect(() => {
-    if (level !== '3') {
-      openModal('verify', { }, { title: t('verification') })
+    if (currentTabKey === PAYMENT_TYPE[0]) {
+      if (level === '1') {
+        openModal('verify', { }, { title: t('verification') })
+      }
     }
-  }, [level, openModal, t])
+    else if(currentTabKey === PAYMENT_TYPE[1]) {
+      if (level !== '3') {
+        openModal('verify', { }, { title: t('verification') })
+      }
+    }
+  }, [currentTabKey, level, openModal, t])
 
   return (
     <>
@@ -77,15 +83,6 @@ const Section = ({ children }) => {
           )
         }
       </section>
-      {
-        level !== '3' &&
-        <section>
-          <Notification
-            text={t('notification.verification_text')}
-            type={'error'}
-          />
-        </section>
-      }
       <section>
         <Tabs
           options={DATA}
