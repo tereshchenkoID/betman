@@ -5,8 +5,9 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getCachedUser } from '@/app/actions/static'
 
-import SectionLogin from '@/sections/SectionLogin'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('login')
@@ -46,14 +47,14 @@ export default async function Login({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
   return (
     <>
-      <SectionLogin />
+      <Section />
       <SeoSection alias={'login'} />
       <script
         type="application/ld+json"

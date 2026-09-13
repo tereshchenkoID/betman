@@ -3,6 +3,8 @@ import bundleAnalyzer from '@next/bundle-analyzer'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import { ROUTES_USER } from './src/constant/config.js'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -83,6 +85,26 @@ const nextConfig = {
             value: 'strict-origin-when-cross-origin',
           },
         ],
+      },
+    ]
+  },
+
+  async redirects() {
+    return [
+      {
+        source: `/:locale${ROUTES_USER.profile.url}`,
+        destination: `/:locale${ROUTES_USER.profile.url}/general`,
+        permanent: false,
+      },
+      {
+        source: `/:locale${ROUTES_USER.history.url}`,
+        destination: `/:locale${ROUTES_USER.history.url}/games`,
+        permanent: false,
+      },
+      {
+        source: `/:locale${ROUTES_USER.bonuses.url}`,
+        destination: `/:locale${ROUTES_USER.bonuses.url}/available`,
+        permanent: false,
       },
     ]
   },

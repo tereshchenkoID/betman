@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getProviders } from '@/app/actions/static'
 
-import SectionProviders from '@/sections/SectionProviders'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('providers')
@@ -35,14 +36,14 @@ export default async function Providers() {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
   return (
     <>
-      <SectionProviders
+      <Section
         data={res?.data}
         meta={res?.meta}
       />

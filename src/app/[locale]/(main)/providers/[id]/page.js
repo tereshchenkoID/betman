@@ -4,7 +4,6 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/static'
 
 import SectionGames from '@/sections/SectionGames'
 
@@ -17,11 +16,9 @@ export default async function Provider({ params }) {
 
   const [
     metaTags,
-    user,
     res,
   ] = await Promise.all([
     getPageMetadata('providers'),
-    getCachedUser(),
     apiRequest(`games/${id}/`, {
       method: 'POST',
       params: {
@@ -51,7 +48,7 @@ export default async function Provider({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
@@ -61,7 +58,6 @@ export default async function Provider({ params }) {
       <section>
         <SectionGames
           url={`games/${id}/`}
-          user={user}
           data={res?.data}
           meta={res?.meta}
         />

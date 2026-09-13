@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getQuests } from '@/app/actions/static'
 
-import SectionQuests from '@/sections/SectionQuests'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('quests')
@@ -35,14 +36,14 @@ export default async function Quests() {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
   return (
     <>
-      <SectionQuests
+      <Section
         data={res?.quests?.data}
         meta={res?.quests?.meta}
       />

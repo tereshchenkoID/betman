@@ -4,21 +4,23 @@ import { useRouter } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
-export const useGamePlay = (user) => {
+export const useGamePlay = () => {
   const t = useTranslations()
   const router = useRouter()
+  const { id, level } = useUser()
   const { openModal, closeAllModals } = useModal()
 
   const handlePlay = (gameId) => {
     if (!gameId) return
 
-    if (user?.id) {
+    if (id) {
       closeAllModals()
 
-      if (user?.level === '1') {
-        openModal('verify', { user }, { title: t('verification') })
+      if (level === '1') {
+        openModal('verify', { }, { title: t('verification') })
       }
       else {
         router.push(`${NAVIGATION.game.url}/${gameId}/0`)
@@ -34,7 +36,7 @@ export const useGamePlay = (user) => {
 
   const handleOpenGameModal = (gameData) => {
     if (gameData) {
-      openModal('game', { data: gameData, user })
+      openModal('game', { data: gameData })
     }
   }
 

@@ -3,7 +3,8 @@ import { useTranslations } from 'next-intl'
 import { ROUTES_USER } from '@/constant/config'
 
 import { useFavorites } from '@/context/FavoritesContext'
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -12,15 +13,15 @@ import style from './index.module.scss'
 
 const Favorite = ({
   data,
-  user,
   className = 'square',
 }) => {
   const t = useTranslations()
+  const { isAuth } = useUser()
   const { isFavorite, toggleFavorite } = useFavorites(data)
   const { openModal, closeAllModals } = useModal()
 
   const handleToggle = () => {
-    if (!user?.id) {
+    if (!isAuth) {
       closeAllModals()
       openModal('login', {}, { title: t('sign_up') })
     }

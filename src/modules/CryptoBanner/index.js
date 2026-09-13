@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 
 import style from './index.module.scss'
 

@@ -1,11 +1,7 @@
-import { getCachedUser } from '@/app/actions/static'
-
-import SectionAccountFavorites from '@/sections/Account/SectionAccountFavorites'
+import Section from './_view'
 
 export default async function Favorites() {
-  const user = await getCachedUser()
-
   return (
-    <SectionAccountFavorites user={user} />
+    <Section />
   )
 }

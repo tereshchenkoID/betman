@@ -4,9 +4,9 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/static'
+import { getBonuses, getCachedUser } from '@/app/actions/static'
 
-import SectionGame from '@/sections/SectionGame'
+import Section from './_view'
 
 export async function generateMetadata({ params }) {
   const { id } = await params
@@ -50,19 +50,21 @@ export default async function Game({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
+  const bonuses = user?.id ? await getBonuses() : null
+
   return (
     <>
-      <SectionGame
-        user={user}
+      <Section
         game={res}
         iframe={link}
         id={id}
         mode={mode}
+        bonuses={bonuses}
       />
       <script
         type="application/ld+json"

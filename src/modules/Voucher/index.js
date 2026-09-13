@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 
 import { useCopy } from '@/hooks/useCopy'
+import { useUser } from '@/hooks/useUser'
 import { date } from '@/helpers/date'
 
 import Action from '@/components/Action'
@@ -8,8 +9,9 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const Voucher = ({ user, data, isPaid }) => {
+const Voucher = ({ data, isPaid }) => {
   const t = useTranslations()
+  const { currency } = useUser()
   const { copy, copied } = useCopy()
 
   return (
@@ -28,7 +30,7 @@ const Voucher = ({ user, data, isPaid }) => {
           </strong>
           <strong className={style.amount}>
             <span className={style.label}>{t('amount')}:</span>
-            <span>{data.amount} {user.currency.code}</span>
+            <span>{data.amount} {currency.code}</span>
           </strong>
           <span className={style.date}>
             {

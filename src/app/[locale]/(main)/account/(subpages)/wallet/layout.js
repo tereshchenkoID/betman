@@ -1,13 +1,9 @@
-import { getCachedUser } from '@/app/actions/static'
-
-import SectionAccountWallet from '@/sections/Account/SectionAccountWallet'
+import Section from './_view'
 
 export default async function WalletLayout({ children }) {
-  const user = await getCachedUser()
-
   return (
-    <SectionAccountWallet user={user}>
+    <Section>
       {children}
-    </SectionAccountWallet>
+    </Section>
   )
 }

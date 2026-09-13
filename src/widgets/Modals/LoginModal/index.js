@@ -6,9 +6,11 @@ import { useRouter } from '@/i18n/navigation'
 import { NAVIGATION } from '@/constant/config'
 
 import { loginWithCredentialsAction } from '@/app/actions/auth'
+import { getCachedUser } from '@/app/actions/static'
 
-import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
+import useModal from '@/hooks/useModal'
+import { useUserStore } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 import { toast } from '@/utils/toast'
 
@@ -19,10 +21,11 @@ import style from './index.module.scss'
 
 const LoginModal = ({ isTitle = false }) => {
   const t = useTranslations()
+  const setUser = useUserStore((state) => state.setUser)
   const VALIDATION_RULES = useValidations()
 
   const router = useRouter()
-  const { openModal, closeModal } = useModal()
+  const { openModal, closeModal, closeAllModals } = useModal()
   const { filter, handlePropsChange } = useFilterState({
     username: '',
     password: ''
@@ -44,7 +47,11 @@ const LoginModal = ({ isTitle = false }) => {
 
       if (res?.code === '0') {
         localStorage.setItem('age', '0')
-        closeModal()
+
+        const user = await getCachedUser()
+        setUser(user)
+
+        closeAllModals()
 
         startTransition(() => {
           router.refresh()

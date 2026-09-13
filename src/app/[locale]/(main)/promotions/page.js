@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import SectionPromotions from '@/sections/SectionPromotions'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('promotions')
@@ -37,14 +38,14 @@ export default async function Promotions() {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
   return (
     <>
-      <SectionPromotions
+      <Section
         data={res?.data}
         meta={res?.meta}
       />

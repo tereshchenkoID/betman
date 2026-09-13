@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { useGamePlay } from '@/hooks/useGamePlay'
+import { useUser } from '@/hooks/useUser'
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
@@ -9,13 +10,13 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const WinnerCard = ({ user, data }) => {
+const WinnerCard = ({ data }) => {
   const t = useTranslations()
+  const { currency } = useUser()
   const { game, winnings, maskedUsername, totalBet } = data
   const { id, title, images } = game
-  const currency = user?.currency?.text
 
-  const { handlePlay, handleOpenGameModal } = useGamePlay(user)
+  const { handlePlay, handleOpenGameModal } = useGamePlay()
 
   return (
     <article className={style.block}>
@@ -26,12 +27,12 @@ const WinnerCard = ({ user, data }) => {
       <div className={style.info}>
         <div className={style.winnings}>
           <h2>{winnings}</h2>
-          <p className={style.currency}>{currency}</p>
+          <p className={style.currency}>{currency?.text}</p>
         </div>
 
         <div className={style.winnings}>
           <p className={style.currency}>{t('stake')}:</p>
-          <p className={style.currency}><strong>{totalBet}</strong> {currency}</p>
+          <p className={style.currency}><strong>{totalBet}</strong> {currency?.text}</p>
         </div>
 
         <div className={style.player}>

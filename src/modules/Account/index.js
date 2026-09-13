@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 
 import Action from '@/components/Action'
 

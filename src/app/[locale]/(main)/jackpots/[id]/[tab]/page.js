@@ -4,9 +4,8 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/static'
 
-import SectionJackpot from '@/sections/SectionJackpot'
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('jackpots')
@@ -17,11 +16,9 @@ export default async function Jackpot({ params }) {
 
   const [
     metaTags,
-    user,
     res,
   ] = await Promise.all([
     await getPageMetadata('jackpots'),
-    getCachedUser(),
     apiRequest(`jackpot/${id}/general`, {
       method: 'GET'
     }),
@@ -55,17 +52,16 @@ export default async function Jackpot({ params }) {
     },
     'potentialAction': {
       '@type': 'SearchAction',
-      'target': `${process.env.BASE_URL}/${NAVIGATION.home.url}`,
+      'target': `${process.env.BASE_URL}`,
       'query-input': 'required name=search_term_string'
     }
   }
 
   return (
     <>
-      <SectionJackpot
+      <Section
         id={id}
         tab={tab}
-        user={user}
         data={res?.data}
         games={games?.data}
         meta={games?.meta}

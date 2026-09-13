@@ -2,20 +2,22 @@ import { useTranslations } from 'next-intl'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
 import { useGamePlay } from '@/hooks/useGamePlay'
+import useModal from '@/hooks/useModal'
+import { useUser } from '@/hooks/useUser'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Badge from '@/modules/Badge'
-import Favourite from '@/modules/Favorite'
+import Favorite from '@/modules/Favorite'
 
 import style from './index.module.scss'
 
-const GameModal = ({ data, user }) => {
+const GameModal = ({ data }) => {
   const t = useTranslations()
-  const { handlePlay, handleDemo } = useGamePlay(user)
+  const { currency } = useUser()
   const { closeModal } = useModal()
+  const { handlePlay, handleDemo } = useGamePlay()
 
   return (
     <div
@@ -25,10 +27,7 @@ const GameModal = ({ data, user }) => {
       }}
     >
       <div className={style.header}>
-        <Favourite
-          data={data}
-          user={user}
-        />
+        <Favorite data={data} />
         <Action
           classes={['secondary', 'md', 'square']}
           onChange={closeModal}
@@ -55,14 +54,14 @@ const GameModal = ({ data, user }) => {
             data.minStake &&
             <li className={style.option}>
               <p>{t('min_bet')}:</p>
-              <p>{data.minStake} {user?.currency?.text}</p>
+              <p>{data.minStake} {currency?.text}</p>
             </li>
           }
           {
             data.maxStake &&
             <li className={style.option}>
               <p>{t('max_bet')}:</p>
-              <p>{data.maxStake} {user?.currency?.text}</p>
+              <p>{data.maxStake} {currency?.text}</p>
             </li>
           }
         </ul>
