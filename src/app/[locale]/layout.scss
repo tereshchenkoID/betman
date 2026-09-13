@@ -1,8 +1,9 @@
 :root {
-  --tg-safe-top: 0px;
-  --tg-safe-bottom: 0px;
+  --tg-safe-top: env(safe-area-inset-top, 0px);
+  --tg-safe-bottom: env(safe-area-inset-bottom, 0px);
   --tg-viewport-height: 100svh;
-  --toastify-toast-top: var(--tg-safe-top)!important;
+  --toastify-toast-top: calc(var(--tg-safe-top) + var(--gap-default));
+  --toastify-toast-right: var(--gap-default);
   --white: 255 255 255;               // #FFF
   --black: 0 0 0;                     // #000
   --brand: 3 70 89;                   // #034659
@@ -81,9 +82,6 @@ html {
 }
 
 body {
-  --toastify-toast-top: calc(var(--tg-safe-top) + var(--gap-default));
-  --toastify-toast-right: var(--gap-default);
-
   @include scroll-y;
 
   margin: 0;
@@ -289,4 +287,11 @@ main {
 
 section {
   position: relative;
+}
+
+.Toastify__toast-container--top-right,
+.Toastify__toast-container--top-left,
+.Toastify__toast-container--top-center {
+  top: var(--toastify-toast-top) !important;
+  transform: none !important;
 }

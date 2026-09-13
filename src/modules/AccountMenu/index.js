@@ -143,7 +143,7 @@ const AccountMenu = ({ user, setToggle, bonuses }) => {
               <Icon name="navigation-chevron-right" />
             </div>
             {
-              credits?.bonus?.total_bets > 0 &&
+              Number(credits?.bonus?.amount || '0') > 0 &&
               <Scale
                 amount={credits?.bonus.total_bets}
                 percentage={credits?.bonus.percentage}

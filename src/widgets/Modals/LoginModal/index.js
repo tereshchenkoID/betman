@@ -22,7 +22,7 @@ const LoginModal = ({ isTitle = false }) => {
   const VALIDATION_RULES = useValidations()
 
   const router = useRouter()
-  const { openModal, closeModal } = useModal()
+  const { openModal, closeAllModals } = useModal()
   const { filter, handlePropsChange } = useFilterState({
     username: '',
     password: ''
@@ -44,7 +44,7 @@ const LoginModal = ({ isTitle = false }) => {
 
       if (res?.code === '0') {
         localStorage.setItem('age', '0')
-        closeModal()
+        closeAllModals()
 
         startTransition(() => {
           router.refresh()
@@ -104,7 +104,7 @@ const LoginModal = ({ isTitle = false }) => {
         classes={['md', 'outline']}
         placeholder={t('forgot_password')}
         onClick={() => {
-          closeModal()
+          closeAllModals()
           openModal('recovery', {}, { title: t('forgot_password') })
         }}
       />
@@ -114,7 +114,7 @@ const LoginModal = ({ isTitle = false }) => {
           to={NAVIGATION.registration.url}
           classes={['md', 'outline']}
           placeholder={t('create_account')}
-          onChange={closeModal}
+          onChange={closeAllModals}
         />
       </p>
     </form>
