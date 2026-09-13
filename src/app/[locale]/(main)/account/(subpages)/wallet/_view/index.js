@@ -43,7 +43,7 @@ const Section = ({ children }) => {
     })
   }
 
-  const handleMethod= (e, el) => {
+  const handleMethod = (e, el) => {
     e.preventDefault()
     startTransition(() => {
       router.push(`${ROUTES_USER.wallet.url}/${el.alias}/${DATA[0].key}`, { scroll: false })
@@ -67,7 +67,7 @@ const Section = ({ children }) => {
     <>
       <section className={style.list}>
         {
-          payements.map((el, idx) =>
+          payements?.map((el, idx) =>
             <Link
               key={el?.id || idx}
               onClick={(e) => handleMethod(e, el)}

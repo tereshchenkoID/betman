@@ -113,10 +113,12 @@ export const apiRequest = async (endpoint, {
     const res = await fetch(url.toString(), options)
     const json = await res.json()
 
+    console.log(endpoint, json)
+
     if (json?.code === '2' || json?.code === '4') {
       redirect({
-        pathname: {
-          href: '/',
+        href: {
+          pathname: '/',
           query: { expired: '1' }
         },
         locale,
