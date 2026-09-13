@@ -125,10 +125,6 @@ input {
     right: 0;
   }
 
-  &::-webkit-date-and-time-value {
-    text-align: left;
-  }
-
   &::-webkit-datetime-edit,
   &::-webkit-datetime-edit-fields-wrapper,
   &::-webkit-datetime-edit-text,
@@ -142,11 +138,17 @@ input {
   &[type='datetime-local'],
   &[type='date'] {
     width: 100%;
+    font-family: sans-serif;
     appearance: none;
     direction: ltr;
 
+    &::-webkit-date-and-time-value {
+      text-align: left;
+    }
+
     &::-webkit-calendar-picker-indicator {
       opacity: 0;
+      cursor: pointer;
     }
   }
 
