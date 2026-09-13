@@ -37,7 +37,7 @@ const nextConfig = {
   // --- Compiler & Output Options ---
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
-      ? { exclude: ['error', 'warn'] }
+      ? { exclude: ['error', 'warn', 'log'] }
       : false,
   },
 
