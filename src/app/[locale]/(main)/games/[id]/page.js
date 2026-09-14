@@ -2,11 +2,10 @@ import { LIST_COUNT, NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser } from '@/app/actions/static'
 
+import SectionCategoriesSlider from '@/sections/SectionCategoriesSlider'
 import SectionGames from '@/sections/SectionGames'
 import SeoSection from '@/sections/SectionSeo'
-import SectionCategoriesSlider from '@/sections/Sliders/SectionCategoriesSlider'
 
 export async function generateMetadata() {
   return await getPageMetadata('games')
@@ -17,11 +16,9 @@ export default async function Games({ params }) {
 
   const [
     metaTags,
-    user,
     res,
   ] = await Promise.all([
     getPageMetadata('games'),
-    getCachedUser(),
     apiRequest(`games/${id}/`, {
       method: 'POST',
       params: {
@@ -60,7 +57,6 @@ export default async function Games({ params }) {
       <section>
         <SectionGames
           url={`games/${id}/`}
-          user={user}
           data={res?.data}
           meta={res?.meta}
         />

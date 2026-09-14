@@ -2,25 +2,24 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
-import { getCachedUser, getSettings } from '@/app/actions/static'
+import { getSettings } from '@/app/actions/static'
 
-import SectionJackpots from '@/sections/SectionJackpots'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('jackpots')
 }
 
-export default async function Jackpots({ params }) {
+export default async function Jackpots() {
   const [
     metaTags,
     settings,
-    user,
     res,
   ] = await Promise.all([
     getPageMetadata('jackpots'),
     getSettings(),
-    getCachedUser(),
     apiRequest('jackpots/', {
       method: 'GET'
     })
@@ -49,11 +48,10 @@ export default async function Jackpots({ params }) {
 
   return (
     <>
-      <SectionJackpots
+      <Section
         data={res?.data}
         meta={res?.meta}
         settings={settings}
-        user={user}
       />
       <SeoSection alias={'jackpots'} />
       <script

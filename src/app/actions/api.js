@@ -11,7 +11,7 @@ const PROTECTED_PREFIXES = ['user/', 'profile/']
 const MUTATING_METHODS = ['POST', 'PUT', 'PATCH']
 const BODY_METHODS = ['POST', 'PUT', 'PATCH', 'DELETE']
 const QUERY_METHODS = ['GET', 'DELETE']
-const DEFAULT_RATE_LIMIT = { max: 30, windowMs: 60_000 }
+const DEFAULT_RATE_LIMIT = { max: 50, windowMs: 60_000 }
 
 const getClientIp = (headersList) => {
   const forwarded = headersList.get('x-forwarded-for')

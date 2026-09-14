@@ -10,19 +10,18 @@ import { imageError } from '@/helpers/image'
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
 import Badge from '@/modules/Badge'
-import Favourite from '@/modules/Favorite'
+import Favorite from '@/modules/Favorite'
 
 import style from './index.module.scss'
 
 const Thumbnail = ({
   data,
-  user,
   isEmpty = false,
   isPriority = false,
   isNumeric = false
 }) => {
   const t = useTranslations()
-  const { handlePlay, handleDemo, handleOpenGameModal } = useGamePlay(user)
+  const { handlePlay, handleDemo, handleOpenGameModal } = useGamePlay()
   const { id, title, images, groups } = data
 
   return (
@@ -59,10 +58,7 @@ const Thumbnail = ({
       }
       <div className={style.details}>
         <div className={style.header}>
-          <Favourite
-            data={data}
-            user={user}
-          />
+          <Favorite data={data} />
         </div>
         <div className={style.content}>
           <div className={style.actions}>

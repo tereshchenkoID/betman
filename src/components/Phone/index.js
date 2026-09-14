@@ -20,6 +20,7 @@ const countriesCache = {}
 
 const Phone = ({
   data,
+  country,
   onChange,
   placeholder,
   onValidate,
@@ -126,7 +127,7 @@ const Phone = ({
     country: currentCountry,
     setCountry,
   } = usePhoneInput({
-    defaultCountry: 'us',
+    defaultCountry: country?.toLowerCase() || 'us',
     value: data || '',
     countries: localizedCountries,
     onChange: handlePhoneChange,

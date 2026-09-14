@@ -1,0 +1,16 @@
+import { getSettings } from '@/app/actions/static'
+
+import Section from './_view'
+
+const SectionFavoritesSlider = async ({ mock }) => {
+  const settings = await getSettings()
+
+  return (
+    <Section
+      mock={mock}
+      settings={settings}
+    />
+  )
+}
+
+export default SectionFavoritesSlider

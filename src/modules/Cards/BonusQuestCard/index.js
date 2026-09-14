@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import clsx from 'clsx'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
@@ -9,7 +9,7 @@ import Icon from '@/components/Icon'
 
 import style from './index.module.scss'
 
-const BonusQuestCard = ({ user, data }) => {
+const BonusQuestCard = ({ data }) => {
   const { status, button, bonus, link } = data
   const { openModal } = useModal()
 

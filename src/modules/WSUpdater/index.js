@@ -1,19 +1,21 @@
 'use client'
 
-import { startTransition, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useRouter } from '@/i18n/navigation'
 
-import { useModal } from '@/context/ModalContext'
 import { useWebSocketContext } from '@/context/WebSocketContext'
-import { eventBus } from '@/utils/eventBus'
+import useModal from '@/hooks/useModal'
+import { useUser, useUserStore } from '@/hooks/useUser'
 
-const WSUpdater = ({ user, settings }) => {
+const WSUpdater = ({ settings }) => {
   const t = useTranslations()
+  const { isAuth, profile } = useUser()
   const router = useRouter()
   const { lastMessage } = useWebSocketContext()
   const { openModal } = useModal()
+  const updateUser = useUserStore((state) => state.updateUser)
 
   useEffect(() => {
     if (!lastMessage) return
@@ -21,9 +23,7 @@ const WSUpdater = ({ user, settings }) => {
     const { cmd, data, topic } = lastMessage
 
     if (cmd === 'update' && topic === 'credits') {
-      startTransition(async () => {
-        eventBus.emit(`ws:${topic}`, data)
-      })
+      updateUser(data)
     }
 
     if (cmd === 'update' && topic === 'message') {
@@ -33,15 +33,15 @@ const WSUpdater = ({ user, settings }) => {
     if (topic === 'analytics') {
       window.dataLayer.push(data)
     }
-  }, [lastMessage, router, openModal])
+  }, [lastMessage, router, openModal, updateUser])
 
   useEffect(() => {
-    const hasBirthday = user?.profile?.birthday
+    const hasBirthday = profile?.birthday
     const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
 
     let shouldShowModal = false
 
-    if (user?.id) {
+    if (isAuth) {
       if (!hasBirthday && !hasAgeSession) {
         shouldShowModal = true
       }
@@ -54,7 +54,7 @@ const WSUpdater = ({ user, settings }) => {
     if (shouldShowModal) {
       openModal('age', { link: settings?.over18_url }, { title: t('age.title'), isPointer: true })
     }
-  }, [t, user, openModal, settings])
+  }, [t, openModal, profile?.birthday, isAuth, settings?.over18_url])
 
   return null
 }

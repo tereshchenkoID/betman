@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -17,8 +18,9 @@ import style from './index.module.scss'
 
 const INITIAL_FILTER = { amount: '' }
 
-const Withdrawal = ({ user, data }) => {
+const Withdrawal = ({ data }) => {
   const t = useTranslations()
+  const { level, currency } = useUser()
   const [ticket, setTicket] = useState(null)
   const [isPending, startTransition] = useTransition()
 
@@ -47,10 +49,7 @@ const Withdrawal = ({ user, data }) => {
     <form className={style.block} onSubmit={handleSubmit}>
       {
         ticket &&
-        <Voucher
-          user={user}
-          data={ticket}
-        />
+        <Voucher data={ticket} />
       }
       <Notification
         text={`${t('min')}: ${data?.withdraw?.min}, ${t('max')}: ${data?.withdraw?.max}`}
@@ -68,7 +67,7 @@ const Withdrawal = ({ user, data }) => {
           data?.withdraw?.quickAmount.map((el, idx) =>
             <Action
               key={idx}
-              placeholder={`${el} ${user.currency.code}`}
+              placeholder={`${el} ${currency.code}`}
               classes={['primary', 'md']}
               onChange={() => handlePropsChange('amount', el)}
             />
@@ -79,7 +78,7 @@ const Withdrawal = ({ user, data }) => {
         type={'submit'}
         classes={['primary', 'lg', 'wide']}
         placeholder={t('withdrawal')}
-        isDisabled={user?.level === '1' || user?.level === '2' || !isValid || isPending}
+        isDisabled={level === '1' || level === '2' || !isValid || isPending}
       />
     </form>
   )
