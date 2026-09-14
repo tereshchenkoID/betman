@@ -37,10 +37,8 @@ export default function Telegram({ auth }) {
 
       const initialHeight = tgObject.viewportHeight || window.innerHeight
 
-      document.documentElement.style.setProperty(
-        '--tg-viewport-height',
-        `${initialHeight}px`
-      )
+      document.documentElement.style.setProperty('--tg-viewport-height', `${initialHeight}px`)
+      document.documentElement.style.setProperty('--screen-height', `${window.innerHeight}px`)
 
       const updateLayout = () => {
         if (tgObject.isVersionAtLeast('8.0') && !tgObject.isFullscreen) {
@@ -60,8 +58,9 @@ export default function Telegram({ auth }) {
 
         document.documentElement.style.setProperty('--tg-safe-top', `${top}px`)
         document.documentElement.style.setProperty('--tg-safe-bottom', `${bottom}px`)
-        // document.documentElement.style.setProperty('--tg-viewport-height', `${height}px`)
         document.documentElement.style.setProperty('--toastify-toast-top', `${top + 8}px`)
+        // document.documentElement.style.setProperty('--tg-viewport-height', `${height}px`)
+
         window.scrollTo(0, 0)
       }
 
