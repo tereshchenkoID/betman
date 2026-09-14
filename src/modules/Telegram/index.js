@@ -23,6 +23,16 @@ export default function Telegram({ auth }) {
       tgObject.ready()
       tgObject.expand()
 
+      if (tgObject.isVersionAtLeast('7.0')) {
+        tgObject.disableVerticalSwipes?.()
+      }
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY !== 0) {
+          window.scrollTo(0, 0)
+        }
+      })
+
       const updateLayout = () => {
         if (tgObject.isVersionAtLeast('8.0') && !tgObject.isFullscreen) {
           try {
@@ -32,19 +42,9 @@ export default function Telegram({ auth }) {
           }
         }
 
-        let top =
-          tgObject.contentSafeAreaInset?.top ||
-          tgObject.safeAreaInset?.top ||
-          tgObject.viewport?.offsetTop ||
-          0
-        const bottom =
-          tgObject.contentSafeAreaInset?.bottom ||
-          tgObject.safeAreaInset?.bottom ||
-          0
-        const height =
-          tgObject.viewportStableHeight ||
-          tgObject.viewport?.height ||
-          window.innerHeight
+        let top = tgObject.contentSafeAreaInset?.top || tgObject.safeAreaInset?.top || tgObject.viewport?.offsetTop || 0
+        const bottom = tgObject.contentSafeAreaInset?.bottom || tgObject.safeAreaInset?.bottom || 0
+        const height = tgObject.viewportStableHeight || window.innerHeight
 
         if (tgObject.platform === 'ios') top += 60
         if (tgObject.platform === 'android') top += 30
@@ -54,6 +54,7 @@ export default function Telegram({ auth }) {
         document.documentElement.style.setProperty('--tg-viewport-height', `${height}px`)
 
         document.documentElement.style.setProperty('--toastify-toast-top', `${top + 8}px`)
+        window.scrollTo(0, 0)
       }
 
       setTimeout(() => {
