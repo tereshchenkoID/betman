@@ -8,7 +8,7 @@ import NextTopLoader from 'nextjs-toploader'
 import { GoogleTagManager } from '@next/third-parties/google'
 import clsx from 'clsx'
 
-import { getCachedUser, getFavorites } from '@/app/actions/static'
+import { getCachedUser, getFavorites, getSettings } from '@/app/actions/static'
 
 import { FavoritesProvider } from '@/context/FavoritesContext'
 import { ModalProvider } from '@/context/ModalContext'
@@ -67,10 +67,12 @@ export default async function RootLayout({ children, params }) {
   const [
     messages,
     user,
+    settings,
     favorites,
   ] = await Promise.all([
     getMessages({ locale }),
     getCachedUser(),
+    getSettings(),
     getFavorites().catch(() => [])
   ])
 
@@ -115,7 +117,10 @@ export default async function RootLayout({ children, params }) {
         <ModalProvider>
           <WebSocketProvider user={user}>
             {children}
-            <WSUpdater user={user} />
+            <WSUpdater
+              settings={settings}
+              user={user}
+            />
           </WebSocketProvider>
         </ModalProvider>
         <Toastify />
