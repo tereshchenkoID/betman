@@ -104,5 +104,23 @@ export default function Telegram({ auth }) {
     })
   }, [initData, router, auth?.id, user])
 
+  useEffect(() => {
+    const vv = window.visualViewport
+    if (!vv) return
+
+    const handleResize = () => {
+      const isKeyboard = vv.height < window.innerHeight - 150
+
+      if (isKeyboard) {
+        document.documentElement.classList.add('is-keyboard-open')
+      } else {
+        document.documentElement.classList.remove('is-keyboard-open')
+      }
+    }
+
+    vv.addEventListener('resize', handleResize)
+    return () => vv.removeEventListener('resize', handleResize)
+  }, [])
+
   return null
 }

@@ -285,7 +285,6 @@ main {
   position: relative;
   margin-inline: auto;
   padding-block: var(--gap-16);
-  border: 1px solid red;
   width: 100%;
   max-width: var(--max-width);
   min-height: calc(var(--screen-height, 100lvh) - var(--header-height));
