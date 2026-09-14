@@ -36,10 +36,7 @@ export default async function Wallet({ params }) {
           (method === 'crypto' && tab === 'deposit') &&
           <CryptoBanner />
         }
-        <ActiveComponent
-          user={user}
-          data={payment}
-        />
+        <ActiveComponent data={payment} />
       </div>
       <SectionTooltip alias={`${method}/${tab}`} />
     </>

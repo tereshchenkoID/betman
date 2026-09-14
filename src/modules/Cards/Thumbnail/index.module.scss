@@ -109,7 +109,7 @@
 .title {
   @include line-clamp(1);
 
-  font-family: var(--font-family-alt);
+  font-family: var(--font-family-alt), sans-serif;
   font-size: rem(14px);
   line-height: 1.2;
 }

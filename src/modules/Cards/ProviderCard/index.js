@@ -5,7 +5,7 @@ import { Link } from '@/i18n/navigation'
 
 import { NAVIGATION } from '@/constant/config'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 import { imageError } from '@/helpers/image'
 
 import style from './index.module.scss'

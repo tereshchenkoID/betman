@@ -1,5 +1,7 @@
-import { notFound } from 'next/navigation'
+import Section from './_view'
 
 export default async function NotFoundPage() {
-  notFound()
+  return (
+    <Section />
+  )
 }

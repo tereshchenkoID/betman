@@ -5,7 +5,7 @@ import style from './index.module.scss'
 const Icon = ({
   name,
   size = 'md',
-  classes= [],
+  classes = [],
   ...rest
 }) => {
   return (
@@ -21,7 +21,7 @@ const Icon = ({
       role="img"
       {...rest}
     >
-      <use href={`/images/iconography.svg#${name}`} />
+      <use href={`#${name}`} />
     </svg>
   )
 }

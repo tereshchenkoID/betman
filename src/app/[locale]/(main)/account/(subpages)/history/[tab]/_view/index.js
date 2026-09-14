@@ -1,0 +1,148 @@
+'use client'
+
+import { Suspense, useTransition } from 'react'
+import dynamic from 'next/dynamic'
+import { notFound, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+
+import { usePathname, useRouter } from '@/i18n/navigation'
+
+import { QUANTITY, ROUTES_USER } from '@/constant/config'
+
+import DateRange from '@/components/DateRange'
+import Loader from '@/components/Loader'
+import Select from '@/components/Select'
+import Empty from '@/modules/Empty'
+import Pagination from '@/modules/Pagination'
+import Tabs from '@/modules/Tabs'
+
+import style from './index.module.scss'
+
+const DATA = [
+  { key: 'games', value: 0 },
+  { key: 'deposit', value: 1 },
+  { key: 'withdrawal', value: 2 },
+  { key: 'bonuses', value: 3 },
+]
+
+const COMPONENTS_MAP = {
+  games: dynamic(() => import('./Games')),
+  deposit: dynamic(() => import('./Payment')),
+  withdrawal: dynamic(() => import('./Payment')),
+  bonuses: dynamic(() => import('./Bonuses')),
+}
+
+const Section = ({ data, meta, tab, queryParams }) => {
+  const t = useTranslations()
+  const pathname = usePathname()
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const [isPending, startTransition] = useTransition()
+
+  const quantity = Number(searchParams.get('quantity')) || queryParams.quantity
+  const from = searchParams.get('from') ? Number(searchParams.get('from')) : queryParams.from
+  const to = searchParams.get('to') ? Number(searchParams.get('to')) : queryParams.to
+
+  const updateQuery = (newParams) => {
+    const params = new URLSearchParams(searchParams.toString())
+
+    Object.entries(newParams).forEach(([key, val]) => {
+      if (val !== undefined && val !== null && val !== '') {
+        params.set(key, String(val))
+      } else {
+        params.delete(key)
+      }
+    })
+
+    if (!newParams.page) {
+      params.set('page', '1')
+    }
+
+    startTransition(() => {
+      router.push(`${pathname}?${params.toString()}`, { scroll: false })
+    })
+  }
+
+  const handleActive = (el) => {
+    startTransition(() => {
+      router.push(`${ROUTES_USER.history.url}/${el.key}`, { scroll: false })
+    })
+  }
+
+  const ActiveComponent = COMPONENTS_MAP[tab]
+
+  if (!ActiveComponent) {
+    notFound()
+  }
+
+  const activeTab = DATA.find((item) => pathname.includes(item.key)) || DATA[0]
+  const selectedQuantity = QUANTITY.find((el) => el.value === quantity) || QUANTITY[0]
+
+  return (
+    <>
+      <section>
+        <Tabs
+          options={DATA}
+          data={activeTab}
+          action={handleActive}
+        />
+      </section>
+      <section className={style.section}>
+        <div className={style.header}>
+          <DateRange
+            placeholder="Date Range"
+            value={{ from, to }}
+            onChange={(range) => {
+              if (range?.from && range?.to) {
+                updateQuery({
+                  from: range.from,
+                  to: range.to,
+                })
+              }
+            }}
+          />
+        </div>
+        <div className={style.container}>
+          {
+            isPending
+              ?
+                <Loader />
+              :
+                <>
+                  {
+                    meta?.results !== '0'
+                      ?
+                        <>
+                          <ActiveComponent
+                            data={data}
+                            meta={meta}
+                          />
+                          <div className={style.footer}>
+                            {
+                              meta?.pages !== '1' &&
+                              <Select
+                                placeholder={t('quantity')}
+                                classes={[style.select]}
+                                data={QUANTITY}
+                                value={selectedQuantity}
+                                isSearch={false}
+                                onChange={(selected) => updateQuery({ quantity: selected.value })}
+                              />
+                            }
+                            <Suspense fallback={null}>
+                              <Pagination meta={meta} />
+                            </Suspense>
+                          </div>
+                        </>
+                      :
+                        <Empty />
+                  }
+                </>
+          }
+        </div>
+      </section>
+    </>
+  )
+}
+
+export default Section

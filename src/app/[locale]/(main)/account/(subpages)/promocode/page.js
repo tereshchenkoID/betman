@@ -1,10 +1,11 @@
-import SectionAccountPromocode from '@/sections/Account/SectionAccountPromocode'
 import SectionTooltip from '@/sections/SectionTooltip'
+
+import Section from './_view'
 
 export default async function Promocode() {
   return (
-    <SectionAccountPromocode>
+    <Section>
       <SectionTooltip alias={'promocode'} />
-    </SectionAccountPromocode>
+    </Section>
   )
 }

@@ -68,9 +68,9 @@
 .header {
   @include flex(center, flex-start);
 
+  flex-shrink: 0;
   position: relative;
   padding: var(--gap-16) rem(50px);
-  flex-shrink: 0;
 }
 
 .title {

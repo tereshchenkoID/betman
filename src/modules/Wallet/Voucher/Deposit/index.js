@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -17,8 +18,9 @@ import style from './index.module.scss'
 
 const INITIAL_FILTER = { code: '' }
 
-const Deposit = ({ user }) => {
+const Deposit = () => {
   const t = useTranslations()
+  const { level } = useUser()
   const [ticket, setTicket] = useState(null)
   const [isPending, startTransition] = useTransition()
 
@@ -46,7 +48,6 @@ const Deposit = ({ user }) => {
       {
         ticket &&
         <Voucher
-          user={user}
           data={ticket}
           isPaid={true}
         />
@@ -65,7 +66,7 @@ const Deposit = ({ user }) => {
         type={'submit'}
         classes={['primary', 'lg']}
         placeholder={t('deposit')}
-        isDisabled={user?.level === '1' || filter?.code.length !== 12 || isPending}
+        isDisabled={level === '1' || filter?.code.length !== 12 || isPending}
       />
     </form>
   )

@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import SectionPromotions from '@/sections/SectionPromotions'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('promotions')
@@ -44,7 +45,7 @@ export default async function Promotions() {
 
   return (
     <>
-      <SectionPromotions
+      <Section
         data={res?.data}
         meta={res?.meta}
       />

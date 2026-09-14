@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 import { Link } from '@/i18n/navigation'
 
-import { useModal } from '@/context/ModalContext'
+import useModal from '@/hooks/useModal'
 
 import style from './index.module.scss'
 

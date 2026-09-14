@@ -2,12 +2,12 @@
   @include size(rem(304px), rem(110px));
 
   display: grid;
+  flex-shrink: 0;
   grid-template-columns: 1fr rem(88px);
   position: relative;
   border-radius: var(--border-radius-10);
   background-color: rgb(var(--material));
   overflow: hidden;
-  flex-shrink: 0;
 
   @include hover {
     &:hover {

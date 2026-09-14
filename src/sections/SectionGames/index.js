@@ -14,12 +14,7 @@ import Title from '@/modules/Title'
 
 import style from './index.module.scss'
 
-const SectionGames = ({
-  url,
-  user,
-  data,
-  meta,
-}) => {
+const SectionGames = ({ url, data, meta }) => {
   const t = useTranslations()
   const [isPending, startTransition] = useTransition()
   const [games, setGames] = useState(data)
@@ -74,7 +69,6 @@ const SectionGames = ({
                 <Thumbnail
                   key={el?.id || idx}
                   data={el}
-                  user={user}
                 />
               )}
             </div>

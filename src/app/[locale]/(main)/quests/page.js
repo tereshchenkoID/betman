@@ -3,8 +3,9 @@ import { NAVIGATION } from '@/constant/config'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getQuests } from '@/app/actions/static'
 
-import SectionQuests from '@/sections/SectionQuests'
 import SeoSection from '@/sections/SectionSeo'
+
+import Section from './_view'
 
 export async function generateMetadata() {
   return await getPageMetadata('quests')
@@ -42,7 +43,7 @@ export default async function Quests() {
 
   return (
     <>
-      <SectionQuests
+      <Section
         data={res?.quests?.data}
         meta={res?.quests?.meta}
       />

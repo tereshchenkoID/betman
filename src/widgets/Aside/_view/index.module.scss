@@ -1,0 +1,97 @@
+.block {
+  @include transition;
+
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  height: var(--aside-height);
+  background-color: rgb(var(--bg));
+  z-index: $z-index-8;
+
+  @include desk-s {
+    position: static;
+    height: auto;
+    background-color: transparent;
+    overflow: unset;
+    z-index: auto;
+  }
+}
+
+.scroll {
+  @include scroll-x;
+}
+
+.menu {
+  @include flex;
+
+  height: var(--aside-height);
+
+  @include desk-s {
+    @include size(rem(240px), auto);
+
+    flex-direction: column;
+    gap: var(--gap-2);
+    position: fixed;
+    inset-block-start: calc(var(--header-height) + var(--tg-safe-top) + var(--gap-16));
+    overflow-y: auto;
+  }
+}
+
+.item {
+  flex: 1;
+}
+
+.link {
+  @include flex(center, center, column);
+
+  position: relative;
+  padding: var(--gap-default) var(--gap-12);
+  font-size: rem(12px);
+  color: var(--text-for-material-disabled);
+  white-space: nowrap;
+
+  &.active {
+    pointer-events: none;
+    color: rgb(var(--text-for-material));
+
+    @include desk-s {
+      background: linear-gradient(90deg, rgb(var(--brand)) 56%, transparent 100%);
+      color: rgb(var(--link));
+    }
+  }
+
+  @include desk-s {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--gap-default);
+    border-radius: var(--border-radius-full);
+    font-size: rem(16px);
+    color: rgb(var(--text-for-material));
+  }
+
+  @include hover {
+    &:hover {
+      background: linear-gradient(90deg, rgb(var(--material)) 56%, transparent 100%);
+    }
+  }
+}
+
+.badge {
+  @include size(rem(20px));
+  @include flex(center, center);
+
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  border-radius: 50%;
+  background-color: rgb(var(--link));
+  transform: translateX(rem(12px));
+  font-size: rem(11px);
+  color: rgb(var(--text-for-material));
+
+  @include desk-s {
+    position: static;
+    transform: translateX(0);
+    margin-inline-start: auto;
+  }
+}

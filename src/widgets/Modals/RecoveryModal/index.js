@@ -5,8 +5,8 @@ import { NAVIGATION } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 
-import { useModal } from '@/context/ModalContext'
 import { useFilterState } from '@/hooks/useFilterState'
+import useModal from '@/hooks/useModal'
 import { useValidations } from '@/hooks/useValidations'
 import { toast } from '@/utils/toast'
 
@@ -56,7 +56,7 @@ const RecoveryModal = () => {
         setCode(1)
       }
     } catch (e) {
-      toast.error(t('errors.fetch'))
+      toast.error(`Error: ${e}`)
     }
   }
 

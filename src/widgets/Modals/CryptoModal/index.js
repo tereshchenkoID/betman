@@ -1,6 +1,5 @@
 import { useEffect, useState, useTransition } from 'react'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 
 import { apiRequest } from '@/app/actions/api'
 
@@ -13,7 +12,6 @@ import Empty from '@/modules/Empty'
 import style from './index.module.scss'
 
 const CryptoModal = () => {
-  const t = useTranslations()
   const [data, setData] = useState([])
   const [meta, setMeta] = useState(null)
   const [isPending, startTransition] = useTransition()

@@ -4,6 +4,7 @@ import { useTransition } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
+import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
@@ -21,11 +22,12 @@ const INITIAL_FILTER = {
   payment_type: null
 }
 
-const Withdrawal = ({ data, user }) => {
+const Withdrawal = ({ data }) => {
   const t = useTranslations()
-  const [isPending, startTransition] = useTransition()
-
+  const { level, currency } = useUser()
   const { filter, setFilter, handlePropsChange } = useFilterState(INITIAL_FILTER)
+
+  const [isPending, startTransition] = useTransition()
 
   const handleSubmit = async (e) => {
     e && e.preventDefault()
@@ -76,7 +78,7 @@ const Withdrawal = ({ data, user }) => {
           <div className={style.row}>
             <p className={style.cell}>{t('commission')}:</p>
             <strong>
-              {commission} {user?.currency?.text}
+              {commission} {currency?.text}
             </strong>
           </div>
 
@@ -105,7 +107,7 @@ const Withdrawal = ({ data, user }) => {
               data.withdraw?.quickAmount.map((el, idx) =>
                 <Action
                   key={idx}
-                  placeholder={`${el} ${user.currency.code}`}
+                  placeholder={`${el} ${currency.code}`}
                   classes={['primary', 'md']}
                   onChange={() => handlePropsChange('amount', el)}
                 />
@@ -117,7 +119,7 @@ const Withdrawal = ({ data, user }) => {
             type={'submit'}
             classes={['primary', 'lg', 'wide']}
             placeholder={t('withdrawal')}
-            isDisabled={user?.level === '1' || user?.level === '2' || !isValid || isPending}
+            isDisabled={level === '1' || level === '2' || !isValid || isPending}
           />
         </>
       }
