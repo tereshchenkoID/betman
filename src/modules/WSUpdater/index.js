@@ -9,7 +9,7 @@ import { useWebSocketContext } from '@/context/WebSocketContext'
 import useModal from '@/hooks/useModal'
 import { useUser, useUserStore } from '@/hooks/useUser'
 
-const WSUpdater = () => {
+const WSUpdater = ({ settings }) => {
   const t = useTranslations()
   const { isAuth, profile } = useUser()
   const router = useRouter()
@@ -52,9 +52,9 @@ const WSUpdater = () => {
     }
 
     if (shouldShowModal) {
-      openModal('age', { }, { title: t('age.title'), isPointer: true })
+      openModal('age', { link: settings?.over18_url }, { title: t('age.title'), isPointer: true })
     }
-  }, [t, openModal, profile?.birthday, isAuth])
+  }, [t, openModal, profile?.birthday, isAuth, settings?.over18_url])
 
   return null
 }

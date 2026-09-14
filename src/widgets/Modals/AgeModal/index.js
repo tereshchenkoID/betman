@@ -6,21 +6,18 @@ import Action from '@/components/Action'
 
 import style from './index.module.scss'
 
-const AgeModal = () => {
+const AgeModal = ({ link }) => {
   const t = useTranslations()
   const { closeModal } = useModal()
 
-  const handleSubmit = async (e) => {
+  const handleClick = async (e) => {
     e && e.preventDefault()
     localStorage.setItem('age', '1')
     closeModal()
   }
 
   return (
-    <form
-      className={style.block}
-      onSubmit={handleSubmit}
-    >
+    <div className={style.block}>
       <div className={style.container}>
         <p>{t('age.text')}</p>
       </div>
@@ -28,13 +25,14 @@ const AgeModal = () => {
         type={'submit'}
         classes={['primary', 'lg']}
         placeholder={t('age.button')}
+        onChange={handleClick}
       />
       <Action
-        to={'https://www.betman.club/over18'}
+        to={link || 'https://www.betman.club/over18'}
         classes={['md', 'outline']}
         placeholder={t('age.link')}
       />
-    </form>
+    </div>
   )
 }
 

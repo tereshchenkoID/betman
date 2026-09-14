@@ -73,10 +73,12 @@ export default async function RootLayout({ children, params }) {
   const [
     messages,
     user,
+    settings,
     favorites,
   ] = await Promise.all([
     getMessages({ locale }),
     getCachedUser(),
+    getSettings(),
     getFavorites().catch(() => [])
   ])
 
@@ -125,7 +127,7 @@ export default async function RootLayout({ children, params }) {
           />
             <WebSocketProvider user={user}>
               {children}
-              <WSUpdater user={user} />
+              <WSUpdater settings={settings} />
             </WebSocketProvider>
           <Modals />
           <Toastify />
