@@ -1,4 +1,6 @@
 .block {
+  @include transition;
+
   position: fixed;
   inset-block-end: 0;
   inset-inline: 0;
@@ -6,24 +8,12 @@
   background-color: rgb(var(--bg));
   z-index: $z-index-8;
 
-  :global(html.is-keyboard-open) & {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-
   @include desk-s {
     position: static;
     height: auto;
     background-color: transparent;
     overflow: unset;
     z-index: auto;
-
-    :global(html.is-keyboard-open) & {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
   }
 }
 
