@@ -23,25 +23,24 @@ export default function Telegram({ auth }) {
       tgObject.ready()
       tgObject.expand()
 
-      const initialHeight =
-        tgObject.viewportStableHeight ||
-        window.outerHeight ||
-        window.innerHeight
+      if (tgObject.isVersionAtLeast('7.0')) {
+        tgObject.disableVerticalSwipes?.()
+      }
+
+      const handleWindowScroll = () => {
+        if (window.scrollY !== 0) {
+          window.scrollTo(0, 0)
+        }
+      }
+
+      window.addEventListener('scroll', handleWindowScroll)
+
+      const initialHeight = tgObject.viewportHeight || window.innerHeight
 
       document.documentElement.style.setProperty(
         '--tg-viewport-height',
         `${initialHeight}px`
       )
-
-      if (tgObject.isVersionAtLeast('7.0')) {
-        tgObject.disableVerticalSwipes?.()
-      }
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY !== 0) {
-          window.scrollTo(0, 0)
-        }
-      })
 
       const updateLayout = () => {
         if (tgObject.isVersionAtLeast('8.0') && !tgObject.isFullscreen) {
