@@ -2,7 +2,7 @@ import { getSettings } from '@/app/actions/static'
 
 import Section from './_view'
 
-const SectionGamesSlider = async ({ mock }) => {
+const SectionFavoritesSlider = async ({ mock }) => {
   const settings = await getSettings()
 
   return (
@@ -13,4 +13,4 @@ const SectionGamesSlider = async ({ mock }) => {
   )
 }
 
-export default SectionGamesSlider
+export default SectionFavoritesSlider
