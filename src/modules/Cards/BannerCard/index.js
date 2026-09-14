@@ -34,7 +34,6 @@ const BannerCard = ({ data }) => {
             fetchPriority="high"
             sizes="320px"
             onError={imageError}
-            unoptimized
           />
         }
         <div className={style.content}>

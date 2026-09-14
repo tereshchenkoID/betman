@@ -32,7 +32,6 @@ const Section = ({ data, meta }) => {
                   priority
                   decoding="async"
                   sizes="1152"
-                  unoptimized
                 />
               }
               <Inner data={el?.description} />

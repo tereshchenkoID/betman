@@ -311,7 +311,6 @@ const Wheel = ({ mock, wheelsRound }) => {
           alt="Indicator"
           width={80}
           height={105}
-          unoptimized
         />
       </div>
 
@@ -330,7 +329,6 @@ const Wheel = ({ mock, wheelsRound }) => {
           width={102}
           height={35}
           alt="Logo"
-          unoptimized
         />
       </button>
     </div>

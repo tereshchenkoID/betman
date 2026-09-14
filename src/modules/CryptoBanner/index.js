@@ -19,13 +19,11 @@ const CryptoBanner = () => {
       aria-label={'Open Crypto Modal'}
     >
       <Image
-        className={style.image}
         src={'/images/crypto.webp'}
         alt={'Crypto'}
         width={460}
         height={118}
         decoding="async"
-        unoptimized
       />
     </button>
   )

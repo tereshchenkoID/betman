@@ -65,7 +65,6 @@ const Section = ({ data, meta, wheelsRound }) => {
           fill
           sizes="100vw"
           loading="eager"
-          unoptimized
         />
         {
           meta?.results !== '0' &&

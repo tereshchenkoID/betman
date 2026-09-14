@@ -31,7 +31,6 @@ const SectionMainBannerSlider = ({ mock }) => {
         sizes="(max-width: 560px) 100vw, 1px"
         decoding="async"
         onError={(e) => imageError(e, false)}
-        unoptimized
       />
       <Image
         src={desk}
@@ -45,7 +44,6 @@ const SectionMainBannerSlider = ({ mock }) => {
         sizes="(max-width: 560px) 1px, (max-width: 1920px) 100vw, 1184px"
         decoding="async"
         onError={(e) => imageError(e, false)}
-        unoptimized
       />
     </Link>
   )

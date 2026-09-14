@@ -76,7 +76,6 @@ const JackpotCard = ({
             sizes="164px"
             decoding="async"
             onError={imageError}
-            unoptimized
           />
         }
       </Link>

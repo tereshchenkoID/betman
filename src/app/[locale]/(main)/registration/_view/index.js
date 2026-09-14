@@ -362,7 +362,6 @@ const Section = ({ countries }) => {
                   width={50}
                   height={50}
                   decoding="async"
-                  unoptimized
                 />
               </div>
               <hr className={style.divider} />

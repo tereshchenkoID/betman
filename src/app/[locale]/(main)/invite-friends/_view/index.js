@@ -28,7 +28,6 @@ const Section = ({ data }) => {
             width={586}
             height={500}
             decoding="async"
-            unoptimized
           />
         </div>
         <div className={style.left}>

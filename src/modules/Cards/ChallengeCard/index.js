@@ -44,7 +44,6 @@ const ChallengeCard = ({ data }) => {
             decoding="async"
             loading="eager"
             onError={(e) => imageError(e, false)}
-            unoptimized
           />
         </div>
       </Link>

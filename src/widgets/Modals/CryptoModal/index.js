@@ -59,7 +59,6 @@ const CryptoModal = () => {
                           decoding="async"
                           sizes="108px"
                           onError={imageError}
-                          unoptimized
                         />
                         <h5>{el?.name}</h5>
                         <Action

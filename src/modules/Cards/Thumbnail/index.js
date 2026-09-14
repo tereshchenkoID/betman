@@ -53,7 +53,6 @@ const Thumbnail = ({
           decoding="async"
           sizes="250px"
           onError={imageError}
-          unoptimized
         />
       }
       <div className={style.details}>

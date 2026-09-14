@@ -20,7 +20,6 @@ const Logo = () => {
         height={36}
         alt="Logo"
         loading="eager"
-        unoptimized
         priority
       />
     </Link>

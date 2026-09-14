@@ -60,7 +60,6 @@ const WinnerCard = ({ data }) => {
           decoding="async"
           sizes="88px"
           onError={(e) => imageError(e, false)}
-          unoptimized
         />
       }
     </article>

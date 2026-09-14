@@ -73,7 +73,6 @@ const Section = ({
                 height={34}
                 alt="Logo"
                 loading="eager"
-                unoptimized
                 priority
               />
             </Link>

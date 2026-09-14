@@ -12,7 +12,6 @@ const ThumbnailPreload = () => {
         height={36}
         alt="Logo"
         loading={'eager'}
-        unoptimized
         priority
       />
     </div>

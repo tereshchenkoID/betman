@@ -45,7 +45,6 @@ const Languages = ({
           height={28}
           priority
           sizes="20px"
-          unoptimized
         />
       </button>
       {
@@ -69,7 +68,6 @@ const Languages = ({
                     height={20}
                     sizes="20px"
                     loading="lazy"
-                    unoptimized
                   />
                 </p>
                 {el.text}

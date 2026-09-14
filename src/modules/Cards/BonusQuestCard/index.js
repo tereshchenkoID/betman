@@ -32,7 +32,6 @@ const BonusQuestCard = ({ data }) => {
           height={160}
           decoding="async"
           onError={(e) => imageError(e, false)}
-          unoptimized
         />
       }
       <Action

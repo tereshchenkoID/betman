@@ -65,7 +65,6 @@ const AccountMenu = ({ setToggle, bonuses }) => {
             height="40"
             sizes="40px"
             decoding="async"
-            unoptimized
           />
           <Status
             data={level}

@@ -57,7 +57,6 @@ const Games = ({ data }) => {
                     decoding="async"
                     sizes="40px"
                     onError={(e) => imageError(e, false)}
-                    unoptimized
                   />
                 </div>
                 <Action
