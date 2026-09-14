@@ -37,11 +37,11 @@ export default function Telegram({ auth }) {
         tgObject.disableVerticalSwipes?.()
       }
 
-      // window.addEventListener('scroll', () => {
-      //   if (window.scrollY !== 0) {
-      //     window.scrollTo(0, 0)
-      //   }
-      // })
+      window.addEventListener('scroll', () => {
+        if (window.scrollY !== 0) {
+          window.scrollTo(0, 0)
+        }
+      })
 
       const updateLayout = () => {
         if (tgObject.isVersionAtLeast('8.0') && !tgObject.isFullscreen) {
