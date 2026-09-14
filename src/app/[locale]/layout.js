@@ -10,7 +10,7 @@ import clsx from 'clsx'
 import * as fs from 'node:fs'
 import path from 'path'
 
-import { getCachedUser, getFavorites } from '@/app/actions/static'
+import { getCachedUser, getFavorites, getSettings } from '@/app/actions/static'
 
 import { FavoritesProvider } from '@/context/FavoritesContext'
 import { UserStoreProvider } from '@/context/UserContext'
