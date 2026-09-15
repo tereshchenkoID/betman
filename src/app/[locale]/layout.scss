@@ -2,36 +2,36 @@
   --tg-safe-top: env(safe-area-inset-top, 0px);
   --tg-safe-bottom: env(safe-area-inset-bottom, 0px);
   --tg-viewport-height: 100lvh;
-    --white: 255 255 255;               // #FFF
-    --black: 0 0 0;                     // #000
-    --brand: 3 70 89;                   // #034659
-    --brand-hover: 3 76 93;             // #034C5D
-    --brand-disabled: rgb(21 120 106 / 30%);
-    --text-for-brand: var(--white);     // #FFF
-    --text-for-brand-disabled: rgb(var(--white) / 24%);
-    --primary: rgb(var(--brand-hover) / 60%);
-    --primary-hover: rgb(3 113 131 / 45%);
-    --primary-disabled: rgb(var(--brand-hover) / 35%);
-    --text-for-primary: var(--white);   // #FFF
-    --text-for-primary-disabled: rgb(var(--white) / 40%);
-    --link: 4 144 168;                  // #0490A8
-    --link-hover: 3 111 130;            // #036F82
-    --link-disabled: rgb(var(--link) / 40%);
-    --material: 0 20 22;                // #001416
-    --material-hover: 3 60 67;          // #033c43
-    --material-disabled: rgb(3 70 89 / 35%);
-    --text-for-material: var(--white);  // #FFF
-    --text-for-material-disabled: rgb(var(--white) / 40%);
-    --tertiary: var(--white);           // #FFF
-    --tertiary-hover: rgb(var(--white) / 32%);
-    --tertiary-disabled: rgb(var(--white) / 10%);
-    --sub-text: rgb(var(--white) / 68%);
-    --bg: 3 27 31;                      // #031b1f
-    --amber: 255 162 56;                // #FFA238
-    --yellow: 255 225 0;                // #FFE100
-    --green: 0 168 87;                  // #00A857
-    --red: 229 57 53;                   // #E53935
-    --blue: 10 137 209;                 // #0A89D1
+  --white: 255 255 255;               // #FFF
+  --black: 0 0 0;                     // #000
+  --brand: 3 70 89;                   // #034659
+  --brand-hover: 3 76 93;             // #034C5D
+  --brand-disabled: rgb(21 120 106 / 30%);
+  --text-for-brand: var(--white);     // #FFF
+  --text-for-brand-disabled: rgb(var(--white) / 24%);
+  --primary: rgb(var(--brand-hover) / 60%);
+  --primary-hover: rgb(3 113 131 / 45%);
+  --primary-disabled: rgb(var(--brand-hover) / 35%);
+  --text-for-primary: var(--white);   // #FFF
+  --text-for-primary-disabled: rgb(var(--white) / 40%);
+  --link: 4 144 168;                  // #0490A8
+  --link-hover: 3 111 130;            // #036F82
+  --link-disabled: rgb(var(--link) / 40%);
+  --material: 0 20 22;                // #001416
+  --material-hover: 3 60 67;          // #033c43
+  --material-disabled: rgb(3 70 89 / 35%);
+  --text-for-material: var(--white);  // #FFF
+  --text-for-material-disabled: rgb(var(--white) / 40%);
+  --tertiary: var(--white);           // #FFF
+  --tertiary-hover: rgb(var(--white) / 32%);
+  --tertiary-disabled: rgb(var(--white) / 10%);
+  --sub-text: rgb(var(--white) / 68%);
+  --bg: 3 27 31;                      // #031b1f
+  --amber: 255 162 56;                // #FFA238
+  --yellow: 255 225 0;                // #FFE100
+  --green: 0 168 87;                  // #00A857
+  --red: 229 57 53;                   // #E53935
+  --blue: 10 137 209;                 // #0A89D1
   --max-width: 90rem;
   --min-width: 22.5rem;
   --font-size: 16px;
@@ -60,32 +60,6 @@
   --box-shadow-default: 0 0 0.25rem 0 rgb(0 0 0 / 32%), 0 0.375rem 0.5rem 0 rgb(0 0 0 / 20%);
   --header-height: 4.375rem;
   --aside-height: calc(3.5rem + var(--tg-safe-bottom));
-}
-
-[data-theme='violette'] {
-  --brand: 151 25 90;                        // #97195A
-  --brand-hover: 190 18 112;                 // #BE1270
-  --brand-disabled: rgb(180 21 106 / 24%);
-  --text-for-brand: var(--white);            // #FFF
-  --text-for-brand-disabled: rgb(var(--white) / 24%);
-  --primary: rgb(78 58 67 / 64%);
-  --primary-hover: rgb(78 58 67 / 88%);
-  --primary-disabled: rgb(78 58 67 / 40%);
-  --text-for-primary: var(--white);          // #FFF
-  --text-for-primary-disabled: rgb(var(--white) / 40%);
-  --link: 240 112 166;                       // #F070A6
-  --link-hover: 234 83 152;                  // #EA5398
-  --link-disabled: rgb(234 83 152 / 40%);    // #FBB2CD
-  --material: 42 18 28;                      // #2A121C
-  --material-hover: 62 40 49;                // #3E2831
-  --material-disabled: 62 40 49;             // #3E2831
-  --text-for-material: var(--white);         // #FFF
-  --text-for-material-disabled: rgb(var(--white) / 40%);
-  --tertiary: var(--white);                  // #FFF
-  --tertiary-hover: rgb(var(--white) / 32%);
-  --tertiary-disabled: rgb(var(--white) / 10%);
-  --sub-text: rgb(var(--white) / 68%);
-  --bg: 13 5 9;                              // #0d0509
 }
 
 * {
