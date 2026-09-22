@@ -5,14 +5,14 @@
 
   @include flex(center, null, column);
 
-  // padding: var(--gap-32) var(--gap-16);
-  // gap: var(--gap-16);
-  gap: var(--gap-12);
+  // padding: rem(32px) rem(16px);
+  // gap: rem(16px);
+  gap: rem(12px);
   position: relative;
-  padding: var(--gap-16);
-  border-radius: var(--border-radius-4);
+  padding: rem(16px);
+  border-radius: rem(4px);
   width: rem(328px);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   background-position: 0 0, 100% 0;
   background-size: rem(600px);
   overflow: hidden;
@@ -50,7 +50,7 @@
       @include desk-s {
         grid-column: 3;
         grid-row: 1;
-        margin-block-start: var(--gap-24);
+        margin-block-start: rem(24px);
         text-align: end;
       }
     }
@@ -99,9 +99,9 @@
   @include flex(space-between, center, column);
 
   padding: var(--gap-default);
-  border-radius: var(--border-radius-6);
+  border-radius: rem(6px);
   min-width: rem(296px);
-  background-color: rgb(var(--material-hover));
+  background-color: var(--material-hover);
 }
 
 .slide {

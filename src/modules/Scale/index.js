@@ -14,7 +14,9 @@ const Scale = ({
       className={
         clsx(
           style.block,
-          isInverted && style.inverted
+          {
+            [style.inverted]: isInverted
+          }
         )
       }
     >

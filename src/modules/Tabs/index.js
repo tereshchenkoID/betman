@@ -19,7 +19,9 @@ const Tabs = ({ options, data, action }) => {
               className={
                 clsx(
                   style.option,
-                  data.value === el.value && style.active,
+                  {
+                    [style.active]: data.value === el.value
+                  }
                 )
               }
               aria-label={el.text}

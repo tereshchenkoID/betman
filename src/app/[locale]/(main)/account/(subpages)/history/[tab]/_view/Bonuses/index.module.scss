@@ -9,7 +9,7 @@
 .row {
   display: grid;
   grid-template-columns: rem(80px) rem(160px) repeat(4, 1fr) rem(160px) rem(100px);
-  gap: var(--gap-2);
+  gap: rem(2px);
   min-width: rem(1000px);
   font-size: rem(14px);
 
@@ -18,28 +18,28 @@
       background-color: var(--primary-hover);
 
       &:first-child {
-        border-radius: var(--border-radius-8) 0 0;
+        border-radius: rem(8px) 0 0;
       }
 
       &:last-child {
-        border-radius: 0 var(--border-radius-8) 0 0;
+        border-radius: 0 rem(8px) 0 0;
       }
     }
   }
 
   &:not(:last-child) {
-    margin-block-end: var(--gap-2);
+    margin-block-end: rem(2px);
   }
 
   &:not(.first) {
     &:last-child {
       .cell {
         &:first-child {
-          border-radius: 0 0 0 var(--border-radius-8);
+          border-radius: 0 0 0 rem(8px);
         }
 
         &:last-child {
-          border-radius: 0 0 var(--border-radius-8);
+          border-radius: 0 0 rem(8px);
         }
       }
     }

@@ -1,14 +1,12 @@
 .block {
   @include flex(center, center, column);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: relative;
   aspect-ratio: 1 / 1.12;
   border: rem(1px) solid var(--primary);
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
-  background-position: 50%;
-  background-size: 100%;
+  border-radius: rem(10px);
+  background-color: var(--material);
   overflow: hidden;
   font-family: var(--font-family-alt), sans-serif;
   font-size: rem(14px);
@@ -17,19 +15,27 @@
   &::after {
     position: absolute;
     inset: 0;
-    background-color: rgb(var(--material));
-    opacity: 0.65;
+    background-color: color-alpha(var(--material), 0.65);
     content: '';
   }
 
   @include hover {
     &:hover {
-      background-size: 105%;
+      .image {
+        transform: scale(1.05);
+      }
     }
   }
+}
 
-  * {
-    position: relative;
-    z-index: $z-index-1;
-  }
+.image {
+  @include transition;
+
+  object-fit: cover;
+}
+
+.icon,
+.text {
+  position: relative;
+  z-index: $z-index-1;
 }

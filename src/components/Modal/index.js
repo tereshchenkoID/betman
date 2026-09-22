@@ -26,8 +26,10 @@ const Modal = ({
         clsx(
           style.block,
           style[size],
-          isTiny && style.tiny,
-          isPointer && style.lock
+          {
+            [style.tiny]: isTiny,
+            [style.lock]: isPointer
+          }
         )
       }
       style={{ zIndex }}

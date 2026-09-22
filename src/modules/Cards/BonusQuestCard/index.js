@@ -18,7 +18,9 @@ const BonusQuestCard = ({ data }) => {
       className={
         clsx(
           style.block,
-          status !== '0' && style.disable
+          {
+            [style.disabled]: status !== '0'
+          }
         )
       }
     >

@@ -2,36 +2,36 @@
   --tg-safe-top: env(safe-area-inset-top, 0px);
   --tg-safe-bottom: env(safe-area-inset-bottom, 0px);
   --tg-viewport-height: 100lvh;
-  --white: 255 255 255;               // #FFF
-  --black: 0 0 0;                     // #000
-  --brand: 3 70 89;                   // #034659
-  --brand-hover: 3 76 93;             // #034C5D
+  --white: rgb(255 255 255);              // #FFFFFF
+  --black: rgb(0 0 0);                    // #000000
+  --brand: rgb(3 70 89);                  // #034659
+  --brand-hover: rgb(3 76 93);            // #034C5D
   --brand-disabled: rgb(21 120 106 / 30%);
-  --text-for-brand: var(--white);     // #FFF
-  --text-for-brand-disabled: rgb(var(--white) / 24%);
-  --primary: rgb(var(--brand-hover) / 60%);
+  --text-for-brand: rgb(255 255 255);     // #FFFFFF
+  --text-for-brand-disabled: rgb(255 255 255 / 24%);
+  --primary: rgb(3 76 93 / 60%);
   --primary-hover: rgb(3 113 131 / 45%);
-  --primary-disabled: rgb(var(--brand-hover) / 35%);
-  --text-for-primary: var(--white);   // #FFF
-  --text-for-primary-disabled: rgb(var(--white) / 40%);
-  --link: 4 144 168;                  // #0490A8
-  --link-hover: 3 111 130;            // #036F82
-  --link-disabled: rgb(var(--link) / 40%);
-  --material: 0 20 22;                // #001416
-  --material-hover: 3 60 67;          // #033c43
+  --primary-disabled: rgb(3 76 93 / 35%);
+  --text-for-primary: rgb(255 255 255);   // #FFFFFF
+  --text-for-primary-disabled: rgb(255 255 255 / 40%);
+  --link: rgb(4 144 168);                 // #0490A8
+  --link-hover: rgb(3 111 130);           // #036F82
+  --link-disabled: rgb(4 144 168 / 40%);
+  --material: rgb(0 20 22);               // #001416
+  --material-hover: rgb(3 60 67);         // #033c43
   --material-disabled: rgb(3 70 89 / 35%);
-  --text-for-material: var(--white);  // #FFF
-  --text-for-material-disabled: rgb(var(--white) / 40%);
-  --tertiary: var(--white);           // #FFF
-  --tertiary-hover: rgb(var(--white) / 32%);
-  --tertiary-disabled: rgb(var(--white) / 10%);
-  --sub-text: rgb(var(--white) / 68%);
-  --bg: 3 27 31;                      // #031b1f
-  --amber: 255 162 56;                // #FFA238
-  --yellow: 255 225 0;                // #FFE100
-  --green: 0 168 87;                  // #00A857
-  --red: 229 57 53;                   // #E53935
-  --blue: 10 137 209;                 // #0A89D1
+  --text-for-material: rgb(255 255 255);  // #FFFFFF
+  --text-for-material-disabled: rgb(255 255 255 / 40%);
+  --tertiary: rgb(255 255 255);           // #FFFFFF
+  --tertiary-hover: rgb(255 255 255 / 32%);
+  --tertiary-disabled: rgb(255 255 255 / 10%);
+  --sub-text: rgb(255 255 255 / 68%);
+  --bg: rgb(3 27 31);                      // #031b1f
+  --amber: rgb(255 162 56);                // #FFA238
+  --yellow: rgb(255 225 0);                // #FFE100
+  --green: rgb(0 168 87);                  // #00A857
+  --red: rgb(229 57 53);                   // #E53935
+  --blue: rgb(10 137 209);                 // #0A89D1
   --max-width: 90rem;
   --min-width: 22.5rem;
   --font-size: 16px;
@@ -39,23 +39,7 @@
   --typography-regular: 400;
   --typography-bold: 700;
   --gap-default: 0.5rem;
-  --gap-2: 0.125rem;
-  --gap-4: 0.25rem;
-  --gap-6: 0.375rem;
-  --gap-8: 0.5rem;
-  --gap-12: 0.75rem;
-  --gap-16: 1rem;
-  --gap-24: 1.5rem;
-  --gap-32: 2rem;
-  --gap-40: 2.5rem;
-  --gap-62: 3.875rem;
   --border-radius-default: 0.5rem;
-  --border-radius-2: 0.125rem;
-  --border-radius-4: 0.25rem;
-  --border-radius-6: 0.375rem;
-  --border-radius-8: 0.5rem;
-  --border-radius-10: 0.625rem;
-  --border-radius-16: 1rem;
   --border-radius-full: 62.5rem;
   --box-shadow-default: 0 0 0.25rem 0 rgb(0 0 0 / 32%), 0 0.375rem 0.5rem 0 rgb(0 0 0 / 20%);
   --header-height: 4.375rem;
@@ -75,7 +59,7 @@
 html {
   padding-block-start: var(--tg-safe-top);
   height: 100%;
-  background-color: rgb(var(--bg));
+  background-color: var(--bg);
   overflow: hidden;
 }
 
@@ -83,7 +67,7 @@ body {
   @include scroll-y;
 
   margin: 0;
-  padding-inline: var(--gap-16);
+  padding-inline: rem(16px);
   min-width: var(--min-width);
   height: calc(100lvh - var(--tg-safe-top));
   overflow-x: hidden;
@@ -91,7 +75,7 @@ body {
   font-size: var(--font-size);
   font-weight: var(--typography-regular);
   line-height: var(--line-height);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
   scroll-behavior: smooth;
   text-size-adjust: 100%;
   scrollbar-gutter: stable;
@@ -109,8 +93,8 @@ input {
   &:is(:-webkit-autofill, :autofill):focus,
   &:is(:-webkit-autofill, :autofill):active {
     background-color: transparent!important;
-    box-shadow: 0 0 0 rem(30px) rgb(var(--material-hover)) inset !important;
-    -webkit-text-fill-color: rgb(var(--text-for-material));
+    box-shadow: 0 0 0 rem(30px) var(--material-hover) inset !important;
+    -webkit-text-fill-color: var(--text-for-material);
     background-clip: text;
   }
 
@@ -132,7 +116,7 @@ input {
   &::-webkit-datetime-edit-day-field,
   &::-webkit-datetime-edit-year-field {
     opacity: 1 !important;
-    color: rgb(var(--text-for-material)) !important;
+    color: var(--text-for-material) !important;
   }
 
   &[type='datetime-local'],
@@ -222,11 +206,11 @@ textarea {
   caret-color: currentcolor;
 
   &::placeholder {
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 
   &:-webkit-autofill {
-    caret-color: rgb(var(--text-for-material))!important;
+    caret-color: var(--text-for-material)!important;
   }
 }
 
@@ -247,12 +231,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-family-alt);
+  font-family: var(--font-family-alt), sans-serif;
   font-weight: var(--typography-regular);
   text-transform: uppercase;
   font-optical-sizing: auto;
   font-style: normal;
-  filter: drop-shadow(rem(1px) rem(2px) 0 rgb(var(--material-hover)));
+  filter: drop-shadow(rem(1px) rem(2px) 0 var(--material-hover));
 }
 
 h1 {
@@ -281,16 +265,16 @@ h6 {
 
 main {
   display: grid;
-  gap: var(--gap-16);
+  gap: rem(16px);
   position: relative;
   margin-inline: auto;
-  padding-block: var(--gap-16);
+  padding-block: rem(16px);
   width: 100%;
   max-width: var(--max-width);
   min-height: calc(var(--screen-height, 100lvh) - var(--header-height));
 
   @include desk-s {
-    padding-block-end: var(--gap-62);
+    padding-block-end: rem(62px);
     grid-template-columns: rem(240px) 1fr;
   }
 }

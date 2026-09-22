@@ -6,7 +6,7 @@
 
   position: fixed;
   inset: var(--tg-safe-top) 0 0 0;
-  background-color: rgb(var(--bg));
+  background-color: var(--bg);
 }
 
 .header {
@@ -14,7 +14,7 @@
   position: relative;
   width: 100%;
   height: var(--header-height);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   z-index: $z-index-2;
 }
 
@@ -31,13 +31,13 @@
 .container {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: var(--gap-16);
+  gap: rem(16px);
   margin-inline: auto;
   padding-inline: var(--gap-default);
   height: 100%;
 
   @include tab-s {
-    padding-inline: var(--gap-16);
+    padding-inline: rem(16px);
   }
 }
 
@@ -73,18 +73,18 @@
 
 .login {
   flex-shrink: 0;
-  padding: var(--gap-24);
-  border-radius: var(--border-radius-16);
+  padding: rem(24px);
+  border-radius: rem(16px);
   width: 100%;
   max-width: rem(560px);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
 }
 
 .subtitle {
-  margin-block-end: var(--gap-16);
+  margin-block-end: rem(16px);
   text-align: center;
   text-transform: uppercase;
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 }
 
 .logo {

@@ -24,7 +24,9 @@ const Section = ({ data, meta }) => {
             className={
               clsx(
                 style.content,
-                !toggle && style.collapsed
+                {
+                  [style.collapsed]: !toggle
+                }
               )
             }
           >

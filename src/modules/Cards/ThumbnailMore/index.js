@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 
 import { Link } from '@/i18n/navigation'
@@ -13,14 +14,20 @@ const ThumbnailMore = ({ url }) => {
     <Link
       href={url}
       className={style.block}
-      style={{
-        backgroundImage: 'url(/images/thumbnail_more_games_2x3.webp)',
-      }}
       aria-label={t('more_games')}
       prefetch={false}
     >
-      <Icon name={'navigation-add-alt'} />
-      <p>{t('more_games')}</p>
+      <Image
+        className={style.image}
+        src="/images/thumbnail_more.webp"
+        alt={t('more_games')}
+        decoding="async"
+        sizes="250px"
+        priority
+        fill
+      />
+      <Icon name={'navigation-add-alt'} classes={[style.icon]} />
+      <p className={style.text}>{t('more_games')}</p>
     </Link>
   )
 }

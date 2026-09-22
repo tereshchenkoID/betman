@@ -10,17 +10,17 @@
   position: relative;
   min-height: rem(44px);
   overflow-y: hidden;
-  mask-image: linear-gradient(90deg, rgb(var(--black)) calc(100% - rem(44px)), transparent);
+  mask-image: linear-gradient(90deg, var(--black) calc(100% - rem(44px)), transparent);
   font-size: rem(14px);
 }
 
 .option {
   display: inline-flex;
   align-items: center;
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: relative;
-  padding: var(--gap-6) var(--gap-default);
-  border-radius: var(--border-radius-6);
+  padding: rem(6px) var(--gap-default);
+  border-radius: rem(6px);
   min-width: max-content;
   height: rem(28px);
   background-color: transparent;
@@ -49,7 +49,7 @@
     inset-inline: 0;
     margin-inline: auto;
     border-radius: var(--border-radius-full);
-    background-color: rgb(var(--link));
+    background-color: var(--link);
     z-index: $z-index-1;
   }
 
@@ -61,7 +61,7 @@
 
   &.active {
     pointer-events: none;
-    color: rgb(var(--text-for-primary));
+    color: var(--text-for-primary);
 
     &::after {
       width: 100%;

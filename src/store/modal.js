@@ -26,10 +26,6 @@ export const useModalStore = create((set, get) => ({
       (m) => m.name === name && m.title === title
     )
 
-    // const isOpened = get().modals.some(
-    //   (m) => m.name === name && m.title === title && title !== ''
-    // )
-
     if (isOpened) return
 
     const id = window.crypto?.randomUUID

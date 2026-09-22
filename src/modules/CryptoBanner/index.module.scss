@@ -1,6 +1,6 @@
 .block {
-  margin-block-end: var(--gap-12);
-  border-radius: var(--border-radius-6);
+  margin-block-end: rem(12px);
+  border-radius: rem(6px);
   width: 100%;
   overflow: hidden;
 }

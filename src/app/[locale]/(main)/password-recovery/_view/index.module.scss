@@ -1,11 +1,11 @@
 .form {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
   margin-inline: auto;
-  padding: var(--gap-24);
-  border-radius: var(--border-radius-16);
+  padding: rem(24px);
+  border-radius: rem(16px);
   width: 100%;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
   text-align: center;
 
@@ -20,13 +20,13 @@
 
 .container {
   display: grid;
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .link {
   @include flex($justify-content: center, $wrap: wrap);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   font-size: rem(14px);
 }
 

@@ -11,8 +11,8 @@
 .header {
   @include flex(space-between, center);
 
-  gap: var(--gap-4);
-  margin-block-end: var(--gap-4);
+  gap: rem(4px);
+  margin-block-end: rem(4px);
   font-size: rem(12px);
 }
 
@@ -20,8 +20,8 @@
   @include size(100%, rem(8px));
 
   position: relative;
-  border-radius: var(--border-radius-2);
-  background-color: rgb(var(--material));
+  border-radius: rem(2px);
+  background-color: var(--material);
   overflow: hidden;
 }
 
@@ -29,5 +29,5 @@
   position: absolute;
   inset-block: 0;
   inset-inline-start: 0;
-  background-color: rgb(var(--link));
+  background-color: var(--link);
 }

@@ -2,9 +2,9 @@
   @include size(rem(8px));
 
   display: inline-flex;
-  border: rem(1px) solid rgb(var(--material));
+  border: rem(1px) solid var(--material);
   border-radius: 50%;
-  background-color: rgb(var(--notification-color));
+  background-color: var(--notification-color);
 
   &-1 {
     --notification-color: var(--red);

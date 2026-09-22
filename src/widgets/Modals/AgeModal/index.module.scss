@@ -1,17 +1,17 @@
 .block {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
   text-align: center;
 }
 
 .container {
   display: grid;
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .link {
   @include flex(center, $wrap: wrap);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   font-size: rem(14px);
 }

@@ -16,19 +16,19 @@
   }
 
   &.md {
-    padding-inline: var(--gap-6);
+    padding-inline: rem(6px);
     height: rem(16px);
     font-size: rem(10px);
   }
 
   &.sm {
-    padding-inline: var(--gap-4);
+    padding-inline: rem(4px);
     height: rem(12px);
     font-size: rem(8px);
   }
 
   &.primary {
-    background-color: rgb(var(--brand));
+    background-color: var(--brand);
   }
 
   &.secondary {

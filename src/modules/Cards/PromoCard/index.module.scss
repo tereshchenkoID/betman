@@ -16,7 +16,7 @@
   position: relative;
   border-radius: var(--border-radius-default);
   height: 100%;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
 }
 
@@ -36,15 +36,15 @@
 .content {
   @include flex(flex-end, null, column);
 
-  gap: var(--gap-2);
-  padding: var(--gap-12);
-  background-color: rgb(var(--material));
+  gap: rem(2px);
+  padding: rem(12px);
+  background-color: var(--material);
 }
 
 .badges {
   @include flex(flex-end, null, null,  wrap);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: absolute;
   inset-block-start: 0;
   inset-inline: 0;

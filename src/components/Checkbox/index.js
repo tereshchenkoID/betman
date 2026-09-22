@@ -44,7 +44,7 @@ const Checkbox = ({
             [style.disabled]: isDisabled,
             [style.error]: showError,
           },
-          classes?.map((el) => style[el] || el)
+          classes?.map(el => style[el] || el)
         )
       }
       {...rest}

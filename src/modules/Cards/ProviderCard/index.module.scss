@@ -2,16 +2,16 @@
   @include flex(center, center);
 
   gap: var(--gap-default);
-  padding: var(--gap-default) var(--gap-16);
+  padding: var(--gap-default) rem(16px);
   border: rem(1px) solid var(--primary-hover);
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
   overflow: hidden;
   font-size: rem(14px);
 
   @include hover {
     &:hover {
-      background-color: rgb(var(--material-hover));
+      background-color: var(--material-hover);
     }
   }
 
@@ -36,5 +36,5 @@
 }
 
 .count {
-  color: rgb(var(--link));
+  color: var(--link);
 }

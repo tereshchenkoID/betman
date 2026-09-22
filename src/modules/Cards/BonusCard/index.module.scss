@@ -1,8 +1,8 @@
 .block {
   position: relative;
-  padding: var(--gap-12);
+  padding: rem(12px);
   border-radius: var(--border-radius-default);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
   font-size: rem(14px);
 }
@@ -19,7 +19,7 @@
 
 .content {
   display: grid;
-  gap: var(--gap-default) var(--gap-16);
+  gap: var(--gap-default) rem(16px);
   margin-block-end: var(--gap-default);
 }
 
@@ -46,6 +46,6 @@
   @include flex(space-between, center);
 
   span {
-    color: rgb(var(--red));
+    color: var(--red);
   }
 }

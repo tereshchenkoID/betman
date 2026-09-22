@@ -4,7 +4,7 @@
   overflow: hidden;
 
   * {
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 
   h1,
@@ -13,7 +13,7 @@
   h4,
   h5,
   h6 {
-    margin-block-end: var(--gap-4);
+    margin-block-end: rem(4px);
     text-transform: unset;
   }
 
@@ -27,7 +27,7 @@
   }
 
   img {
-    margin-block-end: var(--gap-12);
+    margin-block-end: rem(12px);
     width: revert-layer;
     max-width: 100%;
     height: revert-layer;
@@ -40,7 +40,7 @@
 
   li {
     position: relative;
-    padding-inline-start: var(--gap-12);
+    padding-inline-start: rem(12px);
 
     &::before {
       @include size(rem(4px));
@@ -49,7 +49,7 @@
       inset-block-start: 0.5lh;
       inset-inline-start: 0;
       border-radius: 50%;
-      background-color: rgb(var(--link));
+      background-color: var(--link);
       transform: translateY(-50%);
       content: '';
     }
@@ -58,11 +58,11 @@
   a {
     display: initial;
     text-decoration: underline;
-    color: rgb(var(--link));
+    color: var(--link);
 
     @include hover {
       &:hover {
-        color: rgb(var(--link-hover));
+        color: var(--link-hover);
       }
     }
   }

@@ -2,7 +2,7 @@
   position: relative;
   border-radius: var(--border-radius-default);
   min-height: rem(150px);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
 }
 
@@ -11,9 +11,9 @@
 
   display: grid;
   align-items: center;
-  gap: var(--gap-32);
+  gap: rem(32px);
   position: relative;
-  padding: var(--gap-16);
+  padding: rem(16px);
   background-color: inherit;
 
   @include tab-s {
@@ -34,7 +34,7 @@
 .content {
   @include flex(space-between, center, column);
 
-  gap: var(--gap-2);
+  gap: rem(2px);
   order: 2;
   text-align: center;
 
@@ -48,12 +48,12 @@
 .button {
   @include transition;
 
-  margin-block-start: var(--gap-12);
+  margin-block-start: rem(12px);
   min-width: rem(120px);
 }
 
 .subtitle {
-  color: rgb(var(--yellow));
+  color: var(--yellow);
 
   @include tab-s {
     font-size: rem(32px);

@@ -113,8 +113,10 @@ const Section = () => {
                   clsx(
                     style.level,
                     style[`level-${cardLevel}`],
-                    isPassed && style.passed,
-                    isActive && style.active
+                    {
+                      [style.passed]: isPassed,
+                      [style.active]: isActive
+                    }
                   )
                 }
               >

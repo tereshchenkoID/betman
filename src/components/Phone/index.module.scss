@@ -24,14 +24,14 @@
   &.focused {
     .wrapper {
       background-color: var(--primary);
-      border-bottom-color: rgb(var(--link));
+      border-bottom-color: var(--link);
     }
   }
 
   &.error {
     .label,
     .field {
-      color: rgb(var(--red));
+      color: var(--red);
 
       &::placeholder {
         color: inherit;
@@ -39,7 +39,7 @@
     }
 
     .wrapper {
-      border-bottom-color: rgb(var(--red));
+      border-bottom-color: var(--red);
     }
   }
 }
@@ -49,7 +49,7 @@
 
   display: grid;
   grid-template-columns: auto 1fr;
-  border-radius: var(--border-radius-6);
+  border-radius: rem(6px);
   background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
   overflow: hidden;
@@ -60,7 +60,7 @@
 }
 
 .field {
-  padding-inline: var(--gap-12);
+  padding-inline: rem(12px);
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
   border: 0;
@@ -86,7 +86,7 @@
 .dropdown {
   @include scroll-y;
 
-  --react-international-phone-dropdown-item-dial-code-color: rgb(var(--link));
+  --react-international-phone-dropdown-item-dial-code-color: var(--link);
   --react-international-phone-dropdown-item-font-size: 14px;
   --react-international-phone-selected-dropdown-item-background-color: var(--primary);
   --react-international-phone-dropdown-preferred-list-divider-margin: var(--gap-default) 0;
@@ -97,9 +97,9 @@
 
   padding: 0;
   outline: 0;
-  border-radius: var(--border-radius-10);
+  border-radius: rem(10px);
   width: 100%;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   box-shadow: var(--box-shadow-default);
 
   li {
@@ -115,13 +115,13 @@
     width: 100%;
     background-color: transparent;
     text-align: start;
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 
   img {
     @include size(rem(24px));
 
-    margin-inline: var(--gap-4) var(--gap-12);
+    margin-inline: rem(4px) rem(12px);
   }
 }
 
@@ -130,23 +130,23 @@
 
   position: absolute;
   inset-block-start: rem(-8px);
-  inset-inline-start: var(--gap-12);
+  inset-inline-start: rem(12px);
   z-index: $z-index-1;
   font-size: rem(10px);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
   pointer-events: none;
 
   span {
-    margin-inline-start: var(--gap-4);
-    color: rgb(var(--red));
+    margin-inline-start: rem(4px);
+    color: var(--red);
   }
 }
 
 .message {
-  margin-block-start: var(--gap-2);
+  margin-block-start: rem(2px);
   font-size: rem(12px);
   text-align: left;
-  color: rgb(var(--red));
+  color: var(--red);
 }
 
 .skeleton {

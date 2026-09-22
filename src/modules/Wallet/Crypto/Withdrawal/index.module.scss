@@ -1,12 +1,12 @@
 .block {
   display: grid;
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .actions {
   @include flex(flex-end);
 
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .row {

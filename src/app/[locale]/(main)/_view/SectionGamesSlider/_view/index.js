@@ -100,7 +100,9 @@ const Section = ({
         className={
           clsx(
             style.block,
-            mock?.isNumeric === '1' && style.numeric
+            {
+              [style.numeric]: mock?.isNumeric === '1'
+            }
           )
         }
         slideClassName={style.slide}

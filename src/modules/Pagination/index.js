@@ -64,7 +64,7 @@ const Pagination = ({ meta, classes = [] }) => {
       className={
         clsx(
           style.block,
-          classes?.map((el) => style[el] || el)
+          classes?.map(el => style[el] || el)
         )
       }
     >

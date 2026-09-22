@@ -7,8 +7,6 @@ import { getMessages } from 'next-intl/server'
 import NextTopLoader from 'nextjs-toploader'
 import { GoogleTagManager } from '@next/third-parties/google'
 import clsx from 'clsx'
-import * as fs from 'node:fs'
-import path from 'path'
 
 import { getCachedUser, getFavorites, getSettings } from '@/app/actions/static'
 
@@ -18,6 +16,7 @@ import { WebSocketProvider } from '@/context/WebSocketContext'
 
 import ScrollToTop from '@/modules/ScrollToTop'
 import SessionHandler from '@/modules/SessionHandler'
+import Sprite from '@/modules/Sprite'
 import Telegram from '@/modules/Telegram'
 import WSUpdater from '@/modules/WSUpdater'
 import Modals from '@/widgets/Modals/Modals'
@@ -61,9 +60,6 @@ export const metadata = {
   },
 }
 
-const spritePath = path.resolve(process.cwd(), 'public/images/iconography.svg')
-const svgSpriteContent = fs.readFileSync(spritePath, 'utf8')
-
 export default async function RootLayout({ children, params }) {
   preload('/images/logo/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
   preconnect('https://www.googletagmanager.com')
@@ -93,50 +89,47 @@ export default async function RootLayout({ children, params }) {
         )
       }
     >
-    <Script
-      src="https://telegram.org/js/telegram-web-app.js"
-      strategy="beforeInteractive"
-    />
-    <NextIntlClientProvider
-      messages={messages}
-      locale={locale}
-    >
-      <div
-        style={{ display: 'none' }}
-        dangerouslySetInnerHTML={{ __html: svgSpriteContent }}
+      <Script
+        src="https://telegram.org/js/telegram-web-app.js"
+        strategy="beforeInteractive"
       />
-      <Telegram auth={user} />
-      <Suspense fallback={null}>
-        <SessionHandler />
-      </Suspense>
-      <UserStoreProvider user={user}>
-        <FavoritesProvider
-          user={user}
-          data={favorites?.data}
-          meta={favorites?.meta}
-        >
-          <NextTopLoader
-            color="#0490A8"
-            crawlSpeed={400}
-            height={4}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            shadow="none"
-            zIndex={14}
-          />
-            <WebSocketProvider user={user}>
-              {children}
-              <WSUpdater settings={settings} />
-            </WebSocketProvider>
-          <Modals />
-          <Toastify />
-        </FavoritesProvider>
-      </UserStoreProvider>
-      <Suspense fallback={null}>
-        <ScrollToTop />
-      </Suspense>
-    </NextIntlClientProvider>
+      <NextIntlClientProvider
+        messages={messages}
+        locale={locale}
+      >
+        <Telegram auth={user} />
+        <Suspense fallback={null}>
+          <SessionHandler />
+        </Suspense>
+        <UserStoreProvider user={user}>
+          <FavoritesProvider
+            user={user}
+            data={favorites?.data}
+            meta={favorites?.meta}
+          >
+            <NextTopLoader
+              color="#0490A8"
+              crawlSpeed={400}
+              height={4}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              shadow="none"
+              zIndex={14}
+            />
+              <WebSocketProvider user={user}>
+                {children}
+                <WSUpdater settings={settings} />
+              </WebSocketProvider>
+            <Modals />
+            <Toastify />
+          </FavoritesProvider>
+        </UserStoreProvider>
+        <Suspense fallback={null}>
+          <ScrollToTop />
+        </Suspense>
+        <Sprite/>
+      </NextIntlClientProvider>
     </body>
     </html>
   )

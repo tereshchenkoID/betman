@@ -17,13 +17,13 @@
 .verify {
   @include flex(null, center);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
 }
 
 .container {
   display: grid;
   align-items: flex-start;
-  gap: var(--gap-32);
+  gap: rem(32px);
 
   @include desk-s {
     grid-template-columns: rem(460px) 1fr;
@@ -32,7 +32,7 @@
 
 .grid {
   display: grid;
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .row {
@@ -55,14 +55,14 @@
 }
 
 .verify {
-  padding-top: var(--gap-12);
+  padding-top: rem(12px);
   font-size: rem(13px);
-  color: rgb(var(--green));
+  color: var(--green);
 }
 
 .content {
   display: grid;
-  gap: var(--gap-4);
+  gap: rem(4px);
 }
 
 .label {
@@ -72,5 +72,5 @@
 .actions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap-12);
+  gap: rem(12px);
 }

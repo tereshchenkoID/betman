@@ -1,6 +1,6 @@
 .block {
   display: grid;
-  gap: var(--gap-16);
+  gap: rem(16px);
 }
 
 .content {
@@ -8,11 +8,11 @@
   justify-items: center;
   position: relative;
   margin-inline: auto;
-  padding: rem(80px) var(--gap-32) rem(40px);
-  border-radius: var(--border-radius-10);
+  padding: rem(80px) rem(32px) rem(40px);
+  border-radius: rem(10px);
   width: 100%;
   min-height: rem(400px);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
 }
 

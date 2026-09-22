@@ -29,8 +29,10 @@ const Thumbnail = ({
       className={
         clsx(
           style.block,
-          isEmpty && style.empty,
-          isNumeric && style.numeric
+          {
+            [style.empty]: isEmpty,
+            [style.numeric]: isNumeric
+          }
         )
       }
       aria-label={title}

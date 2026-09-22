@@ -8,7 +8,7 @@
 
   @include tab-s {
     align-items: center;
-    padding: calc(var(--tg-safe-top) + var(--gap-16)) var(--gap-16);
+    padding: calc(var(--tg-safe-top) + rem(16px)) rem(16px);
   }
 
   &.sm {
@@ -70,13 +70,13 @@
 
   flex-shrink: 0;
   position: relative;
-  padding: var(--gap-16) rem(50px);
+  padding: rem(16px) rem(50px);
 }
 
 .title {
   text-align: center;
   text-transform: uppercase;
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 }
 
 .shadow {
@@ -89,17 +89,17 @@
 .content {
   @include flex;
 
-  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
+  border-radius: rem(16px) rem(16px) 0 0;
   width: 100%;
   min-width: rem(320px);
   max-height: 100%;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
   z-index: $z-index-1;
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 
   @include tab-s {
-    border-radius: var(--border-radius-16);
+    border-radius: rem(16px);
     min-width: rem(400px);
   }
 }
@@ -112,11 +112,11 @@
 
 .close {
   position: absolute;
-  inset-inline-end: var(--gap-12);
+  inset-inline-end: rem(12px);
 }
 
 .body {
   @include scroll-y;
 
-  padding: var(--gap-12) var(--gap-24) var(--gap-24);
+  padding: rem(12px) rem(24px) rem(24px);
 }

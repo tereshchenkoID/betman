@@ -11,7 +11,7 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: rgb(var(--text-for-material));
+      color: var(--text-for-material);
     }
   }
 
@@ -29,17 +29,17 @@
   &.active {
     .selected {
       background-color: var(--primary);
-      border-bottom-color: rgb(var(--link));
+      border-bottom-color: var(--link);
     }
   }
 
   &.error {
     .label {
-      color: rgb(var(--red));
+      color: var(--red);
     }
 
     .selected {
-      border-bottom-color: rgb(var(--red));
+      border-bottom-color: var(--red);
     }
   }
 
@@ -47,7 +47,7 @@
     @include hover {
       &:hover {
         .selected {
-          border-bottom-color: rgb(var(--link));
+          border-bottom-color: var(--link);
         }
       }
     }
@@ -58,15 +58,15 @@
   @include transition;
 
   position: absolute;
-  inset-block-start: var(--gap-16);
-  inset-inline-start: var(--gap-12);
+  inset-block-start: rem(16px);
+  inset-inline-start: rem(12px);
   pointer-events: none;
   font-size: rem(14px);
   color: var(--sub-text);
 
   span {
-    margin-inline-start: var(--gap-4);
-    color: rgb(var(--red));
+    margin-inline-start: rem(4px);
+    color: var(--red);
   }
 }
 
@@ -74,15 +74,15 @@
   @include size(100%, rem(48px));
   @include flex(space-between, center);
 
-  padding-block-start: var(--gap-2);
-  padding-inline: var(--gap-12);
-  border-radius: var(--border-radius-6);
+  padding-block-start: rem(2px);
+  padding-inline: rem(12px);
+  border-radius: rem(6px);
   background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
   white-space: nowrap;
 
   svg {
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 }
 
@@ -90,8 +90,8 @@
   position: absolute;
   inset-block-start: calc(100% + var(--gap-default));
   inset-inline: 0;
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-1;
 }
@@ -101,12 +101,12 @@
 
   padding: var(--gap-default);
   font-size: rem(14px);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
   border-bottom: rem(1px) solid var(--primary-hover);
 
   &.current {
     span {
-      color: rgb(var(--link));
+      color: var(--link);
     }
   }
 
@@ -127,7 +127,7 @@
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: var(--gap-2);
+  gap: rem(2px);
   padding: var(--gap-default);
 }
 
@@ -138,11 +138,11 @@
 .day {
   @include flex(center, center);
 
-  border-radius: var(--border-radius-4);
+  border-radius: rem(4px);
   height: rem(32px);
   transition: background-color 0.15s ease;
   font-size: rem(13px);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
   cursor: pointer;
 
   @include hover {
@@ -156,10 +156,10 @@
   }
 
   &.active {
-    background-color: rgb(var(--link));
+    background-color: var(--link);
   }
 
   &.today {
-    border: rem(1px) solid rgb(var(--link));
+    border: rem(1px) solid var(--link);
   }
 }

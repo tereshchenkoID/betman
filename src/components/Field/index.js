@@ -83,7 +83,7 @@ const Field = forwardRef(({
             [style.password]: visibility,
             [style.error]: showError,
           },
-          classes?.map((el) => style[el] || el)
+          classes?.map(el => style[el] || el)
         )
       }
     >

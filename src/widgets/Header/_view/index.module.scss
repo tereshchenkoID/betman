@@ -3,7 +3,7 @@
   inset-block-start: 0;
   margin-inline: rem(-16px);
   height: var(--header-height);
-  background-image: linear-gradient(180deg, rgb(var(--material)) 0%, rgb(var(--bg)) 88%);
+  background-image: linear-gradient(180deg, var(--material) 0%, var(--bg) 88%);
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-9;
 
@@ -18,10 +18,10 @@
 .container {
   @include flex(space-between, center);
 
-  gap: var(--gap-24);
+  gap: rem(24px);
   position: relative;
   margin-inline: auto;
-  padding: var(--gap-2) var(--gap-16);
+  padding: rem(2px) rem(16px);
   max-width: var(--max-width);
   height: 100%;
 
@@ -37,7 +37,7 @@
 .wrapper {
   @include flex;
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: relative;
 
   @include tab-s {
@@ -62,7 +62,7 @@
 .balance {
   @include flex(null, center);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   overflow: hidden;
   font-size: rem(14px);
   line-height: 1;
@@ -84,8 +84,8 @@
   position: fixed;
   inset-block-end: var(--aside-height);
   inset-inline: 0;
-  padding: var(--gap-12) var(--gap-16);
-  background-color: rgb(var(--bg));
+  padding: rem(12px) rem(16px);
+  background-color: var(--bg);
   border-bottom: rem(1px) solid var(--tertiary-disabled);
 
   @include desk-s {

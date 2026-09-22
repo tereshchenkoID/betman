@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+@function color-alpha($color, $opacity) {
+  $percentage: $opacity;
+
+  @if math.unit($opacity) != '%' {
+    $percentage: $opacity * 100%;
+  }
+
+  @return color-mix(in srgb, #{$color} #{$percentage}, transparent);
+}

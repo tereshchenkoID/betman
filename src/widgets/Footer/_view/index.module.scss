@@ -3,8 +3,8 @@
   position: relative;
   margin-inline: rem(-16px);
   padding-block-end: var(--aside-height);
-  border-radius: var(--border-radius-16) var(--border-radius-16) 0 0;
-  background-color: rgb(var(--material-hover));
+  border-radius: rem(16px) rem(16px) 0 0;
+  background-color: var(--material-hover);
   font-size: rem(14px);
   color: var(--text-for-material-disabled);
 
@@ -24,14 +24,14 @@
 
 .container {
   margin-inline: auto;
-  padding: var(--gap-24) var(--gap-16);
+  padding: rem(24px) rem(16px);
   width: 100%;
   max-width: var(--max-width);
 }
 
 .top {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
 
   @include tab-s {
     grid-template-columns: repeat(2, 1fr);
@@ -52,7 +52,7 @@
   display: grid;
   align-content: flex-start;
   gap: var(--gap-default);
-  margin-block-start: var(--gap-12);
+  margin-block-start: rem(12px);
 
   @include mob-m {
     grid-template-columns: repeat(2, 1fr);
@@ -68,15 +68,15 @@
 }
 
 .divider {
-  margin-block: var(--gap-24);
+  margin-block: rem(24px);
 }
 
 .bottom {
   display: grid;
   justify-items: flex-start;
-  gap: var(--gap-16);
+  gap: rem(16px);
   position: relative;
-  padding-inline-end: var(--gap-40);
+  padding-inline-end: rem(40px);
 }
 
 .up {
@@ -92,13 +92,13 @@
 .socials {
   @include flex(null, center);
 
-  gap: var(--gap-24);
+  gap: rem(24px);
 }
 
 .social {
   @include hover {
     &:hover {
-      color: rgb(var(--text-for-material));
+      color: var(--text-for-material);
     }
   }
 }

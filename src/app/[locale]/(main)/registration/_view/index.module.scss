@@ -1,11 +1,11 @@
 .form {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
   margin-inline: auto;
-  padding: var(--gap-24);
-  border-radius: var(--border-radius-16);
+  padding: rem(24px);
+  border-radius: rem(16px);
   width: 100%;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
   text-align: center;
 
@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: repeat(2, rem(24px));
   justify-content: center;
-  gap: var(--gap-40);
+  gap: rem(40px);
 }
 
 .step {
@@ -31,9 +31,9 @@
 
   position: relative;
   border-radius: 50%;
-  background-color: rgb(var(--material-hover));
+  background-color: var(--material-hover);
   font-size: rem(14px);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 
   &:not(:last-child) {
     &::after {
@@ -42,32 +42,32 @@
       position: absolute;
       inset-block-start: 50%;
       inset-inline-start: calc(100% + rem(4px));
-      border-radius: var(--border-radius-4);
-      background-color: rgb(var(--material-hover));
+      border-radius: rem(4px);
+      background-color: var(--material-hover);
       transform: translateY(0);
       content: '';
     }
   }
 
   &.active {
-    background-color: rgb(var(--brand));
+    background-color: var(--brand);
   }
 
   &.completed {
     background-color: transparent;
-    color: rgb(var(--green));
+    color: var(--green);
   }
 }
 
 .container {
   display: grid;
-  gap: var(--gap-12);
+  gap: rem(12px);
 }
 
 .link {
   @include flex($justify-content: center, $wrap: wrap);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   font-size: rem(14px);
 }
 

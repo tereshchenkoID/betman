@@ -12,8 +12,8 @@
   inset-inline-end: 0;
   padding: var(--gap-default);
   border: rem(1px) solid var(--tertiary-disabled);
-  border-radius: var(--border-radius-6);
-  background-color: rgb(var(--material));
+  border-radius: rem(6px);
+  background-color: var(--material);
 }
 
 .toggle,

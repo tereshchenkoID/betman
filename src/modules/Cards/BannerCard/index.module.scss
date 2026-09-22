@@ -3,7 +3,7 @@
 
   position: relative;
   border-radius: var(--border-radius-default);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
 
   @include hover {
@@ -34,9 +34,9 @@
   @include flex($direction: column);
   @include size(50%, 100%);
 
-  gap: var(--gap-2);
+  gap: rem(2px);
   position: relative;
-  padding: var(--gap-12);
+  padding: rem(12px);
 }
 
 .button {
@@ -51,7 +51,7 @@
 .subtitle {
   font-size: rem(14px);
   font-weight: var(--typography-bold);
-  color: rgb(var(--yellow));
+  color: var(--yellow);
 }
 
 .description {

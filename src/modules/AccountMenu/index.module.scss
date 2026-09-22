@@ -7,13 +7,13 @@
   inset-block: calc(var(--tg-safe-top) + var(--header-height)) var(--aside-height);
   inset-inline: auto 0;
   max-height: calc(100svh - var(--tg-safe-top) - var(--header-height) - var(--aside-height));
-  background-color: rgb(var(--material));
+  background-color: var(--material);
 
   @include tab-s {
     @include size(rem(320px), auto);
 
     border: rem(1px) solid var(--tertiary-disabled);
-    border-radius: var(--border-radius-16);
+    border-radius: rem(16px);
     max-height: unset;
   }
 
@@ -26,14 +26,14 @@
 .top,
 .center,
 .bottom {
-  padding: var(--gap-12);
+  padding: rem(12px);
 }
 
 .top {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--gap-12);
+  gap: rem(12px);
   border-bottom: rem(1px) solid var(--tertiary-disabled);
 }
 
@@ -44,7 +44,7 @@
 
 .center {
   display: grid;
-  gap: var(--gap-16)
+  gap: rem(16px)
 }
 
 .avatar {
@@ -52,7 +52,7 @@
 
   position: relative;
   border-radius: 50%;
-  background-color: rgb(var(--material-hover));
+  background-color: var(--material-hover);
 
   img {
     border-radius: 50%;
@@ -66,7 +66,7 @@
 
 .container {
   border-radius: var(--border-radius-default);
-  background-color: rgb(var(--material-hover));
+  background-color: var(--material-hover);
   font-size: rem(13px);
 }
 
@@ -82,7 +82,7 @@
 
   @include hover {
     &:hover {
-      color: rgb(var(--link));
+      color: var(--link);
     }
   }
 }
@@ -107,15 +107,15 @@
   border-radius: inherit;
 
   &-1 {
-    --level-color: rgb(var(--red));
+    --level-color: var(--red);
   }
 
   &-2 {
-    --level-color: rgb(var(--amber));
+    --level-color: var(--amber);
   }
 
   &-3 {
-    --level-color: rgb(var(--green));
+    --level-color: var(--green);
   }
 
   span {
@@ -143,12 +143,12 @@
 .count {
   @include flex($align-items: baseline);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
 }
 
 .text {
   @include flex(null, center);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: relative;
 }

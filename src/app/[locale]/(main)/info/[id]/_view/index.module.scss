@@ -8,6 +8,6 @@
 
 .button {
   position: absolute;
-  inset-block-start: var(--gap-2);
+  inset-block-start: rem(2px);
   z-index: $z-index-1;
 }

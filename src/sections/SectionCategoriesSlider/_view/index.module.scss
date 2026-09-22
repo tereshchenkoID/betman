@@ -6,12 +6,12 @@
 .toggle {
   @include flex(null, center);
 
-  gap: var(--gap-6);
-  padding: var(--gap-default) var(--gap-16);
+  gap: rem(6px);
+  padding: var(--gap-default) rem(16px);
   border: rem(1px) solid var(--primary-hover);
   border-radius: var(--border-radius-full);
   height: rem(48px);
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   overflow: hidden;
   font-size: rem(14px);
   line-height: 1;
@@ -20,7 +20,7 @@
 
   @include hover {
     &:hover {
-      background-color: rgb(var(--material-hover));
+      background-color: var(--material-hover);
     }
   }
 }

@@ -8,22 +8,22 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: rgb(var(--text-for-material));
+      color: var(--text-for-material);
     }
 
     .input {
-      border-color: rgb(var(--link));
+      border-color: var(--link);
       background-color: var(--primary);
     }
   }
 
   &.error {
     .label {
-      color: rgb(var(--red));
+      color: var(--red);
     }
 
     .input {
-      border-color: rgb(var(--red));
+      border-color: var(--red);
     }
   }
 
@@ -37,7 +37,7 @@
     @include hover {
       &:hover {
         .input {
-          border-bottom-color: rgb(var(--link));
+          border-bottom-color: var(--link);
         }
       }
     }
@@ -55,14 +55,14 @@
 
   position: absolute;
   inset-block-start: rem(14px);
-  inset-inline-start: var(--gap-12);
+  inset-inline-start: rem(12px);
   pointer-events: none;
   font-size: rem(14px);
   color: var(--sub-text);
 
   span {
-    margin-inline-start: var(--gap-4);
-    color: rgb(var(--red));
+    margin-inline-start: rem(4px);
+    color: var(--red);
   }
 }
 
@@ -70,9 +70,9 @@
   @include transition(border-color);
   @include size(100%);
 
-  padding-inline: var(--gap-12) rem(48px);
+  padding-inline: rem(12px) rem(48px);
   border: 0;
-  border-radius: var(--border-radius-6);
+  border-radius: rem(6px);
   background-color: var(--primary-disabled);
   overflow: hidden;
   font-size: var(--font-size);
@@ -81,26 +81,26 @@
 }
 
 .message {
-  margin-block-start: var(--gap-2);
+  margin-block-start: rem(2px);
   font-size: rem(12px);
   text-align: left;
 
   &.error {
-    color: rgb(var(--red));
+    color: var(--red);
   }
 
   &.success {
-    color: rgb(var(--green));
+    color: var(--green);
   }
 }
 
 .options {
   @include flex;
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   position: absolute;
   inset-block: 0;
-  inset-inline-end: var(--gap-12);
+  inset-inline-end: rem(12px);
 }
 
 .clear,

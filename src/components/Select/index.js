@@ -70,16 +70,18 @@ const Select = ({
   return (
     <div
       ref={blockRef}
-      className={clsx(
-        style.block,
-        {
-          [style.disabled]: isDisabled,
-          [style.active]: toggle,
-          [style.chosen]: isChosen,
-          [style.error]: showError,
-        },
-        classes?.map((el) => style[el] || el)
-      )}
+      className={
+        clsx(
+          style.block,
+          {
+            [style.disabled]: isDisabled,
+            [style.active]: toggle,
+            [style.chosen]: isChosen,
+            [style.error]: showError,
+          },
+          classes?.map(el => style[el] || el)
+        )
+      }
     >
       <button
         type="button"

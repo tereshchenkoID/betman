@@ -7,7 +7,7 @@
 .button {
   position: relative;
   padding: rem(1px);
-  border-radius: var(--border-radius-16);
+  border-radius: rem(16px);
   width: 100%;
   text-align: start;
   white-space: nowrap;
@@ -21,7 +21,7 @@
   gap: rem(6px);
   position: relative;
   padding: rem(12px) rem(20px);
-  border-radius: var(--border-radius-16);
+  border-radius: rem(16px);
   height: rem(120px);
   background: no-repeat radial-gradient(circle 17px at -4px 50%, transparent 99.9%, var(--primary)) top left -1px / 50% 100%, no-repeat radial-gradient(circle 17px at calc(100% + 4px) 50%, transparent 99.9%, var(--primary)) top right -1px / calc(50% + 2px) 100%;
   z-index: $z-index-2;
@@ -74,6 +74,6 @@
   font-size: rem(50px);
   font-weight: var(--typography-bold);
   text-transform: uppercase;
-  color: rgb(var(--green));
+  color: var(--green);
   white-space: nowrap;
 }

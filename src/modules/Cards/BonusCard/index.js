@@ -72,7 +72,9 @@ const BonusCard = ({ data }) => {
       className={
         clsx(
           style.block,
-          enable === '0' && style.disabled
+          {
+            [style.disabled]: enable === '0'
+          }
         )
       }
     >

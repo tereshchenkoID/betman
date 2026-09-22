@@ -27,7 +27,9 @@ const Section = ({
       className={
         clsx(
           style.block,
-          !isAuth && style.auth
+          {
+            [style.auth]: !isAuth
+          }
         )
       }
     >

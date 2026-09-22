@@ -230,7 +230,9 @@ const Slider = forwardRef(({
               className={
                 clsx(
                   style.dot,
-                  currentSlide === idx && style.active
+                  {
+                    [style.active]: currentSlide === idx
+                  }
                 )
               }
             />

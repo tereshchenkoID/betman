@@ -174,8 +174,10 @@ const Section = ({ countries }) => {
                 className={
                   clsx(
                     style.step,
-                    step === idx && style.active,
-                    step > idx && style.completed
+                    {
+                      [style.active]: step === idx,
+                      [style.completed]: step > idx
+                    }
                   )
                 }
               >

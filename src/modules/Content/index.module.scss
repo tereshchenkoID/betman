@@ -1,6 +1,6 @@
 .block {
   display: grid;
   align-content: flex-start;
-  gap: var(--gap-16);
+  gap: rem(16px);
   position: relative;
 }

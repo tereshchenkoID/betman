@@ -2,15 +2,15 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--gap-12);
-  padding: var(--gap-default) var(--gap-12);
+  gap: rem(12px);
+  padding: var(--gap-default) rem(12px);
   border: rem(1px) solid var(--primary-hover);
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
 
   @include hover {
     &:hover {
-      background-color: rgb(var(--material-hover));
+      background-color: var(--material-hover);
 
       .image {
         transform: scale(1.1);

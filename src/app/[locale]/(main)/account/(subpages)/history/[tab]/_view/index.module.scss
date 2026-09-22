@@ -1,6 +1,6 @@
 .section {
   display: grid;
-  gap: var(--gap-16);
+  gap: rem(16px);
   min-height: rem(200px);
 }
 
@@ -11,8 +11,8 @@
 .footer {
   @include flex(space-between, center, column-reverse, wrap);
 
-  gap: var(--gap-16);
-  margin-block-start: var(--gap-16);
+  gap: rem(16px);
+  margin-block-start: rem(16px);
 
   @include mob-m {
     flex-direction: row;

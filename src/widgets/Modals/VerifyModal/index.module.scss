@@ -1,5 +1,5 @@
 .block {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
   text-align: center;
 }

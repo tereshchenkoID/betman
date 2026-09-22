@@ -4,8 +4,8 @@
   position: relative;
   aspect-ratio: 1 / 1.12;
   border: rem(1px) solid var(--primary);
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
   overflow: hidden;
 }
 

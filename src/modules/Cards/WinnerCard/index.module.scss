@@ -5,8 +5,8 @@
   flex-shrink: 0;
   grid-template-columns: 1fr rem(88px);
   position: relative;
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
   overflow: hidden;
 
   @include hover {
@@ -31,7 +31,7 @@
 .info,
 .hidden {
   position: relative;
-  padding: var(--gap-16);
+  padding: rem(16px);
 }
 
 .info {
@@ -45,7 +45,7 @@
 
   position: absolute;
   inset: 0;
-  background-color: rgb(var(--material));
+  background-color: var(--material);
   transform: translateX(100%);
 }
 
@@ -62,7 +62,7 @@
 .winnings {
   @include flex(null, baseline);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
   margin-block-end: var(--gap-default);
 }
 
@@ -71,13 +71,13 @@
   color: var(--sub-text);
 
   strong {
-    color: rgb(var(--text-for-brand));
+    color: var(--text-for-brand);
   }
 }
 
 .player {
   @include flex(null, center);
 
-  gap: var(--gap-6);
+  gap: rem(6px);
   font-size: rem(12px);
 }

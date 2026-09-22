@@ -5,7 +5,7 @@
   inset-block-end: 0;
   inset-inline: 0;
   height: var(--aside-height);
-  background-color: rgb(var(--bg));
+  background-color: var(--bg);
   z-index: $z-index-8;
 
   @include desk-s {
@@ -30,9 +30,9 @@
     @include size(rem(240px), auto);
 
     flex-direction: column;
-    gap: var(--gap-2);
+    gap: rem(2px);
     position: fixed;
-    inset-block-start: calc(var(--header-height) + var(--tg-safe-top) + var(--gap-16));
+    inset-block-start: calc(var(--header-height) + var(--tg-safe-top) + rem(16px));
     overflow-y: auto;
   }
 }
@@ -45,18 +45,18 @@
   @include flex(center, center, column);
 
   position: relative;
-  padding: var(--gap-default) var(--gap-12);
+  padding: var(--gap-default) rem(12px);
   font-size: rem(12px);
   color: var(--text-for-material-disabled);
   white-space: nowrap;
 
   &.active {
     pointer-events: none;
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
 
     @include desk-s {
-      background: linear-gradient(90deg, rgb(var(--brand)) 56%, transparent 100%);
-      color: rgb(var(--link));
+      background: linear-gradient(90deg, var(--brand) 56%, transparent 100%);
+      color: var(--link);
     }
   }
 
@@ -66,12 +66,12 @@
     gap: var(--gap-default);
     border-radius: var(--border-radius-full);
     font-size: rem(16px);
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 
   @include hover {
     &:hover {
-      background: linear-gradient(90deg, rgb(var(--material)) 56%, transparent 100%);
+      background: linear-gradient(90deg, var(--material) 56%, transparent 100%);
     }
   }
 }
@@ -84,10 +84,10 @@
   inset-block-start: 0;
   inset-inline-start: 50%;
   border-radius: 50%;
-  background-color: rgb(var(--link));
+  background-color: var(--link);
   transform: translateX(rem(12px));
   font-size: rem(11px);
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 
   @include desk-s {
     position: static;

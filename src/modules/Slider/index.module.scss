@@ -65,7 +65,7 @@
         position: absolute;
         inset-block: 0;
         width: rem(65px);
-        background: linear-gradient(90deg, transparent 0%, rgb(var(--bg)) 100%);
+        background: linear-gradient(90deg, transparent 0%, var(--bg) 100%);
         opacity: 1;
         z-index: $z-index-2;
         content: '';
@@ -105,7 +105,7 @@
 .header {
   @include flex(flex-end, center);
 
-  gap: var(--gap-12);
+  gap: rem(12px);
 
   &:has(.top) {
     margin-block-end: var(--gap-default);
@@ -124,7 +124,7 @@
 .navigation {
   @include flex(null, center);
 
-  gap: var(--gap-4);
+  gap: rem(4px);
 
   &.top {
     position: relative;
@@ -182,7 +182,7 @@
 .dots {
   @include flex(center, center);
 
-  gap: var(--gap-8);
+  gap: rem(8px);
   padding-inline: var(--gap-default);
   height: rem(22px);
 
@@ -201,9 +201,9 @@
   cursor: pointer;
 
   &.active {
-    border-radius: var(--border-radius-4);
+    border-radius: rem(4px);
     width: rem(16px);
-    background-color: rgb(var(--brand));
+    background-color: var(--brand);
   }
 }
 

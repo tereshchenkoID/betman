@@ -10,7 +10,7 @@
 .block {
   @include flex($direction: column);
 
-  gap: var(--gap-12);
+  gap: rem(12px);
   min-height: 100%;
 }
 
@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--gap-16);
+  gap: rem(16px);
 }
 
 .search {

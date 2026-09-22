@@ -1,6 +1,6 @@
 .block {
   display: grid;
-  gap: var(--gap-24);
+  gap: rem(24px);
   min-height: rem(200px);
   text-align: center;
 }
@@ -24,9 +24,9 @@
 .card {
   display: grid;
   gap: var(--gap-default);
-  padding: var(--gap-12);
+  padding: rem(12px);
   border-radius: var(--border-radius-default);
-  background-color: rgb(var(--material-hover));
+  background-color: var(--material-hover);
   overflow: hidden;
   pointer-events: none;
 }

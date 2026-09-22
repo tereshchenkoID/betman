@@ -9,12 +9,12 @@
 .row {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
-  gap: var(--gap-2);
+  gap: rem(2px);
   min-width: rem(800px);
   font-size: rem(14px);
 
   &:not(:last-child) {
-    margin-block-end: var(--gap-2);
+    margin-block-end: rem(2px);
   }
 
   &.first {
@@ -22,11 +22,11 @@
       background-color: var(--primary-hover);
 
       &:first-child {
-        border-radius: var(--border-radius-8) 0 0;
+        border-radius: rem(8px) 0 0;
       }
 
       &:last-child {
-        border-radius: 0 var(--border-radius-8) 0 0;
+        border-radius: 0 rem(8px) 0 0;
       }
     }
   }
@@ -35,22 +35,22 @@
     &:last-child {
       .cell {
         &:first-child {
-          border-radius: 0 0 0 var(--border-radius-8);
+          border-radius: 0 0 0 rem(8px);
         }
 
         &:last-child {
-          border-radius: 0 0 var(--border-radius-8);
+          border-radius: 0 0 rem(8px);
         }
       }
     }
   }
 
   &.red {
-    --row-status-color: rgb(var(--red));
+    --row-status-color: var(--red);
   }
 
   &.green {
-    --row-status-color: rgb(var(--green));
+    --row-status-color: var(--green);
   }
 }
 
@@ -70,15 +70,15 @@
 .stats {
   @include flex($align-items: center, $wrap: wrap);
 
-  gap: var(--gap-16);
+  gap: rem(16px);
 }
 
 .preview {
   @include flex(center, center);
   @include size(rem(40px));
 
-  border-radius: var(--border-radius-4);
-  background-color: rgb(var(--material));
+  border-radius: rem(4px);
+  background-color: var(--material);
   overflow: hidden;
 }
 

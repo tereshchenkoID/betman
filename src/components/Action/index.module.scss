@@ -19,20 +19,20 @@
   }
 
   &.lg {
-    padding-inline: var(--gap-24);
+    padding-inline: rem(24px);
     height: rem(44px);
     font-size: var(--font-size);
   }
 
   &.md {
-    padding-inline: var(--gap-16);
+    padding-inline: rem(16px);
     height: rem(32px);
     font-size: rem(14px);
   }
 
   &.sm {
-    gap: var(--gap-4);
-    padding-inline: var(--gap-12);
+    gap: rem(4px);
+    padding-inline: rem(12px);
     height: rem(24px);
     font-size: rem(12px);
   }
@@ -40,7 +40,7 @@
   &.square {
     aspect-ratio: 1 / 1;
     padding: 0;
-    border-radius: var(--border-radius-4);
+    border-radius: rem(4px);
   }
 
   &.circle {
@@ -53,8 +53,8 @@
   }
 
   &.primary {
-    background: rgb(var(--link));
-    color: rgb(var(--text-for-brand));
+    background: var(--link);
+    color: var(--text-for-brand);
 
     &:disabled,
     &.disabled {
@@ -64,19 +64,19 @@
 
     &:active,
     &.active {
-      background: rgb(var(--link-hover));
+      background: var(--link-hover);
     }
 
     @include hover {
       &:hover {
-        background: rgb(var(--link-hover));
+        background: var(--link-hover);
       }
     }
   }
 
   &.secondary {
     background-color: var(--primary);
-    color: rgb(var(--text-for-primary));
+    color: var(--text-for-primary);
 
     &:active,
     &.active {
@@ -97,7 +97,7 @@
   }
 
   &.tertiary {
-    border: rem(1px) solid rgb(var(--tertiary));
+    border: rem(1px) solid var(--tertiary);
 
     &:disabled,
     &.disabled {
@@ -112,12 +112,12 @@
   }
 
   &.brand {
-    background-color: rgb(var(--link));
-    color: rgb(var(--text-for-brand));
+    background-color: var(--link);
+    color: var(--text-for-brand);
 
     &:active,
     &.active {
-      background: rgb(var(--link-hover));
+      background: var(--link-hover);
     }
 
     &:disabled,
@@ -127,14 +127,14 @@
 
     @include hover {
       &:hover {
-        background: rgb(var(--link-hover));
+        background: var(--link-hover);
       }
     }
   }
 
   &.link {
     border-radius: 0;
-    color: rgb(var(--tertiary));
+    color: var(--tertiary);
 
     &:disabled,
     &.disabled {
@@ -152,11 +152,11 @@
     padding: 0;
     border-radius: 0;
     height: auto;
-    color: rgb(var(--link));
+    color: var(--link);
 
     @include hover {
       &:hover {
-        color: rgb(var(--link-hover));
+        color: var(--link-hover);
       }
     }
 

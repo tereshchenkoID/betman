@@ -1,6 +1,8 @@
 @use 'sass:math';
 
-@forward 'functions';
+@forward 'functions/prepend';
+@forward 'functions/color-alpha';
+
 @forward 'mixins/flexbox';
 @forward 'mixins/transition';
 @forward 'mixins/size';

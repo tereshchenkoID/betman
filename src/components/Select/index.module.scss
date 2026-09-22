@@ -10,7 +10,7 @@
     .label {
       transform: translateY(rem(-22px));
       font-size: rem(10px);
-      color: rgb(var(--text-for-material));
+      color: var(--text-for-material);
     }
   }
 
@@ -28,17 +28,17 @@
   &.active {
     .selected {
       background-color: var(--primary);
-      border-bottom-color: rgb(var(--link));
+      border-bottom-color: var(--link);
     }
   }
 
   &.error {
     .label {
-      color: rgb(var(--red));
+      color: var(--red);
     }
 
     .selected {
-      border-bottom-color: rgb(var(--red));
+      border-bottom-color: var(--red);
     }
   }
 
@@ -46,7 +46,7 @@
     @include hover {
       &:hover {
         .selected {
-          border-bottom-color: rgb(var(--link));
+          border-bottom-color: var(--link);
         }
       }
     }
@@ -57,15 +57,15 @@
   @include transition;
 
   position: absolute;
-  inset-block-start: var(--gap-16);
-  inset-inline-start: var(--gap-12);
+  inset-block-start: rem(16px);
+  inset-inline-start: rem(12px);
   pointer-events: none;
   font-size: rem(14px);
   color: var(--sub-text);
 
   span {
-    margin-inline-start: var(--gap-4);
-    color: rgb(var(--red));
+    margin-inline-start: rem(4px);
+    color: var(--red);
   }
 }
 
@@ -73,14 +73,14 @@
   @include size(100%, rem(48px));
   @include flex(space-between, center);
 
-  padding-block-start: var(--gap-2);
-  padding-inline: var(--gap-12);
-  border-radius: var(--border-radius-6);
+  padding-block-start: rem(2px);
+  padding-inline: rem(12px);
+  border-radius: rem(6px);
   background-color: var(--primary-disabled);
   border-bottom: rem(2px) solid var(--primary);
 
   svg {
-    color: rgb(var(--text-for-material));
+    color: var(--text-for-material);
   }
 }
 
@@ -88,8 +88,8 @@
   position: absolute;
   inset-block-start: calc(100% + var(--gap-default));
   inset-inline: 0;
-  border-radius: var(--border-radius-10);
-  background-color: rgb(var(--material));
+  border-radius: rem(10px);
+  background-color: var(--material);
   box-shadow: var(--box-shadow-default);
   z-index: $z-index-1;
 }
@@ -112,18 +112,18 @@
 
   padding-inline: var(--gap-default);
   border: rem(1px) solid var(--primary-hover);
-  border-radius: var(--border-radius-4);
+  border-radius: rem(4px);
   background-color: var(--primary);
   overflow: hidden;
   font-size: rem(14px);
   text-align: start;
-  color: rgb(var(--text-for-material));
+  color: var(--text-for-material);
 
   &:focus {
-    border-color: rgb(var(--link));
+    border-color: var(--link);
 
     &::placeholder {
-      color: rgb(var(--text-for-material));
+      color: var(--text-for-material);
     }
   }
 
@@ -133,7 +133,7 @@
 
   &:is(:-webkit-autofill, :autofill) {
     box-shadow: 0 0 0 rem(30px) var(--primary) inset !important;
-    -webkit-text-fill-color: rgb(var(--text-for-material));
+    -webkit-text-fill-color: var(--text-for-material);
     background-clip: text;
   }
 
@@ -145,12 +145,12 @@
 .option {
   justify-content: flex-start;
   padding: var(--gap-default);
-  border-radius: var(--border-radius-6);
+  border-radius: rem(6px);
   width: 100%;
   background-color: transparent;
 
   &:not(:last-child) {
-    margin-block-end: var(--gap-4);
+    margin-block-end: rem(4px);
   }
 
   &.active {
@@ -161,21 +161,21 @@
   @include hover {
     &:hover {
       background-color: var(--primary-hover);
-      color: rgb(var(--text-for-primary));
+      color: var(--text-for-primary);
     }
   }
 }
 
 .text {
-  padding-inline: var(--gap-8);
+  padding-inline: rem(8px);
   font-size: rem(12px);
   text-align: center;
   word-break: break-all;
 }
 
 .message {
-  margin-block-start: var(--gap-2);
+  margin-block-start: rem(2px);
   font-size: rem(12px);
   text-align: left;
-  color: rgb(var(--red));
+  color: var(--red);
 }
