@@ -36,7 +36,7 @@ const Deposit = () => {
       const res = await action(filter.amount, currency, bonus)
 
       if (res?.code === '0') {
-        openModal('cryptoDeposit', { data: res.link }, { title: t('deposit'), size: 'lg' })
+        openModal('deposit', { data: res.link }, { title: t('deposit'), size: 'lg' })
         setFilter(INITIAL_FILTER)
       }
       else {
@@ -49,7 +49,7 @@ const Deposit = () => {
     <form className={style.block} onSubmit={handleSubmit}>
       <Field
         type={'number'}
-        placeholder={t('amount')}
+        placeholder={`${t('amount')}, ${currency?.text}`}
         data={filter.amount}
         onChange={value => handlePropsChange('amount', value)}
         isRequired={true}

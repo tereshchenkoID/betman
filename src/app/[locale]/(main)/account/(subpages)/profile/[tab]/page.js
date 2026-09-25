@@ -1,7 +1,6 @@
 import { USER_VERIFY } from '@/constant/config'
 
-import { apiRequest } from '@/app/actions/api'
-import { getSettings } from '@/app/actions/static'
+import { getCountries, getProfile, getSettings } from '@/app/actions/static'
 
 import SectionTooltip from '@/sections/SectionTooltip'
 
@@ -16,13 +15,8 @@ export default async function Profile({ params }) {
     countries
   ] = await Promise.all([
     getSettings(),
-    apiRequest('profile/', {
-      method: 'GET',
-      next: { tags: ['profile'] }
-    }),
-    apiRequest('countries/', {
-      method: 'GET',
-    })
+    getProfile(),
+    getCountries()
   ])
 
   const verify = USER_VERIFY[res?.profile?.isVerify]

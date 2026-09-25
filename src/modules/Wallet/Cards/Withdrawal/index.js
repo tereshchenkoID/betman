@@ -89,7 +89,7 @@ const Withdrawal = ({ data }) => {
 
           <Field
             type={'number'}
-            placeholder={`${t('amount')}, ${currency?.text}`}
+            placeholder={t('amount')}
             data={filter.amount}
             onChange={value => handlePropsChange('amount', value)}
             isRequired={true}

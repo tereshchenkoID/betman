@@ -93,3 +93,18 @@ export const getCachedUser = cache(async () => {
     cache: 'no-cache',
   })
 })
+
+export const getProfile = cache(async () => {
+  return await apiRequest('profile/', {
+    method: 'GET',
+    next: { tags: ['profile'] },
+    cache: 'no-cache',
+  })
+})
+
+export const getCountries = cache(async () => {
+  return await apiRequest('countries/', {
+    method: 'GET',
+    cache: 'no-cache',
+  })
+})

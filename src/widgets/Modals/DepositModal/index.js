@@ -1,6 +1,6 @@
 import style from './index.module.scss'
 
-const CryptoDepositModal = ({ data }) => {
+const DepositModal = ({ data }) => {
   if (!data?.link) return null
 
   return (
@@ -11,9 +11,10 @@ const CryptoDepositModal = ({ data }) => {
         frameBorder="0"
         title="Crypto Deposit"
         allow="clipboard-write"
+        sandbox="allow-scripts allow-forms allow-same-origin"
       ></iframe>
     </div>
   )
 }
 
-export default CryptoDepositModal
+export default DepositModal
