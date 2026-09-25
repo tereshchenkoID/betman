@@ -87,6 +87,8 @@ export const apiRequest = async (endpoint, {
 
   let url = new URL(`${baseUrl}/${endpoint}`)
 
+  console.log(url)
+
   const options = {
     method,
     cache: 'no-store',

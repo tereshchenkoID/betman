@@ -2,7 +2,7 @@ import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
 export async function generateMetadata() {
-  return await getPageMetadata('tournaments')
+  return await getPageMetadata('Test')
 }
 
 export default async function Test({ searchParams }) {
@@ -12,12 +12,14 @@ export default async function Test({ searchParams }) {
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('tournaments'),
-    apiRequest(`/payment?order_id=${order_id}`, {
+    getPageMetadata('Test'),
+    apiRequest(`payment?order_id=${order_id}`, {
       method: 'GET',
       baseUrl: 'https://matrix.betman.club/api'
     }),
   ])
+
+  console.log(res)
 
   const jsonLd = {
     '@context': 'https://schema.org',
