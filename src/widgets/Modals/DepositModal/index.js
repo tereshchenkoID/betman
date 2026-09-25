@@ -10,8 +10,8 @@ const DepositModal = ({ data }) => {
         src={data}
         frameBorder="0"
         title="Crypto Deposit"
-        // allow="clipboard-write"
-        // sandbox="allow-scripts allow-forms allow-same-origin"
+        allow="payment clipboard-write"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
       ></iframe>
     </div>
   )
