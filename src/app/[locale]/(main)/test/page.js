@@ -44,7 +44,7 @@ export default async function Test({ searchParams }) {
 
   return (
     <>
-      <pre>{JSON.stringify(res)}</pre>
+      <pre>{JSON.stringify(res, null, 2)}</pre>
       {order_id}
       <script
         type="application/ld+json"
