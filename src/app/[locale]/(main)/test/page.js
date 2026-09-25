@@ -5,13 +5,15 @@ export async function generateMetadata() {
   return await getPageMetadata('tournaments')
 }
 
-export default async function Test() {
+export default async function Test({ searchParams }) {
+  const { order_id } = await searchParams
+
   const [
     metaTags,
     res,
   ] = await Promise.all([
     getPageMetadata('tournaments'),
-    apiRequest('/payment?order_id=card_20260925183626_bf8b0eda6c', {
+    apiRequest(`/payment?order_id=${order_id}`, {
       method: 'GET',
       baseUrl: 'https://matrix.betman.club/api'
     }),
@@ -41,6 +43,7 @@ export default async function Test() {
   return (
     <>
       <pre>{JSON.stringify(res)}</pre>
+      {order_id}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
