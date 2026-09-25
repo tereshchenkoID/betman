@@ -1,10 +1,14 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 export default function IframeBreaker() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (window.self !== window.top && window.parent) {
+      // 1. Прячем DOM в iframe в момент layout
+      document.documentElement.style.display = 'none'
+
+      // 2. Отправляем сообщение родителю
       window.parent.postMessage(
         {
           type: 'PAYMENT_SUCCESS_REDIRECT',
@@ -15,5 +19,15 @@ export default function IframeBreaker() {
     }
   }, [])
 
-  return null
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          if (window.self !== window.top) {
+            document.documentElement.style.display = 'none';
+          }
+        `,
+      }}
+    />
+  )
 }

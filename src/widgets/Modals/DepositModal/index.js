@@ -24,7 +24,7 @@ const DepositModal = ({ data }) => {
         frameBorder="0"
         title="Crypto Deposit"
         allow="payment clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
+        // sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation-by-user-activation"
       ></iframe>
     </div>
   )
