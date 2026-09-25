@@ -1,6 +1,8 @@
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
+import IframeBreaker from '@/modules/IframeBreaker'
+
 export async function generateMetadata() {
   return await getPageMetadata('Test')
 }
@@ -44,6 +46,7 @@ export default async function Test({ searchParams }) {
 
   return (
     <>
+      <IframeBreaker />
       <pre>{JSON.stringify(res, null, 2)}</pre>
       {order_id}
       <script
