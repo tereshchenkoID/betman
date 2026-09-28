@@ -18,8 +18,6 @@ const Section = ({ data }) => {
   const t = useTranslations()
   const { copy, copied } = useCopy()
 
-  if (data.error) return null
-
   const { payment } = data
   const transaction = JSON.parse(payment?.callback_json)
 
