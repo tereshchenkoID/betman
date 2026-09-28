@@ -1,4 +1,6 @@
 .container {
+  --status-color: var(--red);
+
   display: grid;
   gap: rem(8px);
   margin-inline: auto;
@@ -20,6 +22,10 @@
   &.pending {
     --status-color: var(--amber);
   }
+}
+
+.title {
+  color: var(--status-color);
 }
 
 .icon {

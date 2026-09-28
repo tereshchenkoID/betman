@@ -34,13 +34,19 @@ const Section = ({ data }) => {
         <div className={style.icon}>
           <Icon name="status-checkmark" size="xl" />
         </div>
-        <h1>{t('notification.payment_successful')}</h1>
-        <p>{t('notification.added_to_balance')}</p>
+        <h1 className={style.title}>{t(`payments.${payment?.status}`)}</h1>
+        {
+          payment?.status === 'success'
+            ?
+              <p>{t('notification.payment_success')}</p>
+            :
+              <p>{t('notification.payment_error')}</p>
+        }
         <br/>
         {
           transaction?.transactions.map((el, _) =>
             <Fragment key={el?.id}>
-              <h2>{t('total_credited')}: +{el?.amount} {el?.currency}</h2>
+              <h2>{t('total_credited')}: +{el?.amount / 100} {el?.currency}</h2>
               <p className={style.item}>{t('transaction')}: <strong>{transaction?.id}</strong>
                 <Action
                   classes={['secondary', 'md', 'square']}

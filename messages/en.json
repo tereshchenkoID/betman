@@ -69,10 +69,10 @@
     "verification_text": "To access this section and unlock all features, please verify your account.",
     "verification_button": "Verify account",
     "verification_complete": "Complete verification",
-    "added_to_balance": "Your funds have been added to your balance.",
-    "payment_successful": "Payment Successful!",
     "start_playing": "Start playing",
-    "back_to_wallet": "Back to wallet"
+    "back_to_wallet": "Back to wallet",
+    "payment_success": "Your funds have been added to your balance.",
+    "payment_error": "Transaction failed! Please contact to support"
   },
   "errors": {
     "field_required": "Field is required",
@@ -89,7 +89,15 @@
   },
   "payments": {
     "crypto": "Crypto Wallet",
-    "voucher": "Voucher"
+    "voucher": "Voucher",
+    "status": {
+      "pending": "Pending",
+      "success": "Success",
+      "error": "Error",
+      "declined": "Declined",
+      "blocked": "Blocked",
+      "suspended": "Suspended"
+    }
   },
   "voucher_status": {
     "paid": "Paid",
