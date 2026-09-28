@@ -1,27 +1,31 @@
+import { notFound } from 'next/navigation'
+
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
-import IframeBreaker from '@/modules/IframeBreaker'
+import Section from './_view'
 
 export async function generateMetadata() {
-  return await getPageMetadata('Test')
+  return await getPageMetadata('payment-callback')
 }
 
-export default async function Test({ searchParams }) {
+export default async function PaymentCallback({ searchParams }) {
   const { order_id } = await searchParams
 
   const [
     metaTags,
     res,
   ] = await Promise.all([
-    getPageMetadata('Test'),
+    getPageMetadata('payment-callback'),
     apiRequest(`payment?order_id=${order_id}`, {
       method: 'GET',
       baseUrl: 'https://matrix.betman.club/api'
     }),
   ])
 
-  console.log(res)
+  if (res?.error) {
+    notFound()
+  }
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -46,9 +50,7 @@ export default async function Test({ searchParams }) {
 
   return (
     <>
-      <IframeBreaker />
-      <pre>{JSON.stringify(res, null, 2)}</pre>
-      {order_id}
+      <Section data={res} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

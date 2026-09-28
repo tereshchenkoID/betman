@@ -5,7 +5,6 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
-import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
 import { useValidations } from '@/hooks/useValidations'
 import { toast } from '@/utils/toast'
@@ -45,7 +44,6 @@ const setProfile = (data) => {
 
 const Deposit = ({ profile, countries }) => {
   const t = useTranslations()
-  const { openModal } = useModal()
   const { id, level, country, currency, language, profile: profileData } = useUser()
   const searchParams = useSearchParams()
   const bonus = searchParams.get('bonus')
@@ -78,10 +76,8 @@ const Deposit = ({ profile, countries }) => {
     startTransition(async () => {
       const res = await action(filter, bonus, isChanged)
 
-      console.log(res)
-
       if (res?.ok) {
-        openModal('deposit', { data: res.redirect_url }, { title: t('deposit'), size: 'lg' })
+        window.location.href = res.redirect_url
       }
       else {
         toast.error(res?.error || t('error'))

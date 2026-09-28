@@ -68,7 +68,11 @@
     "verification": "Verification",
     "verification_text": "To access this section and unlock all features, please verify your account.",
     "verification_button": "Verify account",
-    "verification_complete": "Complete verification"
+    "verification_complete": "Complete verification",
+    "added_to_balance": "Your funds have been added to your balance.",
+    "payment_successful": "Payment Successful!",
+    "start_playing": "Start playing",
+    "back_to_wallet": "Back to wallet"
   },
   "errors": {
     "field_required": "Field is required",
@@ -292,5 +296,10 @@
   "date": "Date",
   "payout": "Payout",
   "payout_date": "Payout date",
-  "verify": "Verify"
+  "verify": "Verify",
+  "cardholder": "Cardholder",
+  "total_credited": "Total credited",
+  "transaction": "Transaction",
+  "card": "Card",
+  "payment_method": "Payment method"
 }
