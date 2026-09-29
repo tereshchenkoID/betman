@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 
+import { apiRequest } from '@/app/actions/api'
 import { getCachedUser, getCountries, getProfile } from '@/app/actions/static'
 
 import CryptoBanner from '@/modules/CryptoBanner'
@@ -29,16 +30,23 @@ export default async function Wallet({ params }) {
     notFound()
   }
 
-  const isCardsDeposit = method === 'cards' && tab === 'deposit'
+  const isCards = method === 'cards'
+  const isCardsDeposit = isCards && tab === 'deposit'
 
   const [
     user,
     profile,
-    countries
+    countries,
+    cards
   ] = await Promise.all([
     getCachedUser(),
     isCardsDeposit ? getProfile() : Promise.resolve(null),
-    isCardsDeposit ? getCountries() : Promise.resolve(null)
+    isCardsDeposit ? getCountries() : Promise.resolve(null),
+    isCards
+      ? apiRequest('cards/list/', {
+          method: 'GET',
+        })
+      : Promise.resolve(null)
   ])
 
   const payment = user?.payements?.find((p) => p.alias === method)
@@ -54,6 +62,7 @@ export default async function Wallet({ params }) {
           data={payment}
           profile={profile}
           countries={countries}
+          cards={cards}
         />
       </div>
       <SectionTooltip alias={`${method}/${tab}`} />

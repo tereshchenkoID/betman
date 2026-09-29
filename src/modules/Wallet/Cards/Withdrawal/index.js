@@ -10,7 +10,6 @@ import { toast } from '@/utils/toast'
 import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Select from '@/components/Select'
-import Notification from '@/modules/Notification'
 
 import { action } from './action'
 
@@ -18,16 +17,18 @@ import style from './index.module.scss'
 
 const INITIAL_FILTER = {
   amount: '',
-  address: '',
-  payment_type: null
+  card: null
 }
 
-const Withdrawal = ({ data }) => {
+const Withdrawal = ({ cards }) => {
   const t = useTranslations()
   const { level, currency } = useUser()
-  const { filter, setFilter, handlePropsChange } = useFilterState(INITIAL_FILTER)
 
   const [isPending, startTransition] = useTransition()
+
+  const { filter, setFilter, handlePropsChange } = useFilterState(INITIAL_FILTER)
+  const isChanged = JSON.stringify(filter) !== JSON.stringify(INITIAL_FILTER)
+  const isDisabled = !isChanged || !filter.amount || filter.card === null
 
   const handleSubmit = async (e) => {
     e && e.preventDefault()
@@ -37,6 +38,7 @@ const Withdrawal = ({ data }) => {
 
       if (res?.code === '0') {
         setFilter(INITIAL_FILTER)
+        toast.success(res?.message)
       }
       else {
         toast.error(res?.error_message || t('error'))
@@ -44,85 +46,31 @@ const Withdrawal = ({ data }) => {
     })
   }
 
-  const commission = (filter?.payment_type?.commission * filter?.payment_type?.rate) || 0
-  const totalAmount = Number(filter.amount) + commission
-
-  const isValid =
-    filter.payment_type &&
-    filter.amount &&
-    filter.address &&
-    totalAmount >= (filter?.payment_type?.min || 0) &&
-    totalAmount <= (filter?.payment_type?.max || 0)
-
   return (
     <form className={style.block} onSubmit={handleSubmit}>
-      <Select
-        placeholder={t('payment_type')}
-        data={data?.withdraw?.wallets?.map((item, idx) => ({
-          value: idx,
-          label: item.name
-        }))}
-        value={filter.payment_type}
+      <Field
+        type={'number'}
+        placeholder={`${t('amount')}, ${currency?.text}`}
+        data={filter.amount}
+        onChange={value => handlePropsChange('amount', value)}
         isRequired={true}
-        onChange={value =>
-          handlePropsChange('payment_type', {
-            ...data?.withdraw?.wallets[value?.value],
-            ...value
-          })
-        }
       />
-
-      {
-        filter.payment_type &&
-        <>
-          <div className={style.row}>
-            <p className={style.cell}>{t('commission')}:</p>
-            <strong>
-              {commission} {currency?.text}
-            </strong>
-          </div>
-
-          <Notification
-            text={`${t('min')}: ${filter?.payment_type?.min}, ${t('max')}: ${filter?.payment_type?.max}`}
-            type={'warning'}
-          />
-
-          <Field
-            type={'number'}
-            placeholder={t('amount')}
-            data={filter.amount}
-            onChange={value => handlePropsChange('amount', value)}
-            isRequired={true}
-          />
-
-          <Field
-            placeholder={`${filter.payment_type.name} ${t('address')}`}
-            data={filter.address}
-            onChange={value => handlePropsChange('address', value)}
-            isRequired={true}
-          />
-
-          <div className={style.actions}>
-            {
-              data.withdraw?.quickAmount.map((el, idx) =>
-                <Action
-                  key={idx}
-                  placeholder={`${el} ${currency.code}`}
-                  classes={['primary', 'md']}
-                  onChange={() => handlePropsChange('amount', el)}
-                />
-              )
-            }
-          </div>
-
-          <Action
-            type={'submit'}
-            classes={['primary', 'lg', 'wide']}
-            placeholder={t('withdrawal')}
-            isDisabled={level === '1' || level === '2' || !isValid || isPending}
-          />
-        </>
-      }
+      <Select
+        placeholder={t('card')}
+        data={cards?.data?.map((item, _) => ({
+          value: item.value,
+          label: item.label
+        }))}
+        value={filter.card}
+        onChange={value => handlePropsChange('card', value)}
+        isRequired={true}
+      />
+      <Action
+        type={'submit'}
+        classes={['primary', 'lg']}
+        placeholder={t('withdrawal')}
+        isDisabled={level === '1' || level === '2' || isDisabled || isPending}
+      />
     </form>
   )
 }
