@@ -98,10 +98,10 @@ export default async function RootLayout({ children, params }) {
         locale={locale}
       >
         <Telegram auth={user} />
-        <Suspense fallback={null}>
-          <SessionHandler />
-        </Suspense>
         <UserStoreProvider user={user}>
+          <Suspense fallback={null}>
+            <SessionHandler />
+          </Suspense>
           <FavoritesProvider
             user={user}
             data={favorites?.data}

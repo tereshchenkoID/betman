@@ -1,0 +1,19 @@
+.block,
+.form {
+  display: grid;
+  gap: rem(12px);
+}
+
+.toggle {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: rem(8px);
+
+  &::before {
+    @include size(100%, rem(1px));
+
+    background-color: var(--primary-hover);
+    content: '';
+  }
+}

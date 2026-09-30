@@ -37,6 +37,7 @@ const Withdrawal = ({ data }) => {
 
       if (res?.code === '0') {
         setFilter(INITIAL_FILTER)
+        toast.success(res?.message)
       }
       else {
         toast.error(res?.error_message || t('error'))
@@ -81,27 +82,23 @@ const Withdrawal = ({ data }) => {
               {commission} {currency?.text}
             </strong>
           </div>
-
           <Notification
             text={`${t('min')}: ${filter?.payment_type?.min}, ${t('max')}: ${filter?.payment_type?.max}`}
             type={'warning'}
           />
-
           <Field
             type={'number'}
-            placeholder={t('amount')}
+            placeholder={`${t('amount')}, ${currency?.text}`}
             data={filter.amount}
             onChange={value => handlePropsChange('amount', value)}
             isRequired={true}
           />
-
           <Field
             placeholder={`${filter.payment_type.name} ${t('address')}`}
             data={filter.address}
             onChange={value => handlePropsChange('address', value)}
             isRequired={true}
           />
-
           <div className={style.actions}>
             {
               data.withdraw?.quickAmount.map((el, idx) =>
@@ -114,7 +111,6 @@ const Withdrawal = ({ data }) => {
               )
             }
           </div>
-
           <Action
             type={'submit'}
             classes={['primary', 'lg', 'wide']}

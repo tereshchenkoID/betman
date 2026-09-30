@@ -9,5 +9,5 @@ export const MODAL_REGISTRY = {
   verify: () => import('./VerifyModal'),
   crypto: () => import('./CryptoModal'),
   paymentDetails: () => import('./PaymentDetailsModal'),
-  cryptoDeposit: () => import('./CryptoDepositModal'),
+  deposit: () => import('./DepositModal'),
 }

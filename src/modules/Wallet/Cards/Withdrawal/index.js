@@ -1,43 +1,44 @@
 'use client'
 
 import { useTransition } from 'react'
-import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { useFilterState } from '@/hooks/useFilterState'
-import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
 import { toast } from '@/utils/toast'
 
 import Action from '@/components/Action'
 import Field from '@/components/Field'
+import Select from '@/components/Select'
 
 import { action } from './action'
 
 import style from './index.module.scss'
 
-const INITIAL_FILTER = { amount: '' }
+const INITIAL_FILTER = {
+  amount: '',
+  card: null
+}
 
-const Deposit = () => {
+const Withdrawal = ({ cards }) => {
   const t = useTranslations()
-  const { openModal } = useModal()
   const { level, currency } = useUser()
-  const searchParams = useSearchParams()
-  const bonus = searchParams.get('bonus')
 
   const [isPending, startTransition] = useTransition()
 
   const { filter, setFilter, handlePropsChange } = useFilterState(INITIAL_FILTER)
+  const isChanged = JSON.stringify(filter) !== JSON.stringify(INITIAL_FILTER)
+  const isDisabled = !isChanged || !filter.amount || filter.card === null
 
   const handleSubmit = async (e) => {
     e && e.preventDefault()
 
     startTransition(async () => {
-      const res = await action(filter.amount, currency, bonus)
+      const res = await action(filter)
 
       if (res?.code === '0') {
-        openModal('deposit', { data: res.link }, { title: t('deposit'), size: 'lg' })
         setFilter(INITIAL_FILTER)
+        toast.success(res?.message)
       }
       else {
         toast.error(res?.error_message || t('error'))
@@ -54,14 +55,24 @@ const Deposit = () => {
         onChange={value => handlePropsChange('amount', value)}
         isRequired={true}
       />
+      <Select
+        placeholder={t('card')}
+        data={cards?.data?.map((item, _) => ({
+          value: item.value,
+          label: item.label
+        }))}
+        value={filter.card}
+        onChange={value => handlePropsChange('card', value)}
+        isRequired={true}
+      />
       <Action
         type={'submit'}
         classes={['primary', 'lg']}
-        placeholder={t('deposit')}
-        isDisabled={level === '1' || filter?.amount === '' || isPending}
+        placeholder={t('withdrawal')}
+        isDisabled={level === '1' || level === '2' || isDisabled || isPending}
       />
     </form>
   )
 }
 
-export default Deposit
+export default Withdrawal

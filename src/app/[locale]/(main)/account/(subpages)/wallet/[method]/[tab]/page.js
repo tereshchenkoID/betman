@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 
-import { getCachedUser } from '@/app/actions/static'
+import { apiRequest } from '@/app/actions/api'
+import { getCachedUser, getCountries, getProfile } from '@/app/actions/static'
 
 import CryptoBanner from '@/modules/CryptoBanner'
 import SectionTooltip from '@/sections/SectionTooltip'
@@ -11,6 +12,10 @@ const COMPONENTS_MAP = {
     deposit: dynamic(() => import('@/modules/Wallet/Crypto/Deposit')),
     withdrawal: dynamic(() => import('@/modules/Wallet/Crypto/Withdrawal')),
   },
+  cards: {
+    deposit: dynamic(() => import('@/modules/Wallet/Cards/Deposit')),
+    withdrawal: dynamic(() => import('@/modules/Wallet/Cards/Withdrawal')),
+  },
   voucher: {
     deposit: dynamic(() => import('@/modules/Wallet/Voucher/Deposit')),
     withdrawal: dynamic(() => import('@/modules/Wallet/Voucher/Withdrawal')),
@@ -19,13 +24,30 @@ const COMPONENTS_MAP = {
 
 export default async function Wallet({ params }) {
   const { method, tab } = await params
-  const user = await getCachedUser()
-
   const ActiveComponent = COMPONENTS_MAP[method]?.[tab]
 
   if (!ActiveComponent) {
     notFound()
   }
+
+  const isCards = method === 'cards'
+  const isCardsDeposit = isCards && tab === 'deposit'
+
+  const [
+    user,
+    profile,
+    countries,
+    cards
+  ] = await Promise.all([
+    getCachedUser(),
+    isCardsDeposit ? getProfile() : Promise.resolve(null),
+    isCardsDeposit ? getCountries() : Promise.resolve(null),
+    isCards
+      ? apiRequest('cards/list/', {
+          method: 'GET',
+        })
+      : Promise.resolve(null)
+  ])
 
   const payment = user?.payements?.find((p) => p.alias === method)
 
@@ -36,7 +58,12 @@ export default async function Wallet({ params }) {
           (method === 'crypto' && tab === 'deposit') &&
           <CryptoBanner />
         }
-        <ActiveComponent data={payment} />
+        <ActiveComponent
+          data={payment}
+          profile={profile}
+          countries={countries}
+          cards={cards}
+        />
       </div>
       <SectionTooltip alias={`${method}/${tab}`} />
     </>

@@ -66,7 +66,9 @@ export const apiRequest = async (endpoint, {
   params = {},
   // cache = 'no-store',
   // next = {},
+  isJson = false,
   timeout = 15000,
+  baseUrl = process.env.API_BASE_URL,
 } = {}) => {
   const cookieStore = await cookies()
   const headersList = await headers()
@@ -83,7 +85,7 @@ export const apiRequest = async (endpoint, {
   const isProtected = PROTECTED_PREFIXES.some((prefix) => endpoint.startsWith(prefix))
   if (isProtected && !token) return null
 
-  let url = new URL(`${process.env.API_BASE_URL}/${endpoint}`)
+  let url = new URL(`${baseUrl}/${endpoint}`)
 
   const options = {
     method,
@@ -95,6 +97,7 @@ export const apiRequest = async (endpoint, {
       'Accept-Language': locale,
       ...(ip && { 'X-Forwarded-For': ip, 'X-Real-IP': ip }),
       ...(token && { Authorization: `Bearer ${token}` }),
+      ...(isJson && { 'Content-Type': 'application/json' }),
     },
     signal: AbortSignal.timeout(timeout),
   }
@@ -106,7 +109,7 @@ export const apiRequest = async (endpoint, {
   }
 
   if (BODY_METHODS.includes(method) && hasParams && method !== 'DELETE') {
-    options.body = buildFormData(params)
+    options.body = isJson ? JSON.stringify(params) : buildFormData(params)
   }
 
   try {

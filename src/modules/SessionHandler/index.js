@@ -7,15 +7,26 @@ import { usePathname, useRouter } from '@/i18n/navigation'
 
 import { logoutAction } from '@/app/actions/auth'
 
+import { useUserStore } from '@/hooks/useUser'
+
 export default function SessionHandler() {
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
+  const setUser = useUserStore((state) => state.setUser)
   const isExpired = searchParams.get('expired') === '1'
 
   useEffect(() => {
     if (isExpired) {
-      logoutAction().then(() => {
+      const logoutHandle = async () => {
+        const res = await logoutAction()
+
+        if (res?.user) {
+          setUser(res.user)
+        }
+      }
+
+      logoutHandle().then(() => {
         const params = new URLSearchParams(searchParams.toString())
         params.delete('expired')
 
@@ -27,7 +38,7 @@ export default function SessionHandler() {
         })
       })
     }
-  }, [pathname, searchParams, router, isExpired])
+  }, [pathname, searchParams, router, isExpired, setUser])
 
   return null
 }
