@@ -12,21 +12,28 @@ export async function proxy(request) {
     return NextResponse.next()
   }
 
+  const segments = pathname.split('/')
+  const firstSegment = segments[1]
+
+  if (firstSegment && !routing.locales.includes(firstSegment)) {
+    segments[1] = routing.defaultLocale
+    const newUrl = request.nextUrl.clone()
+    newUrl.pathname = segments.join('/')
+    return NextResponse.redirect(newUrl)
+  }
+
   const response = handleI18nRouting(request)
 
   if (response.status >= 300 && response.status < 400) {
     return response
   }
 
-  const locale =
-    response.headers.get('x-middleware-request-x-next-intl-locale') ||
-    routing.defaultLocale
+  const locale = response.headers.get('x-middleware-request-x-next-intl-locale') || routing.defaultLocale
 
   const pathnameWithoutLocale =
     pathname.replace(new RegExp(`^/(${routing.locales.join('|')})(?=/|$)`), '') || '/'
 
-  const isAccountPage =
-    pathnameWithoutLocale === '/account' || pathnameWithoutLocale.startsWith('/account/')
+  const isAccountPage = pathnameWithoutLocale === '/account' || pathnameWithoutLocale.startsWith('/account/')
   const hasToken = request.cookies.has('NEXT_SID')
 
   if (isAccountPage && !hasToken) {
