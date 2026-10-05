@@ -5,7 +5,7 @@ import Slider from '@/modules/Slider'
 
 import style from './index.module.scss'
 
-const Section = ({ data, meta }) => {
+const Section = ({ data, meta, mock }) => {
   if (meta?.results === '0' || meta?.results < 5) return null
 
   return (
@@ -14,6 +14,10 @@ const Section = ({ data, meta }) => {
       marquee={true}
       navigation={{
         isVisible: false,
+      }}
+      title={{
+        isVisible: true,
+        text: mock?.title,
       }}
     >
       {

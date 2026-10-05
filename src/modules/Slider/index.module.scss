@@ -106,10 +106,7 @@
   @include flex(flex-end, center);
 
   gap: rem(12px);
-
-  &:has(.top) {
-    margin-block-end: var(--gap-default);
-  }
+  margin-block-end: var(--gap-default);
 }
 
 .title {
