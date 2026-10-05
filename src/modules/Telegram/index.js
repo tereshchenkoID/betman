@@ -7,11 +7,9 @@ import { useRouter } from '@/i18n/navigation'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 
 import useTelegram from '@/hooks/useTelegram'
-import { useUserStore } from '@/hooks/useUser'
 
 export default function Telegram({ auth }) {
   const router = useRouter()
-  const setUser = useUserStore((state) => state.setUser)
 
   const { initData, user } = useTelegram()
   const tgSetupDone = useRef(false)
@@ -81,24 +79,19 @@ export default function Telegram({ auth }) {
   }, [])
 
   useEffect(() => {
-    // alert(JSON.stringify(initData))
-    // alert(JSON.stringify(user))
+    if (auth?.id) return
+    if (!initData) return
 
-    // if (auth?.id) return
-    // if (!initData) return
-    //
-    // const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
-    // const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
-    //
-    // if (!isInsideTelegram) return
+    const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+    const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+
+    if (!isInsideTelegram) return
 
     const handleAuth = async () => {
       const res = await loginWithTelegramAction(user)
 
       if (res?.token) {
-        alert(res?.token)
-        alert(JSON.stringify(user))
-        setUser(res)
+        alert(JSON.stringify(res))
         router.refresh()
       }
     }
@@ -106,7 +99,7 @@ export default function Telegram({ auth }) {
     handleAuth().then(() => {
       console.log('Success')
     })
-  }, [initData, router, auth.id, user, setUser])
+  }, [initData, router, auth.id, user])
 
   return null
 }
