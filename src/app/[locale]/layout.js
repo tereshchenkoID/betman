@@ -93,6 +93,7 @@ export default async function RootLayout({ children, params }) {
         src="https://telegram.org/js/telegram-web-app.js"
         strategy="beforeInteractive"
       />
+      <Telegram auth={user} />
       <NextIntlClientProvider
         messages={messages}
         locale={locale}
@@ -101,7 +102,6 @@ export default async function RootLayout({ children, params }) {
           <Suspense fallback={null}>
             <SessionHandler />
           </Suspense>
-          <Telegram auth={user} />
           <FavoritesProvider
             user={user}
             data={favorites?.data}

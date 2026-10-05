@@ -7,11 +7,11 @@ import { useRouter } from '@/i18n/navigation'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 
 import useTelegram from '@/hooks/useTelegram'
-import { useUserStore } from '@/hooks/useUser'
+// import { useUserStore } from '@/hooks/useUser'
 
 export default function Telegram({ auth }) {
   const router = useRouter()
-  const setUser = useUserStore((state) => state.setUser)
+  // const setUser = useUserStore((state) => state.setUser)
 
   const { initData, user } = useTelegram()
   const tgSetupDone = useRef(false)
@@ -96,15 +96,15 @@ export default function Telegram({ auth }) {
       const res = await loginWithTelegramAction(user)
 
       if (res?.token) {
-        setUser(res)
-        // router.refresh()
+        // setUser(res)
+        router.refresh()
       }
     }
 
     handleAuth().then(() => {
       console.log('Success')
     })
-  }, [initData, router, auth?.id, user, setUser])
+  }, [initData, router, auth?.id, user])
 
   return null
 }
