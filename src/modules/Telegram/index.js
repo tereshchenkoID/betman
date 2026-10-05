@@ -91,15 +91,15 @@ export default function Telegram({ auth }) {
       // alert(JSON.stringify(user))
       const res = await loginWithTelegramAction(user)
 
-      if (res?.token) {
-        alert(JSON.stringify(res))
+      alert(JSON.stringify(res))
 
+      if (res?.token) {
         router.refresh()
       }
     }
 
     handleAuth().then(() => {
-      console.log('success')
+      console.log('Success')
     })
   }, [initData, router, auth?.id, user])
 
