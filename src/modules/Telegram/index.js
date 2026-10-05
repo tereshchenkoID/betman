@@ -81,6 +81,9 @@ export default function Telegram({ auth }) {
   }, [])
 
   useEffect(() => {
+    alert(JSON.stringify(initData))
+    alert(JSON.stringify(user))
+
     // if (auth?.id) return
     // if (!initData) return
     //
@@ -91,9 +94,6 @@ export default function Telegram({ auth }) {
 
     const handleAuth = async () => {
       const res = await loginWithTelegramAction(user)
-
-      alert(JSON.stringify(res))
-      alert('Test')
 
       if (res?.token) {
         setUser(res)
