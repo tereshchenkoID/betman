@@ -88,7 +88,7 @@ export default function Telegram({ auth }) {
     if (!isInsideTelegram) return
 
     const handleAuth = async () => {
-      alert(JSON.stringify(user))
+      // alert(JSON.stringify(user))
       const res = await loginWithTelegramAction(user)
 
       if (res?.token) {
