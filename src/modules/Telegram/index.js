@@ -87,11 +87,9 @@ export default function Telegram({ auth }) {
     //
     // if (!isInsideTelegram) return
 
-
     const handleAuth = async () => {
-      alert(JSON.stringify(auth))
-      alert(JSON.stringify(user))
-
+      // alert(JSON.stringify(auth))
+      // alert(JSON.stringify(user))
       const res = await loginWithTelegramAction(user)
 
       if (res?.token) {
@@ -102,7 +100,7 @@ export default function Telegram({ auth }) {
     handleAuth().then(() => {
       console.log('Success')
     })
-  }, [initData, router, auth?.id, user, auth])
+  }, [initData, router, auth?.id, auth, user])
 
   return null
 }
