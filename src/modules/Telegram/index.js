@@ -97,7 +97,7 @@ export default function Telegram({ auth }) {
 
       if (res?.token) {
         setUser(res)
-        router.refresh()
+        // router.refresh()
       }
     }
 
