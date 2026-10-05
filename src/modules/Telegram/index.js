@@ -81,16 +81,15 @@ export default function Telegram({ auth }) {
   }, [])
 
   useEffect(() => {
-    if (auth?.id) return
-    if (!initData) return
-
-    const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
-    const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
-
-    if (!isInsideTelegram) return
+    // if (auth?.id) return
+    // if (!initData) return
+    //
+    // const tgObject = typeof window !== 'undefined' ? window.Telegram?.WebApp : null
+    // const isInsideTelegram = tgObject && tgObject.platform !== 'unknown'
+    //
+    // if (!isInsideTelegram) return
 
     const handleAuth = async () => {
-      alert(JSON.stringify(user))
       const res = await loginWithTelegramAction(user)
 
       alert(JSON.stringify(res))
