@@ -97,8 +97,8 @@ export default async function RootLayout({ children, params }) {
         messages={messages}
         locale={locale}
       >
+        <Telegram auth={user} />
         <UserStoreProvider user={user}>
-          <Telegram auth={user} />
           <Suspense fallback={null}>
             <SessionHandler />
           </Suspense>
