@@ -7,9 +7,11 @@ import { useRouter } from '@/i18n/navigation'
 import { loginWithTelegramAction } from '@/app/actions/auth'
 
 import useTelegram from '@/hooks/useTelegram'
+import { useUserStore } from '@/hooks/useUser'
 
 export default function Telegram({ auth }) {
   const router = useRouter()
+  const setUser = useUserStore((state) => state.setUser)
 
   const { initData, user } = useTelegram()
   const tgSetupDone = useRef(false)
@@ -94,6 +96,7 @@ export default function Telegram({ auth }) {
       alert(JSON.stringify(res))
 
       if (res?.token) {
+        setUser(res.user)
         router.refresh()
       }
     }
@@ -101,7 +104,7 @@ export default function Telegram({ auth }) {
     handleAuth().then(() => {
       console.log('Success')
     })
-  }, [initData, router, auth?.id, user])
+  }, [initData, router, auth?.id, user, setUser])
 
   return null
 }
