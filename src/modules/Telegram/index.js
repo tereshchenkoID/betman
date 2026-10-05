@@ -93,6 +93,7 @@ export default function Telegram({ auth }) {
       const res = await loginWithTelegramAction(user)
 
       alert(JSON.stringify(res))
+      alert('Test')
 
       if (res?.token) {
         setUser(res)
