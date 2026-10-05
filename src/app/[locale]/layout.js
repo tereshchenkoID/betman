@@ -99,7 +99,6 @@ export default async function RootLayout({ children, params }) {
       >
         <UserStoreProvider user={user}>
           <Telegram auth={user} />
-
           <Suspense fallback={null}>
             <SessionHandler />
           </Suspense>
