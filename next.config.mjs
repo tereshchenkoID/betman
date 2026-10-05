@@ -86,6 +86,26 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // ЖЕСТКОЕ ОТКЛЮЧЕНИЕ КЭШИРОВАНИЯ ДЛЯ SERVER ACTIONS И API НА VERCEL EDGE
+        source: '/_next/data/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'private, no-cache, no-store, must-revalidate',
+          },
+        ],
+      },
+      {
+        // Запрещаем Vercel CDN кешировать руты авторизации и динамо-запросы
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
     ]
   },
 
