@@ -88,9 +88,9 @@ export default function Telegram({ auth }) {
     // if (!isInsideTelegram) return
 
     const handleAuth = async () => {
-      alert(JSON.stringify(auth))
-      // alert(JSON.stringify(user))
       const res = await loginWithTelegramAction(user)
+
+      alert(JSON.stringify(res))
 
       if (res?.token) {
         router.refresh()
