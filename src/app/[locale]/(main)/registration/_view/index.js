@@ -162,6 +162,8 @@ const Section = ({ countries }) => {
     }
   }, [step])
 
+  // TODO Remove unoptimized
+
   return (
     <section className={style.block}>
       <Image

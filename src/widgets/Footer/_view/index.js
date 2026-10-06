@@ -23,6 +23,8 @@ const Section = ({
   const t = useTranslations()
   const { isAuth } = useUser()
 
+  // TODO Remove unoptimized
+
   return (
     <footer
       className={
