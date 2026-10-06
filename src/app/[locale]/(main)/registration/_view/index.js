@@ -171,6 +171,7 @@ const Section = ({ countries }) => {
         height={950}
         decoding="async"
         className={style.banner}
+        unoptimized
       />
       <form className={style.form}>
         <h1 className={style.title}>{t('create_account')}</h1>

@@ -133,6 +133,7 @@ const Section = ({
               height={42}
               decoding="async"
               style={{ width: 42, height: 42 }}
+              unoptimized
             />
             <Image
               src="/images/payements/visa.svg"
@@ -141,6 +142,7 @@ const Section = ({
               height={20}
               decoding="async"
               style={{ width: 32, height: 20 }}
+              unoptimized
             />
             <Image
               src="/images/payements/mastercard.svg"
@@ -149,6 +151,7 @@ const Section = ({
               height={20}
               decoding="async"
               style={{ width: 23, height: 20 }}
+              unoptimized
             />
             <Image
               src="/images/payements/crypto.svg"
@@ -157,6 +160,7 @@ const Section = ({
               height={20}
               decoding="async"
               style={{ width: 32, height: 20 }}
+              unoptimized
             />
           </div>
           <p className={style.copyright}>© {new Date().getFullYear()} - {t('name')}. {t('footer.legal_text_3')}</p>
