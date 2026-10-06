@@ -12,8 +12,7 @@ const saveSession = async (token) => {
   cookieStore.set('NEXT_SID', token, {
     httpOnly: true,
     path: '/',
-    sameSite: 'none',
-    // sameSite: 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24 * 30 // 30 days
   })

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
@@ -37,7 +38,14 @@ const Section = ({
         <div className={style.top}>
           <div>
             <h2 className={style.subtitle}>{t('section.categories')}</h2>
-            <ul className={style.list}>
+            <ul
+              className={
+                clsx(
+                  style.list,
+                  style.double
+                )
+              }
+            >
               {
                 categories?.data?.map((el, idx) =>
                   <li key={el?.id || idx}>
@@ -53,7 +61,14 @@ const Section = ({
           </div>
           <div>
             <h2 className={style.subtitle}>{t('section.providers')}</h2>
-            <ul className={style.list}>
+            <ul
+              className={
+                clsx(
+                  style.list,
+                  style.double
+                )
+              }
+            >
               {
                 providers?.data?.map((el, idx) =>
                   <li key={el?.id || idx}>
@@ -109,6 +124,40 @@ const Section = ({
           <div>
             <p>{t('footer.legal_text_1')}</p>
             <p>{t('footer.legal_text_2')}</p>
+          </div>
+          <div className={style.payements}>
+            <Image
+              src="/images/18.svg"
+              alt={'18+'}
+              width={42}
+              height={42}
+              decoding="async"
+              style={{ width: 42, height: 42 }}
+            />
+            <Image
+              src="/images/payements/visa.svg"
+              alt={'Visa'}
+              width={32}
+              height={20}
+              decoding="async"
+              style={{ width: 32, height: 20 }}
+            />
+            <Image
+              src="/images/payements/mastercard.svg"
+              alt={'Mastercard'}
+              width={23}
+              height={20}
+              decoding="async"
+              style={{ width: 23, height: 20 }}
+            />
+            <Image
+              src="/images/payements/crypto.svg"
+              alt={'Crypto'}
+              width={32}
+              height={20}
+              decoding="async"
+              style={{ width: 32, height: 20 }}
+            />
           </div>
           <p className={style.copyright}>© {new Date().getFullYear()} - {t('name')}. {t('footer.legal_text_3')}</p>
           <Action

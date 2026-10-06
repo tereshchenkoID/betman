@@ -163,7 +163,15 @@ const Section = ({ countries }) => {
   }, [step])
 
   return (
-    <section>
+    <section className={style.block}>
+      <Image
+        src="https://777.ua/cdn-cgi/image/quality=80,format=auto,height=1800/uploads/games_promotions/6ac4d21310f53.jpg"
+        alt={'Visa'}
+        width={460}
+        height={950}
+        decoding="async"
+        className={style.banner}
+      />
       <form className={style.form}>
         <h1 className={style.title}>{t('create_account')}</h1>
         <div className={style.steps}>

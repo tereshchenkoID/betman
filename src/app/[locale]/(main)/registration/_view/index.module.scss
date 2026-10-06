@@ -1,5 +1,29 @@
+.block {
+  display: grid;
+  gap: var(--gap-default);
+  margin-inline: auto;
+  max-width: rem(900px);
+
+  @include tab-s {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+.banner {
+  object-fit: cover;
+  object-position: center;
+  border-radius: rem(16px);
+
+  @include tab-s {
+    position: sticky;
+    top: calc(var(--header-height) + rem(16px));
+    height: calc(100dvh - var(--header-height) - rem(32px));
+  }
+}
+
 .form {
   display: grid;
+  align-content: start;
   gap: rem(24px);
   margin-inline: auto;
   padding: rem(24px);
@@ -9,9 +33,9 @@
   overflow: hidden;
   text-align: center;
 
-  @include tab-s {
-    max-width: rem(460px);
-  }
+  // @include tab-s {
+  //  max-width: rem(460px);
+  // }
 }
 
 .title {
