@@ -151,6 +151,8 @@ const Section = ({ countries }) => {
     }
   }, [step])
 
+  // TODO Remove unoptimized
+
   return (
     <section className={style.block}>
       <Image
@@ -159,6 +161,7 @@ const Section = ({ countries }) => {
         width={1250}
         height={310}
         decoding="async"
+        unoptimized
         className={
           clsx(
             style.banner,
@@ -172,6 +175,7 @@ const Section = ({ countries }) => {
         width={1105}
         height={1424}
         decoding="async"
+        unoptimized
         className={
           clsx(
             style.banner,

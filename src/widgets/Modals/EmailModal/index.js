@@ -11,8 +11,6 @@ const EmailModal = ({ data }) => {
     window.location.href = window.location.pathname
   }
 
-  console.log(data)
-
   return (
     <div className={style.block}>
       {
