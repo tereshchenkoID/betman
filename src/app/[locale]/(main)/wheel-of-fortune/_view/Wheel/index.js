@@ -81,7 +81,7 @@ const Wheel = ({ mock, wheelsRound }) => {
   const t = useTranslations()
   const { wheels, wheelsCounter } = wheelsRound
   const { openModal } = useModal()
-  const { isAuth, level } = useUser()
+  const { isAuth, level, profile } = useUser()
 
   const canvasRef = useRef(null)
   const timerRef = useRef(null)
@@ -272,6 +272,11 @@ const Wheel = ({ mock, wheelsRound }) => {
   const handleButtonClick = async () => {
     if (!isAuth) {
       openModal('login', {}, { title: t('sign_up') })
+      return
+    }
+
+    if (profile.isVerifyPhone !== '2') {
+      toast.error(t('notification.verification_wheel'))
       return
     }
 
