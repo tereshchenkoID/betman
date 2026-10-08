@@ -36,15 +36,17 @@ const WSUpdater = ({ settings }) => {
   }, [lastMessage, router, openModal, updateUser])
 
   useEffect(() => {
-    const hasBirthday = profile?.birthday
+    // const hasBirthday = profile?.birthday
     const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
 
     let shouldShowModal = false
 
     if (isAuth) {
-      if (!hasBirthday && !hasAgeSession) {
-        shouldShowModal = true
-      }
+      shouldShowModal = true
+
+      // if (!hasBirthday && !hasAgeSession) {
+      //   shouldShowModal = true
+      // }
     } else {
       if (!hasAgeSession) {
         shouldShowModal = true
