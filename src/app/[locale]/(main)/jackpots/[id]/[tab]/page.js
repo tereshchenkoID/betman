@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { LIST_COUNT, NAVIGATION } from '@/constant/config'
+import { LIST_COUNT } from '@/constant/config'
 
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'

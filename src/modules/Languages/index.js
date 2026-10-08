@@ -29,8 +29,6 @@ const Languages = ({
     router.replace(pathname, { locale: newLocale })
   }
 
-  // TODO Remove unoptimized
-
   return (
     <div className={style.block}>
       <button
@@ -47,7 +45,6 @@ const Languages = ({
           height={28}
           priority
           sizes="56px"
-          unoptimized
         />
       </button>
       {
@@ -71,7 +68,6 @@ const Languages = ({
                     height={20}
                     sizes="40px"
                     loading="lazy"
-                    unoptimized
                   />
                 </p>
                 {el.text}

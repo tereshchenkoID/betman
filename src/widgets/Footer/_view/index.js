@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
@@ -22,8 +21,6 @@ const Section = ({
 }) => {
   const t = useTranslations()
   const { isAuth } = useUser()
-
-  // TODO Remove unoptimized
 
   return (
     <footer
@@ -127,42 +124,22 @@ const Section = ({
             <p>{t('footer.legal_text_1')}</p>
             <p>{t('footer.legal_text_2')}</p>
           </div>
-          <div className={style.payements}>
-            <Image
-              src="/images/18.svg"
-              alt={'18+'}
-              width={42}
-              height={42}
-              decoding="async"
-              style={{ width: 42, height: 42 }}
-              unoptimized
+          <div className={style.payments}>
+            <Icon
+              name="18-plus"
+              style={{ width: 32, height: 32 }}
             />
-            <Image
-              src="/images/payements/visa.svg"
-              alt={'Visa'}
-              width={32}
-              height={20}
-              decoding="async"
+            <Icon
+              name="visa"
               style={{ width: 32, height: 20 }}
-              unoptimized
             />
-            <Image
-              src="/images/payements/mastercard.svg"
-              alt={'Mastercard'}
-              width={23}
-              height={20}
-              decoding="async"
+            <Icon
+              name="mastercard"
               style={{ width: 23, height: 20 }}
-              unoptimized
             />
-            <Image
-              src="/images/payements/crypto.svg"
-              alt={'Crypto'}
-              width={32}
-              height={20}
-              decoding="async"
-              style={{ width: 32, height: 20 }}
-              unoptimized
+            <Icon
+              name="crypto"
+              style={{ width: 16, height: 16 }}
             />
           </div>
           <p className={style.copyright}>© {new Date().getFullYear()} - {t('name')}. {t('footer.legal_text_3')}</p>

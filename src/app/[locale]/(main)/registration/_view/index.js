@@ -8,10 +8,6 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
-import { useRouter } from '@/i18n/navigation'
-
-import { NAVIGATION } from '@/constant/config'
-
 import { apiRequest } from '@/app/actions/api'
 import { registerWithCredentialsAction } from '@/app/actions/auth'
 
@@ -40,7 +36,6 @@ const Section = ({ countries }) => {
 
   const VALIDATION_RULES = useValidations()
 
-  const router = useRouter()
   const { openModal } = useModal()
   const { country } = useUser()
   const searchParams = useSearchParams()
@@ -62,7 +57,7 @@ const Section = ({ countries }) => {
     password: '',
     phone: '',
     country: {
-      value: country?.code,
+      value: country?.value,
       label: country?.text
     },
     city: '',
@@ -101,13 +96,7 @@ const Section = ({ countries }) => {
 
     if (res?.code === '0') {
       toast.success(res.message)
-
-      setTimeout(() => {
-        startTransition(() => {
-          router.refresh()
-          router.push(NAVIGATION.home.url)
-        })
-      }, 1000)
+      setStep(prev => prev + 1)
     }
     else {
       toast.error(res.error_message)
@@ -162,18 +151,33 @@ const Section = ({ countries }) => {
     }
   }, [step])
 
-  // TODO Remove unoptimized
-
   return (
     <section className={style.block}>
       <Image
-        src="https://777.ua/cdn-cgi/image/quality=80,format=auto,height=1800/uploads/games_promotions/6ac4d21310f53.jpg"
-        alt={'Visa'}
-        width={460}
-        height={950}
+        src="/images/registration-mob.webp"
+        alt={'Registration'}
+        width={1250}
+        height={310}
         decoding="async"
-        className={style.banner}
-        unoptimized
+        className={
+          clsx(
+            style.banner,
+            style.mobile
+          )
+        }
+      />
+      <Image
+        src="/images/registration-desk.webp"
+        alt={'Registration'}
+        width={1105}
+        height={1424}
+        decoding="async"
+        className={
+          clsx(
+            style.banner,
+            style.desktop
+          )
+        }
       />
       <form className={style.form}>
         <h1 className={style.title}>{t('create_account')}</h1>
@@ -404,16 +408,29 @@ const Section = ({ countries }) => {
             </div>
           </>
         }
-        <p className={style.link}>
-          {t('notification.already_registered')}
-          <Action
-            classes={['md', 'outline']}
-            placeholder={t('login')}
-            onChange={() =>
-              openModal('login', {}, { title: t('sign_up') })
-            }
-          />
-        </p>
+        {
+          step === 2 &&
+          <div className={style.success}>
+            <div className={style.icon}>
+              <Icon name="status-checkmark" size="lg" />
+            </div>
+            <h2>{t('notification.registration_title')}</h2>
+            <p>{t('notification.registration_description')}</p>
+          </div>
+        }
+        {
+          step < 2 &&
+          <p className={style.link}>
+            {t('notification.already_registered')}
+            <Action
+              classes={['md', 'outline']}
+              placeholder={t('login')}
+              onChange={() =>
+                openModal('login', {}, { title: t('sign_up') })
+              }
+            />
+          </p>
+        }
       </form>
     </section>
   )

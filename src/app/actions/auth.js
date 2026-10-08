@@ -19,18 +19,12 @@ const saveSession = async (token) => {
 }
 
 export const registerWithCredentialsAction = async (filterData) => {
-  const data = await apiRequest('registration/', {
+  return await apiRequest('registration/', {
     method: 'POST',
     params: {
       data: JSON.stringify(filterData)
     },
   })
-
-  if (data?.token) {
-    await saveSession(data.token)
-  }
-
-  return data
 }
 
 export const loginWithTelegramAction = async (telegramUser) => {

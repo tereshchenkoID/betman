@@ -1,5 +1,3 @@
-import { NAVIGATION } from '@/constant/config'
-
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 import { getSettings } from '@/app/actions/static'

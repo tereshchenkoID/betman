@@ -108,9 +108,9 @@
   }
 }
 
-.payements {
+.payments {
   @include flex(null, center, null, wrap);
 
-  gap: var(--gap-default);
+  gap: rem(24px);
   width: 100%;
 }

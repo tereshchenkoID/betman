@@ -25,6 +25,8 @@ const SectionWinners = dynamic(() => import('./SectionWinnersSlider'))
 const SectionJackpots = dynamic(() => import('./SectionJackpotsSlider'))
 const SectionChallenge = dynamic(() => import('./SectionChallenge'))
 
+import Verification from './Verification'
+
 import style from './index.module.scss'
 
 const SECTIONS_CONFIG = {
@@ -97,6 +99,9 @@ const Section = async ({ skeleton, locale }) => {
 
   return (
     <>
+      <Suspense fallback={null}>
+        <Verification />
+      </Suspense>
       <h1 className={style.title}>{t('casino')}</h1>
       {
         skeleton?.map((el, idx) =>
