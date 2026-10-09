@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 
+import { format } from '@/helpers/format'
+
 import style from './index.module.scss'
 
 const Scale = ({
@@ -21,8 +23,8 @@ const Scale = ({
       }
     >
       <div className={style.header}>
-        <strong>{amount} {currency}</strong>
-        <strong>{max} {currency}</strong>
+        <strong>{format(amount)} {currency}</strong>
+        <strong>{format(max)} {currency}</strong>
       </div>
       <div className={style.scale}>
         <div

@@ -82,6 +82,10 @@
   svg {
     color: var(--text-for-material);
   }
+
+  span {
+    font-size: rem(14px);
+  }
 }
 
 .dropdown {
@@ -127,16 +131,6 @@
     }
   }
 
-  &::-webkit-date-and-time-value {
-    text-align: left;
-  }
-
-  &:is(:-webkit-autofill, :autofill) {
-    box-shadow: 0 0 0 rem(30px) var(--primary) inset !important;
-    -webkit-text-fill-color: var(--text-for-material);
-    background-clip: text;
-  }
-
   &::placeholder {
     color: var(--text-for-material-disabled);
   }
@@ -148,6 +142,7 @@
   border-radius: rem(6px);
   width: 100%;
   background-color: transparent;
+  font-size: rem(14px);
 
   &:not(:last-child) {
     margin-block-end: rem(4px);

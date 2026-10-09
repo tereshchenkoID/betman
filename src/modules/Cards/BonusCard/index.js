@@ -1,7 +1,6 @@
 import { startTransition } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import clsx from 'clsx'
 
 import { useRouter } from '@/i18n/navigation'
 
@@ -10,6 +9,7 @@ import { BONUS_STATUS } from '@/constant/config'
 import useModal from '@/hooks/useModal'
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
+import { format } from '@/helpers/format'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -68,16 +68,7 @@ const BonusCard = ({ data }) => {
   }
 
   return (
-    <div
-      className={
-        clsx(
-          style.block,
-          {
-            [style.disabled]: enable === '0'
-          }
-        )
-      }
-    >
+    <div className={style.block}>
       <div className={style.content}>
         <div>
           <div className={style.row}>
@@ -105,7 +96,7 @@ const BonusCard = ({ data }) => {
           </div>
           <div className={style.row}>
             <p>{t('amount')}:</p>
-            <p>{amount} {currency}</p>
+            <p>{format(amount)} {currency}</p>
           </div>
           <div className={style.row}>
             <p>{t('expired')}:</p>

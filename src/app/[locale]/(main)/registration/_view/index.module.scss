@@ -1,16 +1,55 @@
+.block {
+  @include size(100%);
+
+  display: grid;
+
+  @include tab-m {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.banner {
+  object-fit: cover;
+
+  &.mobile {
+    object-position: left;
+    border-top-left-radius: rem(16px);
+    border-top-right-radius: rem(16px);
+    min-height: rem(150px);
+
+    @include tab-m {
+      display: none;
+    }
+  }
+
+  &.desktop {
+    object-position: center;
+    display: none;
+    position: sticky;
+    top: calc(var(--header-height) + rem(16px));
+    height: calc(100dvh - var(--header-height) - rem(32px));
+    border-top-left-radius: rem(16px);
+    border-bottom-left-radius: rem(16px);
+
+    @include tab-m {
+      display: block;
+    }
+  }
+}
+
 .form {
   display: grid;
+  align-content: start;
   gap: rem(24px);
-  margin-inline: auto;
   padding: rem(24px);
-  border-radius: rem(16px);
-  width: 100%;
+  border-bottom-left-radius: rem(16px);
+  border-bottom-right-radius: rem(16px);
   background-color: var(--material);
   overflow: hidden;
   text-align: center;
 
-  @include tab-s {
-    max-width: rem(460px);
+  @include tab-m {
+    border-radius: 0 rem(16px) rem(16px) 0;
   }
 }
 
@@ -91,4 +130,19 @@
 
 .divider {
   margin-block: var(--gap-default);
+}
+
+.success {
+  display: grid;
+  justify-items: center;
+  gap: rem(16px);
+  margin-top: rem(24px);
+}
+
+.icon {
+  @include flex(center, center);
+  @include size(rem(50px));
+
+  border-radius: 50%;
+  background-color: var(--green);
 }

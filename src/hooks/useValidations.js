@@ -1,3 +1,4 @@
+import { defaultCountries } from 'react-international-phone'
 import { useTranslations } from 'next-intl'
 
 const normalize = (value) => {
@@ -25,6 +26,19 @@ const getAge = (birthDate, today) => {
   }
 
   return age
+}
+
+const getIsoByPhoneNumber = (phone) => {
+  if (!phone) return null
+  const digits = phone.replace(/\D/g, '')
+  if (!digits) return null
+
+  const match = defaultCountries
+    .map(([_, iso2, dialCode]) => ({ iso2, dialCode }))
+    .sort((a, b) => b.dialCode.length - a.dialCode.length)
+    .find((item) => digits.startsWith(item.dialCode))
+
+  return match ? match.iso2 : null
 }
 
 export const useValidations = () => {
@@ -100,6 +114,21 @@ export const useValidations = () => {
       if (!v) return null
 
       return regex.test(v) ? null : t(msg)
+    },
+
+    phoneCountry: (targetCountry, msg = 'errors.phone_country_mismatch') => (value) => {
+      if (!value) return null
+
+      const countryIso = typeof targetCountry === 'object' ? targetCountry?.value : targetCountry
+      if (!countryIso) return null
+
+      const detectedIso = getIsoByPhoneNumber(value)
+
+      if (detectedIso && detectedIso.toLowerCase() !== countryIso.toLowerCase()) {
+        return t(msg)
+      }
+
+      return null
     },
   }
 }

@@ -1,8 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
+
+import { Link } from '@/i18n/navigation'
 
 import { ROUTES_USER } from '@/constant/config'
 
@@ -123,7 +124,6 @@ const Section = () => {
                 <div className={style.circle}>
                   <span>{renderIcon(level, cardLevel, isPassed, isLocked, isActive)}</span>
                 </div>
-
                 <div className={style.header}>
                   <h2>{showStatus ? el.title : t('verify_status.verified')}</h2>
                   {
@@ -139,7 +139,6 @@ const Section = () => {
                   (el.disabled && !isActive && !isPassed) &&
                   <p className={style.disabled}>{t(el.disabled)}</p>
                 }
-
                 <ul className={style.list}>
                   {
                     el.list.map((item, idx) =>
@@ -154,7 +153,6 @@ const Section = () => {
                     </li>
                   )}
                 </ul>
-
                 <div className={style.footer}>
                   {
                     (!isPassed && el.button) &&
@@ -175,7 +173,6 @@ const Section = () => {
             )
           })}
         </div>
-
         <Link
           href={'/info/verification-policy'}
           className={style.info}

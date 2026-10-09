@@ -10,7 +10,7 @@ import { ROUTES_USER } from '@/constant/config'
 import useModal from '@/hooks/useModal'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 import { useUser } from '@/hooks/useUser'
-import { fixed } from '@/helpers/fixed'
+import { format } from '@/helpers/format'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -59,7 +59,7 @@ const Section = ({ settings, bonuses }) => {
               onClick={() => setToggle(null)}
               aria-label={t(ROUTES_USER.wallet.text)}
             >
-              <strong>{fixed(credits?.total_balance, 2)}</strong>
+              <strong>{format(credits?.total_balance, 2)}</strong>
               <span> {currency?.text}</span>
             </Link>
           }

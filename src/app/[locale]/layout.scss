@@ -109,15 +109,15 @@ input {
     right: 0;
   }
 
-  &::-webkit-datetime-edit,
-  &::-webkit-datetime-edit-fields-wrapper,
-  &::-webkit-datetime-edit-text,
-  &::-webkit-datetime-edit-month-field,
-  &::-webkit-datetime-edit-day-field,
-  &::-webkit-datetime-edit-year-field {
+   &::-webkit-datetime-edit,
+   &::-webkit-datetime-edit-fields-wrapper,
+   &::-webkit-datetime-edit-text,
+   &::-webkit-datetime-edit-month-field,
+   &::-webkit-datetime-edit-day-field,
+   &::-webkit-datetime-edit-year-field {
     opacity: 1 !important;
     color: var(--text-for-material) !important;
-  }
+   }
 
   &[type='datetime-local'],
   &[type='date'] {

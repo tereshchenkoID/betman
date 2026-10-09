@@ -2,6 +2,7 @@ export const MODAL_REGISTRY = {
   age: () => import('./AgeModal'),
   game: () => import('./GameModal'),
   login: () => import('./LoginModal'),
+  email: () => import('./EmailModal'),
   recovery: () => import('./RecoveryModal'),
   quest: () => import('./QuestModal'),
   search: () => import('./SearchModal'),

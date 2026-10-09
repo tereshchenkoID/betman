@@ -1,0 +1,30 @@
+.block {
+  @include flex(center, center);
+
+  user-select: none;
+  position: relative;
+  container-type: inline-size;
+}
+
+.circle {
+  fill: var(--primary);
+}
+
+.track {
+  fill: none;
+  stroke: var(--material);
+}
+
+.progress {
+  @include transition(stroke-dashoffset);
+
+  fill: none;
+  stroke: var(--link);
+}
+
+.text {
+  @include absolute-center;
+
+  font-size: 22cqw;
+  text-align: center;
+}

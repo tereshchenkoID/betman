@@ -37,7 +37,14 @@ const Section = ({
         <div className={style.top}>
           <div>
             <h2 className={style.subtitle}>{t('section.categories')}</h2>
-            <ul className={style.list}>
+            <ul
+              className={
+                clsx(
+                  style.list,
+                  style.double
+                )
+              }
+            >
               {
                 categories?.data?.map((el, idx) =>
                   <li key={el?.id || idx}>
@@ -53,7 +60,14 @@ const Section = ({
           </div>
           <div>
             <h2 className={style.subtitle}>{t('section.providers')}</h2>
-            <ul className={style.list}>
+            <ul
+              className={
+                clsx(
+                  style.list,
+                  style.double
+                )
+              }
+            >
               {
                 providers?.data?.map((el, idx) =>
                   <li key={el?.id || idx}>
@@ -109,6 +123,24 @@ const Section = ({
           <div>
             <p>{t('footer.legal_text_1')}</p>
             <p>{t('footer.legal_text_2')}</p>
+          </div>
+          <div className={style.payments}>
+            <Icon
+              name="18-plus"
+              style={{ width: 32, height: 32 }}
+            />
+            <Icon
+              name="visa"
+              style={{ width: 32, height: 20 }}
+            />
+            <Icon
+              name="mastercard"
+              style={{ width: 23, height: 20 }}
+            />
+            <Icon
+              name="crypto"
+              style={{ width: 16, height: 16 }}
+            />
           </div>
           <p className={style.copyright}>© {new Date().getFullYear()} - {t('name')}. {t('footer.legal_text_3')}</p>
           <Action

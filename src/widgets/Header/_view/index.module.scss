@@ -12,6 +12,15 @@
     padding-block: var(--gap-default);
     background: none;
     box-shadow: none;
+
+    &::before {
+      position: fixed;
+      inset-block-start: 0;
+      inset-inline: 0;
+      height: rem(8px);
+      background-color: var(--bg);
+      content: '';
+    }
   }
 }
 

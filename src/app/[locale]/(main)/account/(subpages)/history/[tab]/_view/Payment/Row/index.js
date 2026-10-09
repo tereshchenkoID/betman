@@ -7,6 +7,7 @@ import { PAYMENT_TYPE, VOUCHER_STATUS } from '@/constant/config'
 import useModal from '@/hooks/useModal'
 import { toast } from '@/utils/toast'
 import { date } from '@/helpers/date'
+import { format } from '@/helpers/format'
 
 import Action from '@/components/Action'
 
@@ -75,7 +76,7 @@ const Row = ({ data }) => {
       <div className={style.cell}>{t(`payments.${data?.payment.alias}`)}</div>
       <div className={style.cell}>{t(`voucher_status.${VOUCHER_STATUS[data?.status]}`)}</div>
       <div className={style.cell}>{t(PAYMENT_TYPE[data?.type])}</div>
-      <div className={style.cell}>{data?.type === '1' ? '-' : '+'}{data?.amount}</div>
+      <div className={style.cell}>{data?.type === '1' ? '-' : '+'}{format(data?.amount)}</div>
       <div className={style.cell}>
         <Action
           classes={['primary', 'sm']}

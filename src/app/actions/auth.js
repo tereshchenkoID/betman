@@ -12,26 +12,19 @@ const saveSession = async (token) => {
   cookieStore.set('NEXT_SID', token, {
     httpOnly: true,
     path: '/',
-    sameSite: 'none',
-    // sameSite: 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24 * 30 // 30 days
   })
 }
 
 export const registerWithCredentialsAction = async (filterData) => {
-  const data = await apiRequest('registration/', {
+  return await apiRequest('registration/', {
     method: 'POST',
     params: {
       data: JSON.stringify(filterData)
     },
   })
-
-  if (data?.token) {
-    await saveSession(data.token)
-  }
-
-  return data
 }
 
 export const loginWithTelegramAction = async (telegramUser) => {

@@ -127,7 +127,7 @@ const Phone = ({
     country: currentCountry,
     setCountry,
   } = usePhoneInput({
-    defaultCountry: country?.toLowerCase() || 'us',
+    defaultCountry: country?.toLowerCase() || 'en',
     value: data || '',
     countries: localizedCountries,
     onChange: handlePhoneChange,
@@ -144,7 +144,11 @@ const Phone = ({
 
   if (countries?.meta?.results === '0') return null
 
-  const isFilled = !!(phone && phone.length > 3)
+  const dialCodeLength = currentCountry?.dialCode?.length || 0
+  const phoneDigitsLength = phone ? phone.replace(/\D/g, '').length : 0
+  const isFilled = phoneDigitsLength > dialCodeLength
+
+  // const isFilled = !!(phone && phone.length > 3)
   const showError = !!error && (touched || isFilled)
 
   return (
