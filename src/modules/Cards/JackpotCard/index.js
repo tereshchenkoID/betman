@@ -10,6 +10,7 @@ import { Link } from '@/i18n/navigation'
 import { NAVIGATION } from '@/constant/config'
 
 import { useWebSocketContext } from '@/context/WebSocketContext'
+import { format } from '@/helpers/format'
 import { imageError } from '@/helpers/image'
 
 import Icon from '@/components/Icon'
@@ -96,7 +97,7 @@ const JackpotCard = ({
       >
         <p className={style.label}>{t('jackpot_total')}</p>
         <div className={style.amount}>
-          <h3 className={style.number}>{amount}</h3>
+          <h3 className={style.number}>{format(amount)}</h3>
           <h4 className={style.currency}>{currency}</h4>
         </div>
       </Link>

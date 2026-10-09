@@ -10,7 +10,7 @@ import { NAVIGATION, ROUTES_USER } from '@/constant/config'
 import { logoutAction } from '@/app/actions/auth'
 
 import { useUser, useUserStore } from '@/hooks/useUser'
-import { fixed } from '@/helpers/fixed'
+import { format } from '@/helpers/format'
 
 import Action from '@/components/Action'
 import Icon from '@/components/Icon'
@@ -111,7 +111,7 @@ const AccountMenu = ({ setToggle, bonuses }) => {
             aria-label={t(ROUTES_USER.wallet.text)}
             onClick={() => setToggle(false)}
           >
-            <div className={style.count}>{t('balance')}: <h3>{fixed(credits?.real_balance)}</h3> {currency?.text}</div>
+            <div className={style.count}>{t('balance')}: <h3>{format(credits?.real_balance)}</h3> {currency?.text}</div>
             <Icon name="navigation-chevron-right" />
           </Link>
           <div className={style.actions}>
@@ -142,7 +142,7 @@ const AccountMenu = ({ setToggle, bonuses }) => {
             onClick={() => setToggle(false)}
           >
             <div className={style.amount}>
-              <div className={style.count}>{t('bonus')}: <h3>{fixed(credits?.bonus?.amount)}</h3> {currency?.text}</div>
+              <div className={style.count}>{t('bonus')}: <h3>{format(credits?.bonus?.amount)}</h3> {currency?.text}</div>
               <Icon name="navigation-chevron-right" />
             </div>
             {

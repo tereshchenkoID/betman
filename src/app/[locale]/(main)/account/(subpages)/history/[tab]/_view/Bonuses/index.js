@@ -6,6 +6,7 @@ import { BONUS_STATUS } from '@/constant/config'
 import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
 import { date } from '@/helpers/date'
+import { format } from '@/helpers/format'
 
 import Action from '@/components/Action'
 
@@ -46,8 +47,8 @@ const Bonuses = ({ data }) => {
               <div className={style.cell}>{date(el?.date_in)}</div>
               <div className={style.cell}>{el?.bonus?.name}</div>
               <div className={style.cell}>{t(BONUS_STATUS[el?.status])}</div>
-              <div className={style.cell}>{el?.amount_out}</div>
-              <div className={style.cell}>{el?.amount_in}</div>
+              <div className={style.cell}>{format(el?.amount_out)}</div>
+              <div className={style.cell}>{format(el?.amount_in)}</div>
               <div className={style.cell}>{date(el?.date_out)}</div>
               <div className={style.cell}>
                 <Action

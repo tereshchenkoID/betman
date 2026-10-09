@@ -6,7 +6,7 @@ import { NAVIGATION } from '@/constant/config'
 
 import { useUser } from '@/hooks/useUser'
 import { date } from '@/helpers/date'
-import { fixed } from '@/helpers/fixed'
+import { format } from '@/helpers/format'
 import { imageError } from '@/helpers/image'
 
 import Action from '@/components/Action'
@@ -65,12 +65,12 @@ const Games = ({ data }) => {
                   placeholder={el?.game.title}
                 />
               </div>
-              <div className={style.cell}>{el?.amount}</div>
+              <div className={style.cell}>{format(el?.amount)}</div>
               <div className={style.cell}>
                 {t(el?.diff[0] === '+' ? 'win' : 'lose')}
               </div>
               <div className={style.cell}>
-                {el?.diff[0] === '+' && '+'}{fixed(el?.diff)}
+                {el?.diff[0] === '+' && '+'}{format(el?.diff)}
               </div>
             </div>
           )
