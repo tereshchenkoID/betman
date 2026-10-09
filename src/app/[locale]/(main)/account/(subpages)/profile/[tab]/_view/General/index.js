@@ -88,6 +88,7 @@ const General = ({
           onValidate={err => setFieldError('surname', err)}
           error={errors.surname}
         />
+        {/* TODO check on safari */}
         <Field
           type={'date'}
           placeholder={t('birthday')}

@@ -14,8 +14,7 @@ const AgeModal = ({ link }) => {
   const { closeModal } = useModal()
   const { session } = useUser()
 
-  const handleClick = async (e) => {
-    e && e.preventDefault()
+  const handleClick = async () => {
     localStorage.setItem('age', '1')
     closeModal()
   }
@@ -30,7 +29,6 @@ const AgeModal = ({ link }) => {
       window.location.href = link || 'https://www.betman.club/over18'
     }
   }
-
   return (
     <div className={style.block}>
       <div className={style.container}>
