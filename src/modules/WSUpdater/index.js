@@ -37,11 +37,14 @@ const WSUpdater = ({ settings }) => {
 
   useEffect(() => {
     const hasBirthday = profile?.birthday
-    const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
+    const hasAgeSession = localStorage.getItem('age') === '1'
+    // const hasAgeSession = typeof window !== 'undefined' && localStorage.getItem('age') === '1'
 
     let shouldShowModal = false
 
     if (isAuth) {
+      alert(profile?.birthday)
+      alert(hasAgeSession)
       if (!hasBirthday && !hasAgeSession) {
         shouldShowModal = true
       }
