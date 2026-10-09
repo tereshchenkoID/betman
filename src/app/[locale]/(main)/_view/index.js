@@ -12,8 +12,8 @@ import SectionBannersSkeleton from './SectionBannersSlider/_view/skeleton'
 import SectionBigLinks from './SectionBigLinksSlider'
 import SectionBigLinksSkeleton from './SectionBigLinksSlider/_view/skeleton'
 import SectionChallengeSkeleton from './SectionChallenge/_view/skeleton'
-// import SectionFavoritesSlider from './SectionFavoritesSlider'
-// import SectionFavoritesSkeleton from './SectionFavoritesSlider/_view/skeleton'
+import SectionFavoritesSlider from './SectionFavoritesSlider'
+import SectionFavoritesSkeleton from './SectionFavoritesSlider/_view/skeleton'
 import SectionGamesSliderSkeleton from './SectionGamesSlider/_view/skeleton'
 import SectionJackpotsSkeleton from './SectionJackpotsSlider/_view/skeleton'
 import SectionMainBanner from './SectionMainBannerSlider'
@@ -50,10 +50,10 @@ const SECTIONS_CONFIG = {
     Component: SectionBanners,
     Fallback: SectionBannersSkeleton,
   },
-  // favorites: {
-  //   Component: SectionFavoritesSlider,
-  //   Fallback: SectionFavoritesSkeleton,
-  // },
+  favorites: {
+    Component: SectionFavoritesSlider,
+    Fallback: SectionFavoritesSkeleton,
+  },
   challenges: {
     Component: SectionChallenge,
     Fallback: SectionChallengeSkeleton,
