@@ -29,6 +29,7 @@ const AgeModal = ({ link }) => {
       window.location.href = link || 'https://www.betman.club/over18'
     }
   }
+
   return (
     <div className={style.block}>
       <div className={style.container}>
