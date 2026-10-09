@@ -16,6 +16,7 @@ import { compress } from '@/helpers/compress'
 
 import Loader from '@/components/Loader'
 import Notification from '@/modules/Notification'
+import Progress from '@/modules/Progress'
 import Tabs from '@/modules/Tabs'
 
 import { action } from './action'
@@ -195,11 +196,21 @@ const Section = ({
                   }
                   <div>
                     {
+                      active.value !== 3 &&
+                      <Progress
+                        data={50}
+                        size={100}
+                        strokeWidth={8}
+                      />
+                    }
+                    <br />
+                    {
                       active?.key === 'verification' &&
                       <>
                         <Notification
                           text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
                           type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
+                          classes={style.notification}
                         />
                         <br />
                       </>

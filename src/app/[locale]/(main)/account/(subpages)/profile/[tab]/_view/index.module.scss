@@ -74,3 +74,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: rem(12px);
 }
+
+.notification {
+  width: fit-content;
+}

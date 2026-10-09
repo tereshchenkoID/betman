@@ -329,14 +329,16 @@ const Section = ({ countries }) => {
                 error={errors.birthday}
               />
               <Phone
+                key={filter.country?.value}
                 data={filter.phone}
                 placeholder={t('phone')}
-                country={country?.value}
+                country={filter.country?.value}
                 onChange={value => handlePropsChange('phone', value)}
                 isRequired={true}
                 rules={[
                   VALIDATION_RULES.required(),
                   VALIDATION_RULES.phone(),
+                  VALIDATION_RULES.phoneCountry(filter.country)
                 ]}
                 onValidate={err => setFieldError('phone', err)}
                 error={errors.phone}
@@ -346,7 +348,10 @@ const Section = ({ countries }) => {
                 placeholder={t('country')}
                 data={countries?.map(el => ({ value: el.alpha_2, label: el.label }))}
                 value={filter.country}
-                onChange={v => handlePropsChange('country', v)}
+                onChange={value => {
+                  handlePropsChange('country', value)
+                  handlePropsChange('phone', '')
+                }}
               />
               <Field
                 placeholder={t('state')}

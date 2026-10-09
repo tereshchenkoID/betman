@@ -42,8 +42,6 @@ const WSUpdater = ({ settings }) => {
     let shouldShowModal = false
 
     if (isAuth) {
-      shouldShowModal = true
-
       if (!hasBirthday && !hasAgeSession) {
         shouldShowModal = true
       }
