@@ -1,0 +1,47 @@
+.block {
+  display: grid;
+  gap: rem(24px);
+
+  @include tab-s {
+    grid-template-columns: auto 1fr;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-columns: rem(24px) auto 1fr;
+  align-items: center;
+  gap: var(--gap-default);
+
+  &:not(:last-child) {
+    margin-block-end: var(--gap-default);
+  }
+
+  &.filled {
+    .circle {
+      background-color: var(--link);
+    }
+
+    .icon {
+      opacity: 1;
+    }
+  }
+}
+
+.circle {
+  @include flex(center, center);
+  @include size(rem(24px));
+
+  border-radius: 50%;
+  background-color: var(--primary);
+  overflow: hidden;
+}
+
+.icon {
+  opacity: 0;
+}
+
+.bonus {
+  font-size: rem(14px);
+  color: var(--green);
+}

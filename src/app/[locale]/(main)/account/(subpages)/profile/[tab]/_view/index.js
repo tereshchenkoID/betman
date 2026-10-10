@@ -16,12 +16,12 @@ import { compress } from '@/helpers/compress'
 
 import Loader from '@/components/Loader'
 import Notification from '@/modules/Notification'
-import Progress from '@/modules/Progress'
 import Tabs from '@/modules/Tabs'
 
 import { action } from './action'
 
 import Address from './Address'
+import Filled from './Filled'
 import General from './General'
 import Security from './Security'
 import Verification from './Verification'
@@ -197,11 +197,7 @@ const Section = ({
                   <div>
                     {
                       active.value !== 3 &&
-                      <Progress
-                        data={50}
-                        size={100}
-                        strokeWidth={8}
-                      />
+                      <Filled filter={data} />
                     }
                     <br />
                     {

@@ -52,7 +52,7 @@
   },
   "allowScripts": {
     "@parcel/watcher": true,
-    "@swc/core@1.15.46": true,
-    "unrs-resolver@1.12.2": true
+    "unrs-resolver@1.12.2": true,
+    "@swc/core@1.16.13": true
   }
 }
