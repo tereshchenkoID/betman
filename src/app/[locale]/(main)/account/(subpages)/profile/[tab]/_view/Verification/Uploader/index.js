@@ -106,7 +106,7 @@ const Uploader = ({
                   }
                 </div>
                 <Action
-                  classes={['primary', 'md', 'square', style.close]}
+                  classes={['primary', 'sm', 'square', style.close]}
                   onChange={() => handleRemove(idx)}
                 >
                   <Icon name="navigation-close" />

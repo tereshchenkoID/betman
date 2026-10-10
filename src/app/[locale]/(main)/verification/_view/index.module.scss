@@ -104,6 +104,7 @@
   line-height: 1;
 
   span {
+    display: inline-flex;
     color: var(--text-for-material);
   }
 }
