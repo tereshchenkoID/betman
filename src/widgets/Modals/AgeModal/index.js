@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import { ROUTES_USER } from '@/constant/config'
+import { APPLICATION_TYPE, ROUTES_USER } from '@/constant/config'
 
 import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
@@ -20,7 +20,7 @@ const AgeModal = ({ link }) => {
   }
 
   const handleClose = () => {
-    if (session === 'tma') {
+    if (session === APPLICATION_TYPE.telegram) {
       if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
         window.Telegram.WebApp.close()
       }
@@ -36,7 +36,7 @@ const AgeModal = ({ link }) => {
         <p>{t('age.text')}</p>
       </div>
       {
-        session === 'tma'
+        session === APPLICATION_TYPE.telegram
           ?
             <Action
               to={`${ROUTES_USER.profile.url}/general`}

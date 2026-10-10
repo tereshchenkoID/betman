@@ -16,18 +16,9 @@ import SectionGames from '@/sections/SectionGames'
 import style from './index.module.scss'
 
 const OPTIONS = [
-  {
-    key: 'preview',
-    value: 0
-  },
-  {
-    key: 'games',
-    value: 1
-  },
-  {
-    key: 'rules',
-    value: 2
-  }
+  { key: 'preview', value: 0 },
+  { key: 'games', value: 1 },
+  { key: 'rules', value: 2 }
 ]
 
 const Section = ({
@@ -67,14 +58,14 @@ const Section = ({
             :
               <>
                 {
-                  active?.key === OPTIONS[0]?.key &&
+                  active?.value === 0 &&
                   <JackpotCard
                     data={data}
                     classes={['extended']}
                   />
                 }
                 {
-                  active?.key === OPTIONS[1]?.key &&
+                  active?.value === 1 &&
                   <SectionGames
                     url={`jackpot/${id}/games`}
                     data={games}
@@ -82,7 +73,7 @@ const Section = ({
                   />
                 }
                 {
-                  active?.key === OPTIONS[2]?.key &&
+                  active?.value === 2 &&
                   <Inner data={data?.description} />
                 }
               </>

@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 import { Link, useRouter } from '@/i18n/navigation'
 
-import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+import { APPLICATION_TYPE, NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import useModal from '@/hooks/useModal'
 import { useUser } from '@/hooks/useUser'
@@ -105,7 +105,7 @@ const Section = ({
               </>
             }
             {
-              session !== 'tma' &&
+              session !== APPLICATION_TYPE.telegram &&
               <FullScreen />
             }
             {

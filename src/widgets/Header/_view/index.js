@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 import { Link } from '@/i18n/navigation'
 
-import { ROUTES_USER } from '@/constant/config'
+import { APPLICATION_TYPE, ROUTES_USER } from '@/constant/config'
 
 import useModal from '@/hooks/useModal'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
@@ -26,7 +26,7 @@ const Section = ({ settings, bonuses }) => {
   const t = useTranslations()
   const blockRef = useRef(null)
 
-  const { level, currency, credits, isAuth } = useUser()
+  const { level, currency, credits, session, isAuth } = useUser()
 
   const { openModal } = useModal()
   const [toggle, setToggle] = useState(null)
@@ -105,12 +105,13 @@ const Section = ({ settings, bonuses }) => {
                     }
                   </div>
                 :
-                  <div className={style.account}>
-                    <Account
-                      settings={settings}
-                      onClose={() => setToggle(null)}
-                    />
-                  </div>
+                  session !== APPLICATION_TYPE.telegram &&
+                    <div className={style.account}>
+                      <Account
+                        settings={settings}
+                        onClose={() => setToggle(null)}
+                      />
+                    </div>
             }
             {
               toggle === 'account' &&

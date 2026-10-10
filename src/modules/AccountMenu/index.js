@@ -5,7 +5,7 @@ import clsx from 'clsx'
 
 import { Link, useRouter } from '@/i18n/navigation'
 
-import { NAVIGATION, ROUTES_USER } from '@/constant/config'
+import { APPLICATION_TYPE, NAVIGATION, ROUTES_USER } from '@/constant/config'
 
 import { logoutAction } from '@/app/actions/auth'
 
@@ -187,7 +187,7 @@ const AccountMenu = ({ setToggle, bonuses }) => {
         </menu>
       </div>
       {
-        session !== 'tma' &&
+        session !== APPLICATION_TYPE.telegram &&
         <div className={style.bottom}>
           <Action
             classes={['primary', 'wide', 'md']}

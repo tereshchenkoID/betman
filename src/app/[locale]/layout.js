@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { preconnect, preload } from 'react-dom'
+import { preconnect } from 'react-dom'
 import { Oswald, Roboto } from 'next/font/google'
 import Script from 'next/script'
 import { NextIntlClientProvider } from 'next-intl'
@@ -61,7 +61,6 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children, params }) {
-  preload('/images/logo/logo-desktop.svg', { as: 'image', type: 'image/svg+xml' })
   preconnect('https://www.googletagmanager.com')
   preconnect('https://telegram.org')
 

@@ -1,7 +1,5 @@
 import { notFound } from 'next/navigation'
 
-import { NAVIGATION } from '@/constant/config'
-
 import { apiRequest } from '@/app/actions/api'
 import { getPageMetadata } from '@/app/actions/metadata'
 
@@ -23,8 +21,6 @@ export default async function Promo({ params }) {
       method: 'GET',
     }),
   ])
-
-  console.log(res)
 
   if (res?.meta?.results === '0') {
     notFound()
