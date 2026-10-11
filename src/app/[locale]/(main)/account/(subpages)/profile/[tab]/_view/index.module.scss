@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-  @include flex(null);
+  @include flex;
 
   gap: var(--gap-default);
 }
@@ -55,9 +55,7 @@
 }
 
 .verify {
-  padding-top: rem(12px);
-  font-size: rem(13px);
-  color: var(--green);
+  margin-block-start: rem(12px);
 }
 
 .content {
@@ -77,4 +75,5 @@
 
 .notification {
   width: fit-content;
+  margin-block-end: rem(16px);
 }

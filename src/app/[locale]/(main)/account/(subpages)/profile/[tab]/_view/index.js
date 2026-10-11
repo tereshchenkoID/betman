@@ -199,17 +199,13 @@ const Section = ({
                       active.value !== 3 &&
                       <Filled filter={data} />
                     }
-                    <br />
                     {
                       active?.key === 'verification' &&
-                      <>
-                        <Notification
-                          text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
-                          type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
-                          classes={style.notification}
-                        />
-                        <br />
-                      </>
+                      <Notification
+                        text={t(`verify_status.${USER_VERIFY[filter?.profile?.isVerify]}`)}
+                        type={filter?.profile?.isVerify < 3 ? 'error' : 'success'}
+                        classes={style.notification}
+                      />
                     }
                     {children}
                   </div>

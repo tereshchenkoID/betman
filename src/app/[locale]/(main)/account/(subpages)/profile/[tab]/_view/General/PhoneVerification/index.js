@@ -13,6 +13,7 @@ import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
 import Phone from '@/components/Phone'
+import Notification from '@/modules/Notification'
 import { action } from '../action.js'
 
 import style from '../../index.module.scss'
@@ -92,10 +93,11 @@ const PhoneVerification = ({
         }
         {
           filter.profile.isVerifyPhone === '2' &&
-          <div className={style.verify}>
-            <Icon name="status-checkmark" />
-            {t('verify_status.verified')}
-          </div>
+          <Notification
+            text={t('verify_status.verified')}
+            type={'success'}
+            classes={style.verify}
+          />
         }
         {
           filter.profile.isVerifyPhone === '0' &&

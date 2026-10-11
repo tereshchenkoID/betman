@@ -8,7 +8,7 @@ const ICONS = {
   error: 'status-danger',
   info: 'status-info',
   warning: 'status-danger',
-  success: 'status-checkmark-alt',
+  success: 'status-checkmark',
 }
 
 const Notification = ({

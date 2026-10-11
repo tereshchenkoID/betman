@@ -11,6 +11,7 @@ import { toast } from '@/utils/toast'
 import Action from '@/components/Action'
 import Field from '@/components/Field'
 import Icon from '@/components/Icon'
+import Notification from '@/modules/Notification'
 import { action } from '../action.js'
 
 import style from '../../index.module.scss'
@@ -90,10 +91,11 @@ const EmailVerification = ({
         }
         {
           filter.profile.isVerifyEmail === '2' &&
-          <div className={style.verify}>
-            <Icon name="status-checkmark" />
-            {t('verify_status.verified')}
-          </div>
+          <Notification
+            text={t('verify_status.verified')}
+            type={'success'}
+            classes={style.verify}
+          />
         }
         {
           filter.profile.isVerifyEmail === '0' &&

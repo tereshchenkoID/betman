@@ -1,6 +1,7 @@
 .block {
   display: grid;
   gap: rem(24px);
+  margin-block-end: rem(16px);
 
   @include tab-s {
     grid-template-columns: auto 1fr;
