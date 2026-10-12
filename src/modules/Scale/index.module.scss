@@ -9,11 +9,20 @@
 }
 
 .header {
-  @include flex(space-between, center);
-
+  display: grid;
+  grid-template-columns: rem(100px) 1fr rem(100px);
+  align-items: center;
   gap: rem(4px);
-  margin-block-end: rem(4px);
   font-size: rem(12px);
+  margin-block-end: rem(4px);
+}
+
+.max {
+  text-align: end;
+}
+
+.text {
+  text-align: center;
 }
 
 .scale {

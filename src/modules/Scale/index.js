@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 
 import { format } from '@/helpers/format'
@@ -11,6 +12,8 @@ const Scale = ({
   currency,
   isInverted,
 }) => {
+  const t = useTranslations()
+
   return (
     <div
       className={
@@ -23,8 +26,9 @@ const Scale = ({
       }
     >
       <div className={style.header}>
-        <strong>{format(amount)} {currency}</strong>
-        <strong>{format(max)} {currency}</strong>
+        <strong className={style.amount}>{format(amount)} {currency}</strong>
+        <p className={style.text}>{t('wager_progress')}</p>
+        <strong className={style.max}>{format(max)} {currency}</strong>
       </div>
       <div className={style.scale}>
         <div
