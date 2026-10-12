@@ -15,7 +15,6 @@
     object-position: left;
     border-top-left-radius: rem(16px);
     border-top-right-radius: rem(16px);
-    min-height: rem(150px);
 
     @include tab-m {
       display: none;
@@ -23,7 +22,7 @@
   }
 
   &.desktop {
-    object-position: center;
+    object-position: left;
     display: none;
     position: sticky;
     top: calc(var(--header-height) + rem(16px));
